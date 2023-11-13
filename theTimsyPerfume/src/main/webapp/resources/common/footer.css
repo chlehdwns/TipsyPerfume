@@ -16,7 +16,7 @@ div {
 #footer_inner_2 {height: 65%;}
 #footer_inner_3 {height: 15%;}
 /* 푸터 내부 p태그들 */
-#footerWrap p {margin: 0px; position: relative; left: 20px;}
+#footerWrap p {display:inline-block; margin: 0px; position: relative; left: 20px;}
 #footer_inner_1 p {top: 7px;}
 #footer_inner_2 p {top: 22px;}
 #footer_inner_3 p {top: 1px;}

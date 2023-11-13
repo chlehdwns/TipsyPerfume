@@ -8,7 +8,7 @@
     <title>Footer</title>
    
     <!-- CSS파일 경로 -->
-    <link href="resources/footer.css" rel="stylesheet">
+    <link href="resources/common/footer.css" rel="stylesheet">
 </head>
 
 
