@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
     <!-- header.html CSS파일 경로적기 -->
-    <link href="resources/" rel="stylesheet">
+    <link href="resources/common/header.css" rel="stylesheet">
 
 </head>
 
