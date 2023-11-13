@@ -126,4 +126,4 @@ $RECYCLE.BIN/
 theTimsyPerfume/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 .classpath
 .project
-./settings
+./settings/*
