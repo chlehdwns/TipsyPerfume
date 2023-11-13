@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>되나~?</h1>
+	<jsp:include page="common/header.jsp" />
 
 </body>
 </html>
