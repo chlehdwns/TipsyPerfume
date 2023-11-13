@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,26 +9,9 @@
     <title>ErrorPage</title>
    
     <!-- CSS파일 경로 -->
-    <link href="resources/common/errorPage.css" rel="stylesheet">
+    <link href="resources/css/common/errorPage.css" rel="stylesheet">
 
-    <style>
-        div {
-            border: 1px solid black;
-            box-sizing: border-box;
-        }
 
-        #errorPageWrap {
-            width: 1200px;
-            height: 700px;
-            margin: auto;
-        }
-        #errorPageWrap div{text-align: center;}
-        #errorPageWrap .error{width: 100%;}
-        #errorPageWrap .error div {width: 50%; height: 100%; float: left;}
-        #error_1{height: 40%; padding-top: 70px;}
-        #error_2{height: 60%;}
-        #error_2_img{}
-    </style>
 </head>
 
 
@@ -38,11 +22,13 @@
             <h2>Something went wrong</h2>
         </div>
         <div id="error_2" class="error">
-            <div id="error_2_img">
-                <img src="" alt="오류 이미지">
-            </div>
             <div id="error_2_errorMsg">
-                <h2>${ errorMsg }</h2>
+	            <c:if test="${ not empty errorMsg }">
+	            	<h2>${ errorMsg }</h2>
+	            </c:if>
+            </div>
+            <div id="error_2_img">
+                <img src="resources/image/common/errorPic.png" alt="오류 이미지">
             </div>
         </div>
     </div>

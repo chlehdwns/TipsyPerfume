@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+div {
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+/* 에러페이지 전체 래핑 */
+#errorPageWrap {
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+}
+/* 에러페이지 div영역들 크기설정 */
+#errorPageWrap div {text-align: center;}
+#errorPageWrap .error{width: 100%;}
+#errorPageWrap .error div {width: 50%; height: 100%; float: left;}
+#error_1 {height: 30%; padding-top: 70px;}
+#error_2 {height: 70%;}
+/* 에러문구, 이미지파일 등 */
+#error_2_errorMsg h2{position: relative; top: 250px; display: inline-block;}
+#error_2_img {padding-top: 50px;}
+#error_2_img img {width: 100%;}
