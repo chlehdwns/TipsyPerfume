@@ -29,7 +29,7 @@ div {
 #header_1_right_bottom {height: 30%; padding-top: 10px;}
 
 /* 헤더 오른쪽 : 탑 띠배너 */
-#header_1_right_top p{margin: 0px;}
+#header_1_right_top p{margin: 0px; margin-top: 5px;}
 #header_inner_top_bannerline_1{width: 55%;}
 #header_inner_top_bannerline_2{width: 15%;}
 #header_inner_top_bannerline_3{width: 15%;}
@@ -46,3 +46,25 @@ div {
 #header_search_inner_area_2 input::placeholder{
     text-align: center;
 }
+
+/* 드롭다운 메뉴 */
+#header_2 .dropdown {
+    width: 20%;
+    height: 100%;
+    float: left;
+    padding-top: 15px;
+    text-align: center;
+}
+
+#header_2 .dropdown:hover{cursor: pointer;}
+
+#header_2 .dropdown p {
+    width: 90%;
+    height: 100%;
+    display: inline-block;
+    margin: 0px;
+    padding-top: 5px;
+    font-size: 25px;
+}
+
+.dropdown-menu {width: 90%; text-align: center;}
