@@ -102,38 +102,9 @@
                         </button>
                     </form>
                 </div>
-                <!--
-                    범용 controller에서 컨디션 별 호출 분배(전체 / 주류 / 향수 / 공구 / 펀딩)
-                <script>
-                    $(function(){
-                        $('#header_1_right_bottom').children('form[role=search]').submit(function(){
-                    });
-                </script>
-                -->
             </div>
         </div>
 
-        <style>
-            /* 드롭다운 메뉴 */
-            #header_2 .dropdown {
-                width: 20%;
-                height: 100%;
-                float: left;
-                padding-top: 15px;
-                text-align: center;
-            }
-
-            #header_2 .dropdown p {
-                width: 90%;
-                height: 100%;
-                display: inline-block;
-                margin: 0px;
-                padding-top: 5px;
-                font-size: 25px;
-            }
-
-            .dropdown-menu {width: 90%; text-align: center;}
-        </style>
         <div id="header_2" class="full_width_divs">
 
             <div class="dropdown">
