@@ -15,6 +15,7 @@ local.properties
 .recommenders
 /Servers
 /target
+.target
 
 */target/*
 
