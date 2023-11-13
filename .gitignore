@@ -16,6 +16,8 @@ local.properties
 /Servers
 /target
 
+*/target/*
+
 # External tool builders
 .externalToolBuilders/
 
