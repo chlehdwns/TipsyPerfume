@@ -8,6 +8,11 @@
 </head>
 <body>
 	<h1>되나~?</h1>
-
+	<jsp:include page="common/header.jsp" />
+	
+	
+	
+	
+	<jsp:include page="common/footer.jsp" />
 </body>
 </html>
