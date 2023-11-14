@@ -16,16 +16,16 @@
     
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
-
 </head>
 
 
 
 <body>
+<header>
     <div id="headerWrap">
         <div id="header_1" class="full_width_divs">
             <div id="header_1_left" class="full_height_divs">
-                <a href="#"><img src="https://dthezntil550i.cloudfront.net/by/latest/by2107310110043690021607870/440_330/29d7f7be-9363-40a2-bb21-e2d8b6c5ff89.jpg"></a>
+                <a href="#"><img src="resources/image/common/logo.png"></a>
             </div>
             <div id="header_1_right" class="full_height_divs">
                 <div id="header_1_right_top" class="full_width_divs">
@@ -152,5 +152,6 @@
             </div>
         </div>
     </div>
+</header>
 </body>
 </html>

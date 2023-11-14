@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -98,141 +99,35 @@
     Review
 </div>
 <div id="review-content">
-    <div class="review-item-wrap">
-        <div class="display-flex bottom-interval">
-            <div class="profile-wrap">
-                <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+    <c:forEach items="${list }" var="review">
+        <div class="review-item-wrap">
+            <div class="display-flex bottom-interval">
+                <div class="profile-wrap">
+                    <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                </div>
+                <div class="name-wrap">
+                    ${review.userNo}
+                </div>
             </div>
-            <div class="name-wrap">
-                스킹스
+            <div class="thumbnail-wrap bottom-interval">
+                <img class="img" src="${review.thumbnail}" alt="썸네일">
             </div>
-        </div>
-        <div class="thumbnail-wrap bottom-interval">
-            <img class="img" src="./review1.png" alt="썸네일">
-        </div>
-        <div>
-            ★★★☆☆
-        </div>
-        <div class="preview-wrap bottom-interval">
-            추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-        </div>
-        <div class="display-flex bottom-interval">
-            <div class="product-img-wrap">
-                <img class="img" src="./블루-신형.jpg" alt="상품이미지">
+            <div>
+                ★★★☆☆
             </div>
-            <div class="price-wrap">
-                ￦338,900
+            <div class="preview-wrap bottom-interval">
+                ${review.reviewContent}
             </div>
-        </div>
-    </div>
-    <div class="review-item-wrap">
-        <div class="display-flex bottom-interval">
-            <div class="profile-wrap">
-                <img class="img profile" src="./blank-profile.png" alt="프로필사진">
-            </div>
-            <div class="name-wrap">
-                스킹스
+            <div class="display-flex bottom-interval">
+                <div class="product-img-wrap">
+                    <img class="img" src="${review.productImg}" alt="상품이미지">
+                </div>
+                <div class="price-wrap">
+                    ￦338,900
+                </div>
             </div>
         </div>
-        <div class="thumbnail-wrap bottom-interval">
-            <img class="img" src="./review1.png" alt="썸네일">
-        </div>
-        <div>
-            ★★★☆☆
-        </div>
-        <div class="preview-wrap bottom-interval">
-            추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-        </div>
-        <div class="display-flex bottom-interval">
-            <div class="product-img-wrap">
-                <img class="img" src="./블루-신형.jpg" alt="상품이미지">
-            </div>
-            <div class="price-wrap">
-                ￦338,900
-            </div>
-        </div>
-    </div>
-    <div class="review-item-wrap">
-        <div class="display-flex bottom-interval">
-            <div class="profile-wrap">
-                <img class="img profile" src="./blank-profile.png" alt="프로필사진">
-            </div>
-            <div class="name-wrap">
-                스킹스
-            </div>
-        </div>
-        <div class="thumbnail-wrap bottom-interval">
-            <img class="img" src="./review1.png" alt="썸네일">
-        </div>
-        <div>
-            ★★★☆☆
-        </div>
-        <div class="preview-wrap bottom-interval">
-            추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-        </div>
-        <div class="display-flex bottom-interval">
-            <div class="product-img-wrap">
-                <img class="img" src="./블루-신형.jpg" alt="상품이미지">
-            </div>
-            <div class="price-wrap">
-                ￦338,900
-            </div>
-        </div>
-    </div>
-    <div class="review-item-wrap">
-        <div class="display-flex bottom-interval">
-            <div class="profile-wrap">
-                <img class="img profile" src="./blank-profile.png" alt="프로필사진">
-            </div>
-            <div class="name-wrap">
-                스킹스
-            </div>
-        </div>
-        <div class="thumbnail-wrap bottom-interval">
-            <img class="img" src="./review1.png" alt="썸네일">
-        </div>
-        <div>
-            ★★★☆☆
-        </div>
-        <div class="preview-wrap bottom-interval">
-            추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-        </div>
-        <div class="display-flex bottom-interval">
-            <div class="product-img-wrap">
-                <img class="img" src="./블루-신형.jpg" alt="상품이미지">
-            </div>
-            <div class="price-wrap">
-                ￦338,900
-            </div>
-        </div>
-    </div>
-    <div class="review-item-wrap">
-        <div class="display-flex bottom-interval">
-            <div class="profile-wrap">
-                <img class="img profile" src="./blank-profile.png" alt="프로필사진">
-            </div>
-            <div class="name-wrap">
-                스킹스
-            </div>
-        </div>
-        <div class="thumbnail-wrap bottom-interval">
-            <img class="img" src="./review1.png" alt="썸네일">
-        </div>
-        <div>
-            ★★★☆☆
-        </div>
-        <div class="preview-wrap bottom-interval">
-            추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-        </div>
-        <div class="display-flex bottom-interval">
-            <div class="product-img-wrap">
-                <img class="img" src="./블루-신형.jpg" alt="상품이미지">
-            </div>
-            <div class="price-wrap">
-                ￦338,900
-            </div>
-        </div>
-    </div>
+    </c:forEach>
 </div>
 <div id="paging">
     <ul class="pagination">
