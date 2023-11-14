@@ -11,7 +11,10 @@ public class UserDao {
 	
 
 	public User loginUser(SqlSessionTemplate sqlSession, User u) {	
-		return sqlSession.selectOne("userMapper.loginUser", u);
+		//return sqlSession.selectOne("userMapper.loginUser", u);
+		User us = sqlSession.selectOne("userMapper.loginUser", u);
+		System.out.println("dao: "+us);
+		return us;
 	}
 	
 	
