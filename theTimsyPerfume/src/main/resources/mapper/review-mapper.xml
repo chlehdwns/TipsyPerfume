@@ -12,6 +12,7 @@
 	<result column="review_state" property="reviewState"/>
 	<result column="PDT_NAME" property="pdtNo"/>
 	
+	<result column="USER_PROFILE" property="userProfile"/>
 	<result column="thumbnail_path" property="thumbnail"/>
 	<result column="product_path" property="productImg"/>
 	<result column="PDT_PRICE" property="productPrice"/>
@@ -34,6 +35,7 @@ SELECT
     REVIEW_CREATE_DATE,
     REVIEW_MODIFY_DATE,
     PDT_NAME,
+    USER_PROFILE,
     REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "thumbnail_path",
     PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "product_path",
     TO_CHAR(PDT_PRICE,'L99,999') "PDT_PRICE"
@@ -56,6 +58,7 @@ SELECT
     REVIEW_CREATE_DATE,
     REVIEW_MODIFY_DATE,
     PDT_NAME,
+    USER_PROFILE,
     REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "thumbnail_path",
     PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "product_path",
     TO_CHAR(PDT_PRICE,'L99,999') "PDT_PRICE"
