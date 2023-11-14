@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>되지용~</h1>
-	
 	<jsp:include page="common/header.jsp" />
 	
 	<div style="width: 1200px; height: 1200px; margin: auto; text-align: center;">
@@ -16,6 +14,9 @@
 			메인 넣을 영역!<br>
 			(메인 넣고 이 div 삭제 부탁드립니다! ^~^)
 		</h3>
+		<ul>
+			<li><a href="review">review</a></li>
+		</ul>
 	</div>
 	
 	<jsp:include page="common/footer.jsp" />
