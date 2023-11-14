@@ -29,7 +29,7 @@
         justify-content: center;
         flex-wrap: wrap;
     }
-    .review-item-wrap:not(:nth-child(3)){margin-right: 30px;}
+    .review-item-wrap:not(:nth-child(3n)){margin-right: 30px;}
     .review-item-wrap{
         width: 215px;
         height: 350px;
@@ -86,7 +86,7 @@
         color: rgb(244, 235, 211);
     }
 
-    #paging{
+    #paging-area{
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
@@ -118,6 +118,7 @@
                     ${review.userNo}
                 </div>
             </div>
+            <a href="reviewViewer?reviewNo=${review.reviewNo }">
             <div class="thumbnail-wrap bottom-interval">
                 <img class="img" src="${review.thumbnail}" alt="썸네일">
             </div>
@@ -127,6 +128,7 @@
             <div class="preview-wrap bottom-interval">
                 ${review.reviewContent}
             </div>
+            </a>
             <div class="display-flex bottom-interval">
                 <div class="product-img-wrap">
                     <img class="img" src="${review.productImg}" alt="상품이미지">
@@ -140,13 +142,36 @@
 	</c:otherwise>
 	</c:choose>
 </div>
-<div id="paging">
+<div id="paging-area">
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">&lt</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">&gt</a></li>
+    	<c:choose>
+	    	<c:when test="${pi.currentPage eq 1 }">
+	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
+	    	</c:when>
+	    	<c:otherwise>
+	        	<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage-1 }">&lt</a></li>
+	    	</c:otherwise>
+    	</c:choose>
+    	
+        <c:forEach begin="${pi.startPage }" end="${pi.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p eq pi.currentPage }">
+					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="review?page=${p }">${p }</a></li>
+				</c:otherwise>
+			</c:choose>
+        </c:forEach>
+        
+        <c:choose>
+	    	<c:when test="${pi.currentPage eq pi.maxPage }">
+	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
+	    	</c:when>
+	    	<c:otherwise>
+        		<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage+1 }">&gt</a></li>
+	    	</c:otherwise>
+    	</c:choose>
     </ul>
 </div>
 </div>

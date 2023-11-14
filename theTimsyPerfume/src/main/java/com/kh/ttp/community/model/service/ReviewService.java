@@ -9,4 +9,6 @@ public interface ReviewService {
 	
 	public int countReviewList();
 	public ArrayList<ReviewVO> seletcReviewList(PageInfo pi);
+	
+	public ReviewVO selectReview(int reviewNo);
 }

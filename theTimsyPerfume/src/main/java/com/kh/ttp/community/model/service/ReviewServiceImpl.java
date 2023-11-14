@@ -30,4 +30,9 @@ public class ReviewServiceImpl implements ReviewService {
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return reviewDao.seletcReviewList(sqlSession, rowBounds);
 	}
+
+	@Override
+	public ReviewVO selectReview(int reviewNo) {
+		return reviewDao.selectReview(sqlSession, reviewNo);
+	}
 }

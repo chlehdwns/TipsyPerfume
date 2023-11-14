@@ -25,7 +25,18 @@ public class ReviewController {
 		PageInfo pi = Pagination.getPageInfo(listCount, page, 9, 5);
 		ArrayList<ReviewVO> list = reviewService.seletcReviewList(pi);
 		mv.addObject("list", list).
+		addObject("pi", pi).
 		setViewName("community/review");
+		
+		return mv;
+	}
+	@GetMapping("reviewViewer")
+	public ModelAndView reviewViewer(int reviewNo, ModelAndView mv) {
+		
+		ReviewVO review = reviewService.selectReview(reviewNo);
+		
+		mv.addObject("review", review).
+		setViewName("community/reviewDetail");
 		
 		return mv;
 	}

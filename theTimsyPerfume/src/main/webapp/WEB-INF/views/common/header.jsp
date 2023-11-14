@@ -22,7 +22,7 @@
     <div id="headerWrap">
         <div id="header_1" class="full_width_divs">
             <div id="header_1_left" class="full_height_divs">
-                <a href="#"><img src="resources/image/common/logo.png"></a>
+                <a href="./"><img src="resources/image/common/logo.png"></a>
             </div>
             <div id="header_1_right" class="full_height_divs">
                 <div id="header_1_right_top" class="full_width_divs">
@@ -141,6 +141,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="#">코디 추천</a></li>
+                  <li><a class="dropdown-item" href="review">리뷰</a></li>
                   <li><a class="dropdown-item" href="#">도감 채우기</a></li>
                 </ul>
             </div>
