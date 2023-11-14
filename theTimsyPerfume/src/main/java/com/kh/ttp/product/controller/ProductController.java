@@ -14,28 +14,22 @@ public class ProductController {
 	 * @return
 	 */
 	@GetMapping("productMain.pr")
-	public ModelAndView productMain(@RequestParam (value="pdtIdenKey", defaultValue="M") String pdtIdenKey, ModelAndView mv) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
-		System.out.println("향수");
+	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
 		
-		if("A".equals(pdtIdenKey)) {
-			
-		}
-		else if("P".equals(pdtIdenKey)) {
-			
-		}
-		else if("M".equals(pdtIdenKey)) {
-			
+		if("A".equals(pdtIdenKey.toUpperCase())) {
+			// 알콜 조회 A
+			System.out.println("알콜조회");
+		} else if("P".equals(pdtIdenKey.toUpperCase())) {
+			// 향수 조회 P
+			System.out.println("향수조회");
 		} else {
-			return "common/errorPage";
+			System.out.println("기타등등");
+			// common/errorPage  ${ errorMsg }
 		}
-		switch(pdtIdenKey) {
-			case "A" : /* 성인인증 시행 후 성인이면 향수용 메인페이지 <-> 성인인증 안됐으면 성인인증 페이지로 */ break;
-			case "P" : /* 향수용 메인페이지 */ break;
-			case "M" : break;
-			default : return "errorPage";
-		}
+		System.out.println("스코프 밖");
 		
-		return "";
+		// pdtIdenKey넘겨줘야함 (식별자 보고 div띄워줄 것) 
+		return "product/productMain";
 	}
 
 }
