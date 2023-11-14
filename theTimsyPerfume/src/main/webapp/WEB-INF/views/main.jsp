@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>되지용~</h1>
+	
 	
 	<jsp:include page="common/header.jsp" />
 	
