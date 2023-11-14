@@ -2,22 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="memberMapper">
+<mapper namespace="userMapper">
 
 	<!-- 로그인용 쿼리문 -->
 	<select id="loginUser" parameterType="user" resultType="user">
 		SELECT
-			USER_ID userId,
-			USER_PWD userPwd,
-			USER_NAME userName,
-			NICKNAME nickName,
-			BIRTH_DATE birthDate,
-			STATUS status,
-			MEMBER_TYPE memberType,
-			BUSINESS_REG businessReg,
-			ADULT_STATUS adultStatus,
-			ENROLL_DATE enrollDate,
-			USER_PROFILE userProfile,
+			USER_NO userNo,
+            USER_EMAIL userEmail,
+            NICKNAME nickName,
+            USER_PWD userPwd,
+            USER_NAME userName,
+            STATUS status,
+            MEMBER_TYPE memberType,
+            BUSINESS_REG businessReg,
+            ADULT_STATUS adultStatus,
+            BIRTH_DATE birthDate,
+            ENROLL_DATE enrollDate,
+            USER_PROFILE userProfile,
 			
 			PHONE phone,
 			ADDRESS address,
@@ -25,9 +26,11 @@
 			POSTAL_CODE postalCode
 			
 		FROM
-			USER
+			TB_USER
+		left JOIN
+			TB_RECEIVER USING(USER_NO)
 		WHERE
-			USER_ID = #{userId}
+			USER_EMAIL = #{userEmail}
 			
 		<!--  사용자는 DB_userPwd컬럼에 저장된 암호화된 비밀번호를 알 수 없기 때문에 비밀번호 조건을 나중에 제거-->
 		AND
