@@ -20,6 +20,6 @@ public class ReviewVO {
 	public void printLunch() {
 		
 		System.out.println("점심먹어야지~~~~");
-		
+		System.out.println("호호호호 다햇당 ~~~");
 	}
 }
