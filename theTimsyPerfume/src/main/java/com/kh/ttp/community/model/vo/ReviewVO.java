@@ -21,5 +21,7 @@ public class ReviewVO {
 		
 		System.out.println("점심먹어야지~~~~");
 		System.out.println("호호호호 다햇당 ~~~");
+		
+		System.out.println("저녁도 먹어야징 ~~~");
 	}
 }
