@@ -131,7 +131,7 @@
                 <p data-bs-toggle="dropdown" aria-expanded="false">
                     스페셜 펀딩
                 </p>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" href="funding.list">
                   <li><a class="dropdown-item" href="#">커스텀 주류</a></li>
                   <li><a class="dropdown-item" href="#">커스텀 향수</a></li>
                 </ul>
