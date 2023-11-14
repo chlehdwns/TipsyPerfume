@@ -99,7 +99,7 @@
     <div class="review-content-wrap">
         <div class="review-content">
             <div class="focus-img-wrap">
-                <img class="img" src="./review1.png" alt="">
+                <img class="img" src="${review.reviewImages.get(0) }" alt="">
             </div>
             <div class="review-article">
                 <div class="display-flex bottom-interval">
