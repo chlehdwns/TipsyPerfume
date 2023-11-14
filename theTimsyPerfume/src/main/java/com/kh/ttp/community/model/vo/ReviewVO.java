@@ -11,5 +11,8 @@ public class ReviewVO {
 	private String reviewCreateDate;
 	private String reviewModifyDate;
 	private String reviewState;
-	private String orderDetailNo;
+	private String pdtNo;
+	
+	private String thumbnail;
+	private String productImg;
 }

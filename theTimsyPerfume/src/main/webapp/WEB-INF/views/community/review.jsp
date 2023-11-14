@@ -91,6 +91,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <section>
 <div id="review-wrap">
 <div id="content-title">
@@ -244,5 +245,6 @@
 </div>
 </div>
 </section>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
