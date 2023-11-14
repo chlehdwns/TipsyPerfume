@@ -35,4 +35,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewVO selectReview(int reviewNo) {
 		return reviewDao.selectReview(sqlSession, reviewNo);
 	}
+
+	@Override
+	public ArrayList<String> selectReviewImage(int reviewNo) {
+		return reviewDao.selectReviewImage(sqlSession, reviewNo);
+	}
 }

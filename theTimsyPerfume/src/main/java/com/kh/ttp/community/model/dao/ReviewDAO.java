@@ -22,5 +22,9 @@ public class ReviewDAO {
 	public ReviewVO selectReview(SqlSessionTemplate sqlSession, int reviewNo) {
 		return sqlSession.selectOne("reviewMapper.selectReview", reviewNo);
 	}
+	
+	public ArrayList<String> selectReviewImage(SqlSessionTemplate sqlSession, int reviewNo) {
+		return (ArrayList)sqlSession.selectList("reviewMapper.selectReviewImage", reviewNo);
+	}
 
 }

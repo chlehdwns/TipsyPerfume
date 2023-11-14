@@ -139,6 +139,7 @@
                     커뮤니티
                 </p>
                 <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="notice">공지</a></li>
                   <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="#">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
