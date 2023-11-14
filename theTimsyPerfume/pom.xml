@@ -24,7 +24,7 @@
 	 		<url>http://www.datanucleus.org/downloads/maven2/</url>
 	 	</repository>
 	 </repositories>
-	
+	 
 	<!-- 
 		-dependencies : 프로젝트에서 사용할 라이브러리의 정보들을 담은 곳
 						(내가 다운로드 받고자 하는 라이브러리들)
