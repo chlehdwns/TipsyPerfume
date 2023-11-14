@@ -83,7 +83,7 @@
 						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
 						<br>
 
-						<label for="address"> 주소</label>
+						<label for="address">* 주소</label>
 						<input type="text">
 						<br>
 						
@@ -94,7 +94,7 @@
 						<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
 						<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail" required><br>
 						
-
+						
 					
 					
 					

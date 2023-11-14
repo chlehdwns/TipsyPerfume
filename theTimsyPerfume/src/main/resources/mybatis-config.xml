@@ -7,14 +7,13 @@
 			<setting name="jdbcTypeForNull" value="NULL"/>		
 	</settings>
 	
-	<typeAliases>
+	  <typeAliases>
+		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
 		<typeAlias type="com.kh.ttp.community.model.vo.ReviewVO" alias="review"/>
 	</typeAliases>
-	
-	<mappers>
+
+	  <mappers>
+		<mapper resource="/mapper/member-mapper.xml"/>
 		<mapper resource="/mapper/review-mapper.xml"/>
 	</mappers>
-	
-	
-
 </configuration>

@@ -38,7 +38,7 @@
                         <c:choose>
                             <c:when test="${ empty loginUser }">
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">로그인</a>
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="Login.me">로그인</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
