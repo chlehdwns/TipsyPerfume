@@ -6,18 +6,24 @@ public class User {
 
 	private int userNo;
 	private String userId;
-	private String nickName;
 	private String userPwd;
 	private String userName;
-	private String gender;
+	private String nickName;
+	private Date birthDate;
 	private String status;
+	
 	private String memberType;
 	private String businessReg;
 	private String adultStatus;
-	private Date birthDate;
 	private Date enrollDate;
 	private String userProfile;
-	private String email;
+	
+	
+	
+	private String phone;
+	private String address;
+	private String addressDetail;
+	private int postalCode;
 	
 	
 	public User() {
@@ -25,24 +31,47 @@ public class User {
 	}
 
 
-	public User(int userNo, String userId, String nickName, String userPwd, String userName, String gender,
-			String status, String memberType, String businessReg, String adultStatus, Date birthDate, Date enrollDate,
-			String userProfile, String email) {
+	//receiver없는거
+	public User(int userNo, String userId, String userPwd, String userName, String nickName, Date birthDate,
+			String status, String memberType, String businessReg, String adultStatus, Date enrollDate,
+			String userProfile) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
-		this.nickName = nickName;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.gender = gender;
+		this.nickName = nickName;
+		this.birthDate = birthDate;
 		this.status = status;
 		this.memberType = memberType;
 		this.businessReg = businessReg;
 		this.adultStatus = adultStatus;
-		this.birthDate = birthDate;
 		this.enrollDate = enrollDate;
 		this.userProfile = userProfile;
-		this.email = email;
+	}
+
+
+	//receiver잇는거
+	public User(int userNo, String userId, String userPwd, String userName, String nickName, Date birthDate,
+			String status, String memberType, String businessReg, String adultStatus, Date enrollDate,
+			String userProfile, String phone, String address, String addressDetail, int postalCode) {
+		super();
+		this.userNo = userNo;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.nickName = nickName;
+		this.birthDate = birthDate;
+		this.status = status;
+		this.memberType = memberType;
+		this.businessReg = businessReg;
+		this.adultStatus = adultStatus;
+		this.enrollDate = enrollDate;
+		this.userProfile = userProfile;
+		this.phone = phone;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.postalCode = postalCode;
 	}
 
 
@@ -66,16 +95,6 @@ public class User {
 	}
 
 
-	public String getNickName() {
-		return nickName;
-	}
-
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-
 	public String getUserPwd() {
 		return userPwd;
 	}
@@ -96,13 +115,23 @@ public class User {
 	}
 
 
-	public String getGender() {
-		return gender;
+	public String getNickName() {
+		return nickName;
 	}
 
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 
@@ -146,16 +175,6 @@ public class User {
 	}
 
 
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-
 	public Date getEnrollDate() {
 		return enrollDate;
 	}
@@ -176,34 +195,58 @@ public class User {
 	}
 
 
-	public String getEmail() {
-		return email;
+	public String getPhone() {
+		return phone;
 	}
 
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+
+	public int getPostalCode() {
+		return postalCode;
+	}
+
+
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
 	}
 
 
 	@Override
 	public String toString() {
-		return "User [userNo=" + userNo + ", userId=" + userId + ", nickName=" + nickName + ", userPwd=" + userPwd
-				+ ", userName=" + userName + ", gender=" + gender + ", status=" + status + ", memberType=" + memberType
-				+ ", businessReg=" + businessReg + ", adultStatus=" + adultStatus + ", birthDate=" + birthDate
-				+ ", enrollDate=" + enrollDate + ", userProfile=" + userProfile + ", email=" + email + "]";
+		return "User [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
+				+ ", nickName=" + nickName + ", birthDate=" + birthDate + ", status=" + status + ", memberType="
+				+ memberType + ", businessReg=" + businessReg + ", adultStatus=" + adultStatus + ", enrollDate="
+				+ enrollDate + ", userProfile=" + userProfile + ", phone=" + phone + ", address=" + address
+				+ ", addressDetail=" + addressDetail + ", postalCode=" + postalCode + "]";
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 	
 	
