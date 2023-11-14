@@ -11,4 +11,5 @@ public interface ReviewService {
 	public ArrayList<ReviewVO> seletcReviewList(PageInfo pi);
 	
 	public ReviewVO selectReview(int reviewNo);
+	public ArrayList<String> selectReviewImage(int reviewNo);
 }

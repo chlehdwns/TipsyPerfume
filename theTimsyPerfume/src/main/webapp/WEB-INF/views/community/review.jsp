@@ -112,7 +112,14 @@
         <div class="review-item-wrap">
             <div class="display-flex bottom-interval">
                 <div class="profile-wrap">
-                    <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                	<c:choose>
+                	<c:when test="${empty review.userProfile }">
+                    	<img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                	</c:when>
+                	<c:otherwise>
+                    	<img class="img profile" src="${review.userProfile }" alt="프로필사진">
+                	</c:otherwise>
+                	</c:choose>
                 </div>
                 <div class="name-wrap">
                     ${review.userNo}

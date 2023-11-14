@@ -34,6 +34,7 @@ public class ReviewController {
 	public ModelAndView reviewViewer(int reviewNo, ModelAndView mv) {
 		
 		ReviewVO review = reviewService.selectReview(reviewNo);
+		review.setReviewImages(reviewService.selectReviewImage(reviewNo));
 		
 		mv.addObject("review", review).
 		setViewName("community/reviewDetail");
