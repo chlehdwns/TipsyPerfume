@@ -10,9 +10,8 @@
     <!-- CSS파일 경로 -->
     <link href="resources/css/common/footer.css" rel="stylesheet">
 </head>
-
-
 <body>
+<footer>
     <div id="footerWrap">
         <div id="footer_inner_1" class="footer_inner">
             <p>회사소개 | 이용약관 | 개인정보처리방침 | 이용안내</p>
@@ -28,6 +27,6 @@
             <p>Copyright © 2023 냄새에 취하조 All Right Reserved</p>
         </div>
     </div>
+</footer>
 </body>
-
 </html>

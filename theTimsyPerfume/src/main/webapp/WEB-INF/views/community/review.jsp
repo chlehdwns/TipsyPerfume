@@ -63,6 +63,7 @@
         width: 175px;
         height: 175px;
         margin: 0 auto;
+        border: 2px inset rgb(223, 190, 106);
     }
     .preview-wrap{
         height: 50px;
@@ -78,6 +79,7 @@
     .product-img-wrap{
         width: 50px;
         height: 50px;
+        border: 1px solid rgb(223, 190, 106);
     }
     .price-wrap{
         margin-left: 10px;

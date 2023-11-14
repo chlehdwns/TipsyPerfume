@@ -1,19 +1,20 @@
 @charset "UTF-8";
 
 
-div {
+header{
+	background-image: linear-gradient(to bottom, rgb(223, 190, 106), rgb(244,235, 211));
+}
+header div {
     border: 1px solid black;
     box-sizing: border-box;
 }
+
 #headerWrap {
     width: 1200px;
     height: 280px;
 	margin: auto;
 }
 
-header{
-	background-image: linear-gradient(to bottom, rgb(223, 190, 106), rgb(244,235, 211));
-}
 
 .full_width_divs{width: 100%;}
 .full_height_divs{height: 100%;  float: left;}

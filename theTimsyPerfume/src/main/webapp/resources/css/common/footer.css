@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* 푸터 전체 요소 */
-div {
+footer div {
     border: 1px solid black;
     box-sizing: border-box;
 }

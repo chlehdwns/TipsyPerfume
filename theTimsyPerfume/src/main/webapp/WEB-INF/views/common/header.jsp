@@ -17,9 +17,6 @@
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
 </head>
-
-
-
 <body>
 <header>
     <div id="headerWrap">
