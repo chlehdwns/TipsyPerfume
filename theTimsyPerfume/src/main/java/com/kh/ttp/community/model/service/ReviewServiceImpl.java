@@ -26,7 +26,8 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public ArrayList<ReviewVO> seletcReviewList(PageInfo pi) {
-		RowBounds rowBounds = new RowBounds(3, 3);
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return reviewDao.seletcReviewList(sqlSession, rowBounds);
 	}
 }

@@ -25,7 +25,7 @@ public class ReviewController {
 		PageInfo pi = Pagination.getPageInfo(listCount, page, 9, 5);
 		ArrayList<ReviewVO> list = reviewService.seletcReviewList(pi);
 		mv.addObject("list", list).
-		setViewName("commnuity/review");
+		setViewName("community/review");
 		
 		return mv;
 	}

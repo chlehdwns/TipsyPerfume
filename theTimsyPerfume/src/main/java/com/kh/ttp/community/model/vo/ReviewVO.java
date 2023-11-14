@@ -12,4 +12,5 @@ public class ReviewVO {
 	private String reviewModifyDate;
 	private String reviewState;
 	private String orderDetailNo;
+	private String thumbnail;
 }
