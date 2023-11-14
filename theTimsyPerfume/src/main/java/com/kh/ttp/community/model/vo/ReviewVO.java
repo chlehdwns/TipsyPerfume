@@ -15,5 +15,11 @@ public class ReviewVO {
 	
 	private String thumbnail;
 	private String productImg;
-	private Stirng sdfsd;
+	
+	
+	public void printLunch() {
+		
+		System.out.println("점심먹어야지~~~~");
+		
+	}
 }
