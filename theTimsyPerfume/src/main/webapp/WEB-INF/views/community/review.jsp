@@ -118,6 +118,7 @@
                     ${review.userNo}
                 </div>
             </div>
+            <a href="reviewViewer?reviewNo=${review.reviewNo }">
             <div class="thumbnail-wrap bottom-interval">
                 <img class="img" src="${review.thumbnail}" alt="썸네일">
             </div>
@@ -127,6 +128,7 @@
             <div class="preview-wrap bottom-interval">
                 ${review.reviewContent}
             </div>
+            </a>
             <div class="display-flex bottom-interval">
                 <div class="product-img-wrap">
                     <img class="img" src="${review.productImg}" alt="상품이미지">

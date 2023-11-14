@@ -92,6 +92,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <section>
 <div id="review-wrap">
     <div class="review-content-wrap">
@@ -102,17 +103,17 @@
             <div class="review-article">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
-                        스킹스(dlaudw*****) <span>2023-11-07 11:59</span>
+                        ${review.userNo } <span>${review.reviewCreateDate }</span>
                     </div>
                 </div>
                 <div>
                     ★★★☆☆
                 </div>
                 <div class="article-wrap bottom-interval">
-                    추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
+                	${review.reviewContent }
                 </div>
             </div>
             <div class="img-container">
@@ -145,7 +146,7 @@
             <div class="review-comment">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
                         스킹스(dlaudw*****)
@@ -160,7 +161,7 @@
             <div class="review-comment">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
                         스킹스(dlaudw*****)
@@ -182,7 +183,7 @@
             <div class="review-article">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
                         스킹스(dlaudw*****) <span>2023-11-07 11:59</span>
@@ -225,7 +226,7 @@
             <div class="review-comment">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
                         스킹스(dlaudw*****)
@@ -240,7 +241,7 @@
             <div class="review-comment">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="./blank-profile.png" alt="프로필사진">
+                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
                     </div>
                     <div class="name-wrap">
                         스킹스(dlaudw*****)

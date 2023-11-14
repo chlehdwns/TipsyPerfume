@@ -19,4 +19,8 @@ public class ReviewDAO {
 		return (ArrayList)sqlSession.selectList("reviewMapper.seletcReviewList", null, rowBounds);
 	}
 
+	public ReviewVO selectReview(SqlSessionTemplate sqlSession, int reviewNo) {
+		return sqlSession.selectOne("reviewMapper.selectReview", reviewNo);
+	}
+
 }

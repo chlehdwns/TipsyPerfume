@@ -13,6 +13,7 @@ public class ReviewVO {
 	private String reviewState;
 	private String pdtNo;
 	
+	private String userProfile;
 	private String thumbnail;
 	private String productImg;
 	private String productPrice;

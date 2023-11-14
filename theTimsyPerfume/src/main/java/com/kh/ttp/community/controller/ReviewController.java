@@ -30,4 +30,14 @@ public class ReviewController {
 		
 		return mv;
 	}
+	@GetMapping("reviewViewer")
+	public ModelAndView reviewViewer(int reviewNo, ModelAndView mv) {
+		
+		ReviewVO review = reviewService.selectReview(reviewNo);
+		
+		mv.addObject("review", review).
+		setViewName("community/reviewDetail");
+		
+		return mv;
+	}
 }
