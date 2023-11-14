@@ -56,14 +56,18 @@
 		font-size : 32px;
 		cursor : pointer;
 	}
+	#funding-enroll{
+		float:right;
+	}
 	#pagingArea {width:fit-content; margin:auto;}
 </style>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
 	<h1 class="drinkFunding-title">주류 펀딩</h1>
-	<a id="funding-enroll" href="drinkEnrollForm.funding">술 펀딩 제품 등록</a>
+	
 	<div id="outer">
+	<a id="funding-enroll" href="drinkEnrollForm.funding">술 펀딩 제품 등록</a>
 		<div id="normal-drink">
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">

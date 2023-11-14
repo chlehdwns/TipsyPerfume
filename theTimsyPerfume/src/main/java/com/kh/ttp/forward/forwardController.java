@@ -21,6 +21,10 @@ public class forwardController {
 	public String starDrinkFundingListPage() {
 		return "funding/starDrinkFundingList";
 	}
+	@RequestMapping("drinkEnrollForm.funding")
+	public String enrollFormDrinkFunding() {
+		return "funding/drinkEnrollForm";
+	}
 	
 
 }
