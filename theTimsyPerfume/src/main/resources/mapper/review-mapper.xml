@@ -9,8 +9,8 @@
 	<result column="review_content" property="reviewContent"/>
 	<result column="review_create_date" property="reviewCreateDate"/>
 	<result column="review_modify_date" property="reviewModifyDate"/>
-	<result column="review_modify_date" property="reviewState"/>
-	<result column="review_modify_date" property="orderDetailNo"/>
+	<result column="review_state" property="reviewState"/>
+	<result column="PDT_NO" property="orderDetailNo"/>
 </resultMap>
 
 <select id="countReviewList" resultType="_int">
@@ -22,5 +22,16 @@ where
 	review_state = 'Y'
 </select>
 <select id="seletcReviewList" parameterType="review" resultMap="reviewResultSet">
+SELECT
+    REVIEW_NO,
+    NICKNAME,
+    REVIEW_SCORE,
+    REVIEW_CONTENT,
+    REVIEW_CREATE_DATE,
+    REVIEW_MODIFY_DATE,
+    PDT_NO
+FROM TB_REVIEW
+    JOIN TB_USER USING(USER_NO)
+    JOIN TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
 </select>
 </mapper>
