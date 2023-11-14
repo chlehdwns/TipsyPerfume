@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* 전체 영역 세팅 */
+#productMainWrap {
+    width: 950px; height: 550px; margin: auto;
+}
+#productMainWrap div {
+    border: solid 1px black;
+}
+
+/* 1. 최상단 타이틀 영역 조절 */
+#productMainTitle{
+    height: 25%;
+    width: 100%;
+}
+/* 최상단 타이틀 글씨 조절 */
+.productMainTitleText{
+    height: 50%;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: 1000;
+    color: rgb(79, 79, 79);
+}
+
+/* 2. 중간 전체조회 버튼있는 영역 조절 */
+#productMainBtnArea {
+    height: 10%;
+    padding-top: 10px;
+}
+#productMainBtnArea button{
+    height: 80%;
+    float: right;
+    font-size: 15px;
+}
+
+/* 3. 하단 슬라이더 영역 조절 */
+.swiper {
+    width: 100%;
+    height: 65%;
+}
+.swiper-slide div{
+    width: 100%;
+}
+
+/* 이미지 사이즈 조절 */
+.swiper-slide>img {
+    width : 100%;
+    height : 60%;
+    object-fit: cover;
+}
+
+/* 상품 설명들 조절 */
+.productBlockText1{height: 10%; text-align: center;}
+.productBlockText2{height: 10%; text-align: center;}
+.productBlockText3{height: 5%; font-size: 1px; text-align: right;}
+.productBlockText4{height: 15%; padding: 5px 10px 10px 10px;}
+
+/* 화살표 버튼색 변경 (기본색은 파란색) */
+div[class^=swiper-button] {
+    color : white;
+    display : block; /* 아니면 안보이게 숨기기도 가능 */
+}
+.swiper-pagination{
+    display: block;
+}
+.swiper-scrollbar{
+    display: none;
+}
+
+/* 페이지네이션 색깔 변경 */
+:root {
+    --swiper-theme-color: black;
+}
