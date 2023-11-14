@@ -10,7 +10,10 @@
 	<result column="review_create_date" property="reviewCreateDate"/>
 	<result column="review_modify_date" property="reviewModifyDate"/>
 	<result column="review_state" property="reviewState"/>
-	<result column="PDT_NO" property="orderDetailNo"/>
+	<result column="PDT_NAME" property="pdtNo"/>
+	
+	<result column="thumbnail_path" property="thumbnail"/>
+	<result column="product_path" property="productImg"/>
 </resultMap>
 
 <select id="countReviewList" resultType="_int">
