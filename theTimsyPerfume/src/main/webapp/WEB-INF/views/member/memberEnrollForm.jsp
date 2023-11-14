@@ -41,9 +41,9 @@
 				
 				<label for=""> *회원 구분 : </label> &nbsp;&nbsp;
                     <input type="radio" id="User" value="U" name="memberType" checked>
-                    <label for="User">남자</label> &nbsp;&nbsp;
+                    <label for="User">개인 회원</label> &nbsp;&nbsp;
                     <input type="radio" id="Sale" value="S" name="memberType">
-                    <label for="Sale">여자</label> &nbsp;&nbsp;
+                    <label for="Sale">사업자 회원</label> &nbsp;&nbsp;
 
 				<form action="insert.me" method="post" id="enroll-form">
 					<div class="form-group">
@@ -52,6 +52,10 @@
 						<input type="text" class="form-control" id="userId" placeholder="아이디를 입력해주세요." name="userId" required><br>
 						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
 						<br>
+						<div class="button" >
+						<button type="submit" class=""disabled btn btn-primary" disabled>인증하기</button>
+						</div>
+						
 						
 						<label for="userPwd">* 비밀번호 : </label>
 						<input type="text" class="form-control" id="userPwd" placeholder="비밀번호를 입력해주세요." name="userPwd" required><br>
@@ -83,7 +87,7 @@
 						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
 						<br>
 
-						<label for="address"> 주소</label>
+						<label for="address">* 주소</label>
 						<input type="text">
 						<br>
 						
@@ -94,7 +98,12 @@
 						<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
 						<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail" required><br>
 						
-
+						
+						
+						<div class="btns" align="center">
+		                    <button type="submit" class="disabled btn btn-primary" disabled>회원가입</button>
+		                    <button type="reset" class="btn btn-danger">초기화</button>
+		                </div>
 					
 					
 					
