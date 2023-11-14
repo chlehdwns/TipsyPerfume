@@ -1,3 +1,58 @@
+INSERT INTO
+    TB_USER(
+            USER_NO,
+            USER_EMAIL,
+            NICKNAME,
+            USER_PWD,
+            USER_NAME,
+            STATUS,
+            MEMBER_TYPE,
+            BUSINESS_REG,
+            ADULT_STATUS,
+            BIRTH_DATE
+            )
+VALUES (
+        SEQ_USER.NEXTVAL,
+        'admin@admin.com',
+        '관리자',
+        '1234',
+        '관리자',  
+        'Y',
+        'A',
+        'Y' ,
+        'Y',
+        '20231114');
+
+
+INSERT INTO
+TB_RECEIVER(
+    RECEIVER_NO,
+    USER_NO,
+    RECEIVER_NAME,
+    PHONE,
+    ADDRESS,
+    ADDRESS_DETAIL,
+    POSTAL_CODE,
+    PLACE_ALIAS,
+    PRIMARY_STATUS
+    )
+VALUES (
+    SEQ_RECEIVER.NEXTVAL,
+    '3',
+    '관리자',
+    '010-1111-2222',
+    '서울특별시 중구 남대문로 120 그레이츠 청계(구 대일빌딩) ',  
+    '2F, 3F',
+    '00000',
+    '학원' ,
+    'Y'
+    );
+
+
+
+
+
+
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     1,
     'A',

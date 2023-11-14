@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 
 <style>
 
@@ -15,7 +15,11 @@
 	border:none;
 	
 }
+.box{
+	width:1200px;
+	height:200px;
 
+}
 
 .login-wrapper{
     width: 400px;
@@ -81,38 +85,26 @@
 
 </head>
 <body>
+	<jsp:include page="../common/header.jsp" />
+	
 	<div class="allouter">
 	
+	<div class="box"></div>
 		<div class="header">
 			<div class="title">
 				<h4 class="title" align="center">로그인</h4>
 					
 				
 			</div>
-			<!--
-			<form action="login.me" method="post" align="center" id="login-form">
-				<div class="form-wrapper">
-					
-	            	<input type="text" class="form-control mb-2 mr-sm-2" placeholder="아이디를 입력해주세요." id="userId" name="userId"> <br>
-	            	
-	            	<input type="password" class="form-control mb-2 mr-sm-2" placeholder="비밀번호를 입력해주세요." id="userPwd" name="userPwd">
-				</div>
-				
-				<div class="button">	
-					<button type="submit" class="btn btn-primary">로그인</button>
-	             
-				</div>
-			</form>
-			-->
-
+			
 
 			<div class="center-wrapper" align="center">
+			
 				<div class="login-wrapper" >
-					<form method="post" action="login.me" id="login-form">
-						<input type="text" name="userId" placeholder="이메일을 입력해주세요." >
-						<input type="password" name="userPwd" placeholder="비밀번호를 입력해주세요." >
+					<form action="login.me" method="post"  id="login-form">
+						<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요." >
+						<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요." >
 						
-						</label>
 						<input type="submit" value="Login">
 					</form>
 				</div>
@@ -137,5 +129,6 @@
 		</div>
 	</div>
 
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
