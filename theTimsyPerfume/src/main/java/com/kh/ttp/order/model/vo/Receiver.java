@@ -1,4 +1,4 @@
-package com.kh.ttp.order.delivery.model.vo;
+package com.kh.ttp.order.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
