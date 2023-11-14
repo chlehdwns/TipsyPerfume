@@ -15,4 +15,5 @@ public class ReviewVO {
 	
 	private String thumbnail;
 	private String productImg;
+	private String productPrice;
 }

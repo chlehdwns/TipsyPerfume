@@ -17,7 +17,7 @@
         margin: 0 auto;
         overflow: hidden;
     }
-    #content-title{
+    .content-title{
         font-size: 36px;
         font-weight: 600;
         text-align: center;
@@ -95,10 +95,17 @@
 <jsp:include page="../common/header.jsp"/>
 <section>
 <div id="review-wrap">
-<div id="content-title">
+<div class="content-title">
     Review
 </div>
 <div id="review-content">
+	<c:choose>
+	<c:when test="${empty list }">
+	<div class="content-title">
+   		리뷰가 없습니다!
+	</div>
+	</c:when>
+	<c:otherwise>
     <c:forEach items="${list }" var="review">
         <div class="review-item-wrap">
             <div class="display-flex bottom-interval">
@@ -123,11 +130,13 @@
                     <img class="img" src="${review.productImg}" alt="상품이미지">
                 </div>
                 <div class="price-wrap">
-                    ￦338,900
+                	${review.productPrice }
                 </div>
             </div>
         </div>
     </c:forEach>
+	</c:otherwise>
+	</c:choose>
 </div>
 <div id="paging">
     <ul class="pagination">
