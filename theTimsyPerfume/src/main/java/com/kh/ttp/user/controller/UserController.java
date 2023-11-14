@@ -45,7 +45,7 @@ public class UserController {
 			mv.addObject("alertMsg", "로그인 실패ㅠ");
 			mv.setViewName("common/errorPage");
 		}
-		
+		System.out.println("왜 나만없어>>???");
 		return mv;
 	}
 
