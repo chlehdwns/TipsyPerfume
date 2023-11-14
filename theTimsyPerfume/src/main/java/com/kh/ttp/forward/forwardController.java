@@ -9,6 +9,18 @@ public class forwardController {
 	public String fundingListPage() {
 		return"funding/fundingList";
 	}
+	@RequestMapping("newDrinkFunding.list")
+	public String newDrinkFundingListPage() {
+		return "funding/newDrinkFundingList";
+	}
+	@RequestMapping("hotDrinkFunding.list")
+	public String hotDrinkFundingListPage() {
+		return "funding/hotDrinkFundingList";
+	}
+	@RequestMapping("starDrinkFunding.list")
+	public String starDrinkFundingListPage() {
+		return "funding/starDrinkFundingList";
+	}
 	
 
 }

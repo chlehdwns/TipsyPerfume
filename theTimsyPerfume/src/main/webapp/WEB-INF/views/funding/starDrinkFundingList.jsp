@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주류 펀딩</title>
+<title>최신순 주류 펀딩</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -62,10 +62,9 @@
 <body>
 	<jsp:include page="../common/header.jsp" />
 	<h1 class="drinkFunding-title">주류 펀딩</h1>
-	<a id="funding-enroll" href="drinkEnrollForm.funding">술 펀딩 제품 등록</a>
 	<div id="outer">
 		<div id="normal-drink">
-			<h3 class="subtitle">최신순 주류 펀딩</h3>
+			<h3 class="subtitle">별점순 주류 펀딩</h3>
 			<div class="fundingList-area">
 				<div class="funding-list1">
 				
@@ -83,7 +82,7 @@
 			</div>
 		</div>
 		<div id="hot-drink">
-			<h3 class="subtitle2">hot 주류 펀딩</h3>
+			
 			<div class="fundingList-area">
 				<div class="funding-list1">
 				
@@ -100,7 +99,7 @@
 			</div>
 		</div>
 		<div id="rank-drink">
-			<h3 class="subtitle3">별점 순 주류 펀딩</h3>
+			
 			<div class="fundingList-area">
 				<div class="funding-list1">
 				
@@ -117,22 +116,38 @@
 			</div>
 		</div>
 	</div>
+	<div id="pagingArea">
+                <ul class="pagination">
+                	<c:choose>
+	                	<c:when test="${pi.currentPage eq 1 }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item"><a class="page-link" href="starDrinkFunding.list?cPage=${pi.currentPage-1 }">Previous</a></li>
+	                    </c:otherwise>
+                    </c:choose>
+                    <c:forEach begin="${pi.startPage }" end="${pi.endPage }" var="p">
+                    	<li class="page-item"><a class="page-link" href="starDrinkFunding.list?cPage=${p }">${p }</a></li>
+                    </c:forEach>
+                    	<c:choose>
+                    		<c:when test="${pi.currentPage eq pi.endPage }">
+                    			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<li class="page-item "><a class="page-link" href="starDrinkFunding.list?cPage=${pi.currentPage+1 }">Next</a></li>
+                    		</c:otherwise>
+                    
+                    	</c:choose>
+                </ul>
+            </div>
+            
 	<script>
 		$(function(){
 			$('.subtitle').click(function(){
-				location.href = "newDrinkFunding.list";
-			});
-		})
-		$(function(){
-			$('.subtitle2').click(function(){
-				location.href = "hotDrinkFunding.list";
-			});
-		})
-		$(function(){
-			$('.subtitle3').click(function(){
 				location.href = "starDrinkFunding.list";
 			});
 		})
+		
 	</script>
 	
 	<jsp:include page="../common/footer.jsp"></jsp:include>
