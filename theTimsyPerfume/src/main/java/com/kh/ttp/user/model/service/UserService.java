@@ -6,6 +6,12 @@ public interface UserService {
 
 	//로그인(select)
 	User loginUser(User u);
+
+	int insertUser(User u);
+
+	
+
+	
 	
 	//회원가입(insert)
 	//int insertUser(User u);
@@ -17,8 +23,9 @@ public interface UserService {
 	
 	//-----------
 	
-	//아이디 중복 체크 서비스
+	//아이디 중복 체크 서비스 나중에하기
 	//int idCheck(String checkId);
+	//int emailCheck(String checkEmail);
 	
 	//-----------
 	
