@@ -15,4 +15,8 @@ public class NoticeController {
 	public String noticeList() {
 		return "community/notice";
 	}
+	@GetMapping("noticeDetail")
+	public String noticeDetail() {
+		return "community/notice";
+	}
 }
