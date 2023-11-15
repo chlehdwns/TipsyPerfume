@@ -40,7 +40,7 @@
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">로그아웃</a>
+                                    <a class="header-link" href="logout.me">로그아웃</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>
@@ -49,7 +49,7 @@
                         <c:choose>
                             <c:when test="${ empty loginUser }">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">회원가입</a>
+                                    <a class="header-link" href="insert.me">회원가입</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
