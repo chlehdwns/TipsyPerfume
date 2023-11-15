@@ -1,5 +1,7 @@
 package com.kh.ttp.community.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.Data;
 
 @Data
@@ -17,4 +19,6 @@ public class ReviewVO {
 	private String thumbnail;
 	private String productImg;
 	private String productPrice;
+	
+	private ArrayList<String> reviewImages;
 }

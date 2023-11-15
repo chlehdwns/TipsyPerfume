@@ -1,594 +1,1204 @@
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    1,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    'È«±æµ¿',
-    '¸ÆÁÖ'
-    
+    'í™ê¸¸ë™',
+    'ë§¥ì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    2,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    'ÀÌ±æµ¿',
-    '»çÄÉ'
-    
+    'ì´ê¸¸ë™',
+    'ì‚¬ì¼€'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    3,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    '±è±æµ¿',
-    '¼ÒÁÖ'
-    
+    'ê¹€ê¸¸ë™',
+    'ì†Œì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    4,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    'ÃÖµ¿ÁØ',
-    '¸ÆÁÖ'
-    
+    'ìµœë™ì¤€',
+    'ë§¥ì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    5,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
     'james',
-    '¿ÍÀÎ'
-    
+    'ì™€ì¸'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    6,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    '°í±æµ¿',
-    '¼ÒÁÖ'
-    
+    'ê³ ê¸¸ë™',
+    'ì†Œì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-     7,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    '¹Ú±æµ¿',
-    '¸ÆÁÖ'
-    
+    'ë°•ê¸¸ë™',
+    'ë§¥ì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    8,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
     'JIMI',
-    '¸·°É¸®'
-    
+    'ë§‰ê±¸ë¦¬'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    9,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    'È«±æ¼ø',
-    '»çÄÉ'
-    
+    'í™ê¸¸ìˆœ',
+    'ì‚¬ì¼€'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    10,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
     'C',
-    'º¹¼ø',
-    'º¹ºÐÀÚÁÖ'
-    
+    'ë³µìˆœ',
+    'ë³µë¶„ìžì£¼'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    11,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
     'TOM',
-    '¿Àµå ¶Ñ¿Ð·¿'
-    
+    'ì˜¤ë“œ ëšœì™ˆë ›'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    12,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
     'BOB',
-    '¿Àµå ÆÛÇ¾'
-    
+    'ì˜¤ë“œ í¼í“¸'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    13,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
-    '³²±æµ¿',
-    '¿Àµå ºü¸£Æë'
-    
+    'ë‚¨ê¸¸ë™',
+    'ì˜¤ë“œ ë¹ ë¥´íŽ­'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    14,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
-    '³²±æ¼ø',
-    '¿ÀµåÄÚ·Õ'
-    
+    'ë‚¨ê¸¸ìˆœ',
+    'ì˜¤ë“œì½”ë¡±'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    15,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
-    'ÀÌ±æ¼ø',
-    '»þ¿ö ÄÚ·Õ'
-    
+    'ì´ê¸¸ìˆœ',
+    'ìƒ¤ì›Œ ì½”ë¡±'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    16,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
     'JACK',
-    '¿Àµå ¶Ñ¿Ð·¿'
-    
+    'ì˜¤ë“œ ëšœì™ˆë ›'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    17,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
-    'Àå±æµ¿',
-    '¿ÀµåÄÚ·Õ'
-    
+    'ìž¥ê¸¸ë™',
+    'ì˜¤ë“œì½”ë¡±'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    18,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
     'JUN',
-    '»þ¿ö ÄÚ·Õ'
-    
+    'ìƒ¤ì›Œ ì½”ë¡±'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    19,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
     'SAM',
-    '¿Àµå ¶Ñ¿Ð·¿'
-    
+    'ì˜¤ë“œ ëšœì™ˆë ›'
 );
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    20,
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'F',
     'C',
-    'ÃÖµ¿ÁØ',
-    '¿Àµå ÆÛÇ¾'
-    
+    'ìµœë™ì¤€',
+    'ì˜¤ë“œ í¼í“¸'
 );
-CREATE SEQUENCE SEQ_PDT_CATEG_NO;
-CREATE SEQUENCE SEQ_PDT_NO;
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     1,
-    'KH ¸ÆÁÖ',
+    'KH ë§¥ì£¼',
     4000,
     500,
-    SYSDATE,
+    'ëª© ë„˜ê¹€ì´ ì¢‹ì€ ë°€ í–¥ ë§¥ì£¼',
+    'í™ê¸¸ë™ë‹˜ì´ ë§Œë“œì‹  ê¹Šê³  ì°í•œ ë°€ í–¥ ë§¥ì£¼ ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 4.5ë„ìž…ë‹ˆë‹¤',
+    'ë°€,ì•Œì½”ì˜¬..',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 5ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¸ñ ³Ñ±èÀÌ ÁÁÀº ¹Ð Çâ ¸ÆÁÖ',
-    'È«±æµ¿´ÔÀÌ ¸¸µå½Å ±í°í ÂðÇÑ ¹Ð Çâ ¸ÆÁÖ ¾ËÄÚ¿Ã µµ¼ö´Â 4.5µµÀÔ´Ï´Ù',
-    '¹Ð,¾ËÄÚ¿Ã..',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 5ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     2,
-    'KH »çÄÉ',
+    'KH ì‚¬ì¼€',
     15000,
     100,
-    SYSDATE,
+    'ê¹”ë”í•˜ê³  ìƒí¼í•œ ì‚¬ì¼€',
+    '10ë…„ ìž¥ì¸ ì´ê¸¸ë™ë‹˜ì´ ë§Œë“œì‹  ê¹”ë”í•œ ë§› ì‚¬ì¼€ìž…ë‹ˆë‹¤.',
+    'ë¬¼,ìŒ€,ëˆ„ë£©',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 3ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '±ò²ûÇÏ°í »óÅ­ÇÑ »çÄÉ',
-    '10³â ÀåÀÎ ÀÌ±æµ¿´ÔÀÌ ¸¸µå½Å ±ò²ûÇÑ ¸À »çÄÉÀÔ´Ï´Ù.',
-    '¹°,½Ò,´©·è',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 3ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     3,
-    'KH ¼ÒÁÖ',
+    'KH ì†Œì£¼',
     3000,
     1000,
-    SYSDATE,
+    'ê¹”ë”í•˜ê³  ì‚¼ê²¹ì‚´ê³¼ ë§¤ìš° ìž˜ ì–´ìš¸ë¦¬ëŠ” ì†Œì£¼ í–¥',
+    'ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 23ë„ì´ë©° ëª¨ë“  ìŒì‹ê³¼ ìž˜ ì–´ìš¸ë¦¬ì§€ë§Œ íŠ¹ížˆ ì‚¼ê²¹ì‚´ê³¼ ìž˜ ì–´ìš¸ë¦¬ëŠ” ì†Œì£¼ìž…ë‹ˆë‹¤.',
+    'ë¬¼,ì•Œì½”ì˜¬,ë³´ë¦¬',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 3ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '±ò²ûÇÏ°í »ï°ã»ì°ú ¸Å¿ì Àß ¾î¿ï¸®´Â ¼ÒÁÖ Çâ',
-    '¾ËÄÚ¿Ã µµ¼ö´Â 23µµÀÌ¸ç ¸ðµç À½½Ä°ú Àß ¾î¿ï¸®Áö¸¸ Æ¯È÷ »ï°ã»ì°ú Àß ¾î¿ï¸®´Â ¼ÒÁÖÀÔ´Ï´Ù.',
-    '¹°,¾ËÄÚ¿Ã,º¸¸®',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 3ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     4,
-    '±¸·Î ¸ÆÁÖ',
+    'êµ¬ë¡œ ë§¥ì£¼',
     4200,
     255,
-    SYSDATE,
+    'êµ¬ë¡œ ì „í†µ ë§¥ì£¼',
+    'ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 5ë„ìž…ë‹ˆë‹¤',
+    'ë§¥ì•„, ë¬¼ ',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 8ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '±¸·Î ÀüÅë ¸ÆÁÖ',
-    '¾ËÄÚ¿Ã µµ¼ö´Â 5µµÀÔ´Ï´Ù',
-    '¸Æ¾Æ, ¹° ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 8ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     5,
-    'KH ¿ÍÀÎ',
+    'KH ì™€ì¸',
     30000,
     50,
-    SYSDATE,
+    'ë ˆë“œ ì™€ì¸',
+    'ì´íƒˆë¦¬ì•„ì—ì„œ ìœ ëª…í•œ JAMESì”¨ê°€ ë§Œë“  ìˆ˜ì œ ë§¥ì£¼ìž…ë‹ˆë‹¤.ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 9ë„ì´ë©° ì¹˜ì¦ˆì™€ ìž˜ ì–´ìš¸ë¦½ë‹ˆë‹¤.',
+    'í¬ë„',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 15ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '·¹µå ¿ÍÀÎ',
-    'ÀÌÅ»¸®¾Æ¿¡¼­ À¯¸íÇÑ JAMES¾¾°¡ ¸¸µç ¼öÁ¦ ¸ÆÁÖÀÔ´Ï´Ù.¾ËÄÚ¿Ã µµ¼ö´Â 9µµÀÌ¸ç Ä¡Áî¿Í Àß ¾î¿ï¸³´Ï´Ù.',
-    'Æ÷µµ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 15ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     6,
-    '¸À¼Ò',
+    'ë§›ì†Œ',
     5000,
     200,
-    SYSDATE,
+    'ëª©ì´ íƒ€ë“¤ì–´ê°€ëŠ”ë“¯í•œ ì§œë¦¿í•¨ ',
+    'ê³ ê¸¸ë™ë‹˜ì´ ë§Œë“œì‹  ê¹Šê³  ì°í•œ ì†Œì£¼! ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 25ë„ìž…ë‹ˆë‹¤',
+    'ë¬¼,ì•Œì½”ì˜¬',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 5ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¸ñÀÌ Å¸µé¾î°¡´ÂµíÇÑ Â¥¸´ÇÔ ',
-    '°í±æµ¿´ÔÀÌ ¸¸µå½Å ±í°í ÂðÇÑ ¼ÒÁÖ! ¾ËÄÚ¿Ã µµ¼ö´Â 25µµÀÔ´Ï´Ù',
-    '¹°,¾ËÄÚ¿Ã',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 5ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     7,
-    '´Þºû ¸ÆÁÖ',
+    'ë‹¬ë¹› ë§¥ì£¼',
     6000,
     300,
-    SYSDATE,
+    'ì°í•˜ê³  ë§›ìžˆëŠ” ë§¥ì£¼!',
+    'ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 5ë„ìž…ë‹ˆë‹¤. ì—„ì²­ ì‹œì›í•©ë‹ˆë‹¤.',
+    'ë§¥ì•„',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 5ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    'ÂðÇÏ°í ¸ÀÀÖ´Â ¸ÆÁÖ!',
-    '¾ËÄÚ¿Ã µµ¼ö´Â 5µµÀÔ´Ï´Ù. ¾öÃ» ½Ã¿øÇÕ´Ï´Ù.',
-    '¸Æ¾Æ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 5ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     8,
-    '¸·°É¸®³ª',
+    'ë§‰ê±¸ë¦¬ë‚˜',
     3000,
     50,
-    SYSDATE,
+    'ì™¸êµ­ì¸ì´ ë§Œë“  í•œêµ­ ì „í†µ ë§‰ê±¸ë¦¬',
+    'JIMIì”¨ê°€ í•œêµ­ì—ì™€ì„œ ë§‰ê±¸ë¦¬ë¥¼ ë¨¹ê³  ê°ëª…ë°›ì•„ ë§Œë“  JIMIì”¨ë§Œì˜ íŠ¹ë³„í•œ ë§‰ê±¸ë¦¬',
+    'ìŒ€,ì•Œì½”ì˜¬,ë¬¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 10ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Ü±¹ÀÎÀÌ ¸¸µç ÇÑ±¹ ÀüÅë ¸·°É¸®',
-    'JIMI¾¾°¡ ÇÑ±¹¿¡¿Í¼­ ¸·°É¸®¸¦ ¸Ô°í °¨¸í¹Þ¾Æ ¸¸µç JIMI¾¾¸¸ÀÇ Æ¯º°ÇÑ ¸·°É¸®',
-    '½Ò,¾ËÄÚ¿Ã,¹°',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 10ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     9,
-    '¸ÀÀÖ´Â »çÄÉ',
+    'ë§›ìžˆëŠ” ì‚¬ì¼€',
     3000,
     20,
-    SYSDATE,
+    'ë’·ë§›ì´ ë¬µì§í•œ ì‚¬ì¼€',
+    'ì•Œì½”ì˜¬ ë„ìˆ˜ëŠ” 11ë„ì´ë©° ì¡°ê¸ˆ ë¬´ê²ì§€ë§Œ ê¹Šì€ë§›ì— ì‚¬ì¼€ìž…ë‹ˆë‹¤.',
+    'ëˆ„ë£©,ë¬¼,ì•Œì½”ì˜¬',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 5ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    'µÞ¸ÀÀÌ ¹¬Á÷ÇÑ »çÄÉ',
-    '¾ËÄÚ¿Ã µµ¼ö´Â 11µµÀÌ¸ç Á¶±Ý ¹«°ÌÁö¸¸ ±íÀº¸À¿¡ »çÄÉÀÔ´Ï´Ù.',
-    '´©·è,¹°,¾ËÄÚ¿Ã',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 5ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     10,
-    'KH º¹ºÐÀÚ',
+    'KH ë³µë¶„ìž',
     9000,
     80,
-    SYSDATE,
+    'ì°í•˜ê³  ìƒí¼í•œ ë³µë¶„ìžì£¼',
+    'ê°€ì¡±ë¼ë¦¬ ë§ˆì‹œê¸° ì¢‹ì•„ìš”.ë³µë¶„ìžëŠ” ë³µìˆœì”¨ê°€ ì§ì ‘ ìž¬ë°°í•œ ë³µë¶„ìžìž…ë‹ˆë‹¤.',
+    'ë³µë¶„ìž,ì•Œì½”ì˜¬..',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 10ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    'ÂðÇÏ°í »óÅ­ÇÑ º¹ºÐÀÚÁÖ',
-    '°¡Á·³¢¸® ¸¶½Ã±â ÁÁ¾Æ¿ä.º¹ºÐÀÚ´Â º¹¼ø¾¾°¡ Á÷Á¢ Àç¹èÇÑ º¹ºÐÀÚÀÔ´Ï´Ù.',
-    'º¹ºÐÀÚ,¾ËÄÚ¿Ã..',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 10ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/alcohol',
+    'absolut_blue.png',
+    'alcohol_1.png'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     11,
-    'KH Çâ¼ö',
+    'KH í–¥ìˆ˜',
     70000,
     20,
-    SYSDATE,
+    'ì˜¤ë“œ ëšœì™ˆë ›',
+    'í–¥ì´ ì˜¤ëž˜ê°€ê³  ìƒí¼í•œ í–¥ì˜ í–¥ìˆ˜',
+    'ì½”ì½”ë„› ì˜¤ì¼,ì¦ë¥˜ìˆ˜,ì²œì—° ìƒ‰ì†Œ',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 15ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Àµå ¶Ñ¿Ð·¿',
-    'ÇâÀÌ ¿À·¡°¡°í »óÅ­ÇÑ ÇâÀÇ Çâ¼ö',
-    'ÄÚÄÚ³Ó ¿ÀÀÏ,Áõ·ù¼ö,Ãµ¿¬ »ö¼Ò',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 15ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     12,
     'GOOD PERFUME',
     40000,
     25,
-    SYSDATE,
+    'ì˜¤ë“œ í¼í“¸',
+    'í–¥ì´ ì°í•˜ë©° ìš°ë“œ í–¥ í–¥ìˆ˜ìž…ë‹ˆë‹¤.',
+    'í˜¸í˜¸ë°” ì˜¤ì¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 12ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Àµå ÆÛÇ¾',
-    'ÇâÀÌ ÂðÇÏ¸ç ¿ìµå Çâ Çâ¼öÀÔ´Ï´Ù.',
-    'È£È£¹Ù ¿ÀÀÏ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 12ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     13,
     'ORANGE PERFUME',
     35000,
     30,
-    SYSDATE,
+    'ì˜¤ë“œ ë¹ ë¥´íŽ­',
+    'ì§€ì†ì‹œê°„ ëŒ€ëžµ 4ì‹œê°„ì´ë©° ì˜¤ë Œì§€í–¥ í–¥ìˆ˜ìž…ë‹ˆë‹¤. ìƒí¼í•œ ì˜·ì— ìž˜ ì–´ìš¸ë¦¬ëŠ” ë¬´ê±°ìš´ í–¥ìž…ë‹ˆë‹¤.',
+    'ê°ê·¤ ì˜¤ì¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 7ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Àµå ºü¸£Æë',
-    'Áö¼Ó½Ã°£ ´ë·« 4½Ã°£ÀÌ¸ç ¿À·»ÁöÇâ Çâ¼öÀÔ´Ï´Ù. »óÅ­ÇÑ ¿Ê¿¡ Àß ¾î¿ï¸®´Â ¹«°Å¿î ÇâÀÔ´Ï´Ù.',
-    '°¨±Ö ¿ÀÀÏ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 7ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     14,
     'HAHA PERFUME',
     90000,
     10,
-    SYSDATE,
+    'ì˜¤ë“œì½”ë¡±',
+    'í–¥ì´ ë¬´ê±°ìš°ë©° ì§€ì†ì‹œê°„ì€ ëŒ€ëžµ 2ì‹œê°„ ì •ë„ìž…ë‹ˆë‹¤.ì •ìž¥ì´ë‚˜ ì–´ë‘ìš´ ìƒ‰ì˜ ì½”ë””ì™€ ìž˜ ì–´ìš¸ë¦½ë‹ˆë‹¤.',
+    'ì²œì—° ìƒ‰ì†Œ,í˜¸í˜¸ë°” ì˜¤ì¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 12ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿ÀµåÄÚ·Õ',
-    'ÇâÀÌ ¹«°Å¿ì¸ç Áö¼Ó½Ã°£Àº ´ë·« 2½Ã°£ Á¤µµÀÔ´Ï´Ù.Á¤ÀåÀÌ³ª ¾îµÎ¿î »öÀÇ ÄÚµð¿Í Àß ¾î¿ï¸³´Ï´Ù.',
-    'Ãµ¿¬ »ö¼Ò,È£È£¹Ù ¿ÀÀÏ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 12ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     15,
     'LIGHT PERFUME',
     2500,
     100,
-    SYSDATE,
+    'ìƒ¤ì›Œ ì½”ë¡± ',
+    'ë§¤ìš° ê°€ë²¼ìš´ í–¥ì´ë©° ì§€ì†ì‹œê°„ì€ 10ì‹œê°„ìž…ë‹ˆë‹¤.',
+    'ì½”ì½”ë„› ì˜¤ì¼, ì•Œì½”ì˜¬',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 10ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '»þ¿ö ÄÚ·Õ ',
-    '¸Å¿ì °¡º­¿î ÇâÀÌ¸ç Áö¼Ó½Ã°£Àº 10½Ã°£ÀÔ´Ï´Ù.',
-    'ÄÚÄÚ³Ó ¿ÀÀÏ, ¾ËÄÚ¿Ã',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 10ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     16,
     'TSP PERFUME',
     40000,
     30,
-    SYSDATE,
-    'Y',
-    '¿Àµå ¶Ñ¿Ð·¿',
+    'ì˜¤ë“œ ëšœì™ˆë ›',
     '',
-    'È£È£¹Ù ¿ÀÀÏ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 12ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
+    'í˜¸í˜¸ë°” ì˜¤ì¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 12ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
+    'Y',
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     17,
     'HOHO PERFUME',
     75000,
     30,
-    SYSDATE,
+    'ì˜¤ë“œì½”ë¡±',
+    'ìƒí¼í•œ ë³µìˆ­ì•„í–¥ ë°ì¼ë¦¬ í–¥ìˆ˜ë¡œ ì¢‹ìŠµë‹ˆë‹¤.',
+    'ë³µìˆ­ì•„ í–¥,ì½”ì½”ë„› ì˜¤ì¼',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 6ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿ÀµåÄÚ·Õ',
-    '»óÅ­ÇÑ º¹¼þ¾ÆÇâ µ¥ÀÏ¸® Çâ¼ö·Î ÁÁ½À´Ï´Ù.',
-    'º¹¼þ¾Æ Çâ,ÄÚÄÚ³Ó ¿ÀÀÏ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 6ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     18,
     'WOW PERFUME',
     55000,
     25,
-    SYSDATE,
+    'ìƒ¤ì›Œ ì½”ë¡±',
+    'ì½”íŠ¼ í–¥ ìƒê¸‹í•˜ë©° ì§€ì†ì‹œê°„ì´ ê¹ë‹ˆë‹¤.',
+    'í˜¸í˜¸ë°” ì˜¤ì¼,ì½”íŠ¼í–¥',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 8ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '»þ¿ö ÄÚ·Õ',
-    'ÄÚÆ° Çâ »ó±ßÇÏ¸ç Áö¼Ó½Ã°£ÀÌ ±é´Ï´Ù.',
-    'È£È£¹Ù ¿ÀÀÏ,ÄÚÆ°Çâ',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 8ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     19,
-    'ÇÑ±¹ Çâ¼ö',
+    'í•œêµ­ í–¥ìˆ˜',
     10000,
     100,
-    SYSDATE,
+    'ì˜¤ë“œ ëšœì™ˆë ›',
+    'í•œêµ­ì¸ë“¤ì´ë¼ë©´ ëª¨ë‘ê°€ ì¢‹ì•„í•  í–¥ . ìš°ë“œ í–¥.',
+    'ì½”ì½”ë„› ì˜¤ì¼, ì¦ë¥˜ìˆ˜',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 12ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Àµå ¶Ñ¿Ð·¿',
-    'ÇÑ±¹ÀÎµéÀÌ¶ó¸é ¸ðµÎ°¡ ÁÁ¾ÆÇÒ Çâ . ¿ìµå Çâ.',
-    'ÄÚÄÚ³Ó ¿ÀÀÏ, Áõ·ù¼ö',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 12ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-INSERT INTO TB_PRODUCT VALUES(
-    SEQ_PDT_NO.nextval,
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
     20,
     'DDP PERFUME',
     25000,
     50,
-    SYSDATE,
+    'ì˜¤ë“œ í¼í“¸',
+    'ë‚¨ì„±ì—ê²Œ ìž˜ ì–´ìš¸ë¦¬ëŠ” ë¬´ê²ê³  ì°í•œ í–¥',
+    'í˜¸í˜¸ë°” ì˜¤ì¼,ì¦ë¥˜ìˆ˜',
+    'ë°°ì†¡ì¼ì€ íŽ€ë”© í™•ì • ì´í›„ 10ì¼ë’¤ ë°°ì†¡ ì˜ˆì •ìž…ë‹ˆë‹¤',
     'Y',
-    '¿Àµå ÆÛÇ¾',
-    '³²¼º¿¡°Ô Àß ¾î¿ï¸®´Â ¹«°Ì°í ÂðÇÑ Çâ',
-    'È£È£¹Ù ¿ÀÀÏ,Áõ·ù¼ö',
-    '¹è¼ÛÀÏÀº ÆÝµù È®Á¤ ÀÌÈÄ 10ÀÏµÚ ¹è¼Û ¿¹Á¤ÀÔ´Ï´Ù',
-    0,
     'N'
 );
-CREATE SEQUENCE SEQ_PDT_OPTION_NO;
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     1,
     '500ML',
     '4.5EJ'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     2,
     '750ML',
-    '8.5µµ'
+    '8.5ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     3,
     '600ML',
-    '23µµ'
+    '23ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     4,
     '500ML',
-    '5µµ'
+    '5ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     5,
     '750ML',
-    '9µµ'
+    '9ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     6,
     '500ML',
-    '25µµ'
+    '25ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     7,
     '500ML',
-    '5µµ'
+    '5ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     8,
     '450ML',
-    '12µµ'
+    '12ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     9,
     '750ML',
-    '11µµ'
+    '11ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     10,
     '450ML',
-    '15µµ'
+    '15ë„'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     11,
     '250ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     12,
     '250ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     13,
     '350ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     14,
     '200ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     15,
     '300ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     16,
     '300ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     17,
     '250ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     18,
     '350ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     19,
     '250ML',
     ''
-    
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PDT_OPTION_NO.NEXTVAL,
+    SEQ_PRODUCT_OPTION.NEXTVAL,
     20,
     '200ML',
     ''
-    
 );
+COMMIT;
+
+INSERT INTO TB_USER(
+    USER_NO,
+    USER_EMAIL,
+    NICKNAME,
+    USER_PWD,
+    USER_NAME,
+    STATUS,
+    MEMBER_TYPE,
+    BUSINESS_REG,
+    ADULT_STATUS,
+    BIRTH_DATE
+) VALUES (
+    SEQ_USER.NEXTVAL,
+    'admin@admin.com',
+    'ê´€ë¦¬ìž',
+    '1234',
+    'ê´€ë¦¬ìž',  
+    'Y',
+    'A',
+    'Y' ,
+    'Y',
+    '20231114'
+);
+INSERT INTO
+TB_RECEIVER(
+    RECEIVER_NO,
+    USER_NO,
+    RECEIVER_NAME,
+    PHONE,
+    ADDRESS,
+    ADDRESS_DETAIL,
+    POSTAL_CODE,
+    PLACE_ALIAS,
+    PRIMARY_STATUS
+) VALUES (
+    SEQ_RECEIVER.NEXTVAL,
+    SEQ_USER.CURRVAL,
+    'ê´€ë¦¬ìž',
+    '010-1111-2222',
+    'ì„œìš¸íŠ¹ë³„ì‹œ ì¤‘êµ¬ ë‚¨ëŒ€ë¬¸ë¡œ 120 ê·¸ë ˆì´ì¸  ì²­ê³„(êµ¬ ëŒ€ì¼ë¹Œë”©) ',  
+    '2F, 3F',
+    '00000',
+    'í•™ì›' ,
+    'Y'
+);
+
+INSERT INTO TB_USER(
+    USER_NO,
+    USER_EMAIL,
+    NICKNAME,
+    USER_PWD,
+    USER_NAME,
+    STATUS,
+    MEMBER_TYPE,
+    BUSINESS_REG,
+    ADULT_STATUS,
+    BIRTH_DATE
+) VALUES (
+    SEQ_USER.NEXTVAL,
+    'sales@sales.com',
+    'íŒë§¤ìž',
+    '1234',
+    'íŒë§¤ìž',  
+    'Y',
+    'S',
+    'Y' ,
+    'Y',
+    '20231114'
+);
+
+COMMIT;
+
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+) VALUES (
+    SEQ_REVIEW.NEXTVAL,
+    1,
+    5,
+    'ì¶”ì„ì „ì£¼ì— í•œ ì£¼ë¬¸ì´ë¼ ì—°íœ´ ì¤‘ê°„ì— ê»´ì„œ ë°°ì†¡ì´ ë„ˆë¬´ ëŠ¦ì–´ì§ˆê¹Œ ì¡°ë§ˆì¡°ë§ˆí–ˆìŠµë‹ˆë‹¤ ë‹¤í–‰ížˆ ë”±10ì¼ ê±¸ë¦¬ê³  ìž˜ ë°›ì•˜ë„¤ìš”.',
+    4
+);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',0,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',1,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
+
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+) VALUES (
+    SEQ_REVIEW.NEXTVAL,
+    1,
+    5,
+    'ìˆ ê³¼ íƒ€ë°”ì½” ê·¸ë¦¬ê³  ë°”ë‹ë¼ì˜ í™˜ìƒì ì¸ ì¡°í•©.
+ë°˜ì§€í•˜ ì˜¤ëž˜ëœ ê³ ëª© ê°€êµ¬ë¡œ ëœ í…Œì´ë¸”ë°”ì—ì„œ
+Harry James ìž¬ì¦ˆë®¤ì§€ì…˜ê³¼ ë§¥ì»¬ë¦° í•œ ìž” í•˜ëŠ”
+ë¶„ìœ„ê¸°ì˜ í–¥ì¸ ê²ƒ ê°™ì•„ìš”!!',
+    4
+);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',0,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',1,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
+
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+) VALUES (
+    SEQ_REVIEW.NEXTVAL,
+    1,
+    5,
+    'ìž˜ ë°›ì•˜ìŠµë‹ˆë‹¤ ã…Žã…Ž ë²Œì¨ 4ë²ˆì§¸ì¸ì§€ 5ë²ˆì§¸ êµ¬ë§¤ë„¤ìš”.',
+    4
+);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',0,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',1,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
+
 COMMIT;
