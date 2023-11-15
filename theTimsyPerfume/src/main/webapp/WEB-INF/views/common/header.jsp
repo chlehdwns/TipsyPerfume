@@ -22,7 +22,7 @@
     <div id="headerWrap">
         <div id="header_1" class="full_width_divs">
             <div id="header_1_left" class="full_height_divs">
-                <a href="./"><img src="resources/image/common/logo.png"></a>
+                <a class="logo-wrap" href="./"><img src="resources/image/common/logo.png"></a>
             </div>
             <div id="header_1_right" class="full_height_divs">
                 <div id="header_1_right_top" class="full_width_divs">
@@ -33,14 +33,14 @@
                     <!------------------- 로그인    : 로그아웃 마이페이지 장바구니 -------------------------------->
                     <div id="header_inner_top_bannerline_2" class="full_height_divs">
                         <c:choose>
-                            <c:when test="${ empty loginUser }">
+                            <c:when test="${empty loginUser }">
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="loginForm.me">로그인</a>
+                                    <a class="header-link" href="loginForm.me">로그인</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">로그아웃</a>
+                                    <a class="header-link" href="#">로그아웃</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>
@@ -49,12 +49,12 @@
                         <c:choose>
                             <c:when test="${ empty loginUser }">
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">회원가입</a>
+                                    <a class="header-link" href="#">회원가입</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">마이페이지</a>
+                                    <a class="header-link" href="#">마이페이지</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>
@@ -63,12 +63,12 @@
                         <c:choose>
                             <c:when test="">
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">장바구니</a>
+                                    <a class="header-link" href="#">장바구니</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="#">장바구니</a>
+                                    <a class="header-link" href="#">장바구니</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div id="header_1_right_bottom" class="full_width_divs">
-                    <form action="" method="get" class="d-flex" role="search">
+                    <!--<form action="" method="get" class="d-flex" role="search">
                         <span id="header_search_inner_area_1">
                             <select class="form-select" name="condition">
                                 <option selected value="allProduct">전체</option>
@@ -95,6 +95,23 @@
                             <input type="search" name="keyword" value="${ keyword }" class="form-control me-2" placeholder="Search" aria-label="Search">
                         </span>
                         <button type="submit" class="btn btn-outline-success">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>-->
+                    <form action="" method="get" class="d-flex" role="search">
+                        <span id="header_search_inner_area_1">
+                            <select class="search-select" name="condition">
+                                <option selected value="allProduct">전체</option>
+                                <option value="alcohol">주류</option>
+                                <option value="perfume">향수</option>
+                                <option value="groupBuying">공구</option>
+                                <option value="crowdfunding">펀딩</option>
+                            </select>
+                        </span>
+                        <span id="header_search_inner_area_2">
+                            <input type="search" name="keyword" value="${ keyword }" class="search-bar" placeholder="Search" aria-label="Search">
+                        </span>
+                        <button type="submit" class="search-btn">
                             <i class="bi bi-search"></i>
                         </button>
                     </form>
@@ -145,9 +162,6 @@
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
                   <li><a class="dropdown-item" href="#">도감 채우기</a></li>
                 </ul>
-            </div>
-
-            <div class="dropdown">
             </div>
         </div>
     </div>
