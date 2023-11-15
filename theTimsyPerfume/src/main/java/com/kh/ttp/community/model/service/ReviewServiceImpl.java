@@ -23,7 +23,6 @@ public class ReviewServiceImpl implements ReviewService {
 	public int countReviewList() {
 		return reviewDao.countReviewList(sqlSession);
 	}
-	
 	@Override
 	public ArrayList<ReviewVO> seletcReviewList(PageInfo pi) {
 		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
@@ -32,7 +31,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ReviewVO selectReview(int reviewNo) {
-		return reviewDao.selectReview(sqlSession, reviewNo);
+	public ReviewVO selectReviewDetail(int reviewNo) {
+		return reviewDao.selectReviewDetail(sqlSession, reviewNo);
+	}
+	@Override
+	public ArrayList<String> selectReviewImage(int reviewNo) {
+		return reviewDao.selectReviewImage(sqlSession, reviewNo);
 	}
 }

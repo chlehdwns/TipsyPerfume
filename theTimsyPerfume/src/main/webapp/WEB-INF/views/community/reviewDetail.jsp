@@ -50,6 +50,7 @@
         display: flex;
         overflow-y: scroll;
         flex-wrap: wrap;
+        align-content: flex-start;
     }
     .img-wrap{
         width: 100px;
@@ -98,12 +99,19 @@
     <div class="review-content-wrap">
         <div class="review-content">
             <div class="focus-img-wrap">
-                <img class="img" src="./review1.png" alt="">
+                <img class="img" src="${review.reviewImages.get(0) }" alt="">
             </div>
             <div class="review-article">
                 <div class="display-flex bottom-interval">
                     <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                        <c:choose>
+                		<c:when test="${empty review.userProfile }">
+                    		<img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                		</c:when>
+                		<c:otherwise>
+                    		<img class="img profile" src="${review.userProfile }" alt="프로필사진">
+                		</c:otherwise>
+                		</c:choose>
                     </div>
                     <div class="name-wrap">
                         ${review.userNo } <span>${review.reviewCreateDate }</span>
@@ -117,21 +125,11 @@
                 </div>
             </div>
             <div class="img-container">
+            	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="${review.reviewImages.get(i-1) }" alt="">
                 </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
+            	</c:forEach>
             </div>
         </div>
         <button class="comment-open-btn" type="button">펼치기</button>

@@ -12,6 +12,7 @@
 	<result column="review_state" property="reviewState"/>
 	<result column="PDT_NAME" property="pdtNo"/>
 	
+	<result column="USER_PROFILE" property="userProfile"/>
 	<result column="thumbnail_path" property="thumbnail"/>
 	<result column="product_path" property="productImg"/>
 	<result column="PDT_PRICE" property="productPrice"/>
@@ -31,9 +32,10 @@ SELECT
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    REVIEW_CREATE_DATE,
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
+    USER_PROFILE,
     REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "thumbnail_path",
     PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "product_path",
     TO_CHAR(PDT_PRICE,'L99,999') "PDT_PRICE"
@@ -45,30 +47,35 @@ FROM TB_REVIEW
 WHERE
 	REVIEW_FILE_INDEX = 0
 AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
 </select>
-<select id="selectReview" parameterType="_int" resultMap="reviewResultSet">
+<select id="selectReviewDetail" parameterType="_int" resultMap="reviewResultSet">
 SELECT
     REVIEW_NO,
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    REVIEW_CREATE_DATE,
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
-    REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "thumbnail_path",
+    USER_PROFILE,
     PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "product_path",
     TO_CHAR(PDT_PRICE,'L99,999') "PDT_PRICE"
 FROM TB_REVIEW
     JOIN TB_USER USING(USER_NO)
     JOIN TB_PRODUCT USING(PDT_NO)
-    JOIN TB_REVIEW_FILE USING(REVIEW_NO)
     JOIN TB_PRODUCT_FILE USING(PDT_NO)
 WHERE
 	REVIEW_NO = #{reviewNo}
 AND
-	REVIEW_FILE_INDEX = 0
-AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
+</select>
+<select id="selectReviewImage" parameterType="_int" resultType="string">
+SELECT
+    REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "image_path"
+FROM
+    TB_REVIEW_FILE
+WHERE
+    REVIEW_NO = 1
 </select>
 </mapper>

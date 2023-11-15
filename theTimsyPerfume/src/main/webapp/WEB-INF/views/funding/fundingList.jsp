@@ -67,7 +67,10 @@
 	<h1 class="drinkFunding-title">주류 펀딩</h1>
 	
 	<div id="outer">
+	<!-- 판매자만 술 펀딩 제품 등록하기 태그가 보이게 한다 -->
+	<c:if test="${sessionScope.loginUser.memberType eq 'S'}">
 	<a id="funding-enroll" href="drinkEnrollForm.funding">술 펀딩 제품 등록</a>
+	</c:if>
 		<div id="normal-drink">
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">
@@ -122,6 +125,7 @@
 		</div>
 	</div>
 	<script>
+	
 		$(function(){
 			$('.subtitle').click(function(){
 				location.href = "newDrinkFunding.list";
