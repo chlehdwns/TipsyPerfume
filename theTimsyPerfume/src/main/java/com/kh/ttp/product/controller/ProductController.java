@@ -25,8 +25,7 @@ public class ProductController {
 	 * @return
 	 */
 	@GetMapping("productMain.pr")
-	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
-											 int pdtNo) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
+	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
 		
 		if("A".equals(pdtIdenKey.toUpperCase())) {
 			// 알콜 조회 A
