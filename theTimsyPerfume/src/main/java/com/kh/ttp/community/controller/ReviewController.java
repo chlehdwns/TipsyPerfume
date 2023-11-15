@@ -33,7 +33,7 @@ public class ReviewController {
 	@GetMapping("reviewViewer")
 	public ModelAndView reviewViewer(int reviewNo, ModelAndView mv) {
 		
-		ReviewVO review = reviewService.selectReview(reviewNo);
+		ReviewVO review = reviewService.selectReviewDetail(reviewNo);
 		review.setReviewImages(reviewService.selectReviewImage(reviewNo));
 		
 		mv.addObject("review", review).
