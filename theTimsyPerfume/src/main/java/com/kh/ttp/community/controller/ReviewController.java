@@ -1,16 +1,20 @@
 package com.kh.ttp.community.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.model.service.ReviewService;
+import com.kh.ttp.community.model.vo.CommentVO;
 import com.kh.ttp.community.model.vo.ReviewVO;
 
 @Controller
@@ -40,5 +44,17 @@ public class ReviewController {
 		setViewName("community/reviewDetail");
 		
 		return mv;
+	}
+	@GetMapping(value = "commentList", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String ajaxCommentList(int boardNo, int reviewNo) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo",boardNo);
+		map.put("reviewNo",reviewNo);
+		System.out.println(map);
+		//ArrayList<CommentVO> list = reviewService.selectCommentList(map);
+		
+		//return new Gson().toJson(list);
+		return "1";
 	}
 }

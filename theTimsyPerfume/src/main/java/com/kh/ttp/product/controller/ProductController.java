@@ -24,6 +24,7 @@ import com.kh.ttp.productOption.model.vo.ProductOption;
 
 @Controller
 public class ProductController {
+
 	@Autowired
 	private ProductService productService;
 
@@ -32,14 +33,21 @@ public class ProductController {
 	 * @return
 	 */
 	@GetMapping("productMain.pr")
-	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
+	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
+											 int pdtNo) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
 		
 		if("A".equals(pdtIdenKey.toUpperCase())) {
 			// 알콜 조회 A
 			System.out.println("알콜조회");
+			
+			
+			
 		} else if("P".equals(pdtIdenKey.toUpperCase())) {
 			// 향수 조회 P
 			System.out.println("향수조회");
+			
+			
+			
 		} else {
 			System.out.println("기타등등");
 			// common/errorPage  ${ errorMsg }

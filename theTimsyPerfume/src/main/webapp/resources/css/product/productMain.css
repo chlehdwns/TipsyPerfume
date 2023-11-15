@@ -8,6 +8,7 @@
 #productMainWrap div {
     border: solid 1px black;
 }
+
 #productMainWrap .pdt-main-inner-wrap {
     width: 100%;
     height: 500px;

@@ -18,14 +18,7 @@
     
     <!-- productMain.jsp의 CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
-	<style>
-		#productMainWrap .pdt-main-inner-wrap {
-    width: 100%;
-    height: 500px;
-    margin-top: 80px;
-    padding: 0px 20px 0px 20px;
-}
-	</style>
+
 </head>
 
 
