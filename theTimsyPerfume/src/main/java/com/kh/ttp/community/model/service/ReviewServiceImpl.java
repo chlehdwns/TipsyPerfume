@@ -1,6 +1,7 @@
 package com.kh.ttp.community.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.model.dao.ReviewDAO;
+import com.kh.ttp.community.model.vo.CommentVO;
 import com.kh.ttp.community.model.vo.ReviewVO;
 
 @Service
@@ -37,5 +39,9 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public ArrayList<String> selectReviewImage(int reviewNo) {
 		return reviewDao.selectReviewImage(sqlSession, reviewNo);
+	}
+	@Override
+	public ArrayList<CommentVO> selectCommentList(HashMap<String, Integer> map) {
+		return reviewDao.selectCommentList(sqlSession, map);
 	}
 }

@@ -44,6 +44,9 @@
         font-size: 15px;
         margin-left: 5px;
     }
+    .article-wrap{
+        white-space: pre-wrap;
+    }
     .img-container{
         width: 100px;
         height: 300px;
@@ -90,6 +93,11 @@
         border-bottom: 2px solid rgb(94, 94, 94);
         margin-bottom: 10px;
     }
+    .re-comment-div{
+        padding: 5px 20px;
+        margin: 0 auto;
+        background-color: rgb(221, 221, 221);
+    }
 </style>
 </head>
 <body>
@@ -120,9 +128,9 @@
                 <div>
                     ★★★☆☆
                 </div>
-                <div class="article-wrap bottom-interval">
-                	${review.reviewContent }
-                </div>
+                <pre class="article-wrap bottom-interval">
+${review.reviewContent }
+                </pre>
             </div>
             <div class="img-container">
             	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
@@ -133,141 +141,161 @@
             </div>
         </div>
         <button class="comment-open-btn" type="button">펼치기</button>
-        <div class="review-comment-wrap" style="display: none;">
+        <div class="review-comment-div" style="display: none;">
             <div>
                 댓글쓰기
             </div>
             <div class="write-area">
                 <textarea class="comment-textarea" name=""></textarea>
+                <input class="review-no" type="hidden" value="${review.reviewNo}">
                 <button class="comment-btn" type="button">입력</button>
             </div>
-            <div class="review-comment">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+            <div class="review-comment-wrap">
+                <div class="review-comment">
+                    <div class="display-flex bottom-interval">
+                        <div class="profile-wrap">
+                            <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                        </div>
+                        <div class="name-wrap">
+                            스킹스(dlaudw*****)
+                        </div>
                     </div>
-                    <div class="name-wrap">
-                        스킹스(dlaudw*****)
+                    <div>
+                        [ 요즘 폼 오른 박만사 웹툰들 현재 근황 ]1. 퀘지주 - 4대크루 헤드들 특별출연(장현 제외) 2. 김부장 - 금지된 인체실험(2개의 몸과 관련된 실험으로 추측) 3. 촉법소년 - 매주마다 막힌 속 시원하게 뚫어주는 사이다 전개 4. 외지주 - 그냥 폼 미쳤음. 5. 쌈독 -
                     </div>
-                </div>
-                <div>
-                    [ 요즘 폼 오른 박만사 웹툰들 현재 근황 ]1. 퀘지주 - 4대크루 헤드들 특별출연(장현 제외) 2. 김부장 - 금지된 인체실험(2개의 몸과 관련된 실험으로 추측) 3. 촉법소년 - 매주마다 막힌 속 시원하게 뚫어주는 사이다 전개 4. 외지주 - 그냥 폼 미쳤음. 5. 쌈독 -
-                </div>
-                <div>2023-11-07 11:59</div>
-                <button>답글</button>
-            </div>
-            <div class="review-comment">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                    </div>
-                    <div class="name-wrap">
-                        스킹스(dlaudw*****)
-                    </div>
-                </div>
-                <div>
-                    ㅊㅋㅊㅋ
-                </div>
-                <div>2023-11-07 11:59</div>
-                <button>답글</button>
-            </div>
-        </div>
-    </div>
-    <div class="review-content-wrap">
-        <div class="review-content">
-            <div class="focus-img-wrap">
-                <img class="img" src="./review1.png" alt="">
-            </div>
-            <div class="review-article">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                    </div>
-                    <div class="name-wrap">
-                        스킹스(dlaudw*****) <span>2023-11-07 11:59</span>
-                    </div>
-                </div>
-                <div>
-                    ★★★☆☆
-                </div>
-                <div class="article-wrap bottom-interval">
-                    추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-                </div>
-            </div>
-            <div class="img-container">
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-                <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
-                </div>
-            </div>
-        </div>
-        <button class="comment-open-btn" type="button">펼치기</button>
-        <div class="review-comment-wrap" style="display: none;">
-            <div>
-                댓글쓰기
-            </div>
-            <div class="write-area">
-                <textarea class="comment-textarea" name=""></textarea>
-                <button class="comment-btn" type="button">입력</button>
-            </div>
-            <div class="review-comment">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                    </div>
-                    <div class="name-wrap">
-                        스킹스(dlaudw*****)
+                    <div>2023-11-07 11:59</div>
+                    <button class="re-comment-open">답글</button>
+                    <div class="re-comment-div" style="display: none;">
+                        <div>
+                            답글쓰기
+                        </div>
+                        <div class="write-area">
+                            <textarea class="comment-textarea" name=""></textarea>
+                            <input class="review-no" type="hidden" value="${review.reviewNo}">
+                            <input class="comment-no" type="hidden" value="${comment.commentNo}">
+                            <button class="comment-btn" type="button">입력</button>
+                        </div>
+                        <div class="review-comment-wrap">
+                            <div class="review-comment">
+                                <div class="display-flex bottom-interval">
+                                    <div class="profile-wrap">
+                                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                                    </div>
+                                    <div class="name-wrap">
+                                        스킹스(dlaudw*****)
+                                    </div>
+                                </div>
+                                <div>
+                                    ㅊㅋㅊㅋ
+                                </div>
+                                <div>2023-11-07 11:59</div>
+                                <button class="re-comment-open">답글</button>
+                                <div class="re-comment-div" style="display: none;">
+                                    <div>
+                                        답글쓰기
+                                    </div>
+                                    <div class="write-area">
+                                        <textarea class="comment-textarea" name=""></textarea>
+                                        <input class="review-no" type="hidden" value="${review.reviewNo}">
+                                        <button class="comment-btn" type="button">입력</button>
+                                    </div>
+                                    <div class="review-comment-wrap">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    ㅊㅋㅊㅋ
-                </div>
-                <div>2023-11-07 11:59</div>
-                <button>답글</button>
-            </div>
-            <div class="review-comment">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                <div class="review-comment">
+                    <div class="display-flex bottom-interval">
+                        <div class="profile-wrap">
+                            <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                        </div>
+                        <div class="name-wrap">
+                            스킹스(dlaudw*****)
+                        </div>
                     </div>
-                    <div class="name-wrap">
-                        스킹스(dlaudw*****)
+                    <div>
+                        ㅊㅋㅊㅋ
+                    </div>
+                    <div>2023-11-07 11:59</div>
+                    <button class="re-comment-open">답글</button>
+                    <div class="re-comment-div" style="display: none;">
+                        <div>
+                            답글쓰기
+                        </div>
+                        <div class="write-area">
+                            <textarea class="comment-textarea" name=""></textarea>
+                            <input class="review-no" type="hidden" value="${review.reviewNo}">
+                            <button class="comment-btn" type="button">입력</button>
+                        </div>
+                        <div class="review-comment-wrap">
+                        </div>
                     </div>
                 </div>
-                <div>
-                    ㅊㅋㅊㅋ
-                </div>
-                <div>2023-11-07 11:59</div>
-                <button>답글</button>
             </div>
         </div>
     </div>
 </div>
+<button id="more">임시</button>
 </section>
 <script>
     $(()=>{
         $(".comment-open-btn").click(function() {
-            let $commentWrap = $(this).next(".review-comment-wrap");
-
-            if ($commentWrap.css("display") === 'none') {
-                $commentWrap.slideDown(100);
+            let $commentDiv = $(this).next(".review-comment-div");
+            if ($commentDiv.css("display") === 'none') {
+                $commentDiv.slideDown(100);
                 $(".comment-open-btn").text("접기");
             } else {
-                $commentWrap.slideUp(100);
+                $commentDiv.slideUp(100);
                 $(".comment-open-btn").text("펼치기");
             }
         });
+        $(".re-comment-open").click(function() {
+            let $reCommentDiv = $(this).next(".re-comment-div");
+            if ($reCommentDiv.css("display") === 'none') {
+                $reCommentDiv.slideDown(100);
+                $(".comment-open-btn").text("닫기");
+            } else {
+                $reCommentDiv.slideUp(100);
+                $(".comment-open-btn").text("답글");
+            }
+        });
+        $(".comment-btn").click(function(){
+            const text = $(this).prevAll(".comment-textarea").val();
+            const reviewNo = $(this).prevAll(".review-no").val();
+            const commentNo = $(this).prevAll(".comment-no").val();
+            $.ajax({
+                url:"insertComment",
+                type:"post",
+                data:{
+                    commentContent:text,
+                    reviewNo:reviewNo,
+                    commentNo:commentNo
+                },
+                success:(result)=>{
+                    console.log(result);
+                },
+                error:()=>{
+                    console.log("통신실패");
+                }
+            })
+        })
+        const $reviewWrap = $("review-wrap");
+        $("#more").click(()=>{
+            $.ajax({
+                url:"reviewDetailList",
+                data:{
+                    page:1
+                },
+                success:(data)=>{
+                    console.log(data);
+                },
+                error:()=>{
+                    console.log("통신실패");
+                }
+            })
+        })
     })
 </script>
 </body>
