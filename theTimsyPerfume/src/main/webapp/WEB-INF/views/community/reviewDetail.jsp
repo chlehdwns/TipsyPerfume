@@ -44,6 +44,9 @@
         font-size: 15px;
         margin-left: 5px;
     }
+    .article-wrap{
+        white-space: pre-wrap;
+    }
     .img-container{
         width: 100px;
         height: 300px;
@@ -120,9 +123,9 @@
                 <div>
                     ★★★☆☆
                 </div>
-                <div class="article-wrap bottom-interval">
-                	${review.reviewContent }
-                </div>
+                <pre class="article-wrap bottom-interval">
+${review.reviewContent }
+                </pre>
             </div>
             <div class="img-container">
             	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
@@ -176,7 +179,7 @@
     <div class="review-content-wrap">
         <div class="review-content">
             <div class="focus-img-wrap">
-                <img class="img" src="./review1.png" alt="">
+                <img class="img" src="resources/image/community/review/review_1.png" alt="">
             </div>
             <div class="review-article">
                 <div class="display-flex bottom-interval">
@@ -190,25 +193,25 @@
                 <div>
                     ★★★☆☆
                 </div>
-                <div class="article-wrap bottom-interval">
-                    추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
-                </div>
+                <pre class="article-wrap bottom-interval">
+추석전주에 한 주문이라 연휴 중간에 껴서 배송이 너무 늦어질까 조마조마했습니다 다행히 딱10일 걸리고 잘 받았네요.
+                </pre>
             </div>
             <div class="img-container">
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="resources/image/community/review/review_1.png" alt="">
                 </div>
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="resources/image/community/review/review_1.png" alt="">
                 </div>
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="resources/image/community/review/review_1.png" alt="">
                 </div>
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="resources/image/community/review/review_1.png" alt="">
                 </div>
                 <div class="img-wrap">
-                    <img class="img" src="./review1.png" alt="">
+                    <img class="img" src="resources/image/community/review/review_1.png" alt="">
                 </div>
             </div>
         </div>
