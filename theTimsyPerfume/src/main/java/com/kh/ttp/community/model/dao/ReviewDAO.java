@@ -33,4 +33,8 @@ public class ReviewDAO {
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectCommentList", map);
 	}
 
+	public int insertComment(SqlSessionTemplate sqlSession, CommentVO comment) {
+		return sqlSession.insert("reviewMapper.insertComment", comment);
+	}
+
 }
