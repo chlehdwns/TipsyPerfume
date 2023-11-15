@@ -47,14 +47,14 @@ public class ReviewController {
 	}
 	@GetMapping(value = "commentList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String ajaxCommentList(int boardNo, int reviewNo) {
+	public String ajaxCommentList(
+			@RequestParam(value = "boardNo", defaultValue = "0")int boardNo, 
+			@RequestParam(value = "reviewNo", defaultValue = "0")int reviewNo) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("boardNo",boardNo);
 		map.put("reviewNo",reviewNo);
-		System.out.println(map);
-		//ArrayList<CommentVO> list = reviewService.selectCommentList(map);
+		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
-		//return new Gson().toJson(list);
-		return "1";
+		return new Gson().toJson(list);
 	}
 }

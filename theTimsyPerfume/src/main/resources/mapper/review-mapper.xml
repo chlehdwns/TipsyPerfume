@@ -102,7 +102,14 @@ FROM
     TB_COMMENT
 JOIN TB_USER USING(USER_NO)
 WHERE
-    REVIEW_NO=1
+	<choose>
+	<when test='boardNo != 0'>
+		BOARD_NO=#{boardNo}
+	</when>
+	<otherwise>
+		REVIEW_NO=#{reviewNo}
+	</otherwise>
+	</choose>
 ORDER BY
     COMMENT_GROUP, COMMENT_NO
 </select>

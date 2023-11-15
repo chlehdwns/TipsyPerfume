@@ -103,6 +103,7 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 <section>
+<input id="review-no" type="hidden" value="${review.reviewNo}">
 <div id="review-wrap">
     <div class="review-content-wrap">
         <div class="review-content">
@@ -147,10 +148,9 @@ ${review.reviewContent }
             </div>
             <div class="write-area">
                 <textarea class="comment-textarea" name=""></textarea>
-                <input class="review-no" type="hidden" value="${review.reviewNo}">
                 <button class="comment-btn" type="button">입력</button>
             </div>
-            <div class="review-comment-wrap">
+            <div id="review-comment-wrap">
                 <div class="review-comment">
                     <div class="display-flex bottom-interval">
                         <div class="profile-wrap">
@@ -171,11 +171,10 @@ ${review.reviewContent }
                         </div>
                         <div class="write-area">
                             <textarea class="comment-textarea" name=""></textarea>
-                            <input class="review-no" type="hidden" value="${review.reviewNo}">
                             <input class="comment-no" type="hidden" value="${comment.commentNo}">
                             <button class="comment-btn" type="button">입력</button>
                         </div>
-                        <div class="review-comment-wrap">
+                        <div class="re-comment-wrap">
                             <div class="review-comment">
                                 <div class="display-flex bottom-interval">
                                     <div class="profile-wrap">
@@ -189,19 +188,6 @@ ${review.reviewContent }
                                     ㅊㅋㅊㅋ
                                 </div>
                                 <div>2023-11-07 11:59</div>
-                                <button class="re-comment-open">답글</button>
-                                <div class="re-comment-div" style="display: none;">
-                                    <div>
-                                        답글쓰기
-                                    </div>
-                                    <div class="write-area">
-                                        <textarea class="comment-textarea" name=""></textarea>
-                                        <input class="review-no" type="hidden" value="${review.reviewNo}">
-                                        <button class="comment-btn" type="button">입력</button>
-                                    </div>
-                                    <div class="review-comment-wrap">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -226,10 +212,10 @@ ${review.reviewContent }
                         </div>
                         <div class="write-area">
                             <textarea class="comment-textarea" name=""></textarea>
-                            <input class="review-no" type="hidden" value="${review.reviewNo}">
+                            <input class="comment-no" type="hidden" value="${comment.commentNo}">
                             <button class="comment-btn" type="button">입력</button>
                         </div>
-                        <div class="review-comment-wrap">
+                        <div class="re-comment-wrap">
                         </div>
                     </div>
                 </div>
@@ -241,6 +227,7 @@ ${review.reviewContent }
 </section>
 <script>
     $(()=>{
+        selectCommentList();
         $(".comment-open-btn").click(function() {
             let $commentDiv = $(this).next(".review-comment-div");
             if ($commentDiv.css("display") === 'none') {
@@ -263,7 +250,7 @@ ${review.reviewContent }
         });
         $(".comment-btn").click(function(){
             const text = $(this).prevAll(".comment-textarea").val();
-            const reviewNo = $(this).prevAll(".review-no").val();
+            const reviewNo = $("#review-no").val();
             const commentNo = $(this).prevAll(".comment-no").val();
             $.ajax({
                 url:"insertComment",
@@ -281,22 +268,49 @@ ${review.reviewContent }
                 }
             })
         })
-        const $reviewWrap = $("review-wrap");
-        $("#more").click(()=>{
-            $.ajax({
-                url:"reviewDetailList",
+    })
+    function selectCommentList(){
+        $.ajax({
+                url:"commentList",
+                type:"get",
                 data:{
-                    page:1
+                    reviewNo:$("#review-no").val()
                 },
-                success:(data)=>{
-                    console.log(data);
+                success:(result)=>{
+                    console.log(result);
+                    const $commentWrap = $("#review-comment-wrap");
+                    let value="";
+                    for(let i in result){
+                        value+=
+                            "<div class='review-comment'>"
+                            +"<div class='display-flex bottom-interval'>"
+                            +"<div class='profile-wrap'>"
+                            +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                            +"</div>"
+                            +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                            +"</div>"
+                            +"<div>"+result[i].commentContent+"</div>"
+                            +"<div>"+result[i].commentCreateDate+"</div>"
+                            +"<button class='re-comment-open'>답글</button>"
+                            +"<div class='re-comment-div' style='display: none;'>"
+                            +"<div>답글쓰기</div>"
+                            +"<div class='write-area'>"
+                            +"<textarea class='comment-textarea'></textarea>"
+                            +"<input class='comment-no' type='hidden' value='${comment.commentNo}'>"
+                            +"<button class='comment-btn' type='button'>입력</button>"
+                            +"</div>"
+                            +"<div class='re-comment-wrap'>"
+                            +"</div>"
+                            +"</div>"
+                            +"</div>";
+                    }
+                    $commentWrap.html(value);
                 },
                 error:()=>{
                     console.log("통신실패");
                 }
             })
-        })
-    })
+    }
 </script>
 </body>
 </html>
