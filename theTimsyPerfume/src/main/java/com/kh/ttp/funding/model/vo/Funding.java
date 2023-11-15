@@ -2,8 +2,6 @@ package com.kh.ttp.funding.model.vo;
 
 import java.sql.Date;
 
-import com.kh.ttp.product.model.vo.Product;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 @Data @AllArgsConstructor

@@ -1,6 +1,7 @@
 package com.kh.ttp.product.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.product.model.service.ProductService;
+import com.kh.ttp.product.model.vo.ProductSelectVO;
+
 
 @Controller
 public class ProductController {
@@ -25,29 +29,24 @@ public class ProductController {
 	 * @return
 	 */
 	@GetMapping("productMain.pr")
-	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
+	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
+											 ModelAndView mv) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
 		
-		if("A".equals(pdtIdenKey.toUpperCase())) {
-			// 알콜 조회 A
-			System.out.println("알콜조회");
-			
-			
-			
-		} else if("P".equals(pdtIdenKey.toUpperCase())) {
-			// 향수 조회 P
-			System.out.println("향수조회");
-			
-			
-			
-		} else {
-			System.out.println("기타등등");
-			// common/errorPage  ${ errorMsg }
-		}
-		System.out.println("스코프 밖");
+		ArrayList<ProductSelectVO> productListMain = productService.productMain(pdtIdenKey);
 		
-		// pdtIdenKey넘겨줘야함 (식별자 보고 div띄워줄 것) 
+		mv.addObject("pdtIdenKey", pdtIdenKey); // 얘도 나중에 돌려줘야함
+		
+		
+		
+		System.out.println("저는 Product Controller예용 "); // common/errorPage  ${ errorMsg }
+		mv.addObject("errorMsg", "상품 메인화면 이동에 실패했습니다")
+		  .setViewName("common/errorPage");
+		
+		// pdtIdenKey 같이 넘겨줘야함 (식별자 보고 div띄워줄 것) 
 		return "product/productMain";
 	}
+	
+	
 	@RequestMapping("insertDrink.fun")
 	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient) {
 		//System.out.println(upfile);
