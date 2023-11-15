@@ -1,22 +1,27 @@
 @charset "UTF-8";
 
 /* 푸터 전체 요소 */
+footer{
+    background-color: rgb(85, 85, 85);
+    color: rgb(255, 255, 255);
+}
 footer div {
     /*border: 1px solid black;*/
     box-sizing: border-box;
 }
-#footerWrap {
+.footerWrap {
     width: 1200px;
-    height: 200px;
     margin: auto;
 }
 /* 푸터 내부 div */
-.footer_inner {width: 100%; float: left;}
-#footer_inner_1 {height: 20%;  top: 10px;}
-#footer_inner_2 {height: 65%;}
-#footer_inner_3 {height: 15%;}
+#footer_inner {width: 100%; float: left;}
+#footer_inner_1 {height: 35px;  line-height: 30px;}
+#footer_inner_2 {height: 130px;}
+#footer_inner_3 {height: 30px;}
 /* 푸터 내부 p태그들 */
 #footerWrap p {display:inline-block; margin: 0px; position: relative; left: 20px;}
 #footer_inner_1 p {top: 7px;}
 #footer_inner_2 p {top: 22px;}
 #footer_inner_3 p {top: 1px;}
+
+.footer-top-wrap{background-color: rgb(32, 32, 32);}

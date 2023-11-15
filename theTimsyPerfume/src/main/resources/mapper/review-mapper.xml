@@ -47,7 +47,7 @@ FROM TB_REVIEW
 WHERE
 	REVIEW_FILE_INDEX = 0
 AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
 </select>
 <select id="selectReviewDetail" parameterType="_int" resultMap="reviewResultSet">
 SELECT
@@ -68,7 +68,7 @@ FROM TB_REVIEW
 WHERE
 	REVIEW_NO = #{reviewNo}
 AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
 </select>
 <select id="selectReviewImage" parameterType="_int" resultType="string">
 SELECT
