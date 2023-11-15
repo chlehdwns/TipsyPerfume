@@ -16,4 +16,5 @@ public interface ReviewService {
 	public ArrayList<String> selectReviewImage(int reviewNo);
 	
 	public ArrayList<CommentVO> selectCommentList(HashMap<String, Integer>map);
+	public int insertComment(CommentVO comment);
 }

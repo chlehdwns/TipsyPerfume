@@ -238,7 +238,7 @@ ${review.reviewContent }
                 $(".comment-open-btn").text("펼치기");
             }
         });
-        $(".re-comment-open").click(function() {
+        $(document).on('click','.re-comment-open', function() {
             let $reCommentDiv = $(this).next(".re-comment-div");
             if ($reCommentDiv.css("display") === 'none') {
                 $reCommentDiv.slideDown(100);
@@ -248,6 +248,17 @@ ${review.reviewContent }
                 $(".comment-open-btn").text("답글");
             }
         });
+        /*
+        $(".re-comment-open").click(function() {
+            let $reCommentDiv = $(this).next(".re-comment-div");
+            if ($reCommentDiv.css("display") === 'none') {
+                $reCommentDiv.slideDown(100);
+                $(".comment-open-btn").text("닫기");
+            } else {
+                $reCommentDiv.slideUp(100);
+                $(".comment-open-btn").text("답글");
+            }
+        });*/
         $(".comment-btn").click(function(){
             const text = $(this).prevAll(".comment-textarea").val();
             const reviewNo = $("#review-no").val();
@@ -296,10 +307,11 @@ ${review.reviewContent }
                             +"<div>답글쓰기</div>"
                             +"<div class='write-area'>"
                             +"<textarea class='comment-textarea'></textarea>"
-                            +"<input class='comment-no' type='hidden' value='${comment.commentNo}'>"
+                            +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
                             +"<button class='comment-btn' type='button'>입력</button>"
                             +"</div>"
                             +"<div class='re-comment-wrap'>"
+                                
                             +"</div>"
                             +"</div>"
                             +"</div>";

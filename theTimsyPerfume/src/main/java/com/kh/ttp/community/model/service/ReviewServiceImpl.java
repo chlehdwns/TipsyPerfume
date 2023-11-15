@@ -44,4 +44,8 @@ public class ReviewServiceImpl implements ReviewService {
 	public ArrayList<CommentVO> selectCommentList(HashMap<String, Integer> map) {
 		return reviewDao.selectCommentList(sqlSession, map);
 	}
+	@Override
+	public int insertComment(CommentVO comment) {
+		return reviewDao.insertComment(sqlSession, comment);
+	}
 }

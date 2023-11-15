@@ -113,4 +113,23 @@ WHERE
 ORDER BY
     COMMENT_GROUP, COMMENT_NO
 </select>
+<insert id="insertComment" parameterType="comment">
+INSERT INTO TB_COMMENT(
+    COMMENT_NO,
+    USER_NO,
+    REVIEW_NO,
+    COMMENT_CONTENT,
+    COMMENT_GROUP,
+    COMMENT_INDEX,
+    COMMENT_DEPTH
+) VALUES (
+    SEQ_COMMENT.NEXTVAL,
+    #{userNo},
+    #{reviewNo},
+    #{commentContent},
+    #{commentGroup},
+    #{commentIndex},
+    0
+);
+</insert>
 </mapper>
