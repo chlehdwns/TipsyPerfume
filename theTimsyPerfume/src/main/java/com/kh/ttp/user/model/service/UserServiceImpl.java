@@ -19,8 +19,20 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User loginUser(User u) {
-		
 		return userDao.loginUser(sqlSession, u);
 	}
 
+
+	@Override
+	public int insertUser(User u) {
+		
+		return userDao.insertUser(sqlSession, u);
+	}
+
+	/*
+	@Override
+	public int emailCheck(String checkEmail) {
+		return userDao.emailCheck(sqlSession, checkEmail);
+	}
+	*/
 }

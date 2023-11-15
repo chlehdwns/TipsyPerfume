@@ -32,15 +32,69 @@
 		WHERE
 			USER_EMAIL = #{userEmail}
 			
-		<!--  사용자는 DB_userPwd컬럼에 저장된 암호화된 비밀번호를 알 수 없기 때문에 비밀번호 조건을 나중에 제거-->
+		<!--  사용자는 DB_userPwd컬럼에 저장된 암호화된 비밀번호를 알 수 없기 때문에 비밀번호 조건을 나중에 제거
 		AND
 			USER_PWD = #{userPwd}
+		-->
 			
 		AND
 			STATUS='Y'
-	
 	</select>
 	  
+	  <!--  
+	<select id="emailCheck" parameterType="string" resultType="_int">
+	SELECT
+		COUNT(*)
+	FROM
+		TB_USER
+	WHERE
+		USER_EMAIL = #{checkEmail}
+	</select>
+	-->
+
+
+	<!-- 회원가입용 쿼리문 -->
+	<insert id="insertUser" parameterType="member">
+	INSERT
+	INTO
+		MEMBER(
+			USER_NO userNo,
+            USER_EMAIL userEmail,
+            NICKNAME nickName,
+            USER_PWD userPwd,
+            USER_NAME userName,
+            MEMBER_TYPE memberType,
+            BUSINESS_REG businessReg,
+            ADULT_STATUS adultStatus,
+            BIRTH_DATE birthDate,
+            ENROLL_DATE enrollDate,
+            USER_PROFILE userProfile,
+			
+			PHONE phone,
+			ADDRESS address,
+			ADDRESS_DETAIL addressDetail,
+			POSTAL_CODE postalCode
+		)
+	VALUES
+		(
+		#{userNo},
+        #{userEmail},
+        #{nickName},
+        #{userPwd},
+        #{userName},
+        #{memberType},
+        #{businessReg},
+        #{adultStatus},
+        #{birthDate},
+        #{enrollDate},
+        #{userProfile},
+			
+		#{phone},
+		#{address},
+		#{addressDetail},
+		#{postalCode}
+		)
+	</insert>
 
 
 
