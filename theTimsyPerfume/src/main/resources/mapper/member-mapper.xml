@@ -54,26 +54,27 @@
 
 
 	<!-- 회원가입용 쿼리문 -->
-	<insert id="insertUser" parameterType="member">
+	<insert id="insertUser" parameterType="user">
 	INSERT
 	INTO
-		MEMBER(
-			USER_NO userNo,
-            USER_EMAIL userEmail,
-            NICKNAME nickName,
-            USER_PWD userPwd,
-            USER_NAME userName,
-            MEMBER_TYPE memberType,
-            BUSINESS_REG businessReg,
-            ADULT_STATUS adultStatus,
-            BIRTH_DATE birthDate,
-            ENROLL_DATE enrollDate,
-            USER_PROFILE userProfile,
+		MEMBER
+		(
+			USER_NO ,
+            USER_EMAIL ,
+            NICKNAME ,
+            USER_PWD ,
+            USER_NAME ,
+            MEMBER_TYPE ,
+            BUSINESS_REG ,
+            ADULT_STATUS ,
+            BIRTH_DATE ,
+            ENROLL_DATE ,
+            USER_PROFILE ,
 			
-			PHONE phone,
-			ADDRESS address,
-			ADDRESS_DETAIL addressDetail,
-			POSTAL_CODE postalCode
+			PHONE ,
+			ADDRESS ,
+			ADDRESS_DETAIL ,
+			POSTAL_CODE 
 		)
 	VALUES
 		(
