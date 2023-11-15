@@ -175,6 +175,35 @@ ${review.reviewContent }
                             <input class="comment-no" type="hidden" value="${comment.commentNo}">
                             <button class="comment-btn" type="button">입력</button>
                         </div>
+                        <div class="review-comment-wrap">
+                            <div class="review-comment">
+                                <div class="display-flex bottom-interval">
+                                    <div class="profile-wrap">
+                                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
+                                    </div>
+                                    <div class="name-wrap">
+                                        스킹스(dlaudw*****)
+                                    </div>
+                                </div>
+                                <div>
+                                    ㅊㅋㅊㅋ
+                                </div>
+                                <div>2023-11-07 11:59</div>
+                                <button class="re-comment-open">답글</button>
+                                <div class="re-comment-div" style="display: none;">
+                                    <div>
+                                        답글쓰기
+                                    </div>
+                                    <div class="write-area">
+                                        <textarea class="comment-textarea" name=""></textarea>
+                                        <input class="review-no" type="hidden" value="${review.reviewNo}">
+                                        <button class="comment-btn" type="button">입력</button>
+                                    </div>
+                                    <div class="review-comment-wrap">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="review-comment">
@@ -199,6 +228,8 @@ ${review.reviewContent }
                             <textarea class="comment-textarea" name=""></textarea>
                             <input class="review-no" type="hidden" value="${review.reviewNo}">
                             <button class="comment-btn" type="button">입력</button>
+                        </div>
+                        <div class="review-comment-wrap">
                         </div>
                     </div>
                 </div>

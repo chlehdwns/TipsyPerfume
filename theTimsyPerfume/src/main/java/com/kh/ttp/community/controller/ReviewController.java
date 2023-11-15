@@ -1,6 +1,7 @@
 package com.kh.ttp.community.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import com.google.gson.Gson;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.model.service.ReviewService;
-import com.kh.ttp.community.model.vo.NoticeVO;
+import com.kh.ttp.community.model.vo.CommentVO;
 import com.kh.ttp.community.model.vo.ReviewVO;
 
 @Controller
@@ -44,13 +45,16 @@ public class ReviewController {
 		
 		return mv;
 	}
-	@GetMapping(value = "reviewDetailList", produces = "application/json; charset=UTF-8")
+	@GetMapping(value = "commentList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String reviewDetailList(int page) {
-		int listCount = reviewService.countReviewList();
-		PageInfo pi = Pagination.getPageInfo(listCount, page, 9, 5);
-		ArrayList<ReviewVO> list = reviewService.seletcReviewList(pi);
+	public String ajaxCommentList(int boardNo, int reviewNo) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo",boardNo);
+		map.put("reviewNo",reviewNo);
+		System.out.println(map);
+		//ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
-		return new Gson().toJson(list);
+		//return new Gson().toJson(list);
+		return "1";
 	}
 }
