@@ -36,7 +36,7 @@ public class UserController {
 		
 		User loginUser = userService.loginUser(u);
 		
-		if(loginUser != null && bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())) {
+		if(loginUser != null ) {
 			session.setAttribute("loginUser", loginUser);
 			mv.setViewName("redirect:/");
 		} else {
@@ -95,4 +95,5 @@ public class UserController {
 	
 	
 	
+}
 }
