@@ -10,10 +10,12 @@
 	  <typeAliases>
 		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
 		<typeAlias type="com.kh.ttp.community.model.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 	</typeAliases>
 
 	  <mappers>
 		<mapper resource="/mapper/member-mapper.xml"/>
 		<mapper resource="/mapper/review-mapper.xml"/>
+		<mapper resource="/mapper/product-mapper.xml"/>
 	</mappers>
 </configuration>

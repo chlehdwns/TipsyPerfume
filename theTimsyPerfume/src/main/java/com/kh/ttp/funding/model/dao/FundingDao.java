@@ -1,9 +1,8 @@
-package com.kh.ttp.product.model.dao;
+package com.kh.ttp.funding.model.dao;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProductDao {
-	
+public class FundingDao {
 
 }
