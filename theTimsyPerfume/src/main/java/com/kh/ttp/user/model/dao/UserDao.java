@@ -16,7 +16,18 @@ public class UserDao {
 		System.out.println("dao: "+us);
 		return us;
 	}
+
+	public int insertUser(SqlSessionTemplate sqlSession, User u) {
+		
+		return sqlSession.insert("userMapper.insertUser", u);
+	}
 	
+	/*
+	public int emailCheck(SqlSessionTemplate sqlSession, String checkEmail) {
+		
+		return sqlSession.selectOne("userMapper.emailCheck", checkEmail);
+	}
+	*/
 	
 	
 	

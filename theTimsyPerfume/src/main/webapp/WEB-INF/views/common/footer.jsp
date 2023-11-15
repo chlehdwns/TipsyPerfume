@@ -12,10 +12,14 @@
 </head>
 <body>
 <footer>
-    <div id="footerWrap">
-        <div id="footer_inner_1" class="footer_inner">
-            <p>회사소개 | 이용약관 | 개인정보처리방침 | 이용안내</p>
+    <div class="footer-top-wrap">
+        <div class="footerWrap">
+            <div id="footer_inner_1" class="footer_inner">
+                <p>회사소개 | 이용약관 | 개인정보처리방침 | 이용안내</p>
+            </div>
         </div>
+    </div>
+    <div class="footerWrap">
         <div id="footer_inner_2" class="footer_inner">
             <p>
 		               상호명 주식회사 The Tipsy Perfume | 사업자등록번호 : 000-01-02023 | 통신판매업신고번호제 2023-서울중구-0000호<br>

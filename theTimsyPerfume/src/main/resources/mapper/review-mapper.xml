@@ -32,7 +32,7 @@ SELECT
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH:mm') "REVIEW_CREATE_DATE",
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
     USER_PROFILE,
@@ -47,15 +47,15 @@ FROM TB_REVIEW
 WHERE
 	REVIEW_FILE_INDEX = 0
 AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
 </select>
-<select id="selectReview" parameterType="_int" resultMap="reviewResultSet">
+<select id="selectReviewDetail" parameterType="_int" resultMap="reviewResultSet">
 SELECT
     REVIEW_NO,
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH:mm') "REVIEW_CREATE_DATE",
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
     USER_PROFILE,
@@ -68,7 +68,7 @@ FROM TB_REVIEW
 WHERE
 	REVIEW_NO = #{reviewNo}
 AND
-	PDT_FILE_LEV = 0
+	PDT_FILE_INDEX = 0
 </select>
 <select id="selectReviewImage" parameterType="_int" resultType="string">
 SELECT
