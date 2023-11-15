@@ -1,6 +1,9 @@
 package com.kh.ttp.product.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -14,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.service.ProductService;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
-
+import com.kh.ttp.productCategory.model.vo.ProductCategory;
+import com.kh.ttp.productFile.model.vo.ProductFile;
+import com.kh.ttp.productOption.model.vo.ProductOption;
 
 @Controller
 public class ProductController {
@@ -60,11 +66,55 @@ public class ProductController {
 		//System.out.println(pdtManufac);
 		//System.out.println(pdtGroup);
 		//System.out.println(pdtIngredient);
+		Product p = new Product();
+		p.setPdtName(pdtName);
+		p.setPdtIntro(pdtIntro);
+		p.setPdtDescription(pdtDescription);
+		p.setPdtShipping(pdtShipping);
+		p.setPdtPrice(pdtPrice);
+		p.setPdtIngredient(pdtIngredient);
+		ProductCategory pc = new ProductCategory();
+		pc.setPdtManufac(pdtManufac);
+		pc.setPdtGroup(pdtGroup);
+		
+		
+		ProductFile pf = new ProductFile();
+		
+		ProductOption po = new ProductOption();
+		
+		Funding f = new Funding();
+		f.setCuttingDate(cuttingDate);
+		f.setCuttingPrice(cuttingPrice);
+		
+		if(!upfile.getOriginalFilename().equals("")) {
+			pf.setPdtFileOrigin(upfile.getOriginalFilename());
+			pf.setPdtFileUpload(saveFile(upfile,session));
+		}
+		productService.drinkFundingInsert(p,pf,po,f,pc);
+		
 		
 		
 		
 		
 		return "";
+	}
+	private String saveFile(MultipartFile upfile, HttpSession session) {
+		String originName = upfile.getOriginalFilename();
+		
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+		int ranNum = (int)(Math.random() * 9000) + 1000;
+		
+		String ext = originName.substring(originName.lastIndexOf("."));
+		String changeName = currentTime + ranNum +ext;
+		String savePath = session.getServletContext().getRealPath("/resources/uploadFiles/");
+		
+		try {
+			upfile.transferTo(new File(savePath + changeName));
+		} catch (IllegalStateException | IOException e) {
+			
+			e.printStackTrace();
+		}
+		return "/resources/uploadFiles/" + changeName;
 	}
 
 }

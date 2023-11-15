@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data @AllArgsConstructor
 public class ProductVO {
-	
 	/*
 	PDT_NO	NUMBER
 	PDT_CATEG_NO	NUMBER

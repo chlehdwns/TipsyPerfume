@@ -1,10 +1,10 @@
 package com.kh.ttp.productOption.model.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class ProductOption {
 	private int pdtOptionNo;
 	private int pdtNo;
