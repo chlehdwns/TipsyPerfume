@@ -35,10 +35,10 @@
     <div id="productMainWrap">
 
         <div class="pdt-main-inner-wrap">
+            <!-- Controlle에서 식별자(A/F)따라 ${alcoOrPerf}에 주류 or 향수 문자열 넘기기 -->
             <div class="pdt-mn-title-area">
-                <!-- Controlle에서 식별자(A/F)따라 pdtCateg에 주류 or 향수 넘기기 -->
                 <div class="pdt-mn-title-text pdt-mn-text1">${pdtMainTitleText}</div>
-                <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">${pdtMainBrand} | ${pdtMainSort}</div>
+                <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순</div>
             </div>
             <div div class="pdt-list-btn">
                 <button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
@@ -85,101 +85,53 @@
             </div>
         </div>
 
-        <c:if test="${not empty pdtIdenKey}">
-            <div class="pdt-main-inner-wrap">
-                <div class="pdt-mn-title-area">
-                    <!-- Controlle에서 식별자(A/F)따라 pdtCateg에 주류 or 향수 넘기기 -->
-                    <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
-                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 주류 | 최신순</div>
-                </div>
-                <div div class="pdt-list-btn">
-                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
-                </div>
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- 전체조회 시 내용 EL구문 이용 뿌려줌 6개!!! (for each사용해서 만들기) -->
-                        <!-- 디테일 조회요청 시 ajaxValidateAdult() 성인인증 먼저-->
-                        <!-- Slides -->
-                        <c:forEach var="product" items="productList">
-                            <c:choose>
-                                <c:when test="${ pdtIdenKey eq 'A' }">
-                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail(${pdtNo});"><!-- 주류 디테일뷰 성인인증 체크! (pdtNo는 JSP와 JS모두 숫자타입) -->
-                                </c:when>
-                                <c:when test="${ pdtIdenKey eq 'P' }">
-                                    <div class="swiper-slide" onclick="location.href='#/pr?pdtNo=#${pdtNo}'"></div><!-- 향수 디테일뷰 -->
-                                </c:when>
-                                <c:otherwise>
-                                    <!-- 그 외 경우 -->
-                                </c:otherwise>
-                            </c:choose>
-                                <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                                <div class="productBlockText1">브랜드이름</div>
-                                <div class="productBlockText2">술 향수 이름 필굿 오리지널 돌체앤가바나 라이트블루</div>
-                                <div class="productBlockText3">4.9/5</div>
-                                <div class="productBlockText4">간단 제품 설명</div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
-                </div>
-            </div>
-        </c:if>
 
 
+
+
+		<!-- Controlle에서 식별자(A/F)따라 pdtCateg에 주류 or 향수 넘기기 -->
         <c:if test="${not empty pdtIdenKey}">
-            <div class="pdt-main-inner-wrap">
-                <div class="pdt-mn-title-area">
-                    <!-- Controlle에서 식별자(A/F)따라 pdtCateg에 주류 or 향수 넘기기 -->
-                    <div class="pdt-mn-title-text pdt-mn-text1">HOT PERFUMES</div>
-                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 주류 | 최신순</div>
-                </div>
-                <div div class="pdt-list-btn">
-                    <button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
-                </div>
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- 전체조회 시 내용 EL구문 이용 뿌려줌 6개!!! (for each사용해서 만들기) -->
-                        <!-- 디테일 조회요청 시 ajaxValidateAdult() 성인인증 먼저-->
-                        <!-- Slides -->
-                        <c:forEach var="product" items="productList">
+			<c:forEach var="product" items="productList"><!-- 전체조회 시 6개 넘어옴!!! (for each사용해서 만들기) / 값 EL구문 이용 뿌리기 -->
+                <div class="pdt-main-inner-wrap">
+                    <div class="pdt-mn-title-area">
+                        <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
+                        <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순/베스트셀러/최고인기템</div>
+                    </div>
+                    <div div class="pdt-list-btn">
+                        <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                    </div>
+                    <!-- Slider main container -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
                             <c:choose>
                                 <c:when test="${ pdtIdenKey eq 'A' }">
-                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail(${pdtNo});"><!-- 주류 디테일뷰 성인인증 체크! (pdtNo는 JSP와 JS모두 숫자타입) -->
+                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail(${pdtNo});"></div><!-- 주류 디테일뷰 성인인증 체크! (pdtNo는 JSP와 JS모두 숫자타입) -->
                                 </c:when>
                                 <c:when test="${ pdtIdenKey eq 'P' }">
-                                    <div class="swiper-slide" onclick="location.href='#/pr?pdtNo=#${pdtNo}'"></div><!-- 향수 디테일뷰 -->
+                                   <div class="swiper-slide" onclick="location.href='#/pr?pdtNo=#${pdtNo}'"></div><!-- 향수 디테일뷰 -->
                                 </c:when>
                                 <c:otherwise>
-                                    <!-- 그 외 경우 -->
+                                   <!-- 그 외 경우 -->
                                 </c:otherwise>
-                            </c:choose>
-                                <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                                <div class="productBlockText1">브랜드이름</div>
-                                <div class="productBlockText2">술 향수 이름 필굿 오리지널 돌체앤가바나 라이트블루</div>
-                                <div class="productBlockText3">4.9/5</div>
-                                <div class="productBlockText4">간단 제품 설명</div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
-                </div>
-            </div>
+                           </c:choose>
+                           <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
+                           <div class="productBlockText1">브랜드이름</div>
+                           <div class="productBlockText2">술 향수 이름 필굿 오리지널 돌체앤가바나 라이트블루</div>
+                           <div class="productBlockText3">4.9/5</div>
+                           <div class="productBlockText4">간단 제품 설명</div>
+                   		</div>
+	                </div>
+	                <!-- If we need pagination -->
+	                <div class="swiper-pagination"></div>
+	                <!-- If we need navigation buttons -->
+	                <div class="swiper-button-prev"></div>
+	                <div class="swiper-button-next"></div>
+	                <!-- If we need scrollbar -->
+	                <div class="swiper-scrollbar"></div>
+	            </div>
+            </c:forEach>
         </c:if>
     </div>
 
