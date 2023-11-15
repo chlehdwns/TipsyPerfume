@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Tipsy Perfume - 리뷰 페이지</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -91,6 +90,13 @@
         justify-content: center;
         margin-bottom: 20px;
     }
+    .review-link{
+        color: rgb(223, 190, 106);
+    }
+    .review-link:hover{
+        color: rgb(223, 190, 106);
+        text-decoration: none;
+    }
 </style>
 </head>
 <body>
@@ -125,11 +131,11 @@
                     ${review.userNo}
                 </div>
             </div>
-            <a href="reviewViewer?reviewNo=${review.reviewNo }">
+            <a class="review-link" href="reviewViewer?reviewNo=${review.reviewNo }">
             <div class="thumbnail-wrap bottom-interval">
                 <img class="img" src="${review.thumbnail}" alt="썸네일">
             </div>
-            <div>
+            <div class="review-score">
                 ★★★☆☆
             </div>
             <div class="preview-wrap bottom-interval">
@@ -149,6 +155,7 @@
 	</c:otherwise>
 	</c:choose>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <div id="paging-area">
     <ul class="pagination">
     	<c:choose>

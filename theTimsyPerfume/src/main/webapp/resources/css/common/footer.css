@@ -2,7 +2,7 @@
 
 /* 푸터 전체 요소 */
 footer div {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     box-sizing: border-box;
 }
 #footerWrap {
