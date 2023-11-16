@@ -45,17 +45,33 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                    
+                    
                     <div id="header_inner_top_bannerline_3" class="full_height_divs">
                         <c:choose>
                             <c:when test="${ empty loginUser }">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="insert.me">회원가입</a>
+                                    <a class="header-link" href="enrollForm.me">회원가입</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
+                            
+                            <c:choose>
+                            	<c:when test="${loginUser.memberType eq 'A'}">
+                            	<p class="text-center fw-semibold">
+                                    <a class="header-link" href="#">관리자 페이지</a>
+                                </p>
+                            	</c:when>
+                            	
+                            	<c:otherwise>
                                 <p class="text-center fw-semibold">
                                     <a class="header-link" href="#">마이페이지</a>
                                 </p>
+                                </c:otherwise>
+                             </c:choose>
+                                
+                                
+                                
                             </c:otherwise>
                         </c:choose>
                     </div>
