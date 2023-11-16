@@ -19,10 +19,10 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public int countNoticeList() {
-		return 0;
+		return noticeDao.countNoticeList(sqlSession);
 	}
 	@Override
 	public ArrayList<NoticeVO> selectNoticeList(RowBounds rowBounds) {
-		return null;
+		return noticeDao.selectNoticeList(sqlSession, rowBounds);
 	}
 }

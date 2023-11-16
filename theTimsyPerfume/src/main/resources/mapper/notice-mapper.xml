@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+
+<resultMap type="notice" id="noticeResultSet">
+	<result column="NOTICE_NO" property="noticeNo"/>
+	<result column="NOTICE_CTGY" property="noticeCtgy"/>
+	<result column="NOTICE_TITLE" property="noticeTitle"/>
+	<result column="NOTICE_CONTENT" property="noticeContent"/>
+	<result column="NOTICE_CREATE_DATE" property="noticeCreateDate"/>
+	<result column="NOTICE_FILE" property="noticeFile"/>
+	<result column="NOTICE_COUNT" property="noticeCount"/>
+	<result column="NOTICE_STATE" property="noticeState"/>
+</resultMap>
+
+<select id="countNoticeList" resultType="_int">
+SELECT COUNT(*) FROM TB_NOTICE
+</select>
+<select id="selectNoticeList" resultMap="noticeResultSet">
+SELECT
+    NOTICE_NO,
+    NOTICE_CTGY,
+    NOTICE_STATE,
+    NOTICE_FILE,
+    NOTICE_TITLE,
+    NOTICE_CREATE_DATE
+FROM
+    TB_NOTICE
+ORDER BY NOTICE_STATE DESC, NOTICE_CREATE_DATE
+</select>
+
+</mapper>

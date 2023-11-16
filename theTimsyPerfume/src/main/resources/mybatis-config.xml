@@ -10,6 +10,7 @@
 	  <typeAliases>
 		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
 		<typeAlias type="com.kh.ttp.community.model.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.kh.ttp.community.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.community.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
@@ -18,6 +19,7 @@
 	  <mappers>
 		<mapper resource="/mapper/member-mapper.xml"/>
 		<mapper resource="/mapper/review-mapper.xml"/>
+		<mapper resource="/mapper/notice-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
 	</mappers>
 </configuration>
