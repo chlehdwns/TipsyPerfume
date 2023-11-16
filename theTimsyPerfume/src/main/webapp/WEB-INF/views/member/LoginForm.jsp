@@ -17,7 +17,7 @@
 }
 .box{
 	width:1200px;
-	height:200px;
+	height:100px;
 
 }
 
@@ -112,11 +112,10 @@
 		</div>
 	</div>
 	
-
+	<div class="box"></div>
+	<!--  
 	<div class="title">
 		<h4 class="title" align="center">간편 로그인</h4>
-			
-		
 	</div>
 
 
@@ -128,6 +127,7 @@
 			</div>
 		</div>
 	</div>
+	-->
 
 <jsp:include page="../common/footer.jsp" />
 </body>

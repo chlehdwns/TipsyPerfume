@@ -14,7 +14,7 @@ public class User {
 	private String userPwd;
 	private String userName;
 	private String nickName;
-	private Date birthDate;
+	private String birthDate;
 	private String status;
 	
 	private String memberType;
@@ -24,6 +24,8 @@ public class User {
 	private String userProfile;
 	
 	
+	
+	private String receiverName;
 	private String phone;
 	private String address;
 	private String addressDetail;
