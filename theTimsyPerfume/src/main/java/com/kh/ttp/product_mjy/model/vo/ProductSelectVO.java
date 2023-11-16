@@ -1,4 +1,4 @@
-package com.kh.ttp.product.model.vo;
+package com.kh.ttp.product_mjy.model.vo;
 
 public class ProductSelectVO {
 

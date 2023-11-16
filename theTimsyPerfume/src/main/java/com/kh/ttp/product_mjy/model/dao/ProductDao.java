@@ -1,4 +1,4 @@
-package com.kh.ttp.product.model.dao;
+package com.kh.ttp.product_mjy.model.dao;
 
 import java.util.ArrayList;
 

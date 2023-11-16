@@ -1,4 +1,4 @@
-package com.kh.ttp.product.controller;
+package com.kh.ttp.product_mjy.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +23,7 @@ import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
 import com.kh.ttp.productOption.model.vo.ProductOption;
+import com.kh.ttp.product_mjy.model.vo.ProductVO;
 
 @Controller
 public class ProductController {
@@ -66,7 +67,7 @@ public class ProductController {
 		//System.out.println(pdtManufac);
 		//System.out.println(pdtGroup);
 		//System.out.println(pdtIngredient);
-		Product p = new Product();
+		ProductVO p = new ProductVO();
 		p.setPdtName(pdtName);
 		p.setPdtIntro(pdtIntro);
 		p.setPdtDescription(pdtDescription);
