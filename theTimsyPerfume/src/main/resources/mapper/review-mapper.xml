@@ -18,6 +18,20 @@
 	<result column="PDT_PRICE" property="productPrice"/>
 </resultMap>
 
+<resultMap type="comment" id="commentResultSet">
+	<result column="COMMENT_NO" property="commentNo"/>
+	<result column="nickname" property="userNo"/>
+	<result column="BOARD_NO" property="boardNo"/>
+	<result column="REVIEW_NO" property="reviewNo"/>
+	<result column="COMMENT_CONTENT" property="commentContent"/>
+	<result column="COMMENT_CREATE_DATE" property="commentCreateDate"/>
+	<result column="COMMENT_MODIFY_DATE" property="commentModifyDate"/>
+	<result column="COMMENT_GROUP" property="commentGroup"/>
+	<result column="COMMENT_INDEX" property="commentIndex"/>
+	<result column="COMMENT_DEPTH" property="commentDepth"/>
+	<result column="COMMENT_STATE" property="commentState"/>
+</resultMap>
+
 <select id="countReviewList" resultType="_int">
 select
 	count(*)
@@ -78,4 +92,61 @@ FROM
 WHERE
     REVIEW_NO = 1
 </select>
+<select id="selectCommentList" parameterType="map" resultMap="commentResultSet">
+SELECT
+    COMMENT_NO,
+    NICKNAME,
+    COMMENT_CONTENT,
+    TO_CHAR(COMMENT_CREATE_DATE,'YYYY-MM-dd HH24:mm') "COMMENT_CREATE_DATE",
+    COMMENT_GROUP,
+    COMMENT_INDEX,
+    COMMENT_DEPTH
+FROM
+    TB_COMMENT
+JOIN TB_USER USING(USER_NO)
+WHERE
+    <choose>
+	<when test='boardNo != 0'>
+		BOARD_NO=#{boardNo}
+	</when>
+	<otherwise>
+		REVIEW_NO=#{reviewNo}
+	</otherwise>
+	</choose>
+	<if test="commentGroup != 0">
+	AND COMMENT_GROUP = #{commentGroup}
+	AND COMMENT_INDEX != 0
+	</if>
+ORDER BY
+    COMMENT_GROUP DESC, COMMENT_INDEX DESC
+</select>
+<update id="increaseCommentIndex" parameterType="_int">
+UPDATE TB_COMMENT SET COMMENT_INDEX=COMMENT_INDEX+1 WHERE COMMENT_GROUP = #{commentGroup}
+</update>
+<insert id="insertComment" parameterType="comment">
+INSERT INTO TB_COMMENT(
+    COMMENT_NO,
+    USER_NO,
+    REVIEW_NO,
+    COMMENT_CONTENT,
+    COMMENT_GROUP,
+    COMMENT_INDEX,
+    COMMENT_DEPTH
+) VALUES (
+    SEQ_COMMENT.NEXTVAL,
+    #{userNo},
+    #{reviewNo},
+    #{commentContent},
+    <choose>
+	<when test='commentGroup == 0'>
+		SEQ_COMMENT.CURRVAL,
+	</when>
+	<otherwise>
+		#{commentGroup},
+	</otherwise>
+	</choose>
+	0,
+    #{commentDepth}
+)
+</insert>
 </mapper>

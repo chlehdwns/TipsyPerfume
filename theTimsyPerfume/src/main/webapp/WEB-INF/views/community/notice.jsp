@@ -82,7 +82,7 @@
                         <img class="img" src="./블루-신형.jpg" alt="">
                     </div>
                     <div class="notice-title">
-                        팁시퍼품 명의도용 및 사칭주의 안내
+                        팁시퍼퓸 명의도용 및 사칭주의 안내
                     </div>
                 </div>
             </td>

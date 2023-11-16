@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productMapper">
+	<insert id="insertProductCategory" parameterType="productCategory">
+		INSERT
+			INTO
+				TB_PRODUCT_CATEGORY
+			VALUES(
+			SEQ_PRODUCT_CATEGORY.NEXTVAL,
+			'A',
+			'C',
+			#{pdtManufac},
+			#{pdtGroup}
+			)
+	</insert>
+	<select id="selectProductCategory"  resultType="_int">
+		SELECT
+			MAX(PDT_CATEG_NO)
+		FROM
+	TB_PRODUCT_CATEGORY
+	</select>
+	<insert id="insertProduct" parameterType="product">
+INSERT INTO
+	TB_PRODUCT(
+		PDT_NO,
+		PDT_CATEG_NO,
+		PDT_NAME,
+		PDT_PRICE,
+		PDT_STOCK,
+		PDT_INTRO,
+		PDT_DESCRIPTION,
+		PDT_INGREDIENT,
+		PDT_SHIPPING
+	)
+VALUES(
+	SEQ_PRODUCT.NEXTVAL,
+	#{pdtCategNo},
+	#{pdtName},
+	#{pdtPrice},
+	#{pdtStock},
+	#{pdtIntro},
+	#{pdtDescription},
+	#{pdtIngredient},
+	#{pdtShipping}
+)
+	</insert>
+
+</mapper>
