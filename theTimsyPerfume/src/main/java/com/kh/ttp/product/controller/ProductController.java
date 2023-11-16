@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.service.ProductService;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
+import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
 import com.kh.ttp.productOption.model.vo.ProductOption;
@@ -66,7 +67,7 @@ public class ProductController {
 		//System.out.println(pdtManufac);
 		//System.out.println(pdtGroup);
 		//System.out.println(pdtIngredient);
-		Product p = new Product();
+		ProductVO p = new ProductVO();
 		p.setPdtName(pdtName);
 		p.setPdtIntro(pdtIntro);
 		p.setPdtDescription(pdtDescription);
