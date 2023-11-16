@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productMapper1">
+	
+	<resultMap id="productSelectResultSet" type="productSelect">
+		<result column="PDT_NO" property="pdtNo" />
+		<result column="PDT_NAME" property="pdtName" />
+		<result column="PDT_INTRO" property="pdtIntro" />
+		<result column="PDT_DESCRIPTION" property="pdtDescription" />
+		<result column="PDT_MANUFAC" property="pdtManufac" />
+		<result column="REVIEW_AVG" property="reviewAvg" />
+		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
+	</resultMap>
+	
+	<sql id="pdtMainColumns">
+	   PDT_NO,
+	   PDT_NAME,
+	   PDT_INTRO,
+	   PDT_DESCRIPTION,
+	   PDT_MANUFAC,
+	   REVIEW_AVG
+	</sql>
+	
+	<select id="selectPdtMainList" parameterType="string" resultMap="productSelectResultSet">
+SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, REVIEW_AVG, PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC"
+FROM (
+SELECT ROWNUM RNUM, ${pdtMainColumns}
+FROM(
+SELECT ${pdtMainColumns}
+FROM
+(SELECT ${pdtMainColumns}
+FROM(
+SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC
+FROM TB_PRODUCT
+JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+WHERE PDT_CTEG = #{pdtCteg}
+AND PDT_FAMILY = 'B'
+AND PDT_STATUS = 'Y')
+LEFT
+JOIN
+(SELECT PDT_NO, AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
+FROM TB_PRODUCT
+LEFT JOIN TB_REVIEW USING(PDT_NO)
+WHERE REVIEW_STATE = 'Y'
+OR REVIEW_STATE IS NULL
+GROUP BY PDT_NO) USING(PDT_NO))
+ORDER BY PDT_NO DESC
+)
+)
+JOIN
+TB_PRODUCT_FILE USING(PDT_NO)
+<![CDATA[WHERE RNUM <= 6]]>
+AND PDT_FILE_INDEX = 0
+ORDER BY RNUM
+	</select>
+	
+	
+	
+	
+</mapper>
