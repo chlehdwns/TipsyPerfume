@@ -1,4 +1,5 @@
-package com.kh.ttp.product.controller;
+/*
+package com.kh.ttp.product_mjy.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,11 +30,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-
-	/**
-	 * 상품 메인페이지 조회 기능
-	 * @return
-	 */
+	
 	@GetMapping("productMain.pr")
 	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
 											 ModelAndView mv) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
@@ -118,3 +115,4 @@ public class ProductController {
 	}
 
 }
+*/
