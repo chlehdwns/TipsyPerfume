@@ -33,19 +33,13 @@ public class ProductServiceImpl implements ProductService {
 	private ProductOptionDao productOptionDao;
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
 	@Override
 	public int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
 		productCategoryDao.drinkFundingInsert(sqlSession,pc);
 		return 0;
 	}
 
-	
-
-	
-	
-	
-	
-	
 	@Override
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey) {
 		return productDao.productMain(sqlSession, pdtIdenKey);

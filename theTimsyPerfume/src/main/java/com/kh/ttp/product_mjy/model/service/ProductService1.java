@@ -1,5 +1,5 @@
-package com.kh.ttp.product_mjy.model.service;
-
+/*
+package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 
@@ -18,3 +18,4 @@ public interface ProductService {
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
 }
+*/

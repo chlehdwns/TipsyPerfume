@@ -1,4 +1,5 @@
-package com.kh.ttp.product_mjy.model.dao;
+/*
+package com.kh.ttp.product.model.dao;
 
 import java.util.ArrayList;
 
@@ -17,3 +18,4 @@ public class ProductDao {
 	}
 
 }
+*/

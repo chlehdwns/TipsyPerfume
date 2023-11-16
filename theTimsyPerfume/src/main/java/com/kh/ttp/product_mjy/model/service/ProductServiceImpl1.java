@@ -1,4 +1,5 @@
-package com.kh.ttp.product_mjy.model.service;
+/*
+package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 
@@ -55,3 +56,4 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 }
+*/
