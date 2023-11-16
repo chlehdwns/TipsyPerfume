@@ -227,7 +227,7 @@ ${review.reviewContent }
 </section>
 <script>
     $(()=>{
-        selectCommentList();
+        loadAllCommentList();
         $(".comment-open-btn").click(function() {
             let $commentDiv = $(this).next(".review-comment-div");
             if ($commentDiv.css("display") === 'none') {
@@ -238,7 +238,7 @@ ${review.reviewContent }
                 $(".comment-open-btn").text("펼치기");
             }
         });
-        $(document).on('click','.re-comment-open', function() {
+        $(document).on("click",".re-comment-open", function(){
             let $reCommentDiv = $(this).next(".re-comment-div");
             if ($reCommentDiv.css("display") === 'none') {
                 $reCommentDiv.slideDown(100);
@@ -248,94 +248,130 @@ ${review.reviewContent }
                 $(".comment-open-btn").text("답글");
             }
         });
-        /*
-        $(".re-comment-open").click(function() {
-            let $reCommentDiv = $(this).next(".re-comment-div");
-            if ($reCommentDiv.css("display") === 'none') {
-                $reCommentDiv.slideDown(100);
-                $(".comment-open-btn").text("닫기");
-            } else {
-                $reCommentDiv.slideUp(100);
-                $(".comment-open-btn").text("답글");
-            }
-        });*/
-        $(".comment-btn").click(function(){
-            const text = $(this).prevAll(".comment-textarea").val();
-            const reviewNo = $("#review-no").val();
-            const commentNo = $(this).prevAll(".comment-no").val();
+        $(document).on("click",".comment-btn", function(){
+            const $commentContent = $(this).prevAll(".comment-textarea");
+            const $reviewNo = $("#review-no");
+            const $commentGroup = $(this).prevAll(".comment-no");
+            const $commentDepth = $(this).prevAll(".comment-depth");
+            console.log()
+            const userNo = "${loginUser.userNo}";
             $.ajax({
                 url:"insertComment",
                 type:"post",
                 data:{
-                    commentContent:text,
-                    reviewNo:reviewNo,
-                    commentNo:commentNo
+                    commentContent:$commentContent.val(),
+                    commentGroup:$commentGroup.val(),
+                    commentDepth:$commentDepth.val(),
+                    reviewNo:$reviewNo.val(),
+                    userNo:userNo
                 },
                 success:(result)=>{
                     console.log(result);
-                },
-                error:()=>{
-                    console.log("통신실패");
-                }
-            })
-        })
-    })
-    function selectCommentList(){
-        $.ajax({
-                url:"commentList",
-                type:"get",
-                data:{
-                    reviewNo:$("#review-no").val()
-                },
-                success:(result)=>{
-                    console.log(result);
-                    const $commentWrap = $("#review-comment-wrap");
-                    let value="";
-                    for(let i in result){
-                        if(result[i].commentIndex == 0){
-                            value+=  "<div class='review-comment'>"
-                                    +"<div class='display-flex bottom-interval'>"
-                                    +"<div class='profile-wrap'>"
-                                    +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
-                                    +"</div>"
-                                    +"<div class='name-wrap'>"+result[i].userNo+"</div>"
-                                    +"</div>"
-                                    +"<div>"+result[i].commentContent+"</div>"
-                                    +"<div>"+result[i].commentCreateDate+"</div>"
-                                    +"<button class='re-comment-open'>답글</button>"
-                                    +"<div class='re-comment-div' style='display: none;'>"
-                                    +"<div>답글쓰기</div>"
-                                    +"<div class='write-area'>"
-                                    +"<textarea class='comment-textarea'></textarea>"
-                                    +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
-                                    +"<button class='comment-btn' type='button'>입력</button>"
-                                    +"</div>"
-                                    +"<div class='re-comment-wrap'>";
+                    if(result=="1"){
+                        $commentContent.val("");
+                        if($commentGroup.val()){
+                            loadGroupCommentList($commentGroup.val());
                         }
                         else{
-                            value+=  "<div class='review-comment'>"
-                                    +"<div class='display-flex bottom-interval'>"
-                                    +"<div class='profile-wrap'>"
-                                    +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
-                                    +"</div>"
-                                    +"<div class='name-wrap'>"+result[i].userNo+"</div>"
-                                    +"</div>"
-                                    +"<div>"+result[i].commentContent+"</div>"
-                                    +"<div>"+result[i].commentCreateDate+"</div>"
-                                    +"</div>";
-                        }
-                        if(result[i].commentIndex == 0){
-                            value+=  "</div>"
-                                    +"</div>"
-                                    +"</div>";
+                            loadAllCommentList();
                         }
                     }
-                    $commentWrap.html(value);
                 },
                 error:()=>{
                     console.log("통신실패");
                 }
-            })
+            });
+        });
+    });
+    function loadAllCommentList(){
+        $.ajax({
+            url:"commentList",
+            type:"get",
+            data:{
+                reviewNo:$("#review-no").val()
+            },
+            success:(result)=>{
+                console.log(result);
+                const $commentWrap = $("#review-comment-wrap");
+                let value="";
+                console.log("생성")
+                for(let i in result){
+                    if(result[i].commentDepth == 0){
+                        value+=  "<div class='review-comment'>"
+                                +"<div class='display-flex bottom-interval'>"
+                                +"<div class='profile-wrap'>"
+                                +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                +"</div>"
+                                +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                                +"</div>"
+                                +"<div>"+result[i].commentContent+"</div>"
+                                +"<div>"+result[i].commentCreateDate+"</div>"
+                                +"<button class='re-comment-open'>답글</button>"
+                                +"<div class='re-comment-div' style='display: none;'>"
+                                +"<div>답글쓰기</div>"
+                                +"<div class='write-area'>"
+                                +"<textarea class='comment-textarea'></textarea>"
+                                +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
+                                +"<input class='comment-depth' type='hidden' value='"+result[i].commentDepth+1+"'>"
+                                +"<button class='comment-btn' type='button'>입력</button>"
+                                +"</div>"
+                                +"<div class='re-comment-wrap'>";
+                    }
+                    else{
+                        value+=  "<div class='review-comment'>"
+                                +"<div class='display-flex bottom-interval'>"
+                                +"<div class='profile-wrap'>"
+                                +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                +"</div>"
+                                +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                                +"</div>"
+                                +"<div>"+result[i].commentContent+"</div>"
+                                +"<div>"+result[i].commentCreateDate+"</div>"
+                                +"</div>";
+                    }
+                    if(result[i].commentIndex == 0){
+                        value+=  "</div>"
+                                +"</div>"
+                                +"</div>";
+                    }
+                }
+                $commentWrap.html(value);
+            },
+            error:()=>{
+                console.log("통신실패");
+            }
+        });
+    }
+    function loadGroupCommentList(commentGroup){
+        $.ajax({
+            url:"commentList",
+            type:"get",
+            data:{
+                "reviewNo":$("#review-no").val(),
+                "commentGroup":commentGroup
+            },
+            success:(result)=>{
+                console.log(result);
+                const $commentWrap = $(this).parent().next(".re-comment-wrap");
+                let value="";
+                for(let i in result){
+                    value+=  "<div class='review-comment'>"
+                            +"<div class='display-flex bottom-interval'>"
+                            +"<div class='profile-wrap'>"
+                            +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                            +"</div>"
+                            +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                            +"</div>"
+                            +"<div>"+result[i].commentContent+"</div>"
+                            +"<div>"+result[i].commentCreateDate+"</div>"
+                            +"</div>";
+                }
+                $commentWrap.html(value);
+            },
+            error:()=>{
+                console.log("통신실패");
+            }
+        });
     }
 </script>
 </body>

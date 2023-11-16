@@ -15,6 +15,4 @@ public class CommentVO {
 	private int commentIndex;
 	private int commentDepth;
 	private String commentState;
-	
-	private int groupSize;
 }

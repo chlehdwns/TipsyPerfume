@@ -7,6 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.model.dao.ReviewDAO;
@@ -14,6 +16,7 @@ import com.kh.ttp.community.model.vo.CommentVO;
 import com.kh.ttp.community.model.vo.ReviewVO;
 
 @Service
+@EnableTransactionManagement
 public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
@@ -45,7 +48,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.selectCommentList(sqlSession, map);
 	}
 	@Override
+	@Transactional
 	public int insertComment(CommentVO comment) {
+		reviewDao.increaseCommentIndex(sqlSession, comment.getCommentGroup());
 		return reviewDao.insertComment(sqlSession, comment);
 	}
 }
