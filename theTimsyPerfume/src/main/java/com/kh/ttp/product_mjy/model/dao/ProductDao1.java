@@ -10,8 +10,9 @@ import com.kh.ttp.product.model.vo.ProductSelectVO;
 @Repository
 public class ProductDao1 {
 
-	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession, String pdtCteg) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pdtCteg);
+
+	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession, ProductSelectVO pdt) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pdt);
 	}
 	
 

@@ -17,20 +17,25 @@ public class ProductController1 {
 	@Autowired
 	private ProductService1 productService;
 	
+	/**
+	 * @param pdt : 주류 향수 구분(pdtCteg), 주류 : A, 향수 F
+	 * @param mv
+	 * @return
+	 */
 	@GetMapping("productMain.prr") // @@@@@@pr로 수정
-	public String productMainList(@RequestParam("pdtCteg") String pdtCteg,
+	public ModelAndView productMainList(ProductSelectVO pdt,
 											 		   ModelAndView mv) {
-		
-		ArrayList<ProductSelectVO> productMainList = productService.productMainList(pdtCteg);
-		
-		mv.addObject("pdtCteg", pdtCteg); // 얘도 나중에 돌려줘야함
-		System.out.println("저는 Product Controller예용 " + productMainList); // common/errorPage  ${ errorMsg }
-
-		//mv.addObject("errorMsg", "상품 메인화면 이동에 실패했습니다")
-		//  .setViewName("common/errorPage");
-		
-		// pdtIdenKey 같이 넘겨줘야함 (식별자 보고 div띄워줄 것) 
-		return "product/productMain";
+		if("A".equals(pdt.getPdtCteg()) || "F".equals(pdt.getPdtCteg())) {
+			pdt.setPickQuantity(6);
+			ArrayList<ProductSelectVO> productMainList = productService.productMainList(pdt);
+			mv.addObject("pdtCteg", pdt.getPdtCteg())
+			  .addObject("productMainList", productMainList) // 얘도 나중에 돌려줘야함
+			  .setViewName("product/productMain");
+		} else {
+			mv.addObject("errorMsg", "상품 메인화면 이동에 실패했습니다")
+			  .setViewName("common/errorPage");
+		}
+		return mv;
 	}
 	
 }

@@ -19,8 +19,8 @@ public class ProductServiceImpl1 implements ProductService1 {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public ArrayList<ProductSelectVO> productMainList(String pdtCteg) {
-		return productDao.productMainList(sqlSession, pdtCteg);
+	public ArrayList<ProductSelectVO> productMainList(ProductSelectVO pdt) {
+		return productDao.productMainList(sqlSession, pdt);
 	}
 
 
