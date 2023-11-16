@@ -140,13 +140,12 @@ INSERT INTO TB_COMMENT(
     <choose>
 	<when test='commentGroup == 0'>
 		SEQ_COMMENT.CURRVAL,
-		0,
 	</when>
 	<otherwise>
 		#{commentGroup},
-		1,
 	</otherwise>
 	</choose>
+	0,
     #{commentDepth}
 )
 </insert>

@@ -48,7 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.selectCommentList(sqlSession, map);
 	}
 	@Override
-	/*@Transactional*/
+	@Transactional
 	public int insertComment(CommentVO comment) {
 		reviewDao.increaseCommentIndex(sqlSession, comment.getCommentGroup());
 		return reviewDao.insertComment(sqlSession, comment);

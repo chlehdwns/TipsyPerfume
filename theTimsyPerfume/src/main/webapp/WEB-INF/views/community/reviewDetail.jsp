@@ -253,6 +253,7 @@ ${review.reviewContent }
             const $reviewNo = $("#review-no");
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
+            console.log()
             const userNo = "${loginUser.userNo}";
             $.ajax({
                 url:"insertComment",
@@ -260,6 +261,7 @@ ${review.reviewContent }
                 data:{
                     commentContent:$commentContent.val(),
                     commentGroup:$commentGroup.val(),
+                    commentDepth:$commentDepth.val(),
                     reviewNo:$reviewNo.val(),
                     userNo:userNo
                 },
@@ -267,7 +269,7 @@ ${review.reviewContent }
                     console.log(result);
                     if(result=="1"){
                         $commentContent.val("");
-                        if($commentGroup){
+                        if($commentGroup.val()){
                             loadGroupCommentList($commentGroup.val());
                         }
                         else{
@@ -292,6 +294,7 @@ ${review.reviewContent }
                 console.log(result);
                 const $commentWrap = $("#review-comment-wrap");
                 let value="";
+                console.log("생성")
                 for(let i in result){
                     if(result[i].commentDepth == 0){
                         value+=  "<div class='review-comment'>"
@@ -309,7 +312,7 @@ ${review.reviewContent }
                                 +"<div class='write-area'>"
                                 +"<textarea class='comment-textarea'></textarea>"
                                 +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
-                                +"<input class='comment-no' type='hidden' value='"+result[i].commentDepth+1+"'>"
+                                +"<input class='comment-depth' type='hidden' value='"+result[i].commentDepth+1+"'>"
                                 +"<button class='comment-btn' type='button'>입력</button>"
                                 +"</div>"
                                 +"<div class='re-comment-wrap'>";
@@ -349,7 +352,7 @@ ${review.reviewContent }
             },
             success:(result)=>{
                 console.log(result);
-                const $commentWrap = $(".comment-no[value="+commentGroup+"]").parent().next(".re-comment-wrap");
+                const $commentWrap = $(this).parent().next(".re-comment-wrap");
                 let value="";
                 for(let i in result){
                     value+=  "<div class='review-comment'>"

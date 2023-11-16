@@ -34,7 +34,6 @@ public class ReviewDAO {
 	}
 
 	public int increaseCommentIndex(SqlSessionTemplate sqlSession, int commentGroup) {
-		System.out.println(commentGroup);
 		return sqlSession.update("reviewMapper.increaseCommentIndex", commentGroup);
 	}
 	
