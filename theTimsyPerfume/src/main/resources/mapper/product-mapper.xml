@@ -46,5 +46,53 @@ VALUES(
 	#{pdtShipping}
 )
 	</insert>
+	<select id="selectProduct" resultType="_int">
+		SELECT
+			MAX(PDT_NO)
+		FROM
+			TB_PRODUCT
+	</select>
+	<insert id="insertProductOption" parameterType="productOption">
+		INSERT
+			INTO
+		TB_PRODUCT_OPTION
+			VALUES(
+				SEQ_PRODUCT_OPTION.NEXTVAL,
+				#{pdtNo},
+				#{pdtOptionFirst},
+				#{pdtOptionSecond}
+			)
+	
+	</insert>
+	<insert id="insertProductFile" parameterType="productFile">
+		INSERT
+			INTO
+		TB_PRODUCT_FILE
+			VALUES(
+				SEQ_PRODUCT_FILE.NEXTVAL,
+				#{pdtNo},
+				0,
+				'/resources/uploadFiles',
+				#{pdtFileOrigin},
+				#{pdtFileUpload}
+				
+				
+			)
+	</insert>
+	<insert id="insertFunding" parameterType="funding">
+		INSERT
+			INTO
+		TB_FUNDING
+			VALUES(
+				SEQ_FUNDING.NEXTVAL,
+				#{pdtNo},
+				0,
+				#{cuttingDate},
+				0,
+				#{cuttingPrice}
+			)
+			
+		
+	</insert>
 
 </mapper>

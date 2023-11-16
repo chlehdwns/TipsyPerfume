@@ -13,6 +13,9 @@
 		<typeAlias type="com.kh.ttp.community.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
+		<typeAlias type="com.kh.ttp.productOption.model.vo.ProductOption" alias="productOption"/>
+		<typeAlias type="com.kh.ttp.productFile.model.vo.ProductFile" alias="productFile"/>
+		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
 	</typeAliases>
 
 	  <mappers>

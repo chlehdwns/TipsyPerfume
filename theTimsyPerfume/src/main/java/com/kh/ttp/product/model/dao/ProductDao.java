@@ -20,6 +20,10 @@ public class ProductDao {
 	public int drinkFundingInsert(SqlSessionTemplate sqlSession, ProductVO p) {
 		return sqlSession.insert("productMapper.insertProduct", p);
 	}
+
+	public int drinkFundingSelect(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("productMapper.selectProduct");
+	}
 	
 
 }
