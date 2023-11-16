@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,14 +48,19 @@ public class ReviewController {
 	}
 	@GetMapping(value = "commentList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String ajaxCommentList(int boardNo, int reviewNo) {
+	public String ajaxCommentList(
+			@RequestParam(value = "boardNo", defaultValue = "0")int boardNo, 
+			@RequestParam(value = "reviewNo", defaultValue = "0")int reviewNo) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("boardNo",boardNo);
 		map.put("reviewNo",reviewNo);
-		System.out.println(map);
-		//ArrayList<CommentVO> list = reviewService.selectCommentList(map);
+		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
-		//return new Gson().toJson(list);
-		return "1";
+		return new Gson().toJson(list);
+	}
+	@PostMapping(value = "commentInsert", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String ajaxInsertComment(CommentVO comment) {
+		return Integer.toString(reviewService.insertComment(comment));
 	}
 }

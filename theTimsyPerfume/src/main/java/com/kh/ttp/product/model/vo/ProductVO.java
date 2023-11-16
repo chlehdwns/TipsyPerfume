@@ -1,11 +1,10 @@
 package com.kh.ttp.product.model.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor
-public class Product {
-	
+@Data @AllArgsConstructor
+public class ProductVO {
 	/*
 	PDT_NO	NUMBER
 	PDT_CATEG_NO	NUMBER
