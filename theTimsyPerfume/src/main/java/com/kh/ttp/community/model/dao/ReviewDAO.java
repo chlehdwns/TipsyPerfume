@@ -33,8 +33,14 @@ public class ReviewDAO {
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectCommentList", map);
 	}
 
+	public int increaseCommentIndex(SqlSessionTemplate sqlSession, int commentGroup) {
+		System.out.println(commentGroup);
+		return sqlSession.update("reviewMapper.increaseCommentIndex", commentGroup);
+	}
+	
 	public int insertComment(SqlSessionTemplate sqlSession, CommentVO comment) {
 		return sqlSession.insert("reviewMapper.insertComment", comment);
 	}
+
 
 }
