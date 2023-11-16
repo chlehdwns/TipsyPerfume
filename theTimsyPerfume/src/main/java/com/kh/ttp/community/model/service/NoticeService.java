@@ -1,5 +1,12 @@
 package com.kh.ttp.community.model.service;
 
-public interface NoticeService {
+import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
+
+import com.kh.ttp.community.model.vo.NoticeVO;
+
+public interface NoticeService {
+	public int countNoticeList();
+	public ArrayList<NoticeVO> selectNoticeList(RowBounds rowBounds);
 }

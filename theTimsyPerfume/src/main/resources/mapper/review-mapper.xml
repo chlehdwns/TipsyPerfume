@@ -90,7 +90,7 @@ SELECT
 FROM
     TB_REVIEW_FILE
 WHERE
-    REVIEW_NO = 1
+    REVIEW_NO = #{reviewNo}
 </select>
 <select id="selectCommentList" parameterType="map" resultMap="commentResultSet">
 SELECT
@@ -115,7 +115,7 @@ WHERE
 	</choose>
 	<if test="commentGroup != 0">
 	AND COMMENT_GROUP = #{commentGroup}
-	AND COMMENT_INDEX != 0
+	AND COMMENT_DEPTH != 0
 	</if>
 ORDER BY
     COMMENT_GROUP DESC, COMMENT_INDEX DESC
