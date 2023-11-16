@@ -55,7 +55,7 @@ public class ProductController {
 	
 	
 	@RequestMapping("insertDrink.fun")
-	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock) {
+	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond) {
 		System.out.println(upfile);
 		//System.out.println(pdtName);
 		//System.out.println(pdtIntro);
@@ -82,7 +82,10 @@ public class ProductController {
 		
 		ProductFile pf = new ProductFile();
 		
+		
 		ProductOption po = new ProductOption();
+		po.setPdtOptionFirst(pdtOptionFirst);
+		po.setPdtOptionSecond(pdtOptionSecond);
 		
 		Funding f = new Funding();
 		f.setCuttingDate(cuttingDate);
@@ -92,13 +95,18 @@ public class ProductController {
 			pf.setPdtFileOrigin(upfile.getOriginalFilename());
 			pf.setPdtFileUpload(saveFile(upfile,session));
 		}
-		productService.drinkFundingInsert(p,pf,po,f,pc);
+		if(productService.drinkFundingInsert(p,pf,po,f,pc)>0) {
+			session.setAttribute("alertMsg", "펀딩 상품 등록 완료.");
+			return "redirect:funding.list";
+		} else {
+			return "common/errorPage";
+		}
 		
 		
 		
 		
 		
-		return "";
+		
 	}
 	private String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
