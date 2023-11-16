@@ -14,7 +14,7 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
-	<sql id="pdtMainColumns">
+	<sql id="productMainListCols">
 	   PDT_NO,
 	   PDT_NAME,
 	   PDT_INTRO,
@@ -23,14 +23,14 @@
 	   REVIEW_AVG
 	</sql>
 	
-	<select id="selectPdtMainList" parameterType="string" resultMap="productSelectResultSet">
+	<select id="productMainList" parameterType="string" resultMap="productSelectResultSet">
 SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, REVIEW_AVG, PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC"
 FROM (
-SELECT ROWNUM RNUM, ${pdtMainColumns}
+SELECT ROWNUM RNUM, PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, REVIEW_AVG
 FROM(
-SELECT ${pdtMainColumns}
+SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, REVIEW_AVG
 FROM
-(SELECT ${pdtMainColumns}
+(SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, REVIEW_AVG
 FROM(
 SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC
 FROM TB_PRODUCT
