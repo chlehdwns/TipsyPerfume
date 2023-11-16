@@ -292,29 +292,43 @@ ${review.reviewContent }
                     const $commentWrap = $("#review-comment-wrap");
                     let value="";
                     for(let i in result){
-                        value+=
-                            "<div class='review-comment'>"
-                            +"<div class='display-flex bottom-interval'>"
-                            +"<div class='profile-wrap'>"
-                            +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
-                            +"</div>"
-                            +"<div class='name-wrap'>"+result[i].userNo+"</div>"
-                            +"</div>"
-                            +"<div>"+result[i].commentContent+"</div>"
-                            +"<div>"+result[i].commentCreateDate+"</div>"
-                            +"<button class='re-comment-open'>답글</button>"
-                            +"<div class='re-comment-div' style='display: none;'>"
-                            +"<div>답글쓰기</div>"
-                            +"<div class='write-area'>"
-                            +"<textarea class='comment-textarea'></textarea>"
-                            +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
-                            +"<button class='comment-btn' type='button'>입력</button>"
-                            +"</div>"
-                            +"<div class='re-comment-wrap'>"
-                                
-                            +"</div>"
-                            +"</div>"
-                            +"</div>";
+                        if(result[i].commentIndex == 0){
+                            value+=  "<div class='review-comment'>"
+                                    +"<div class='display-flex bottom-interval'>"
+                                    +"<div class='profile-wrap'>"
+                                    +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                    +"</div>"
+                                    +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                                    +"</div>"
+                                    +"<div>"+result[i].commentContent+"</div>"
+                                    +"<div>"+result[i].commentCreateDate+"</div>"
+                                    +"<button class='re-comment-open'>답글</button>"
+                                    +"<div class='re-comment-div' style='display: none;'>"
+                                    +"<div>답글쓰기</div>"
+                                    +"<div class='write-area'>"
+                                    +"<textarea class='comment-textarea'></textarea>"
+                                    +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
+                                    +"<button class='comment-btn' type='button'>입력</button>"
+                                    +"</div>"
+                                    +"<div class='re-comment-wrap'>";
+                        }
+                        else{
+                            value+=  "<div class='review-comment'>"
+                                    +"<div class='display-flex bottom-interval'>"
+                                    +"<div class='profile-wrap'>"
+                                    +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                    +"</div>"
+                                    +"<div class='name-wrap'>"+result[i].userNo+"</div>"
+                                    +"</div>"
+                                    +"<div>"+result[i].commentContent+"</div>"
+                                    +"<div>"+result[i].commentCreateDate+"</div>"
+                                    +"</div>";
+                        }
+                        if(result[i].commentIndex == 0){
+                            value+=  "</div>"
+                                    +"</div>"
+                                    +"</div>";
+                        }
                     }
                     $commentWrap.html(value);
                 },

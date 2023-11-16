@@ -1,3 +1,4 @@
+/*
 package com.kh.ttp.product.model.service;
 
 
@@ -17,3 +18,4 @@ public interface ProductService {
 	int drinkFundingInsert(Product p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
 }
+*/
