@@ -56,7 +56,7 @@ public class ProductController {
 	
 	@RequestMapping("insertDrink.fun")
 	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock) {
-		//System.out.println(upfile);
+		System.out.println(upfile);
 		//System.out.println(pdtName);
 		//System.out.println(pdtIntro);
 		//System.out.println(pdtDescription);

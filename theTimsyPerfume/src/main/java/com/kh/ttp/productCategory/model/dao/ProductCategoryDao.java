@@ -15,7 +15,7 @@ public class ProductCategoryDao {
 		 
 	}
 
-	public ProductCategory drinkFundingSelect(SqlSessionTemplate sqlSession) {
+	public int drinkFundingSelect(SqlSessionTemplate sqlSession) {
 		
 		 return sqlSession.selectOne("productMapper.selectProductCategory");
 		 
