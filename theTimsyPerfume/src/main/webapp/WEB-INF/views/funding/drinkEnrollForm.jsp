@@ -64,6 +64,7 @@
 				  </select>
 				  <br>
 		원료 재료 : <input type="text" id="ingredient" name="pdtIngredient" class="form-control">
+		재고 : <input type="number" id="stock" name="pdtStock" class="form-control">
 	</div>
 	<div id="button-area">
 	<button type="submit" class="funding-btn">등록하기</button>

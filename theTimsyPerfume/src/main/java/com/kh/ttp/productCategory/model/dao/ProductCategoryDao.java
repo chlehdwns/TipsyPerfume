@@ -9,9 +9,18 @@ import com.kh.ttp.productCategory.model.vo.ProductCategory;
 public class ProductCategoryDao {
 
 	public int drinkFundingInsert(SqlSessionTemplate sqlSession, ProductCategory pc) {
+		return sqlSession.insert("productMapper.insertProductCategory",pc); 
 		
+		  
+		 
+	}
+
+	public ProductCategory drinkFundingSelect(SqlSessionTemplate sqlSession) {
 		
-		 return  sqlSession.insert("productMapper.insertProductCategory",pc); 
+		 return sqlSession.selectOne("productMapper.selectProductCategory");
+		 
+		
+		 
 	}
 	
 

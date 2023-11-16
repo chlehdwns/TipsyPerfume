@@ -55,7 +55,7 @@ public class ProductController {
 	
 	
 	@RequestMapping("insertDrink.fun")
-	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient) {
+	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock) {
 		//System.out.println(upfile);
 		//System.out.println(pdtName);
 		//System.out.println(pdtIntro);
@@ -74,6 +74,7 @@ public class ProductController {
 		p.setPdtShipping(pdtShipping);
 		p.setPdtPrice(pdtPrice);
 		p.setPdtIngredient(pdtIngredient);
+		p.setPdtStock(pdtStock);
 		ProductCategory pc = new ProductCategory();
 		pc.setPdtManufac(pdtManufac);
 		pc.setPdtGroup(pdtGroup);

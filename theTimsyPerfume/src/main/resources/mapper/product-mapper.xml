@@ -15,5 +15,32 @@
 			#{pdtGroup}
 			)
 	</insert>
+	<select id="selectProductCategory"  resultType="productCategory">
+		SELECT
+			MAX(PDT_CATEG_NO)
+		FROM
+	TB_PRODUCT_CATEGORY
+	</select>
+	<insert id="insertProduct">
+		INSERT
+			INTO
+				TB_PRODUCT
+			VALUES(
+				SEQ_PRODUCT.NEXTVAL,
+				#{result},
+				#{pdtName},
+				#{pdtPrice},
+				#{pdtStock},
+				SYSDATE,
+				#{pdtIntro},
+				#{pdtDescription}
+				#{pdtIngredient},
+				#{pdtShipping},
+				0,
+				0,
+				'Y',
+				'Y'
+			)
+	</insert>
 
 </mapper>

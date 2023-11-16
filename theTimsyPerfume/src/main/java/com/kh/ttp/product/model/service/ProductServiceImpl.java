@@ -36,8 +36,17 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
-		productCategoryDao.drinkFundingInsert(sqlSession,pc);
+		if(productCategoryDao.drinkFundingInsert(sqlSession,pc)>0) {
+			int result=productCategoryDao.drinkFundingSelect(sqlSession).getPdtCategNo();
+			p.setPdtCategNo(result);
+			//System.out.println(p);
+			productDao.drinkFundingInsert(sqlSession,p);
+				
+			
+		}
 		return 0;
+		
+		
 	}
 
 	@Override
