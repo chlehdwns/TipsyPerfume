@@ -41,61 +41,82 @@
 			STATUS='Y'
 	</select>
 	  
-	  <!--  
-	<select id="emailCheck" parameterType="string" resultType="_int">
-	SELECT
-		COUNT(*)
-	FROM
-		TB_USER
-	WHERE
-		USER_EMAIL = #{checkEmail}
-	</select>
-	-->
+	
 
 
-	<!-- 회원가입용 쿼리문 -->
+	<!-- 회원가입용 쿼리문1 -->
 	<insert id="insertUser" parameterType="user">
 	INSERT
 	INTO
-		MEMBER
+		TB_USER
 		(
 			USER_NO ,
             USER_EMAIL ,
             NICKNAME ,
             USER_PWD ,
             USER_NAME ,
-            MEMBER_TYPE ,
-            BUSINESS_REG ,
-            ADULT_STATUS ,
-            BIRTH_DATE ,
-            ENROLL_DATE ,
-            USER_PROFILE ,
-			
-			PHONE ,
-			ADDRESS ,
-			ADDRESS_DETAIL ,
-			POSTAL_CODE 
+            BIRTH_DATE 
+           
 		)
 	VALUES
 		(
-		#{userNo},
+		SEQ_USER.NEXTVAL,
         #{userEmail},
         #{nickName},
         #{userPwd},
         #{userName},
-        #{memberType},
-        #{businessReg},
-        #{adultStatus},
-        #{birthDate},
-        #{enrollDate},
-        #{userProfile},
-			
+        #{birthDate}
+       
+		)
+	</insert>
+
+	<!-- 회원가입용 쿼리문2 -->
+	<insert id="insertUser2" parameterType="user">
+	INSERT
+	INTO
+		TB_RECEIVER
+			(
+			RECEIVER_NO,
+			USER_NO,
+			RECEIVER_NAME,
+
+			PHONE ,
+			ADDRESS ,
+			ADDRESS_DETAIL ,
+			POSTAL_CODE
+			)
+	VALUES
+		(
+		SEQ_RECEIVER.NEXTVAL,
+		SEQ_USER.CURRVAL,
+		#{receiverName},
+		
 		#{phone},
 		#{address},
 		#{addressDetail},
 		#{postalCode}
 		)
 	</insert>
+
+
+	<select id="emailCheck" parameterType="string" resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM
+			TB_USER
+		WHERE
+			USER_EMAIL = #{checkEmail}
+	</select>
+
+	<insert id="insertSecret" parameterType="com.kh.ttp.user.model.vo.AuthVO">
+		INSERT
+		INTO
+			TB_AUTH
+			(authEmail, authCode, authDate)
+		VALUES
+			(#{authEmail}, #{authCode}, sysdate)
+	</insert>
+	
 
 
 
