@@ -17,4 +17,6 @@ public interface ProductService {
 
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
+	public ArrayList<ProductVO> selectNewFundingList();
+
 }
