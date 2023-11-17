@@ -11,15 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.service.ProductService;
-import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
@@ -31,27 +27,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	/**
-	 * 상품 메인페이지 조회 기능
-	 * @return
-	 */
-	@GetMapping("productMain.pr")
-	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
-											 ModelAndView mv) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
-		
-		ArrayList<ProductSelectVO> productListMain = productService.productMain(pdtIdenKey);
-		
-		mv.addObject("pdtIdenKey", pdtIdenKey); // 얘도 나중에 돌려줘야함
-		
-		
-		
-		System.out.println("저는 Product Controller예용 "); // common/errorPage  ${ errorMsg }
-		mv.addObject("errorMsg", "상품 메인화면 이동에 실패했습니다")
-		  .setViewName("common/errorPage");
-		
-		// pdtIdenKey 같이 넘겨줘야함 (식별자 보고 div띄워줄 것) 
-		return "product/productMain";
-	}
+	
 	
 	
 	@RequestMapping("insertDrink.fun")
@@ -125,6 +101,17 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		return "/resources/uploadFiles/" + changeName;
+	}
+	@RequestMapping("funding.list")
+	private String selectFundingList(Model model) {
+		ArrayList<ProductCategory> pc = productService.selectNewFundingListPC();
+		
+		//productService.selectNewFundingListP();
+		//productService.selectNewFundingListPF();
+		
+		//productService.selectNewFundingListF();
+		//productService.selectNewFundingListPO();
+		return "redirect:fundingMain.list";
 	}
 
 }

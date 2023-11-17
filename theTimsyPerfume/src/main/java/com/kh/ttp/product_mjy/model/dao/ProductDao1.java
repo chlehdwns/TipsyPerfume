@@ -1,5 +1,4 @@
-/*
-package com.kh.ttp.product.model.dao;
+package com.kh.ttp.product_mjy.model.dao;
 
 import java.util.ArrayList;
 
@@ -9,13 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 @Repository
-public class ProductDao {
-	
+public class ProductDao1 {
 
-	
-	public ArrayList<ProductSelectVO> productMain(SqlSessionTemplate sqlSession, String pdtIdenKey) {
-		return null; //@@@@@@@@@@@@null해둠!!!주의*******
+
+	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession, ProductSelectVO pdt) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pdt);
 	}
+	
 
 }
-*/
