@@ -167,14 +167,14 @@ public class UserController {
 		return mv;
 	} 
 	
-	/*
+	
 	@RequestMapping("update.me")
-	public String updateMember(User u, Receiver rc, Model model, HttpSession session) {
+	public String updateMember(User u, int rc, Model model, HttpSession session) {
 		
 		if(userService.updateUser(u) > 0 && userService.updateReceiver(rc) > 0) {
 			
 			session.setAttribute("loginUser", userService.loginUser(u));
-			//session.setAttribute("", userService.selectReceiver(userNo));
+			session.setAttribute("Receiver", userService.selectReceiver(rc));
 			session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
 			return "redirect:myPage.me";
 			
@@ -185,15 +185,11 @@ public class UserController {
 			return "common/errorPage";
 		}
 		
-		
-		
-		
-		
 		return null;
 		
 		
 	}
-	*/
+	
 	
 	
 	

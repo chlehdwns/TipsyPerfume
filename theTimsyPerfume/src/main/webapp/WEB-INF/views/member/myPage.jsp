@@ -41,34 +41,34 @@
             <form action="update.me" method="post">
                 <div class="form-group">
                 
-                	<label for="memberType"> *회원 구분 : </label> &nbsp;&nbsp;
+                	<label for="memberType"> 회원 구분 : </label> &nbsp;&nbsp;
                     <input type="radio" id="User" value="U" name="memberType" checked>
                     <label for="User">개인 회원</label> &nbsp;&nbsp;
                     <input type="radio" id="Sale" value="S" name="memberType">
                     <label for="Sale">사업자 회원</label> &nbsp;&nbsp;
                 <br><br>
                 
-                	<label for="userEmail">* 아이디(이메일) : </label>
+                	<label for="userEmail">아이디(이메일) : </label>
 						<input type="text" class="form-control" value="${ sessionScope.loginUser.userEmail }" name="userEmail" readonly><br>
 						<br>
 						
 
-						<label for="nickName">* 닉네임 : </label>
+						<label for="nickName">닉네임 : </label>
 						<input type="text" class="form-control" value="${ sessionScope.loginUser.nickName  }" name="nickName" required><br>
 						
 						<br>
 
 						
 
-						<label for="phone">* 전화번호 : </label>
+						<label for="phone">전화번호 : </label>
 						<input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" required><br>
 						
 						<br>
 
-						<label for="address">* 배송지</label>
+						<label for="address">배송지:</label>
 						<br>
-						<label for="receiverName">* 받는 사람 이름 : </label>
-						<input type="text" class="form-control" value="${ sessionScope.loginUser.receiverName }"  name="receiverName" required><br>
+						<label for="receiverName">받는 사람 이름 : </label>
+						<input type="text" class="form-control" value="${ rc.receiverName }"  name="receiverName" required><br>
 						
 						<br><br>
 						
