@@ -68,4 +68,33 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.productMain(sqlSession, pdtIdenKey);
 	}
 
+	@Override
+	public ArrayList<ProductVO> selectNewFundingListP() {
+		productDao.selectNewFundingListP();
+		return null;
+	}
+
+	@Override
+	public ArrayList<ProductFile> selectNewFundingListPF() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<ProductCategory> selectNewFundingListPC() {
+		return productDao.selectFundingListPC(sqlSession);
+		
+	}
+
+	@Override
+	public ArrayList<ProductFile> selectNewFundingListF() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<ProductOption> selectNewFundingListPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

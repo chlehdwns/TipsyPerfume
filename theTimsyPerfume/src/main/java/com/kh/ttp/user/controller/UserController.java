@@ -32,7 +32,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	private BCryptPasswordEncoder bcrypt;
  
 	@Autowired
 	private JavaMailSender sender;
@@ -52,8 +52,8 @@ public class UserController {
 										ModelAndView mv) {
 			
 			User loginUser = userService.loginUser(u);
-			
-			if(loginUser != null ) {
+			System.out.println(bcrypt.encode(u.getUserPwd()));
+			if(loginUser != null && bcrypt.matches(u.getUserPwd(), loginUser.getUserPwd())) {
 				session.setAttribute("loginUser", loginUser);
 				mv.setViewName("redirect:/");
 			} else {
@@ -84,7 +84,7 @@ public class UserController {
 		public String insertUser(User u, Model model, HttpSession session) { //, Model model ) {
 			
 			//System.out.println(u + "컨트롤러ㅓㅓㅓㅓ");
-			String encPwd = bcryptPasswordEncoder.encode(u.getUserPwd());
+			String encPwd = bcrypt.encode(u.getUserPwd());
 			
 			u.setUserPwd(encPwd);
 			u.setUserNo(u.getUserNo());

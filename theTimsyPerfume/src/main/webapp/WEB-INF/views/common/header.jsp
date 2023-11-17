@@ -59,7 +59,7 @@
                             <c:choose>
                             	<c:when test="${loginUser.memberType eq 'A'}">
                             	<p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">관리자 페이지</a>
+                                    <a class="header-link" href="adminForm.me">관리자 페이지</a>
                                 </p>
                             	</c:when>
                             	
