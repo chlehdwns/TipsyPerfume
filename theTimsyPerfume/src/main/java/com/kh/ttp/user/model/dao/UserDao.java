@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.ttp.order.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
@@ -18,12 +19,12 @@ public class UserDao {
 	}
 	
 	public int insertUser(SqlSessionTemplate sqlSession, User u) {
-		System.out.println(u);
+		//System.out.println(u);
 		return sqlSession.insert("userMapper.insertUser", u);
 	}
 	
 	public int insertUser1(SqlSessionTemplate sqlSession, User u) {
-		System.out.println(u);
+		//System.out.println(u);
 		return sqlSession.insert("userMapper.insertUser2", u);
 	}
 	
@@ -37,6 +38,13 @@ public class UserDao {
 		sqlSession.insert("memberMapper.insertSecret", authVo);
 		
 	}
+
+	public Receiver selectReceiver(SqlSessionTemplate sqlSession, int userNo) {
+		//System.out.println(userNo);
+		return sqlSession.selectOne("userMapper.selectReceiver", userNo);
+	}
+
+	
 
 	
 	

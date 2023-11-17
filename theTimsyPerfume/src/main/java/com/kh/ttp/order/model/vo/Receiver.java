@@ -2,8 +2,9 @@ package com.kh.ttp.order.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Receiver {
 
 	private int receiverNo;

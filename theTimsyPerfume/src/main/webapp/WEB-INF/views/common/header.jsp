@@ -65,7 +65,7 @@
                             	
                             	<c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">마이페이지</a>
+                                    <a class="header-link" href="myPage.me">마이페이지</a>
                                 </p>
                                 </c:otherwise>
                              </c:choose>
