@@ -26,6 +26,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.selectNoticeList(sqlSession, rowBounds);
 	}
 	@Override
+	public int increaseNoticeCount(int noticeNo) {
+		return noticeDao.increaseNoticeCount(sqlSession, noticeNo);
+	}
+	@Override
 	public NoticeVO selectNoticeDetail(int noticeNo) {
 		return noticeDao.selectNoticeDetail(sqlSession, noticeNo);
 	}

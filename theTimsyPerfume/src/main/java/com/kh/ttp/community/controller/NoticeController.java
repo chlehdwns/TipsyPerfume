@@ -54,9 +54,14 @@ public class NoticeController {
 	}
 	@GetMapping("noticeDetail")
 	public ModelAndView noticeDetail(int noticeNo, ModelAndView mv) {
-		NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
-		mv.addObject("notice", notice).
-		setViewName("community/noticeDetail");
+		if(noticeService.increaseNoticeCount(noticeNo)>0) {
+			NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
+			mv.addObject("notice", notice).
+			setViewName("community/noticeDetail");
+		} else {
+			mv.addObject("alertMsg", "조회 실패");
+			mv.setViewName("common/errorPage");
+		}
 		return mv;
 	}
 	
