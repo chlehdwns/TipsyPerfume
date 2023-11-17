@@ -45,7 +45,10 @@ public class NoticeController {
 		return mv;
 	}
 	@GetMapping("noticeDetail")
-	public String noticeDetail() {
-		return "community/noticeDetail";
+	public ModelAndView noticeDetail(int noticeNo, ModelAndView mv) {
+		NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
+		mv.addObject("notice", notice).
+		setViewName("community/noticeDetail");
+		return mv;
 	}
 }

@@ -10,6 +10,10 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
+
 <style>
     #notice-wrap{
         width: 900px;
@@ -67,9 +71,7 @@
         opacity: 0.4;
     }
 </style>
-</head>
-<body>
-<jsp:include page="../common/header.jsp"/>
+
 <div id="notice-wrap">
 <a href="noticeWrite">공지 작성하기</a>
 <c:if test="${loginUser.memberType eq 'A' }">

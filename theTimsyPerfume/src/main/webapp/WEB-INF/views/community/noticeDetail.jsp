@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Tipsy Perfume - 공지 페이지</title>
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
 <style>
     #notice-wrap{
         width: 900px;
@@ -18,22 +21,23 @@
         text-align: center;
         margin: 40px 0;
     }
-    .table{
+    .my-table{
         width: 100%;
         text-align: center;
         border-spacing: 0px;
         border-collapse: collapse;
         margin-bottom: 30px;
     }
-    .table tr{
+    .my-table tr{
         border-style: solid;
         border-width: 2px 0px;
         border-color: rgb(165, 165, 165);
     }
-    .table td{padding: 15px 0px;}
+    .my-table td{padding: 15px 0px;}
     .title-head{
         background-color: rgb(221, 221, 221);
         width: 350px;
+        text-align: center;
     }
     .top-text{
         color: rgb(148, 148, 148);
@@ -46,19 +50,18 @@
     .notice-content-image{
         width: 700px;
         margin: 0 auto;
+        margin-bottom: 100px;
     }
     .img{
         width: 100%;
     }
 </style>
-</head>
-<body>
 <section>
 <div id="notice-wrap">
     <div id="content-title">
         공지사항
     </div>
-    <table class="table">
+    <table class="my-table">
         <tr>
             <th class="title-head">제목</th>
             <td>${notice.noticeTitle }</td>
@@ -75,5 +78,6 @@ ${notice.noticeContent }
     </div>
 </div>
 </section>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

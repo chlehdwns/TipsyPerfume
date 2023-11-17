@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <div id="writer-wrap">
 <form id="enrollForm" method="post" action="noticeWrite.do" enctype="multipart/form-data">
 	<table class="table">
