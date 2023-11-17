@@ -54,9 +54,34 @@ public class NoticeController {
 	}
 	@GetMapping("noticeDetail")
 	public ModelAndView noticeDetail(int noticeNo, ModelAndView mv) {
-		NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
-		mv.addObject("notice", notice).
-		setViewName("community/noticeDetail");
+		if(noticeService.increaseNoticeCount(noticeNo)>0) {
+			NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
+			mv.addObject("notice", notice).
+			setViewName("community/noticeDetail");
+		} else {
+			mv.addObject("alertMsg", "조회 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	@GetMapping("noticeEnd")
+	public ModelAndView noticeEnd(int noticeNo, ModelAndView mv) {
+		if(noticeService.noticeEnd(noticeNo)>0) {
+			mv.setViewName("redirect:notice");
+		} else {
+			mv.addObject("alertMsg", "종료 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	@GetMapping("noticeRestart")
+	public ModelAndView noticeRestart(int noticeNo, ModelAndView mv) {
+		if(noticeService.noticeRestart(noticeNo)>0) {
+			mv.setViewName("redirect:notice");
+		} else {
+			mv.addObject("alertMsg", "재시작 실패");
+			mv.setViewName("common/errorPage");
+		}
 		return mv;
 	}
 	
@@ -66,7 +91,7 @@ public class NoticeController {
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		int ranNum = (int)(Math.random()*90000+10000);
 		String ext =  originName.substring(originName.lastIndexOf("."));
-		String changeName = curTime + ranNum + ext;
+		String changeName = "notice_"+curTime + ranNum + ext;
 		String savePath = session.getServletContext().getRealPath("/resources/image/community/notice/");
 		
 		try {

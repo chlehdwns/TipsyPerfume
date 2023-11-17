@@ -19,11 +19,23 @@ public class NoticeDAO {
 		return (ArrayList)sqlSession.selectList("noticeMapper.selectNoticeList", null, rowBounds);
 	}
 
+	public int increaseNoticeCount(SqlSessionTemplate sqlSession, int noticeNo) {
+		return sqlSession.update("noticeMapper.increaseNoticeCount", noticeNo);
+	}
+	
 	public NoticeVO selectNoticeDetail(SqlSessionTemplate sqlSession, int noticeNo) {
 		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", noticeNo);
 	}
 
 	public int insertNotice(SqlSessionTemplate sqlSession, NoticeVO no) {
 		return sqlSession.insert("noticeMapper.insertNotice", no);
+	}
+
+	public int noticeEnd(SqlSessionTemplate sqlSession, int noticeNo) {
+		return sqlSession.update("noticeMapper.noticeEnd", noticeNo);
+	}
+
+	public int noticeRestart(SqlSessionTemplate sqlSession, int noticeNo) {
+		return sqlSession.update("noticeMapper.noticeRestart", noticeNo);
 	}
 }

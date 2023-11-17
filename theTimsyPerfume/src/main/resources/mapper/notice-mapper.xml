@@ -29,6 +29,9 @@ FROM
     TB_NOTICE
 ORDER BY NOTICE_STATE DESC, NOTICE_NO
 </select>
+<update id="increaseNoticeCount" parameterType="_int">
+UPDATE TB_NOTICE SET NOTICE_COUNT=NOTICE_COUNT+1 WHERE NOTICE_NO=#{noticeNo}
+</update>
 <select id="selectNoticeDetail" parameterType="_int" resultMap="noticeResultSet">
 SELECT
     NOTICE_NO,
@@ -62,4 +65,10 @@ INSERT INTO
 	#{noticeFile}
 )
 </insert>
+<update id="noticeEnd">
+UPDATE TB_NOTICE SET NOTICE_STATE='N' WHERE NOTICE_NO=#{noticeNo}
+</update>
+<update id="noticeRestart">
+UPDATE TB_NOTICE SET NOTICE_STATE='Y' WHERE NOTICE_NO=#{noticeNo}
+</update>
 </mapper>

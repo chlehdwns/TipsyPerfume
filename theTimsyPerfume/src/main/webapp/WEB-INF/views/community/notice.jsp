@@ -42,6 +42,9 @@
         vertical-align: middle;
         border-color: rgb(160, 160, 160);
     }
+    tbody tr{
+    	cursor: pointer;
+    }
     .img{
         width: 100%;
         height: 100%;
@@ -74,8 +77,8 @@
 </style>
 
 <div id="notice-wrap">
-<a href="noticeWrite">공지 작성하기</a>
 <c:if test="${loginUser.memberType eq 'A' }">
+<a href="noticeWrite">공지 작성하기</a>
 </c:if>
     <div class="content-title">
         공지사항
