@@ -11,15 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.service.ProductService;
-import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
@@ -108,7 +104,13 @@ public class ProductController {
 	}
 	@RequestMapping("funding.list")
 	private String selectFundingList(Model model) {
-		productService.selectNewFundingList();
+		ArrayList<ProductCategory> pc = productService.selectNewFundingListPC();
+		
+		//productService.selectNewFundingListP();
+		//productService.selectNewFundingListPF();
+		
+		//productService.selectNewFundingListF();
+		//productService.selectNewFundingListPO();
 		return "redirect:fundingMain.list";
 	}
 
