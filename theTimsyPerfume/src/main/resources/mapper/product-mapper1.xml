@@ -48,23 +48,38 @@
 		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
   		  JOIN
   		  	   TB_PRODUCT_FILE USING(PDT_NO)
-		<if test="sort eq 'BestSeller'">
-			LEFT JOIN (SELECT PDT_NO, SUM(ORDER_QUANTITY) "TOTAL_SALES"
-			FROM TB_PRODUCT
-			JOIN TB_ORDER_DETAIL USING(PDT_NO)
-			JOIN TB_PAY USING(PAY_NO)
-			WHERE PAY_STATUS = 'Y'
-			GROUP BY PDT_NO) USING(PDT_NO)
-		</if>  	   
   		  LEFT
   		  JOIN
   		  	   (
-  		  	   SELECT PDT_NO,
+  		  	   SELECT 
+  		  	   		  <if test="sort eq 'BestSeller'">
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
+  		  	   		  </if>
+  		  			  <if test="sort eq 'Popular'">
+  		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH",
+  		  	   		  </if>
+  		  	   		  PDT_NO,
   		  	   		  AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
+  		  	   		  
 				 FROM TB_PRODUCT
 				 LEFT
 				 JOIN TB_REVIEW USING(PDT_NO)
-				WHERE REVIEW_STATE = 'Y'
+				 <if test="sort eq 'BestSeller'">
+				 LEFT
+                 JOIN TB_ORDER_DETAIL USING(PDT_NO)
+                 LEFT
+                 JOIN TB_PAY USING(PAY_NO)
+				 </if>
+				 <if test="sort eq 'Popular'">
+				 LEFT
+ 				 JOIN TB_WISHLIST W USING(PDT_NO)
+				 </if>
+				 WHERE
+				 <if test="sort eq 'BestSeller'">
+				  PAY_STATUS = 'Y'
+               	AND
+				 </if>
+				REVIEW_STATE = 'Y'
 				   OR REVIEW_STATE IS NULL
 				GROUP
 				   BY PDT_NO
@@ -79,17 +94,13 @@
    		   	   PDT_FILE_INDEX = 0
 		 ORDER
 		    BY
-		<choose>
-			<when test="sort eq 'BestSeller'">
-			   TOTAL_SALES DESC
-			</when>
-			<when test="sort eq 'Popular'">
-			   TOTAL_WISH DESC
-			</when>
-			<otherwise>
+			<if test="sort eq 'BestSeller'">
+			   TOTAL_SALES DESC,
+			</if>
+			<if test="sort eq 'Popular'">
+			   TOTAL_WISH DESC,
+			</if>
 			   PDT_NO DESC
-			</otherwise>
-		</choose>
 	</select>
 	
 	
