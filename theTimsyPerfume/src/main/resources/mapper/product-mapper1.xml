@@ -26,21 +26,69 @@
 	
 	<!-- 브랜드 주류 / 향수 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
 	<select id="productMainList" parameterType="map" resultMap="productSelectResultSet">
-SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC", REVIEW_AVG
-  FROM TB_PRODUCT
-  JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
-  JOIN TB_PRODUCT_FILE USING(PDT_NO)
-  LEFT JOIN(SELECT PDT_NO, AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
-FROM TB_PRODUCT
-LEFT JOIN TB_REVIEW USING(PDT_NO)
-WHERE REVIEW_STATE = 'Y'
-OR REVIEW_STATE IS NULL
-GROUP BY PDT_NO) USING(PDT_NO)
- WHERE PDT_CTEG = #{pdtCteg}
-   AND PDT_FAMILY = 'B'
-   AND PDT_STATUS = 'Y'
-   AND PDT_FILE_INDEX = 0
-ORDER BY PDT_NO DESC
+		SELECT
+		<if test="sort eq 'BestSeller'">
+		TOTAL_QUANTIRY,
+		</if>
+			   PDT_NO,
+			   PDT_NAME,
+			   PDT_INTRO,
+			   PDT_DESCRIPTION,
+			   PDT_MANUFAC,
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
+			   REVIEW_AVG
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+  		  JOIN
+  		  	   TB_PRODUCT_FILE USING(PDT_NO)
+		<if test="sort eq 'New'">
+			LEFT JOIN (SELECT PDT_NO, SUM(ORDER_QUANTIRY) "TOTAL_QUANTIRY"
+			FROM TB_PRODUCT
+			JOIN TB_ORDER_DETAIL USING(PDT_NO)
+			JOIN TB_PAY USING(PAY_NO)
+			WHERE PAY_STATUS = 'Y'
+			GROUP BY PDT_NO) USING(PDT_NO)
+		</if>  	   
+  		  LEFT
+  		  JOIN
+  		  	   (
+  		  	   SELECT PDT_NO,
+  		  	   		  AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
+				 FROM TB_PRODUCT
+				 LEFT
+				 JOIN TB_REVIEW USING(PDT_NO)
+				WHERE REVIEW_STATE = 'Y'
+				   OR REVIEW_STATE IS NULL
+				GROUP
+				   BY PDT_NO
+			   ) USING(PDT_NO)
+		 WHERE
+			   PDT_CTEG = #{pdtCteg}
+		   AND
+		   	   PDT_FAMILY = 'B'
+   		   AND
+   		   	   PDT_STATUS = 'Y'
+   		   AND
+   		   	   PDT_FILE_INDEX = 0
+		 ORDER
+		    BY
+		<choose>
+			<when test="sort eq 'New'">
+				PDT_NO DESC
+			</when>
+			<when test="sort eq 'BestSeller'">
+				TOTAL_QUANTIRY DESC
+			</when>
+			<when test="sort eq 'Popular'">
+			
+			</when>
+			<otherwise>
+				;
+			</otherwise>
+		</choose>
+		       
 	</select>
 	
 	
