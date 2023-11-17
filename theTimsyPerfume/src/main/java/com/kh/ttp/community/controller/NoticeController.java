@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +19,16 @@ import com.kh.ttp.community.model.vo.NoticeVO;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("noticeWrite")
+	public String noticeWriteForm() {
+		return "community/noticeWrite";
+	}
+	@PostMapping("noticeWrite.do")
+	public String noticeWrite(NoticeVO no) {
+		System.out.println(no);
+		return "community/notice";
+	}
 	
 	@GetMapping("notice")
 	public ModelAndView noticeList(@RequestParam(value = "page", defaultValue = "1")int page, ModelAndView mv) {
@@ -35,6 +46,6 @@ public class NoticeController {
 	}
 	@GetMapping("noticeDetail")
 	public String noticeDetail() {
-		return "community/notice";
+		return "community/noticeDetail";
 	}
 }

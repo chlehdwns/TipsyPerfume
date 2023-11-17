@@ -16,7 +16,7 @@
         margin: 0 auto;
         overflow: hidden;
     }
-    #content-title{
+    .content-title{
         font-size: 36px;
         font-weight: 600;
         text-align: center;
@@ -29,6 +29,9 @@
     .table{
         text-align: center;
         border-collapse: collapse;
+    }
+    .table tr{
+        background-color: #cccccc;
     }
     .table td{
         vertical-align: middle;
@@ -56,12 +59,22 @@
         justify-content: center;
         margin-bottom: 20px;
     }
+
+    .notice-done{
+        background-color: #ffffff !important;
+    }
+    .notice-done td{
+        opacity: 0.4;
+    }
 </style>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div id="notice-wrap">
-    <div id="content-title">
+<a href="noticeWrite">공지 작성하기</a>
+<c:if test="${loginUser.memberType eq 'A' }">
+</c:if>
+    <div class="content-title">
         공지사항
     </div>
 <div class="table-wrap">
@@ -75,12 +88,12 @@
         </thead>
         <tbody>
         	<c:forEach items="${list }" var="noti">
-        		<tr <c:if test="${noti.noticeState eq 'Y' }">class="table-active"</c:if>>
+        		<tr <c:if test="${noti.noticeState eq 'N' }">class="notice-done"</c:if> onclick="location.href='noticeDetail?noticeNo=${noti.noticeNo}'">
             		<td>${noti.noticeCtgy }</td>
             		<td>
                 		<div class="notice-title-wrap">
                     		<div class="thumbnail-wrap">
-                        		<img class="img" src="${noti.noticeFile }" alt="">
+                        		<img class="img" src="${noti.noticeThumbnailFile }" alt="썸네일">
                     		</div>
                     		<div class="notice-title">
                     			${noti.noticeTitle }
