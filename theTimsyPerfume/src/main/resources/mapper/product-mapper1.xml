@@ -14,6 +14,17 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
+	<select id="selectProductCount" parameterType="string" resultType="_int">
+			SELECT COUNT(*)
+			FROM TB_PRODUCT
+			JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+			WHERE PDT_CTEG = #{pdtCteg}
+			AND PDT_FAMILY = 'B'
+			AND PDT_STATUS = 'Y'
+	</select>
+	
+	
+	
 	<sql id="productMainListCols">
 	   PDT_NO,
 	   PDT_NAME,

@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 public interface ProductService1 {
+
+	// 상품 개수 조회
+	int selectProductCount(String pdtCteg);
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
-	public ArrayList<ProductSelectVO> productMainList(ProductSelectVO pdt);
+	ArrayList<ProductSelectVO> productMainList(ProductSelectVO pdt);
+
 
 
 }

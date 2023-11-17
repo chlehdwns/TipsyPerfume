@@ -10,10 +10,16 @@ import com.kh.ttp.product.model.vo.ProductSelectVO;
 @Repository
 public class ProductDao1 {
 
+	
+	public int selectProductCount(SqlSessionTemplate sqlSession, String pdtCteg) {
+		return sqlSession.selectOne("productMapper1.selectProductCount", pdtCteg);
+	}
 
+	
 	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession, ProductSelectVO pdt) {
 		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pdt);
 	}
+
 	
 
 }

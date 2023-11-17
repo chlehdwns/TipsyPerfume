@@ -18,10 +18,17 @@ public class ProductServiceImpl1 implements ProductService1 {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
+	@Override
+	public int selectProductCount(String pdtCteg) {
+		return productDao.selectProductCount(sqlSession, pdtCteg);
+	}
+
 	@Override
 	public ArrayList<ProductSelectVO> productMainList(ProductSelectVO pdt) {
 		return productDao.productMainList(sqlSession, pdt);
 	}
+
 
 
 }
