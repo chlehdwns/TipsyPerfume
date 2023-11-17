@@ -29,12 +29,6 @@
 	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
 	<select id="productMainList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
-			   <if test="sort eq 'BestSeller'">
-			   TOTAL_SALES,
-			   </if>
-			   <if test="sort eq Popular">
-			   TOTAL_WISH,
-			   </if>
 			   PDT_NO,
 			   PDT_NAME,
 			   PDT_INTRO,

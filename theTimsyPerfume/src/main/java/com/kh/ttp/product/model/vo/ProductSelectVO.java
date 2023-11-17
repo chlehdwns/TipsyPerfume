@@ -19,7 +19,6 @@ public class ProductSelectVO {
 	*/
 	
 	private int pdtNo;
-	private int pickQuantity;
 	private float reviewAvg;
 	private String pdtCteg;
 	private String pdtName;
