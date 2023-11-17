@@ -176,7 +176,7 @@
                   <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="#">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
-                  <li><a class="dropdown-item" href="#">도감 채우기</a></li>
+                  <li><a class="dropdown-item" href="pedia">도감 채우기</a></li>
                 </ul>
             </div>
         </div>
