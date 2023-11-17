@@ -30,4 +30,12 @@ public class NoticeDAO {
 	public int insertNotice(SqlSessionTemplate sqlSession, NoticeVO no) {
 		return sqlSession.insert("noticeMapper.insertNotice", no);
 	}
+
+	public int noticeEnd(SqlSessionTemplate sqlSession, int noticeNo) {
+		return sqlSession.update("noticeMapper.noticeEnd", noticeNo);
+	}
+
+	public int noticeRestart(SqlSessionTemplate sqlSession, int noticeNo) {
+		return sqlSession.update("noticeMapper.noticeRestart", noticeNo);
+	}
 }

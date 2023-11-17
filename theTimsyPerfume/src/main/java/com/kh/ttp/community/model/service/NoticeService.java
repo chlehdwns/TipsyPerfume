@@ -12,4 +12,6 @@ public interface NoticeService {
 	public int increaseNoticeCount(int noticeNo);
 	public NoticeVO selectNoticeDetail(int noticeNo);
 	public int insertNotice(NoticeVO no);
+	public int noticeEnd(int noticeNo);
+	public int noticeRestart(int noticeNo);
 }

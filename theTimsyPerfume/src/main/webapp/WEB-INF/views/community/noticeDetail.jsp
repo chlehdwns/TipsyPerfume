@@ -46,6 +46,7 @@
     .notice-content{
         text-align: center;
         font-size: 16px;
+        white-space: pre-wrap;
     }
     .notice-content-image{
         width: 700px;
@@ -58,6 +59,16 @@
 </style>
 <section>
 <div id="notice-wrap">
+<c:if test="${loginUser.memberType eq 'A' }">
+<c:choose>
+<c:when test="${notice.noticeState eq 'Y' }">
+	<a href="noticeEnd?noticeNo=${notice.noticeNo }">공지 종료하기</a>
+</c:when>
+<c:otherwise>
+	<a href="noticeRestart?noticeNo=${notice.noticeNo }">공지 재시작하기</a>
+</c:otherwise>
+</c:choose>
+</c:if>
     <div id="content-title">
         공지사항
     </div>

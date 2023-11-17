@@ -37,4 +37,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public int insertNotice(NoticeVO no) {
 		return noticeDao.insertNotice(sqlSession, no);
 	}
+	@Override
+	public int noticeEnd(int noticeNo) {
+		return noticeDao.noticeEnd(sqlSession, noticeNo);
+	}
+	@Override
+	public int noticeRestart(int noticeNo) {
+		return noticeDao.noticeRestart(sqlSession, noticeNo);
+	}
 }

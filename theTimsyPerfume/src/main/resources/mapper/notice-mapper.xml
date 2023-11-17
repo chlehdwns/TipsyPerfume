@@ -65,4 +65,10 @@ INSERT INTO
 	#{noticeFile}
 )
 </insert>
+<update id="noticeEnd">
+UPDATE TB_NOTICE SET NOTICE_STATE='N' WHERE NOTICE_NO=#{noticeNo}
+</update>
+<update id="noticeRestart">
+UPDATE TB_NOTICE SET NOTICE_STATE='Y' WHERE NOTICE_NO=#{noticeNo}
+</update>
 </mapper>
