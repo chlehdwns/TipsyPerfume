@@ -32,6 +32,7 @@
         ${pdtMainTitleText} = BEST PERFUMES
         ${pdtCateg} = 향수
     -->
+	<jsp:include page="productSideBar.jsp" />
     <div id="productMainWrap">
 		<c:choose>
 			<c:when test="${not empty pdtCteg and (pdtCteg eq 'A' or pdtCteg eq 'F')}">
@@ -74,6 +75,13 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
+							<!-- If we need pagination -->
+							<div class="swiper-pagination"></div>
+							<!-- If we need navigation buttons -->
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+							<!-- If we need scrollbar -->
+							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -117,6 +125,13 @@
 				              <div class="productBlockText4">${product.pdtIntro}</div>
 				                </div>
 				            </c:forEach>
+							<!-- If we need pagination -->
+							<div class="swiper-pagination"></div>
+							<!-- If we need navigation buttons -->
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+							<!-- If we need scrollbar -->
+							<div class="swiper-scrollbar"></div>
 				        </div>
 				    </div>
 				</div>
@@ -160,6 +175,13 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
+							<!-- If we need pagination -->
+							<div class="swiper-pagination"></div>
+							<!-- If we need navigation buttons -->
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+							<!-- If we need scrollbar -->
+							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -176,10 +198,10 @@
     <script>
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
-            //autoplay : {
-            //    delay : 2000 // 2초마다 이미지 변경
-            //},
-            //loop : true, //반복 재생 여부
+            autoplay : {
+                delay : 2500 // 2.5초마다 이미지 변경
+            },
+            loop : true, //반복 재생 여부
             slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
             pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
                 el: '.swiper-pagination',
