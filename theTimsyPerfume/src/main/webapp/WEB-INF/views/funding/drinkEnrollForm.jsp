@@ -14,7 +14,7 @@
 		}
 		#enroll-area{
 			width : 800px;
-			height : 900px;
+			height : 1100px;
 			background-color : lightgray;
 			margin-bottom : 50px;
 			margin-left : 600px;
@@ -65,6 +65,8 @@
 				  <br>
 		원료 재료 : <input type="text" id="ingredient" name="pdtIngredient" class="form-control">
 		재고 : <input type="number" id="stock" name="pdtStock" class="form-control">
+		용량 : <input type="number" id="ml" name="pdtOptionFirst" class="form-control" placeholder="숫자만 입력하세요. 기준은 ml입니다.">
+		도수 : <input type="number" id="dosu" name="pdtOptionSecond" class="form-control" placeholder="숫자만 입력하세요. 기준은 도입니다.">
 	</div>
 	<div id="button-area">
 	<button type="submit" class="funding-btn">등록하기</button>
