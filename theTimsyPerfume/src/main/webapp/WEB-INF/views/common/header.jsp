@@ -142,8 +142,8 @@
                     브랜드
                 </p>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=A">주류</a></li>
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=p">향수</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=A&sort=New&pdtQuan=6">주류</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=F&sort=New&pdtQuan=6">향수</a></li>
                 </ul>
             </div>
 
