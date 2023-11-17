@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.ttp.order.model.vo.Receiver;
 import com.kh.ttp.user.model.service.UserService;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
@@ -52,7 +53,7 @@ public class UserController {
 										ModelAndView mv) {
 			
 			User loginUser = userService.loginUser(u);
-			System.out.println(bcrypt.encode(u.getUserPwd()));
+			//System.out.println(bcrypt.encode(u.getUserPwd()));
 			if(loginUser != null && bcrypt.matches(u.getUserPwd(), loginUser.getUserPwd())) {
 				session.setAttribute("loginUser", loginUser);
 				mv.setViewName("redirect:/");
@@ -153,6 +154,46 @@ public class UserController {
 	
 	
 	
+	@RequestMapping("myPage.me")
+	public ModelAndView myPage(ModelAndView mv, HttpSession session) {
+		
+		int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
+		//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
+		Receiver rc = userService.selectReceiver(userNo);
+		
+		mv.addObject("rc", rc).
+		setViewName("member/myPage");
+		
+		return mv;
+	} 
+	
+	/*
+	@RequestMapping("update.me")
+	public String updateMember(User u, Receiver rc, Model model, HttpSession session) {
+		
+		if(userService.updateUser(u) > 0 && userService.updateReceiver(rc) > 0) {
+			
+			session.setAttribute("loginUser", userService.loginUser(u));
+			//session.setAttribute("", userService.selectReceiver(userNo));
+			session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
+			return "redirect:myPage.me";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "정보 수정에 실패했습니다.");
+			// /WEB-INF/views/		common/errorPage		.jsp
+			return "common/errorPage";
+		}
+		
+		
+		
+		
+		
+		return null;
+		
+		
+	}
+	*/
 	
 	
 	
