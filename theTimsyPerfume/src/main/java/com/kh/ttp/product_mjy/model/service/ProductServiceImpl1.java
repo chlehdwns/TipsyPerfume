@@ -1,6 +1,7 @@
 package com.kh.ttp.product_mjy.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -27,8 +28,25 @@ public class ProductServiceImpl1 implements ProductService1 {
 	}
 
 	@Override
-	public ArrayList<ProductSelectVO> productMainList(Map<String, Object> pMap, RowBounds rowBounds) {
-		return productDao.productMainList(sqlSession, pMap, rowBounds);
+	public ArrayList<ProductSelectVO> productMainList(String pdtCteg, RowBounds rowBounds) {
+		// 최신순
+		Map<String, Object> pMap = new HashMap();
+		
+		pMap.put("pdtCteg", pdtCteg);
+		
+		pMap.put("sort", "New");
+		pMap.put("pMainListNew", productDao.productMainList(sqlSession, pMap, rowBounds));
+		
+		
+		pMap.put("sort", "BestSeller");
+		pMap.put("pMainListBestSeller", productDao.productMainList(sqlSession, pMap, rowBounds));
+
+		
+		pMap.put("sort", "Popular");
+		pMap.put("pMainListPopular", productDao.productMainList(sqlSession, pMap, rowBounds));
+
+
+		return null;
 	}
 
 

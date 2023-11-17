@@ -13,7 +13,7 @@ public interface ProductService1 {
 	int selectProductCount(String pdtCteg);
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
-	ArrayList<ProductSelectVO> productMainList(Map<String, Object> pMap, RowBounds rowBounds);
+	ArrayList<ProductSelectVO> productMainList(String pdtCteg, RowBounds rowBounds);
 
 
 

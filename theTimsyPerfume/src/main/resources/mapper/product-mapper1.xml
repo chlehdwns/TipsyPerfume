@@ -14,7 +14,8 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
-	<!-- 브랜드 주류 / 향수 상품(판매중 상태Y) 개수 카운트 -->
+	
+	<!-- 브랜드 주류/향수(판매중 상태Y)의 전체 개수 카운트 -->
 	<select id="selectProductCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
 		FROM TB_PRODUCT
@@ -24,12 +25,16 @@
 		AND PDT_STATUS = 'Y'
 	</select>
 	
-	<!-- 브랜드 주류 / 향수 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
+	
+	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
 	<select id="productMainList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
-		<if test="sort eq 'BestSeller'">
-		TOTAL_QUANTIRY,
-		</if>
+			   <if test="sort eq 'BestSeller'">
+			   TOTAL_SALES,
+			   </if>
+			   <if test="sort eq Popular">
+			   TOTAL_WISH,
+			   </if>
 			   PDT_NO,
 			   PDT_NAME,
 			   PDT_INTRO,
@@ -43,8 +48,8 @@
 		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
   		  JOIN
   		  	   TB_PRODUCT_FILE USING(PDT_NO)
-		<if test="sort eq 'New'">
-			LEFT JOIN (SELECT PDT_NO, SUM(ORDER_QUANTIRY) "TOTAL_QUANTIRY"
+		<if test="sort eq 'BestSeller'">
+			LEFT JOIN (SELECT PDT_NO, SUM(ORDER_QUANTITY) "TOTAL_SALES"
 			FROM TB_PRODUCT
 			JOIN TB_ORDER_DETAIL USING(PDT_NO)
 			JOIN TB_PAY USING(PAY_NO)
@@ -75,20 +80,16 @@
 		 ORDER
 		    BY
 		<choose>
-			<when test="sort eq 'New'">
-				PDT_NO DESC
-			</when>
 			<when test="sort eq 'BestSeller'">
-				TOTAL_QUANTIRY DESC
+			   TOTAL_SALES DESC
 			</when>
 			<when test="sort eq 'Popular'">
-			
+			   TOTAL_WISH DESC
 			</when>
 			<otherwise>
-				;
+			   PDT_NO DESC
 			</otherwise>
 		</choose>
-		       
 	</select>
 	
 	

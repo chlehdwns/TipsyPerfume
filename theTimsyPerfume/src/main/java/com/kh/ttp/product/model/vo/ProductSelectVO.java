@@ -1,5 +1,7 @@
 package com.kh.ttp.product.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

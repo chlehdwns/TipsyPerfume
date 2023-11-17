@@ -34,87 +34,154 @@
     -->
     <div id="productMainWrap">
 
-        <div class="pdt-main-inner-wrap">
-            <!-- Controlle에서 식별자(A/F)따라 ${alcoOrPerf}에 주류 or 향수 문자열 넘기기 -->
-            <div class="pdt-mn-title-area">
-                <div class="pdt-mn-title-text pdt-mn-text1">${pdtMainTitleText}</div>
-                <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순</div>
-            </div>
-            <div div class="pdt-list-btn">
-                <button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
-            </div>
-            <!-- Slider main container -->
-            <div class="swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- 전체조회 시 내용 EL구문 이용 뿌려줌 6개!!! (for each사용해서 만들기) -->
-                    <!-- 디테일 조회요청 시 ajaxValidateAdult() 성인인증 먼저-->
-                    <!-- Slides -->
-                    <div class="swiper-slide" onclick="ajaxValidateAdult();"><!-- 주류 조회 성인인증 체크 -->
-                        <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                        <div class="productBlockText1">브랜드이름</div>
-                        <div class="productBlockText2">술 이름 필굿 오리지널</div>
-                        <div class="productBlockText3">4.9/5</div>
-                        <div class="productBlockText4">간단 제품 설명</div>
-                    </div>
-                                        
-                    <div class="swiper-slide" onclick="ajaxValidateAdult();">
-                        <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                        <div class="productBlockText1">브랜드이름</div>
-                        <div class="productBlockText2">술 이름 필굿 오리지널</div>
-                        <div class="productBlockText3">4.9/5</div>
-                        <div class="productBlockText4">간단 제품 설명</div>
-                    </div>
-                    <!-- 전체조회 시 내용 EL구문 이용 뿌려줌 6개!!! (향수일 경우 onclick은 빼고 EL구문 이용) -->
-                    <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
-                        <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                        <div class="productBlockText1">브랜드이름</div>
-                        <div class="productBlockText2">술 이름 필굿 오리지널</div>
-                        <div class="productBlockText3">4.9/5</div>
-                        <div class="productBlockText4">간단 제품 설명</div>
-                    </div>
-
-                </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <!-- If we need scrollbar -->
-                <div class="swiper-scrollbar"></div>
-            </div>
-        </div>
-
-
 		<!-- 식별자 pdtCteg의 값(A/F)따라 주류/향수 슬라이더 생성 -->
 		<c:if test="${not empty pdtCteg}">
             <div class="pdt-main-inner-wrap">
                 <div class="pdt-mn-title-area">
-                    <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
-                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순/주류</div>
+                	<c:choose>
+	                	<c:when test="${pdtCteg eq 'A'}">
+		                    <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 주류 | 최신순</div>
+	                	</c:when>
+	                	<c:when test="${pdtCteg eq 'F'}">
+              	            <div class="pdt-mn-title-text pdt-mn-text1">NEW PERFUME</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 향수 | 최신순</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<div>유효한 요청이 아닙니다</div>
+	                	</c:otherwise>
+                	</c:choose>
                 </div>
                 <div div class="pdt-list-btn">
-                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                <c:choose>
+                	<c:when test="${pdtCteg eq 'A'}">
+	                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                	<c:when test="${pdtCteg eq 'F' }">
+                		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                </c:choose>
                 </div>
                 <!-- Slider main container -->
                 <div class="swiper">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
-                        <c:forEach var="product" items="${productMainList}">
-                            <c:choose>
-                                <c:when test="${pdtCteg eq 'A'}">
-                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
-                                </c:when>
-                                <c:when test="${pdtCteg eq 'F'}">
-                                    <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
-                                </c:when>
-                                <c:otherwise><div class="swiper-slide"></c:otherwise>
-                            </c:choose>
-                                <img src="${product.pdtImgSrc}">
-                                <div class="productBlockText1">${product.pdtManufac}</div>
-                                <div class="productBlockText2">${product.pdtName}</div>
-                                <div class="productBlockText3">${product.reviewAvg}/5</div>
-                                <div class="productBlockText4">${product.pdtIntro}</div>
+                        <c:forEach var="product" items="${pMap.pMainListNew}">
+	                        <c:if test="${pdtCteg eq 'A'}">
+	                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+	                        </c:if>
+	                        <c:if test="${pdtCteg eq 'F'}">
+	                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+	                        </c:if>
+		                        <img src="${product.pdtImgSrc}">
+		                        <div class="productBlockText1">${product.pdtManufac}</div>
+		                        <div class="productBlockText2">${product.pdtName}</div>
+		                        <div class="productBlockText3">${product.reviewAvg}/5</div>
+		                        <div class="productBlockText4">${product.pdtIntro}</div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+		</c:if>
+		
+		
+		<!-- 베스트셀러순 -->
+		<c:if test="${not empty pdtCteg}">
+            <div class="pdt-main-inner-wrap">
+                <div class="pdt-mn-title-area">
+                	<c:choose>
+	                	<c:when test="${pdtCteg eq 'A'}">
+		                    <div class="pdt-mn-title-text pdt-mn-text1">BEST LIQUORS</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 주류 | 베스트셀러</div>
+	                	</c:when>
+	                	<c:when test="${pdtCteg eq 'F'}">
+              	            <div class="pdt-mn-title-text pdt-mn-text1">BEST PERFUME</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 향수 | 베스트셀러</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<div>유효한 요청이 아닙니다</div>
+	                	</c:otherwise>
+                	</c:choose>
+                </div>
+                <div div class="pdt-list-btn">
+                <c:choose>
+                	<c:when test="${pdtCteg eq 'A'}">
+	                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                	<c:when test="${pdtCteg eq 'F' }">
+                		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                </c:choose>
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <c:forEach var="product" items="${pMap.pMainListBestSeller}">
+	                        <c:if test="${pdtCteg eq 'A'}">
+	                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+	                        </c:if>
+	                        <c:if test="${pdtCteg eq 'F'}">
+	                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+	                        </c:if>
+		                        <img src="${product.pdtImgSrc}">
+		                        <div class="productBlockText1">${product.pdtManufac}</div>
+		                        <div class="productBlockText2">${product.pdtName}</div>
+		                        <div class="productBlockText3">${product.reviewAvg}/5</div>
+		                        <div class="productBlockText4">${product.pdtIntro}</div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+		</c:if>
+		
+		
+		<!-- 인기순 -->
+		<c:if test="${not empty pdtCteg}">
+            <div class="pdt-main-inner-wrap">
+                <div class="pdt-mn-title-area">
+                	<c:choose>
+	                	<c:when test="${pdtCteg eq 'A'}">
+		                    <div class="pdt-mn-title-text pdt-mn-text1">POPULAR LIQUORS</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 주류 | 위시리스트</div>
+	                	</c:when>
+	                	<c:when test="${pdtCteg eq 'F'}">
+              	            <div class="pdt-mn-title-text pdt-mn-text1">POPULAR PERFUME</div>
+		                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 향수 | 위시리스트</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<div>유효한 요청이 아닙니다</div>
+	                	</c:otherwise>
+                	</c:choose>
+                </div>
+                <div div class="pdt-list-btn">
+                <c:choose>
+                	<c:when test="${pdtCteg eq 'A'}">
+	                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                	<c:when test="${pdtCteg eq 'F' }">
+                		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
+                	</c:when>
+                </c:choose>
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <c:forEach var="product" items="${pMap.pMainListPopular}">
+	                        <c:if test="${pdtCteg eq 'A'}">
+	                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+	                        </c:if>
+	                        <c:if test="${pdtCteg eq 'F'}">
+	                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+	                        </c:if>
+		                        <img src="${product.pdtImgSrc}">
+		                        <div class="productBlockText1">${product.pdtManufac}</div>
+		                        <div class="productBlockText2">${product.pdtName}</div>
+		                        <div class="productBlockText3">${product.reviewAvg}/5</div>
+		                        <div class="productBlockText4">${product.pdtIntro}</div>
                             </div>
                         </c:forEach>
                     </div>
