@@ -1,7 +1,9 @@
 package com.kh.ttp.product_mjy.model.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +17,10 @@ public class ProductDao1 {
 		return sqlSession.selectOne("productMapper1.selectProductCount", pdtCteg);
 	}
 
-	
-	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession, ProductSelectVO pdt) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pdt);
+	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession,
+													  Map<String, Object> pMap,
+													  RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pMap, rowBounds);
 	}
 
 	

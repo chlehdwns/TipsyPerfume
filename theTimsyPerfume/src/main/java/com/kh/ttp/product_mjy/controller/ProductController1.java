@@ -1,5 +1,6 @@
 package com.kh.ttp.product_mjy.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -34,14 +35,14 @@ public class ProductController1 {
 																					   int pdtQuan,
 																					   ModelAndView mv) {
 		// AF / 6개 12개 // New / BestSeller / Popular // 다 넘기고 전부 mybatis에서 검증
-		Map<String, Object> pMap = null;
-		pMap.put("pdtCteg", pdtCteg);
-		pMap.put("sort", sort);
-		
 		int listCount = productService.selectProductCount(pdtCteg);
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pdtQuan, 10);
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		Map<String, Object> pMap = new HashMap();
+		pMap.put("pdtCteg", pdtCteg);
+		pMap.put("sort", sort);
 		
 		mv.addObject("productMainList", productService.productMainList(pMap, rowBounds))
 		  .addObject("pi", currentPage)

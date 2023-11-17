@@ -1,8 +1,10 @@
 package com.kh.ttp.product_mjy.model.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-import com.kh.ttp.common.model.vo.PageInfo;
+import org.apache.ibatis.session.RowBounds;
+
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 public interface ProductService1 {
@@ -11,7 +13,7 @@ public interface ProductService1 {
 	int selectProductCount(String pdtCteg);
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
-	ArrayList<ProductSelectVO> productMainList(pi);
+	ArrayList<ProductSelectVO> productMainList(Map<String, Object> pMap, RowBounds rowBounds);
 
 
 

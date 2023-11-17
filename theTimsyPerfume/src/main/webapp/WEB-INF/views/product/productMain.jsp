@@ -127,10 +127,10 @@
     <script>
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
-            autoplay : {
-                delay : 2000 // 2초마다 이미지 변경
-            },
-            loop : true, //반복 재생 여부
+            //autoplay : {
+            //    delay : 2000 // 2초마다 이미지 변경
+            //},
+            //loop : true, //반복 재생 여부
             slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
             pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
                 el: '.swiper-pagination',
