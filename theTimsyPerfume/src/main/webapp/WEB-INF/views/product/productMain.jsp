@@ -86,53 +86,41 @@
         </div>
 
 
-
-
-
-		<!-- Controlle에서 식별자(A/F)따라 pdtCateg에 주류 or 향수 넘기기 -->
-        <c:if test="${not empty pdtIdenKey}">
-			<c:forEach var="product" items="productList"><!-- 전체조회 시 6개 넘어옴!!! (for each사용해서 만들기) / 값 EL구문 이용 뿌리기 -->
-                <div class="pdt-main-inner-wrap">
-                    <div class="pdt-mn-title-area">
-                        <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
-                        <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순/베스트셀러/최고인기템</div>
-                    </div>
-                    <div div class="pdt-list-btn">
-                        <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
-                    </div>
-                    <!-- Slider main container -->
-                    <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
+		<!-- 식별자 pdtCteg의 값(A/F)따라 주류/향수 슬라이더 생성 -->
+		<c:if test="${not empty pdtCteg}">
+            <div class="pdt-main-inner-wrap">
+                <div class="pdt-mn-title-area">
+                    <div class="pdt-mn-title-text pdt-mn-text1">NEW LIQUORS</div>
+                    <div id="productMainTextBottom" class="pdt-mn-title-text pdt-mn-text2">브랜드 ${alcoOrPerf} | 최신순/주류</div>
+                </div>
+                <div div class="pdt-list-btn">
+                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <c:forEach var="product" items="${productMainList}">
                             <c:choose>
-                                <c:when test="${ pdtIdenKey eq 'A' }">
-                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail(${pdtNo});"></div><!-- 주류 디테일뷰 성인인증 체크! (pdtNo는 JSP와 JS모두 숫자타입) -->
+                                <c:when test="${pdtCteg eq 'A'}">
+                                    <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
                                 </c:when>
-                                <c:when test="${ pdtIdenKey eq 'P' }">
-                                   <div class="swiper-slide" onclick="location.href='#/pr?pdtNo=#${pdtNo}'"></div><!-- 향수 디테일뷰 -->
+                                <c:when test="${pdtCteg eq 'F'}">
+                                    <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
                                 </c:when>
-                                <c:otherwise>
-                                   <!-- 그 외 경우 -->
-                                </c:otherwise>
-                           </c:choose>
-                           <img src="https://cdn.pixabay.com/photo/2016/01/15/16/48/winter-1142029_1280.jpg">
-                           <div class="productBlockText1">브랜드이름</div>
-                           <div class="productBlockText2">술 향수 이름 필굿 오리지널 돌체앤가바나 라이트블루</div>
-                           <div class="productBlockText3">4.9/5</div>
-                           <div class="productBlockText4">간단 제품 설명</div>
-                   		</div>
-	                </div>
-	                <!-- If we need pagination -->
-	                <div class="swiper-pagination"></div>
-	                <!-- If we need navigation buttons -->
-	                <div class="swiper-button-prev"></div>
-	                <div class="swiper-button-next"></div>
-	                <!-- If we need scrollbar -->
-	                <div class="swiper-scrollbar"></div>
-	            </div>
-            </c:forEach>
-        </c:if>
+                                <c:otherwise><div class="swiper-slide"></c:otherwise>
+                            </c:choose>
+                                <img src="${product.pdtImgSrc}">
+                                <div class="productBlockText1">${product.pdtManufac}</div>
+                                <div class="productBlockText2">${product.pdtName}</div>
+                                <div class="productBlockText3">${product.reviewAvg}/5</div>
+                                <div class="productBlockText4">${product.pdtIntro}</div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+		</c:if>
     </div>
 
 
