@@ -31,31 +31,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	/**
-	 * 상품 메인페이지 조회 기능
-	 * @return
-	 */
-	@GetMapping("productMain.pr")
-	public String productMain(@RequestParam (value="pdtIdenKey", defaultValue="M")String pdtIdenKey,
-											 ModelAndView mv) { // Q.알아서 관리하니까 불변객체 자원소모는 신경 안써도 되나?
-		
-		ArrayList<ProductSelectVO> productListMain = productService.productMain(pdtIdenKey);
-		
-		mv.addObject("pdtIdenKey", pdtIdenKey); // 얘도 나중에 돌려줘야함
-		
-		
-		
-		System.out.println("저는 Product Controller예용 "); // common/errorPage  ${ errorMsg }
-		mv.addObject("errorMsg", "상품 메인화면 이동에 실패했습니다")
-		  .setViewName("common/errorPage");
-		
-		// pdtIdenKey 같이 넘겨줘야함 (식별자 보고 div띄워줄 것) 
-		return "product/productMain";
-	}
+	
 	
 	
 	@RequestMapping("insertDrink.fun")
-	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock) {
+	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond) {
 		System.out.println(upfile);
 		//System.out.println(pdtName);
 		//System.out.println(pdtIntro);
@@ -82,7 +62,10 @@ public class ProductController {
 		
 		ProductFile pf = new ProductFile();
 		
+		
 		ProductOption po = new ProductOption();
+		po.setPdtOptionFirst(pdtOptionFirst);
+		po.setPdtOptionSecond(pdtOptionSecond);
 		
 		Funding f = new Funding();
 		f.setCuttingDate(cuttingDate);
@@ -92,13 +75,18 @@ public class ProductController {
 			pf.setPdtFileOrigin(upfile.getOriginalFilename());
 			pf.setPdtFileUpload(saveFile(upfile,session));
 		}
-		productService.drinkFundingInsert(p,pf,po,f,pc);
+		if(productService.drinkFundingInsert(p,pf,po,f,pc)>0) {
+			session.setAttribute("alertMsg", "펀딩 상품 등록 완료.");
+			return "redirect:funding.list";
+		} else {
+			return "common/errorPage";
+		}
 		
 		
 		
 		
 		
-		return "";
+		
 	}
 	private String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
@@ -117,6 +105,11 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		return "/resources/uploadFiles/" + changeName;
+	}
+	@RequestMapping("funding.list")
+	private String selectFundingList(Model model) {
+		productService.selectNewFundingList();
+		return "redirect:fundingMain.list";
 	}
 
 }

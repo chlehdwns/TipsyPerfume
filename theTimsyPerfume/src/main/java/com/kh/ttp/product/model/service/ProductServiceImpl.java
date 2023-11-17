@@ -36,13 +36,29 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
-		if(productCategoryDao.drinkFundingInsert(sqlSession,pc)>0) {
-			int result=productCategoryDao.drinkFundingSelect(sqlSession);
-			p.setPdtCategNo(result);
-			//System.out.println(p);
-			productDao.drinkFundingInsert(sqlSession,p);
+		    if(productCategoryDao.drinkFundingInsert(sqlSession,pc)>0) {
+				int result=productCategoryDao.drinkFundingSelect(sqlSession);
+				p.setPdtCategNo(result);
+				//System.out.println(p);
+				if(productDao.drinkFundingInsert(sqlSession,p)>0) {
+					int pdtNo = productDao.drinkFundingSelect(sqlSession);
+					pf.setPdtNo(pdtNo);
+					po.setPdtNo(pdtNo);
+					f.setPdtNo(pdtNo);
+					
+					productOptionDao.drinkFundingInsert(sqlSession,po);
+					productFileDao.drinkFundingInsert(sqlSession,pf);
+					fundingDao.drinkFundingInsert(sqlSession,f);
+					
+					
+					
+				
+				
+			}
 		}
-		return 0;
+		    return 1;
+		    
+		   
 		
 		
 	}

@@ -108,7 +108,7 @@
     <div class="review-content-wrap">
         <div class="review-content">
             <div class="focus-img-wrap">
-                <img class="img" src="${review.reviewImages.get(0) }" alt="">
+                <img id="big-img" class="img" src="${review.reviewImages.get(0) }" alt="">
             </div>
             <div class="review-article">
                 <div class="display-flex bottom-interval">
@@ -129,14 +129,14 @@
                 <div>
                     ★★★☆☆
                 </div>
-                <pre class="article-wrap bottom-interval">
+<pre class="article-wrap bottom-interval">
 ${review.reviewContent }
-                </pre>
+</pre>
             </div>
             <div class="img-container">
             	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
                 <div class="img-wrap">
-                    <img class="img" src="${review.reviewImages.get(i-1) }" alt="">
+                    <img class="img small-img" src="${review.reviewImages.get(i-1) }" alt="">
                 </div>
             	</c:forEach>
             </div>
@@ -151,83 +151,19 @@ ${review.reviewContent }
                 <button class="comment-btn" type="button">입력</button>
             </div>
             <div id="review-comment-wrap">
-                <div class="review-comment">
-                    <div class="display-flex bottom-interval">
-                        <div class="profile-wrap">
-                            <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                        </div>
-                        <div class="name-wrap">
-                            스킹스(dlaudw*****)
-                        </div>
-                    </div>
-                    <div>
-                        [ 요즘 폼 오른 박만사 웹툰들 현재 근황 ]1. 퀘지주 - 4대크루 헤드들 특별출연(장현 제외) 2. 김부장 - 금지된 인체실험(2개의 몸과 관련된 실험으로 추측) 3. 촉법소년 - 매주마다 막힌 속 시원하게 뚫어주는 사이다 전개 4. 외지주 - 그냥 폼 미쳤음. 5. 쌈독 -
-                    </div>
-                    <div>2023-11-07 11:59</div>
-                    <button class="re-comment-open">답글</button>
-                    <div class="re-comment-div" style="display: none;">
-                        <div>
-                            답글쓰기
-                        </div>
-                        <div class="write-area">
-                            <textarea class="comment-textarea" name=""></textarea>
-                            <input class="comment-no" type="hidden" value="${comment.commentNo}">
-                            <button class="comment-btn" type="button">입력</button>
-                        </div>
-                        <div class="re-comment-wrap">
-                            <div class="review-comment">
-                                <div class="display-flex bottom-interval">
-                                    <div class="profile-wrap">
-                                        <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                                    </div>
-                                    <div class="name-wrap">
-                                        스킹스(dlaudw*****)
-                                    </div>
-                                </div>
-                                <div>
-                                    ㅊㅋㅊㅋ
-                                </div>
-                                <div>2023-11-07 11:59</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-comment">
-                    <div class="display-flex bottom-interval">
-                        <div class="profile-wrap">
-                            <img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                        </div>
-                        <div class="name-wrap">
-                            스킹스(dlaudw*****)
-                        </div>
-                    </div>
-                    <div>
-                        ㅊㅋㅊㅋ
-                    </div>
-                    <div>2023-11-07 11:59</div>
-                    <button class="re-comment-open">답글</button>
-                    <div class="re-comment-div" style="display: none;">
-                        <div>
-                            답글쓰기
-                        </div>
-                        <div class="write-area">
-                            <textarea class="comment-textarea" name=""></textarea>
-                            <input class="comment-no" type="hidden" value="${comment.commentNo}">
-                            <button class="comment-btn" type="button">입력</button>
-                        </div>
-                        <div class="re-comment-wrap">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-<button id="more">임시</button>
 </section>
 <script>
     $(()=>{
         loadAllCommentList();
+
+        $(".small-img").click(function(){
+            $("#big-img").attr("src", $(this).attr("src"));
+        })
+
         $(".comment-open-btn").click(function() {
             let $commentDiv = $(this).next(".review-comment-div");
             if ($commentDiv.css("display") === 'none') {
@@ -253,7 +189,6 @@ ${review.reviewContent }
             const $reviewNo = $("#review-no");
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
-            console.log()
             const userNo = "${loginUser.userNo}";
             $.ajax({
                 url:"insertComment",
@@ -266,7 +201,6 @@ ${review.reviewContent }
                     userNo:userNo
                 },
                 success:(result)=>{
-                    console.log(result);
                     if(result=="1"){
                         $commentContent.val("");
                         if($commentGroup.val()){
@@ -291,10 +225,8 @@ ${review.reviewContent }
                 reviewNo:$("#review-no").val()
             },
             success:(result)=>{
-                console.log(result);
                 const $commentWrap = $("#review-comment-wrap");
                 let value="";
-                console.log("생성")
                 for(let i in result){
                     if(result[i].commentDepth == 0){
                         value+=  "<div class='review-comment'>"
@@ -306,8 +238,11 @@ ${review.reviewContent }
                                 +"</div>"
                                 +"<div>"+result[i].commentContent+"</div>"
                                 +"<div>"+result[i].commentCreateDate+"</div>"
-                                +"<button class='re-comment-open'>답글</button>"
-                                +"<div class='re-comment-div' style='display: none;'>"
+                                +"<button class='re-comment-open'>답글 "
+                        if(result[i].commentIndex!=0){
+                            value+=result[i].commentIndex
+                        }
+                        value+=  "</button><div class='re-comment-div' style='display: none;'>"
                                 +"<div>답글쓰기</div>"
                                 +"<div class='write-area'>"
                                 +"<textarea class='comment-textarea'></textarea>"
@@ -352,9 +287,10 @@ ${review.reviewContent }
             },
             success:(result)=>{
                 console.log(result);
-                const $commentWrap = $(this).parent().next(".re-comment-wrap");
+                const $commentWrap = $(".comment-no[value="+commentGroup+"]").parent().next(".re-comment-wrap");
                 let value="";
                 for(let i in result){
+                    console.log("dd");
                     value+=  "<div class='review-comment'>"
                             +"<div class='display-flex bottom-interval'>"
                             +"<div class='profile-wrap'>"
@@ -374,5 +310,6 @@ ${review.reviewContent }
         });
     }
 </script>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

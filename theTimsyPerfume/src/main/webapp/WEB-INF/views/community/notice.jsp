@@ -51,7 +51,7 @@
         margin-left: 25px;
     }
 
-    #paging{
+    #paging-area{
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
@@ -74,72 +74,55 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table-active">
-            <td>공지</td>
-            <td>
-                <div class="notice-title-wrap">
-                    <div class="thumbnail-wrap">
-                        <img class="img" src="./블루-신형.jpg" alt="">
-                    </div>
-                    <div class="notice-title">
-                        팁시퍼퓸 명의도용 및 사칭주의 안내
-                    </div>
-                </div>
-            </td>
-            <td>2023-11-07</td>
-          </tr>
-          <tr class="table-active">
-            <td>이벤트</td>
-            <td>
-                <div class="notice-title-wrap">
-                    <div class="thumbnail-wrap">
-                        <img class="img" src="./블루-신형.jpg" alt="">
-                    </div>
-                    <div class="notice-title">
-                        화이트 데이 이벤트 안내
-                    </div>
-                </div>
-            </td>
-            <td>2023-11-07</td>
-          </tr>
-          <tr>
-            <td>공지</td>
-            <td>
-                <div class="notice-title-wrap">
-                    <div class="thumbnail-wrap">
-                        <img class="img" src="./블루-신형.jpg" alt="">
-                    </div>
-                    <div class="notice-title">
-                        추석 연휴 배송 및 휴무 안내
-                    </div>
-                </div>
-            </td>
-            <td>2023-11-07</td>
-          </tr>
-          <tr>
-            <td>공지</td>
-            <td>
-                <div class="notice-title-wrap">
-                    <div class="thumbnail-wrap">
-                        <img class="img" src="./블루-신형.jpg" alt="">
-                    </div>
-                    <div class="notice-title">
-                        추석 연휴 배송 및 휴무 안내
-                    </div>
-                </div>
-            </td>
-            <td>2023-11-07</td>
-          </tr>
+        	<c:forEach items="${list }" var="noti">
+        		<tr <c:if test="${noti.noticeState eq 'Y' }">class="table-active"</c:if>>
+            		<td>${noti.noticeCtgy }</td>
+            		<td>
+                		<div class="notice-title-wrap">
+                    		<div class="thumbnail-wrap">
+                        		<img class="img" src="${noti.noticeFile }" alt="">
+                    		</div>
+                    		<div class="notice-title">
+                    			${noti.noticeTitle }
+                    		</div>
+                		</div>
+            		</td>
+            		<td>${noti.noticeCreateDate }</td>
+          		</tr>
+        	</c:forEach>
         </tbody>
     </table>
 </div>
-<div id="paging">
+<div id="paging-area">
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">&lt</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">&gt</a></li>
+    	<c:choose>
+	    	<c:when test="${pi.currentPage eq 1 }">
+	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
+	    	</c:when>
+	    	<c:otherwise>
+	        	<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage-1 }">&lt</a></li>
+	    	</c:otherwise>
+    	</c:choose>
+    	
+        <c:forEach begin="${pi.startPage }" end="${pi.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p eq pi.currentPage }">
+					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="review?page=${p }">${p }</a></li>
+				</c:otherwise>
+			</c:choose>
+        </c:forEach>
+        
+        <c:choose>
+	    	<c:when test="${pi.currentPage eq pi.maxPage }">
+	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
+	    	</c:when>
+	    	<c:otherwise>
+        		<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage+1 }">&gt</a></li>
+	    	</c:otherwise>
+    	</c:choose>
     </ul>
 </div>
 </div>

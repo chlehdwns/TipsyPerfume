@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class forwardController {
-	@RequestMapping("funding.list")
+	@RequestMapping("fundingMain.list")
 	public String fundingListPage() {
 		return"funding/fundingList";
 	}
