@@ -2481,4 +2481,52 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
 
+INSERT INTO
+TB_NOTICE(
+NOTICE_NO,
+NOTICE_CTGY,
+NOTICE_TITLE,
+NOTICE_CONTENT,
+NOTICE_THUMBNAIL_FILE,
+NOTICE_FILE) VALUES (
+SEQ_NOTICE.NEXTVAL,
+'공지',
+'팁시퍼품 명의도용 및 사칭주의 안내',
+'안녕하세요, 팁시퍼퓸입니다. 
+
+
+
+
+
+최근 [팁시퍼퓸]의 이름으로 고객님들께 ''이벤트 진행'' 또는 ''이벤트 당첨'' 의 내용으로
+
+유선 및 문자로 연락하는 취하는 등의 명의도용이 발생하여 안내드립니다.
+
+
+
+
+
+팁시퍼퓸은 결코 ''010'' 번호로 
+
+고객님께 이벤트 진행의 목적으로 개별적으로 연락 드리지 않으며, 
+
+공식적으로 진행되는 모든 이벤트는 팁시퍼퓸 공식 사이트 및 인스타그램에 고지됨을 안내드립니다. 
+
+(고지되지 않은 이벤트는 당사에서 진행하지 않는 이벤트입니다)
+
+
+
+
+
+
+
+명의도용 번호  :   010-7707-0473
+
+
+
+자세한 사항은 하기의 이미지를 참고부탁드립니다.',
+'resources/image/community/notice/tn1.jpg',
+'resources/image/community/notice/n1.jpg'
+);
+
 COMMIT;
