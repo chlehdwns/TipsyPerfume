@@ -21,8 +21,8 @@
 <form id="enrollForm" method="post" action="noticeWrite.do" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
-			<th><label for="noticeThumbnailFile">썸네일</label></th>
-			<td><input type="file" id="noticeThumbnailFile" class="form-control-file border" name="noticeThumbnailFile"></td>
+			<th><label for="thumbnailFile">썸네일</label></th>
+			<td><input type="file" id="thumbnailFile" class="form-control-file border" name="thumbnailFile" accept="image/gif, image/jpeg, image/png" required></td>
 		</tr>
 		<tr>
 			<th><label>카테고리</label></th>
@@ -31,7 +31,6 @@
 					<option>공지</option>
 					<option>이벤트</option>
 				</select>
-				<input type="text" id="noticeTitle" class="form-control" name="noticeTitle" required>
 			</td>
 		</tr>
 		<tr>
@@ -39,12 +38,12 @@
 			<td><input type="text" id="noticeTitle" class="form-control" name="noticeTitle" required></td>
 		</tr>
 		<tr>
-			<th><label for="noticeFile">이미지파일</label></th>
-			<td><input type="file" id="noticeFile" class="form-control-file border" name="noticeFile"></td>
-		</tr>
-		<tr>
 			<th><label for="noticeContent">내용</label></th>
 			<td><textarea id="noticeContent" class="form-control" rows="10" style="resize:none;" name="noticeContent" required></textarea></td>
+		</tr>
+		<tr>
+			<th><label for="imgFile">이미지파일</label></th>
+			<td><input type="file" id="imgFile" class="form-control-file border" name="imgFile" accept="image/gif, image/jpeg, image/png" required></td>
 		</tr>
 	</table>
 	<br>

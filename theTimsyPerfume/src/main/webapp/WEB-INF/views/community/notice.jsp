@@ -33,6 +33,7 @@
     .table{
         text-align: center;
         border-collapse: collapse;
+        background-color: #cccccc;
     }
     .table tr{
         background-color: #cccccc;

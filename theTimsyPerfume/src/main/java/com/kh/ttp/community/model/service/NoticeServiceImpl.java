@@ -29,4 +29,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public NoticeVO selectNoticeDetail(int noticeNo) {
 		return noticeDao.selectNoticeDetail(sqlSession, noticeNo);
 	}
+	@Override
+	public int insertNotice(NoticeVO no) {
+		return noticeDao.insertNotice(sqlSession, no);
+	}
 }

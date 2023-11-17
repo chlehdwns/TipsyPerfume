@@ -1,6 +1,11 @@
 package com.kh.ttp.community.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.common.model.vo.PageInfo;
@@ -25,9 +31,11 @@ public class NoticeController {
 		return "community/noticeWrite";
 	}
 	@PostMapping("noticeWrite.do")
-	public String noticeWrite(NoticeVO no) {
-		System.out.println(no);
-		return "community/notice";
+	public String noticeWrite(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session) {
+		no.setNoticeThumbnailFile(saveFile(thumbnailFile, session));
+		no.setNoticeFile(saveFile(imgFile, session));
+		noticeService.insertNotice(no);
+		return "redirect:notice";
 	}
 	
 	@GetMapping("notice")
@@ -50,5 +58,23 @@ public class NoticeController {
 		mv.addObject("notice", notice).
 		setViewName("community/noticeDetail");
 		return mv;
+	}
+	
+	public String saveFile(MultipartFile upfile, HttpSession session) {
+		String originName = upfile.getOriginalFilename();
+		
+		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		int ranNum = (int)(Math.random()*90000+10000);
+		String ext =  originName.substring(originName.lastIndexOf("."));
+		String changeName = curTime + ranNum + ext;
+		String savePath = session.getServletContext().getRealPath("/resources/image/community/notice/");
+		
+		try {
+			upfile.transferTo(new File(savePath+changeName));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		return "resources/image/community/notice/"+changeName;
 	}
 }

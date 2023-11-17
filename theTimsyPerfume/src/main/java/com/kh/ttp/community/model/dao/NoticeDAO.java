@@ -22,4 +22,8 @@ public class NoticeDAO {
 	public NoticeVO selectNoticeDetail(SqlSessionTemplate sqlSession, int noticeNo) {
 		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", noticeNo);
 	}
+
+	public int insertNotice(SqlSessionTemplate sqlSession, NoticeVO no) {
+		return sqlSession.insert("noticeMapper.insertNotice", no);
+	}
 }
