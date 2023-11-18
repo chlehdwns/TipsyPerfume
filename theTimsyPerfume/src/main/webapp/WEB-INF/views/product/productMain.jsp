@@ -63,7 +63,7 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 		               	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 		               	<c:if test="${pdtCteg eq 'F' }">
 		               		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
@@ -75,7 +75,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListNew}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
+		                            <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -113,7 +113,7 @@
 				    </div>
 				    <div div class="pdt-list-btn">
 				    	<c:if test="${pdtCteg eq 'A'}">
-				         <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
+				         <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
 				    		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
@@ -125,7 +125,7 @@
 				        <div class="swiper-wrapper">
 				            <c:forEach var="product" items="${pMap.pMainListBestSeller}">
 				             <c:if test="${pdtCteg eq 'A'}">
-				                 <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
+				                 <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
 				             </c:if>
 				             <c:if test="${pdtCteg eq 'F'}">
 				                 <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -163,7 +163,7 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 	                	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
 	                		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
@@ -175,7 +175,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListPopular}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
+		                            <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -207,10 +207,28 @@
     </div>
     <script>
     
-		function ajaxAlcoholValidation(pdtNo) {
+		function ajaxAdultValidation(pdtNo) {
 			console.log(pdtNo);
-			
+			$.ajax({
+				url : 'ajaxAdultValidation.ur',
+				type : 'GET',
+				data : {pdtNo : pdtNo},
+				success : result => {
+					console.log('인증 성공 or 실패');
+					console.log(result);
+					// (로그인 안한 경우는 Controller에서 바로 에러페이지 감)
+					// 성인여부 YN과 디테일조회 시 넘어온 pdtNo따라
+					// 성인 Y이고 전체조회이면 전체조회 포워딩
+					// 성인 Y이고 디테일이면 pdtNo넘기면서 포워딩
+					// 성인N이면 경고알림 및 성인인증창
+				},
+				error : () => {
+					console.log('성인인증 실패');
+				}
+			});
 		};
+		
+		
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
             autoplay : {
