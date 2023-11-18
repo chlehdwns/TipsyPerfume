@@ -27,9 +27,8 @@ public class AjaxUserController1 {
 	 * YYYY : 로그인O 성인인증O / YYNN : 로그인O 성인인증X / NNNN : 로그인X 성인인증X
 	 */
 	@ResponseBody
-	@GetMapping(value="ajaxAdultValidation.ur", produces="application/json; charset=UTF-8")
+	@GetMapping(value="ajaxAdultValidation.ur", produces="html/text; charset=UTF-8")
 	public String ajaxAdultValidation(HttpSession session) {
-		
 		if(session.getAttribute("loginUser") != null) {
 			int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
 			return userService.isUserAdult(userNo) ? "YYYY" : "YYNN";
