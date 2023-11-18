@@ -2,9 +2,10 @@
 
 /* 전체 영역 + 큰 div파트 세팅 */
 #productMainWrap {
-    width: 950px;
+    width: 900px;
     margin: auto;
 }
+
 #productMainWrap div {
     border: solid 1px black;
 }

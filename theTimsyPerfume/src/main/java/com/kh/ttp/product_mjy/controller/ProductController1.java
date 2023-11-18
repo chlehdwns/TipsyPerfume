@@ -35,14 +35,18 @@ public class ProductController1 {
 	@GetMapping("productMain.pr") // productMain.pr?pdtCteg=A&sort=New&pdtQuan=6
 	public ModelAndView productMainList(String pdtCteg, ModelAndView mv) {
 		
-		
-		int listCount = productService.selectProductCount(pdtCteg);
-		PageInfo pi = Pagination.getPageInfo(listCount, 1, 6, 10);
-		RowBounds rowBounds = new RowBounds(0, pi.getBoardLimit());
-		
-		mv.addObject("pMap", productService.productMainList(pdtCteg, rowBounds))
-		  .addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
-		  .setViewName("product/productMain");
+		if("A".equals(pdtCteg) || "F".equals(pdtCteg)) {
+			int listCount = productService.selectProductCount(pdtCteg);
+			PageInfo pi = Pagination.getPageInfo(listCount, 1, 6, 10);
+			RowBounds rowBounds = new RowBounds(0, pi.getBoardLimit());
+			
+			mv.addObject("pMap", productService.productMainList(pdtCteg, rowBounds))
+			.addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
+			.setViewName("product/productMain");
+		} else {
+			mv.addObject("errorMsg", "상품 메인화면 이동 실패...")
+			  .setViewName("common/errorPage");
+		}
 		return mv;
 	}
 	
