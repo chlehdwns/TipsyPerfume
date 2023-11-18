@@ -31,16 +31,17 @@ public class ProductServiceImpl1 implements ProductService1 {
 	public HashMap<String, Object> productMainList(String pdtCteg, RowBounds rowBounds) {
 		
 		HashMap<String, Object> pMap = new HashMap();
-		pMap.put("pdtCteg", pdtCteg);
 		
-		// 최신순
-		pMap.put("sort", "New");
+		
+		pMap.put("pdtCteg", pdtCteg); // 식별자
+		
+		pMap.put("sort", "New"); // 최신순
 		pMap.put("pMainListNew", productDao.productMainList(sqlSession, pMap, rowBounds));
-		// 판매량순		
-		pMap.put("sort", "BestSeller");
+				
+		pMap.put("sort", "BestSeller"); // 판매량순
 		pMap.put("pMainListBestSeller", productDao.productMainList(sqlSession, pMap, rowBounds));
-		// 위시리스트순
-		pMap.put("sort", "Popular");
+		
+		pMap.put("sort", "Popular"); // 위시리스트순
 		pMap.put("pMainListPopular", productDao.productMainList(sqlSession, pMap, rowBounds));
 
 		return pMap;

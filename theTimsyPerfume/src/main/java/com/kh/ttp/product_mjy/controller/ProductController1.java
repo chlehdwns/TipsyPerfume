@@ -1,8 +1,5 @@
 package com.kh.ttp.product_mjy.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +29,7 @@ public class ProductController1 {
 	 * 만들어진 3개의 ArrayList를 HashMap<String, Object>에 담고,<br>
 	 * 이 HashMap을 ModelAndView에 pMap이라는 키값으로 담는다
 	 */
-	@GetMapping("productMain.pr") // productMain.pr?pdtCteg=A&sort=New&pdtQuan=6
+	@GetMapping("productMain.pr") // productMain.pr?pdtCteg=A
 	public ModelAndView productMainList(String pdtCteg, ModelAndView mv) {
 		
 		if("A".equals(pdtCteg) || "F".equals(pdtCteg)) {
@@ -41,13 +38,31 @@ public class ProductController1 {
 			RowBounds rowBounds = new RowBounds(0, pi.getBoardLimit());
 			
 			mv.addObject("pMap", productService.productMainList(pdtCteg, rowBounds))
-			.addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
-			.setViewName("product/productMain");
+			  .addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
+			  .setViewName("product/productMain");
 		} else {
 			mv.addObject("errorMsg", "상품 메인화면 이동 실패...")
 			  .setViewName("common/errorPage");
 		}
 		return mv;
 	}
+	
+	
+	@GetMapping("perfumeList.pr")
+	public ModelAndView perfumeList(String pdtCteg, ModelAndView mv) {
+		
+		if("F".equals(pdtCteg)) {
+			mv.addObject("errorMsg", "향수 성공성공 키는 " + pdtCteg + "입니다")
+			  .setViewName("common/errorPage");
+		} else {
+			mv.addObject("errorMsg", "향수 전체조회 실패...")
+			  .setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	
+	
+	
+	
 	
 }
