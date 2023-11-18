@@ -2,7 +2,7 @@
 
 /* 전체 영역 + 큰 div파트 세팅 */
 #productMainWrap {
-    width: 900px;
+    width: 950px;
     margin: auto;
 }
 
@@ -14,7 +14,6 @@
     width: 100%;
     height: 500px;
     margin-top: 80px;
-    padding: 0px 20px 0px 20px;
 }
 
 /* 1. 최상단 타이틀 영역 조절 */
@@ -65,7 +64,7 @@
 #productMainWrap .swiper-slide>img {
     width : 100%;
     height : 60%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* 상품 설명들 조절 */

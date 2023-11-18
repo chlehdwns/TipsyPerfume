@@ -63,7 +63,7 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 		               	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 		               	<c:if test="${pdtCteg eq 'F' }">
 		               		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
@@ -75,7 +75,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListNew}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+		                            <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -113,7 +113,7 @@
 				    </div>
 				    <div div class="pdt-list-btn">
 				    	<c:if test="${pdtCteg eq 'A'}">
-				         <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+				         <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
 				    		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
@@ -125,7 +125,7 @@
 				        <div class="swiper-wrapper">
 				            <c:forEach var="product" items="${pMap.pMainListBestSeller}">
 				             <c:if test="${pdtCteg eq 'A'}">
-				                 <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+				                 <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
 				             </c:if>
 				             <c:if test="${pdtCteg eq 'F'}">
 				                 <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -163,7 +163,7 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 	                	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAlcoholValidation('alcoholList.al');" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
 	                		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
@@ -175,7 +175,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListPopular}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
+		                            <div class="swiper-slide" onclick="ajaxAlcoholValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -206,6 +206,11 @@
 		</c:choose>
     </div>
     <script>
+    
+		function ajaxAlcoholValidation(pdtNo) {
+			console.log(pdtNo);
+			
+		};
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
             autoplay : {
