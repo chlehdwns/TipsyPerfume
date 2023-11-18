@@ -212,9 +212,8 @@
 			$.ajax({
 				url : 'ajaxAdultValidation.ur',
 				type : 'GET',
-				data : {pdtNo : pdtNo},
 				success : result => {
-					console.log('인증 성공 or 실패');
+					console.log('로그인여부 & 인증필요여부 식별 문자열');
 					console.log(result);
 					// (로그인 안한 경우는 Controller에서 바로 에러페이지 감)
 					// 성인여부 YN과 디테일조회 시 넘어온 pdtNo따라
