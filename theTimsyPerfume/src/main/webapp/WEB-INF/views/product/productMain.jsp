@@ -205,6 +205,26 @@
 			
 		</c:choose>
     </div>
+    
+    <div id="pdtLoginModal" class="modal" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Modal title</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Modal body text goes here.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    
+    
     <script>
     
 		function ajaxAdultValidation(pdtNo) {
@@ -216,17 +236,31 @@
 					console.log('로그인여부 & 인증필요여부 식별 문자열');
 					console.log(result);
 					// (로그인 안한 경우는 Controller에서 바로 에러페이지 감)
-					// 성인여부 YN과 디테일조회 시 넘어온 pdtNo따라
-					// 성인 Y이고 전체조회이면 전체조회 포워딩
-					// 성인 Y이고 디테일이면 pdtNo넘기면서 포워딩
-					// 성인N이면 경고알림 및 성인인증창
+					if(result === 'YYYY') {
+						console.log(pdtNo + 'pdt넘버');
+						console.log(isNaN(pdtNo));
+						if(!(isNaN(pdtNo))) {
+							location.href="selectAlcoholPdt.pr?pstNo=" + pdtNo;
+						}
+					}
+					else if (result === 'YYNN') {
+						$('#pdtLoginModal').modal("show");
+						// 로그인N성인N이면 경고알림 및 성인인증창
+						// 인증 성공 시 pdtNo값에 따라 전체 or 디테일 포워딩
+					}
+					else {
+						$('#pdtLoginModal').modal("show");
+						// 로그인N성인N이면 경고알림 및 로그인창
+						// 현재 페이지 url 변수에 미리 담아두기
+						// 로그인 성공 시  현재 페이지에서 로그인상태로
+					}
 				},
 				error : () => {
-					console.log('성인인증 실패');
+					console.log('인증 실패');
+					alert('요청에 실패하였습니다');
 				}
 			});
 		};
-		
 		
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
