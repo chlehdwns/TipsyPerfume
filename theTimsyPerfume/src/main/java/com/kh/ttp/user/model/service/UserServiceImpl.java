@@ -11,7 +11,7 @@ import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
 @Service
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class UserServiceImpl implements UserService {
 
 	@Autowired
