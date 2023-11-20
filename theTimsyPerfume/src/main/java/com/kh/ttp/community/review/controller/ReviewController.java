@@ -1,21 +1,16 @@
 package com.kh.ttp.community.review.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.review.model.service.ReviewService;
-import com.kh.ttp.community.review.model.vo.CommentVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Controller

@@ -62,6 +62,19 @@ public class ProductController1 {
 	}
 	
 	
+	// 매핑 selectAlcoholPdtDetail.pr
+	public void selectAlcoholDetail() {
+		
+	}
+	
+	//매핑 selectAlcoholPdtList.pr
+	public void selectAlcoholPdtList() {
+		
+	}
+	
+	
+	
+	
 	
 	
 	

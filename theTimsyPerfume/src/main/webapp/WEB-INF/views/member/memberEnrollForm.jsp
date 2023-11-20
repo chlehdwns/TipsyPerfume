@@ -132,8 +132,17 @@
 	
 	
 	</div><!-- 제일 겉 div -->
+	
+	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
+	<script src="resources/js/member/memberEnrollForm.js"></script>
+	
+	
+	
+	<!-- **스크립트 파일로 따로 뺐습니다 - MJY
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+ 		<script>
 		function execDaumPostcode(){
 		    new daum.Postcode({
 		        oncomplete: function(data) {
@@ -162,7 +171,6 @@
 		<script>
 		//아이디 중복체크
 		$(function(){
-			
 			const $emailInput = $('.form-group #userEmail');
 			const $checkResult = $('#checkResult');
 			const $enrollFormSubmit = $('#enroll-form :submit');
@@ -219,7 +227,7 @@
 			
 		}
 		}
-		</script>
+		</script> -->
 		
 		
 		

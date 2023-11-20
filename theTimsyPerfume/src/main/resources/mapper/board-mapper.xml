@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+<resultMap type="board" id="boardResultSet">
+	<result column="BOARD_NO" property="boardNo"/>
+	<result column="NICKNAME" property="boardWriter"/>
+	<result column="BOARD_TITLE" property="boardTitle"/>
+	<result column="BOARD_CONTENT" property="boardContent"/>
+	<result column="BOARD_CREATE_DATE" property="boardCreateDate"/>
+	<result column="BOARD_MODIFY_DATE" property="boardModifyDate"/>
+	<result column="BOARD_CTGY_CODE" property="boardCtgyCode"/>
+	<result column="BOARD_STATE" property="boardState"/>
+	<result column="BOARD_COUNT" property="boardCount"/>
+</resultMap>
+
+<select id="countBoardList" parameterType="string" resultType="_int">
+SELECT
+    COUNT(*)
+FROM TB_BOARD
+WHERE
+    BOARD_STATE='Y'
+AND
+    BOARD_CTGY_CODE=#{boardCtgy}
+</select>
+<select id="seletcBoardList" parameterType="string" resultMap="boardResultSet">
+SELECT
+    BOARD_NO,
+    NICKNAME,
+    BOARD_TITLE,
+    BOARD_CREATE_DATE,
+    BOARD_MODIFY_DATE,
+    BOARD_CTGY_CODE,
+    BOARD_STATE,
+    BOARD_COUNT
+FROM TB_BOARD
+JOIN TB_USER USING(USER_NO)
+WHERE
+    BOARD_STATE='Y'
+AND
+    BOARD_CTGY_CODE=#{boardCtgy}
+</select>
+</mapper>

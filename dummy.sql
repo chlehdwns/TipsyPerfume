@@ -2187,7 +2187,6 @@ INSERT INTO TB_USER(
     STATUS,
     MEMBER_TYPE,
     BUSINESS_REG,
-    ADULT_STATUS,
     BIRTH_DATE
 ) VALUES (
     SEQ_USER.NEXTVAL,
@@ -2197,7 +2196,6 @@ INSERT INTO TB_USER(
     '관리자',  
     'Y',
     'A',
-    'Y' ,
     'Y',
     '20231114'
 );
@@ -2233,7 +2231,6 @@ INSERT INTO TB_USER(
     STATUS,
     MEMBER_TYPE,
     BUSINESS_REG,
-    ADULT_STATUS,
     BIRTH_DATE
 ) VALUES (
     SEQ_USER.NEXTVAL,
@@ -2243,7 +2240,6 @@ INSERT INTO TB_USER(
     '판매자',  
     'Y',
     'S',
-    'Y' ,
     'Y',
     '20231114'
 );
@@ -2257,7 +2253,6 @@ INSERT INTO TB_USER(
     STATUS,
     MEMBER_TYPE,
     BUSINESS_REG,
-    ADULT_STATUS,
     BIRTH_DATE
 ) VALUES (
     SEQ_USER.NEXTVAL,
@@ -2267,8 +2262,7 @@ INSERT INTO TB_USER(
     '김유저',  
     'Y',
     'U',
-    'N' ,
-    'Y',
+    'N',
     '19851114'
 );
 INSERT INTO TB_USER(
@@ -2280,7 +2274,6 @@ INSERT INTO TB_USER(
     STATUS,
     MEMBER_TYPE,
     BUSINESS_REG,
-    ADULT_STATUS,
     BIRTH_DATE
 ) VALUES (
     SEQ_USER.NEXTVAL,
@@ -2291,7 +2284,6 @@ INSERT INTO TB_USER(
     'Y',
     'U',
     'N',
-    'Y',
     '19901114'
 );
 
@@ -2304,7 +2296,6 @@ INSERT INTO TB_USER(
     STATUS,
     MEMBER_TYPE,
     BUSINESS_REG,
-    ADULT_STATUS,
     BIRTH_DATE
 ) VALUES (
     SEQ_USER.NEXTVAL,
@@ -2315,7 +2306,6 @@ INSERT INTO TB_USER(
     'Y',
     'U',
     'N',
-    'Y',
     '19951114'
 );
 COMMIT;

@@ -1,6 +1,6 @@
 package com.kh.ttp.user.model.service;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 

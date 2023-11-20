@@ -5,22 +5,18 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Tipsy Perfume - 공지 페이지</title>
+<title>Tipsy Perfume - 게시판</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-<jsp:include page="../common/header.jsp"/>
-
 <style>
     #notice-wrap{
         width: 900px;
         margin: 0 auto;
         overflow: hidden;
     }
-    .content-title{
+    #content-title{
         font-size: 36px;
         font-weight: 600;
         text-align: center;
@@ -33,34 +29,32 @@
     .table{
         text-align: center;
         border-collapse: collapse;
-        background-color: #cccccc;
-        --bs-table-bg: none;
-    }
-    .table tr{
-        background-color: #cccccc;
     }
     .table td{
         vertical-align: middle;
         border-color: rgb(160, 160, 160);
+        border-bottom: 1px solid;
     }
     tbody tr{
     	cursor: pointer;
     }
-    .img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+
+    .board-no{
+        width: 15%;
     }
-    .notice-title-wrap{
-        display: flex;
-        align-items: center;
+    .board-title{
+        width: 40%;
+        text-align: left;
     }
-    .thumbnail-wrap{
-        width: 95px;
-        height: 95px;
+    .board-writer{
+        width: 18%;
+        text-align: left;
     }
-    .notice-title{
-        margin-left: 25px;
+    .board-date{
+        width: 15%;
+    }
+    .board-count{
+        width: 12%;
     }
 
     #paging-area{
@@ -68,48 +62,41 @@
         justify-content: center;
         margin-bottom: 20px;
     }
-
-    .notice-done{
-        background-color: #ffffff !important;
-    }
-    .notice-done td{
-        opacity: 0.4;
-    }
 </style>
-
-<div id="notice-wrap">
-<c:if test="${loginUser.memberType eq 'A' }">
-<a href="noticeWrite">공지 작성하기</a>
-</c:if>
-    <div class="content-title">
-        공지사항
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
+<section>
+<div id="board-wrap">
+    <div id="content-title">
+        게시판
     </div>
 <div class="table-wrap">
-    <table class="table">
+    <table class="table table-hover">
         <thead class="thead-dark">
-          <tr>
-            <th>분류</th>
-            <th>제목</th>
-            <th>작성일</th>
-          </tr>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
         </thead>
         <tbody>
-        	<c:forEach items="${list }" var="noti">
-        		<tr <c:if test="${noti.noticeState eq 'N' }">class="notice-done"</c:if> onclick="location.href='noticeDetail?noticeNo=${noti.noticeNo}'">
-            		<td>${noti.noticeCtgy }</td>
-            		<td>
-                		<div class="notice-title-wrap">
-                    		<div class="thumbnail-wrap">
-                        		<img class="img" src="${noti.noticeThumbnailFile }" alt="썸네일">
-                    		</div>
-                    		<div class="notice-title">
-                    			${noti.noticeTitle }
-                    		</div>
-                		</div>
-            		</td>
-            		<td>${noti.noticeCreateDate }</td>
-          		</tr>
-        	</c:forEach>
+            <tr>
+                <td class="board-no">6</td>
+                <td class="board-title">제목</td>
+                <td class="board-writer">작성자</td>
+                <td class="board-date">yyyy-MM-dd</td>
+                <td class="board-count">2</td>
+            </tr>
+            <tr>
+                <td class="board-no">5</td>
+                <td class="board-title">제목</td>
+                <td class="board-writer">작성자</td>
+                <td class="board-date">yyyy-MM-dd</td>
+                <td class="board-count">2</td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -120,7 +107,7 @@
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage-1 }">&lt</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage-1 }">&lt</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -130,7 +117,7 @@
 					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="review?page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="board?page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
         </c:forEach>
@@ -140,12 +127,13 @@
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="review?page=${pi.currentPage+1 }">&gt</a></li>
+        		<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage+1 }">&gt</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>
 </div>
 </div>
+</section>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
