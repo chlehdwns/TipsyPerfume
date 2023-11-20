@@ -67,11 +67,6 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="email">이메일</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="이메일">
-					</div>
-					
-					<div class="form-group">
 						<label for="phone">전화번호 *</label>
 						<input type="text" class="form-control" id="phone" name="phone" placeholder="전화번호" required>
 					</div>

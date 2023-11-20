@@ -17,9 +17,9 @@ public class ReceiverController {
 	@ResponseBody
 	@PostMapping(value="ajaxInsertReceiver.re", produces="text/html; charset=UTF-8")
 	public String insertReceiver(Receiver receiver) {
+		// 값 가공
 		receiver.setPhone(receiver.getPhone().replaceAll("-", ""));
 		receiver.setPrimaryStatus("Y".equals(receiver.getPrimaryStatus()) ? "Y" : "N");
-		System.out.println(receiver + "받은 리시버");
 		// 등록성공 Y 실패 N
 		return (receiverService.ajaxInsertReceiver(receiver) > 0) ? "Y" : "N";
 	}
