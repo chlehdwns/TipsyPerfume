@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 기본 메인</title>
+<title>상품 전체조회</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -44,6 +44,7 @@
     -->
 
 	<jsp:include page="../common/header.jsp" />
+	<jsp:include page="productSideBar.jsp" />
 	
     <div id="productMainWrap" class="container">
 		<c:choose>
@@ -63,10 +64,10 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 		               	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 		               	<c:if test="${pdtCteg eq 'F' }">
-		               		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+		               		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -75,7 +76,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListNew}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
+		                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -113,10 +114,10 @@
 				    </div>
 				    <div div class="pdt-list-btn">
 				    	<c:if test="${pdtCteg eq 'A'}">
-				         <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+				         <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
-				    		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
+				    		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    </div>
 				    <!-- Slider main container -->
@@ -125,7 +126,7 @@
 				        <div class="swiper-wrapper">
 				            <c:forEach var="product" items="${pMap.pMainListBestSeller}">
 				             <c:if test="${pdtCteg eq 'A'}">
-				                 <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
+				                 <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
 				             </c:if>
 				             <c:if test="${pdtCteg eq 'F'}">
 				                 <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -163,10 +164,10 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 	                	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="ajaxAdultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="ajaxAlcoholList();" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
-	                		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
+	                		<button type="button" onclick="location.href='#'" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -175,7 +176,7 @@
 	                    <div class="swiper-wrapper">
 	                        <c:forEach var="product" items="${pMap.pMainListPopular}">
 		                        <c:if test="${pdtCteg eq 'A'}">
-		                            <div class="swiper-slide" onclick="ajaxAdultValidation('${product.pdtNo}');">
+		                            <div class="swiper-slide" onclick="ajaxAlcoholDetail();">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
 		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
@@ -205,63 +206,7 @@
 			
 		</c:choose>
     </div>
-    
-    <div id="pdtLoginModal" class="modal" tabindex="-1">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">Modal title</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        <p>Modal body text goes here.</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-    
-    
     <script>
-    
-		function ajaxAdultValidation(pdtNo) {
-			console.log(pdtNo);
-			$.ajax({
-				url : 'ajaxAdultValidation.ur',
-				type : 'GET',
-				success : result => {
-					console.log('로그인여부 & 인증필요여부 식별 문자열');
-					console.log(result);
-					// (로그인 안한 경우는 Controller에서 바로 에러페이지 감)
-					if(result === 'YYYY') {
-						console.log(pdtNo + 'pdt넘버');
-						console.log(isNaN(pdtNo));
-						if(!(isNaN(pdtNo))) {
-							location.href="selectAlcoholPdt.pr?pstNo=" + pdtNo;
-						}
-					}
-					else if (result === 'YYNN') {
-						$('#pdtLoginModal').modal("show");
-						// 로그인N성인N이면 경고알림 및 성인인증창
-						// 인증 성공 시 pdtNo값에 따라 전체 or 디테일 포워딩
-					}
-					else {
-						$('#pdtLoginModal').modal("show");
-						// 로그인N성인N이면 경고알림 및 로그인창
-						// 현재 페이지 url 변수에 미리 담아두기
-						// 로그인 성공 시  현재 페이지에서 로그인상태로
-					}
-				},
-				error : () => {
-					console.log('인증 실패');
-					alert('요청에 실패하였습니다');
-				}
-			});
-		};
-		
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
             autoplay : {

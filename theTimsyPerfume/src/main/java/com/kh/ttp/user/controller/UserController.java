@@ -167,13 +167,15 @@ public class UserController {
 		return mv;
 	} 
 	
-	
+	/*
 	@RequestMapping("update.me")
 	public String updateMember(User u, Model model, HttpSession session) {
 		
 		if(userService.updateUser(u) > 0) {
 			
 			session.setAttribute("loginUser", userService.loginUser(u));
+
+
 			session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
 			return "redirect:myPage.me";
 			
@@ -222,7 +224,8 @@ public class UserController {
 		
 	}
 	
-	
+	@RequestMapping("update1.me")
+	*/
 	
 	
 	
