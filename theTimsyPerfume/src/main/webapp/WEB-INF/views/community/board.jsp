@@ -48,7 +48,6 @@
     }
     .board-writer{
         width: 18%;
-        text-align: left;
     }
     .board-date{
         width: 15%;
@@ -83,20 +82,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="board-no">6</td>
-                <td class="board-title">제목</td>
-                <td class="board-writer">작성자</td>
-                <td class="board-date">yyyy-MM-dd</td>
-                <td class="board-count">2</td>
+        <c:choose>
+        <c:when test="${empty list }">
+        	<tr><td colspan="5">게시글이 없습니다!</td></tr>
+        </c:when>
+        <c:otherwise>
+        <c:forEach items="${list }" var="board">
+        	<tr>
+                <td class="board-no">${board.boardNo }</td>
+                <td class="board-title">${board.boardTitle }</td>
+                <td class="board-writer">${board.boardWriter }</td>
+                <td class="board-date">${board.boardCreateDate }</td>
+                <td class="board-count">${board.boardCount }</td>
             </tr>
-            <tr>
-                <td class="board-no">5</td>
-                <td class="board-title">제목</td>
-                <td class="board-writer">작성자</td>
-                <td class="board-date">yyyy-MM-dd</td>
-                <td class="board-count">2</td>
-            </tr>
+        </c:forEach>
+        </c:otherwise>
+        </c:choose>
         </tbody>
     </table>
 </div>
