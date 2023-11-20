@@ -9,10 +9,10 @@
 	
 	  <typeAliases>
 		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.ReviewVO" alias="review"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.NoticeVO" alias="notice"/>
+		<typeAlias type="com.kh.ttp.community.review.model.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.user.model.vo.AuthVO" alias="authVO" />
-		<typeAlias type="com.kh.ttp.community.model.vo.CommentVO" alias="comment"/>
+		<typeAlias type="com.kh.ttp.community.review.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductSelectVO" alias="productSelect" />

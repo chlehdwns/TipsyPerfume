@@ -1,4 +1,4 @@
-package com.kh.ttp.community.controller;
+package com.kh.ttp.community.notice.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -18,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
-import com.kh.ttp.community.model.service.NoticeService;
-import com.kh.ttp.community.model.vo.NoticeVO;
+import com.kh.ttp.community.notice.model.service.NoticeService;
+import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
 @Controller
 public class NoticeController {

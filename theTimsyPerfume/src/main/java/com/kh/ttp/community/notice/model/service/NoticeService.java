@@ -1,10 +1,10 @@
-package com.kh.ttp.community.model.service;
+package com.kh.ttp.community.notice.model.service;
 
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
 
-import com.kh.ttp.community.model.vo.NoticeVO;
+import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
 public interface NoticeService {
 	public int countNoticeList();

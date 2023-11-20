@@ -1,4 +1,4 @@
-package com.kh.ttp.community.controller;
+package com.kh.ttp.community.review.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
-import com.kh.ttp.community.model.service.ReviewService;
-import com.kh.ttp.community.model.vo.CommentVO;
-import com.kh.ttp.community.model.vo.ReviewVO;
+import com.kh.ttp.community.review.model.service.ReviewService;
+import com.kh.ttp.community.review.model.vo.CommentVO;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Controller
 public class ReviewController {
