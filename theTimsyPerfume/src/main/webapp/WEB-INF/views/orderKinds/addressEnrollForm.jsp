@@ -17,7 +17,7 @@
 		
 		/* 인풋 포커스 테두리 효과 없애기 CSS */
 		#postalCode:focus, 
-		#address:focus {
+		#address:focus {   
 			caret-color: transparent;
 			outline: none;
  			box-shadow: none;
