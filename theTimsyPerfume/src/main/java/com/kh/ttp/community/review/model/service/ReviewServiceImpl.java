@@ -15,7 +15,6 @@ import com.kh.ttp.community.review.model.vo.CommentVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Service
-@EnableTransactionManagement
 public class ReviewServiceImpl implements ReviewService {
 
 	@Autowired
@@ -47,7 +46,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.selectCommentList(sqlSession, map);
 	}
 	@Override
-	/*@Transactional*/
+	@Transactional
 	public int insertComment(CommentVO comment) {
 		reviewDao.increaseCommentIndex(sqlSession, comment.getCommentGroup());
 		return reviewDao.insertComment(sqlSession, comment);

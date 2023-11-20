@@ -38,6 +38,25 @@
     tbody tr{
     	cursor: pointer;
     }
+
+    .board-no{
+        width: 15%;
+    }
+    .board-title{
+        width: 40%;
+        text-align: left;
+    }
+    .board-writer{
+        width: 18%;
+        text-align: left;
+    }
+    .board-date{
+        width: 15%;
+    }
+    .board-count{
+        width: 12%;
+    }
+
     #paging-area{
         display: flex;
         justify-content: center;
@@ -66,18 +85,18 @@
         </thead>
         <tbody>
             <tr>
-                <td>6</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>yyyy-MM-dd</td>
-                <td>2</td>
+                <td class="board-no">6</td>
+                <td class="board-title">제목</td>
+                <td class="board-writer">작성자</td>
+                <td class="board-date">yyyy-MM-dd</td>
+                <td class="board-count">2</td>
             </tr>
             <tr>
-                <td>5</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>yyyy-MM-dd</td>
-                <td>2</td>
+                <td class="board-no">5</td>
+                <td class="board-title">제목</td>
+                <td class="board-writer">작성자</td>
+                <td class="board-date">yyyy-MM-dd</td>
+                <td class="board-count">2</td>
             </tr>
         </tbody>
     </table>

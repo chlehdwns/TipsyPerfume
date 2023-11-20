@@ -14,11 +14,12 @@ public class BoardVO {
 	BOARD_STATE
 	BOARD_COUNT*/
 	private int boardNo;
+	private String boardWriter;
 	private String boardTitle;
 	private String boardContent;
 	private String boardCreateDate;
 	private String boardModifyDate;
 	private String boardCtgyCode;
 	private String boardState;
-	private String count;
+	private String boardCount;
 }

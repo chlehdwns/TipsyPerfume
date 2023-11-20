@@ -21,8 +21,11 @@ public class BoardController {
 	
 	@GetMapping("board")
 	public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1")int page, String boardCtgy, ModelAndView mv) {
+		System.out.println(page);
+		System.out.println(boardCtgy);
 		int listCount = boardService.countBoardList(boardCtgy);
 		PageInfo pi = Pagination.getPageInfo(listCount, page, 9, 5);
+		System.out.println("1");
 		ArrayList<BoardVO> list = boardService.seletcBoardList(boardCtgy, pi);
 		
 		mv.addObject("list", list).
