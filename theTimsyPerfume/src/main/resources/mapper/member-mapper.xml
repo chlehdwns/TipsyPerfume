@@ -139,6 +139,18 @@
 	WHERE
 		USER_NO = #{userNo}
 	</select>
-
+	
+	
+	<!-- 성인인증 여부 확인용 SQL문 -->
+	<select id="isUserAdult" parameterType="_int" resultType="_int">
+		SELECT
+			   COUNT(1)
+		  FROM
+		  	   TB_USER
+		 WHERE
+		 	   USER_NO = #{userNo}
+		   AND
+		 	   ADULT_STATUS = 'Y'
+	</select>
 
 </mapper>

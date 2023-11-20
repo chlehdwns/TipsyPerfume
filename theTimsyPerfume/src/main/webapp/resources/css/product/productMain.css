@@ -5,6 +5,7 @@
     width: 950px;
     margin: auto;
 }
+
 #productMainWrap div {
     border: solid 1px black;
 }
@@ -13,7 +14,6 @@
     width: 100%;
     height: 500px;
     margin-top: 80px;
-    padding: 0px 20px 0px 20px;
 }
 
 /* 1. 최상단 타이틀 영역 조절 */
@@ -64,7 +64,7 @@
 #productMainWrap .swiper-slide>img {
     width : 100%;
     height : 60%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* 상품 설명들 조절 */
@@ -75,7 +75,7 @@
 
 /* 화살표 버튼색 변경 (기본색은 파란색) */
 div[class^=swiper-button] {
-    color : white;
+    color : black;
     display : block; /* 아니면 안보이게 숨기기도 가능 */
 }
 #productMainWrap .swiper-pagination{

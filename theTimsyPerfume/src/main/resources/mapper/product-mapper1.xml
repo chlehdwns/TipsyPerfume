@@ -14,7 +14,8 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
-	<!-- 브랜드 주류 / 향수 상품(판매중 상태Y) 개수 카운트 -->
+	
+	<!-- 브랜드 주류/향수(판매중 상태Y)의 전체 개수 카운트 -->
 	<select id="selectProductCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
 		FROM TB_PRODUCT
@@ -24,23 +25,81 @@
 		AND PDT_STATUS = 'Y'
 	</select>
 	
-	<!-- 브랜드 주류 / 향수 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
+	
+	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
 	<select id="productMainList" parameterType="map" resultMap="productSelectResultSet">
-SELECT PDT_NO, PDT_NAME, PDT_INTRO, PDT_DESCRIPTION, PDT_MANUFAC, PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC", REVIEW_AVG
-  FROM TB_PRODUCT
-  JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
-  JOIN TB_PRODUCT_FILE USING(PDT_NO)
-  LEFT JOIN(SELECT PDT_NO, AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
-FROM TB_PRODUCT
-LEFT JOIN TB_REVIEW USING(PDT_NO)
-WHERE REVIEW_STATE = 'Y'
-OR REVIEW_STATE IS NULL
-GROUP BY PDT_NO) USING(PDT_NO)
- WHERE PDT_CTEG = #{pdtCteg}
-   AND PDT_FAMILY = 'B'
-   AND PDT_STATUS = 'Y'
-   AND PDT_FILE_INDEX = 0
-ORDER BY PDT_NO DESC
+		SELECT
+			   PDT_NO,
+			   PDT_NAME,
+			   PDT_INTRO,
+			   PDT_DESCRIPTION,
+			   PDT_MANUFAC,
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
+			   REVIEW_AVG
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+  		  JOIN
+  		  	   TB_PRODUCT_FILE USING(PDT_NO)
+  		  LEFT
+  		  JOIN
+  		  	   (
+  		  	   SELECT 
+  		  	   		  <if test="sort eq 'BestSeller'">
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
+  		  	   		  </if>
+  		  			  <if test="sort eq 'Popular'">
+  		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH",
+  		  	   		  </if>
+  		  	   		  PDT_NO,
+  		  	   		  AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
+  		  	   		  
+				 FROM
+				 	  TB_PRODUCT
+				 LEFT
+				 JOIN TB_REVIEW USING(PDT_NO)
+				 <if test="sort eq 'BestSeller'">
+				 LEFT
+                 JOIN
+                 	  TB_ORDER_DETAIL USING(PDT_NO)
+                 LEFT
+                 JOIN
+                 	  TB_PAY USING(PAY_NO)
+				 </if>
+				 <if test="sort eq 'Popular'">
+				 LEFT
+ 				 JOIN TB_WISHLIST W USING(PDT_NO)
+				 </if>
+				WHERE
+				<if test="sort eq 'BestSeller'">
+				 	  PAY_STATUS = 'Y'
+               	  AND
+				</if>
+					  REVIEW_STATE = 'Y'
+				   OR
+				   	  REVIEW_STATE IS NULL
+				GROUP
+				   BY
+				   	  PDT_NO
+			   ) USING(PDT_NO)
+		 WHERE
+			   PDT_CTEG = #{pdtCteg}
+		   AND
+		   	   PDT_FAMILY = 'B'
+   		   AND
+   		   	   PDT_STATUS = 'Y'
+   		   AND
+   		   	   PDT_FILE_INDEX = 0
+		 ORDER
+		    BY
+			<if test="sort eq 'BestSeller'">
+			   TOTAL_SALES DESC,
+			</if>
+			<if test="sort eq 'Popular'">
+			   TOTAL_WISH DESC,
+			</if>
+			   PDT_NO DESC
 	</select>
 	
 	
