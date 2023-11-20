@@ -34,6 +34,7 @@
         text-align: center;
         border-collapse: collapse;
         background-color: #cccccc;
+        --bs-table-bg: none;
     }
     .table tr{
         background-color: #cccccc;
