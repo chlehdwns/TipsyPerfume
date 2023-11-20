@@ -141,4 +141,30 @@
 	</select>
 
 
+	<update id="updateUser" parameterType="user">
+	UPDATE
+		TB_USER
+	SET
+		MEMBER_TYPE = #{memberType},
+		USER_EMAIL = #{userEmail},
+		NICKNAME = #{nickName}
+	WHERE	
+		USER_EMAIL = #{userEmail}
+	</update>
+
+
+	<update id="deleteUser" parameterType="string">
+	UPDATE
+		TB_USER
+	SET
+		STATUS='N'
+	WHERE
+		USER_EMAIL = #{userEmail}
+	</update>
+
+
+
+
+
+
 </mapper>

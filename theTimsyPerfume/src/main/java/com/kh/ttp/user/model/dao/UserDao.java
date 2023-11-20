@@ -44,6 +44,16 @@ public class UserDao {
 		return sqlSession.selectOne("userMapper.selectReceiver", userNo);
 	}
 
+	public int updateUser(SqlSessionTemplate sqlSession, User u) {
+		
+		return sqlSession.update("userMapper.updateUser", u);
+	}
+
+	public int deleteUser(SqlSessionTemplate sqlSession, String userEmail) {
+		
+		return sqlSession.update("userMapper.deleteUser", userEmail);
+	}
+
 	
 
 	
