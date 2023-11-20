@@ -12,7 +12,7 @@ import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
 @Service
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	@Transactional
+	//@Transactional
 	public int insertUser(User u) {
 		userDao.insertUser(sqlSession, u);
 		return userDao.insertUser1(sqlSession, u);
@@ -52,6 +52,20 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Receiver selectReceiver(int userNo) {
 		return userDao.selectReceiver(sqlSession, userNo);
+	}
+
+	//마이페이지 수정하기
+	@Override
+	public int updateUser(User u) {
+		
+		return userDao.updateUser(sqlSession, u);
+	}
+
+	//마이페이지>유저 삭제
+	@Override
+	public int deleteUser(String userEmail) {
+		
+		return userDao.deleteUser(sqlSession, userEmail);
 	}
 
 	

@@ -58,7 +58,7 @@ public class UserController {
 				session.setAttribute("loginUser", loginUser);
 				mv.setViewName("redirect:/");
 			} else {
-				mv.addObject("alertMsg", "로그인 실패ㅠ");
+				mv.addObject("errorMsg", "로그인 실패ㅠ");
 				mv.setViewName("common/errorPage");
 			}
 			return mv;
@@ -156,7 +156,7 @@ public class UserController {
 	
 	@RequestMapping("myPage.me")
 	public ModelAndView myPage(ModelAndView mv, HttpSession session) {
-		
+		//System.out.println("1");
 		int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
 		//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
 		Receiver rc = userService.selectReceiver(userNo);
@@ -169,13 +169,13 @@ public class UserController {
 	
 	/*
 	@RequestMapping("update.me")
-	public String updateMember(User u, int rc, Model model, HttpSession session) {
+	public String updateMember(User u, Model model, HttpSession session) {
 		
-		if(userService.updateUser(u) > 0 && userService.updateReceiver(rc) > 0) {
+		if(userService.updateUser(u) > 0) {
 			
 			session.setAttribute("loginUser", userService.loginUser(u));
-			session.setAttribute("Receiver", userService.selectReceiver(rc));
-			
+
+
 			session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
 			return "redirect:myPage.me";
 			
@@ -186,7 +186,40 @@ public class UserController {
 			return "common/errorPage";
 		}
 		
-		return null;
+	}
+	
+	
+	@RequestMapping("delete.me")
+	public String deleteUser(String userPwd, HttpSession session) {
+		
+		User loginUser = ((User)session.getAttribute("loginUser"));
+				
+		String encPwd = loginUser.getUserPwd();
+		
+		if(bcrypt.matches(userPwd, encPwd)) {
+			
+			String userEmail = loginUser.getUserEmail();
+			
+			if(userService.deleteUser(userEmail) > 0) {
+				session.removeAttribute("loginUser");
+				session.setAttribute("alertMsg", "탈퇴되었습니다.");
+				return "redirect:/";
+		} else {
+				session.setAttribute("errorMsg", "탈퇴 처리 실패되었습니다.");
+				return "common/errorPage";
+		}
+
+	} else {
+		session.setAttribute("alertMsg", "비밀번호가 틀렸습니다.");
+		return "redirect:myPage.me";
+	}	
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}
@@ -201,8 +234,9 @@ public class UserController {
 	
 	
 	
+	
+	
+	
+	
+	
 	}
-	
-	
-
-
