@@ -1,7 +1,9 @@
 package com.kh.ttp.product_mjy.model.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,17 @@ public class ProductServiceImpl1 implements ProductService1 {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
 	@Override
-	public ArrayList<ProductSelectVO> productMainList(ProductSelectVO pdt) {
-		return productDao.productMainList(sqlSession, pdt);
+	public int selectProductCount(String pdtCteg) {
+		return productDao.selectProductCount(sqlSession, pdtCteg);
 	}
+
+	@Override
+	public ArrayList<ProductSelectVO> productMainList(Map<String, Object> pMap, RowBounds rowBounds) {
+		return productDao.productMainList(sqlSession, pMap, rowBounds);
+	}
+
 
 
 }

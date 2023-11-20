@@ -1,5 +1,6 @@
 package com.kh.ttp.user.model.service;
 
+import com.kh.ttp.order.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
@@ -31,7 +32,14 @@ public interface UserService {
 	//메일 인증
 	void sendMail(AuthVO authVo);
 	//boolean validate(CertVO certVo);
+
 	
+
+	//----------------------
+	
+	//마이페이지 보여주기
+	//Receiver mypageUser(User u);
+	Receiver selectReceiver(int userNo);
 	
 	
 }

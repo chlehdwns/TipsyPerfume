@@ -9,6 +9,7 @@ public class NoticeVO {
 	private String noticeTitle;
 	private String noticeContent;
 	private String noticeCreateDate;
+	private String noticeThumbnailFile;
 	private String noticeFile;
 	private int noticeCount;
 	private String noticeState;

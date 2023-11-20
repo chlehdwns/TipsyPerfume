@@ -65,7 +65,7 @@
                             	
                             	<c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">마이페이지</a>
+                                    <a class="header-link" href="myPage.me">마이페이지</a>
                                 </p>
                                 </c:otherwise>
                              </c:choose>
@@ -142,8 +142,8 @@
                     브랜드
                 </p>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=A">주류</a></li>
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=p">향수</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=A&sort=New&pdtQuan=6">주류</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=F&sort=New&pdtQuan=6">향수</a></li>
                 </ul>
             </div>
 
@@ -176,7 +176,7 @@
                   <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="#">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
-                  <li><a class="dropdown-item" href="#">도감 채우기</a></li>
+                  <li><a class="dropdown-item" href="pedia">도감 채우기</a></li>
                 </ul>
             </div>
         </div>
