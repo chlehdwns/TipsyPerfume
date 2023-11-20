@@ -2,13 +2,12 @@ package com.kh.ttp.product.model.dao;
 
 import java.util.ArrayList;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
-import com.kh.ttp.productCategory.model.vo.ProductCategory;
 
 @Repository
 public class ProductDao {
@@ -31,8 +30,8 @@ public class ProductDao {
 		return null;
 	}
 
-	public ArrayList<ProductCategory> selectFundingListPC(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("productMapper.selectFundingListPC");
+	public ArrayList<FundingSelectVO> selectFundingList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectFundingList");
 		 
 	}
 	
