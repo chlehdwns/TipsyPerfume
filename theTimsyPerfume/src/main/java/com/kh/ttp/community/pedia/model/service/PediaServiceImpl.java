@@ -22,4 +22,9 @@ public class PediaServiceImpl implements PediaService {
 		return pediaDao.selectPediaList(sqlSession, pdtCteg);
 	}
 
+	@Override
+	public ProductVO selectPediaInfo(int pdtNo) {
+		return pediaDao.selectPediaInfo(sqlSession, pdtNo);
+	}
+
 }

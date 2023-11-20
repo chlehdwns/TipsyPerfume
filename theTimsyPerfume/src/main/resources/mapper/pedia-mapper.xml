@@ -35,6 +35,6 @@ SELECT
     PDT_INGREDIENT
 FROM TB_PRODUCT
 WHERE
-    PDT_NO=1;
+    PDT_NO=#{pdtNo}
 </select>
 </mapper>

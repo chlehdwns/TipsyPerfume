@@ -13,5 +13,9 @@ public class PediaDAO {
 	public ArrayList<ProductVO> selectPediaList(SqlSessionTemplate sqlSession, String pdtCteg) {
 		return (ArrayList)sqlSession.selectList("pediaMapper.selectPediaList", pdtCteg);
 	}
+	
+	public ProductVO selectPediaInfo(SqlSessionTemplate sqlSession, int pdtNo) {
+		return sqlSession.selectOne("pediaMapper.selectPediaInfo", pdtNo);
+	}
 
 }

@@ -18,4 +18,10 @@ public class AjaxPediaController {
 	public String ajaxSelectPediaList(String pdtCteg) {
 		return new Gson().toJson(pediaService.selectPediaList(pdtCteg));
 	}
+	
+	@GetMapping(value = "selectPediaInfo", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String ajaxSelectPediaInfo(int pdtNo) {
+		return new Gson().toJson(pediaService.selectPediaInfo(pdtNo));
+	}
 }

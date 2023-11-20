@@ -188,23 +188,6 @@
 
 조니워커의 정규 라벨 중 가장 높은 가격이다보니 다양한 바리에이션이 나오는 것으로도 또한 유명하다. 도시별, 국가별 에디션이나 조디악 에디션, 동양의 `12간지 에디션이 대표적.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ㅇㅇ
 </pre>
         </div>
     </div>
@@ -234,8 +217,13 @@
         $.ajax({
         	url:"selectPediaInfo",
         	data:{"pdtNo":pdtNo},
+        	async:false,
         	success:(result)=>{
         		console.log(result);
+        		const $pediaWrap = $("#pedia-wrap");
+    			$("#detail-img img").attr("src",result.pdtGpStatus);
+    			$("#detail-title").text(result.pdtName);
+    			$("#detail-article").text(result.pdtDescription);
         	},
         	error:()=>{
         		console.log("통신실패");
