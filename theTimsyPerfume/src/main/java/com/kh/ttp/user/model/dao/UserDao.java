@@ -2,9 +2,8 @@ package com.kh.ttp.user.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 

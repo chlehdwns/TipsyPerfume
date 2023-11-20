@@ -1,6 +1,7 @@
 package com.kh.ttp.forward;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,5 +27,9 @@ public class forwardController {
 		return "funding/drinkEnrollForm";
 	}
 	
+	@GetMapping("addressEnrollForm.re")
+	public String search() {
+		return "orderKinds/addressEnrollForm";
+	}
 
 }

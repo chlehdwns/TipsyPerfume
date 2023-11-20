@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.service.UserService;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;

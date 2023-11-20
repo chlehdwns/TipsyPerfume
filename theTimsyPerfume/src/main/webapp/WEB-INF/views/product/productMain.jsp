@@ -8,7 +8,7 @@
 <title>상품 기본 메인</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+	
 	
 	<!-- Bootstrap v4 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -44,6 +44,10 @@
     -->
 
 	<jsp:include page="../common/header.jsp" />
+	
+	<div align="center">
+		<button type="button" class="btn btn-primary btn-lg" onclick="location.href='addressEnrollForm.re'">배송지 입력페이지 가기</button>
+	</div>
 	
     <div id="productMainWrap" class="container">
 		<c:choose>

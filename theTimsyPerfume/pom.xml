@@ -228,6 +228,7 @@
 		</dependency>
 		-->
 		
+		
 		<!-- 메일 관련 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

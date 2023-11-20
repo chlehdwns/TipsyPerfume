@@ -1,4 +1,4 @@
-package com.kh.ttp.order.model.vo;
+package com.kh.ttp.orderKinds.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ public class Receiver {
 	private int receiverNo;
 	private int userNo;
 	private String receiverName;
+	private String email;
 	private String phone;
 	private String address;
 	private String addressDetail;
