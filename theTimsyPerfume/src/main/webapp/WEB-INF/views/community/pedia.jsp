@@ -101,6 +101,7 @@
         left: 50%;
         transform: translateX(-50%);
         background-color: rgb(35, 31, 32);
+        border: 1px solid rgb(223, 190, 106);
         border-radius: 20px;
         padding: 20px;
         color: rgb(223, 190, 106);
@@ -231,6 +232,20 @@
         //ajax
         $("#pedia-detail-wrap").css("display","");
         $("body").css("overflow","hidden");
+    }
+    function loadAlcohol(){
+    	$.ajax({
+    		url:"",
+    		success:(result)=>{
+    			console.log(result);
+    		},
+    		error:()=>{
+    			console.log("통신실패");
+    		}
+    	});
+    }
+    function loadPerfume(){
+    	
     }
 </script>
 <jsp:include page="../common/footer.jsp"/>
