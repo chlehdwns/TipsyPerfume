@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-    <div id="headerWrap">
+    <div id="headerWrap" class="container">
         <div id="header_1" class="full_width_divs">
             <div id="header_1_left" class="full_height_divs">
                 <a class="logo-wrap" href="./"><img src="resources/image/common/logo.png"></a>
@@ -65,7 +65,7 @@
                             	
                             	<c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">마이페이지</a>
+                                    <a class="header-link" href="myPage.me">마이페이지</a>
                                 </p>
                                 </c:otherwise>
                              </c:choose>
@@ -142,8 +142,8 @@
                     브랜드
                 </p>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=A">주류</a></li>
-                  <li><a class="dropdown-item" href="productMain.pr?pdtIdenKey=p">향수</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=A">주류</a></li>
+                  <li><a class="dropdown-item" href="productMain.pr?pdtCteg=F">향수</a></li>
                 </ul>
             </div>
 
@@ -176,7 +176,7 @@
                   <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="#">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
-                  <li><a class="dropdown-item" href="#">도감 채우기</a></li>
+                  <li><a class="dropdown-item" href="pedia">도감 채우기</a></li>
                 </ul>
             </div>
         </div>
