@@ -1,4 +1,4 @@
-package com.kh.ttp.community.model.vo;
+package com.kh.ttp.community.review.model.vo;
 
 import lombok.Data;
 
@@ -15,4 +15,6 @@ public class CommentVO {
 	private int commentIndex;
 	private int commentDepth;
 	private String commentState;
+	
+	private int groupCount;
 }

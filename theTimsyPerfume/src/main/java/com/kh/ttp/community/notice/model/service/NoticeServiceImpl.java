@@ -1,4 +1,4 @@
-package com.kh.ttp.community.model.service;
+package com.kh.ttp.community.notice.model.service;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.ttp.community.model.dao.NoticeDAO;
-import com.kh.ttp.community.model.vo.NoticeVO;
+import com.kh.ttp.community.notice.model.dao.NoticeDAO;
+import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {

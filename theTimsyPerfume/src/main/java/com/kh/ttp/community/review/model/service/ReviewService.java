@@ -1,11 +1,11 @@
-package com.kh.ttp.community.model.service;
+package com.kh.ttp.community.review.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.kh.ttp.common.model.vo.PageInfo;
-import com.kh.ttp.community.model.vo.CommentVO;
-import com.kh.ttp.community.model.vo.ReviewVO;
+import com.kh.ttp.community.review.model.vo.CommentVO;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 public interface ReviewService {
 	

@@ -30,6 +30,7 @@
 	<result column="COMMENT_INDEX" property="commentIndex"/>
 	<result column="COMMENT_DEPTH" property="commentDepth"/>
 	<result column="COMMENT_STATE" property="commentState"/>
+	<result column="GROUP_COUNT" property="groupCount"/>
 </resultMap>
 
 <select id="countReviewList" resultType="_int">
@@ -100,7 +101,8 @@ SELECT
     TO_CHAR(COMMENT_CREATE_DATE,'YYYY-MM-dd HH24:mm') "COMMENT_CREATE_DATE",
     COMMENT_GROUP,
     COMMENT_INDEX,
-    COMMENT_DEPTH
+    COMMENT_DEPTH,
+    COUNT(*) OVER(PARTITION BY COMMENT_GROUP)"GROUP_COUNT"
 FROM
     TB_COMMENT
 JOIN TB_USER USING(USER_NO)
@@ -115,13 +117,13 @@ WHERE
 	</choose>
 	<if test="commentGroup != 0">
 	AND COMMENT_GROUP = #{commentGroup}
-	AND COMMENT_DEPTH != 0
+	AND COMMENT_NO != #{commentGroup}
 	</if>
 ORDER BY
-    COMMENT_GROUP DESC, COMMENT_INDEX DESC
+    COMMENT_GROUP DESC, COMMENT_INDEX
 </select>
 <update id="increaseCommentIndex" parameterType="_int">
-UPDATE TB_COMMENT SET COMMENT_INDEX=COMMENT_INDEX+1 WHERE COMMENT_GROUP = #{commentGroup}
+UPDATE TB_COMMENT SET COMMENT_INDEX=COMMENT_INDEX+1 WHERE COMMENT_GROUP = #{commentGroup} AND COMMENT_GROUP != COMMENT_NO
 </update>
 <insert id="insertComment" parameterType="comment">
 INSERT INTO TB_COMMENT(
@@ -140,12 +142,13 @@ INSERT INTO TB_COMMENT(
     <choose>
 	<when test='commentGroup == 0'>
 		SEQ_COMMENT.CURRVAL,
+		0,
 	</when>
 	<otherwise>
 		#{commentGroup},
+		1,
 	</otherwise>
 	</choose>
-	0,
     #{commentDepth}
 )
 </insert>
