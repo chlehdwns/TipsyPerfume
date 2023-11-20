@@ -212,17 +212,18 @@
 </section>
 <script>
     $(()=>{
+    	loadPedia("A");
         $("#modal-background").click(()=>{
             $("#pedia-detail-wrap").css("display","none");
             $("body").css("overflow","");
         })
         $(".pedia-tab").click(function(){
             if($(this).hasClass("alcohol") && $("#pedia-wrap").hasClass("perfume")){
-                //ajax
+            	loadPedia("A");
                 $("#pedia-wrap").removeClass("perfume").addClass("alcohol");
             }
             else if($(this).hasClass("perfume") && $("#pedia-wrap").hasClass("alcohol")){
-                //ajax
+            	loadPedia("F");
                 $("#pedia-wrap").removeClass("alcohol").addClass("perfume");
             }
         })
@@ -230,22 +231,37 @@
     function view(pdtNo){
         //console.log(pdtNo);
         //ajax
+        $.ajax({
+        	url:"selectPediaInfo",
+        	data:{"pdtNo":pdtNo},
+        	success:(result)=>{
+        		console.log(result);
+        	},
+        	error:()=>{
+        		console.log("통신실패");
+        	}
+        })
         $("#pedia-detail-wrap").css("display","");
         $("body").css("overflow","hidden");
     }
-    function loadAlcohol(){
+    function loadPedia(pdtCteg){
     	$.ajax({
-    		url:"",
+    		url:"selectPediaList",
+    		data:{"pdtCteg":pdtCteg},
     		success:(result)=>{
-    			console.log(result);
+    			const $pediaWrap = $("#pedia-wrap");
+    			let value="";
+    			for(let i in result){
+    				value+=  "<div class='pedia-item disable' onclick='view("+result[i].pdtNo+");'>"
+    	            		+"<img class='img' src="+result[i].pdtGpStatus+">"
+    	            		+"</div>";
+    			}
+    			$pediaWrap.html(value);
     		},
     		error:()=>{
     			console.log("통신실패");
     		}
     	});
-    }
-    function loadPerfume(){
-    	
     }
 </script>
 <jsp:include page="../common/footer.jsp"/>
