@@ -46,23 +46,4 @@ public class ReviewController {
 		
 		return mv;
 	}
-	@GetMapping(value = "commentList", produces = "application/json; charset=UTF-8")
-	@ResponseBody
-	public String ajaxCommentList(
-			@RequestParam(value = "boardNo", defaultValue = "0")int boardNo, 
-			@RequestParam(value = "reviewNo", defaultValue = "0")int reviewNo,
-			@RequestParam(value = "commentGroup", defaultValue = "0")int commentGroup) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("boardNo",boardNo);
-		map.put("reviewNo",reviewNo);
-		map.put("commentGroup",commentGroup);
-		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
-		
-		return new Gson().toJson(list);
-	}
-	@PostMapping(value = "insertComment", produces = "application/json; charset=UTF-8")
-	@ResponseBody
-	public String ajaxInsertComment(CommentVO comment) {
-		return Integer.toString(reviewService.insertComment(comment));
-	}
 }
