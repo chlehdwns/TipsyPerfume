@@ -236,6 +236,7 @@
     	$.ajax({
     		url:"selectPediaList",
     		data:{"pdtCteg":pdtCteg},
+    		async:false,
     		success:(result)=>{
     			const $pediaWrap = $("#pedia-wrap");
     			let value="";
