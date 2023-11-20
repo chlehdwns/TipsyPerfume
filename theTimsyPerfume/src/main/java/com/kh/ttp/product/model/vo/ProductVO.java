@@ -1,5 +1,9 @@
 package com.kh.ttp.product.model.vo;
 
+import java.util.ArrayList;
+
+import com.kh.ttp.productCategory.model.vo.ProductCategory;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -36,6 +40,7 @@ public class ProductVO {
 	private int pdtDiscount;
 	private String pdtStatus;
 	private String pdtGpStatus;
+	
 	
 	
 	

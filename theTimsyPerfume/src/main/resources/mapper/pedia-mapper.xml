@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pediaMapper">
+
+<resultMap type="product" id="pediaResultSet">
+	<result column="PDT_NO" property="pdtNo"/>
+	<result column="PDT_NAME" property="pdtName"/>
+	<result column="PDT_IMAGE" property="pdtGpStatus"/>
+	<result column="PDT_PRICE" property="pdtPrice"/>
+	<result column="PDT_STOCK" property="pdtStock"/>
+	<result column="PDT_INTRO" property="pdtIntro"/>
+	<result column="PDT_DESCRIPTION" property="pdtDescription"/>
+	<result column="PDT_INGREDIENT" property="pdtIngredient"/>
+</resultMap>
+
+<select id="selectPediaList" parameterType="string" resultMap="pediaResultSet">
+SELECT
+	PDT_NO,
+	PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "PDT_IMAGE",
+	PDT_CTEG
+FROM TB_PRODUCT
+	JOIN TB_PRODUCT_FILE USING(PDT_NO)
+	JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+WHERE
+	PDT_CTEG=#{pdtCteg}
+</select>
+<select id="selectPediaInfo" parameterType="_int" resultMap="pediaResultSet">
+SELECT
+    PDT_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_FILE_PATH||'/'||PDT_FILE_UPLOAD "PDT_IMAGE"
+FROM TB_PRODUCT
+JOIN TB_PRODUCT_FILE USING(PDT_NO)
+WHERE
+    PDT_NO=#{pdtNo}
+</select>
+</mapper>

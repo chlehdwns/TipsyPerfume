@@ -1,4 +1,4 @@
-package com.kh.ttp.community.model.dao;
+package com.kh.ttp.community.review.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.ttp.community.model.vo.CommentVO;
-import com.kh.ttp.community.model.vo.ReviewVO;
+import com.kh.ttp.community.review.model.vo.CommentVO;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Repository
 public class ReviewDAO {

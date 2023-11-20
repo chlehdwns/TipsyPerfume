@@ -4,6 +4,7 @@ package com.kh.ttp.product.model.service;
 import java.util.ArrayList;
 
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
@@ -17,15 +18,9 @@ public interface ProductService {
 
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
-	public ArrayList<ProductVO> selectNewFundingListP();
+	public ArrayList<FundingSelectVO> selectNewFundingList();
 
-	public ArrayList<ProductFile> selectNewFundingListPF();
 
-	public ArrayList<ProductCategory> selectNewFundingListPC();
-
-	public ArrayList<ProductFile> selectNewFundingListF();
-
-	public ArrayList<ProductOption> selectNewFundingListPO();
 
 
 }

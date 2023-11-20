@@ -9,10 +9,11 @@
 	
 	  <typeAliases>
 		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.ReviewVO" alias="review"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.user.model.vo.AuthVO" alias="authVO" />
-		<typeAlias type="com.kh.ttp.community.model.vo.CommentVO" alias="comment"/>
+		<typeAlias type="com.kh.ttp.community.review.model.vo.ReviewVO" alias="review"/>
+		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
+		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardVO" alias="board"/>
+		<typeAlias type="com.kh.ttp.community.review.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductSelectVO" alias="productSelect" />
@@ -20,12 +21,15 @@
 		<typeAlias type="com.kh.ttp.productFile.model.vo.ProductFile" alias="productFile"/>
 		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
 	</typeAliases>
 
 	  <mappers>
 		<mapper resource="/mapper/member-mapper.xml"/>
 		<mapper resource="/mapper/review-mapper.xml"/>
 		<mapper resource="/mapper/notice-mapper.xml"/>
+		<mapper resource="/mapper/board-mapper.xml"/>
+		<mapper resource="/mapper/pedia-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper1.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />

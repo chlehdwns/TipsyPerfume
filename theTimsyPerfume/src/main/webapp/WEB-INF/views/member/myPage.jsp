@@ -23,6 +23,12 @@
             padding:5% 10%;
             background-color:white;
         }
+        
+        .hr-dashed {
+		  border : 0px;
+		  border-top: 5px dashed #663399;
+		}
+			  
     </style>
 
 
@@ -55,10 +61,34 @@
 
 						<label for="nickName">닉네임 : </label>
 						<input type="text" class="form-control" value="${ sessionScope.loginUser.nickName  }" name="nickName" required><br>
+						<br>
+						
+						<!--  
+						<label for="nickName">현재 비밀번호 : </label>
+						<input type="password" class="form-control" value="${ sessionScope.loginUser.userPwd  }" id="userPwd" name="userPwd" required>
+						
+						
+						<label for="nickName">새 비밀번호 : </label>
+						<input type="password" class="form-control" id="userPwd" name="userPwd"  >
+						
+						
+						<label for="nickName">비밀번호 다시 입력 : </label>
+						<input type="password" class="form-control" id="userPwd" name="userPwd"  >
+						<br>
+						-->
+						
+						
+						
+						<div class="btns1" align="right">
+		                    <button type="submit" class="btn btn-primary">수정하기</button>
+		                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
+		                </div>
+		                
+						
 						
 						<br>
-
-						
+						<hr>
+						<br><br>
 
 						<label for="phone">전화번호 : </label>
 						<input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" required><br>
@@ -80,9 +110,10 @@
 						<input type="text" class="form-control" value="${ sessionScope.loginUser.addressDetail }" name="addressDetail" required><br>
 					</div> 
                 <br>
-                <div class="btns" align="center">
-                    <button type="submit" class="btn btn-primary">수정하기</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
+                <div class="btns" align="right">
+                    <button type="submit" class="btn btn-primary">추가하기</button>
+                     <button type="submit" class="btn btn-secondary">수정하기</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForm">삭제하기</button>
                 </div>
             </form>
         </div>

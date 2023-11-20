@@ -1,4 +1,4 @@
-package com.kh.ttp.community.model.vo;
+package com.kh.ttp.community.notice.model.vo;
 
 import lombok.Data;
 
