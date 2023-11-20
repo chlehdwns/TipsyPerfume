@@ -9,10 +9,7 @@ public class forwardController {
 	public String fundingListPage() {
 		return"funding/fundingList";
 	}
-	@RequestMapping("newDrinkFunding.list")
-	public String newDrinkFundingListPage() {
-		return "funding/newDrinkFundingList";
-	}
+	
 	@RequestMapping("hotDrinkFunding.list")
 	public String hotDrinkFundingListPage() {
 		return "funding/hotDrinkFundingList";
@@ -25,6 +22,11 @@ public class forwardController {
 	public String enrollFormDrinkFunding() {
 		return "funding/drinkEnrollForm";
 	}
+	@RequestMapping("detail.fList")
+	public String newDrinkFundingDetail() {
+		return "funding/newDrinkFundingDetail";
+	}
+	
 	
 
 }

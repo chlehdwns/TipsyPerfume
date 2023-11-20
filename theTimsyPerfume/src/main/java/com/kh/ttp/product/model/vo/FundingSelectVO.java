@@ -27,6 +27,10 @@ public class FundingSelectVO {
 	private int pdtOptionNo;
 	private String pdtOptionFirst;
 	private String pdtOptionSecond;
+	private int fundingNo;
+	private Date cuttingDate;
+	private int fundingFee;
+	private int cuttingPrice;
 	
 
 }

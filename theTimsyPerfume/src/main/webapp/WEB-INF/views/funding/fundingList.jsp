@@ -44,7 +44,7 @@
 		color : rgb(223, 190, 106);
 	}
 	
-	.funding-list1,.funding-list2,.funding-list3,.funding-list4{
+	.funding-list{
 		height : 100%;
 		width : 25%;
 		float:left;
@@ -61,7 +61,7 @@
 	}
 	#pagingArea {width:fit-content; margin:auto;}
 	.fundingList-area img{
-		width : 100%;
+		width : 90%;
 		height : 60%;
 	}
 	h6{
@@ -69,6 +69,17 @@
 		
 	}
 	.fundingList-area img:hover{
+		cursor : pointer;
+	}
+	.percent{
+		color : green;
+		font-weight : bolder;
+	}
+	.wish-list{
+		text-align : left;
+		font-weight : bolder;
+	}
+	.wish-list:hover{
 		cursor : pointer;
 	}
 </style>
@@ -85,23 +96,53 @@
 		<div id="normal-drink">
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list1">
+				<div class="funding-list">
+					<input type="hidden" value="${ drinkFundingList.get(0).pdtNo}" class="pno"/>
 					<img src="/ttp${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
+					
+					<h4 class="percent">달성률 : ${drinkFundingList.get(0).fundingFee} / ${drinkFundingList.get(0).cuttingPrice }원 </h4>
 					
 					<h6>${drinkFundingList.get(0).pdtName }</h6>
 					
 					<h6>${drinkFundingList.get(0).pdtIntro }</h6>
 					
+					<h5 class="wish-list">♡</h5>
+					
+					
+						
+					
 					
 				</div>
-				<div class="funding-list2">
-				
+				<div class="funding-list">
+					<input type="hidden" value="${ drinkFundingList.get(1).pdtNo}" class="pno"/>
+					<img src="/ttp${drinkFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
+					
+					<h4 class="percent">달성률 : ${drinkFundingList.get(1).fundingFee} / ${drinkFundingList.get(1).cuttingPrice }원 </h4>
+					
+					<h6>${drinkFundingList.get(1).pdtName }</h6>
+					
+					<h6>${drinkFundingList.get(1).pdtIntro }</h6>
+					<h5 class="wish-list">♡</h5>
 				</div>
-				<div class="funding-list3">
-				
+				<div class="funding-list">
+					<input type="hidden" value="${ drinkFundingList.get(2).pdtNo}" class="pno"/>
+					<img src="/ttp${drinkFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h4 class="percent">달성률 : ${drinkFundingList.get(2).fundingFee} / ${drinkFundingList.get(2).cuttingPrice }원 </h4>
+					
+					<h6>${drinkFundingList.get(2).pdtName }</h6>
+					
+					<h6>${drinkFundingList.get(2).pdtIntro }</h6>
+					<h5 class="wish-list">♡</h5>
 				</div>
-				<div class="funding-list4">
-				
+				<div class="funding-list">
+					<input type="hidden" value="${ drinkFundingList.get(3).pdtNo}" class="pno"/>
+					<img src="/ttp${drinkFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h4 class="percent">달성률 : ${drinkFundingList.get(3).fundingFee} / ${drinkFundingList.get(3).cuttingPrice }원 </h4>
+					
+					<h6>${drinkFundingList.get(3).pdtName }</h6>
+					
+					<h6>${drinkFundingList.get(3).pdtIntro }</h6>
+					<h5 class="wish-list">♡</h5>
 				</div>
 			
 			</div>
@@ -109,16 +150,16 @@
 		<div id="hot-drink">
 			<h3 class="subtitle2">hot 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list1">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list2">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list3">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list4">
+				<div class="funding-list">
 				
 				</div>
 			</div>
@@ -126,16 +167,16 @@
 		<div id="rank-drink">
 			<h3 class="subtitle3">별점 순 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list1">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list2">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list3">
+				<div class="funding-list">
 				
 				</div>
-				<div class="funding-list4">
+				<div class="funding-list">
 				
 				</div>
 			</div>
@@ -157,6 +198,13 @@
 			$('.subtitle3').click(function(){
 				location.href = "starDrinkFunding.list";
 			});
+		})
+		$(function(){
+			$('.funding-list>img').click(function(){
+				location.href="detail.fList"
+				//location.href="detail.fList?pno=" + $(this).prev().val();
+				
+			})
 		})
 	</script>
 	
