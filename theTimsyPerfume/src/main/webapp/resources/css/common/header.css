@@ -39,7 +39,7 @@ header div {
     display: flex;
 }
 #header_1_right_mid {height: 40%;}
-#header_1_right_bottom {height: 30%; padding-top: 10px;}
+#header_1_right_bottom {height: 30%; padding: 10px 140px 0px 0px;}
 
 /* 헤더 오른쪽 : 탑 띠배너 */
 #header_1_right_top p{margin: 0px; margin-top: 5px;}
@@ -49,7 +49,7 @@ header div {
 #header_inner_top_bannerline_4{width: 10%;}
 
 /* 헤더 오른쪽 : 검색창 */
-#header_1_right_bottom form{width: 80%; margin: auto;}
+#header_1_right_bottom form{width: 100%;}
 
 #header_search_inner_area_1{width: 15%;}
 #header_search_inner_area_2{width: 70%;}
