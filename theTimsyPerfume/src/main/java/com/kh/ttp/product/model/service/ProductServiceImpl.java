@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.funding.model.dao.FundingDao;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.dao.ProductDao;
+import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.dao.ProductCategoryDao;
@@ -68,33 +69,13 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.productMain(sqlSession, pdtIdenKey);
 	}
 
+	
 	@Override
-	public ArrayList<ProductVO> selectNewFundingListP() {
-		productDao.selectNewFundingListP();
-		return null;
-	}
-
-	@Override
-	public ArrayList<ProductFile> selectNewFundingListPF() {
-		return null;
-	}
-
-	@Override
-	public ArrayList<ProductCategory> selectNewFundingListPC() {
-		return productDao.selectFundingListPC(sqlSession);
+	public ArrayList<FundingSelectVO> selectNewFundingList() {
+		return productDao.selectFundingList(sqlSession);
 		
 	}
 
-	@Override
-	public ArrayList<ProductFile> selectNewFundingListF() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ProductOption> selectNewFundingListPO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

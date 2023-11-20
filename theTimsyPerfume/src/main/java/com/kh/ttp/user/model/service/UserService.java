@@ -14,13 +14,14 @@ public interface UserService {
 	
 	
 	//회원정보 수정(update)
-	//int updateUser(User u);
+	int updateUser(User u);
 	
-	//int deleteUser(String userId);
+	//회원 삭제(delete)
+	int deleteUser(String userEmail);
 	
 	//-----------
 	
-	//아이디 중복 체크 서비스 나중에하기
+	//아이디 중복 체크 서비스 
 	int emailCheck(String checkEmail);
 
 	
@@ -40,6 +41,10 @@ public interface UserService {
 	//마이페이지 보여주기
 	//Receiver mypageUser(User u);
 	Receiver selectReceiver(int userNo);
+
+	
+
+	
 	
 	
 }

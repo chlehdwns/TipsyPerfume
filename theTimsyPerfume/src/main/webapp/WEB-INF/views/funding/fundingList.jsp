@@ -22,7 +22,7 @@
 	#outer{
 		margin-top : 50px;
 		width : 1200px;
-		height : 1500px;
+		height : 1700px;
 		margin-left : 350px;
 	}
 	#outer > div{
@@ -60,6 +60,17 @@
 		float:right;
 	}
 	#pagingArea {width:fit-content; margin:auto;}
+	.fundingList-area img{
+		width : 100%;
+		height : 60%;
+	}
+	h6{
+		text-align : center;
+		
+	}
+	.fundingList-area img:hover{
+		cursor : pointer;
+	}
 </style>
 </head>
 <body>
@@ -75,7 +86,13 @@
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">
 				<div class="funding-list1">
-				
+					<img src="/ttp${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
+					
+					<h6>${drinkFundingList.get(0).pdtName }</h6>
+					
+					<h6>${drinkFundingList.get(0).pdtIntro }</h6>
+					
+					
 				</div>
 				<div class="funding-list2">
 				

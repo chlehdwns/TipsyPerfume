@@ -1,5 +1,7 @@
 package com.kh.ttp.product.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +19,6 @@ public class ProductSelectVO {
 	*/
 	
 	private int pdtNo;
-	private int pickQuantity;
 	private float reviewAvg;
 	private String pdtCteg;
 	private String pdtName;
