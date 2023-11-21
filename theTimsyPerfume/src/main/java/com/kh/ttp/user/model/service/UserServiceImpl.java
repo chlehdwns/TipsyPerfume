@@ -42,12 +42,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
-	public void sendMail(AuthVO authVo) {
-		userDao.insertSecret(sqlSession, authVo);
-		
-	}
-
 	//마이페이지 보내기
 	@Override
 	public Receiver selectReceiver(int userNo) {
@@ -66,6 +60,28 @@ public class UserServiceImpl implements UserService {
 	public int deleteUser(String userEmail) {
 		
 		return userDao.deleteUser(sqlSession, userEmail);
+	}
+
+
+	
+	//이메일인증----------------------------------------
+	
+	@Override
+	public void sendMail(AuthVO authVo) {
+		userDao.insertSecret(sqlSession, authVo);
+		
+	}
+	
+	
+	@Override
+	public boolean validate(AuthVO authVo) {
+		boolean result = userDao.validate(sqlSession, authVo);
+		
+		if(result != false) {
+			userDao.deleteCert(sqlSession, authVo);
+		}
+		
+		return result;
 	}
 
 	
