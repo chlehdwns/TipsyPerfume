@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
-public abstract class ProductVO {
+public class ProductVO {
 	/*
 	PDT_NO	NUMBER
 	PDT_CATEG_NO	NUMBER
