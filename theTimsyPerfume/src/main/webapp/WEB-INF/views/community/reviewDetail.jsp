@@ -118,6 +118,7 @@
     .like-btn-wrap{
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
     .like-btn{cursor: pointer;}
 </style>
@@ -155,14 +156,28 @@
 ${review.reviewContent }
 </pre>
 				<div class="like-wrap">
-                    <div class="like-btn-wrap">
-                        <i id="like" class='fa fa-thumbs-o-up like-btn' style='font-size:36px'></i>
-                        <div id="like-count"></div>
-                    </div>
-                    <div class="like-btn-wrap">
-                        <i id="dislike" class='fa fa-thumbs-o-down like-btn' style='font-size:36px; transform: scaleX(-1);'></i>
+                    <c:choose>
+                    <c:when test="${empty loginUser }">
+                    	<div class="like-btn-wrap">
+                        	<i class='fa fa-thumbs-o-up like-btn' style='font-size:36px' onclick="alert('로그인후 사용이 가능합니다')"></i>
+                        	<div id="like-count"></div>
+                    	</div>
+                    	<div class="like-btn-wrap">
+                        	<i class='fa fa-thumbs-o-down like-btn' style='font-size:36px; transform: scaleX(-1);' onclick="alert('로그인후 사용이 가능합니다')"></i>
                         <div id="dislike-count"></div>
-                    </div>
+                    	</div>
+                    </c:when>
+                    <c:otherwise>
+                    	<div class="like-btn-wrap">
+                        	<i id="like" class='fa fa-thumbs-o-up like-btn' style='font-size:36px'></i>
+                        	<div id="like-count"></div>
+                    	</div>
+                    	<div class="like-btn-wrap">
+                        	<i id="dislike" class='fa fa-thumbs-o-down like-btn' style='font-size:36px; transform: scaleX(-1);'></i>
+                        <div id="dislike-count"></div>
+                    	</div>
+                    </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div class="img-container">
@@ -276,7 +291,7 @@ ${review.reviewContent }
     			contentNo:$("#review-no").val()
     		},
     		success:(result)=>{
-    			console.log(result);
+    			alert(result);
     			loadRecommend();
     		},
     		error:()=>{
@@ -292,7 +307,6 @@ ${review.reviewContent }
     			contentNo:$("#review-no").val()
     		},
     		success:(result)=>{
-    			console.log(result);
     			$("#like-count").text(result.likeCount);
     			$("#dislike-count").text(result.dislikeCount);
     		},
