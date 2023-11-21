@@ -51,4 +51,16 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDao.increaseCommentIndex(sqlSession, comment.getCommentGroup());
 		return reviewDao.insertComment(sqlSession, comment);
 	}
+	@Override
+	public int selectRecommend(HashMap map) {
+		return reviewDao.selectRecommend(sqlSession, map);
+	}
+	@Override
+	public int reviewRecommend(HashMap map) {
+		int result = reviewDao.updateRecommend(sqlSession, map);
+		if(result==0) {
+			result = reviewDao.insertRecommend(sqlSession, map);
+		}
+		return result;
+	}
 }

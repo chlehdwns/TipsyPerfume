@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Tipsy Perfume - 리뷰 페이지</title>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     #review-wrap{
         width: 900px;
@@ -19,6 +20,7 @@
     .review-content{
         display: flex;
         align-items: stretch;
+        position: relative;
     }
     .focus-img-wrap{
         width: 300px;
@@ -103,6 +105,21 @@
         margin: 0 auto;
         background-color: rgb(221, 221, 221);
     }
+    
+    .like-wrap{
+        width: 200px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .like-btn-wrap{
+        display: flex;
+        flex-direction: column;
+    }
+    .like-btn{cursor: pointer;}
 </style>
 </head>
 <body>
@@ -137,6 +154,16 @@
 <pre class="article-wrap bottom-interval">
 ${review.reviewContent }
 </pre>
+				<div class="like-wrap">
+                    <div class="like-btn-wrap">
+                        <i id="like" class='fa fa-thumbs-o-up like-btn' style='font-size:36px'></i>
+                        <div>1000</div>
+                    </div>
+                    <div class="like-btn-wrap">
+                        <i id="dislike" class='fa fa-thumbs-o-down like-btn' style='font-size:36px; transform: scaleX(-1);'></i>
+                        <div>1000</div>
+                    </div>
+                </div>
             </div>
             <div class="img-container">
             	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
@@ -175,8 +202,15 @@ ${review.reviewContent }
 
         $(".small-img").click(function(){
             $("#big-img").attr("src", $(this).attr("src"));
-        })
-
+        });
+        
+        $("#like").click(()=>{
+        	recommend('L');
+        });
+        $("#dislike").click(()=>{
+        	recommend('D');
+        });
+        
         $(".comment-open-btn").click(function() {
             let $commentDiv = $(this).next(".review-comment-div");
             if ($commentDiv.css("display") === 'none') {
@@ -230,8 +264,26 @@ ${review.reviewContent }
             });
         });
     });
+    
+    function recommend(ld){
+    	$.ajax({
+    		url:"reviewRecommend",
+    		type:"get",
+    		data:{
+    			userNo:"${loginUser.userNo}",
+    			reviewLikeFlag:ld,
+    			reviewNo:$("#review-no").val()
+    		},
+    		success:(result)=>{
+    			
+    		},
+    		error:()=>{
+    			
+    		}
+    	})
+    }
+    
     function loadAllCommentList(){
-    	console.log("${loginUser.userNo}");
         $.ajax({
             url:"commentList",
             type:"get",

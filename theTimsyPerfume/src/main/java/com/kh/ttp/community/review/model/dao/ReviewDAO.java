@@ -41,5 +41,17 @@ public class ReviewDAO {
 		return sqlSession.insert("reviewMapper.insertComment", comment);
 	}
 
+	public int selectRecommend(SqlSessionTemplate sqlSession, HashMap map) {
+		return sqlSession.selectOne("reviewMapper.selectRecommend", map);
+	}
+
+	public int updateRecommend(SqlSessionTemplate sqlSession, HashMap map) {
+		return sqlSession.update("reviewMapper.updateRecommend", map);
+	}
+
+	public int insertRecommend(SqlSessionTemplate sqlSession, HashMap map) {
+		return sqlSession.insert("reviewMpper.insertRecommend", map);
+	}
+
 
 }

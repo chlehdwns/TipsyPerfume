@@ -39,4 +39,37 @@ public class AjaxReviewController {
 	public String ajaxInsertComment(CommentVO comment) {
 		return Integer.toString(reviewService.insertComment(comment));
 	}
+	@GetMapping(value = "reviewRecommend", produces = "text/html; charset=UTF-8")
+	@ResponseBody
+	public String ajaxReviewRecommend(int userNo, int reviewNo, String reviewLikeFlag) {
+		HashMap map = new HashMap();
+		map.put("userNo",userNo);
+		map.put("reviewNo",reviewNo);
+		map.put("reviewLikeFlag",reviewLikeFlag);
+		
+		String msg="";
+		String flag = reviewService.selectRecommend(map);
+		if(reviewLikeFlag.equals('L')) {
+			if(flag!=null && flag.equals(reviewLikeFlag)) {
+				msg="이미 추천";
+			} else {
+				if(reviewService.reviewRecommend(map)>0) {
+					msg="추천완료";
+				} else {
+					msg="Error!";
+				}
+			}
+		} else {
+			if(flag!=null && flag.equals(reviewLikeFlag)) {
+				msg="이미 비추천";
+			} else {
+				if(reviewService.reviewRecommend(map)>0) {
+					msg="비추천완료";
+				} else {
+					msg="Error!";
+				}
+			}
+		}
+		return msg;
+	}
 }
