@@ -1,14 +1,11 @@
 package com.kh.ttp.product.model.vo;
 
-import java.util.ArrayList;
-
-import com.kh.ttp.productCategory.model.vo.ProductCategory;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
-public class ProductVO {
+public abstract class ProductVO {
 	/*
 	PDT_NO	NUMBER
 	PDT_CATEG_NO	NUMBER
