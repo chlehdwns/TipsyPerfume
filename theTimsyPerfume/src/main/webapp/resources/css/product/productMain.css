@@ -109,9 +109,13 @@ div[class^=swiper-button] {
 
 
 /* 회원가입 입력양식 */
+#pdtMainEnrollFormModal .modal {
+	--bs-modal-width : 400px;
+}
 #pdtModalEnrollForm {
 	padding: 0px 30px 0px 30px;
 }
+
 #pdtModalEnrollForm .modal-footer {padding: 0px;}
 
 /* 요소들 상하간격 */
