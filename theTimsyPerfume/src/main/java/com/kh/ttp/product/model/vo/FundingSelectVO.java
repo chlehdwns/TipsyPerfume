@@ -6,18 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
-public class FundingSelectVO {
-	private int pdtNo;
-	private int pdtCategNo;
-	private String pdtName;
-	private int pdtPrice;
-	private int pdtStock;
-	private Date pdtDate;
-	private String pdtIntro;
-	private String pdtDescription;
-	private String pdtIngredient;
-	private String pdtShipping;
-	private int pdtCount;
+public class FundingSelectVO extends ProductVO {
+
 	private int pdtFileNo;
 	private String pdtFilePath;
 	private String pdtFileOrigin;
