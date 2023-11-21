@@ -89,33 +89,101 @@
 						<br>
 						<hr>
 						<br><br>
-
+						<!-- 
 						<label for="phone">전화번호 : </label>
-						<input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" required><br>
-						
+						<input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" ><br>
 						<br>
-
+						
+						
 						<label for="address">배송지:</label>
 						<br>
 						<label for="receiverName">받는 사람 이름 : </label>
-						<input type="text" class="form-control" value="${ rc.receiverName }"  name="receiverName" required><br>
+						<input type="text" class="form-control" value="${ rc.receiverName }"  name="receiverName" ><br>
 						
 						<br><br>
 						
-						<input type="text" class="form-control"  value="${ sessionScope.loginUser.postalCode }" name="postalCode" required><br>
+						<input type="text" class="form-control"  value="${ sessionScope.loginUser.postalCode }" name="postalCode" ><br>
 						<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="form-control">
 						
 						<br>
-						<input type="text" class="form-control" value="${ sessionScope.loginUser.address }" name="address" required><br>
-						<input type="text" class="form-control" value="${ sessionScope.loginUser.addressDetail }" name="addressDetail" required><br>
+						<input type="text" class="form-control" value="${ sessionScope.loginUser.address }" name="address" ><br>
+						<input type="text" class="form-control" value="${ sessionScope.loginUser.addressDetail }" name="addressDetail" ><br>
+					
+						
+						
+						
+						
+						
+						
+						 -->
+						
+					<table id="contentArea" align="center" class="table">
+						<tr>
+							<th><label for="address">배송지</label></th>
+							<td></td>
+						</tr>
+						
+					
+						<tr>
+						
+							<th><label for="phone">전화번호 : </label></th>
+						
+							<td><input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" ></td>
+						</tr>
+						
+						
+						
+					
+						<tr>
+							<th><label for="receiverName">받는 사람 이름 : </label><th>
+							
+							<th><input type="text" class="form-control" value="${ rc.receiverName }"  name="receiverName" ></th>
+							<td></td>
+						</tr>
+						
+						
+						<tr>
+							<th><input type="text" class="form-control"  value="${ sessionScope.loginUser.postalCode }" name="postalCode" ></th>
+							<td><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="form-control"></td>
+						</tr>
+						
+						<tr>
+							<th><input type="text" class="form-control" value="${ sessionScope.loginUser.address }" name="address" ><br></th>
+							<th><input type="text" class="form-control" value="${ sessionScope.loginUser.addressDetail }" name="addressDetail" ><br></th>
+						</tr>
+						
+					</table>
+					
 					</div> 
+					
+					
+					
+            <br>
                 <br>
                 <div class="btns" align="right">
-                    <button type="submit" class="btn btn-primary">추가하기</button>
-                     <button type="submit" class="btn btn-secondary">수정하기</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForm">삭제하기</button>
+                    
+                     <button type="submit" class="btn btn-secondary" onclick="postFormSubmit(0);">수정하기</button>
+                    <button type="button" class="btn btn-danger" onclick="postFormSubmit(1);" data-toggle="modal" data-target="#deleteForm">삭제하기</button>
+                
+                	<br><br>
+                	<button type="submit" class="btn btn-primary" onclick="postFormSubmit(2);">추가하기(+)</button>
                 </div>
+                
+                
+                <!-- 배송지2 -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
             </form>
+            
         </div>
         <br><br>
         
@@ -180,7 +248,22 @@
 		}
 		</script>
 
-
+		<script>
+		function postFormSubmit(num){
+    		if(num == 0){
+    			// 수정하기 클릭 시
+    			$('#postForm').attr('action', 'updateForm.bo').submit();
+    		} 
+    		else if(num == 1){
+    			// 삭제하기 클릭 시
+    			$('#postForm').attr('action', 'delete.bo').submit();
+    		}
+    		
+    		
+    	}
+		
+		
+		</script>
 
 
 

@@ -23,16 +23,13 @@ public interface UserService {
 	
 	//아이디 중복 체크 서비스 
 	int emailCheck(String checkEmail);
-
-	
-
-	
 	
 	//-----------
 	
 	//메일 인증
 	void sendMail(AuthVO authVo);
-	//boolean validate(CertVO certVo);
+	
+	boolean validate(AuthVO AuthVo);
 
 	
 
