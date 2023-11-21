@@ -276,6 +276,7 @@
 
 	<script>
 		// 변수선언
+		var $pdtMainModalWrap = $('#pdtMainModalWrap');
 		var $pdtMainModalTitle = $('#pdtMainModalTitle');
 		var $pdtMainModalBody = $('#pdtMainModalBody');
 		
@@ -288,26 +289,43 @@
 			$pdtMainModalBody.html(pdtModalTitleStr);
 			$pdtMainModalBody.html(pdtModalContentStr);
 		};
-						  	   
-		
-		// 첫번째 모달(로그인/회원가입 버튼) 문자열 만들고 html 변경해주는 함수
-		function makeFirstModal() {
+		// 첫번째 모달(로그인/회원가입 버튼) 문자열 만들고 html() : 반환형 모달요소($pdtMainModalWrap)
+		function fillPdtMainFirstModal() {
 			pdtModalTitleStr = '<br>로그인이 필요한 서비스입니다<br>';
 			pdtModalContentStr = '<button type="button" id="pdtFirstModalLoginBtn" class="btn btn-primary">로그인하러 가기</button>'
 							   + '<br><br>'
 							   + '<button type="button" id="pdtFirstModalEnrollBtn" class="btn btn-info">회원가입하러 가기</button>'
 							   + '<br><br><br>';
-			fillPdtMainModalArea();		
+			fillPdtMainModalArea();
+			return $pdtMainModalWrap;
 		};
+		// 로그인 모달 문자열 만들고 html() : 반환형 모달요소($pdtMainModalWrap)
+		function fillPdtMainLoginModal() {
+			pdtModalTitleStr = ;
+			pdtModalContentStr = ;
+			fillPdtMainModalArea();
+			return
+		};
+		// 회원가입 모달 문자열 만들고 html() : 반환형 모달요소($pdtMainModalWrap)
 		
 		
 		
+
 		// 로그인/성인인증 여부 판별 후
 		// 포워딩하기 or 로그인창 or 회원가입창 띄워주는 함수
 		function adultValidation(pdtNo) {
-			if('${loginUser.status}' == 'Y') { // 로그인 O
-				if('${loginUser.adultStatus}' == 'Y') { // 로그인 O 성인인증 O => 주류 전체조회or디테일페이지로 이동
-					location.href=!(isNaN(pdtNo)) ? "selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo
+			var loginUserStatus = '${loginUser.status}';
+			
+			// 경우의 수
+			// 로그인O 성인인증O => 주류상품 전체조회 원함
+			// 로그인O 성인인증O => 주류상품 디테일조회 원함
+			// 로그인O 성인인증X => 성인인증 해야함
+			// 로그인X 성인인증X => 로그인 원함
+			// 로그인X 성인인증X => 회원가입 원함
+			if(loginUserStatus == 'Y') { // 로그인O
+				if(loginUserStatus == 'Y') { // 로그인O 성인인증O
+					location.href = !(isNaN(pdtNo)) ? "selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo
+												    : "selectAlcoholPdtList.pr";
 					/*
 					if(!(isNaN(pdtNo))) {
 						location.href="selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo; // 디테일 보기 요청
@@ -317,32 +335,30 @@
 					}
 					*/
 				}
-				else { // 로그인O 성인인증X => 성인인증하기
+				else { // 로그인O 성인인증X
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
 				}
 			}
-			else { // 로그인 X => 로그인 or 회원가입
-				const $pdtMainModalWrap = $('#pdtMainModalWrap');
-
-				makeFirstModal();
+			else { // 로그인X / 실패 시 여기로 돌아옴! 사용자 경험을 위해 ajax??
 				
-				// 로그인 / 회원가입 선택 모달창 띄움
-				fillPdtMainModalArea();
-				$('#pdtMainModalWrap').modal("show");
+			
+				//fillPdtMainFirstModal();
+				//$pdtMainModalWrap.modal("show");
+				//console.log(fillPdtMainFirstModal());
+				fillPdtMainFirstModal().modal("show");
 				
 				$pdtMainModalWrap.on('click', '#pdtFirstModalLoginBtn', () => {
 					console.log('로그인요청');
-					
+										
 				});
 				$pdtMainModalWrap.on('click', '#pdtFirstModalEnrollBtn', () => {
 					console.log('회원가입요청');
 					
 				});
 				
-				// 로그인 실패 시 여기로 돌아옴! 사용자 경험을 위해 ajax??
 				
 			}
-		}
+		};
  	</script>
 
 
