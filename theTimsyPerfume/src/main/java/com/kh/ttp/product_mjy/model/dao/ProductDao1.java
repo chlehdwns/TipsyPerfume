@@ -38,6 +38,11 @@ public class ProductDao1 {
 		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pMap, rowBounds);
 	}
 
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

@@ -2,13 +2,13 @@ package com.kh.ttp.product_mjy.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product_mjy.model.dao.ProductDao1;
 
@@ -27,11 +27,13 @@ public class ProductServiceImpl1 implements ProductService1 {
 		return productDao.selectProductCount(sqlSession, pdtCteg);
 	}
 
+	
 	@Override
-	public HashMap<String, Object> productMainList(String pdtCteg, RowBounds rowBounds) {
+	public HashMap<String, Object> productMainList(String pdtCteg, PageInfo pi) {
 		
+		RowBounds rowBounds = new RowBounds(0, pi.getBoardLimit());
+
 		HashMap<String, Object> pMap = new HashMap();
-		
 		
 		pMap.put("pdtCteg", pdtCteg); // 식별자
 		
@@ -45,6 +47,33 @@ public class ProductServiceImpl1 implements ProductService1 {
 		pMap.put("pMainListPopular", productDao.productMainList(sqlSession, pMap, rowBounds));
 
 		return pMap;
+	}
+
+	
+	@Override
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return productDao.selectPerfumePdtList(sqlSession, rowBounds);
+	}
+
+	
+	@Override
+	public ProductSelectVO perfumePdtDetail(int pdtNo) {
+		
+		return null;
+	}
+
+	@Override
+	public ArrayList<ProductSelectVO> selectAlcoholPdtList(PageInfo pi) {
+
+		return null;
+	}
+
+	@Override
+	public ProductSelectVO alcoholPdtDetail(int pdtNo) {
+		
+		return null;
 	}
 
 

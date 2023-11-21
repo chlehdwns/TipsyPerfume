@@ -1,8 +1,12 @@
 package com.kh.ttp.product_mjy.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
+
+import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 public interface ProductService1 {
 
@@ -22,9 +26,19 @@ public interface ProductService1 {
 	 * 판매량순ArrayList    : pMainListBestSeller<br>
 	 * 위시리스트순ArrayList : pMainListPopular<br>
 	 */
-	HashMap<String, Object> productMainList(String pdtCteg, RowBounds rowBounds);
+	HashMap<String, Object> productMainList(String pdtCteg, PageInfo pi);
 
-
-
+	// 향수 전체조회 selectPerfumePdtList
+	ArrayList<ProductSelectVO> selectPerfumePdtList(PageInfo pi);
+	
+	// 향수 디테일조회 perfumePdtDetail
+	ProductSelectVO perfumePdtDetail(int pdtNo);
+	
+	// 주류 전체조회 selectAlcoholPdtList
+	ArrayList<ProductSelectVO> selectAlcoholPdtList(PageInfo pi);
+	
+	// 주류 디테일조회 alcoholPdtDetail
+	ProductSelectVO alcoholPdtDetail(int pdtNo);
+	
 
 }

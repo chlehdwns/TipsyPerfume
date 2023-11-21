@@ -4,6 +4,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.common.model.vo.PageInfo;
@@ -31,13 +32,11 @@ public class ProductController1 {
 	 */
 	@GetMapping("productMain.pr") // productMain.pr?pdtCteg=A
 	public ModelAndView productMainList(String pdtCteg, ModelAndView mv) {
-		
 		if("A".equals(pdtCteg) || "F".equals(pdtCteg)) {
 			int listCount = productService.selectProductCount(pdtCteg);
 			PageInfo pi = Pagination.getPageInfo(listCount, 1, 6, 10);
-			RowBounds rowBounds = new RowBounds(0, pi.getBoardLimit());
 			
-			mv.addObject("pMap", productService.productMainList(pdtCteg, rowBounds))
+			mv.addObject("pMap", productService.productMainList(pdtCteg, pi))
 			  .addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
 			  .setViewName("product/productMain");
 		} else {
@@ -48,30 +47,45 @@ public class ProductController1 {
 	}
 	
 	
-	@GetMapping("perfumeList.pr")
-	public ModelAndView perfumeList(String pdtCteg, ModelAndView mv) {
-		
-		if("F".equals(pdtCteg)) {
-			mv.addObject("errorMsg", "향수 성공성공 키는 " + pdtCteg + "입니다")
-			  .setViewName("common/errorPage");
+	// 향수 전체조회
+	@GetMapping("selectPerfumePdtList.pr")
+	public void selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage, ModelAndView mv) {
+		int listCount = productService.selectProductCount("F");
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
+		System.out.println(productService.selectPerfumePdtList(pi));
+	}
+	
+	
+	// 향수 디테일조회
+	@GetMapping("perfumePdtDetail.pr")
+	public void perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, ModelAndView mv) {
+		if(pdtNo > 0) {
+			
 		} else {
-			mv.addObject("errorMsg", "향수 전체조회 실패...")
-			  .setViewName("common/errorPage");
+			
 		}
-		return mv;
-	}
-	
-	
-	// 매핑 selectAlcoholPdtDetail.pr
-	public void selectAlcoholDetail() {
+		
+		
 		
 	}
 	
-	//매핑 selectAlcoholPdtList.pr
-	public void selectAlcoholPdtList() {
-		
+	// 주류전체조회
+	@GetMapping("selectAlcoholPdtList.pr")
+	public void selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage) { // pdtCteg, page
+		int listCount = productService.selectProductCount("A");
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
+		System.out.println(productService.selectAlcoholPdtList(pi));
 	}
 	
+	// 주류 디테일조회
+	@GetMapping("alcoholPdtDetail.pr")
+	public void alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
+		if(pdtNo > 0) {
+			
+		} else {
+			
+		}
+	}
 	
 	
 	
