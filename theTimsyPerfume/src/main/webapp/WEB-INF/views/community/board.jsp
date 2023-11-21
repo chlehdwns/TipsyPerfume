@@ -84,7 +84,7 @@
         <tbody>
         <c:choose>
         <c:when test="${empty list }">
-        	<tr><td colspan="5">게시글이 없습니다!</td></tr>
+        	<tr><td colspan="5"><br><br>게시글이 없습니다!<br><br><br></td></tr>
         </c:when>
         <c:otherwise>
         <c:forEach items="${list }" var="board">
@@ -104,7 +104,7 @@
 <div id="paging-area">
     <ul class="pagination">
     	<c:choose>
-	    	<c:when test="${pi.currentPage eq 1 }">
+	    	<c:when test="${pi.currentPage ge 1 }">
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
@@ -124,7 +124,7 @@
         </c:forEach>
         
         <c:choose>
-	    	<c:when test="${pi.currentPage eq pi.maxPage }">
+	    	<c:when test="${pi.currentPage ge pi.maxPage }">
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
 	    	</c:when>
 	    	<c:otherwise>

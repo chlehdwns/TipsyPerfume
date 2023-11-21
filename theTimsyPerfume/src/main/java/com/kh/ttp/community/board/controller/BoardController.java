@@ -30,5 +30,4 @@ public class BoardController {
 		setViewName("community/board");
 		return mv;
 	}
-	
 }
