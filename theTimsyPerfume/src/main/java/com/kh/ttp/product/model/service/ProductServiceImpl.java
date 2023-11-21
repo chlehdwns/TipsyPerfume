@@ -95,6 +95,24 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.newDrinkFundingDetail(sqlSession,pdtNo);
 	}
 
+	@Override
+	public int increaseCount(int pdtNo) {
+		return productDao.increaseCount(sqlSession,pdtNo);
+		
+	}
+
+	@Override
+	public ArrayList<FundingSelectVO> selectHotFundingList() {
+		return productDao.selectHotFundingList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return productDao.hotDrinkFundingList(sqlSession,rowBounds);
+	}
+
 	
 
 }

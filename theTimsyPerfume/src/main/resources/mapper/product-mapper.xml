@@ -168,6 +168,40 @@ VALUES(
 			
 	
 	</select>
+	<select id="selectHotFundingList" resultMap="fundingSelectResultSet">
+		SELECT A.*
+		FROM(
+		    SELECT
+		    P.PDT_NO,
+		    P.PDT_CATEG_NO,
+		    P.PDT_NAME,
+		    P.PDT_PRICE,
+		    P.PDT_INTRO,
+		    P.PDT_DESCRIPTION,
+		    P.PDT_INGREDIENT,
+		    P.PDT_SHIPPING,
+		    PC.PDT_FAMILY,
+		    PDT_OPTION_FIRST,
+		    PDT_OPTION_SECOND,
+            PF.PDT_FILE_UPLOAD,
+            P.PDT_DATE,
+            PDT_GROUP,
+            PDT_MANUFAC,
+            F.FUNDING_NO,
+            CUTTING_DATE,
+            CUTTING_PRICE,
+            PDT_COUNT
+            
+		FROM
+		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
+		WHERE
+		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_COUNT DESC)A
+		    WHERE
+		        ROWNUM BETWEEN 1 AND 4
+	</select>
 	<select id="newDrinkFundingListCount" resultType="_int">
 		SELECT 
 		    COUNT(*)
@@ -213,6 +247,36 @@ VALUES(
         		PDT_DATE DESC
 			
 	</select>
+	<select id="hotDrinkFundingList" resultMap="fundingSelectResultSet">
+		 SELECT
+		    P.PDT_NO,
+		    P.PDT_CATEG_NO,
+		    P.PDT_NAME,
+		    P.PDT_PRICE,
+		    P.PDT_INTRO,
+		    P.PDT_DESCRIPTION,
+		    P.PDT_INGREDIENT,
+		    P.PDT_SHIPPING,
+		    PC.PDT_FAMILY,
+		    PDT_OPTION_FIRST,
+		    PDT_OPTION_SECOND,
+            PF.PDT_FILE_UPLOAD,
+            P.PDT_DATE,
+            PDT_GROUP,
+            PDT_MANUFAC,
+            F.FUNDING_NO,
+            CUTTING_DATE,
+            CUTTING_PRICE,
+            PDT_COUNT
+            
+		FROM
+		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
+		WHERE
+		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_COUNT DESC
+	</select>
 	<select id="newDrinkFundingDetail" parameterType="_int" resultMap="fundingSelectResultSet">
 		SELECT
 			PF.PDT_FILE_UPLOAD,
@@ -240,5 +304,15 @@ VALUES(
 		    
 	
 	</select>
+	<update id="increaseCount" parameterType="_int">
+		UPDATE
+			TB_PRODUCT
+		SET
+			PDT_COUNT = PDT_COUNT+1
+		WHERE
+			PDT_NO = #{pdtNo}
+	
+	</update>
+	
 
 </mapper>

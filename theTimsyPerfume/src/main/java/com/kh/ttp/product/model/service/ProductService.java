@@ -27,6 +27,12 @@ public interface ProductService {
 
 	public FundingSelectVO newDrinkFundingDetail(int pdtNo);
 
+	public int increaseCount(int pdtNo);
+
+	public ArrayList<FundingSelectVO> selectHotFundingList();
+
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi);
+
 
 
 

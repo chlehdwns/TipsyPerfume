@@ -108,10 +108,10 @@ public class ProductController {
 	}
 	@RequestMapping("funding.list")
 	private String selectFundingList(Model model) {
-		ArrayList<FundingSelectVO> fs = productService.selectNewFundingList();
-		
-		model.addAttribute("drinkFundingList", fs);
-		
+		ArrayList<FundingSelectVO> nfs = productService.selectNewFundingList();
+		ArrayList<FundingSelectVO> hfs = productService.selectHotFundingList();
+		model.addAttribute("drinkFundingList", nfs);
+		model.addAttribute("drinkHotFundingList",hfs);
 		return "funding/fundingList";
 	}
 	@RequestMapping("newDrinkFunding.list")
@@ -122,13 +122,26 @@ public class ProductController {
 		
 		return "funding/newDrinkFundingList";
 	}
+	@RequestMapping("hotDrinkFunding.list")
+	public String hotDrinkFundingListPage(@RequestParam(value="cPage", defaultValue="1")int currentPage ,Model model) {
+		PageInfo pi = Pagination.getPageInfo(productService.newDrinkFundingListCount(),currentPage,12,10);
+		model.addAttribute("totalHotDrinkFunding",productService.hotDrinkFundingList(pi));
+		model.addAttribute("pi",pi);
+		return "funding/hotDrinkFundingList";
+	}
 	@RequestMapping("detail.fList")
 	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
 		//System.out.println(pdtNo);
+		if(productService.increaseCount(pdtNo) > 0) {
 		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
 		model.addAttribute("pdtNo",pdtNo);
 		return "funding/newDrinkFundingDetail";
+		}else {
+			return "common/errorPage";
+		}
+		
 	}
+	
 	
 
 }

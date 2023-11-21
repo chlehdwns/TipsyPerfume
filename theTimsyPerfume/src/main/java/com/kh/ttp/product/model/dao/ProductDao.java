@@ -48,6 +48,18 @@ public class ProductDao {
 		
 		return sqlSession.selectOne("productMapper.newDrinkFundingDetail",pdtNo);
 	}
+
+	public int increaseCount(SqlSessionTemplate sqlSession, int pdtNo) {
+		return sqlSession.update("productMapper.increaseCount", pdtNo);
+	}
+
+	public ArrayList<FundingSelectVO> selectHotFundingList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectHotFundingList");
+	}
+
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper.hotDrinkFundingList",null,rowBounds);
+	}
 	
 
 }
