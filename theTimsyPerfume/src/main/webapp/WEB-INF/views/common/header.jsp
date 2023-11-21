@@ -16,6 +16,10 @@
     
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
+    <style>
+    #header_1_right_bottom {height: 30%; padding: 10px 140px 0px 0px;}
+    #header_1_right_bottom form{width: 100%;}
+    </style>
 </head>
 <body>
 <header>
@@ -97,23 +101,6 @@
                 </div>
 
                 <div id="header_1_right_bottom" class="full_width_divs">
-                    <!--<form action="" method="get" class="d-flex" role="search">
-                        <span id="header_search_inner_area_1">
-                            <select class="form-select" name="condition">
-                                <option selected value="allProduct">전체</option>
-                                <option value="alcohol">주류</option>
-                                <option value="perfume">향수</option>
-                                <option value="groupBuying">공구</option>
-                                <option value="crowdfunding">펀딩</option>
-                            </select>
-                        </span>
-                        <span id="header_search_inner_area_2">
-                            <input type="search" name="keyword" value="${ keyword }" class="form-control me-2" placeholder="Search" aria-label="Search">
-                        </span>
-                        <button type="submit" class="btn btn-outline-success">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </form>-->
                     <form action="" method="get" class="d-flex" role="search">
                         <span id="header_search_inner_area_1">
                             <select class="search-select" name="condition">
@@ -173,8 +160,8 @@
                 </p>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="notice">공지</a></li>
-                  <li><a class="dropdown-item" href="#">주류&페어링 추천</a></li>
-                  <li><a class="dropdown-item" href="#">코디 추천</a></li>
+                  <li><a class="dropdown-item" href="board?boardCtgy=RECIP">주류&페어링 추천</a></li>
+                  <li><a class="dropdown-item" href="board?boardCtgy=FASHI">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
                   <li><a class="dropdown-item" href="pedia">도감 채우기</a></li>
                 </ul>

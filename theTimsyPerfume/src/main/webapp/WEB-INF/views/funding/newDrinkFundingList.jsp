@@ -44,7 +44,7 @@
 		color : rgb(223, 190, 106);
 	}
 	
-	.funding-list1,.funding-list2,.funding-list3,.funding-list4{
+	.funding-list{
 		height : 100%;
 		width : 25%;
 		float:left;
@@ -54,6 +54,28 @@
 	}
 	h3:hover {
 		font-size : 32px;
+		cursor : pointer;
+	}
+	.fundingList-area img{
+		width : 90%;
+		height : 60%;
+	}
+	h6{
+		text-align : center;
+		
+	}
+	.fundingList-area img:hover{
+		cursor : pointer;
+	}
+	.percent{
+		color : green;
+		font-weight : bolder;
+	}
+	.wish-list{
+		text-align : left;
+		font-weight : bolder;
+	}
+	.wish-list:hover{
 		cursor : pointer;
 	}
 	#pagingArea {width:fit-content; margin:auto;}
@@ -66,56 +88,27 @@
 		<div id="normal-drink">
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list1">
-				
+			<c:forEach items="${totalNewDrinkFunding }" var="tdf">
+				<div class="funding-list">
+					
+					<img src="/ttp${tdf.pdtFileUpload}" alt="썸네일 이미지"/>
+					<h4 class="percent">달성률 : ${tdf.fundingFee} / ${tdf.cuttingPrice }원 </h4>
+					
+					<h6>${tdf.pdtName }</h6>
+					
+					<h6>${tdf.pdtIntro }</h6>
+					<h5 class="wish-list">♡</h5>
 				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
+			</c:forEach>
+			</div>
 			
 			</div>
 		</div>
-		<div id="hot-drink">
-			
-			<div class="fundingList-area">
-				<div class="funding-list1">
-				
-				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
-			</div>
-		</div>
-		<div id="rank-drink">
-			
-			<div class="fundingList-area">
-				<div class="funding-list1">
-				
-				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
-			</div>
-		</div>
-	</div>
+		
+		
+		
+		
+	
 	<div id="pagingArea">
                 <ul class="pagination">
                 	<c:choose>

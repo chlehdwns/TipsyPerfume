@@ -88,6 +88,11 @@
         height: 60px;
         margin-left: 20px;
     }
+    .disabled-btn{
+        width: 10%;
+        height: 60px;
+        margin-left: 20px;
+    }
     .review-comment{
         padding-bottom: 10px;
         border-bottom: 2px solid rgb(94, 94, 94);
@@ -147,8 +152,16 @@ ${review.reviewContent }
                 댓글쓰기
             </div>
             <div class="write-area">
+            <c:choose>
+            <c:when test="${empty loginUser }">
+                <textarea class="comment-textarea" name="" readonly>로그인 후 작성해 주세요</textarea>
+                <button class="disabled-btn" type="button" onclick="location.href='loginForm.me'">로그인</button>
+            </c:when>
+            <c:otherwise>
                 <textarea class="comment-textarea" name=""></textarea>
                 <button class="comment-btn" type="button">입력</button>
+            </c:otherwise>
+            </c:choose>
             </div>
             <div id="review-comment-wrap">
             </div>
@@ -218,6 +231,7 @@ ${review.reviewContent }
         });
     });
     function loadAllCommentList(){
+    	console.log("${loginUser.userNo}");
         $.ajax({
             url:"commentList",
             type:"get",
@@ -239,17 +253,23 @@ ${review.reviewContent }
                                 +"<div>"+result[i].commentContent+"</div>"
                                 +"<div>"+result[i].commentCreateDate+"</div>"
                                 +"<button class='re-comment-open'>답글 "
-                        if(result[i].commentIndex!=0){
-                            value+=result[i].commentIndex
+                        if(result[i].groupCount-1!=0){
+                            value+=result[i].groupCount-1;
                         }
                         value+=  "</button><div class='re-comment-div' style='display: none;'>"
                                 +"<div>답글쓰기</div>"
                                 +"<div class='write-area'>"
-                                +"<textarea class='comment-textarea'></textarea>"
-                                +"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
-                                +"<input class='comment-depth' type='hidden' value='"+result[i].commentDepth+1+"'>"
-                                +"<button class='comment-btn' type='button'>입력</button>"
-                                +"</div>"
+                        if("${loginUser.userNo}"==""){
+                        	value+=  "<textarea class='comment-textarea' readonly>로그인 후 작성해 주세요</textarea>"
+                            		+"<button class='disabled-btn' type='button'  onclick=\"location.href='loginForm.me'\">로그인</button>";
+                        }
+                        else{
+                        	value+=  "<textarea class='comment-textarea'></textarea>"
+                        			+"<input class='comment-no' type='hidden' value='"+result[i].commentNo+"'>"
+                        			+"<input class='comment-depth' type='hidden' value='"+result[i].commentDepth+1+"'>"
+                        			+"<button class='comment-btn' type='button'>입력</button>";
+                        }
+                        value+=  "</div>"
                                 +"<div class='re-comment-wrap'>";
                     }
                     else{
@@ -264,7 +284,7 @@ ${review.reviewContent }
                                 +"<div>"+result[i].commentCreateDate+"</div>"
                                 +"</div>";
                     }
-                    if(result[i].commentIndex == 0){
+                    if(result[i].commentIndex == result[i].groupCount-1){
                         value+=  "</div>"
                                 +"</div>"
                                 +"</div>";

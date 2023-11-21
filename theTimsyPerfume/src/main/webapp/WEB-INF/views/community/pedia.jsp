@@ -101,6 +101,7 @@
         left: 50%;
         transform: translateX(-50%);
         background-color: rgb(35, 31, 32);
+        border: 1px solid rgb(223, 190, 106);
         border-radius: 20px;
         padding: 20px;
         color: rgb(223, 190, 106);
@@ -187,23 +188,6 @@
 
 조니워커의 정규 라벨 중 가장 높은 가격이다보니 다양한 바리에이션이 나오는 것으로도 또한 유명하다. 도시별, 국가별 에디션이나 조디악 에디션, 동양의 `12간지 에디션이 대표적.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ㅇㅇ
 </pre>
         </div>
     </div>
@@ -211,17 +195,18 @@
 </section>
 <script>
     $(()=>{
+    	loadPedia("A");
         $("#modal-background").click(()=>{
             $("#pedia-detail-wrap").css("display","none");
             $("body").css("overflow","");
         })
         $(".pedia-tab").click(function(){
             if($(this).hasClass("alcohol") && $("#pedia-wrap").hasClass("perfume")){
-                //ajax
+            	loadPedia("A");
                 $("#pedia-wrap").removeClass("perfume").addClass("alcohol");
             }
             else if($(this).hasClass("perfume") && $("#pedia-wrap").hasClass("alcohol")){
-                //ajax
+            	loadPedia("F");
                 $("#pedia-wrap").removeClass("alcohol").addClass("perfume");
             }
         })
@@ -229,8 +214,43 @@
     function view(pdtNo){
         //console.log(pdtNo);
         //ajax
+        $.ajax({
+        	url:"selectPediaInfo",
+        	data:{"pdtNo":pdtNo},
+        	async:false,
+        	success:(result)=>{
+        		console.log(result);
+        		const $pediaWrap = $("#pedia-wrap");
+    			$("#detail-img img").attr("src",result.pdtGpStatus);
+    			$("#detail-title").text(result.pdtName);
+    			$("#detail-article").text(result.pdtDescription);
+        	},
+        	error:()=>{
+        		console.log("통신실패");
+        	}
+        })
         $("#pedia-detail-wrap").css("display","");
         $("body").css("overflow","hidden");
+    }
+    function loadPedia(pdtCteg){
+    	$.ajax({
+    		url:"selectPediaList",
+    		data:{"pdtCteg":pdtCteg},
+    		async:false,
+    		success:(result)=>{
+    			const $pediaWrap = $("#pedia-wrap");
+    			let value="";
+    			for(let i in result){
+    				value+=  "<div class='pedia-item disable' onclick='view("+result[i].pdtNo+");'>"
+    	            		+"<img class='img' src="+result[i].pdtGpStatus+">"
+    	            		+"</div>";
+    			}
+    			$pediaWrap.html(value);
+    		},
+    		error:()=>{
+    			console.log("통신실패");
+    		}
+    	});
     }
 </script>
 <jsp:include page="../common/footer.jsp"/>

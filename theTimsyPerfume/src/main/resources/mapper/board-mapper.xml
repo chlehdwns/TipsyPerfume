@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+<resultMap type="board" id="boardResultSet">
+	<result column="BOARD_NO" property="boardNo"/>
+	<result column="NICKNAME" property="boardWriter"/>
+	<result column="BOARD_TITLE" property="boardTitle"/>
+	<result column="BOARD_CONTENT" property="boardContent"/>
+	<result column="BOARD_CREATE_DATE" property="boardCreateDate"/>
+	<result column="BOARD_MODIFY_DATE" property="boardModifyDate"/>
+	<result column="BOARD_CTGY_CODE" property="boardCtgyCode"/>
+	<result column="BOARD_STATE" property="boardState"/>
+	<result column="BOARD_COUNT" property="boardCount"/>
+</resultMap>
+
+<select id="countBoardList" parameterType="string" resultType="_int">
+SELECT
+    COUNT(*)
+FROM TB_BOARD
+WHERE
+    BOARD_STATE='Y'
+AND
+    BOARD_CTGY_CODE=#{boardCtgy}
+</select>
+<select id="seletcBoardList" parameterType="string" resultMap="boardResultSet">
+SELECT
+    BOARD_NO,
+    NICKNAME,
+    BOARD_TITLE,
+    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd') "BOARD_CREATE_DATE",
+    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
+    BOARD_CTGY_CODE,
+    BOARD_STATE,
+    BOARD_COUNT
+FROM TB_BOARD
+JOIN TB_USER USING(USER_NO)
+WHERE
+    BOARD_STATE='Y'
+AND
+    BOARD_CTGY_CODE=#{boardCtgy}
+</select>
+<insert id="insertBoard">
+INSERT INTO TB_BOARD(
+    BOARD_NO,
+    USER_NO,
+    BOARD_TITLE,
+    BOARD_CONTENT,
+    BOARD_CTGY_CODE
+) VALUES (
+    SEQ_BOARD.NEXTVAL,
+    1,
+    '맥주 안주로 뭐가 좋을까?',
+    '맥주 안주로 좋은 것은 육포나 생선포, 비타민이 듬뿍 든 신선한 과일과 채소가 적당하다. 육포는 고단백이라 알코올 흡수를 지연시킨다. 오징어는 몸에 좋은 콜레스테롤이 많으며, 간 해독 성분인 타우린이 많아 맥주 안주로 적당하다. 양주의 가장 좋은 안주는 ''물''이다.',
+    'RECIP'
+);
+</insert>
+</mapper>

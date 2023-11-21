@@ -2,10 +2,12 @@ package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.dao.FundingDao;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.dao.ProductDao;
@@ -74,6 +76,18 @@ public class ProductServiceImpl implements ProductService {
 	public ArrayList<FundingSelectVO> selectNewFundingList() {
 		return productDao.selectFundingList(sqlSession);
 		
+	}
+
+	@Override
+	public int newDrinkFundingListCount() {
+		return productDao.newDrinkFundingListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<FundingSelectVO> newDrinkFundingList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return productDao.newDrinkFundingList(sqlSession,rowBounds);
 	}
 
 	

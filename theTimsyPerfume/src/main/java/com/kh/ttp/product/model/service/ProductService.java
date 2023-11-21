@@ -3,6 +3,7 @@ package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
@@ -19,6 +20,11 @@ public interface ProductService {
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
 	public ArrayList<FundingSelectVO> selectNewFundingList();
+
+	public int newDrinkFundingListCount();
+
+	public ArrayList<FundingSelectVO> newDrinkFundingList(PageInfo pi);
+
 
 
 

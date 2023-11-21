@@ -32,6 +32,10 @@
 		<result column="PDT_OPTION_NO" property="pdtOptionNo"/>
 		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst"/>
 		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond"/>
+		<result column="FUNDING_NO" property="fundingNo"/>
+		<result column="CUTTING_DATE" property="cuttingDate"/>
+		<result column="FUNDING_FEE" property="fundingFee"/>
+		<result column="CUTTING_PRICE" property="cuttingPrice"/>
 	</resultMap>
 	<insert id="insertProductCategory" parameterType="productCategory">
 		INSERT
@@ -125,7 +129,7 @@ VALUES(
 		
 	</insert>
 	<select id="selectFundingList" resultMap="fundingSelectResultSet">
-				SELECT A.*
+			SELECT A.*
 		FROM(
 		    SELECT
 		    P.PDT_NO,
@@ -143,20 +147,69 @@ VALUES(
             PF.PDT_FILE_PATH,
             PF.PDT_FILE_ORIGIN,
             PF.PDT_FILE_UPLOAD,
-            PDT_DATE,
+            P.PDT_DATE,
             PDT_GROUP,
-            PDT_MANUFAC
+            PDT_MANUFAC,
+            F.FUNDING_NO,
+            CUTTING_DATE,
+            FUNDING_FEE,
+            CUTTING_PRICE
+            
 		FROM
 		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
 		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
 		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
 		WHERE
 		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_DATE DESC)A
 		    WHERE
 		        ROWNUM BETWEEN 1 AND 4
-		
 			
 	
+	</select>
+	<select id="newDrinkFundingListCount" resultType="_int">
+		SELECT 
+		    COUNT(*)
+		FROM
+		    TB_PRODUCT P JOIN TB_FUNDING F ON(P.PDT_NO=F.PDT_NO)
+		WHERE PDT_STATUS = 'Y'
+	</select>
+	<select id="newDrinkFundingList" resultMap="fundingSelectResultSet">
+		SELECT
+		    P.PDT_NO,
+		    P.PDT_CATEG_NO,
+		    P.PDT_NAME,
+		    P.PDT_PRICE,
+		    P.PDT_STOCK,
+		    P.PDT_INTRO,
+		    P.PDT_DESCRIPTION,
+		    P.PDT_INGREDIENT,
+		    P.PDT_SHIPPING,
+		    PC.PDT_FAMILY,
+		    PDT_OPTION_FIRST,
+		    PDT_OPTION_SECOND,
+            PF.PDT_FILE_PATH,
+            PF.PDT_FILE_ORIGIN,
+            PF.PDT_FILE_UPLOAD,
+            P.PDT_DATE,
+            PDT_GROUP,
+            PDT_MANUFAC,
+            F.FUNDING_NO,
+            CUTTING_DATE,
+            FUNDING_FEE,
+            CUTTING_PRICE
+            
+		FROM
+		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
+        WHERE
+        	 PDT_STATUS = 'Y'
+        ORDER
+        	BY
+        		PDT_DATE DESC
+			
 	</select>
 
 </mapper>

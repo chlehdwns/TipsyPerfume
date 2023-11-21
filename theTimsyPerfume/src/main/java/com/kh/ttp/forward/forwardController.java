@@ -1,6 +1,7 @@
 package com.kh.ttp.forward;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -9,10 +10,7 @@ public class forwardController {
 	public String fundingListPage() {
 		return"funding/fundingList";
 	}
-	@RequestMapping("newDrinkFunding.list")
-	public String newDrinkFundingListPage() {
-		return "funding/newDrinkFundingList";
-	}
+	
 	@RequestMapping("hotDrinkFunding.list")
 	public String hotDrinkFundingListPage() {
 		return "funding/hotDrinkFundingList";
@@ -25,6 +23,15 @@ public class forwardController {
 	public String enrollFormDrinkFunding() {
 		return "funding/drinkEnrollForm";
 	}
+	@RequestMapping("detail.fList")
+	public String newDrinkFundingDetail() {
+		return "funding/newDrinkFundingDetail";
+	}
 	
+	
+	@GetMapping("addressEnrollForm.re")
+	public String search() {
+		return "orderKinds/addressEnrollForm";
+	}
 
 }
