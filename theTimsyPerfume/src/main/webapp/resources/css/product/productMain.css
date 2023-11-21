@@ -93,8 +93,6 @@ div[class^=swiper-button] {
 
 /************************* 모달 관련 CSS *************************/
 /* 모달 첫화면 (로그인 / 회원가입 버튼) */
-#pdtMainModalTitle,
-#pdtMainModalBody,
 #pdtLoginModal .modal-header {
 	width: 100%;
 }
@@ -107,9 +105,7 @@ div[class^=swiper-button] {
 
 
 /* 로그인 입력양식 */
-
-
-
+/* jsp에 loginForm.css 링크함 */
 
 
 /* 회원가입 입력양식 */
