@@ -29,13 +29,13 @@ public interface ProductService1 {
 	HashMap<String, Object> productMainList(String pdtCteg, PageInfo pi);
 
 	// 향수 전체조회 selectPerfumePdtList
-	ArrayList<ProductSelectVO> selectPerfumePdtList(PageInfo pi);
+	ArrayList<ProductSelectVO> selectPerfumePdtList(String sort, PageInfo pi);
 	
 	// 향수 디테일조회 perfumePdtDetail
 	ProductSelectVO perfumePdtDetail(int pdtNo);
 	
 	// 주류 전체조회 selectAlcoholPdtList
-	ArrayList<ProductSelectVO> selectAlcoholPdtList(PageInfo pi);
+	ArrayList<ProductSelectVO> selectAlcoholPdtList(String sort, PageInfo pi);
 	
 	// 주류 디테일조회 alcoholPdtDetail
 	ProductSelectVO alcoholPdtDetail(int pdtNo);

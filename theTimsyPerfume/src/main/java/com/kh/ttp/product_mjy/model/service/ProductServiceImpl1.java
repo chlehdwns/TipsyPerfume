@@ -51,10 +51,10 @@ public class ProductServiceImpl1 implements ProductService1 {
 
 	
 	@Override
-	public ArrayList<ProductSelectVO> selectPerfumePdtList(PageInfo pi) {
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(String sort, PageInfo pi) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return productDao.selectPerfumePdtList(sqlSession, rowBounds);
+		return productDao.selectPerfumePdtList(sqlSession, sort, rowBounds);
 	}
 
 	
@@ -65,9 +65,10 @@ public class ProductServiceImpl1 implements ProductService1 {
 	}
 
 	@Override
-	public ArrayList<ProductSelectVO> selectAlcoholPdtList(PageInfo pi) {
-
-		return null;
+	public ArrayList<ProductSelectVO> selectAlcoholPdtList(String sort, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return productDao.selectAlcoholPdtList(sqlSession, sort, rowBounds);
 	}
 
 	@Override

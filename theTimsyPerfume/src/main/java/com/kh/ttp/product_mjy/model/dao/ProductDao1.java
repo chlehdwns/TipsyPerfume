@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 @Repository
@@ -38,11 +39,19 @@ public class ProductDao1 {
 		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pMap, rowBounds);
 	}
 
-	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
-		// TODO Auto-generated method stub
-		return null;
+	//향수 전체조회
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, String sort, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("selectPerfumePdtLime", sort, rowBounds);
 	}
 
+	// 향수 디테일조회
 	
+	
+	//주류 전체조회
+	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, String sort, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("selectAlcoholPdtList", sort, rowBounds);
+	}
+
+	// 주류 디테일조회
 
 }
