@@ -6,7 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 기본 메인</title>
-
+    	성인인가요
+	${loginUser.adultStatus}	성인인가요
+	${loginUser.adultStatus}	성인인가요
+	${loginUser.adultStatus}	성인인가요
+	${loginUser.adultStatus}	성인인가요
+	${loginUser.adultStatus}	성인인가요
+	${loginUser.adultStatus}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	
 	
@@ -22,15 +28,11 @@
 	<!-- Google Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <!-- productMain.jsp의 CSS파일 경로적기 -->
+	<!-- productMain.jsp의 CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
-
+	
+	
 </head>
-<style>
-
-
-
-</style>
 
 <body>
     <!--
@@ -120,7 +122,7 @@
 				         <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
-				    		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
+				    		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    </div>
 				    <!-- Slider main container -->
@@ -170,7 +172,7 @@
 		                    <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
-	                		<button type="button" onclick="location.href='perfumeList.pr" class="btn btn-outline-info">더보기 &gt;</button>
+	                		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -210,34 +212,149 @@
 		</c:choose>
     </div>
     
-    <!-- 모달 // ajax로 동적 요소 생성 (로그인+회원가입+취소 버튼)=>(로그인 입력 양식 or 회원가입 입력 양식) -->
-	<div id="pdtLoginModal" class="modal" tabindex="-1">
+
+
+    <!-- 모달 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div id="pdtMainModalWrap" class="modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<div id="pdtMainModalTitle" class="modal-title">
-	       				<!--<h5 id="pdtMainModalTitle" class="modal-title"> -->
-	      				타이틀부분 입니다 ^^
+						<!-- 모달 타이틀 부분 #pdtMainModalTitle
+						<br>
+						로그인이 필요한 서비스입니다
+						<br>  -->
 					</div>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div id="pdtMainModalBody" class="modal-body">
-	      			<!-- 모달내용 #pdtMainModalBody -->
-	      			내용 부분입니다^^
+				<div id="pdtMainModalBody" class="modal-body" align="center">
+
+					<!-- 모달내용 #pdtMainModalBody
+					<button type="button" id="pdtFirstModalLoginBtn" class="btn btn-primary">로그인하러 가기</button>
+					<br><br>
+					<button type="button" id="pdtFirstModalEnrollBtn" class="btn btn-info">회원가입하러 가기</button>
+					<br><br><br>
+					<div class="btns modal-footer" align="center">
+						<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
+						<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
+					</div> -->
+
+
 				</div>
-				<div class="modal-footer">
-					<button id="pdtModalCancleBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-<!-- 					<button type="button" class="btn btn-primary">확인</button> -->
-				</div>
+			
 			</div>
 		</div>
 	</div>
-    	<script>
-    		function adultValidation() {
-    			
-				$('#pdtLoginModal').modal("show");
-    		}
-		</script>
+	
+	
+	
+   	<script>
+
+		// date타입 날짜 비활성화
+		$(() => {
+			var $pdtModalDateInput = $('#pdtMainBirthDate');
+			$pdtModalDateInput.prop('min', '1900-01-01').prop('max', new Date().toISOString().split('T')[0]);
+			//$pdtModalDateInput.prop('min', new Date().toISOString().split('T')[0]); 오늘 이전 비활성화 시
+		});
+		
+		// 리셋 or 서브밋 컨펌
+		$('#pdtMainResetBtn').click(() => {
+			return confirm('리셋하시겠습니까?');
+		});
+		$('#pdtMainSubmitBtn').click(() => {
+			return confirm('입력하신 정보로 회원가입을 할까요?');
+		});
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<script>
+		// 변수선언
+		var $pdtMainModalTitle = $('#pdtMainModalTitle');
+		var $pdtMainModalBody = $('#pdtMainModalBody');
+		
+		var pdtModalTitleStr = '';
+		var pdtModalContentStr = '';
+
+		
+		// 모달영역 html 변경하는 함수
+		function fillPdtMainModalArea() {
+			$pdtMainModalBody.html(pdtModalTitleStr);
+			$pdtMainModalBody.html(pdtModalContentStr);
+		};
+						  	   
+		
+		// 첫번째 모달(로그인/회원가입 버튼) 문자열 만들고 html 변경해주는 함수
+		function makeFirstModal() {
+			pdtModalTitleStr = '<br>로그인이 필요한 서비스입니다<br>';
+			pdtModalContentStr = '<button type="button" id="pdtFirstModalLoginBtn" class="btn btn-primary">로그인하러 가기</button>'
+							   + '<br><br>'
+							   + '<button type="button" id="pdtFirstModalEnrollBtn" class="btn btn-info">회원가입하러 가기</button>'
+							   + '<br><br><br>';
+			fillPdtMainModalArea();		
+		};
+		
+		
+		
+		// 로그인/성인인증 여부 판별 후
+		// 포워딩하기 or 로그인창 or 회원가입창 띄워주는 함수
+		function adultValidation(pdtNo) {
+			if('${loginUser.status}' == 'Y') { // 로그인 O
+				if('${loginUser.adultStatus}' == 'Y') { // 로그인 O 성인인증 O => 주류 전체조회or디테일페이지로 이동
+					location.href=!(isNaN(pdtNo)) ? "selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo
+					/*
+					if(!(isNaN(pdtNo))) {
+						location.href="selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo; // 디테일 보기 요청
+					}
+					else {
+						location.href="selectAlcoholPdtList.pr"; // 전체조회 요청
+					}
+					*/
+				}
+				else { // 로그인O 성인인증X => 성인인증하기
+					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
+				}
+			}
+			else { // 로그인 X => 로그인 or 회원가입
+				const $pdtMainModalWrap = $('#pdtMainModalWrap');
+
+				makeFirstModal();
+				
+				// 로그인 / 회원가입 선택 모달창 띄움
+				fillPdtMainModalArea();
+				$('#pdtMainModalWrap').modal("show");
+				
+				$pdtMainModalWrap.on('click', '#pdtFirstModalLoginBtn', () => {
+					console.log('로그인요청');
+					
+				});
+				$pdtMainModalWrap.on('click', '#pdtFirstModalEnrollBtn', () => {
+					console.log('회원가입요청');
+					
+				});
+				
+				// 로그인 실패 시 여기로 돌아옴! 사용자 경험을 위해 ajax??
+				
+			}
+		}
+ 	</script>
+
+
+
+
+
+
+
+
+
+
+
     
     <script>
     	
@@ -336,8 +453,8 @@
 			});
 		};*/
     </script>
-    
-    
+
+
 </body>
 
 
