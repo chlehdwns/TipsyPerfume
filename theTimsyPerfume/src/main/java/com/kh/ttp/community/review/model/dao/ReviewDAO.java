@@ -7,7 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.ttp.community.review.model.vo.CommentVO;
+import com.kh.ttp.community.model.vo.CommentVO;
+import com.kh.ttp.community.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Repository
@@ -41,16 +42,21 @@ public class ReviewDAO {
 		return sqlSession.insert("reviewMapper.insertComment", comment);
 	}
 
-	public int selectRecommend(SqlSessionTemplate sqlSession, HashMap map) {
-		return sqlSession.selectOne("reviewMapper.selectRecommend", map);
+	public String selectRecommend(SqlSessionTemplate sqlSession, RecommendVO rc) {
+		return sqlSession.selectOne("reviewMapper.selectRecommend", rc);
 	}
 
-	public int updateRecommend(SqlSessionTemplate sqlSession, HashMap map) {
-		return sqlSession.update("reviewMapper.updateRecommend", map);
+	public int updateRecommend(SqlSessionTemplate sqlSession, RecommendVO rc) {
+		return sqlSession.update("reviewMapper.updateRecommend", rc);
 	}
 
-	public int insertRecommend(SqlSessionTemplate sqlSession, HashMap map) {
-		return sqlSession.insert("reviewMpper.insertRecommend", map);
+	public int insertRecommend(SqlSessionTemplate sqlSession, RecommendVO rc) {
+		System.out.println(rc);
+		return sqlSession.insert("reviewMpper.insertRecommend", rc);
+	}
+
+	public RecommendVO countRecommend(SqlSessionTemplate sqlSession, int contentNo) {
+		return sqlSession.selectOne("reviewMapper.countRecommend", contentNo);
 	}
 
 

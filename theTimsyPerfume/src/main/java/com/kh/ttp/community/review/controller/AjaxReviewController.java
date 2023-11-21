@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.kh.ttp.community.model.vo.CommentVO;
+import com.kh.ttp.community.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.service.ReviewService;
-import com.kh.ttp.community.review.model.vo.CommentVO;
 
 @Controller
 public class AjaxReviewController {
@@ -39,31 +40,28 @@ public class AjaxReviewController {
 	public String ajaxInsertComment(CommentVO comment) {
 		return Integer.toString(reviewService.insertComment(comment));
 	}
+	
 	@GetMapping(value = "reviewRecommend", produces = "text/html; charset=UTF-8")
 	@ResponseBody
-	public String ajaxReviewRecommend(int userNo, int reviewNo, String reviewLikeFlag) {
-		HashMap map = new HashMap();
-		map.put("userNo",userNo);
-		map.put("reviewNo",reviewNo);
-		map.put("reviewLikeFlag",reviewLikeFlag);
+	public String ajaxReviewRecommend(RecommendVO rc) {
 		
 		String msg="";
-		String flag = reviewService.selectRecommend(map);
-		if(reviewLikeFlag.equals('L')) {
-			if(flag!=null && flag.equals(reviewLikeFlag)) {
+		String flag = reviewService.selectRecommend(rc);
+		if(rc.getLikeFlag().equals("L")) {
+			if(flag!=null && flag.equals("L")) {
 				msg="이미 추천";
 			} else {
-				if(reviewService.reviewRecommend(map)>0) {
+				if(reviewService.reviewRecommend(rc)>0) {
 					msg="추천완료";
 				} else {
 					msg="Error!";
 				}
 			}
 		} else {
-			if(flag!=null && flag.equals(reviewLikeFlag)) {
+			if(flag!=null && flag.equals("D")) {
 				msg="이미 비추천";
 			} else {
-				if(reviewService.reviewRecommend(map)>0) {
+				if(reviewService.reviewRecommend(rc)>0) {
 					msg="비추천완료";
 				} else {
 					msg="Error!";
@@ -71,5 +69,10 @@ public class AjaxReviewController {
 			}
 		}
 		return msg;
+	}
+	@GetMapping(value = "loadReviewRecommend", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String ajaxCountRecommend(int contentNo) {
+		return new Gson().toJson(reviewService.countRecommend(contentNo));
 	}
 }

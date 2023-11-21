@@ -157,11 +157,11 @@ ${review.reviewContent }
 				<div class="like-wrap">
                     <div class="like-btn-wrap">
                         <i id="like" class='fa fa-thumbs-o-up like-btn' style='font-size:36px'></i>
-                        <div>1000</div>
+                        <div id="like-count"></div>
                     </div>
                     <div class="like-btn-wrap">
                         <i id="dislike" class='fa fa-thumbs-o-down like-btn' style='font-size:36px; transform: scaleX(-1);'></i>
-                        <div>1000</div>
+                        <div id="dislike-count"></div>
                     </div>
                 </div>
             </div>
@@ -198,6 +198,7 @@ ${review.reviewContent }
 </section>
 <script>
     $(()=>{
+    	loadRecommend();
         loadAllCommentList();
 
         $(".small-img").click(function(){
@@ -271,14 +272,32 @@ ${review.reviewContent }
     		type:"get",
     		data:{
     			userNo:"${loginUser.userNo}",
-    			reviewLikeFlag:ld,
-    			reviewNo:$("#review-no").val()
+    			likeFlag:ld,
+    			contentNo:$("#review-no").val()
     		},
     		success:(result)=>{
-    			
+    			console.log(result);
+    			loadRecommend();
     		},
     		error:()=>{
-    			
+    			console.log("통신실패");
+    		}
+    	})
+    }
+    function loadRecommend(){
+    	$.ajax({
+    		url:"loadReviewRecommend",
+    		type:"get",
+    		data:{
+    			contentNo:$("#review-no").val()
+    		},
+    		success:(result)=>{
+    			console.log(result);
+    			$("#like-count").text(result.likeCount);
+    			$("#dislike-count").text(result.dislikeCount);
+    		},
+    		error:()=>{
+    			console.log("통신실패");
     		}
     	})
     }

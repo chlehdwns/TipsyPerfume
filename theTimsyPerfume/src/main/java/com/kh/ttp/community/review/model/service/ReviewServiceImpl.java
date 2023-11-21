@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.community.model.vo.CommentVO;
+import com.kh.ttp.community.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.dao.ReviewDAO;
-import com.kh.ttp.community.review.model.vo.CommentVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Service
@@ -52,15 +53,19 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.insertComment(sqlSession, comment);
 	}
 	@Override
-	public int selectRecommend(HashMap map) {
-		return reviewDao.selectRecommend(sqlSession, map);
+	public String selectRecommend(RecommendVO rc) {
+		return reviewDao.selectRecommend(sqlSession, rc);
 	}
 	@Override
-	public int reviewRecommend(HashMap map) {
-		int result = reviewDao.updateRecommend(sqlSession, map);
+	public int reviewRecommend(RecommendVO rc) {
+		int result = reviewDao.updateRecommend(sqlSession, rc);
 		if(result==0) {
-			result = reviewDao.insertRecommend(sqlSession, map);
+			result = reviewDao.insertRecommend(sqlSession, rc);
 		}
 		return result;
+	}
+	@Override
+	public RecommendVO countRecommend(int contentNo) {
+		return reviewDao.countRecommend(sqlSession, contentNo);
 	}
 }
