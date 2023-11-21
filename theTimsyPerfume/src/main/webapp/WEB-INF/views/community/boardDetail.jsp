@@ -188,7 +188,7 @@ ${board.boardContent }
             </c:otherwise>
             </c:choose>
         </div>
-        <div class="board-comment-wrap">
+        <div id="board-comment-wrap">
         </div>
     </div>
 </div>
