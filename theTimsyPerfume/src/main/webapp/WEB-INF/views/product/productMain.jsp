@@ -266,15 +266,36 @@
 		});
 	</script>
 	
+	<script>
+	    // 슬라이더 동작 정의
+	    const swiper = new Swiper('.swiper', {
+	        autoplay : {
+	            delay : 2500 // 2.5초마다 이미지 변경
+	        },
+	        loop : true, //반복 재생 여부
+	        slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
+	        pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
+	            el: '.swiper-pagination',
+	            clickable: true
+	        },
+	        navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
+	            prevEl: '.swiper-button-prev',
+	            nextEl: '.swiper-button-next'
+	        }
+	    });
+	</script>
 	
-	
+	<script>
+		
+	</script>
 	
 	
 	
 	
 	
 
-	<script>
+	<!--<script>
+		Ver.3 : ajax는 실패할 때 사용자경험↑ 의미가 생김 중간에 창 닫힌다면 꼬임 등등 일반 포워딩이 나을듯
 		// 변수선언
 		var $pdtMainModalWrap = $('#pdtMainModalWrap');
 		var $pdtMainModalTitle = $('#pdtMainModalTitle');
@@ -301,15 +322,8 @@
 		};
 		// 로그인 모달 문자열 만들고 html() : 반환형 모달요소($pdtMainModalWrap)
 		function fillPdtMainLoginModal() {
-			pdtModalTitleStr = ;
-			pdtModalContentStr = ;
-			fillPdtMainModalArea();
-			return
 		};
 		// 회원가입 모달 문자열 만들고 html() : 반환형 모달요소($pdtMainModalWrap)
-		
-		
-		
 
 		// 로그인/성인인증 여부 판별 후
 		// 포워딩하기 or 로그인창 or 회원가입창 띄워주는 함수
@@ -340,8 +354,6 @@
 				}
 			}
 			else { // 로그인X / 실패 시 여기로 돌아옴! 사용자 경험을 위해 ajax??
-				
-			
 				//fillPdtMainFirstModal();
 				//$pdtMainModalWrap.modal("show");
 				//console.log(fillPdtMainFirstModal());
@@ -355,26 +367,12 @@
 					console.log('회원가입요청');
 					
 				});
-				
-				
 			}
 		};
- 	</script>
-
-
-
-
-
-
-
-
-
-
-
-    
-    <script>
-    	
-/* 		function adultValidation(pdtNo) {
+ 	</script>-->
+    <!--<script>
+    	Ver.2
+ 		function adultValidation(pdtNo) {
 			if('${loginUser.status}' == 'Y') { // 로그인된 유저 존재함
 				if('${loginUser.adultStatus}' == 'Y') { // 성인인증 됨
 					console.log(pdtNo + 'pdt넘버');
@@ -394,8 +392,6 @@
 				$()=> {
 		
 				}
-				
-				
 			}
 			// 성인인증 안됨
 			// 컨트롤러로 요청보냄 (컨트롤러에서 로그인했는지 아닌지 체크해서 여기로 응답)
@@ -407,32 +403,12 @@
 			var $pdtModalCancleBtn = $('#pdtModalCancleBtn');
 			$() => {
 				$modalTitle.ap'회원가입 하기';
-				
 				'로그인 하기'
 			};
 		};
 		 */
-
-		
-        // 슬라이더 동작 정의
-        const swiper = new Swiper('.swiper', {
-            autoplay : {
-                delay : 2500 // 2.5초마다 이미지 변경
-            },
-            loop : true, //반복 재생 여부
-            slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
-            pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-            }
-        });
-    </script>
-    
-    <script>
+		 
+		// Ver.1
 		/* function ajaxAdultValidation(pdtNo) {
 		console.log(pdtNo);
 			$.ajax({
@@ -468,7 +444,7 @@
 				}
 			});
 		};*/
-    </script>
+    </script>-->
 
 
 </body>
