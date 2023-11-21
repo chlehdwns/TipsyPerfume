@@ -153,7 +153,8 @@ VALUES(
             F.FUNDING_NO,
             CUTTING_DATE,
             FUNDING_FEE,
-            CUTTING_PRICE
+            CUTTING_PRICE,
+            PDT_COUNT
             
 		FROM
 		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
@@ -193,11 +194,12 @@ VALUES(
             PF.PDT_FILE_UPLOAD,
             P.PDT_DATE,
             PDT_GROUP,
-            PDT_MANUFAC,
             F.FUNDING_NO,
+            PDT_MANUFAC,
             CUTTING_DATE,
             FUNDING_FEE,
-            CUTTING_PRICE
+            CUTTING_PRICE,
+            PDT_COUNT
             
 		FROM
 		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
@@ -210,6 +212,33 @@ VALUES(
         	BY
         		PDT_DATE DESC
 			
+	</select>
+	<select id="newDrinkFundingDetail" parameterType="_int" resultMap="fundingSelectResultSet">
+		SELECT
+			PF.PDT_FILE_UPLOAD,
+			P.PDT_COUNT,
+			P.PDT_NAME,
+			P.PDT_PRICE,
+			P.PDT_DESCRIPTION,
+			P.PDT_INGREDIENT,
+		    P.PDT_SHIPPING,
+			PO.PDT_OPTION_FIRST,
+		    PO.PDT_OPTION_SECOND,
+		    PDT_MANUFAC,
+		    F.CUTTING_PRICE,
+		    F.CUTTING_DATE,
+		    F.FUNDING_FEE
+		FROM
+		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
+        WHERE
+        	 PDT_STATUS = 'Y' 
+        	 AND
+        	 P.PDT_NO = #{pdtNo}
+		    
+	
 	</select>
 
 </mapper>

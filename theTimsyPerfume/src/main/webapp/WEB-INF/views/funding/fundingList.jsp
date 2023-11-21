@@ -82,6 +82,10 @@
 	.wish-list:hover{
 		cursor : pointer;
 	}
+	.cutting-date{
+		color: red;
+		font-size : 20px;
+	}
 </style>
 </head>
 <body>
@@ -99,6 +103,7 @@
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(0).pdtNo}" class="pno"/>
 					<img src="/ttp${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(0).cuttingDate }</h6>
 					
 					<h4 class="percent">달성률 : ${drinkFundingList.get(0).fundingFee} / ${drinkFundingList.get(0).cuttingPrice }원 </h4>
 					
@@ -116,6 +121,7 @@
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(1).pdtNo}" class="pno"/>
 					<img src="/ttp${drinkFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(1).cuttingDate }</h6>
 					
 					<h4 class="percent">달성률 : ${drinkFundingList.get(1).fundingFee} / ${drinkFundingList.get(1).cuttingPrice }원 </h4>
 					
@@ -127,6 +133,7 @@
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(2).pdtNo}" class="pno"/>
 					<img src="/ttp${drinkFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(2).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkFundingList.get(2).fundingFee} / ${drinkFundingList.get(2).cuttingPrice }원 </h4>
 					
 					<h6>${drinkFundingList.get(2).pdtName }</h6>
@@ -137,6 +144,7 @@
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(3).pdtNo}" class="pno"/>
 					<img src="/ttp${drinkFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(3).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkFundingList.get(3).fundingFee} / ${drinkFundingList.get(3).cuttingPrice }원 </h4>
 					
 					<h6>${drinkFundingList.get(3).pdtName }</h6>
@@ -201,8 +209,8 @@
 		})
 		$(function(){
 			$('.funding-list>img').click(function(){
-				location.href="detail.fList"
-				//location.href="detail.fList?pno=" + $(this).prev().val();
+				
+				location.href="detail.fList?pno=" + $(this).prev().val();
 				
 			})
 		})

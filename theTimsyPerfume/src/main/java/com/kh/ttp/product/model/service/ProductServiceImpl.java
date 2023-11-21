@@ -90,6 +90,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.newDrinkFundingList(sqlSession,rowBounds);
 	}
 
+	@Override
+	public FundingSelectVO newDrinkFundingDetail(int pdtNo) {
+		return productDao.newDrinkFundingDetail(sqlSession,pdtNo);
+	}
+
 	
 
 }

@@ -25,6 +25,8 @@ public interface ProductService {
 
 	public ArrayList<FundingSelectVO> newDrinkFundingList(PageInfo pi);
 
+	public FundingSelectVO newDrinkFundingDetail(int pdtNo);
+
 
 
 

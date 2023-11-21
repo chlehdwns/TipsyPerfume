@@ -122,5 +122,13 @@ public class ProductController {
 		
 		return "funding/newDrinkFundingList";
 	}
+	@RequestMapping("detail.fList")
+	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
+		//System.out.println(pdtNo);
+		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
+		model.addAttribute("pdtNo",pdtNo);
+		return "funding/newDrinkFundingDetail";
+	}
+	
 
 }
