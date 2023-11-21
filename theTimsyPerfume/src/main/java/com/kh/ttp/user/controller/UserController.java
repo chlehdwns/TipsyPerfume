@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.service.UserService;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
@@ -99,58 +99,6 @@ public class UserController {
 		}
 	}
 		
-		
-	@ResponseBody
-	@RequestMapping("emailCheck.me")
-	public String emailCheck(String checkEmail) {
-		//System.out.println(checkEmail);
-		return userService.emailCheck(checkEmail) > 0 ? "NNNNNNNNNNNNNNN" : "NNNNNNNNNNNNNNY";
-	}
-	
-	
-	
-	@GetMapping("inputmail")
-	public String inputMail() {
-		return "member/input";
-	}
-	
-	
-	
-	//메일인증
-	@PostMapping("mail")
-	public String mail(String email , HttpServletRequest request ) throws MessagingException{ 
-			
-			//System.out.println(email);
-			
-		MimeMessage message = sender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-			
-			String ip = request.getRemoteAddr();
-			
-			Random r = new Random();
-			int i = r.nextInt(100000);
-			Format f = new DecimalFormat("000000");
-			String secret = f.format(i);
-			
-			AuthVO authVo = AuthVO.builder()
-							.authEmail(ip)
-							.authCode(secret)
-							.build();
-			
-			userService.sendMail(authVo);
-			
-			
-			
-			
-			helper.setTo(email);
-			helper.setSubject("인증번호 보내드립니다");
-			helper.setText("인증번호 : " + secret);
-			
-			sender.send(message);
-			
-			return "redirect:checkPage";
-	
-		}
 	
 	
 	
@@ -167,7 +115,7 @@ public class UserController {
 		return mv;
 	} 
 	
-	/*
+	
 	@RequestMapping("update.me")
 	public String updateMember(User u, Model model, HttpSession session) {
 		
@@ -180,9 +128,7 @@ public class UserController {
 			return "redirect:myPage.me";
 			
 		} else {
-			
 			model.addAttribute("errorMsg", "정보 수정에 실패했습니다.");
-			// /WEB-INF/views/		common/errorPage		.jsp
 			return "common/errorPage";
 		}
 		
@@ -213,21 +159,81 @@ public class UserController {
 		session.setAttribute("alertMsg", "비밀번호가 틀렸습니다.");
 		return "redirect:myPage.me";
 	}	
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("emailCheck.me")
+	public String emailCheck(String checkEmail) {
+		//System.out.println(checkEmail);
+		return userService.emailCheck(checkEmail) > 0 ? "NNNNNNNNNNNNNNN" : "NNNNNNNNNNNNNNY";
 	}
 	
-	@RequestMapping("update1.me")
-	*/
+	
+	//메일!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	@GetMapping("inputmail")
+	public String inputMail() {
+		return "member/input";
+	}
 	
 	
+	@GetMapping("checkPage")
+	public String checkPage() {
+		return "member/check";
+	}
+	
+	
+	
+	
+	//메일인증
+	@PostMapping("mail")
+	public String mail(String userEmail , HttpServletRequest request ) throws MessagingException{ 
+			
+			System.out.println(userEmail);
+			
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+			
+		String ip = request.getRemoteAddr();
+			
+		Random r = new Random();
+		int i = r.nextInt(100000);
+		Format f = new DecimalFormat("000000");
+		String authCode = f.format(i);
+			
+		AuthVO authVo = AuthVO.builder()
+							.authEmail(ip)
+							.authCode(authCode)
+							.build();
+			
+		userService.sendMail(authVo);
+			
+			helper.setTo(userEmail);
+			helper.setSubject("인증번호 보내드립니다");
+			helper.setText("인증번호 : " + authCode);
+			
+			sender.send(message);
+			
+			return "redirect:checkPage";
+	
+		}
+	
+		@ResponseBody
+		@PostMapping("check")
+		public String checkCode(String authCode, HttpServletRequest request) {
+	
+			AuthVO certVo = AuthVO.builder()
+								.authEmail(request.getRemoteAddr())
+								.authCode(authCode)
+								.build();
+			boolean result = userService.validate(certVo);
+			
+			return "result : " + result;
+		}
 	
 	
 	

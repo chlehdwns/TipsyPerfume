@@ -2,9 +2,8 @@ package com.kh.ttp.user.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
@@ -35,7 +34,7 @@ public class UserDao {
 	}
 
 	public void insertSecret(SqlSessionTemplate sqlSession, AuthVO authVo) {
-		sqlSession.insert("memberMapper.insertSecret", authVo);
+		sqlSession.insert("userMapper.insertSecret", authVo);
 		
 	}
 
@@ -52,6 +51,16 @@ public class UserDao {
 	public int deleteUser(SqlSessionTemplate sqlSession, String userEmail) {
 		
 		return sqlSession.update("userMapper.deleteUser", userEmail);
+	}
+
+	public boolean validate(SqlSessionTemplate sqlSession, AuthVO authVo) {
+		AuthVO result = sqlSession.selectOne("userMapper.validate", authVo);
+		return result != null;
+	}
+
+	public void deleteCert(SqlSessionTemplate sqlSession, AuthVO authVo) {
+		sqlSession.delete("userMapper.deleteCert", authVo);
+		
 	}
 
 	

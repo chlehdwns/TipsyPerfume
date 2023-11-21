@@ -2,6 +2,7 @@ package com.kh.ttp.product.model.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -33,6 +34,19 @@ public class ProductDao {
 	public ArrayList<FundingSelectVO> selectFundingList(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("productMapper.selectFundingList");
 		 
+	}
+
+	public int newDrinkFundingListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("productMapper.newDrinkFundingListCount");
+	}
+
+	public ArrayList<FundingSelectVO> newDrinkFundingList(SqlSessionTemplate sqlSession,RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper.newDrinkFundingList",null,rowBounds);
+	}
+
+	public FundingSelectVO newDrinkFundingDetail(SqlSessionTemplate sqlSession, int pdtNo) {
+		
+		return sqlSession.selectOne("productMapper.newDrinkFundingDetail",pdtNo);
 	}
 	
 

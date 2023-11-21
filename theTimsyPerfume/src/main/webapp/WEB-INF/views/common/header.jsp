@@ -16,6 +16,10 @@
     
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
+    <style>
+    #header_1_right_bottom {height: 30%; padding: 10px 140px 0px 0px;}
+    #header_1_right_bottom form{width: 100%;}
+    </style>
 </head>
 <body>
 <header>

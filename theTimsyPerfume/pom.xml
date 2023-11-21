@@ -220,13 +220,13 @@
 		    <version>2.8.5</version>
 		</dependency>
 		
-		<!--  
+		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		-->
+		
 		
 		<!-- 메일 관련 -->
 		<dependency>

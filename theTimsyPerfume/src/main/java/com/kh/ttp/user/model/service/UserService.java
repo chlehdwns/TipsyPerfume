@@ -1,6 +1,6 @@
 package com.kh.ttp.user.model.service;
 
-import com.kh.ttp.order.model.vo.Receiver;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
@@ -23,16 +23,13 @@ public interface UserService {
 	
 	//아이디 중복 체크 서비스 
 	int emailCheck(String checkEmail);
-
-	
-
-	
 	
 	//-----------
 	
 	//메일 인증
 	void sendMail(AuthVO authVo);
-	//boolean validate(CertVO certVo);
+	
+	boolean validate(AuthVO AuthVo);
 
 	
 

@@ -24,7 +24,12 @@
             STATUS status,
             MEMBER_TYPE memberType,
             BUSINESS_REG businessReg,
-            ADULT_STATUS adultStatus,
+            
+            CASE
+		        WHEN extract(YEAR FROM SYSDATE)-extract(YEAR FROM BIRTH_DATE) >= 19 THEN 'Y'
+		        ELSE 'N'
+		    END adultStatus,
+		    
             BIRTH_DATE birthDate,
             ENROLL_DATE enrollDate,
             USER_PROFILE userProfile,
@@ -117,14 +122,7 @@
 			USER_EMAIL = #{checkEmail}
 	</select>
 
-	<insert id="insertSecret" parameterType="com.kh.ttp.user.model.vo.AuthVO">
-		INSERT
-		INTO
-			TB_AUTH
-			(authEmail, authCode, authDate)
-		VALUES
-			(#{authEmail}, #{authCode}, sysdate)
-	</insert>
+	
 	
 	
 	<select id="selectReceiver" parameterType="_int" resultMap="ReceiverResultSet">
@@ -179,4 +177,55 @@
 
 
 
+
+
+
+
+	<insert id="insertSecret" parameterType="com.kh.ttp.user.model.vo.AuthVO">
+		INSERT
+		INTO
+			TB_AUTH
+			(
+				AUTH_EMAIL,
+			 	AUTH_CODE,
+			 	AUTH_DATE
+			 )
+		VALUES
+			(
+			#{authEmail}, 
+			#{authCode},
+			sysdate
+			
+			)
+	</insert>
+
+
+
+	<select
+		id="validate"
+		parameterType="com.kh.ttp.user.model.vo.AuthVO"
+		resultType="com.kh.ttp.user.model.vo.AuthVO">
+	SELECT
+		AUTH_EMAIL,
+		AUTH_CODE,
+		AUTH_DATE
+	FROM
+		TB_AUTH
+	WHERE
+		AUTH_EMAIL = #{authEmail}
+	AND
+		AUTH_CODE = #{authCode}
+	AND
+		WHEN BETWEEN SYSDATE - 3/24/60 AND SYSDATE 
+	</select>
+
+
+	<delete id="deleteAuth" parameterType="com.kh.ttp.user.model.vo.AuthVO">
+			delete 
+				TB_AUTH 
+			where 
+				AUTH_EMAIL = #{authEmail} 
+			and 
+				AUTH_CODE = #{authCode}
+	</delete>
 </mapper>

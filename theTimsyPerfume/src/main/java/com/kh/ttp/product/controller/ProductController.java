@@ -12,8 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.service.ProductService;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
@@ -111,5 +114,21 @@ public class ProductController {
 		
 		return "funding/fundingList";
 	}
+	@RequestMapping("newDrinkFunding.list")
+	public String newDrinkFundingListPage(@RequestParam(value="cPage", defaultValue="1")int currentPage ,Model model) {
+		PageInfo pi = Pagination.getPageInfo(productService.newDrinkFundingListCount(),currentPage,12,10);
+		model.addAttribute("totalNewDrinkFunding",productService.newDrinkFundingList(pi));
+		model.addAttribute("pi",pi);
+		
+		return "funding/newDrinkFundingList";
+	}
+	@RequestMapping("detail.fList")
+	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
+		//System.out.println(pdtNo);
+		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
+		model.addAttribute("pdtNo",pdtNo);
+		return "funding/newDrinkFundingDetail";
+	}
+	
 
 }
