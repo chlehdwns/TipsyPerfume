@@ -152,4 +152,41 @@ INSERT INTO TB_COMMENT(
     #{commentDepth}
 )
 </insert>
+<select id="selectRecommend" parameterType="recommend" resultType="string">
+SELECT
+    REVIEW_LIKE_FLAG
+FROM TB_REVIEW_LIKE
+WHERE
+    USER_NO = #{userNo}
+AND
+    REVIEW_NO = #{contentNo}
+</select>
+<update id="updateRecommend" parameterType="recommend">
+UPDATE
+    TB_REVIEW_LIKE
+SET REVIEW_LIKE_FLAG = #{likeFlag}
+WHERE
+    USER_NO = #{userNo}
+AND
+    REVIEW_NO = #{contentNo}
+</update>
+<insert id="insertRecommend" parameterType="recommend">
+INSERT INTO TB_REVIEW_LIKE(
+    USER_NO,
+    REVIEW_NO,
+    REVIEW_LIKE_FLAG
+) VALUES (
+	#{userNo},
+	#{contentNo},
+	#{likeFlag}
+)
+</insert>
+<select id="countRecommend" parameterType="_int" resultType="recommend">
+SELECT
+    TO_CHAR(COUNT(CASE WHEN REVIEW_LIKE_FLAG='L' THEN 1 END),'FM999,999,999') likeCount,
+    TO_CHAR(COUNT(CASE WHEN REVIEW_LIKE_FLAG='D' THEN 1 END),'FM999,999,999') dislikeCount
+FROM TB_REVIEW_LIKE
+WHERE
+    REVIEW_NO = #{contentNo}
+</select>
 </mapper>

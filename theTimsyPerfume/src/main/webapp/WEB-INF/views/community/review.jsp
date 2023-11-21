@@ -159,7 +159,7 @@
 <div id="paging-area">
     <ul class="pagination">
     	<c:choose>
-	    	<c:when test="${pi.currentPage eq 1 }">
+	    	<c:when test="${pi.currentPage le 1 }">
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
@@ -179,7 +179,7 @@
         </c:forEach>
         
         <c:choose>
-	    	<c:when test="${pi.currentPage eq pi.maxPage }">
+	    	<c:when test="${pi.currentPage ge pi.maxPage }">
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
