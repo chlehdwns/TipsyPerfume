@@ -129,7 +129,14 @@ UPDATE TB_COMMENT SET COMMENT_INDEX=COMMENT_INDEX+1 WHERE COMMENT_GROUP = #{comm
 INSERT INTO TB_COMMENT(
     COMMENT_NO,
     USER_NO,
-    REVIEW_NO,
+    <choose>
+	<when test='boardNo != 0'>
+		BOARD_NO,
+	</when>
+	<otherwise>
+		REVIEW_NO,
+	</otherwise>
+	</choose>
     COMMENT_CONTENT,
     COMMENT_GROUP,
     COMMENT_INDEX,
@@ -137,7 +144,14 @@ INSERT INTO TB_COMMENT(
 ) VALUES (
     SEQ_COMMENT.NEXTVAL,
     #{userNo},
-    #{reviewNo},
+    <choose>
+	<when test='boardNo != 0'>
+		#{boardNo},
+	</when>
+	<otherwise>
+		#{reviewNo},
+	</otherwise>
+	</choose>
     #{commentContent},
     <choose>
 	<when test='commentGroup == 0'>

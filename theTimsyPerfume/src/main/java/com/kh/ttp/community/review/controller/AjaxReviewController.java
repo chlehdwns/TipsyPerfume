@@ -31,6 +31,7 @@ public class AjaxReviewController {
 		map.put("boardNo",boardNo);
 		map.put("reviewNo",reviewNo);
 		map.put("commentGroup",commentGroup);
+		System.out.println(map);
 		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
 		return new Gson().toJson(list);
@@ -49,20 +50,20 @@ public class AjaxReviewController {
 		String flag = reviewService.selectRecommend(rc);
 		if(rc.getLikeFlag().equals("L")) {
 			if(flag!=null && flag.equals("L")) {
-				msg="이미 추천";
+				msg="이미 추천한 게시글 입니다.";
 			} else {
 				if(reviewService.reviewRecommend(rc)>0) {
-					msg="추천완료";
+					msg="게시글을 추천 했습니다.";
 				} else {
 					msg="Error!";
 				}
 			}
 		} else {
 			if(flag!=null && flag.equals("D")) {
-				msg="이미 비추천";
+				msg="이미 비추천한 게시글 입니다.";
 			} else {
 				if(reviewService.reviewRecommend(rc)>0) {
-					msg="비추천완료";
+					msg="게시글을 비추천 했습니다.";
 				} else {
 					msg="Error!";
 				}
