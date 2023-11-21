@@ -20,8 +20,5 @@ footer div {
 #footer_inner_3 {height: 30px;}
 /* 푸터 내부 p태그들 */
 #footerWrap p {display:inline-block; margin: 0px; position: relative; left: 20px;}
-#footer_inner_1 p {top: 7px;}
-#footer_inner_2 p {top: 22px;}
-#footer_inner_3 p {top: 1px;}
 
 .footer-top-wrap{background-color: rgb(32, 32, 32);}

@@ -2981,3 +2981,19 @@ INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (39,5);
 INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (40,1);
 
 COMMIT;
+
+INSERT INTO TB_BOARD_CTGY(BOARD_CTGY_CODE,BOARD_CTGY_NAME
+) VALUES ('RECIP','안주 추천');
+INSERT INTO TB_BOARD_CTGY(BOARD_CTGY_CODE,BOARD_CTGY_NAME
+) VALUES ('FASHI','패션 추천');
+
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE
+) VALUES (
+    SEQ_BOARD.NEXTVAL,
+    2,
+    '맥주 안주로 뭐가 좋을까?',
+    '맥주 안주로 좋은 것은 육포나 생선포, 비타민이 듬뿍 든 신선한 과일과 채소가 적당하다. 육포는 고단백이라 알코올 흡수를 지연시킨다. 오징어는 몸에 좋은 콜레스테롤이 많으며, 간 해독 성분인 타우린이 많아 맥주 안주로 적당하다. 양주의 가장 좋은 안주는 ''물''이다.',
+    'RECIP'
+);
+
+COMMIT;
