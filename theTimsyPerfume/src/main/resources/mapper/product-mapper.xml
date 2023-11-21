@@ -313,6 +313,35 @@ VALUES(
 			PDT_NO = #{pdtNo}
 	
 	</update>
+	<select id="selectDrinkFundingList" parameterType="_int" resultMap="fundingSelectResultSet">
+		SELECT
+			P.PDT_NAME,
+			P.PDT_CATEG_NO,
+			P.PDT_PRICE,
+			P.PDT_STOCK,
+			P.PDT_INTRO,
+			P.PDT_DESCRIPTION,
+			P.PDT_INGREDIENT,
+			P.PDT_SHIPPING,
+			PC.PDT_MANUFAC,
+			PC.PDT_GROUP,
+			PO.PDT_OPTION_FIRST,
+			PO.PDT_OPTION_SECOND,
+			PF.PDT_FILE_ORIGIN,
+			PF.PDT_FILE_UPLOAD,
+			F.CUTTING_DATE,
+			F.CUTTING_PRICE
+		FROM
+		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON P.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
+        WHERE
+        	 PDT_STATUS = 'Y' 
+        	 AND
+        	 P.PDT_NO = #{pdtNo}
+		
+	</select>
 	
 
 </mapper>

@@ -113,6 +113,11 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.hotDrinkFundingList(sqlSession,rowBounds);
 	}
 
+	@Override
+	public FundingSelectVO selectDrinkFundingList(int pdtNo) {
+		return productDao.selectDrinkFundingList(sqlSession,pdtNo);
+	}
+
 	
 
 }

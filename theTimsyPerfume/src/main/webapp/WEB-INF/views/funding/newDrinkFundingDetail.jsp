@@ -72,12 +72,13 @@
 				<img alt="사진" src="/ttp${fundingDetailList.pdtFileUpload }">
 				<h6>review:0개            조회수:${fundingDetailList.pdtCount }</h6>
 				<c:if test="${sessionScope.loginUser.memberType eq 'S'}">
-					<form method="post" action="update.fd">
-						<input type="hidden" name="pdtNo" value="${pdtNo }"/>
+					<form method="post" action="updateForm.fd">
+						
+						<input type="hidden" name="pno" value="${pno}"/>
 						<button id="funding-update" type="submit">술 펀딩 수정</button>
 					</form>
 					<form method="post" action="delete.fd">
-						<input type="hidden" name="pdtNo" value="${pdtNo }"/>
+						<input type="hidden" name="pno" value="${pno }"/>
 						<button id="funding-delete" type="submit">술 펀딩삭제</button>
 					</form>
 				</c:if>
@@ -95,7 +96,7 @@
 				<h5 class="product-dinfo">0/${fundingDetailList.cuttingPrice }</h5>
 				<h6 class="product-dinfo">마감 날짜 : ${fundingDetailList.cuttingDate }</h6>
 				<form id="fundingForm" method="post" action="purchase.fd">
-					<input type="hidden" name="pdtNo" value="${pdtNo }">
+					<input type="hidden" name="pno" value="${pno }">
 					<button type="submit">예약구매</button>
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>

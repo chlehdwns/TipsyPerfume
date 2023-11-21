@@ -60,6 +60,11 @@ public class ProductDao {
 	public ArrayList<FundingSelectVO> hotDrinkFundingList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapper.hotDrinkFundingList",null,rowBounds);
 	}
+
+	public FundingSelectVO selectDrinkFundingList(SqlSessionTemplate sqlSession, int pdtNo) {
+		
+		return sqlSession.selectOne("productMapper.selectDrinkFundingList",pdtNo);
+	}
 	
 
 }

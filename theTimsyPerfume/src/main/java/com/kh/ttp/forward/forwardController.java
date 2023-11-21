@@ -26,5 +26,6 @@ public class forwardController {
 	public String search() {
 		return "orderKinds/addressEnrollForm";
 	}
+	
 
 }

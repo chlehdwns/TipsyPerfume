@@ -33,6 +33,8 @@ public interface ProductService {
 
 	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi);
 
+	public FundingSelectVO selectDrinkFundingList(int pdtNo);
+
 
 
 

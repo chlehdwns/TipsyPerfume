@@ -131,15 +131,22 @@ public class ProductController {
 	}
 	@RequestMapping("detail.fList")
 	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
-		//System.out.println(pdtNo);
+		System.out.println(pdtNo);
 		if(productService.increaseCount(pdtNo) > 0) {
 		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
-		model.addAttribute("pdtNo",pdtNo);
+		model.addAttribute("pno",pdtNo);
 		return "funding/newDrinkFundingDetail";
 		}else {
 			return "common/errorPage";
 		}
 		
+	}
+	@RequestMapping("updateForm.fd")
+	public String updateFormPage(@RequestParam(value="pno") int pdtNo,Model model) {
+		System.out.println(pdtNo);
+		model.addAttribute("fdi",productService.selectDrinkFundingList(pdtNo));
+		model.addAttribute("pdtNo",pdtNo);
+		return "funding/updateDrinkFunding";
 	}
 	
 	
