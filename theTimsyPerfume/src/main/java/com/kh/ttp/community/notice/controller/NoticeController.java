@@ -32,6 +32,11 @@ public class NoticeController {
 	}
 	@PostMapping("noticeWrite.do")
 	public ModelAndView noticeWrite(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session, ModelAndView mv) {
+		no.setNoticeTitle(no.getNoticeTitle().replace("<", "&lt;"));
+		no.setNoticeTitle(no.getNoticeTitle().replace(">", "&gt;"));
+		no.setNoticeContent(no.getNoticeContent().replace("<", "&lt;"));
+		no.setNoticeContent(no.getNoticeContent().replace(">", "&gt;"));
+		
 		no.setNoticeThumbnailFile(saveFile(thumbnailFile, session));
 		no.setNoticeFile(saveFile(imgFile, session));
 		if(noticeService.insertNotice(no)>0) {
@@ -103,6 +108,11 @@ public class NoticeController {
 	}
 	@PostMapping("noticeUpdate.do")
 	public ModelAndView noticeUpdate(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session, ModelAndView mv) {
+		no.setNoticeTitle(no.getNoticeTitle().replace("<", "&lt;"));
+		no.setNoticeTitle(no.getNoticeTitle().replace(">", "&gt;"));
+		no.setNoticeContent(no.getNoticeContent().replace("<", "&lt;"));
+		no.setNoticeContent(no.getNoticeContent().replace(">", "&gt;"));
+		
 		if(!thumbnailFile.getOriginalFilename().equals("")) {
 			new File(session.getServletContext().getRealPath(no.getNoticeThumbnailFile())).delete();
 			no.setNoticeThumbnailFile(saveFile(thumbnailFile, session));
