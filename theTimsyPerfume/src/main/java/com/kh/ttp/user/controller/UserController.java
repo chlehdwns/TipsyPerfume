@@ -109,8 +109,8 @@ public class UserController {
 		//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
 		Receiver rc = userService.selectReceiver(userNo);
 		
-		mv.addObject("rc", rc).
-		setViewName("member/myPage");
+		mv.addObject("rc", rc).setViewName("member/myPage");
+		System.out.println(rc);
 		
 		return mv;
 	} 

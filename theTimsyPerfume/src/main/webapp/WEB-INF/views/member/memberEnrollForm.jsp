@@ -9,11 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<<<<<<< Updated upstream
-    
-    
-    
-=======
+
     <style>
     
     
@@ -28,14 +24,15 @@
     
     
     </style>
->>>>>>> Stashed changes
+
 </head>
 
 <body>
 
 	<!-- 메뉴바 -->
-<<<<<<< Updated upstream
+
 	<jsp:include page="../common/header.jsp" />
+	
 	<style>
     .content{
 	    align:center;
@@ -61,6 +58,7 @@
 	}
     
     </style>
+    
 	<div class="content">
 	
 		<div class="content1">
@@ -96,11 +94,6 @@
 						<br>
 						
 						
-						
-						
-						
-						<!-- 인증 번호 받기를 누르면 나오도록. 둘다. -->
-						<!--  <div id="checkSendEmail" style="display:none;">-->
 							<label for="emailSendConfirm">* 인증 번호 입력 : </label>
 							<input type="text" class="form-control" id="emailSendConfirm" placeholder="인증번호를 입력해주세요." name="emailSendConfirm" required><br>
 							<div id="confirmResult" style="font-size:1em; display:none;"></div><!-- 이건 결과글띄워주는 숨김 -->
@@ -111,14 +104,6 @@
 							</div>
 						<!--  </div>-->
 						<br>
-						
-						
-						
-						
-						
-						
-						
-						
 						
 						
 						
@@ -137,70 +122,26 @@
 						<label for="userName">* 이름 : </label>
 						<input type="text" class="form-control" id="userName" placeholder="이름을 입력해주세요." name="userName" required><br>
 						
-=======
-	<!--<jsp:include page="../common/header.jsp" />-->
-	<div class="content">
+
 	
-		<div class="content1">
-			<div class="content2">
-				<h1>회원가입</h1>
-				<hr>
-				<h3>일반 회원 가입</h3>
-
-				<h2>필수 입력 사항</h2>
-				
-				<label for=""> *회원 구분 : </label> &nbsp;&nbsp;
-                    <input type="radio" id="User" value="U" name="memberType" checked>
-                    <label for="User">남자</label> &nbsp;&nbsp;
-                    <input type="radio" id="Sale" value="S" name="memberType">
-                    <label for="Sale">여자</label> &nbsp;&nbsp;
-
-				<form action="insert.me" method="post" id="enroll-form">
-					<div class="form-group">
-
-						<label for="userId">* 아이디(이메일) : </label>
-						<input type="text" class="form-control" id="userId" placeholder="아이디를 입력해주세요." name="userId" required><br>
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
-						<br>
-						
-						<label for="userPwd">* 비밀번호 : </label>
-						<input type="text" class="form-control" id="userPwd" placeholder="비밀번호를 입력해주세요." name="userPwd" required><br>
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
-						<br>
-						
-						<label for="userPwd">* 비밀번호 확인 : </label>
-						<input type="text" class="form-control" id="userPwd" placeholder="비밀번호를 입력해주세요." name="userPwd" required><br>
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
-						<br>
-						
-						<label for="userName">* 이름 : </label>
-						<input type="text" class="form-control" id="userName" placeholder="이름을 입력해주세요." name="userName" required><br>
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
->>>>>>> Stashed changes
-						<br>
-
 						<label for="nickName">* 닉네임 : </label>
 						<input type="text" class="form-control" id="nickName" placeholder="닉네임을 입력해주세요." name="nickName" required><br>
-<<<<<<< Updated upstream
+
 						
 						<br>
 
 						<label for="birthDate">* 생년월일 : </label>
 						<input type="date" class="form-control" id="birthDate" placeholder="생년월일을 입력해주세요." name="birthDate" required><br>
 						
-=======
+
 						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
 						<br>
 
-						<label for="adultStatus">* 생년월일 : </label>
-						<input type="text" class="form-control" id="adultStatus" placeholder="생년월일을 입력해주세요." name="adultStatus" required><br>
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
->>>>>>> Stashed changes
-						<br>
+						
 
 						<label for="phone">* 전화번호 : </label>
 						<input type="text" class="form-control" id="phone" placeholder="전화번호를 입력해주세요." name="phone" required><br>
-<<<<<<< Updated upstream
+
 						
 						<br>
 
@@ -211,18 +152,17 @@
 						
 						<br>
 						
-=======
+
 						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
 						<br>
 
-						<label for="address"> 주소</label>
-						<input type="text">
->>>>>>> Stashed changes
+						
+
 						<br>
 						
 						<input type="text" class="form-control" id="postalCode" placeholder="우편번호" name="postalCode" required><br>
 						<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="form-control">
-<<<<<<< Updated upstream
+
 						
 						<br>
 						<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
@@ -247,7 +187,7 @@
 	
 	
 	<!-- 회원가입 이메일 인증용 script.나중에 스크립트 파일로 빼야 함 -->
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
 
  		
 	</div><!-- 제일 겉 div -->
