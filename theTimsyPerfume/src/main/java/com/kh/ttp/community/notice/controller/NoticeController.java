@@ -84,6 +84,18 @@ public class NoticeController {
 		}
 		return mv;
 	}
+	@GetMapping("noticeUpdate")
+	public ModelAndView noticeUpdateForm(int noticeNo, ModelAndView mv) {
+		if(noticeService.increaseNoticeCount(noticeNo)>0) {
+			NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
+			mv.addObject("notice", notice).
+			setViewName("community/noticeUpdate");
+		} else {
+			mv.addObject("alertMsg", "조회 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
 	
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();

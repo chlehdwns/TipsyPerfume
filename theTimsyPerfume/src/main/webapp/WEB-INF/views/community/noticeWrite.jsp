@@ -13,11 +13,20 @@
 		width: 900px;
 		margin: 0 auto;
 	}
+	#sub-title{
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        margin: 40px 0;
+    }
 </style>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div id="writer-wrap">
+<div id="sub-title">
+	공지 작정
+</div>
 <form id="enrollForm" method="post" action="noticeWrite.do" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
@@ -39,7 +48,7 @@
 		</tr>
 		<tr>
 			<th><label for="noticeContent">내용</label></th>
-			<td><textarea id="noticeContent" class="form-control" rows="10" style="resize:none;" name="noticeContent" required></textarea></td>
+			<td><textarea id="noticeContent" class="form-control" rows="20" style="resize:none;" name="noticeContent" required></textarea></td>
 		</tr>
 		<tr>
 			<th><label for="imgFile">이미지파일</label></th>
