@@ -18,12 +18,26 @@ public interface ProductService {
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
 
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	
+	int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
 	public ArrayList<FundingSelectVO> selectNewFundingList();
 
 	public int newDrinkFundingListCount();
 
 	public ArrayList<FundingSelectVO> newDrinkFundingList(PageInfo pi);
+
+	public FundingSelectVO newDrinkFundingDetail(int pdtNo);
+
+	public int increaseCount(int pdtNo);
+
+	public ArrayList<FundingSelectVO> selectHotFundingList();
+
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi);
+
+	public FundingSelectVO selectDrinkFundingList(int pdtNo);
+
+	
 
 
 

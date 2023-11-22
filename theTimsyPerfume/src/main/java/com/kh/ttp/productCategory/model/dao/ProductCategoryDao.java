@@ -22,6 +22,11 @@ public class ProductCategoryDao {
 		
 		 
 	}
+
+	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductCategory pc) {
+		return sqlSession.update("productMapper.updateDrinkFunding",pc);
+		
+	}
 	
 
 }

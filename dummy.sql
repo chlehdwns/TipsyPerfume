@@ -2197,7 +2197,7 @@ INSERT INTO TB_USER(
     'Y',
     'A',
     'Y',
-    '20231114'
+    '19901201'
 );
 INSERT INTO
 TB_RECEIVER(

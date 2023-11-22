@@ -12,4 +12,8 @@ public class ProductFileDao {
 		return sqlSession.insert("productMapper.insertProductFile",pf);
 	}
 
+	public int updateDrinkFundingPF(SqlSessionTemplate sqlSession, ProductFile pf) {
+		return sqlSession.update("productMapper.updateDrinkFundingPF",pf);
+	}
+
 }

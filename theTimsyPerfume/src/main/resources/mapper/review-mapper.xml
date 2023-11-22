@@ -129,7 +129,14 @@ UPDATE TB_COMMENT SET COMMENT_INDEX=COMMENT_INDEX+1 WHERE COMMENT_GROUP = #{comm
 INSERT INTO TB_COMMENT(
     COMMENT_NO,
     USER_NO,
-    REVIEW_NO,
+    <choose>
+	<when test='boardNo != 0'>
+		BOARD_NO,
+	</when>
+	<otherwise>
+		REVIEW_NO,
+	</otherwise>
+	</choose>
     COMMENT_CONTENT,
     COMMENT_GROUP,
     COMMENT_INDEX,
@@ -137,7 +144,14 @@ INSERT INTO TB_COMMENT(
 ) VALUES (
     SEQ_COMMENT.NEXTVAL,
     #{userNo},
-    #{reviewNo},
+    <choose>
+	<when test='boardNo != 0'>
+		#{boardNo},
+	</when>
+	<otherwise>
+		#{reviewNo},
+	</otherwise>
+	</choose>
     #{commentContent},
     <choose>
 	<when test='commentGroup == 0'>
@@ -152,4 +166,41 @@ INSERT INTO TB_COMMENT(
     #{commentDepth}
 )
 </insert>
+<select id="selectRecommend" parameterType="recommend" resultType="string">
+SELECT
+    REVIEW_LIKE_FLAG
+FROM TB_REVIEW_LIKE
+WHERE
+    USER_NO = #{userNo}
+AND
+    REVIEW_NO = #{contentNo}
+</select>
+<update id="updateRecommend" parameterType="recommend">
+UPDATE
+    TB_REVIEW_LIKE
+SET REVIEW_LIKE_FLAG = #{likeFlag}
+WHERE
+    USER_NO = #{userNo}
+AND
+    REVIEW_NO = #{contentNo}
+</update>
+<insert id="insertRecommend" parameterType="recommend">
+INSERT INTO TB_REVIEW_LIKE(
+    USER_NO,
+    REVIEW_NO,
+    REVIEW_LIKE_FLAG
+) VALUES (
+	#{userNo},
+	#{contentNo},
+	#{likeFlag}
+)
+</insert>
+<select id="countRecommend" parameterType="_int" resultType="recommend">
+SELECT
+    TO_CHAR(COUNT(CASE WHEN REVIEW_LIKE_FLAG='L' THEN 1 END),'FM999,999,999') likeCount,
+    TO_CHAR(COUNT(CASE WHEN REVIEW_LIKE_FLAG='D' THEN 1 END),'FM999,999,999') dislikeCount
+FROM TB_REVIEW_LIKE
+WHERE
+    REVIEW_NO = #{contentNo}
+</select>
 </mapper>

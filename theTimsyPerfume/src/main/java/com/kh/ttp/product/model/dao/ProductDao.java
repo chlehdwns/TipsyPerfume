@@ -43,6 +43,38 @@ public class ProductDao {
 	public ArrayList<FundingSelectVO> newDrinkFundingList(SqlSessionTemplate sqlSession,RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapper.newDrinkFundingList",null,rowBounds);
 	}
+
+	public FundingSelectVO newDrinkFundingDetail(SqlSessionTemplate sqlSession, int pdtNo) {
+		
+		return sqlSession.selectOne("productMapper.newDrinkFundingDetail",pdtNo);
+	}
+
+	public int increaseCount(SqlSessionTemplate sqlSession, int pdtNo) {
+		return sqlSession.update("productMapper.increaseCount", pdtNo);
+	}
+
+	public ArrayList<FundingSelectVO> selectHotFundingList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectHotFundingList");
+	}
+
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper.hotDrinkFundingList",null,rowBounds);
+	}
+
+	public FundingSelectVO selectDrinkFundingList(SqlSessionTemplate sqlSession, int pdtNo) {
+		
+		return sqlSession.selectOne("productMapper.selectDrinkFundingList",pdtNo);
+	}
+
+	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductVO p) {
+		return  ( sqlSession.update("productMapper.updateDrinkFundingP",p));
+		
+	}
+
+	public int selectPdtNo(SqlSessionTemplate sqlSession, ProductVO p) {
+		return sqlSession.selectOne("productMapper.selectPdtNo",p);
+		 
+	}
 	
 
 }

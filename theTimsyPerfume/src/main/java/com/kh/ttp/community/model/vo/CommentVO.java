@@ -1,4 +1,4 @@
-package com.kh.ttp.community.review.model.vo;
+package com.kh.ttp.community.model.vo;
 
 import lombok.Data;
 

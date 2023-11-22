@@ -29,10 +29,11 @@
 		width: 100%;
 	}
 	#normal-drink{
-		height : 30%;
+		height : 33%;
+		margin-bottom : 100px;
 	}
 	#hot-drink,#rank-drink{
-		height : 35%;
+		height : 33%;
 	}
 	h3{
 		margin-left : 475px;
@@ -51,6 +52,7 @@
 	}
 	.fundingList-area{
 		height : 80%;
+		
 	}
 	h3:hover {
 		font-size : 32px;
@@ -70,6 +72,7 @@
 	.percent{
 		color : green;
 		font-weight : bolder;
+		
 	}
 	.wish-list{
 		text-align : left;
@@ -78,6 +81,11 @@
 	.wish-list:hover{
 		cursor : pointer;
 	}
+	.cutting-date{
+		color: red;
+		font-size : 15px;
+	}
+	
 	#pagingArea {width:fit-content; margin:auto;}
 </style>
 </head>
@@ -90,8 +98,9 @@
 			<div class="fundingList-area">
 			<c:forEach items="${totalNewDrinkFunding }" var="tdf">
 				<div class="funding-list">
-					
+					<input type="hidden" value="${tdf.pdtNo}" class="pno"/>
 					<img src="/ttp${tdf.pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${tdf.cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${tdf.fundingFee} / ${tdf.cuttingPrice }원 </h4>
 					
 					<h6>${tdf.pdtName }</h6>
@@ -139,6 +148,13 @@
 			$('.subtitle').click(function(){
 				location.href = "newDrinkFunding.list";
 			});
+		})
+		$(function(){
+			$('.funding-list>img').click(function(){
+				
+				location.href="detail.fList?pno=" + $(this).prev().val();
+				
+			})
 		})
 		
 	</script>

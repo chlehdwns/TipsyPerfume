@@ -5,38 +5,21 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Tipsy Perfume - 리뷰 페이지</title>
+<title>Tipsy Perfume - 보드 페이지</title>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
 <style>
-    #review-wrap{
-        width: 900px;
-        margin: 0 auto;
-        overflow: hidden;
-    }
-    .review-content-wrap{
-        margin: 60px 0;
-    }
-    .review-content{
-        display: flex;
-        align-items: stretch;
-        position: relative;
-    }
-    .focus-img-wrap{
-        width: 300px;
-        height: 300px;
-    }
     .display-flex{display: flex;align-items: center;}
     .bottom-interval{margin-bottom: 3px}
-    .img{
+    .profile-img{
         height: 100%;
         width: 100%;
         object-fit: contain;
+        border-radius: 14px;
     }
-    .review-article{
-        width: 500px;
-    }
-    .profile{border-radius: 14px;}
     .profile-wrap{
         width: 28px;
         height: 28px;
@@ -46,34 +29,60 @@
         font-size: 15px;
         margin-left: 5px;
     }
-    .article-wrap{
-        white-space: pre-wrap;
+
+    #board-wrap{
+        width: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0px 0px 120px 0px;
     }
-    .img-container{
-        width: 100px;
-        height: 300px;
-        display: flex;
-        overflow-y: scroll;
-        flex-wrap: wrap;
-        align-content: flex-start;
+    #content-title{
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        margin: 40px 0;
     }
-    .img-wrap{
-        width: 100px;
-        height: 100px;
-    }
-    .comment-open-btn{
+    .table{
         width: 100%;
-        height: 23px;
-        color: rgb(255, 255, 255);
-        background-color: rgb(94, 94, 94);
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 20px 0;
+        text-align: center;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        --bs-table-bg: none;
     }
-    .comment-open-btn:active{
-        background-color: rgb(75, 75, 75);
+    .table tr{
+        border-style: solid;
+        border-width: 2px 0px;
+        border-color: rgb(165, 165, 165);
     }
+    .table td{padding: 15px 0px;}
+    .title-head{
+        background-color: rgb(221, 221, 221);
+        width: 350px;
+    }
+    .top-text{
+        color: rgb(100, 100, 100);
+        font-size: 14px;
+    }
+    .board-content-wrap{
+        margin: 0 auto;
+        width: 700px;
+    }
+    .board-content{
+        font-size: 16px;
+        width: 100%;
+        margin: 0 auto;
+        white-space: pre-wrap;
+        line-height: 22px;
+    }
+    .board-content-image{
+        width: 700px;
+        margin: 0 auto;
+    }
+    .img{
+        width: 100%;
+    }
+    
     .write-area{
         display: flex;
         justify-items: center;
@@ -95,7 +104,7 @@
         height: 60px;
         margin-left: 20px;
     }
-    .review-comment{
+    .board-comment{
         padding-bottom: 10px;
         border-bottom: 2px solid rgb(94, 94, 94);
         margin-bottom: 10px;
@@ -105,15 +114,12 @@
         margin: 0 auto;
         background-color: rgb(221, 221, 221);
     }
-    
+
     .like-wrap{
-        width: 200px;
+        width: 300px;
         display: flex;
         justify-content: space-between;
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        margin: 50px auto;
     }
     .like-btn-wrap{
         display: flex;
@@ -122,40 +128,26 @@
     }
     .like-btn{cursor: pointer;}
 </style>
-</head>
-<body>
-<jsp:include page="../common/header.jsp"/>
 <section>
-<input id="review-no" type="hidden" value="${review.reviewNo}">
-<div id="review-wrap">
-    <div class="review-content-wrap">
-        <div class="review-content">
-            <div class="focus-img-wrap">
-                <img id="big-img" class="img" src="${review.reviewImages.get(0) }" alt="">
-            </div>
-            <div class="review-article">
-                <div class="display-flex bottom-interval">
-                    <div class="profile-wrap">
-                        <c:choose>
-                		<c:when test="${empty review.userProfile }">
-                    		<img class="img profile" src="resources/image/common/blank-profile.png" alt="프로필사진">
-                		</c:when>
-                		<c:otherwise>
-                    		<img class="img profile" src="${review.userProfile }" alt="프로필사진">
-                		</c:otherwise>
-                		</c:choose>
-                    </div>
-                    <div class="name-wrap">
-                        ${review.userNo } <span>${review.reviewCreateDate }</span>
-                    </div>
-                </div>
-                <div>
-                    ★★★☆☆
-                </div>
-<pre class="article-wrap bottom-interval">
-${review.reviewContent }
-</pre>
-				<div class="like-wrap">
+<input id="board-no" type="hidden" value="${board.boardNo}">
+<div id="board-wrap">
+    <div id="content-title">
+        ${board.boardTitle }
+    </div>
+    <table class="table">
+        <tr class="title-head">
+            <td>분류 <span class="top-text">안주</span></td>
+            <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
+            <td>작성일 <span class="top-text">${board.boardCreateDate }</span></td>
+            <td>조회수 <span class="top-text">${board.boardCount }</span></td>
+            <td>추천수 <span class="top-text">51</span></td>
+        </tr>
+    </table>
+    <div class="board-content-wrap">
+        <pre class="board-content">
+${board.boardContent }
+        </pre>
+        <div class="like-wrap">
                     <c:choose>
                     <c:when test="${empty loginUser }">
                     	<div class="like-btn-wrap">
@@ -178,22 +170,13 @@ ${review.reviewContent }
                     	</div>
                     </c:otherwise>
                     </c:choose>
-                </div>
-            </div>
-            <div class="img-container">
-            	<c:forEach begin="1" end="${review.reviewImages.size() }" var="i">
-                <div class="img-wrap">
-                    <img class="img small-img" src="${review.reviewImages.get(i-1) }" alt="">
-                </div>
-            	</c:forEach>
-            </div>
+    	</div>
+    </div>
+    <div class="board-comment-div">
+        <div>
+            댓글쓰기
         </div>
-        <button class="comment-open-btn" type="button">펼치기</button>
-        <div class="review-comment-div" style="display: none;">
-            <div>
-                댓글쓰기
-            </div>
-            <div class="write-area">
+        <div class="write-area">
             <c:choose>
             <c:when test="${empty loginUser }">
                 <textarea class="comment-textarea" name="" readonly>로그인 후 작성해 주세요</textarea>
@@ -204,9 +187,8 @@ ${review.reviewContent }
                 <button class="comment-btn" type="button">입력</button>
             </c:otherwise>
             </c:choose>
-            </div>
-            <div id="review-comment-wrap">
-            </div>
+        </div>
+        <div id="board-comment-wrap">
         </div>
     </div>
 </div>
@@ -215,28 +197,14 @@ ${review.reviewContent }
     $(()=>{
     	loadRecommend();
         loadAllCommentList();
-
-        $(".small-img").click(function(){
-            $("#big-img").attr("src", $(this).attr("src"));
-        });
         
-        $("#like").click(()=>{
+    	$("#like").click(()=>{
         	recommend('L');
         });
         $("#dislike").click(()=>{
         	recommend('D');
         });
         
-        $(".comment-open-btn").click(function() {
-            let $commentDiv = $(this).next(".review-comment-div");
-            if ($commentDiv.css("display") === 'none') {
-                $commentDiv.slideDown(100);
-                $(".comment-open-btn").text("접기");
-            } else {
-                $commentDiv.slideUp(100);
-                $(".comment-open-btn").text("펼치기");
-            }
-        });
         $(document).on("click",".re-comment-open", function(){
             let $reCommentDiv = $(this).next(".re-comment-div");
             if ($reCommentDiv.css("display") === 'none') {
@@ -249,7 +217,7 @@ ${review.reviewContent }
         });
         $(document).on("click",".comment-btn", function(){
             const $commentContent = $(this).prevAll(".comment-textarea");
-            const $reviewNo = $("#review-no");
+            const $boardNo = $("#board-no");
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
             const userNo = "${loginUser.userNo}";
@@ -260,7 +228,7 @@ ${review.reviewContent }
                     commentContent:$commentContent.val(),
                     commentGroup:$commentGroup.val(),
                     commentDepth:$commentDepth.val(),
-                    reviewNo:$reviewNo.val(),
+                    boardNo:$boardNo.val(),
                     userNo:userNo
                 },
                 success:(result)=>{
@@ -283,12 +251,12 @@ ${review.reviewContent }
     
     function recommend(ld){
     	$.ajax({
-    		url:"reviewRecommend",
+    		url:"boardRecommend",
     		type:"get",
     		data:{
     			userNo:"${loginUser.userNo}",
     			likeFlag:ld,
-    			contentNo:$("#review-no").val()
+    			contentNo:$("#board-no").val()
     		},
     		success:(result)=>{
     			alert(result);
@@ -301,10 +269,10 @@ ${review.reviewContent }
     }
     function loadRecommend(){
     	$.ajax({
-    		url:"loadReviewRecommend",
+    		url:"loadBoardRecommend",
     		type:"get",
     		data:{
-    			contentNo:$("#review-no").val()
+    			contentNo:$("#board-no").val()
     		},
     		success:(result)=>{
     			$("#like-count").text(result.likeCount);
@@ -321,17 +289,18 @@ ${review.reviewContent }
             url:"commentList",
             type:"get",
             data:{
-                reviewNo:$("#review-no").val()
+                boardNo:$("#board-no").val()
             },
             success:(result)=>{
-                const $commentWrap = $("#review-comment-wrap");
+            	console.log(result);
+                const $commentWrap = $("#board-comment-wrap");
                 let value="";
                 for(let i in result){
                     if(result[i].commentDepth == 0){
-                        value+=  "<div class='review-comment'>"
+                        value+=  "<div class='board-comment'>"
                                 +"<div class='display-flex bottom-interval'>"
                                 +"<div class='profile-wrap'>"
-                                +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                +"<img class='profile-img' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
                                 +"</div>"
                                 +"<div class='name-wrap'>"+result[i].userNo+"</div>"
                                 +"</div>"
@@ -358,10 +327,10 @@ ${review.reviewContent }
                                 +"<div class='re-comment-wrap'>";
                     }
                     else{
-                        value+=  "<div class='review-comment'>"
+                        value+=  "<div class='board-comment'>"
                                 +"<div class='display-flex bottom-interval'>"
                                 +"<div class='profile-wrap'>"
-                                +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                                +"<img class='profile-img' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
                                 +"</div>"
                                 +"<div class='name-wrap'>"+result[i].userNo+"</div>"
                                 +"</div>"
@@ -387,7 +356,7 @@ ${review.reviewContent }
             url:"commentList",
             type:"get",
             data:{
-                "reviewNo":$("#review-no").val(),
+                "boardNo":$("#board-no").val(),
                 "commentGroup":commentGroup
             },
             success:(result)=>{
@@ -396,10 +365,10 @@ ${review.reviewContent }
                 let value="";
                 for(let i in result){
                     console.log("dd");
-                    value+=  "<div class='review-comment'>"
+                    value+=  "<div class='board-comment'>"
                             +"<div class='display-flex bottom-interval'>"
                             +"<div class='profile-wrap'>"
-                            +"<img class='img profile' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
+                            +"<img class='profile-img' src='resources/image/common/blank-profile.png' alt='프로필사진'>"
                             +"</div>"
                             +"<div class='name-wrap'>"+result[i].userNo+"</div>"
                             +"</div>"

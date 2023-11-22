@@ -29,10 +29,11 @@
 		width: 100%;
 	}
 	#normal-drink{
-		height : 30%;
+		height : 33%;
+		margin-bottom : 100px;
 	}
 	#hot-drink,#rank-drink{
-		height : 35%;
+		height : 33%;
 	}
 	h3{
 		margin-left : 475px;
@@ -44,18 +45,47 @@
 		color : rgb(223, 190, 106);
 	}
 	
-	.funding-list1,.funding-list2,.funding-list3,.funding-list4{
+	.funding-list{
 		height : 100%;
 		width : 25%;
 		float:left;
 	}
 	.fundingList-area{
 		height : 80%;
+		
 	}
 	h3:hover {
 		font-size : 32px;
 		cursor : pointer;
 	}
+	.fundingList-area img{
+		width : 90%;
+		height : 60%;
+	}
+	h6{
+		text-align : center;
+		
+	}
+	.fundingList-area img:hover{
+		cursor : pointer;
+	}
+	.percent{
+		color : green;
+		font-weight : bolder;
+		
+	}
+	.wish-list{
+		text-align : left;
+		font-weight : bolder;
+	}
+	.wish-list:hover{
+		cursor : pointer;
+	}
+	.cutting-date{
+		color: red;
+		font-size : 15px;
+	}
+	
 	#pagingArea {width:fit-content; margin:auto;}
 </style>
 </head>
@@ -64,58 +94,31 @@
 	<h1 class="drinkFunding-title">주류 펀딩</h1>
 	<div id="outer">
 		<div id="normal-drink">
-			<h3 class="subtitle">인기순 주류 펀딩</h3>
+			<h3 class="subtitle">핫한순 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list1">
-				
+			<c:forEach items="${totalHotDrinkFunding }" var="thdf">
+				<div class="funding-list">
+					<input type="hidden" value="${thdf.pdtNo}" class="pno"/>
+					<img src="/ttp${thdf.pdtFileUpload}" alt="썸네일 이미지"/>
+					<h6 class="cutting-date">마감 날짜 : ${thdf.cuttingDate }</h6>
+					<h4 class="percent">달성률 : ${thdf.fundingFee} / ${thdf.cuttingPrice }원 </h4>
+					
+					<h6>${thdf.pdtName }</h6>
+					
+					<h6>${thdf.pdtIntro }</h6>
+					<h5 class="wish-list">♡</h5>
 				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
+			</c:forEach>
+			</div>
 			
 			</div>
 		</div>
-		<div id="hot-drink">
-			
-			<div class="fundingList-area">
-				<div class="funding-list1">
-				
-				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
-			</div>
-		</div>
-		<div id="rank-drink">
-			
-			<div class="fundingList-area">
-				<div class="funding-list1">
-				
-				</div>
-				<div class="funding-list2">
-				
-				</div>
-				<div class="funding-list3">
-				
-				</div>
-				<div class="funding-list4">
-				
-				</div>
-			</div>
-		</div>
-	</div>
+		
+		
+		
+		
+	
+	
 	<div id="pagingArea">
                 <ul class="pagination">
                 	<c:choose>
@@ -146,6 +149,13 @@
 			$('.subtitle').click(function(){
 				location.href = "hotDrinkFunding.list";
 			});
+		})
+		$(function(){
+			$('.funding-list>img').click(function(){
+				
+				location.href="detail.fList?pno=" + $(this).prev().val();
+				
+			})
 		})
 		
 	</script>

@@ -65,6 +65,24 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
+	@Override
+	public int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
+		if(productDao.updateDrinkFunding(sqlSession,p)>0) {
+			int categNo = productDao.selectPdtNo(sqlSession,p);
+			//System.out.println(categNo);
+			pc.setPdtCategNo(categNo);
+			productCategoryDao.updateDrinkFunding(sqlSession,pc);
+			productOptionDao.updateDrinkFundingPO(sqlSession,po);
+			fundingDao.updateDrinkFundingF(sqlSession,f);
+			productFileDao.updateDrinkFundingPF(sqlSession,pf);
+			
+		}else {
+			
+		}
+		return 1;
+		
+		
+	}
 
 	@Override
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey) {
@@ -89,6 +107,36 @@ public class ProductServiceImpl implements ProductService {
 		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
 		return productDao.newDrinkFundingList(sqlSession,rowBounds);
 	}
+
+	@Override
+	public FundingSelectVO newDrinkFundingDetail(int pdtNo) {
+		return productDao.newDrinkFundingDetail(sqlSession,pdtNo);
+	}
+
+	@Override
+	public int increaseCount(int pdtNo) {
+		return productDao.increaseCount(sqlSession,pdtNo);
+		
+	}
+
+	@Override
+	public ArrayList<FundingSelectVO> selectHotFundingList() {
+		return productDao.selectHotFundingList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return productDao.hotDrinkFundingList(sqlSession,rowBounds);
+	}
+
+	@Override
+	public FundingSelectVO selectDrinkFundingList(int pdtNo) {
+		return productDao.selectDrinkFundingList(sqlSession,pdtNo);
+	}
+
+	
 
 	
 
