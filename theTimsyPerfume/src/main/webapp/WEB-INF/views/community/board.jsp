@@ -55,6 +55,10 @@
     .board-count{
         width: 12%;
     }
+    .comment-count{
+    	font-size: 15px;
+    	color: rgb(223, 190, 106);
+    }
 
     #paging-area{
         display: flex;
@@ -81,7 +85,7 @@
 <section>
 <div id="board-wrap">
     <div id="content-title">
-        게시판
+        ${boardCtgyName } 게시판
     </div>
 <div class="table-wrap">
     <c:if test="${not empty loginUser}">
@@ -106,7 +110,7 @@
         <c:forEach items="${list }" var="board">
         	<tr onclick="location.href='boardDetail?boardNo=${board.boardNo }'">
                 <td class="board-no">${board.boardNo }</td>
-                <td class="board-title">${board.boardTitle } [${board.commentCount }]</td>
+                <td class="board-title">${board.boardTitle } <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
                 <td class="board-count">${board.boardCount }</td>
@@ -121,10 +125,10 @@
     <ul class="pagination">
     	<c:choose>
 	    	<c:when test="${pi.currentPage ge 1 }">
-	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
+	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -141,10 +145,10 @@
         
         <c:choose>
 	    	<c:when test="${pi.currentPage ge pi.maxPage }">
-	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
+	    		<li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt</a></li>
+        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>
@@ -154,7 +158,7 @@
 <script>
 $(()=>{
 	$("#board-write").click(()=>{
-		location.href="boardWrite?boardCtgy=${boardCtgy}";
+		location.href="boardWrite?boardCtgy=${boardCtgyCode}";
 	})
 })
 </script>

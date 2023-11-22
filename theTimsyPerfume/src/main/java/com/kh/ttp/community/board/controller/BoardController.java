@@ -26,9 +26,11 @@ public class BoardController {
 		int listCount = boardService.countBoardList(boardCtgy);
 		PageInfo pi = Pagination.getPageInfo(listCount, page, 9, 5);
 		ArrayList<BoardVO> list = boardService.selectBoardList(boardCtgy, pi);
+		String boardCtgyName = boardService.selectCtgyName(boardCtgy);
 		
 		mv.addObject("list", list).
-		addObject("boardCtgy", boardCtgy).
+		addObject("boardCtgyName", boardCtgyName).
+		addObject("boardCtgyCode", boardCtgy).
 		addObject("pi", pi).
 		setViewName("community/board");
 		return mv;
@@ -61,6 +63,10 @@ public class BoardController {
 	}
 	@PostMapping("boardWrite.do")
 	public ModelAndView boardWrite(BoardVO bo, ModelAndView mv) {
+		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
+		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		if(boardService.insertBoard(bo)>0) {
 			mv.setViewName("redirect:board?boardCtgy="+bo.getBoardCtgyCode());
 		} else {
@@ -79,6 +85,10 @@ public class BoardController {
 	}
 	@PostMapping("boardUpdate.do")
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
+		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
+		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {
