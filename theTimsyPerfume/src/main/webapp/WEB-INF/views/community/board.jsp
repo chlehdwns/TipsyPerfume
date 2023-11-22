@@ -70,6 +70,7 @@
     <div id="content-title">
         게시판
     </div>
+    <button>글작성</button>
 <div class="table-wrap">
     <table class="table table-hover">
         <thead class="thead-dark">
