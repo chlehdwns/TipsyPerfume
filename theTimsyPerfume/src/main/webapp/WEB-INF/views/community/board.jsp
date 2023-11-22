@@ -109,7 +109,7 @@
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage-1 }">&lt</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -119,7 +119,7 @@
 					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="board?page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
         </c:forEach>
@@ -129,7 +129,7 @@
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage+1 }">&gt</a></li>
+        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>
@@ -139,8 +139,7 @@
 <script>
 $(()=>{
 	$("#board-write").click(()=>{
-		//console.log(new URLSearchParams(location.search).get("boardCtgy"));
-		location.href="boardWrite?boardCtgy="+new URLSearchParams(location.search).get("boardCtgy");
+		location.href="boardWrite?boardCtgy=${boardCtgy}";
 	})
 })
 </script>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +28,7 @@ public class BoardController {
 		ArrayList<BoardVO> list = boardService.selectBoardList(boardCtgy, pi);
 		
 		mv.addObject("list", list).
+		addObject("boardCtgy", boardCtgy).
 		addObject("pi", pi).
 		setViewName("community/board");
 		return mv;
@@ -50,9 +52,20 @@ public class BoardController {
 		String boardCtgyName = boardService.selectCtgyName(boardCtgy);
 		if(boardCtgyName!=null) {
 			mv.addObject("boardCtgyName", boardCtgyName).
+			addObject("boardCtgyCode", boardCtgy).
 			setViewName("community/boardWrite");
 		} else {
 			mv.setViewName("redirect:/");
+		}
+		return mv;
+	}
+	@PostMapping("boardWrite.do")
+	public ModelAndView boardWrite(BoardVO bo, ModelAndView mv) {
+		if(boardService.insertBoard(bo)>0) {
+			mv.setViewName("redirect:board?boardCtgy="+bo.getBoardCtgyCode());
+		} else {
+			mv.addObject("alertMsg", "게시물 작성 실패");
+			mv.setViewName("common/errorPage");
 		}
 		return mv;
 	}

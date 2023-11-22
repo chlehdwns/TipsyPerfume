@@ -48,5 +48,9 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectCtgyName", boardCtgy);
 	}
 
+	public int insertBoard(SqlSessionTemplate sqlSession, BoardVO bo) {
+		return sqlSession.insert("boardMapper.insertBoard", bo);
+	}
+
 
 }

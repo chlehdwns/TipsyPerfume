@@ -127,12 +127,17 @@
         align-items: center;
     }
     .like-btn{cursor: pointer;}
+    .board-btn{
+    	font-size: 18px;
+    }
 </style>
 <section>
 <input id="board-no" type="hidden" value="${board.boardNo}">
 <div id="board-wrap">
     <div id="content-title">
         ${board.boardTitle }
+        <button class="board-btn">수정</button>
+        <button class="board-btn">삭제</button>
     </div>
     <table class="table">
         <tr class="title-head">

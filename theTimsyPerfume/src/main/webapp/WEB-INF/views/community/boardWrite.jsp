@@ -30,6 +30,8 @@
 	${boardCtgyName} 글 작성
 </div>
 <form id="writeForm" method="post" action="boardWrite.do" enctype="multipart/form-data">
+	<input type="hidden" name="boardCtgyCode" value="${boardCtgyCode }">
+	<input type="hidden" name="boardWriter" value="${loginUser.userNo }">
 	<table class="table">
 		<tr>
 			<th><label for="boardTitle">제목</label></th>

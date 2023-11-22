@@ -66,5 +66,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectCtgyName(sqlSession, boardCtgy);
 	}
 
+	@Override
+	public int insertBoard(BoardVO bo) {
+		return boardDao.insertBoard(sqlSession, bo);
+	}
+
 
 }

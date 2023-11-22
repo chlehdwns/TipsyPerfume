@@ -18,4 +18,6 @@ public interface BoardService {
 	public RecommendVO countRecommend(int contentNo);
 	
 	public String selectCtgyName(String boardCtgy);
+	
+	public int insertBoard(BoardVO bo);
 }
