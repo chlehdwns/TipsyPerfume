@@ -61,6 +61,19 @@
         justify-content: center;
         margin-bottom: 20px;
     }
+
+    .board-btn{
+    	font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .board-btn:active{
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
+    }
 </style>
 </head>
 <body>
@@ -70,8 +83,10 @@
     <div id="content-title">
         게시판
     </div>
-    <button id="board-write">글작성</button>
 <div class="table-wrap">
+    <c:if test="${not empty loginUser}">
+        <button id="board-write" class="board-btn">글작성</button>
+    </c:if>
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -91,7 +106,7 @@
         <c:forEach items="${list }" var="board">
         	<tr onclick="location.href='boardDetail?boardNo=${board.boardNo }'">
                 <td class="board-no">${board.boardNo }</td>
-                <td class="board-title">${board.boardTitle }</td>
+                <td class="board-title">${board.boardTitle } [${board.commentCount }]</td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
                 <td class="board-count">${board.boardCount }</td>

@@ -20,4 +20,6 @@ public interface BoardService {
 	public String selectCtgyName(String boardCtgy);
 	
 	public int insertBoard(BoardVO bo);
+	public int updateBoard(BoardVO bo);
+	public int deleteBoard(int boardNo);
 }

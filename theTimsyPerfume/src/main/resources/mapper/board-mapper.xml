@@ -4,14 +4,17 @@
 
 <resultMap type="board" id="boardResultSet">
 	<result column="BOARD_NO" property="boardNo"/>
+	<result column="USER_NO" property="boardWriterNo"/>
 	<result column="NICKNAME" property="boardWriter"/>
 	<result column="BOARD_TITLE" property="boardTitle"/>
 	<result column="BOARD_CONTENT" property="boardContent"/>
-	<result column="BOARD_CREATE_DATE" property="boardCreateDate"/>
-	<result column="BOARD_MODIFY_DATE" property="boardModifyDate"/>
-	<result column="BOARD_CTGY_NAME" property="boardCtgyCode"/>
+	<result column="CREATE_DATE" property="boardCreateDate"/>
+	<result column="MODIFY_DATE" property="boardModifyDate"/>
+	<result column="BOARD_CTGY_CODE" property="boardCtgyCode"/>
+	<result column="BOARD_CTGY_NAME" property="boardCtgyName"/>
 	<result column="BOARD_STATE" property="boardState"/>
 	<result column="BOARD_COUNT" property="boardCount"/>
+	<result column="COMMENT_COUNT" property="commentCount"/>
 </resultMap>
 
 <select id="countBoardList" parameterType="string" resultType="_int">
@@ -28,17 +31,25 @@ SELECT
     BOARD_NO,
     NICKNAME,
     BOARD_TITLE,
-    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd') "BOARD_CREATE_DATE",
-    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
+    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd') "CREATE_DATE",
+    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "MODIFY_DATE",
     BOARD_CTGY_CODE,
     BOARD_STATE,
-    BOARD_COUNT
+    TO_CHAR(BOARD_COUNT,'FM999,999,999') "BOARD_COUNT",
+    TO_CHAR(COMMENT_COUNT,'FM999,999,999') "COMMENT_COUNT"
 FROM TB_BOARD
 JOIN TB_USER USING(USER_NO)
+LEFT JOIN (
+    SELECT
+        BOARD_NO,COUNT(*) "COMMENT_COUNT"
+    FROM TB_COMMENT
+    GROUP BY BOARD_NO
+    HAVING BOARD_NO IS NOT NULL) USING(BOARD_NO)
 WHERE
     BOARD_STATE='Y'
 AND
     BOARD_CTGY_CODE=#{boardCtgy}
+ORDER BY BOARD_CREATE_DATE DESC
 </select>
 <update id="increaseBoardCount" parameterType="_int">
 UPDATE TB_BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_NO=#{boardNo}
@@ -46,13 +57,15 @@ UPDATE TB_BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_NO=#{boardNo}
 <select id="selectBoard" parameterType="_int" resultMap="boardResultSet">
 SELECT
     BOARD_NO,
+    USER_NO,
     NICKNAME,
     BOARD_TITLE,
     BOARD_CONTENT,
-    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd HH24:mm') "BOARD_CREATE_DATE",
-    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
+    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd HH24:mm') "CREATE_DATE",
+    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "MODIFY_DATE",
+    BOARD_CTGY_CODE,
     BOARD_CTGY_NAME,
-    BOARD_COUNT
+    TO_CHAR(BOARD_COUNT,'FM999,999,999') "BOARD_COUNT"
 FROM TB_BOARD
 JOIN TB_USER USING(USER_NO)
 JOIN TB_BOARD_CTGY USING(BOARD_CTGY_CODE)
@@ -60,7 +73,6 @@ WHERE
     BOARD_STATE='Y'
 AND
     BOARD_NO=#{boardNo}
-ORDER BY BOARD_CREATE_DATE DESC
 </select>
 
 <select id="selectRecommend" parameterType="recommend" resultType="string">
@@ -118,10 +130,24 @@ INSERT INTO TB_BOARD(
     BOARD_CTGY_CODE
 ) VALUES (
     SEQ_BOARD.NEXTVAL,
-    #{boardWriter},
+    #{boardWriterNo},
     #{boardTitle},
     #{boardContent},
     #{boardCtgyCode}
 )
 </insert>
+<update id="updateBoard" parameterType="board">
+UPDATE TB_BOARD
+SET
+	BOARD_TITLE=#{boardTitle},
+    BOARD_CONTENT=#{boardContent},
+    BOARD_MODIFY_DATE=SYSDATE
+WHERE
+    BOARD_STATE='Y'
+AND
+	BOARD_NO=#{boardNo}
+</update>
+<update id="deleteBoard" parameterType="_int">
+UPDATE TB_BOARD SET BOARD_STATE='N' WHERE BOARD_NO=#{boardNo}
+</update>
 </mapper>

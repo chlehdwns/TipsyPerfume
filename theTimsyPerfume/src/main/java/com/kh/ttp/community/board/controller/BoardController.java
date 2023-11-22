@@ -69,4 +69,33 @@ public class BoardController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("boardUpdate")
+	public ModelAndView updateBoardForm(int boardNo, ModelAndView mv) {
+		BoardVO board = boardService.selectBoard(boardNo);
+		mv.addObject("board",board).
+		setViewName("community/boardUpdate");
+		return mv;
+	}
+	@PostMapping("boardUpdate.do")
+	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
+		if(boardService.updateBoard(bo)>0) {
+			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
+		} else {
+			mv.addObject("alertMsg", "게시물 작성 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	
+	@GetMapping("boardDelete")
+	public ModelAndView deleteBoard(int boardNo, String boardCtgy, ModelAndView mv) {
+		if(boardService.deleteBoard(boardNo)>0) {
+			mv.setViewName("redirect:board?boardCtgy="+boardCtgy);
+		} else {
+			mv.addObject("alertMsg", "게시물 삭제 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
 }

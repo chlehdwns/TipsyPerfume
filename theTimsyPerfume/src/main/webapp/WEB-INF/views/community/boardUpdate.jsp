@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Tipsy Perfume - 글작성</title>
+<title>Tipsy Perfume - 글수정</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -27,23 +27,22 @@
 <section>
 <div id="writer-wrap">
 <div id="sub-title">
-	${boardCtgyName} 글 작성
+	${board.boardCtgyName} 글 수정
 </div>
-<form id="writeForm" method="post" action="boardWrite.do" enctype="multipart/form-data">
-	<input type="hidden" name="boardCtgyCode" value="${boardCtgyCode }">
-	<input type="hidden" name="boardWriterNo" value="${loginUser.userNo }">
+<form id="writeForm" method="post" action="boardUpdate.do" enctype="multipart/form-data">
+	<input type="hidden" name="boardNo" value="${board.boardNo }">
 	<table class="table">
 		<tr>
 			<th><label for="boardTitle">제목</label></th>
-			<td><input type="text" id="boardTitle" class="form-control" name="boardTitle" required></td>
+			<td><input type="text" id="boardTitle" class="form-control" name="boardTitle" value="${board.boardTitle }" required></td>
 		</tr>
 		<tr>
 			<th><label for="boardContent">내용</label></th>
-			<td><textarea id="boardContent" class="form-control" rows="20" style="resize:none;" name="boardContent" required></textarea></td>
+			<td><textarea id="boardContent" class="form-control" rows="20" style="resize:none;" name="boardContent" required>${board.boardContent }</textarea></td>
 		</tr>
 	</table>
 	<div align="center">
-		<button type="button" id="submit-btn" class="btn btn-primary">작성하기</button>
+		<button type="button" id="submit-btn" class="btn btn-primary">수정하기</button>
 		<button type="reset" class="btn btn-danger">취소하기</button>
 	</div>
 </form>

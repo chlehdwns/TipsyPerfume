@@ -129,6 +129,15 @@
     .like-btn{cursor: pointer;}
     .board-btn{
     	font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .board-btn:active{
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
     }
 </style>
 <section>
@@ -136,12 +145,14 @@
 <div id="board-wrap">
     <div id="content-title">
         ${board.boardTitle }
-        <button class="board-btn">수정</button>
-        <button class="board-btn">삭제</button>
+        <c:if test="${loginUser.userNo eq board.boardWriterNo}">
+            <button class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
+            <button class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
+        </c:if>
     </div>
     <table class="table">
         <tr class="title-head">
-            <td>분류 <span class="top-text">${board.boardCtgyCode }</span></td>
+            <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
             <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
             <td>작성일 <span class="top-text">${board.boardCreateDate }</span></td>
             <td>조회수 <span class="top-text">${board.boardCount }</span></td>
