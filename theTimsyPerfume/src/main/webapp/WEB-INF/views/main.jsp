@@ -7,7 +7,7 @@
 <title>Tipsy Perfume</title>
 </head>
 <body>
-<<<<<<< Updated upstream
+
 	
 	
 	<jsp:include page="common/header.jsp" />
@@ -21,12 +21,6 @@
 	
 	<jsp:include page="common/footer.jsp" />
 	
-=======
-	<h1>되나~?</h1>
-	<!--<jsp:include page="common/header.jsp" />-->
-	
-	
-	<!--<jsp:include page="common/footer.jsp" />-->
->>>>>>> Stashed changes
+
 </body>
 </html>

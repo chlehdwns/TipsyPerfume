@@ -249,66 +249,11 @@
 	<!-- 회원가입 이메일 인증용 script.나중에 스크립트 파일로 빼야 함 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
- 		<script>
-		function execDaumPostcode(){
-=======
-						<div id="checkResult" style="font-size:0.5em; display:none;"></div>
-						<br>
-						<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
-						<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail" required><br>
-						
-
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				</form> 
-			
-			
-			
-			
-			
-			</div>
-		
-		
-		
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	
-	
+ 		
 	</div><!-- 제일 겉 div -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
->>>>>>> Stashed changes
+		function execDaumPostcode(){
 		    new daum.Postcode({
 		        oncomplete: function(data) {
 		        	 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
@@ -324,16 +269,13 @@
 		                addr = data.jibunAddress;
 		            }
 
-<<<<<<< Updated upstream
+
 		            $("#postalCode").val(data.zonecode);
-=======
-		            $("#postcode").val(data.zonecode);
->>>>>>> Stashed changes
 		            $("#address").val(addr);
 		            $("#address").focus();
 		          }
 		      }).open();
-<<<<<<< Updated upstream
+
 		}
 		</script>
 		
@@ -496,11 +438,6 @@
 		
 		
 	<jsp:include page="../common/footer.jsp" />
-=======
-		</script>
-		
-		
-	<!--<jsp:include page="../common/footer.jsp" />-->
->>>>>>> Stashed changes
+
 </body>
 </html>
