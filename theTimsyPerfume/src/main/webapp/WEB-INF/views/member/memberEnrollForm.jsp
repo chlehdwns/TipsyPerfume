@@ -10,14 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
-    <style>
-    .content{
-	    align:center;
-	    width:800px;
-	    height:2000px;
-	    margin:auto;
-    }
-    </style>
+    
     
 </head>
 
@@ -25,10 +18,35 @@
 
 	<!-- 메뉴바 -->
 	<jsp:include page="../common/header.jsp" />
+	<style>
+    .content{
+	    align:center;
+	    width:800px;
+	    height:2000px;
+	    margin:auto;
+    }
+    
+    .form-control {
+	    display: block;
+	    width: 60%;
+	    height: calc(1.5em + 0.75rem + 2px);
+	    padding: 0.375rem 0.75rem;
+	    font-size: 1rem;
+	    font-weight: 400;
+	    line-height: 1.5;
+	    color: #495057;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    border: 1px solid #ced4da;
+	    border-radius: 0.25rem;
+	    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+    
+    </style>
 	<div class="content">
 	
 		<div class="content1">
-			<div class="content2" align="center">
+			<div class="content2" >
 			<br><br>
 				<h1>회원가입</h1>
 				<hr>
@@ -53,11 +71,38 @@
 						<input type="text" class="form-control" id="userEmail" placeholder="아이디를 입력해주세요." name="userEmail" required><br>
 						<div id="checkResult" style="font-size:1em; display:none;"></div>
 						
-						<!--  
-						<div class="button">
-						<button type="submit" class="disabled btn btn-primary" disabled>인증하기</button>
+						
+						<div class="emailSend" >
+						<button type="button" class="btn btn-primary" id="emailSendButton" disabled>인증 번호 받기</button>
 						</div>
-						-->
+						<br>
+						
+						
+						
+						
+						
+						<!-- 인증 번호 받기를 누르면 나오도록. 둘다. -->
+						<!--  <div id="checkSendEmail" style="display:none;">-->
+							<label for="emailSendConfirm">* 인증 번호 입력 : </label>
+							<input type="text" class="form-control" id="emailSendConfirm" placeholder="인증번호를 입력해주세요." name="emailSendConfirm" required><br>
+							<div id="confirmResult" style="font-size:1em; display:none;"></div><!-- 이건 결과글띄워주는 숨김 -->
+							
+							
+							<div class="emailSendConfirmButton" >
+							<button type="button" class="btn btn-primary" id="emailSendConfirmButton" disabled>인증 완료하기</button>
+							</div>
+						<!--  </div>-->
+						<br>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 						
 						<br>
 						<label for="userPwd">* 비밀번호 : </label>
@@ -117,29 +162,15 @@
 				</form> 
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	
-	
 	</div><!-- 제일 겉 div -->
 	
 	
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/member/memberEnrollForm.js"></script>
+	<!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
+	<!--  <script src="resources/js/member/memberEnrollForm.js"></script>-->
+	<!-- 잠깐 뺴놓음 -->
 	
 	
-	
-	<!-- **스크립트 파일로 따로 뺐습니다 - MJY
+	<!-- 회원가입 이메일 인증용 script.나중에 스크립트 파일로 빼야 함 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
  		<script>
@@ -169,31 +200,44 @@
 		
 		
 		<script>
-		//아이디 중복체크
+		//아이디 중복체크(여기에 이메일 인증도 같이 넣음 )
+		
+		
 		$(function(){
 			const $emailInput = $('.form-group #userEmail');
 			const $checkResult = $('#checkResult');
 			const $enrollFormSubmit = $('#enroll-form :submit');
 			
+			const $emailSendInput = $('#emailSendButton');
+			
+			let checkEmailSend = false;
+			
+			const $emailSendCheck = $('.form-group #emailSendConfirm');
+			const $emailSendCheckButton = $('#emailSendConfirmButton');
+			
+			let checkEmailRight = false;
+			
 			$emailInput.keyup(function(){
-				//console.log($emailInput.val());
-				
 				if($emailInput.val().length >= 15){
-					
 					$.ajax({
 						url : 'emailCheck.me',
 						data : {checkEmail : $emailInput.val()},
 						success : function(result){
-							
 							//console.log(result.substr(14));
-							
 							if(result.substr(14) === 'N') {//사용불가능
 								$checkResult.show().css('color', 'crimson').text('중복된 아이디가 존재합니다');
 								$enrollFormSubmit.attr('disabled', true);
+								
+								checkEmailSend = false; //사용불가능을 false나오니 true로 진행
+								//$emailSendInput.attr('disabled', true);
 							}
 							else { // 사용가능
 								$checkResult.show().css('color', 'lightgreen').text('사용 가능한 아이디(이메일)입니다!');
-								$enrollFormSubmit.removeAttr('disabled', false);
+								$enrollFormSubmit.removeAttr('disabled');
+								checkEmailSend = true;
+								$emailSendInput.removeAttr('disabled');
+								$emailSendInput.attr('disabled', false);
+								
 							}
 						},
 						error : function(){
@@ -206,12 +250,92 @@
 					$enrollFormSubmit.attr('disabled', true);
 				}
 			});
+			
+			$('#emailSendButton').click(() =>{
+				if(checkEmailSend){
+					//메일보내는 ajax
+				//console.log('5678');
+					$.ajax({
+						url:'mail',
+						method: "post",
+						data : {userEmail : $emailInput.val()},
+						success : function(result){
+							console.log(result);
+							if(result == "1") {
+								$emailSendCheckButton.removeAttr('disabled');
+								checkEmailRight=true;
+								
+								//키업할때 disabled해놓기. 
+								$emailSendInput.removeAttr('disabled');
+								$emailSendInput.attr('disabled', true);
+							}
+							else{
+								alert('이메일 발송 실패');
+							}
+						},
+						error : function(){
+							console.log('통신 실패');
+						}
+					})
+				}
+			})
+			
+			
+			//인증 번호 입력에 6글자 입력햇을 경우 버튼이 활성화되게. 
+			/*$emailSendCheck.keyup(function(){
+				if($emailSendCheck.val().length >= 6){ //사용가능
+					checkEmailRight = true;
+					$emailSendCheckButton.removeAttr('disabled');
+				}
+				else 
+				{
+					checkEmailRight = false;}
+				})
+				*/
+				
+			
+				//이메일 인증번호 맞는지 체크해주기 
+			$('#emailSendConfirmButton').click(() =>{	
+				if(checkEmailRight){
+					$.ajax({
+						url : 'check',
+						method: "post",
+						data : {authCode : $emailSendCheck.val()},
+						success : function(result){
+							console.log(result);
+							if (result == "true"){
+								alert('이메일 인증 완료!');
+								
+								//키업할때 disabled해놓기. 
+								$emailSendCheckButton.removeAttr('disabled');
+								$emailSendCheckButton.attr('disabled', true);
+							} else {
+								alert('이메일 인증 실패!');
+							}
+							
+						},
+						error : function(){
+							console.log('통신 실패');
+						}
+					})
+					
+					
+				};
+				
+				
+				
+				
+				
+			})					
+			
+			
+			
+	
 		});
-		
 		</script>
-		
-		
-		
+			
+			
+			
 		<script>
 		//비밀번호 체크
 		function check_pw(){
@@ -227,7 +351,7 @@
 			
 		}
 		}
-		</script> -->
+		</script> 
 		
 		
 		

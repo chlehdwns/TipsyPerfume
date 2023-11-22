@@ -27,7 +27,7 @@ public interface UserService {
 	//-----------
 	
 	//메일 인증
-	void sendMail(AuthVO authVo);
+	int sendMail(AuthVO authVo);
 	
 	boolean validate(AuthVO AuthVo);
 
