@@ -37,6 +37,8 @@ public interface ProductService {
 
 	public FundingSelectVO selectDrinkFundingList(int pdtNo);
 
+	public int deleteDrinkFunding(int pdtNo);
+
 	
 
 

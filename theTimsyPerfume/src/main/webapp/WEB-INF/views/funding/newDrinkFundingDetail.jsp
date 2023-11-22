@@ -99,8 +99,14 @@
 					<input type="hidden" name="pno" value="${pno }">
 					
 						
-						
-							<button type="submit">예약구매</button>
+							<c:choose>
+								<c:when test="${cutting eq true}">
+									<button type="submit">예약구매</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" disabled>마감</button>
+								</c:otherwise>
+							</c:choose>
 					
 						
 						

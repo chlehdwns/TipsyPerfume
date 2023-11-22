@@ -162,7 +162,7 @@ VALUES(
 		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
             JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
 		WHERE
-		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_DATE DESC)A
+		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C' AND  PDT_STATUS = 'Y'  ORDER BY PDT_DATE DESC)A
 		    WHERE
 		        ROWNUM BETWEEN 1 AND 4
 			
@@ -198,7 +198,7 @@ VALUES(
 		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
             JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
 		WHERE
-		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_COUNT DESC)A
+		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C' AND  PDT_STATUS = 'Y'  ORDER BY PDT_COUNT DESC)A
 		    WHERE
 		        ROWNUM BETWEEN 1 AND 4
 	</select>
@@ -275,7 +275,7 @@ VALUES(
 		    JOIN TB_PRODUCT_FILE PF ON P.PDT_NO = PF.PDT_NO
             JOIN TB_FUNDING F ON P.PDT_NO = F.PDT_NO
 		WHERE
-		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C'  ORDER BY PDT_COUNT DESC
+		    PC.PDT_CTEG='A' AND PC.PDT_FAMILY='C' AND PDT_STATUS = 'Y'  ORDER BY PDT_COUNT DESC 
 	</select>
 	<select id="newDrinkFundingDetail" parameterType="_int" resultMap="fundingSelectResultSet">
 		SELECT
@@ -401,6 +401,14 @@ VALUES(
 		SET
 			PDT_FILE_ORIGIN = #{pdtFileOrigin},
 			PDT_FILE_UPLOAD = #{pdtFileUpload}
+		WHERE
+			PDT_NO = #{pdtNo}
+	</update>
+	<update id="deleteDrinkFunding" parameterType="_int">
+		UPDATE
+			TB_PRODUCT
+		SET
+			PDT_STATUS = 'N'
 		WHERE
 			PDT_NO = #{pdtNo}
 	</update>

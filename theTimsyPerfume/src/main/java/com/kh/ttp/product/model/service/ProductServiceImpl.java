@@ -135,6 +135,10 @@ public class ProductServiceImpl implements ProductService {
 	public FundingSelectVO selectDrinkFundingList(int pdtNo) {
 		return productDao.selectDrinkFundingList(sqlSession,pdtNo);
 	}
+	@Override
+	public int deleteDrinkFunding(int pdtNo) {
+		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
+	}
 
 	
 

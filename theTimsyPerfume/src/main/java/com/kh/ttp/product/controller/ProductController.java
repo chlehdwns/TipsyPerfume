@@ -197,9 +197,10 @@ public class ProductController {
 		if(productService.increaseCount(pdtNo) > 0) {
 			FundingSelectVO ps= productService.newDrinkFundingDetail(pdtNo);
 			java.util.Date d = ps.getCuttingDate();
-			System.out.println("date : "+d);
-			System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
+			//System.out.println("date : "+d);
+			//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
 			//compareTo로 ps.cuttingDate(마감날짜) 와 new Date(현재날짜) 를 비교해서 마감 날짜가 현재 날짜보다 크면 true로 반환 작으면 false 
+			model.addAttribute("cutting",(d.compareTo(new java.util.Date())>=0));
 			model.addAttribute("fundingDetailList", ps);
 			model.addAttribute("pno",pdtNo);
 			return "funding/newDrinkFundingDetail";
@@ -215,7 +216,14 @@ public class ProductController {
 		model.addAttribute("pdtNo",pdtNo);
 		return "funding/updateDrinkFunding";
 	}
-	
+	@RequestMapping("delete.fd")
+	public String deleteDrinkFunding(@RequestParam(value="pno") int pdtNo,Model model,HttpSession session) {
+			if(productService.deleteDrinkFunding(pdtNo)>0) {
+				session.setAttribute("alertMsg", "삭제 성공");
+				return "redirect:funding.list";
+			}
+				return "common/errorPage";
+	}
 	
 
 }
