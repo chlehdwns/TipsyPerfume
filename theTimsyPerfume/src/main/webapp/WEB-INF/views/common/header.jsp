@@ -184,7 +184,7 @@
 }
 #header-bar{
 	width: 1100px;
-	height: 80px;
+	height: 60px;
 	margin: 0px auto;
 	display: flex;
 }
@@ -197,7 +197,6 @@
 #header-bar-menu .dropdown {
     width: 20%;
     height: 100%;
-    padding-top: 15px;
     text-align: center;
     cursor: pointer;
 }
@@ -206,8 +205,8 @@
     height: 100%;
     display: inline-block;
     margin: 0px;
-    padding-top: 5px;
-    font-size: 25px;
+    font-size: 22px;
+    line-height: 60px;
 }
 #header-bar-toolbar{
 	width: 200px;

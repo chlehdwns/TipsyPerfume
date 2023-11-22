@@ -44,5 +44,9 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.countRecommend", contentNo);
 	}
 
+	public String selectCtgyName(SqlSessionTemplate sqlSession, String boardCtgy) {
+		return sqlSession.selectOne("boardMapper.selectCtgyName", boardCtgy);
+	}
+
 
 }

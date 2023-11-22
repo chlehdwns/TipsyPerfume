@@ -61,5 +61,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.countRecommend(sqlSession, contentNo);
 	}
 
+	@Override
+	public String selectCtgyName(String boardCtgy) {
+		return boardDao.selectCtgyName(sqlSession, boardCtgy);
+	}
+
 
 }

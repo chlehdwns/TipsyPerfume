@@ -25,7 +25,7 @@
 <jsp:include page="../common/header.jsp"/>
 <div id="writer-wrap">
 <div id="sub-title">
-	공지 작정
+	공지 작성
 </div>
 <form id="enrollForm" method="post" action="noticeWrite.do" enctype="multipart/form-data">
 	<table class="table">

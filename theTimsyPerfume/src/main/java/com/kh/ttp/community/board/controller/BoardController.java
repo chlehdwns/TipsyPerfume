@@ -44,4 +44,16 @@ public class BoardController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("boardWrite")
+	public ModelAndView boardWriteForm(String boardCtgy, ModelAndView mv) {
+		String boardCtgyName = boardService.selectCtgyName(boardCtgy);
+		if(boardCtgyName!=null) {
+			mv.addObject("boardCtgyName", boardCtgyName).
+			setViewName("community/boardWrite");
+		} else {
+			mv.setViewName("redirect:/");
+		}
+		return mv;
+	}
 }

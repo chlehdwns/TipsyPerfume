@@ -9,7 +9,7 @@
 	<result column="BOARD_CONTENT" property="boardContent"/>
 	<result column="BOARD_CREATE_DATE" property="boardCreateDate"/>
 	<result column="BOARD_MODIFY_DATE" property="boardModifyDate"/>
-	<result column="BOARD_CTGY_CODE" property="boardCtgyCode"/>
+	<result column="BOARD_CTGY_NAME" property="boardCtgyCode"/>
 	<result column="BOARD_STATE" property="boardState"/>
 	<result column="BOARD_COUNT" property="boardCount"/>
 </resultMap>
@@ -51,16 +51,17 @@ SELECT
     BOARD_CONTENT,
     TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd HH24:mm') "BOARD_CREATE_DATE",
     TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
-    BOARD_CTGY_CODE,
+    BOARD_CTGY_NAME,
     BOARD_COUNT
 FROM TB_BOARD
 JOIN TB_USER USING(USER_NO)
+JOIN TB_BOARD_CTGY USING(BOARD_CTGY_CODE)
 WHERE
     BOARD_STATE='Y'
 AND
     BOARD_NO=#{boardNo}
 </select>
-<insert id="insertBoard">
+<insert id="insertBoard" parameterType="board">
 INSERT INTO TB_BOARD(
     BOARD_NO,
     USER_NO,
@@ -112,5 +113,13 @@ SELECT
 FROM TB_BOARD_LIKE
 WHERE
     BOARD_NO = #{contentNo}
+</select>
+<select id="selectCtgyName" parameterType="string" resultType="string">
+SELECT
+	BOARD_CTGY_NAME
+FROM
+	TB_BOARD_CTGY
+WHERE
+	BOARD_CTGY_CODE=#{boardCtgy}
 </select>
 </mapper>

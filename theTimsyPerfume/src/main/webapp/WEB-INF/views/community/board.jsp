@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Tipsy Perfume - 게시판</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
@@ -70,7 +70,7 @@
     <div id="content-title">
         게시판
     </div>
-    <button>글작성</button>
+    <button id="board-write">글작성</button>
 <div class="table-wrap">
     <table class="table table-hover">
         <thead class="thead-dark">
@@ -136,6 +136,14 @@
 </div>
 </div>
 </section>
+<script>
+$(()=>{
+	$("#board-write").click(()=>{
+		//console.log(new URLSearchParams(location.search).get("boardCtgy"));
+		location.href="boardWrite?boardCtgy="+new URLSearchParams(location.search).get("boardCtgy");
+	})
+})
+</script>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
