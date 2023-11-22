@@ -28,7 +28,7 @@
 <div id="sub-title">
 	공지 수정
 </div>
-<form id="enrollForm" method="post" action="noticeWrite.do" enctype="multipart/form-data">
+<form id="enrollForm" method="post" action="noticeUpdate.do" enctype="multipart/form-data">
 	<input type="hidden" name="noticeNo" value="${notice.noticeNo }">
 	<table class="table">
 		<tr>

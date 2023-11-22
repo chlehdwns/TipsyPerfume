@@ -31,11 +31,16 @@ public class NoticeController {
 		return "community/noticeWrite";
 	}
 	@PostMapping("noticeWrite.do")
-	public String noticeWrite(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session) {
+	public ModelAndView noticeWrite(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session, ModelAndView mv) {
 		no.setNoticeThumbnailFile(saveFile(thumbnailFile, session));
 		no.setNoticeFile(saveFile(imgFile, session));
-		noticeService.insertNotice(no);
-		return "redirect:notice";
+		if(noticeService.insertNotice(no)>0) {
+			mv.setViewName("redirect:notice");
+		} else {
+			mv.addObject("alertMsg", "공지 변경 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
 	}
 	
 	@GetMapping("notice")
@@ -92,6 +97,24 @@ public class NoticeController {
 			setViewName("community/noticeUpdate");
 		} else {
 			mv.addObject("alertMsg", "조회 실패");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	@PostMapping("noticeUpdate.do")
+	public ModelAndView noticeUpdate(NoticeVO no, MultipartFile thumbnailFile, MultipartFile imgFile, HttpSession session, ModelAndView mv) {
+		if(!thumbnailFile.getOriginalFilename().equals("")) {
+			new File(session.getServletContext().getRealPath(no.getNoticeThumbnailFile())).delete();
+			no.setNoticeThumbnailFile(saveFile(thumbnailFile, session));
+		}
+		if(!imgFile.getOriginalFilename().equals("")) {
+			new File(session.getServletContext().getRealPath(no.getNoticeFile())).delete();
+			no.setNoticeFile(saveFile(imgFile, session));
+		}
+		if(noticeService.updateNotice(no)>0) {
+			mv.setViewName("redirect:noticeDetail?noticeNo="+no.getNoticeNo());
+		} else {
+			mv.addObject("alertMsg", "공지 변경 실패");
 			mv.setViewName("common/errorPage");
 		}
 		return mv;

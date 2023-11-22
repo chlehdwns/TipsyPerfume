@@ -38,4 +38,8 @@ public class NoticeDAO {
 	public int noticeRestart(SqlSessionTemplate sqlSession, int noticeNo) {
 		return sqlSession.update("noticeMapper.noticeRestart", noticeNo);
 	}
+
+	public int updateNotice(SqlSessionTemplate sqlSession, NoticeVO no) {
+		return sqlSession.update("noticeMapper.updateNotice", no);
+	}
 }
