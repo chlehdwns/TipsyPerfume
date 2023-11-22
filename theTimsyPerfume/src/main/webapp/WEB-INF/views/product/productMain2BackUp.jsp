@@ -30,8 +30,7 @@
 
 	<!-- productMain.jsp의 CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
-    <link href="resources/css/member/loginForm.css" rel="stylesheet">
-
+	
 	
 </head>
 
@@ -215,73 +214,19 @@
     
 
 
-    <!-- 모달1: 로그인 / 회원가입 선택 버튼 ~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="modal fade" id="pdtMainFirstModal" tabindex="-1" aria-labelledby="pdtMainFirstModalLabel" aria-hidden="true">
+    <!-- 모달 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div id="pdtMainEnrollFormModal" class="modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<div id="pdtMainFirstModalLabel" class="modal-title">
-						로그인이 필요한 서비스입니다
-					</div>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body" align="center">
-					<button type="button" id="pdtFirstModalLoginBtn" class="btn btn-primary">로그인하러 가기</button>
-					<br><br>
-					<button type="button" id="pdtFirstModalEnrollBtn" class="btn btn-info">회원가입하러 가기</button>
-					<br><br><br>
-				</div>
-			</div>
-		</div>
-	</div>
-    
-    <!-- 모달2: 로그인 양식 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="modal fade" id="pdtLoginModal" tabindex="-1" aria-labelledby="pdtLoginModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div id="pdtLoginModalLabel" class="modal-title">
-						로그인이 필요한 서비스입니다
-					</div>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body" align="center">
-					<div class="box"></div>
-						<div class="header">
-							<div class="title">
-								<h4 class="title" align="center">로그인</h4>
-							</div>
-							<div class="center-wrapper" align="center">
-								<div class="login-wrapper" >
-									<form action="login.me" method="post"  id="login-form">
-										<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요." >
-										<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요." >
-										<input type="checkbox" id="idSaveCheck" style="font-size:small; height:10px;">
-				  						<label for="remember" style="font-size:small">아이디 저장</label><br>
-										<input type="submit" value="Login">
-										<br><br><br>
-									</form>
-								</div>
-							</div>
-						</div>
-					<div class="box"></div>
-				</div><!-- 바디끝 -->
-			</div>
-		</div>
-	</div>
-    
-    
-    <!-- 모달3: 회원가입 양식 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="modal fade" id="pdtMainEnrollFormModal" tabindex="-1" aria-labelledby="pdtMainEnrollFormModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div id="pdtMainEnrollFormModalLabel" class="modal-title">
+					<div id="pdtMainModalTitle" class="modal-title">
+						<!-- 모달 타이틀 부분 #pdtMainModalTitle  -->
 						회원가입
 					</div>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">ㅌ</button>
 				</div>
-				<div class="modal-body" align="center">
+				<div id="pdtMainModalBody" class="modal-body" align="center">
+					<!-- 모달내용 #pdtMainModalBody -->
 					<div>필수 입력 사항</div>
 					<br>
 					<form action="insert.me" method="post" id="pdtModalEnrollForm">
@@ -321,11 +266,11 @@
 							<input type="text" class="form-control" id="pdtMainAddressDetail" placeholder="상세주소" name="addressDetail"><br>
 						</div>
 						<br>
+						<div class="btns modal-footer" align="center">
+							<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
+							<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
+						</div>
 					</form> 
-				</div>
-				<div class="modal-footer" align="center">
-					<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
-					<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -334,7 +279,6 @@
 	
 	
 	<script>
-
 		// date타입 날짜 비활성화
 		$(() => {
 			var $pdtModalDateInput = $('#pdtMainBirthDate');
@@ -370,6 +314,12 @@
 	</script>
 	
 	<script>
+		// 변수선언
+		var $pdtMainModalWrap = $('#pdtMainModalWrap');
+		var $pdtMainModalTitle = $('#pdtMainModalTitle');
+		var $pdtMainModalBody = $('#pdtMainModalBody');
+		
+	
 		// 경우의 수
 		// 로그인O 성인인증O => 주류상품 전체조회 원함
 		// 로그인O 성인인증O => 주류상품 디테일조회 원함
@@ -388,19 +338,14 @@
 				}
 			}
 			else { // 로그인X / 실패 시 여기로 돌아옴!(ajax아니고 서버단에서 getHeader(Referer하기))
-			
-				$('#pdtMainFirstModal').modal("show");
-				
+				console.log('ddddddddddddddddddddd');
+				$('#pdtMainEnrollFormModal').show();
 				$('#pdtFirstModalLoginBtn').click(() => {
-					$('#pdtMainFirstModal').modal("hide");
-					$('#pdtLoginModal').modal("show");
 					console.log('로그인요청');
 				});
-				
 				$('#pdtFirstModalEnrollBtn').click(() => {
-					$('#pdtMainFirstModal').modal("hide");
-					$('#pdtMainEnrollFormModal').modal("show");
 					console.log('회원가입요청');
+					
 				});
 			}
 		};
@@ -410,7 +355,6 @@
 
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/product/productMain.js"></script>
 	<script src="resources/js/member/memberEnrollForm.js"></script>
 
 </body>

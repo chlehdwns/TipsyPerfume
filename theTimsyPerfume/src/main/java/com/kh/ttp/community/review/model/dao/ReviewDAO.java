@@ -51,8 +51,7 @@ public class ReviewDAO {
 	}
 
 	public int insertRecommend(SqlSessionTemplate sqlSession, RecommendVO rc) {
-		System.out.println(rc);
-		return sqlSession.insert("reviewMpper.insertRecommend", rc);
+		return sqlSession.insert("reviewMapper.insertRecommend", rc);
 	}
 
 	public RecommendVO countRecommend(SqlSessionTemplate sqlSession, int contentNo) {

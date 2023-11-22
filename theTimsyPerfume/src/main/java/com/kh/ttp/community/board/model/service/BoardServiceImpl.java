@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.board.model.dao.BoardDAO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
+import com.kh.ttp.community.model.vo.RecommendVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -25,10 +26,40 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public ArrayList<BoardVO> seletcBoardList(String boardCtgy, PageInfo pi) {
+	public ArrayList<BoardVO> selectBoardList(String boardCtgy, PageInfo pi) {
 		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return boardDao.seletcBoardList(sqlSession, boardCtgy, rowBounds);
+		return boardDao.selectBoardList(sqlSession, boardCtgy, rowBounds);
 	}
+	
+	@Override
+	public int increaseBoardCount(int boardNo) {
+		return boardDao.increaseBoardCount(sqlSession, boardNo);
+	}
+
+	@Override
+	public BoardVO selectBoard(int boardNo) {
+		return boardDao.selectBoard(sqlSession, boardNo);
+	}
+
+	@Override
+	public String selectRecommend(RecommendVO rc) {
+		return boardDao.selectRecommend(sqlSession, rc);
+	}
+
+	@Override
+	public int boardRecommend(RecommendVO rc) {
+		int result = boardDao.updateRecommend(sqlSession, rc);
+		if(result==0) {
+			result = boardDao.insertRecommend(sqlSession, rc);
+		}
+		return result;
+	}
+
+	@Override
+	public RecommendVO countRecommend(int contentNo) {
+		return boardDao.countRecommend(sqlSession, contentNo);
+	}
+
 
 }
