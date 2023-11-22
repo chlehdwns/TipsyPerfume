@@ -216,7 +216,7 @@
 	AND
 		AUTH_CODE = #{authCode}
 	AND
-		WHEN BETWEEN SYSDATE - 3/24/60 AND SYSDATE 
+		AUTH_DATE BETWEEN SYSDATE - 3/24/60 AND SYSDATE 
 	</select>
 
 
@@ -228,4 +228,5 @@
 			and 
 				AUTH_CODE = #{authCode}
 	</delete>
+
 </mapper>

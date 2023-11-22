@@ -31,7 +31,6 @@ public class AjaxReviewController {
 		map.put("boardNo",boardNo);
 		map.put("reviewNo",reviewNo);
 		map.put("commentGroup",commentGroup);
-		System.out.println(map);
 		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
 		return new Gson().toJson(list);

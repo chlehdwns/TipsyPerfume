@@ -23,14 +23,11 @@ public class User {
 	private Date enrollDate;
 	private String userProfile;
 	
-	
-	
 	private String receiverName;
 	private String phone;
 	private String address;
 	private String addressDetail;
 	private int postalCode;
-	
 	
 	
 	
