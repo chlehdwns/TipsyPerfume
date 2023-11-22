@@ -31,9 +31,7 @@
 	<!-- CSS파일 경로적기 -->
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
     <link href="resources/css/product/productMain.css" rel="stylesheet">
-    
-
-	
+    	
 </head>
 
 <body>
@@ -105,7 +103,7 @@
 	                    </div>
 	                </div>
 	            </div>
-			
+
 			
 				<!-- 베스트셀러순 -->
 				<div class="pdt-main-inner-wrap">
@@ -285,7 +283,7 @@
 				<div class="modal-body" align="center">
 					<div>필수 입력 사항</div>
 					<br>
-					<form action="insert.me" method="post" id="enroll-form" id="pdtModalEnrollForm">
+					<form action="insert.me" method="post" id="enroll-form"><!-- id="enroll-form" --> 
 						<div class="form-group pdt-main-form-group">
 
 							<label> *회원 구분 : </label> &nbsp;&nbsp;
@@ -357,7 +355,8 @@
 	    // 슬라이더 동작 정의
 	    const swiper = new Swiper('.swiper', {
 	        autoplay : {
-	            delay : 2500 // 2.5초마다 이미지 변경
+	            delay : 2500, // 2.5초마다 이미지 변경
+	            disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 슬라이딩 유지
 	        },
 	        loop : true, //반복 재생 여부
 	        slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
