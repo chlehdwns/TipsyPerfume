@@ -66,8 +66,8 @@ public class UserServiceImpl implements UserService {
 	//이메일인증----------------------------------------
 	
 	@Override
-	public void sendMail(AuthVO authVo) {
-		userDao.insertSecret(sqlSession, authVo);
+	public int sendMail(AuthVO authVo) {
+		return userDao.insertSecret(sqlSession, authVo);
 		
 	}
 	
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 		boolean result = userDao.validate(sqlSession, authVo);
 		
 		if(result != false) {
-			userDao.deleteCert(sqlSession, authVo);
+			userDao.deleteAuth(sqlSession, authVo);
 		}
 		
 		return result;

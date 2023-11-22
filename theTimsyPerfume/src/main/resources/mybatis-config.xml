@@ -9,7 +9,6 @@
 	
 	  <typeAliases>
 		<typeAlias type="com.kh.ttp.user.model.vo.User" alias="user"/>
-		<typeAlias type="com.kh.ttp.user.model.vo.AuthVO" alias="authVO" />
 		<typeAlias type="com.kh.ttp.community.review.model.vo.ReviewVO" alias="review"/>
 		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardVO" alias="board"/>
