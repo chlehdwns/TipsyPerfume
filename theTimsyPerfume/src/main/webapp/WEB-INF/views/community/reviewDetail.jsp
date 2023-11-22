@@ -197,7 +197,7 @@ ${review.reviewContent }
             <c:choose>
             <c:when test="${empty loginUser }">
                 <textarea class="comment-textarea" name="" readonly>로그인 후 작성해 주세요</textarea>
-                <button class="disabled-btn" type="button" onclick="location.href='loginForm.me'">로그인</button>
+                <button class="disabled-btn" type="button" onclick="alert('로그인후 사용이 가능합니다')">입력</button>
             </c:when>
             <c:otherwise>
                 <textarea class="comment-textarea" name=""></textarea>
@@ -346,7 +346,7 @@ ${review.reviewContent }
                                 +"<div class='write-area'>"
                         if("${loginUser.userNo}"==""){
                         	value+=  "<textarea class='comment-textarea' readonly>로그인 후 작성해 주세요</textarea>"
-                            		+"<button class='disabled-btn' type='button'  onclick=\"location.href='loginForm.me'\">로그인</button>";
+                            		+"<button class='disabled-btn' type='button'  onclick=\"alert('로그인후 사용이 가능합니다')\">입력</button>";
                         }
                         else{
                         	value+=  "<textarea class='comment-textarea'></textarea>"
