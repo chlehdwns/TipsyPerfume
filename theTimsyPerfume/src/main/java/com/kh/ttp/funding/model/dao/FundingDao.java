@@ -12,4 +12,8 @@ public class FundingDao {
 		return sqlSession.insert("productMapper.insertFunding",f);
 	}
 
+	public int updateDrinkFundingF(SqlSessionTemplate sqlSession, Funding f) {
+		return sqlSession.update("productMapper.updateDrinkFundingF",f);
+	}
+
 }

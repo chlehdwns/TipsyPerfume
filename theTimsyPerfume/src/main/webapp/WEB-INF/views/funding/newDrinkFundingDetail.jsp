@@ -97,15 +97,14 @@
 				<h6 class="product-dinfo">마감 날짜 : ${fundingDetailList.cuttingDate }</h6>
 				<form id="fundingForm" method="post" action="purchase.fd">
 					<input type="hidden" name="pno" value="${pno }">
-					<c:choose>
+					
 						
-						<c:when test="">
+						
 							<button type="submit">예약구매</button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" disabled>마감</button>
-						</c:otherwise>
-					</c:choose>
+					
+						
+						
+					
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>
 				

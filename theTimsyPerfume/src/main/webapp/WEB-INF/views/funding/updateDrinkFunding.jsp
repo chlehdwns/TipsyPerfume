@@ -37,6 +37,7 @@
 	<h1 id="update-title">펀딩 업데이트</h1>
 	<form id="fundingUpdateForm" method="post" action="updateDrink.fun" enctype="multipart/form-data">
 	<div id="update-area">
+		<input type="hidden" name="pdtNo" value="${pdtNo }"/>
 		제품명 : <input type="text" id="productName" name="pdtName" class="form-control" placeholder="${fdi.pdtName}" required>
 		
 		제품 간단 소개 : <input type="text" id="simpleIntro" name="pdtIntro" class="form-control" placeholder="${fdi.pdtIntro }" required>
