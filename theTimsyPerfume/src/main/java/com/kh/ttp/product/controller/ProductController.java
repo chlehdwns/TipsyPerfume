@@ -30,7 +30,10 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-
+	
+	
+	
+	
 	
 	
 	
@@ -132,13 +135,16 @@ public class ProductController {
 	@RequestMapping("detail.fList")
 	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
 		System.out.println(pdtNo);
+		
 		if(productService.increaseCount(pdtNo) > 0) {
-		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
-		model.addAttribute("pno",pdtNo);
-		return "funding/newDrinkFundingDetail";
+			FundingSelectVO ps= productService.newDrinkFundingDetail(pdtNo);
+			
+			model.addAttribute("fundingDetailList", ps);
+			model.addAttribute("pno",pdtNo);
+			return "funding/newDrinkFundingDetail";
 		}else {
-			return "common/errorPage";
-		}
+				return "common/errorPage";
+			}
 		
 	}
 	@RequestMapping("updateForm.fd")
