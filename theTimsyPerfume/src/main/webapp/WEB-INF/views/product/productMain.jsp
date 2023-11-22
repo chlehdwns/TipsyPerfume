@@ -384,7 +384,7 @@
 			if(loginUserStatus == 'Y') { // 로그인O
 				if(loginUserStatus == 'Y') { // 로그인O 성인인증O
 					location.href = !(isNaN(pdtNo)) ? "alcoholPdtDetail.pr?pdtNo=" + pdtNo
-												    : "selectAlcoholPdtList.pr?currentPage=2"; //@@@@@@화면만들고 
+												    : "selectAlcoholPdtList.pr?currentPage="; //@@@@@@화면만들고 
 				}
 				else { // 로그인O 성인인증X
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)

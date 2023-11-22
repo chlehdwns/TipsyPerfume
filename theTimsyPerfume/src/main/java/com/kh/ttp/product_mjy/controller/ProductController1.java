@@ -1,6 +1,5 @@
 package com.kh.ttp.product_mjy.controller;
 
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,8 +49,8 @@ public class ProductController1 {
 	// 향수 전체조회
 	@GetMapping("selectPerfumePdtList.pr")
 	public void selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-																							  String sort,
-																							  ModelAndView mv) {
+									 @RequestParam(value="sort", defaultValue="New") String sort,
+									 ModelAndView mv) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		System.out.println(productService.selectPerfumePdtList(sort, pi));
@@ -59,24 +58,19 @@ public class ProductController1 {
 	
 	
 	// 향수 디테일조회
-	@GetMapping("perfumePdtDetail.pr")
+	@GetMapping("perfumePdtDetail.pr") // pdtNo, F
 	public void perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
-																				ModelAndView mv) {
-		if(pdtNo > 0) {
-			
-		} else {
-			
-		}
-		
-		
-		
+								 ModelAndView mv) {
+		//
 	}
 	
 	// 주류전체조회
 	@GetMapping("selectAlcoholPdtList.pr")
 	public void selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-																						  String sort,
-																						  ModelAndView mv) {
+									 //@RequestParam(value="sort", defaultValue="New") String sort,
+			String sort,
+									 ModelAndView mv) {
+		System.out.println(sort);
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		System.out.println(productService.selectAlcoholPdtList(sort, pi));

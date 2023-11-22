@@ -36,22 +36,27 @@ public class ProductDao1 {
 	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession,
 													  Map<String, Object> pMap,
 													  RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pMap, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
 	//향수 전체조회
-	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, String sort, RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("selectPerfumePdtLime", sort, rowBounds);
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
 	// 향수 디테일조회
-	
+	//public ProductSelectVO perfumePdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	//	return null;
+	//}
 	
 	//주류 전체조회
-	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, String sort, RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("selectAlcoholPdtList", sort, rowBounds);
+	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
 	// 주류 디테일조회
+	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	//	return null;
+	//}
 
 }
