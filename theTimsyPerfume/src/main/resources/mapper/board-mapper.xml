@@ -150,4 +150,28 @@ AND
 <update id="deleteBoard" parameterType="_int">
 UPDATE TB_BOARD SET BOARD_STATE='N' WHERE BOARD_NO=#{boardNo}
 </update>
+<insert id="insertBoardFile" parameterType="java.util.ArrayList">
+INSERT INTO TB_BOARD_FILE(
+	BOARD_FILE_NO,
+	BOARD_NO,
+	BOARD_FILE_ORIGIN,
+	BOARD_FILE_UPLOAD,
+	BOARD_FILE_PATH,
+	BOARD_FILE_INDEX
+)
+SELECT
+    SEQ_BOARD_FILE.NEXTVAL,
+    SEQ_BOARD.CURRVAL,
+	A.BOARD_FILE_ORIGIN,
+	A.BOARD_FILE_UPLOAD,
+	A.BOARD_FILE_PATH,
+	A.BOARD_FILE_INDEX
+FROM(
+<foreach collection="list" item="item" separator=" UNION ALL ">
+SELECT
+    #{item.boardFileOrigin} "BOARD_FILE_ORIGIN",#{item.boardFileUpload} "BOARD_FILE_UPLOAD",
+    #{item.boardFilePath} "BOARD_FILE_PATH",#{item.boardFileIndex} "BOARD_FILE_INDEX" FROM DUAL
+</foreach>
+) A
+</insert>
 </mapper>

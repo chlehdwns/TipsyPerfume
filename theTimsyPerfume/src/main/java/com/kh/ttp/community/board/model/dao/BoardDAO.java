@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 
@@ -58,6 +59,10 @@ public class BoardDAO {
 
 	public int deleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.update("boardMapper.deleteBoard", boardNo);
+	}
+
+	public int insertBoardFile(SqlSessionTemplate sqlSession, ArrayList<BoardFileVO> fileList) {
+		return sqlSession.insert("boardMapper.insertBoardFile", fileList);
 	}
 
 

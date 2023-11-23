@@ -12,6 +12,7 @@
 		<typeAlias type="com.kh.ttp.community.review.model.vo.ReviewVO" alias="review"/>
 		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardVO" alias="board"/>
+		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardFileVO" alias="boardFile"/>
 		<typeAlias type="com.kh.ttp.community.common.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.community.common.model.vo.RecommendVO" alias="recommend"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
