@@ -160,7 +160,8 @@
 					
 					<li><a href="#">판매 관리</a>
 						<ul>
-							<li><a href="#">펀딩 관리</a>
+							<li><a href="#">술 판매 관리</a>
+							<li><a href="#">향수 판매 관리</a>
 							<li><a href="#">주문 관리 승인</a>
 						</ul>
 					
@@ -182,7 +183,8 @@
 				</div>
 				<br>
 				<div class="enroll">
-					<a href="">등록하기</a>
+					<a href="adminAlcoholEnrollForm.me">와인 상품 등록하기</a>
+					<a href="#">향수 상품 등록하기</a>
 				</div>
 				
 				
@@ -195,7 +197,7 @@
                 <thead>
                     <tr>
                         <th>상품 번호</th>
-                        <th>카테고리 번호</th>
+                        <th>주류 향수 구분</th>
                         <th>상품명</th>
                         <th>판매 가격</th>
                         <th>등록일</th>
@@ -206,7 +208,7 @@
                     
 						<tr>
 							<td>상품 번호</td>
-							<td>카테고리 번호</td>
+							<td>주류 항수 구분</td>
 							<td>상품명</td>
 							<td>판매 가격</td>
 							<td>등록일</td>
