@@ -7,7 +7,7 @@
 	<result column="nickname" property="userNo"/>
 	<result column="review_score" property="reviewScore"/>
 	<result column="review_content" property="reviewContent"/>
-	<result column="review_create_date" property="reviewCreateDate"/>
+	<result column="create_date" property="reviewCreateDate"/>
 	<result column="review_modify_date" property="reviewModifyDate"/>
 	<result column="review_state" property="reviewState"/>
 	<result column="PDT_NAME" property="pdtNo"/>
@@ -47,7 +47,7 @@ SELECT
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
     USER_PROFILE,
@@ -63,6 +63,7 @@ WHERE
 	REVIEW_FILE_INDEX = 0
 AND
 	PDT_FILE_INDEX = 0
+ORDER BY REVIEW_CREATE_DATE DESC
 </select>
 <select id="selectReviewDetail" parameterType="_int" resultMap="reviewResultSet">
 SELECT
@@ -70,7 +71,7 @@ SELECT
     NICKNAME,
     REVIEW_SCORE,
     REVIEW_CONTENT,
-    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "REVIEW_CREATE_DATE",
+    TO_CHAR(REVIEW_CREATE_DATE,'YYYY-MM-dd HH24:mm') "CREATE_DATE",
     REVIEW_MODIFY_DATE,
     PDT_NAME,
     USER_PROFILE,

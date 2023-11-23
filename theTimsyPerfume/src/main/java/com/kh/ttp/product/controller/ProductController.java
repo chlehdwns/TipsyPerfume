@@ -224,6 +224,18 @@ public class ProductController {
 			}
 				return "common/errorPage";
 	}
+	@RequestMapping("purchase.fd")
+	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtPrice,String pdtShipping,String pdtFileUpload) {
+		model.addAttribute("pdtNo", pno);
+		model.addAttribute("pdtName",pdtName);
+		model.addAttribute("pdtPrice",pdtPrice);
+		model.addAttribute("pdtShipping",pdtShipping);
+		model.addAttribute("pdtFileUpload",pdtFileUpload);
+		
+		return "funding/buyDrinkFunding";
+		
+	}
+	
 	
 
 }

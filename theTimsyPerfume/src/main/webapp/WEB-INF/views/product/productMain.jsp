@@ -28,11 +28,10 @@
 	<!-- Google Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-	<!-- productMain.jsp의 CSS파일 경로적기 -->
-    <link href="resources/css/product/productMain.css" rel="stylesheet">
+	<!-- CSS파일 경로적기 -->
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
-
-	
+    <link href="resources/css/product/productMain.css" rel="stylesheet">
+    	
 </head>
 
 <body>
@@ -94,17 +93,10 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
-			
+
 			
 				<!-- 베스트셀러순 -->
 				<div class="pdt-main-inner-wrap">
@@ -144,13 +136,6 @@
 				              <div class="productBlockText4">${product.pdtIntro}</div>
 				                </div>
 				            </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 				        </div>
 				    </div>
 				</div>
@@ -194,13 +179,6 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -284,48 +262,50 @@
 				<div class="modal-body" align="center">
 					<div>필수 입력 사항</div>
 					<br>
-					<form action="insert.me" method="post" id="pdtModalEnrollForm">
+					<form action="insert.me" method="post" id="enroll-form"><!-- id="enroll-form" --> 
 						<div class="form-group pdt-main-form-group">
 
 							<label> *회원 구분 : </label> &nbsp;&nbsp;
-							<input type="radio" id="pdtMainUser" value="U" name="memberType" checked>
-							<label for="pdtMainUser">개인 회원</label> &nbsp;&nbsp;
-							<input type="radio" id="pdtMainSale" value="S" name="memberType">
-							<label for="pdtMainSale">사업자 회원</label><br>
+							<input type="radio" id="User" value="U" name="memberType" checked>
+							<label for="User">개인 회원</label> &nbsp;&nbsp;
+							<input type="radio" id="Sale" value="S" name="memberType">
+							<label for="Sale">사업자 회원</label><br>
 							
-							<label for="pdtMainUserEmail">* 아이디(이메일) : </label>
-							<input type="text" class="form-control" id="pdtMainUserEmail" placeholder="아이디를 입력해주세요." name="userEmail" required><br>
-							<div id="pdtMainCheckResult"></div>
+							<label for="userEmail">* 아이디(이메일) : </label>
+							<input type="text" class="form-control" id="userEmail" placeholder="아이디를 입력해주세요." name="userEmail" required><br>
+							<div id="checkResult"></div>
 
-							<label for="pdtMainUserPwd">* 비밀번호 : </label>
-							<input type="text" class="form-control" id="pdtMainUserPwd" name="userPwd" onchange="check_pw()" placeholder="비밀번호를 입력해주세요."  required><br>
-							<label for="pdtMainCheckPwd">* 비밀번호 확인 : </label>
-							<input type="text" class="form-control" id="pdtMainCheckPwd" name="checkPwd" onchange="check_pw()" placeholder="비밀번호를 다시 입력해주세요."  required><br>
-							<span id="pdtMainCheck"></span>
+							<label for="userPwd">* 비밀번호 : </label>
+							<input type="text" class="form-control" id="userPwd" name="userPwd" onchange="check_pw();" placeholder="비밀번호를 입력해주세요."  required><br>
+							<label for="checkPwd">* 비밀번호 확인 : </label>
+							<input type="text" class="form-control" id="checkPwd" name="checkPwd" onchange="check_pw();" placeholder="비밀번호를 다시 입력해주세요."  required><br>
+							<span id="check"></span>
 							
-							<label for="pdtMainUserName">* 이름 : </label>
-							<input type="text" class="form-control" id="pdtMainUserName" placeholder="이름을 입력해주세요." name="userName" required><br>
-							<label for="pdtMainNickName">* 닉네임 : </label>
-							<input type="text" class="form-control" id="pdtMainNickName" placeholder="닉네임을 입력해주세요." name="nickName" required><br>
-							<label for="pdtMainBirthDate">* 생년월일 : </label>
-							<input type="date" class="form-control" id="pdtMainBirthDate" data-placeholder="생년월일을 입력해주세요." name="birthDate" required><br>
-							<label for="pdtMainPhone">* 전화번호 : </label>
-							<input type="text" class="form-control" id="pdtMainPhone" placeholder="전화번호를 입력해주세요." name="phone" required><br>
+							<label for="userName">* 이름 : </label>
+							<input type="text" class="form-control" id="userName" placeholder="이름을 입력해주세요." name="userName" required><br>
+							<label for="nickName">* 닉네임 : </label>
+							<input type="text" class="form-control" id="nickName" placeholder="닉네임을 입력해주세요." name="nickName" required><br>
+							<label for="birthDate">* 생년월일 : </label>
+							<input type="date" class="form-control" id="birthDate" data-placeholder="생년월일을 입력해주세요." name="birthDate" required><br>
+							<label for="phone">* 전화번호 : </label>
+							<input type="text" class="form-control" id="phone" placeholder="전화번호를 입력해주세요." name="phone" required><br>
 							
 							<label>* 주소</label><br>
-							<label for="pdtMainReceiverName">* 받는 사람 이름 : </label>
-							<input type="text" class="form-control" id="pdtMainReceiverName" placeholder="받는 사람 이름을 입력해주세요." name="receiverName" required><br>
+							<label for="receiverName">* 받는 사람 이름 : </label>
+							<input type="text" class="form-control" id="receiverName" placeholder="받는 사람 이름을 입력해주세요." name="receiverName" required><br>
+							
 							<button type="button" onclick="execDaumPostcode();" id="pdtMainPoCodeBtn" class="form-control btn btn-info">우편번호찾기</button><br><br>
-							<input type="text" class="form-control" id="pdtMainPostalCode" placeholder="우편번호" name="postalCode" required><br><br>
-							<input type="text" class="form-control" id="pdtMainAddress" placeholder="주소" name="address" required><br><br>
-							<input type="text" class="form-control" id="pdtMainAddressDetail" placeholder="상세주소" name="addressDetail"><br>
+							<input type="text" class="form-control" id="postalCode" placeholder="우편번호" name="postalCode" required><br><br>
+							
+							<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br><br>
+							<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail"><br>
 						</div>
 						<br>
+						<div class="modal-footer" align="center">
+							<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
+							<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
+						</div>
 					</form> 
-				</div>
-				<div class="modal-footer" align="center">
-					<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
-					<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -354,17 +334,14 @@
 	    // 슬라이더 동작 정의
 	    const swiper = new Swiper('.swiper', {
 	        autoplay : {
-	            delay : 2500 // 2.5초마다 이미지 변경
+	            delay : 2500, // 2.5초마다 이미지 변경
+	            disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 슬라이딩 유지
 	        },
 	        loop : true, //반복 재생 여부
 	        slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
 	        pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
 	            el: '.swiper-pagination',
 	            clickable: true
-	        },
-	        navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
-	            prevEl: '.swiper-button-prev',
-	            nextEl: '.swiper-button-next'
 	        }
 	    });
 	</script>
@@ -380,8 +357,8 @@
 			var loginUserStatus = '${loginUser.status}';
 			if(loginUserStatus == 'Y') { // 로그인O
 				if(loginUserStatus == 'Y') { // 로그인O 성인인증O
-					location.href = !(isNaN(pdtNo)) ? "selectAlcoholPdtDetail.pr?pdtNo=" + pdtNo
-												    : "selectAlcoholPdtList.pr";
+					location.href = !(isNaN(pdtNo)) ? "alcoholPdtDetail.pr?pdtNo=" + pdtNo
+												    : "selectAlcoholPdtList.pr?currentPage="; //@@@@@@화면만들고 
 				}
 				else { // 로그인O 성인인증X
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
@@ -410,7 +387,8 @@
 
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/product/productMain.js"></script>
+<!-- 	<script src="resources/js/product/productMain.js"></script> -->
+    <script src="resources/js/member/loginForm.js"></script>
 	<script src="resources/js/member/memberEnrollForm.js"></script>
 
 </body>

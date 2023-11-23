@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Tipsy Perfume - 게시판</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
@@ -55,11 +55,28 @@
     .board-count{
         width: 12%;
     }
+    .comment-count{
+    	font-size: 15px;
+    	color: rgb(223, 190, 106);
+    }
 
     #paging-area{
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
+    }
+
+    .board-btn{
+    	font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .board-btn:active{
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
     }
 </style>
 </head>
@@ -68,10 +85,12 @@
 <section>
 <div id="board-wrap">
     <div id="content-title">
-        게시판
+        ${boardCtgyName } 게시판
     </div>
-    <button>글작성</button>
 <div class="table-wrap">
+    <c:if test="${not empty loginUser}">
+        <button id="board-write" class="board-btn">글작성</button>
+    </c:if>
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -91,7 +110,7 @@
         <c:forEach items="${list }" var="board">
         	<tr onclick="location.href='boardDetail?boardNo=${board.boardNo }'">
                 <td class="board-no">${board.boardNo }</td>
-                <td class="board-title">${board.boardTitle }</td>
+                <td class="board-title">${board.boardTitle } <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
                 <td class="board-count">${board.boardCount }</td>
@@ -106,10 +125,10 @@
     <ul class="pagination">
     	<c:choose>
 	    	<c:when test="${pi.currentPage ge 1 }">
-	        	<li class="page-item disabled"><a class="page-link" href="#">&lt</a></li>
+	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage-1 }">&lt</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -119,23 +138,30 @@
 					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="board?page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
         </c:forEach>
         
         <c:choose>
 	    	<c:when test="${pi.currentPage ge pi.maxPage }">
-	    		<li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
+	    		<li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="board?page=${pi.currentPage+1 }">&gt</a></li>
+        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>
 </div>
 </div>
 </section>
+<script>
+$(()=>{
+	$("#board-write").click(()=>{
+		location.href="boardWrite?boardCtgy=${boardCtgyCode}";
+	})
+})
+</script>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

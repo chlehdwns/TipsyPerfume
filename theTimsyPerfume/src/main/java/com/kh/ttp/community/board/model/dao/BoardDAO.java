@@ -44,5 +44,21 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.countRecommend", contentNo);
 	}
 
+	public String selectCtgyName(SqlSessionTemplate sqlSession, String boardCtgy) {
+		return sqlSession.selectOne("boardMapper.selectCtgyName", boardCtgy);
+	}
+
+	public int insertBoard(SqlSessionTemplate sqlSession, BoardVO bo) {
+		return sqlSession.insert("boardMapper.insertBoard", bo);
+	}
+
+	public int updateBoard(SqlSessionTemplate sqlSession, BoardVO bo) {
+		return sqlSession.update("boardMapper.updateBoard", bo);
+	}
+
+	public int deleteBoard(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteBoard", boardNo);
+	}
+
 
 }

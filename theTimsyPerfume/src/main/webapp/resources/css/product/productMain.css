@@ -12,7 +12,7 @@
 
 #productMainWrap .pdt-main-inner-wrap {
     width: 100%;
-    height: 500px;
+    height: 550px;
     margin-top: 80px;
 }
 
@@ -57,13 +57,15 @@
 }
 
 #productMainWrap .swiper-slide div{
-    width: 100%;
+    width: 95%;
+    margin: auto;
 }
 
 /* 이미지 사이즈 조절 */
 #productMainWrap .swiper-slide>img {
-    width : 100%;
+    width : 95%;
     height : 60%;
+    margin: 0px 5px 0px 5px;
     object-fit: contain;
 }
 
@@ -71,26 +73,47 @@
 #productMainWrap .productBlockText1{height: 10%; text-align: center;}
 #productMainWrap .productBlockText2{height: 10%; text-align: center;}
 #productMainWrap .productBlockText3{height: 5%; font-size: 1px; text-align: right;}
-#productMainWrap .productBlockText4{height: 15%; padding: 5px 10px 10px 10px;}
+#productMainWrap .productBlockText4{height: 15%; padding: 5px 10px 5px 10px; text-align: center;}
+
+/* 상품 마우스호버 커서 */
+#productMainWrap .swiper-slide img:hover,
+#productMainWrap .swiper-slide div:hover {cursor: pointer;}
 
 /* 화살표 버튼색 변경 (기본색은 파란색) */
-div[class^=swiper-button] {
+/* #productMainWrap div[class^=swiper-button] {
     color : black;
-    display : block; /* 아니면 안보이게 숨기기도 가능 */
+    display : block; 아니면 안보이게 숨기기도 가능
 }
 #productMainWrap .swiper-pagination{
     display: block;
 }
 #productMainWrap .swiper-scrollbar{
     display: none;
+} */
+
+/* 화살표 페이지네이션 위치 */
+/* #productMainWrap .swiper-button-prev{ left : 101%; }
+#productMainWrap .swiper-button-next{ left : 196%; }
+#productMainWrap .swiper-pagination{ left : 100%; bottom: 0px; } */
+ 
+/* .swiper-button-prev,
+.swiper-button-next {
+  top: 50%;
 }
 
-/* 페이지네이션 색깔 변경 */
-:root {
-    --swiper-theme-color: black;
+.swiper-button-prev {
+  left: 10px;
+  transform: translateY(-50%);
 }
 
+.swiper-button-next {
+  right: 10px;
+  transform: translateY(-50%);
+} */
 
+ 
+ 
+ 
 /************************* 모달 관련 CSS *************************/
 /* 모달 첫화면 (로그인 / 회원가입 버튼) */
 #pdtLoginModal .modal-header {
@@ -108,19 +131,23 @@ div[class^=swiper-button] {
 /* jsp에 loginForm.css 링크함 */
 
 
-/* 회원가입 입력양식 */
-#pdtModalEnrollForm {
+/* 회원가입 입력양식
+#pdtMainEnrollFormModal .modal {
+	--bs-modal-width : 400px;
+} */
+#enroll-form {
 	padding: 0px 30px 0px 30px;
 }
-#pdtModalEnrollForm .modal-footer {padding: 0px;}
+
+#enroll-form .modal-footer {padding: 0px;}
 
 /* 요소들 상하간격 */
-#pdtModalEnrollForm label {
+#enroll-form label {
 	margin-bottom: 17px;
 }
 
 /* 회원가입 모달창 요소들 폰트크기, 가로세로크기 설정 */
-#pdtModalEnrollForm .pdt-main-form-group {
+#enroll-form .pdt-main-form-group {
 	font-size: 12px;
 	text-align: left;
 }
@@ -135,7 +162,7 @@ div[class^=swiper-button] {
 #pdtMainSubmitBtn {width: 30%; margin:0px; float: right; margin-left: 20px;}
 #pdtMainResetBtn {width: 29%;}
 
-#pdtModalEnrollForm .pdt-main-form-group input[type='text'],
+#enroll-form .pdt-main-form-group input[type='text'],
 input[type='date'] {
 	width: 65%;
 	height: 25px;
@@ -143,11 +170,11 @@ input[type='date'] {
 }
 
 /* 인풋요소들 플레이스홀더 폰트크기 */
-#pdtModalEnrollForm .pdt-main-form-group input::placeholder {
+#enroll-form .pdt-main-form-group input::placeholder {
 	font-size: 1px;
 }
 
-#pdtModalEnrollForm input[type='date']::before {
+#enroll-form input[type='date']::before {
 content: attr(data-placeholder);
 width: 100%;
 font-size: 1px;
