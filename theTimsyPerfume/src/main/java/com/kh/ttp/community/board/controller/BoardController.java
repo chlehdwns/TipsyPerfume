@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.board.model.service.BoardService;
 import com.kh.ttp.community.board.model.vo.BoardVO;
-import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
 @Controller
 public class BoardController {
@@ -62,11 +62,12 @@ public class BoardController {
 		return mv;
 	}
 	@PostMapping("boardWrite.do")
-	public ModelAndView boardWrite(BoardVO bo, ModelAndView mv) {
+	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		System.out.println(uploadImg);
 		if(boardService.insertBoard(bo)>0) {
 			mv.setViewName("redirect:board?boardCtgy="+bo.getBoardCtgyCode());
 		} else {

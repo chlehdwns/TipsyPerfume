@@ -74,7 +74,7 @@
         background-color: rgb(255, 255, 255);
         color: rgb(223, 190, 106);
     }
-    .board-btn:active{
+    .board-btn:hover{
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
