@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 @Repository
@@ -35,9 +36,27 @@ public class ProductDao1 {
 	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession,
 													  Map<String, Object> pMap,
 													  RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productMainList", pMap, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
+	//향수 전체조회
+	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
+	}
+
+	// 향수 디테일조회
+	//public ProductSelectVO perfumePdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	//	return null;
+	//}
 	
+	//주류 전체조회
+	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
+	}
+
+	// 주류 디테일조회
+	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	//	return null;
+	//}
 
 }
