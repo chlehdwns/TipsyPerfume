@@ -1,10 +1,10 @@
 package com.kh.ttp.adminManage.model.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class adminVo {
 
 	//상품(product)
