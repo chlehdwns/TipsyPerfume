@@ -2,6 +2,15 @@ package com.kh.ttp.product.model.vo;
 
 import java.util.ArrayList;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class OrderDetailVO {
 	/*
 	ORDER_DETAIL_NO	NUMBER

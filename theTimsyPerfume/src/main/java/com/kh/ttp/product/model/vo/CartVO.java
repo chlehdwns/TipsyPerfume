@@ -1,9 +1,16 @@
 package com.kh.ttp.product.model.vo;
 
-import java.util.ArrayList;
-
 import com.kh.ttp.user.model.vo.User;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class CartVO {
 	
 	/*
