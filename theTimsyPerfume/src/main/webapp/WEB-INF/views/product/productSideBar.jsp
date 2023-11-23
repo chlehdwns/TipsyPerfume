@@ -14,17 +14,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-      /* #productSideBarWrap div {
-        border: 1px solid black;
-      } */
-      #productSideBarWrap {
-        width: 230px;
-        margin-top: 80px;
-        float: left;
-        position: relative;
-        left: 3%;
-      }
+	/* #productSideBarWrap div {
+	  border: 1px solid black;
+	} */
+	
+	#productSideBarWrap {
+	  width: 230px;
+	  margin-top: 80px;
+	  float: left;
+	  position: relative;
+	  left: 3%;
+	}
 
+	/* 정렬기준 부분 */
+  	#pdtSideBarSortArea > label[for='btnradio1'] {
+  		border-top-left-radius: 0.25rem;
+  		border-bottom-left-radius: 0.25rem;
+  	}
+  	
+  	#pdtSideBarSortArea label{
+  		width: 77px;  		
+  		height: 30px;
+  		background-repeat: no-repeat; 
+  	}
+
+	 #btnradio1 + label{background-image: url('resources/image/product/productEtc/sortNewImgBl.png');}
+	 #btnradio2 + label{background-image: url('resources/image/product/productEtc/sortBestSellerImgBl.png');}
+	 #btnradio3 + label{background-image: url('resources/image/product/productEtc/sortPopularImgBl.png');}
+		
+	 #btnradio1:checked + label {background-image: url('resources/image/product/productEtc/sortNewImg.png');}
+	 #btnradio2:checked + label {background-image: url('resources/image/product/productEtc/sortBestSellerImg.png');}
+	 #btnradio3:checked + label {background-image: url('resources/image/product/productEtc/sortPopularImg.png');}
+
+
+	/* 아코디언 부분 */
       #accordionPanelsStayOpenExample {
         width: 100%;
       }
@@ -239,12 +262,29 @@
 
   <body>
   
-  	
-  	<div>
-  		<div>최신순</div>
-  	</div>
+
+  
+
+<style>
+
+
+
+</style>
   
     <div id="productSideBarWrap" class="d-none d-lg-block">
+    
+    <div id="pdtSideBarSortArea" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+		<label class="btn btn-outline-primary" for="btnradio1"></label>
+		
+		<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+		<label class="btn btn-outline-primary" for="btnradio2"></label>
+		
+		<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+		<label class="btn btn-outline-primary" for="btnradio3"></label>
+	</div>
+    
+    
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">

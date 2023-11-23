@@ -42,9 +42,55 @@
         ${pdtMainTitleText} = BEST PERFUMES
         ${pdtCateg} = 향수
     -->
+    
+    <style>
+        #productListWrap div{border: solid 1px green;}
+        #pdtListOuter div {border: solid 1px blue;}
+        #productListWrap {width: 1200px;}
+        
+        #pdtListOuter{width: 950px; margin: auto; display: inline-block;}
+        #pdtListOuter div[class='row'] {width: 100%;}
+        #pdtListOuter .pdtListContainer { height: 400px;}
+    </style>
 
 	<jsp:include page="../common/header.jsp" />
-	<jsp:include page="productSideBar.jsp" />
+
+    <div id="productListWrap">
+        <div id="pdtListSideBarOuter">
+            <jsp:include page="productSideBar.jsp" />
+        </div>
+    
+    
+        <div id="pdtListOuter" class="container">
+            <div class="row">
+                <div class="pdtListContainer col">
+                    <div class="row"></div>
+                </div>
+                <div class="pdtListContainer col"></div>
+                <div class="pdtListContainer col"></div>
+                <div class="pdtListContainer col"></div>
+            </div>
+    
+    
+    
+    
+        </div>
+
+
+        
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </body>
 
