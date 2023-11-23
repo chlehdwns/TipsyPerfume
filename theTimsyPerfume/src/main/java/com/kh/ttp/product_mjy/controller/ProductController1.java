@@ -2,6 +2,7 @@ package com.kh.ttp.product_mjy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,12 +51,13 @@ public class ProductController1 {
 	@GetMapping("selectPerfumePdtList.pr")
 	public String selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									 @RequestParam(value="sort", defaultValue="") String sort,
-									 ModelAndView mv) {
+									 Model m) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		// {$sort}돌려줘야
 		
 		System.out.println(productService.selectPerfumePdtList(sort, pi));
+		m.addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi));
 		return "product/productList";
 	}
 	
