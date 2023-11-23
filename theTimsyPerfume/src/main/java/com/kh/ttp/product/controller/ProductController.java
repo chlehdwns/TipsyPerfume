@@ -235,6 +235,28 @@ public class ProductController {
 		return "funding/buyDrinkFunding";
 		
 	}
+	@RequestMapping("funding.fd")
+	public String confrimFundingDrink(Model model,int pdtNo,int userNo,int orderQuantiry,int fundingFee,
+									 int pdtPrice,int postalCode,String address,String addressDetail,String receiverName,String orderMessage,
+									 String payMethod,String payBank,String payName) {
+		int orderPrice = (pdtPrice*orderQuantiry)+fundingFee;
+		//System.out.println(pdtNo);
+		//System.out.println(userNo);
+		//System.out.println(orderQuantiry);
+		//System.out.println(fundingFee);
+		//System.out.println(pdtPrice);
+		//System.out.println(postalCode);
+		//System.out.println(orderPrice);
+		//System.out.println(address);
+		//System.out.println(addressDetail);
+		//System.out.println(receiverName);
+		//System.out.println(orderMessage);
+		//System.out.println(payMethod);
+		//System.out.println(payBank);
+		//System.out.println(payName);
+		return "";
+	}
+		
 	
 	
 
