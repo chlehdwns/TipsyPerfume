@@ -16,6 +16,17 @@ public class adminController {
 		return "adminManage/adminMain";
 	}
 	
+	//enroll폼 보내기
+	@RequestMapping("adminAlcoholEnrollForm.me")
+	public String adminEnrollForm() {
+		return "adminManage/adminAlcoholEnrollForm";
+	}
+	
+	//enroll해주는 거..4테이블 합체.insert와 join.
+	@RequestMapping("adminAlcoholEnroll.me")
+	public void adminEnroll() {
+		return ;
+	}
 	
 	
 }
