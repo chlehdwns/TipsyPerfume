@@ -237,6 +237,13 @@ ${board.boardContent }
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
             const userNo = "${loginUser.userNo}";
+            
+            if($commentContent.val().trim()==""){
+            	$commentContent.val("").focus();
+                alert("내용을 작성해 주세요!");
+                return;
+            }
+            
             $.ajax({
                 url:"insertComment",
                 type:"post",
