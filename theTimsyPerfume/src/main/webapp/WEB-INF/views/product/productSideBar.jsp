@@ -238,8 +238,13 @@
   </head>
 
   <body>
+  
+  	
+  	<div>
+  		<div>최신순</div>
+  	</div>
+  
     <div id="productSideBarWrap" class="d-none d-lg-block">
-
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
