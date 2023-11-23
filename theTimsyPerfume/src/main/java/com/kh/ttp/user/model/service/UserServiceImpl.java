@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 	//마이페이지 보내기
 	@Override
 	public Receiver selectReceiver(int userNo) {
+		//System.out.println(userNo);//2
 		return userDao.selectReceiver(sqlSession, userNo);
 	}
 

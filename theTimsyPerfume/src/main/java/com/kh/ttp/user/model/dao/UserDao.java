@@ -39,6 +39,7 @@ public class UserDao {
 	}
 
 	public Receiver selectReceiver(SqlSessionTemplate sqlSession, int userNo) {
+		
 		return sqlSession.selectOne("userMapper.selectReceiver", userNo);
 	}
 
