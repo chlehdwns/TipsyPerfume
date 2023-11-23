@@ -70,9 +70,9 @@ public class BoardController {
 	@PostMapping("boardWrite.do")
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
-		//bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		//bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
 		for(int i=0;i<uploadImg.length;i++) {
@@ -101,10 +101,10 @@ public class BoardController {
 	@PostMapping("boardUpdate.do")
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
-		//bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		//bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));
+		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {

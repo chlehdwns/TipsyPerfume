@@ -64,6 +64,16 @@
         margin: 0 auto;
         border: 2px inset rgb(223, 190, 106);
     }
+    .score-bg{
+        width: 115px;
+        height: 19px;
+		background-image: url("resources/image/common/star-bg.svg");
+	}
+    .score{
+        width: 50%;
+        height: 100%;
+        background-image: url("resources/image/common/star.svg");
+    }
     .preview-wrap{
         height: 50px;
         font-size: 13px;
@@ -136,7 +146,9 @@
                 <img class="img" src="${review.thumbnail}" alt="썸네일">
             </div>
             <div class="review-score">
-                ★★★☆☆
+                <div class="score-bg">
+                    <div class="score" style="width: ${review.reviewScore*11}px;"></div>
+                </div>
             </div>
             <div class="preview-wrap bottom-interval">
                 ${review.reviewContent}

@@ -81,13 +81,14 @@ header div {
     margin: 0px;
     padding-top: 5px;
     font-size: 25px;
+    color: rgb(124 94 69);
 }
 
 .dropdown-menu {width: 90%; text-align: center;}
 
 .header-link{
     text-decoration: none;
-    color: black;
+    color: rgb(124 94 69);
 }
 .header-link:hover{
     text-decoration: none;

@@ -32,11 +32,14 @@
     }
     .table td{
         vertical-align: middle;
-        border-color: rgb(160, 160, 160);
+        border-color: rgb(214, 214, 214);
         border-bottom: 1px solid;
     }
-    tbody tr{
+    tbody>tr{
     	cursor: pointer;
+    }
+    tbody>tr>td:not(:nth-child(2n)){
+        background-color: rgb(240, 240, 240);
     }
 
     .board-no{
