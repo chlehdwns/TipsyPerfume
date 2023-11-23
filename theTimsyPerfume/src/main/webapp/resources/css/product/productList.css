@@ -16,9 +16,10 @@
     width: 230px;
     float: left;
     margin-top: 190px;
+    margin-left: 2%;
 }
 #pdtListOuterRight{
-    width: 950px;
+    width: 900px;
 }
 
 /* 타이틀 영역 */
@@ -30,15 +31,17 @@
 #pdtListTitleArea .pdt-list-sub-title{height: 40%;}
 
 /* 상품 정보 영역 */
-#pdtListOuterRight .pdt-list-container-col{height: 550px;
+#pdtListOuterRight .pdt-list-container-col{
+	height: 550px;
 	display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 30px;
     border: solid 1px black;
+    position: relative;
 }
 #pdtListOuterRight .pdt-list-container-col div{
-	margin: 0px 10px 5px 10px;
+	margin: 0px 5px 5px 5px;
 }
 
 #pdtListOuterRight .pdt-list-pdtImgSrc{height: 50%;}
@@ -58,6 +61,7 @@
 #pdtListOuterRight .pdt-list-pdtImgSrc,
 #pdtListOuterRight .pdt-list-pdtManufac,
 #pdtListOuterRight .pdt-list-pdtName,
+#pdtListOuterRight .row.pdt-list-reviewAvg,
 #pdtListOuterRight .pdt-list-pdtIntro,
 #pdtListOuterRight .pdt-list-pdtDescription {
     overflow: hidden; /* 튀어나가는 글자 숨김 */
@@ -66,7 +70,6 @@
 }
 
 #pdtListOuterRight .row.pdt-list-reviewAvg {
-	padding-right: 10px; /* 리뷰 평점 위치 */
     justify-content: flex-end;
     align-items: center;
 }
@@ -74,11 +77,14 @@
 /* 하트, 장바구니 아이콘 */
 #pdtListOuterRight .pdt-list-icon-area{
 	width:80%;
-	left:10%;
-	top: 22.5%;
+	left: 7.7%;
+	z-index: 1;
+	top: 0%;
+	height: 47.3%;
 	position:absolute;
 	font-size: 80px;
-	display: none;
+	padding-top: 35%;
+	/* opacity: 0; */
 }
 #pdtListOuterRight .pdt-list-icon-area div{
 	width:35%;
@@ -91,7 +97,6 @@
 
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
-
 }
 
 #pdtListOuterRight .bi.pdt-list-cart:hover,

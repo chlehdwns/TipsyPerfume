@@ -75,6 +75,7 @@
       #productSideBarWrap .list-group-item {
         padding-left: 30px;
         margin: 0px;
+        text-align: left;
       }
 
 
