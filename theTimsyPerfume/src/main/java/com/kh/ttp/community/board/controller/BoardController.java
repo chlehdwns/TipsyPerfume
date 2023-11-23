@@ -70,9 +70,9 @@ public class BoardController {
 	@PostMapping("boardWrite.do")
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
-		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		//bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		//bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
 		for(int i=0;i<uploadImg.length;i++) {
@@ -101,9 +101,10 @@ public class BoardController {
 	@PostMapping("boardUpdate.do")
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
-		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		//bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		//bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {
@@ -130,7 +131,7 @@ public class BoardController {
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		int ranNum = (int)(Math.random()*90000+10000);
 		String ext =  originName.substring(originName.lastIndexOf("."));
-		String changeName = "board_"+curTime + ranNum + ext;
+		String changeName = curTime + ranNum + ext;
 		String savePath = session.getServletContext().getRealPath("/resources/image/community/board/");
 		
 		try {
