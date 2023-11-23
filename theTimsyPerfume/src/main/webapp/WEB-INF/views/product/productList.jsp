@@ -43,15 +43,22 @@
         <div id="pdtListOuterRight" class="container">
 
             <div id="pdtListTitleArea" class="row">
-            	
-                <div class="pdt-list-main-title" style="font-size:50px;">LIQUORS</div>
-                <div class="pdt-list-sub-title" style="font-size:30px;">브랜드 | 주류</div>
+            	<c:choose>
+            		<c:when test="${pdtCteg eq 'A'}">
+            			<div class="pdt-list-main-title" style="font-size:50px;">LIQUORS</div>
+               			<div class="pdt-list-sub-title" style="font-size:30px;">브랜드 | 주류</div>
+            		</c:when>
+            		<c:otherwise>
+		                <div class="pdt-list-main-title" style="font-size:50px;">PERFUME</div>
+		                <div class="pdt-list-sub-title" style="font-size:30px;">브랜드 | 향수</div>
+            		</c:otherwise>
+            	</c:choose>
             </div>
             
      		<div class="row row-cols-3">
 				<c:forEach var="count" begin="1" end="12">
 					<div class="col pdt-list-container-col">
-						<div class="row pdt-list-pdtImgSrc"><img src="${pdtList[count].pdtImgSrc}"></div>
+						<div class="row pdt-list-pdtImgSrc" style="max-height: 100%;"><img src="${pdtList[count].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac">${pdtList[count].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName">${pdtList[count].pdtName}</div>
 		                <div class="row pdt-list-reviewAvg">${pdtList[count].reviewAvg}<c:if test="${not empty pdtList[count].reviewAvg}">/5</c:if></div>

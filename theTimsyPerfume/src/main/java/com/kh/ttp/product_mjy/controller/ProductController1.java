@@ -54,9 +54,7 @@ public class ProductController1 {
 									 Model m) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
-		// {$sort}돌려줘야
-		
-		System.out.println(productService.selectPerfumePdtList(sort, pi).size());
+
 		m.addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi));
 		return "product/productList";
 	}
@@ -73,11 +71,14 @@ public class ProductController1 {
 	@GetMapping("selectAlcoholPdtList.pr")
 	public String selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									   String sort,
-									   ModelAndView mv) {
+									   Model m) {
 		System.out.println(sort);
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
+		
 		System.out.println(productService.selectAlcoholPdtList(sort, pi));
+		m.addAttribute("pdtCteg", "A")
+		 .addAttribute("pdtList", productService.selectAlcoholPdtList(sort, pi));
 		return "product/productList";
 	}
 	

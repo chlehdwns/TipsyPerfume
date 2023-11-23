@@ -55,10 +55,15 @@
 #pdtListOuterRight .pdt-list-reviewAvg,
 #pdtListOuterRight .pdt-list-pdtIntro,
 #pdtListOuterRight .pdt-list-pdtDescription {
-    overflow: hidden;
+    overflow: hidden; /* 튀어나가는 글자 숨김 */
 }
 
 #pdtListOuterRight .row.pdt-list-reviewAvg {
     margin-right: 20px; /* 리뷰평점 오른쪽 정렬 마진설정 */
 }
 
+#pdtListOuterRight .pdt-list-pdtImgSrc img {
+    max-width: 100%;
+    max-height: 100%; /* 이미지의 최대 높이를 부모 div의 높이로 제한 */
+    height: auto;
+}
