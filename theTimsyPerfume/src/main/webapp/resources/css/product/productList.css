@@ -38,12 +38,17 @@
     border: solid 1px black;
 }
 #pdtListOuterRight .pdt-list-container-col div{
-	margin: auto;
-	margin-bottom: 5px;
-
+	margin: 0px 10px 5px 10px;
 }
 
 #pdtListOuterRight .pdt-list-pdtImgSrc{height: 50%;}
+#pdtListOuterRight .pdt-list-pdtImgSrc img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%; /* 이미지의 최대 높이를 부모 div의 높이로 제한 */
+}
+
 #pdtListOuterRight .pdt-list-pdtManufac{height: 10%;}
 #pdtListOuterRight .pdt-list-pdtName{height: 10%;}
 #pdtListOuterRight .pdt-list-reviewAvg{height: 5%;}
@@ -53,20 +58,45 @@
 #pdtListOuterRight .pdt-list-pdtImgSrc,
 #pdtListOuterRight .pdt-list-pdtManufac,
 #pdtListOuterRight .pdt-list-pdtName,
-#pdtListOuterRight .pdt-list-reviewAvg,
 #pdtListOuterRight .pdt-list-pdtIntro,
 #pdtListOuterRight .pdt-list-pdtDescription {
     overflow: hidden; /* 튀어나가는 글자 숨김 */
+    justify-content: center; /* 정렬 */
+	align-items: center;
 }
 
 #pdtListOuterRight .row.pdt-list-reviewAvg {
-    margin-right: 20px; /* 리뷰평점 오른쪽 정렬 마진설정 */
+	padding-right: 10px; /* 리뷰 평점 위치 */
+    justify-content: flex-end;
+    align-items: center;
 }
 
-#pdtListOuterRight .pdt-list-pdtImgSrc img {
-    max-width: 100%;
-    max-height: 100%; /* 이미지의 최대 높이를 부모 div의 높이로 제한 */
-    height: auto;
+/* 하트, 장바구니 아이콘 */
+#pdtListOuterRight .pdt-list-icon-area{
+	width:80%;
+	left:10%;
+	z-index: 3;
+	top: 22.5%;
+	position:absolute;
+	font-size: 80px;
+}
+#pdtListOuterRight .pdt-list-icon-area div{
+	width:35%;
+	padding:0px;
+}
+
+#pdtListOuterRight .bi.pdt-list-cart{
+	float: right;
+}
+
+#pdtListOuterRight .bi.pdt-list-heart{
+	float: left;
+}
+
+#pdtListOuterRight .bi.pdt-list-cart:hover,
+#pdtListOuterRight .bi.pdt-list-heart:hover{
+	cursor: pointer;
+	font-size: 83px;
 }
 
 

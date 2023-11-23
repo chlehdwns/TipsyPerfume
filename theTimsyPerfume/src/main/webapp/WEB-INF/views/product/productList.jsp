@@ -57,18 +57,36 @@
             
      		<div class="row row-cols-3">
 				<c:forEach var="count" begin="1" end="12">
-					<div class="col pdt-list-container-col">
-						<div class="row pdt-list-pdtImgSrc" style="max-height: 100%;"><img src="${pdtList[count].pdtImgSrc}"></div>
+					<div class="container" class="col pdt-list-container-col" style="position: relative;">
+					<div class="pdt-list-icon-area">
+						<div class="bi bi-suit-heart container pdt-list-heart"></div>
+						<div class="bi bi-cart-plus  container pdt-list-cart"></div>
+					</div>
+						<div class="row pdt-list-pdtImgSrc"><img src="${pdtList[count].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac">${pdtList[count].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName">${pdtList[count].pdtName}</div>
-		                <div class="row pdt-list-reviewAvg">${pdtList[count].reviewAvg}<c:if test="${not empty pdtList[count].reviewAvg}">/5</c:if></div>
+		                <div class="row pdt-list-reviewAvg"><c:if test="${not empty pdtList[count].reviewAvg}">★ ${pdtList[count].reviewAvg}/5</c:if></div>
 		                <div class="row pdt-list-pdtIntro">${pdtList[count].pdtIntro}</div>
-		                <div class="row pdt-list-pdtDescription">${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}...</div>
+		                <div class="row pdt-list-pdtDescription">${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}</div>
 					</div>
 				</c:forEach>
 			</div>
         </div>
     </span>
+
+	
+    <script>
+    $pdtImgArea = $('#pdtListOuterRight .pdt-list-pdtImgSrc');
+    $pdtImgArea.mouseenter(e => {
+    	console.log(e.target);
+    	
+    });
+	// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
+	// bi bi-cart-plus-fill
+    </script>
+    
+    
+    <script src="resources/js/product/productList.js"></script>
 </body>
 
 
