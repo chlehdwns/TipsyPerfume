@@ -30,18 +30,18 @@
       }
 
       /* 아코디언 부분 설정(크기, 범위) */
-      .accordion-header {
+      #productSideBarWrap .accordion-header {
         width: 100%;
         height: 89px;
         --bs-accordion-btn-padding-y: 2rem;
       }
 
-      .accordion-body {
+      #productSideBarWrap .accordion-body {
         padding: 5px 5px 50px 5px;
       }
 
       /* 체크박스 부분 설정 */
-      .pdt-side-checkbox {
+      #productSideBarWrap .pdt-side-checkbox {
         width: 100%;
         max-height: 230px;
         /* 스크롤바 생기는 높이 */
@@ -49,18 +49,19 @@
         padding: 5px;
       }
 
-      .pdt-side-checkbox-inner {
+      #productSideBarWrap .pdt-side-checkbox-inner {
         margin-left: 10px;
       }
 
-      .list-group-item {
-        --bs-list-group-item-padding-x: 2rem;
+      #productSideBarWrap .list-group-item {
+        padding-left: 30px;
+        margin: 0px;
       }
 
 
 
 /* ↓ 슬라이더 오픈소스 CSS, Copyright https://codepen.io/Manitoba/pen/ZWRjye?js-preprocessor=babel */
-[slider] {
+#productSideBarWrap [slider] {
   position: relative;
   height: 14px;
   border-radius: 10px;
@@ -68,14 +69,14 @@
   margin: 50px 0 20px 0;
 }
 
-[slider] > div {
+#productSideBarWrap [slider] > div {
   position: absolute;
   left: 13px;
   right: 15px;
   height: 14px;
 }
 
-[slider] > div > [inverse-left] {
+#productSideBarWrap [slider] > div > [inverse-left] {
   position: absolute;
   left: 0;
   height: 14px;
@@ -84,7 +85,7 @@
   margin: 0 7px;
 }
 
-[slider] > div > [inverse-right] {
+#productSideBarWrap [slider] > div > [inverse-right] {
   position: absolute;
   right: 0;
   height: 14px;
@@ -93,7 +94,7 @@
   margin: 0 7px;
 }
 
-[slider] > div > [range] {
+#productSideBarWrap [slider] > div > [range] {
   position: absolute;
   left: 0;
   height: 14px;
@@ -101,7 +102,7 @@
   background-color: rgb(223,190,106);
 }
 
-[slider] > div > [thumb] {
+#productSideBarWrap [slider] > div > [thumb] {
   position: absolute;
   top: -7px;
   z-index: 2;
@@ -116,7 +117,7 @@
   outline: none;
 }
 
-[slider] > input[type=range] {
+#productSideBarWrap [slider] > input[type=range] {
   position: absolute;
   pointer-events: none;
   -webkit-appearance: none;
@@ -131,28 +132,28 @@
   opacity: 0;
 }
 
-div[slider] > input[type=range]::-ms-track {
+#productSideBarWrapdiv[slider] > input[type=range]::-ms-track {
   -webkit-appearance: none;
   background: transparent;
   color: transparent;
 }
 
-div[slider] > input[type=range]::-moz-range-track {
+#productSideBarWrap div[slider] > input[type=range]::-moz-range-track {
   -moz-appearance: none;
   background: transparent;
   color: transparent;
 }
 
-div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
+#productSideBarWrap div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
   background: transparent;
   border: transparent;
 }
 
-div[slider] > input[type=range]:focus {
+#productSideBarWrap div[slider] > input[type=range]:focus {
   outline: none;
 }
 
-div[slider] > input[type=range]::-ms-thumb {
+#productSideBarWrap div[slider] > input[type=range]::-ms-thumb {
   pointer-events: all;
   width: 28px;
   height: 28px;
@@ -160,7 +161,7 @@ div[slider] > input[type=range]::-ms-thumb {
   border: 0 none;
 }
 
-div[slider] > input[type=range]::-moz-range-thumb {
+#productSideBarWrap div[slider] > input[type=range]::-moz-range-thumb {
   pointer-events: all;
   width: 28px;
   height: 28px;
@@ -168,7 +169,7 @@ div[slider] > input[type=range]::-moz-range-thumb {
   border: 0 none;
 }
 
-div[slider] > input[type=range]::-webkit-slider-thumb {
+#productSideBarWrap div[slider] > input[type=range]::-webkit-slider-thumb {
   pointer-events: all;
   width: 28px;
   height: 28px;
@@ -177,21 +178,21 @@ div[slider] > input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-div[slider] > input[type=range]::-ms-fill-lower {
+#productSideBarWrap div[slider] > input[type=range]::-ms-fill-lower {
   background: transparent;
   border: 0 none;
 }
 
-div[slider] > input[type=range]::-ms-fill-upper {
+#productSideBarWrap div[slider] > input[type=range]::-ms-fill-upper {
   background: transparent;
   border: 0 none;
 }
 
-div[slider] > input[type=range]::-ms-tooltip {
+#productSideBarWrap div[slider] > input[type=range]::-ms-tooltip {
   display: none;
 }
 
-[slider] > div > [sign] {
+#productSideBarWrap [slider] > div > [sign] {
   opacity: 0;
   position: absolute;
   margin-left: -11px;
@@ -209,7 +210,7 @@ div[slider] > input[type=range]::-ms-tooltip {
   text-align: center;
 }
 
-[slider] > div > [sign]:after {
+#productSideBarWrap [slider] > div > [sign]:after {
   position: absolute;
   content: '';
   left: 0;
@@ -222,13 +223,13 @@ div[slider] > input[type=range]::-ms-tooltip {
   border-top-color: rgb(223,190,106);
 }
 
-[slider] > div > [sign] > span {
+#productSideBarWrap [slider] > div > [sign] > span {
   font-size: 12px;
   font-weight: 700;
   line-height: 28px;
 }
 
-[slider]:hover > div > [sign] {
+#productSideBarWrap [slider]:hover > div > [sign] {
   opacity: 1;
 }
 /* ↑ 슬라이더 오픈소스 CSS */
@@ -245,7 +246,8 @@ div[slider] > input[type=range]::-ms-tooltip {
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
               data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
               aria-controls="panelsStayOpen-collapseOne">
-              브랜드 PDT_MANUFAC
+              브랜드
+              ${pdtManufac}
             </button>
           </h2>
           <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"

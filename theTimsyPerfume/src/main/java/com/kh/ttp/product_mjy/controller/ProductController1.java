@@ -48,12 +48,15 @@ public class ProductController1 {
 	
 	// 향수 전체조회
 	@GetMapping("selectPerfumePdtList.pr")
-	public void selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-									 @RequestParam(value="sort", defaultValue="New") String sort,
+	public String selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
+									 @RequestParam(value="sort", defaultValue="") String sort,
 									 ModelAndView mv) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
+		// {$sort}돌려줘야
+		
 		System.out.println(productService.selectPerfumePdtList(sort, pi));
+		return "product/productList";
 	}
 	
 	
@@ -66,14 +69,14 @@ public class ProductController1 {
 	
 	// 주류전체조회
 	@GetMapping("selectAlcoholPdtList.pr")
-	public void selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-									 //@RequestParam(value="sort", defaultValue="New") String sort,
-			String sort,
-									 ModelAndView mv) {
+	public String selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
+									   String sort,
+									   ModelAndView mv) {
 		System.out.println(sort);
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		System.out.println(productService.selectAlcoholPdtList(sort, pi));
+		return "product/productList";
 	}
 	
 	// 주류 디테일조회
