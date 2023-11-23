@@ -39,7 +39,6 @@ public class UserController {
 	private JavaMailSender sender;
 	
 	
-	
 	@RequestMapping("loginForm.me")
 	public String loginUser() {
 		return "member/LoginForm";
@@ -49,9 +48,9 @@ public class UserController {
 		//로그인 + 중복이메일체크
 		@RequestMapping("login.me")
 		public ModelAndView loginUser(User u,
-										HttpSession session,
-										ModelAndView mv) {
-			
+									HttpSession session,
+									ModelAndView mv) {
+				
 			User loginUser = userService.loginUser(u);
 			//System.out.println(bcrypt.encode(u.getUserPwd()));
 			if(loginUser != null && bcrypt.matches(u.getUserPwd(), loginUser.getUserPwd())) {
@@ -61,8 +60,8 @@ public class UserController {
 				mv.addObject("errorMsg", "로그인 실패ㅠ");
 				mv.setViewName("common/errorPage");
 			}
-			return mv;
-		}
+				return mv;
+			}
 
 	
 		//로그아웃
@@ -94,196 +93,134 @@ public class UserController {
 				return "redirect:/";
 			} else { // 실패 => 에러메세지 담아서 에러페이지로 포워딩
 				model.addAttribute("errorMsg", "회원가입 실패");
-				// /WEB-INF/views/			common/errorPage			.jsp
 				return "common/errorPage";
+			}
 		}
-	}
 		
 	
+		//마이페이지 보내기
+		@RequestMapping("myPageForm.me")
+		public String myPageForm() {
+			return "member/myPage";
+		}	
 	
-	
-	@RequestMapping("myPage.me")
-	public ModelAndView myPage(ModelAndView mv, HttpSession session) {
-		//System.out.println("1");
-		int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
-		//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
-		Receiver rc = userService.selectReceiver(userNo);
 		
-		mv.addObject("rc", rc).setViewName("member/myPage");
-		System.out.println(rc);
-		
-		return mv;
-	} 
+		@RequestMapping("myPage.me")
+		public ModelAndView myPage(ModelAndView mv, HttpSession session) {
+			//System.out.println("1");
+			int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
+			//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
+			Receiver rc = userService.selectReceiver(userNo);
+			//System.out.println(rc);
+			mv.addObject("rc", rc).setViewName("member/myPage");
+			return mv;
+		} 
+	
+	//마이페이지에서 receiver데이터 삭제 추가하는 기능!! 해야됨 ㅁㅊ 이거가능한거임?어케함?ㅠㅠ>>나중에!
 	
 	
-	@RequestMapping("update.me")
-	public String updateMember(User u, Model model, HttpSession session) {
-		
-		if(userService.updateUser(u) > 0) {
+		//유저 정보 업데이트 기능
+		@RequestMapping("update.me")
+		public String updateMember(User u, Model model, HttpSession session) {
 			
-			session.setAttribute("loginUser", userService.loginUser(u));
-
-
-			session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
+			if(userService.updateUser(u) > 0) {
+				session.setAttribute("loginUser", userService.loginUser(u));
+				session.setAttribute("alertMsg", "정보 수정에 성공하였습니다.");
+				return "redirect:myPage.me";
+			} else {
+				model.addAttribute("errorMsg", "정보 수정에 실패했습니다.");
+				return "common/errorPage";
+			}
+		}
+	
+	
+		@RequestMapping("delete.me")
+		public String deleteUser(String userPwd, HttpSession session) {
+			
+			User loginUser = ((User)session.getAttribute("loginUser"));
+			String encPwd = loginUser.getUserPwd();
+			
+			if(bcrypt.matches(userPwd, encPwd)) {
+				String userEmail = loginUser.getUserEmail();
+				
+				if(userService.deleteUser(userEmail) > 0) {
+					session.removeAttribute("loginUser");
+					session.setAttribute("alertMsg", "탈퇴되었습니다.");
+					return "redirect:/";
+				} else {
+					session.setAttribute("errorMsg", "탈퇴 처리 실패되었습니다.");
+					return "common/errorPage";
+				}
+			} else {
+			session.setAttribute("alertMsg", "비밀번호가 틀렸습니다.");
 			return "redirect:myPage.me";
-			
-		} else {
-			model.addAttribute("errorMsg", "정보 수정에 실패했습니다.");
-			return "common/errorPage";
+			}	
+		}
+	
+		
+		
+		
+		//이메일 사용 가능한지 확인(중복 확인)
+		@ResponseBody
+		@RequestMapping("emailCheck.me")
+		public String emailCheck(String checkEmail) {
+			//System.out.println(checkEmail);
+			return userService.emailCheck(checkEmail) > 0 ? "NNNNNNNNNNNNNNN" : "NNNNNNNNNNNNNNY";
 		}
 		
-	}
-	
-	
-	@RequestMapping("delete.me")
-	public String deleteUser(String userPwd, HttpSession session) {
 		
-		User loginUser = ((User)session.getAttribute("loginUser"));
-				
-		String encPwd = loginUser.getUserPwd();
 		
-		if(bcrypt.matches(userPwd, encPwd)) {
-			
-			String userEmail = loginUser.getUserEmail();
-			
-			if(userService.deleteUser(userEmail) > 0) {
-				session.removeAttribute("loginUser");
-				session.setAttribute("alertMsg", "탈퇴되었습니다.");
-				return "redirect:/";
-		} else {
-				session.setAttribute("errorMsg", "탈퇴 처리 실패되었습니다.");
-				return "common/errorPage";
-		}
-
-	} else {
-		session.setAttribute("alertMsg", "비밀번호가 틀렸습니다.");
-		return "redirect:myPage.me";
-	}	
-	}
-
-	
-	
-	
-	//이메일 사용 가능한지 확인(중복 확인)
-	@ResponseBody
-	@RequestMapping("emailCheck.me")
-	public String emailCheck(String checkEmail) {
-		//System.out.println(checkEmail);
-		return userService.emailCheck(checkEmail) > 0 ? "NNNNNNNNNNNNNNN" : "NNNNNNNNNNNNNNY";
-	}
-	
-	
-	
-	//이거 ajax자체에다가 post를 설정해줘야된다고 함 내일와서하기
-	@PostMapping(value="mail", produces="text/html; charset=UTF-8")
-	@ResponseBody
-		public String ajaxMail(String userEmail, HttpServletRequest request) throws MessagingException{ 
-			
-			//System.out.println(userEmail);
-			
-				
-			MimeMessage message = sender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-				
-			String ip = request.getRemoteAddr();
-				
-			Random r = new Random();
-			int i = r.nextInt(100000);
-			Format f = new DecimalFormat("000000");
-			String authCode = f.format(i);
-			
-			AuthVO authVo = AuthVO.builder()
-								.authEmail(ip)
-								.authCode(authCode)
-								.build();
-				
-			
-			
-				helper.setTo(userEmail);
-				helper.setSubject("인증번호 보내드립니다");
-				helper.setText("인증번호 : " + authCode);
-				
-				sender.send(message);
+		//이거 ajax자체에다가 post를 설정해줘야된다고 함 내일와서하기>>완료
+		@PostMapping(value="mail", produces="text/html; charset=UTF-8")
+		@ResponseBody
+			public String ajaxMail(String userEmail, HttpServletRequest request) throws MessagingException{ 
 				
 				//System.out.println(userEmail);
-				//System.out.println(authCode);
 				
-				return Integer.toString(userService.sendMail(authVo));
-		
-	}
-	
-	
-	
-	
-	
-	
-	//가짜 메일...돌아가나 샘플 확인용!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	/*
-	@GetMapping("inputmail")
-	public String inputMail() {
-		return "member/input";
-	}
-	
-	
-	@GetMapping("checkPage")
-	public String checkPage() {
-		return "member/check";
-	}
-	*/
-	
-	
-	/*
-	//메일인증
-	@PostMapping("mail")
-	public String mail(String userEmail, HttpServletRequest request) throws MessagingException{ 
+					
+				MimeMessage message = sender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+					
+				String ip = request.getRemoteAddr();
+					
+				Random r = new Random();
+				int i = r.nextInt(100000);
+				Format f = new DecimalFormat("000000");
+				String authCode = f.format(i);
+				
+				AuthVO authVo = AuthVO.builder()
+									.authEmail(ip)
+									.authCode(authCode)
+									.build();
+					helper.setTo(userEmail);
+					helper.setSubject("인증번호 보내드립니다");
+					helper.setText("인증번호 : " + authCode);
+					
+					sender.send(message);
+					
+					return Integer.toString(userService.sendMail(authVo));
 			
-		//System.out.println(userEmail);
-		
-			
-		MimeMessage message = sender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-			
-		String ip = request.getRemoteAddr();
-			
-		Random r = new Random();
-		int i = r.nextInt(100000);
-		Format f = new DecimalFormat("000000");
-		String authCode = f.format(i);
-		
-		AuthVO authVo = AuthVO.builder()
-							.authEmail(ip)
-							.authCode(authCode)
-							.build();
-			
-		userService.sendMail(authVo);
-		
-			helper.setTo(userEmail);
-			helper.setSubject("인증번호 보내드립니다");
-			helper.setText("인증번호 : " + authCode);
-			
-			sender.send(message);
-			
-			//System.out.println(userEmail);
-			//System.out.println(authCode);
-			
-			return "redirect:checkPage";
-			//return "redirect:/";
-	
 		}
-		*/
+		
+		
+		
+		
+		
+		
 	
-		@ResponseBody
-		@PostMapping(value="check", produces="text/html; charset=UTF-8")
-		public String checkCode(String authCode, HttpServletRequest request) {
-	
-			AuthVO authVo = AuthVO.builder()
-								.authEmail(request.getRemoteAddr())
-								.authCode(authCode)
-								.build();
-			boolean result = userService.validate(authVo);
-			
-			return Boolean.toString(result);
-		}
-	
+		
+			@ResponseBody
+			@PostMapping(value="check", produces="text/html; charset=UTF-8")
+			public String checkCode(String authCode, HttpServletRequest request) {
+		
+				AuthVO authVo = AuthVO.builder()
+									.authEmail(request.getRemoteAddr())
+									.authCode(authCode)
+									.build();
+				boolean result = userService.validate(authVo);
+				
+				return Boolean.toString(result);
+			}
+		
 	
 	}

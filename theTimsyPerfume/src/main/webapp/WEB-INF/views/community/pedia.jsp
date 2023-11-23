@@ -54,6 +54,7 @@
         font-weight: 600;
         color: rgb(255, 255, 255);
         display: inline-block;
+        cursor: pointer;
     }
     .alcohol{background-color: rgb(104, 103, 94);}
     .perfume{background-color: rgb(92, 78, 97);}

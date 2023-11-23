@@ -74,7 +74,7 @@
         background-color: rgb(255, 255, 255);
         color: rgb(223, 190, 106);
     }
-    .board-btn:active{
+    .board-btn:hover{
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
@@ -88,8 +88,8 @@
         ${boardCtgyName } 게시판
     </div>
 <div class="table-wrap">
-    <c:if test="${not empty loginUser}">
         <button id="board-write" class="board-btn">글작성</button>
+    <c:if test="${not empty loginUser}">
     </c:if>
     <table class="table table-hover">
         <thead class="thead-dark">
@@ -128,7 +128,7 @@
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt;</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${pi.currentPage-1 }">&lt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -138,7 +138,7 @@
 					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
         </c:forEach>
@@ -148,7 +148,7 @@
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt;</a></li>
+        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${pi.currentPage+1 }">&gt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>

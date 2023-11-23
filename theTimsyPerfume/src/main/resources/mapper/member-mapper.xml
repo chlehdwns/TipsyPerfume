@@ -5,6 +5,7 @@
 <mapper namespace="userMapper">
 
 	<resultMap id="ReceiverResultSet" type="receiver">
+		<result column="USER_NO" property="userNo" />
 		<result column="RECEIVER_NAME" property="receiverName" />
 		<result column="PHONE" property="phone" />
 		<result column="ADDRESS" property="address" />
@@ -125,10 +126,11 @@
 	
 	<select id="selectReceiver" parameterType="_int" resultMap="ReceiverResultSet">
 	SELECT
-		RECEIVER_NAME ,
-		PHONE ,
-		ADDRESS ,
-		ADDRESS_DETAIL ,
+		
+		RECEIVER_NAME,
+		PHONE,
+		ADDRESS,
+		ADDRESS_DETAIL,
 		POSTAL_CODE 
 	FROM
 		TB_RECEIVER
