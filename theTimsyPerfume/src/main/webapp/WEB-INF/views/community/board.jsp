@@ -88,8 +88,8 @@
         ${boardCtgyName } 게시판
     </div>
 <div class="table-wrap">
-    <c:if test="${not empty loginUser}">
         <button id="board-write" class="board-btn">글작성</button>
+    <c:if test="${not empty loginUser}">
     </c:if>
     <table class="table table-hover">
         <thead class="thead-dark">

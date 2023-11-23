@@ -39,7 +39,7 @@
 		</tr>
 		<tr>
         	<th><label for="upfile">첨부파일</label></th>
-        	<td><input multiple="multiple" type="file" class="uploadImg" class="form-control-file border" name="uploadImg[]" accept="image/gif, image/jpeg, image/png"></td>
+        	<td><input multiple="multiple" type="file" class="uploadImg" class="form-control-file border" name="uploadImg" accept="image/gif, image/jpeg, image/png" onchange="loadImg(this);"></td>
         </tr>
 		<tr>
 			<th><label for="boardContent">내용</label></th>
@@ -73,6 +73,13 @@
             }
         })
     })
+    function loadImg(inputFile){
+        const boardContent = document.getElementById("boardContent");
+        //boardContent.value = boardContent.value.replace(/{img%d}/g, "");
+        for(let i=0;i<inputFile.files.length;i++){
+            boardContent.value+="\n{img"+(i+1)+"}\n";
+        }
+    }
 </script>
 <jsp:include page="../common/footer.jsp"/>
 </body>

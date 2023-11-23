@@ -67,7 +67,12 @@ public class BoardController {
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
-		System.out.println(uploadImg);
+		for(int i=0;i<uploadImg.length;i++) {
+			String imgPath="<img class='img' src='resources/image/community/notice/notice_2023112214245827402.jpg'>";
+			bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
+		}
+		System.out.println(uploadImg.length);
+		
 		if(boardService.insertBoard(bo)>0) {
 			mv.setViewName("redirect:board?boardCtgy="+bo.getBoardCtgyCode());
 		} else {

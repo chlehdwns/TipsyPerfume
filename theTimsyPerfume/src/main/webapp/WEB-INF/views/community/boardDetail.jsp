@@ -80,7 +80,7 @@
         margin: 0 auto;
     }
     .img{
-        width: 100%;
+        max-width: 100%;
     }
     
     .write-area{
