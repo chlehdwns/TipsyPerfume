@@ -58,10 +58,10 @@
      		<div class="row row-cols-3">
 				<c:forEach var="count" begin="1" end="12">
 					<div class="container" class="col pdt-list-container-col" style="position: relative;">
-					<div class="pdt-list-icon-area">
-						<div class="bi bi-suit-heart container pdt-list-heart"></div>
-						<div class="bi bi-cart-plus  container pdt-list-cart"></div>
-					</div>
+						<div class="pdt-list-icon-area">
+							<div class="bi bi-suit-heart container pdt-list-heart"></div>
+							<div class="bi bi-cart-plus  container pdt-list-cart"></div>
+						</div>
 						<div class="row pdt-list-pdtImgSrc"><img src="${pdtList[count].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac">${pdtList[count].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName">${pdtList[count].pdtName}</div>
@@ -76,13 +76,45 @@
 
 	
     <script>
+    	// 온로드 시점에 하트클래스부여
+		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
+		// 채운장바구니 bi bi-cart-plus-fill 안채운장바구니 bi bi-cart-plus
     $pdtImgArea = $('#pdtListOuterRight .pdt-list-pdtImgSrc');
-    $pdtImgArea.mouseenter(e => {
-    	console.log(e.target);
+    $pdtIconArea = $('.pdt-list-icon-area');
+    
+    $($pdtImgArea, %pdtIconArea).on({
+    	mouseenter : () => {
+            console.log('Mouse entered');
+    		
+    	},
+    	mouseleave : () => {
+            console.log('Mouse left');
+    		
+    	}
+    });
+    
+    $($pdtImgArea, $pdtIconArea).on({
+        mouseenter: function () {
+        },
+        mouseleave: function () {
+        }
+    });
+
+    /*
+    $($pdtImgArea, $pdtIconArea).on('hover', () => {
+    	console.log('ddddddddddddddd');
+    }, () => {})*/
+    /*
+    $pdtImgArea.mouseenter(() => {
+	   	$('.pdt-list-icon-area').css('display', 'block');
     	
     });
-	// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
-	// bi bi-cart-plus-fill
+    
+    $pdtImgArea.mouseout(() => {
+		$('.pdt-list-icon-area').css('display', 'none');
+    	
+    });*/
+    	
     </script>
     
     

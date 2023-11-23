@@ -75,10 +75,10 @@
 #pdtListOuterRight .pdt-list-icon-area{
 	width:80%;
 	left:10%;
-	z-index: 3;
 	top: 22.5%;
 	position:absolute;
 	font-size: 80px;
+	display: none;
 }
 #pdtListOuterRight .pdt-list-icon-area div{
 	width:35%;
@@ -91,6 +91,7 @@
 
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
+
 }
 
 #pdtListOuterRight .bi.pdt-list-cart:hover,
