@@ -80,23 +80,23 @@
 #productMainWrap .swiper-slide div:hover {cursor: pointer;}
 
 /* 화살표 버튼색 변경 (기본색은 파란색) */
-#productMainWrap div[class^=swiper-button] {
+/* #productMainWrap div[class^=swiper-button] {
     color : black;
-    display : block; /* 아니면 안보이게 숨기기도 가능 */
+    display : block; 아니면 안보이게 숨기기도 가능
 }
 #productMainWrap .swiper-pagination{
     display: block;
 }
 #productMainWrap .swiper-scrollbar{
     display: none;
-}
+} */
 
-/* 화살표 페이지네이션 위치
-#productMainWrap .swiper-button-prev{ left : 101%; }
+/* 화살표 페이지네이션 위치 */
+/* #productMainWrap .swiper-button-prev{ left : 101%; }
 #productMainWrap .swiper-button-next{ left : 196%; }
-#productMainWrap .swiper-pagination{ left : 100%; bottom: 0px; }
- */
-.swiper-button-prev,
+#productMainWrap .swiper-pagination{ left : 100%; bottom: 0px; } */
+ 
+/* .swiper-button-prev,
 .swiper-button-next {
   top: 50%;
 }
@@ -109,7 +109,7 @@
 .swiper-button-next {
   right: 10px;
   transform: translateY(-50%);
-}
+} */
 
  
  

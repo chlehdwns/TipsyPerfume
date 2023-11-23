@@ -93,13 +93,6 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -143,13 +136,6 @@
 				              <div class="productBlockText4">${product.pdtIntro}</div>
 				                </div>
 				            </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 				        </div>
 				    </div>
 				</div>
@@ -193,13 +179,6 @@
 			                        <div class="productBlockText4">${product.pdtIntro}</div>
 	                            </div>
 	                        </c:forEach>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
 	                    </div>
 	                </div>
 	            </div>
@@ -363,10 +342,6 @@
 	        pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
 	            el: '.swiper-pagination',
 	            clickable: true
-	        },
-	        navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
-	            prevEl: '.swiper-button-prev',
-	            nextEl: '.swiper-button-next'
 	        }
 	    });
 	</script>
