@@ -1,0 +1,64 @@
+#productListWrap div{border: solid 1px black;}
+#pdtListOuterLeft div{border: solid 1px green;}
+#pdtListOuterRight div {border: solid 1px blue;}
+
+
+/* 전체 랩 + 왼(사이드바) 오(콘텐트) 위치&크기 설정*/
+#productListWrap {
+    display: block;
+    width: 1500px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
+    border: solid 1px black;
+}
+#pdtListOuterLeft{
+    width: 230px;
+    float: left;
+    margin-top: 190px;
+}
+#pdtListOuterRight{
+    width: 950px;
+}
+
+/* 타이틀 영역 */
+#pdtListTitleArea{
+    height: 150px;
+    margin-bottom: 40px;
+}
+#pdtListTitleArea .pdt-list-main-title{height: 60%;}
+#pdtListTitleArea .pdt-list-sub-title{height: 40%;}
+
+/* 상품 정보 영역 */
+#pdtListOuterRight .pdt-list-container-col{height: 550px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+    
+}
+#pdtListOuterRight .pdt-list-container-col div{
+	margin: auto;
+	margin-bottom: 5px;
+}
+
+#pdtListOuterRight .pdt-list-pdtImgSrc{height: 50%;}
+#pdtListOuterRight .pdt-list-pdtManufac{height: 10%;}
+#pdtListOuterRight .pdt-list-pdtName{height: 10%;}
+#pdtListOuterRight .pdt-list-reviewAvg{height: 5%;}
+#pdtListOuterRight .pdt-list-pdtIntro{height: 10%;}
+#pdtListOuterRight .pdt-list-pdtDescription{height: 15%;}
+
+#pdtListOuterRight .pdt-list-pdtImgSrc,
+#pdtListOuterRight .pdt-list-pdtManufac,
+#pdtListOuterRight .pdt-list-pdtName,
+#pdtListOuterRight .pdt-list-reviewAvg,
+#pdtListOuterRight .pdt-list-pdtIntro,
+#pdtListOuterRight .pdt-list-pdtDescription {
+    overflow: hidden;
+}
+
+#pdtListOuterRight .row.pdt-list-reviewAvg {
+    margin-right: 20px; /* 리뷰평점 오른쪽 정렬 마진설정 */
+}
+

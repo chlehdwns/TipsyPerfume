@@ -56,7 +56,7 @@ public class ProductController1 {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		// {$sort}돌려줘야
 		
-		System.out.println(productService.selectPerfumePdtList(sort, pi));
+		System.out.println(productService.selectPerfumePdtList(sort, pi).size());
 		m.addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi));
 		return "product/productList";
 	}
