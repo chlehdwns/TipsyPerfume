@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.board.model.vo.BoardVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 public interface BoardService {
 	public int countBoardList(String boardCtgy);

@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.community.board.model.vo.BoardVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 @Repository
 public class BoardDAO {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.board.model.dao.BoardDAO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {

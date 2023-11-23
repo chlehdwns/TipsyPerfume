@@ -1,14 +1,12 @@
 package com.kh.ttp.community.review.model.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.ttp.community.model.vo.CommentVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Repository
@@ -28,18 +26,6 @@ public class ReviewDAO {
 	
 	public ArrayList<String> selectReviewImage(SqlSessionTemplate sqlSession, int reviewNo) {
 		return (ArrayList)sqlSession.selectList("reviewMapper.selectReviewImage", reviewNo);
-	}
-
-	public ArrayList<CommentVO> selectCommentList(SqlSessionTemplate sqlSession, HashMap<String, Integer> map) {
-		return (ArrayList)sqlSession.selectList("reviewMapper.selectCommentList", map);
-	}
-
-	public int increaseCommentIndex(SqlSessionTemplate sqlSession, int commentGroup) {
-		return sqlSession.update("reviewMapper.increaseCommentIndex", commentGroup);
-	}
-	
-	public int insertComment(SqlSessionTemplate sqlSession, CommentVO comment) {
-		return sqlSession.insert("reviewMapper.insertComment", comment);
 	}
 
 	public String selectRecommend(SqlSessionTemplate sqlSession, RecommendVO rc) {
