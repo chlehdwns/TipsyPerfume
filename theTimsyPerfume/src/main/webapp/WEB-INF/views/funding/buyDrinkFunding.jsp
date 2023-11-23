@@ -107,6 +107,7 @@
 			
 			<div class="product-info">
 			<form method="post" action="funding.fd">
+			<input type="hidden" name="phone" value="${loginUser.phone }"/>
 			<input type="hidden" name="pdtNo" value="${pdtNo }"/>
 			<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
 				가격 : <input class="order-info" type="text" name="pdtPrice" value="${pdtPrice}  " readonly>
