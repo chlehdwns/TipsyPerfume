@@ -71,8 +71,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	@Transactional
 	public int insertBoard(BoardVO bo, ArrayList<BoardFileVO> fileList) {
-		boardDao.insertBoard(sqlSession, bo);
-		return boardDao.insertBoardFile(sqlSession, fileList);
+		int result1 = boardDao.insertBoard(sqlSession, bo);
+		int result2 = 1;
+		if(!fileList.isEmpty()) {
+			result2 = boardDao.insertBoardFile(sqlSession, fileList);
+		}
+		return result1 * result2;
 	}
 
 	@Override

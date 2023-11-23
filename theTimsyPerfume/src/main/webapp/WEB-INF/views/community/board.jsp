@@ -32,11 +32,14 @@
     }
     .table td{
         vertical-align: middle;
-        border-color: rgb(160, 160, 160);
+        border-color: rgb(214, 214, 214);
         border-bottom: 1px solid;
     }
-    tbody tr{
+    tbody>tr{
     	cursor: pointer;
+    }
+    tbody>tr>td:not(:nth-child(2n)){
+        background-color: rgb(240, 240, 240);
     }
 
     .board-no{
@@ -88,8 +91,8 @@
         ${boardCtgyName } 게시판
     </div>
 <div class="table-wrap">
-        <button id="board-write" class="board-btn">글작성</button>
     <c:if test="${not empty loginUser}">
+        <button id="board-write" class="board-btn">글작성</button>
     </c:if>
     <table class="table table-hover">
         <thead class="thead-dark">
