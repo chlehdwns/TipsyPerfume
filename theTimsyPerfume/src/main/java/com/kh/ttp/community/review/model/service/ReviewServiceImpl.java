@@ -1,17 +1,14 @@
 package com.kh.ttp.community.review.model.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
-import com.kh.ttp.community.model.vo.CommentVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.dao.ReviewDAO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
@@ -42,16 +39,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public ArrayList<String> selectReviewImage(int reviewNo) {
 		return reviewDao.selectReviewImage(sqlSession, reviewNo);
 	}
-	@Override
-	public ArrayList<CommentVO> selectCommentList(HashMap<String, Integer> map) {
-		return reviewDao.selectCommentList(sqlSession, map);
-	}
-	@Override
-	@Transactional
-	public int insertComment(CommentVO comment) {
-		reviewDao.increaseCommentIndex(sqlSession, comment.getCommentGroup());
-		return reviewDao.insertComment(sqlSession, comment);
-	}
+	
 	@Override
 	public String selectRecommend(RecommendVO rc) {
 		return reviewDao.selectRecommend(sqlSession, rc);

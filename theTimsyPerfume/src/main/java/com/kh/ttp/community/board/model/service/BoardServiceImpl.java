@@ -6,11 +6,13 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.board.model.dao.BoardDAO;
+import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -67,8 +69,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int insertBoard(BoardVO bo) {
-		return boardDao.insertBoard(sqlSession, bo);
+	@Transactional
+	public int insertBoard(BoardVO bo, ArrayList<BoardFileVO> fileList) {
+		boardDao.insertBoard(sqlSession, bo);
+		return boardDao.insertBoardFile(sqlSession, fileList);
 	}
 
 	@Override
