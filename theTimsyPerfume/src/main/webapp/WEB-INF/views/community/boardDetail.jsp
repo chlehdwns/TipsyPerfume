@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Tipsy Perfume - 보드 페이지</title>
+<title>${board.boardTitle } - Tipsy Perfume</title>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -127,20 +127,36 @@
         align-items: center;
     }
     .like-btn{cursor: pointer;}
+    .board-btn{
+    	font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .board-btn:active{
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
+    }
 </style>
 <section>
 <input id="board-no" type="hidden" value="${board.boardNo}">
 <div id="board-wrap">
     <div id="content-title">
         ${board.boardTitle }
+        <c:if test="${loginUser.userNo eq board.boardWriterNo}">
+            <button class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
+            <button class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
+        </c:if>
     </div>
     <table class="table">
         <tr class="title-head">
-            <td>분류 <span class="top-text">안주</span></td>
+            <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
             <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
             <td>작성일 <span class="top-text">${board.boardCreateDate }</span></td>
             <td>조회수 <span class="top-text">${board.boardCount }</span></td>
-            <td>추천수 <span class="top-text">51</span></td>
+            <td>추천수 <span id="title-like" class="top-text">51</span></td>
         </tr>
     </table>
     <div class="board-content-wrap">
@@ -180,7 +196,7 @@ ${board.boardContent }
             <c:choose>
             <c:when test="${empty loginUser }">
                 <textarea class="comment-textarea" name="" readonly>로그인 후 작성해 주세요</textarea>
-                <button class="disabled-btn" type="button" onclick="location.href='loginForm.me'">로그인</button>
+                <button class="disabled-btn" type="button" onclick="alert('로그인후 사용이 가능합니다')">입력</button>
             </c:when>
             <c:otherwise>
                 <textarea class="comment-textarea" name=""></textarea>
@@ -275,6 +291,7 @@ ${board.boardContent }
     			contentNo:$("#board-no").val()
     		},
     		success:(result)=>{
+    			$("#title-like").text(result.likeCount);
     			$("#like-count").text(result.likeCount);
     			$("#dislike-count").text(result.dislikeCount);
     		},
@@ -292,7 +309,6 @@ ${board.boardContent }
                 boardNo:$("#board-no").val()
             },
             success:(result)=>{
-            	console.log(result);
                 const $commentWrap = $("#board-comment-wrap");
                 let value="";
                 for(let i in result){
@@ -315,7 +331,7 @@ ${board.boardContent }
                                 +"<div class='write-area'>"
                         if("${loginUser.userNo}"==""){
                         	value+=  "<textarea class='comment-textarea' readonly>로그인 후 작성해 주세요</textarea>"
-                            		+"<button class='disabled-btn' type='button'  onclick=\"location.href='loginForm.me'\">로그인</button>";
+                            		+"<button class='disabled-btn' type='button'  onclick=\"alert('로그인후 사용이 가능합니다')\">입력</button>";
                         }
                         else{
                         	value+=  "<textarea class='comment-textarea'></textarea>"

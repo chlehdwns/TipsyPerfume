@@ -4,14 +4,17 @@
 
 <resultMap type="board" id="boardResultSet">
 	<result column="BOARD_NO" property="boardNo"/>
+	<result column="USER_NO" property="boardWriterNo"/>
 	<result column="NICKNAME" property="boardWriter"/>
 	<result column="BOARD_TITLE" property="boardTitle"/>
 	<result column="BOARD_CONTENT" property="boardContent"/>
-	<result column="BOARD_CREATE_DATE" property="boardCreateDate"/>
-	<result column="BOARD_MODIFY_DATE" property="boardModifyDate"/>
+	<result column="CREATE_DATE" property="boardCreateDate"/>
+	<result column="MODIFY_DATE" property="boardModifyDate"/>
 	<result column="BOARD_CTGY_CODE" property="boardCtgyCode"/>
+	<result column="BOARD_CTGY_NAME" property="boardCtgyName"/>
 	<result column="BOARD_STATE" property="boardState"/>
 	<result column="BOARD_COUNT" property="boardCount"/>
+	<result column="COMMENT_COUNT" property="commentCount"/>
 </resultMap>
 
 <select id="countBoardList" parameterType="string" resultType="_int">
@@ -28,17 +31,25 @@ SELECT
     BOARD_NO,
     NICKNAME,
     BOARD_TITLE,
-    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd') "BOARD_CREATE_DATE",
-    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
+    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd') "CREATE_DATE",
+    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "MODIFY_DATE",
     BOARD_CTGY_CODE,
     BOARD_STATE,
-    BOARD_COUNT
+    TO_CHAR(BOARD_COUNT,'FM999,999,999') "BOARD_COUNT",
+    TO_CHAR(COMMENT_COUNT,'FM999,999,999') "COMMENT_COUNT"
 FROM TB_BOARD
 JOIN TB_USER USING(USER_NO)
+LEFT JOIN (
+    SELECT
+        BOARD_NO,COUNT(*) "COMMENT_COUNT"
+    FROM TB_COMMENT
+    GROUP BY BOARD_NO
+    HAVING BOARD_NO IS NOT NULL) USING(BOARD_NO)
 WHERE
     BOARD_STATE='Y'
 AND
     BOARD_CTGY_CODE=#{boardCtgy}
+ORDER BY BOARD_CREATE_DATE DESC
 </select>
 <update id="increaseBoardCount" parameterType="_int">
 UPDATE TB_BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_NO=#{boardNo}
@@ -46,35 +57,23 @@ UPDATE TB_BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_NO=#{boardNo}
 <select id="selectBoard" parameterType="_int" resultMap="boardResultSet">
 SELECT
     BOARD_NO,
+    USER_NO,
     NICKNAME,
     BOARD_TITLE,
     BOARD_CONTENT,
-    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd HH24:mm') "BOARD_CREATE_DATE",
-    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "BOARD_MODIFY_DATE",
+    TO_CHAR(BOARD_CREATE_DATE,'YYYY-MM-dd HH24:mm') "CREATE_DATE",
+    TO_CHAR(BOARD_MODIFY_DATE,'YYYY-MM-dd') "MODIFY_DATE",
     BOARD_CTGY_CODE,
-    BOARD_COUNT
+    BOARD_CTGY_NAME,
+    TO_CHAR(BOARD_COUNT,'FM999,999,999') "BOARD_COUNT"
 FROM TB_BOARD
 JOIN TB_USER USING(USER_NO)
+JOIN TB_BOARD_CTGY USING(BOARD_CTGY_CODE)
 WHERE
     BOARD_STATE='Y'
 AND
     BOARD_NO=#{boardNo}
 </select>
-<insert id="insertBoard">
-INSERT INTO TB_BOARD(
-    BOARD_NO,
-    USER_NO,
-    BOARD_TITLE,
-    BOARD_CONTENT,
-    BOARD_CTGY_CODE
-) VALUES (
-    SEQ_BOARD.NEXTVAL,
-    1,
-    '맥주 안주로 뭐가 좋을까?',
-    '맥주 안주로 좋은 것은 육포나 생선포, 비타민이 듬뿍 든 신선한 과일과 채소가 적당하다. 육포는 고단백이라 알코올 흡수를 지연시킨다. 오징어는 몸에 좋은 콜레스테롤이 많으며, 간 해독 성분인 타우린이 많아 맥주 안주로 적당하다. 양주의 가장 좋은 안주는 ''물''이다.',
-    'RECIP'
-);
-</insert>
 
 <select id="selectRecommend" parameterType="recommend" resultType="string">
 SELECT
@@ -113,4 +112,42 @@ FROM TB_BOARD_LIKE
 WHERE
     BOARD_NO = #{contentNo}
 </select>
+<select id="selectCtgyName" parameterType="string" resultType="string">
+SELECT
+	BOARD_CTGY_NAME
+FROM
+	TB_BOARD_CTGY
+WHERE
+	BOARD_CTGY_CODE=#{boardCtgy}
+</select>
+
+<insert id="insertBoard" parameterType="board">
+INSERT INTO TB_BOARD(
+    BOARD_NO,
+    USER_NO,
+    BOARD_TITLE,
+    BOARD_CONTENT,
+    BOARD_CTGY_CODE
+) VALUES (
+    SEQ_BOARD.NEXTVAL,
+    #{boardWriterNo},
+    #{boardTitle},
+    #{boardContent},
+    #{boardCtgyCode}
+)
+</insert>
+<update id="updateBoard" parameterType="board">
+UPDATE TB_BOARD
+SET
+	BOARD_TITLE=#{boardTitle},
+    BOARD_CONTENT=#{boardContent},
+    BOARD_MODIFY_DATE=SYSDATE
+WHERE
+    BOARD_STATE='Y'
+AND
+	BOARD_NO=#{boardNo}
+</update>
+<update id="deleteBoard" parameterType="_int">
+UPDATE TB_BOARD SET BOARD_STATE='N' WHERE BOARD_NO=#{boardNo}
+</update>
 </mapper>

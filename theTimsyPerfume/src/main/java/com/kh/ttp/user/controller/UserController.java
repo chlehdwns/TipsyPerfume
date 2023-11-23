@@ -109,8 +109,8 @@ public class UserController {
 		//서비스에서 넘버를 주고 거기서 리시버를 셀렉트 
 		Receiver rc = userService.selectReceiver(userNo);
 		
-		mv.addObject("rc", rc).
-		setViewName("member/myPage");
+		mv.addObject("rc", rc).setViewName("member/myPage");
+		System.out.println(rc);
 		
 		return mv;
 	} 
@@ -164,7 +164,7 @@ public class UserController {
 	
 	
 	
-	
+	//이메일 사용 가능한지 확인(중복 확인)
 	@ResponseBody
 	@RequestMapping("emailCheck.me")
 	public String emailCheck(String checkEmail) {
@@ -173,8 +173,52 @@ public class UserController {
 	}
 	
 	
-	//메일!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
+	//이거 ajax자체에다가 post를 설정해줘야된다고 함 내일와서하기
+	@PostMapping(value="mail", produces="text/html; charset=UTF-8")
+	@ResponseBody
+		public String ajaxMail(String userEmail, HttpServletRequest request) throws MessagingException{ 
+			
+			//System.out.println(userEmail);
+			
+				
+			MimeMessage message = sender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+				
+			String ip = request.getRemoteAddr();
+				
+			Random r = new Random();
+			int i = r.nextInt(100000);
+			Format f = new DecimalFormat("000000");
+			String authCode = f.format(i);
+			
+			AuthVO authVo = AuthVO.builder()
+								.authEmail(ip)
+								.authCode(authCode)
+								.build();
+				
+			
+			
+				helper.setTo(userEmail);
+				helper.setSubject("인증번호 보내드립니다");
+				helper.setText("인증번호 : " + authCode);
+				
+				sender.send(message);
+				
+				//System.out.println(userEmail);
+				//System.out.println(authCode);
+				
+				return Integer.toString(userService.sendMail(authVo));
+		
+	}
+	
+	
+	
+	
+	
+	
+	//가짜 메일...돌아가나 샘플 확인용!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	/*
 	@GetMapping("inputmail")
 	public String inputMail() {
 		return "member/input";
@@ -185,15 +229,16 @@ public class UserController {
 	public String checkPage() {
 		return "member/check";
 	}
+	*/
 	
 	
-	
-	
+	/*
 	//메일인증
 	@PostMapping("mail")
-	public String mail(String userEmail , HttpServletRequest request ) throws MessagingException{ 
+	public String mail(String userEmail, HttpServletRequest request) throws MessagingException{ 
 			
-			System.out.println(userEmail);
+		//System.out.println(userEmail);
+		
 			
 		MimeMessage message = sender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
@@ -204,45 +249,41 @@ public class UserController {
 		int i = r.nextInt(100000);
 		Format f = new DecimalFormat("000000");
 		String authCode = f.format(i);
-			
+		
 		AuthVO authVo = AuthVO.builder()
 							.authEmail(ip)
 							.authCode(authCode)
 							.build();
 			
 		userService.sendMail(authVo);
-			
+		
 			helper.setTo(userEmail);
 			helper.setSubject("인증번호 보내드립니다");
 			helper.setText("인증번호 : " + authCode);
 			
 			sender.send(message);
 			
+			//System.out.println(userEmail);
+			//System.out.println(authCode);
+			
 			return "redirect:checkPage";
+			//return "redirect:/";
 	
 		}
+		*/
 	
 		@ResponseBody
-		@PostMapping("check")
+		@PostMapping(value="check", produces="text/html; charset=UTF-8")
 		public String checkCode(String authCode, HttpServletRequest request) {
 	
-			AuthVO certVo = AuthVO.builder()
+			AuthVO authVo = AuthVO.builder()
 								.authEmail(request.getRemoteAddr())
 								.authCode(authCode)
 								.build();
-			boolean result = userService.validate(certVo);
+			boolean result = userService.validate(authVo);
 			
-			return "result : " + result;
+			return Boolean.toString(result);
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	}

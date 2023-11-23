@@ -31,7 +31,6 @@ public class AjaxReviewController {
 		map.put("boardNo",boardNo);
 		map.put("reviewNo",reviewNo);
 		map.put("commentGroup",commentGroup);
-		System.out.println(map);
 		ArrayList<CommentVO> list = reviewService.selectCommentList(map);
 		
 		return new Gson().toJson(list);
@@ -39,6 +38,8 @@ public class AjaxReviewController {
 	@PostMapping(value = "insertComment", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String ajaxInsertComment(CommentVO comment) {
+		comment.setCommentContent(comment.getCommentContent().replace("<", "&lt;"));
+		comment.setCommentContent(comment.getCommentContent().replace(">", "&gt;"));
 		return Integer.toString(reviewService.insertComment(comment));
 	}
 	

@@ -18,6 +18,8 @@ public interface ProductService {
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
 
 	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	
+	int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
 
 	public ArrayList<FundingSelectVO> selectNewFundingList();
 
@@ -34,6 +36,10 @@ public interface ProductService {
 	public ArrayList<FundingSelectVO> hotDrinkFundingList(PageInfo pi);
 
 	public FundingSelectVO selectDrinkFundingList(int pdtNo);
+
+	public int deleteDrinkFunding(int pdtNo);
+
+	
 
 
 

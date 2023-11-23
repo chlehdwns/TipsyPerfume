@@ -30,13 +30,16 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-
+	
+	
+	
+	
 	
 	
 	
 	@RequestMapping("insertDrink.fun")
 	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond) {
-		System.out.println(upfile);
+		//System.out.println(upfile);
 		//System.out.println(pdtName);
 		//System.out.println(pdtIntro);
 		//System.out.println(pdtDescription);
@@ -88,6 +91,64 @@ public class ProductController {
 		
 		
 	}
+	@RequestMapping("updateDrink.fun")
+	public String updateDrinkFunding(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond,int pdtNo) {
+		//System.out.println(pdtNo);
+		//System.out.println(upfile);
+		//System.out.println(pdtName);
+		//System.out.println(pdtIntro);
+		//System.out.println(pdtDescription);
+		//System.out.println(pdtShipping);
+		//System.out.println(cuttingPrice);
+		//System.out.println(pdtPrice);
+		//System.out.println(cuttingDate);
+		//System.out.println(pdtManufac);
+		//System.out.println(pdtGroup);
+		//System.out.println(pdtIngredient);
+		ProductVO p = new ProductVO();
+		p.setPdtNo(pdtNo);
+		p.setPdtName(pdtName);
+		p.setPdtIntro(pdtIntro);
+		p.setPdtDescription(pdtDescription);
+		p.setPdtShipping(pdtShipping);
+		p.setPdtPrice(pdtPrice);
+		p.setPdtIngredient(pdtIngredient);
+		p.setPdtStock(pdtStock);
+		ProductCategory pc = new ProductCategory();
+		
+		pc.setPdtManufac(pdtManufac);
+		pc.setPdtGroup(pdtGroup);
+		
+		
+		ProductFile pf = new ProductFile();
+		
+		
+		
+		ProductOption po = new ProductOption();
+		po.setPdtOptionFirst(pdtOptionFirst);
+		po.setPdtOptionSecond(pdtOptionSecond);
+		po.setPdtNo(pdtNo);
+		
+		Funding f = new Funding();
+		f.setCuttingDate(cuttingDate);
+		f.setCuttingPrice(cuttingPrice);
+		f.setPdtNo(pdtNo);
+		
+		if(!upfile.getOriginalFilename().equals("")) {
+			pf.setPdtFileOrigin(upfile.getOriginalFilename());
+			pf.setPdtFileUpload(saveFile(upfile,session));
+			pf.setPdtNo(pdtNo);
+		}
+		if(productService.updateDrinkFunding(p,pf,po,f,pc)>0) {
+			session.setAttribute("alertMsg", "펀딩 상품 업데이트 완료.");
+			return "redirect:funding.list";
+		} else {
+			return "common/errorPage";
+		}
+		
+		
+		
+	}
 	private String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
 		
@@ -131,22 +192,48 @@ public class ProductController {
 	}
 	@RequestMapping("detail.fList")
 	public String newDrinkFundingDetail(@RequestParam(value="pno") int pdtNo,Model model) {
-		System.out.println(pdtNo);
+		
+		
 		if(productService.increaseCount(pdtNo) > 0) {
-		model.addAttribute("fundingDetailList",productService.newDrinkFundingDetail(pdtNo));
-		model.addAttribute("pno",pdtNo);
-		return "funding/newDrinkFundingDetail";
+			FundingSelectVO ps= productService.newDrinkFundingDetail(pdtNo);
+			java.util.Date d = ps.getCuttingDate();
+			//System.out.println("date : "+d);
+			//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
+			//compareTo로 ps.cuttingDate(마감날짜) 와 new Date(현재날짜) 를 비교해서 마감 날짜가 현재 날짜보다 크면 true로 반환 작으면 false 
+			model.addAttribute("cutting",(d.compareTo(new java.util.Date())>=0));
+			model.addAttribute("fundingDetailList", ps);
+			model.addAttribute("pno",pdtNo);
+			return "funding/newDrinkFundingDetail";
 		}else {
-			return "common/errorPage";
-		}
+				return "common/errorPage";
+			}
 		
 	}
 	@RequestMapping("updateForm.fd")
 	public String updateFormPage(@RequestParam(value="pno") int pdtNo,Model model) {
-		System.out.println(pdtNo);
+		
 		model.addAttribute("fdi",productService.selectDrinkFundingList(pdtNo));
 		model.addAttribute("pdtNo",pdtNo);
 		return "funding/updateDrinkFunding";
+	}
+	@RequestMapping("delete.fd")
+	public String deleteDrinkFunding(@RequestParam(value="pno") int pdtNo,Model model,HttpSession session) {
+			if(productService.deleteDrinkFunding(pdtNo)>0) {
+				session.setAttribute("alertMsg", "삭제 성공");
+				return "redirect:funding.list";
+			}
+				return "common/errorPage";
+	}
+	@RequestMapping("purchase.fd")
+	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtPrice,String pdtShipping,String pdtFileUpload) {
+		model.addAttribute("pdtNo", pno);
+		model.addAttribute("pdtName",pdtName);
+		model.addAttribute("pdtPrice",pdtPrice);
+		model.addAttribute("pdtShipping",pdtShipping);
+		model.addAttribute("pdtFileUpload",pdtFileUpload);
+		
+		return "funding/buyDrinkFunding";
+		
 	}
 	
 	

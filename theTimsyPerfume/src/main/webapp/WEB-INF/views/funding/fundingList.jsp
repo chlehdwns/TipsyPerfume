@@ -91,6 +91,12 @@
 <body>
 	<jsp:include page="../common/header.jsp" />
 	<h1 class="drinkFunding-title">주류 펀딩</h1>
+	<c:if test="${not empty alertMsg }">
+		<script>
+			alertify.alert('축하축하~~~', '${alertMsg}',function(){alertify.success('이용')});
+		</script>
+		<c:remove var="alertMsg" scope="session"/>
+	</c:if>
 	
 	<div id="outer">
 	<!-- 판매자만 술 펀딩 제품 등록하기 태그가 보이게 한다 -->

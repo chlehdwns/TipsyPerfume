@@ -65,6 +65,20 @@ public class ProductDao {
 		
 		return sqlSession.selectOne("productMapper.selectDrinkFundingList",pdtNo);
 	}
+
+	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductVO p) {
+		return  ( sqlSession.update("productMapper.updateDrinkFundingP",p));
+		
+	}
+
+	public int selectPdtNo(SqlSessionTemplate sqlSession, ProductVO p) {
+		return sqlSession.selectOne("productMapper.selectPdtNo",p);
+		 
+	}
+
+	public int deleteDrinkFunding(SqlSessionTemplate sqlSession, int pdtNo) {
+		return sqlSession.update("productMapper.deleteDrinkFunding",pdtNo);
+	}
 	
 
 }

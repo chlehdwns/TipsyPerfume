@@ -128,7 +128,7 @@
 						
 							<th><label for="phone">전화번호 : </label></th>
 						
-							<td><input type="text" class="form-control"  value="${ sessionScope.loginUser.phone }" name="phone" ></td>
+							<td><input type="text" class="form-control"   name="phone" ></td>
 						</tr>
 						
 						
@@ -143,13 +143,13 @@
 						
 						
 						<tr>
-							<th><input type="text" class="form-control"  value="${ sessionScope.loginUser.postalCode }" name="postalCode" ></th>
+							<th><input type="text" class="form-control"   name="postalCode" ></th>
 							<td><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="form-control"></td>
 						</tr>
 						
 						<tr>
-							<th><input type="text" class="form-control" value="${ sessionScope.loginUser.address }" name="address" ><br></th>
-							<th><input type="text" class="form-control" value="${ sessionScope.loginUser.addressDetail }" name="addressDetail" ><br></th>
+							<th><input type="text" class="form-control"  name="address" ><br></th>
+							<th><input type="text" class="form-control"  name="addressDetail" ><br></th>
 						</tr>
 						
 					</table>

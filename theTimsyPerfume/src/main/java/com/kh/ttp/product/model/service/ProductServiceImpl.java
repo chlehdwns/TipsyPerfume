@@ -65,6 +65,24 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
+	@Override
+	public int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
+		if(productDao.updateDrinkFunding(sqlSession,p)>0) {
+			int categNo = productDao.selectPdtNo(sqlSession,p);
+			//System.out.println(categNo);
+			pc.setPdtCategNo(categNo);
+			productCategoryDao.updateDrinkFunding(sqlSession,pc);
+			productOptionDao.updateDrinkFundingPO(sqlSession,po);
+			fundingDao.updateDrinkFundingF(sqlSession,f);
+			productFileDao.updateDrinkFundingPF(sqlSession,pf);
+			
+		}else {
+			
+		}
+		return 1;
+		
+		
+	}
 
 	@Override
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey) {
@@ -117,6 +135,12 @@ public class ProductServiceImpl implements ProductService {
 	public FundingSelectVO selectDrinkFundingList(int pdtNo) {
 		return productDao.selectDrinkFundingList(sqlSession,pdtNo);
 	}
+	@Override
+	public int deleteDrinkFunding(int pdtNo) {
+		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
+	}
+
+	
 
 	
 

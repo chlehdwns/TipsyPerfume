@@ -97,7 +97,29 @@
 				<h6 class="product-dinfo">마감 날짜 : ${fundingDetailList.cuttingDate }</h6>
 				<form id="fundingForm" method="post" action="purchase.fd">
 					<input type="hidden" name="pno" value="${pno }">
-					<button type="submit">예약구매</button>
+					<input type="hidden" name="pdtName" value="${fundingDetailList.pdtName }">
+					<input type="hidden" name="pdtPrice" value=" ${fundingDetailList.pdtPrice }">
+					<input type="hidden" name="pdtShipping" value="${fundingDetailList.pdtShipping }">
+					<input type="hidden" name="pdtFileUpload" value="${fundingDetailList.pdtFileUpload }">
+					
+					
+						
+							<c:choose>
+								
+									<c:when test="${cutting eq true}">
+										
+											<button type="submit">예약구매</button>
+										
+									</c:when>
+								
+								<c:otherwise>
+									<button type="button" disabled>마감</button>
+								</c:otherwise>
+							</c:choose>
+					
+						
+						
+					
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>
 				

@@ -11,7 +11,7 @@
 	<h1>이메일을 입력해주세요. </h1>
 
 	<form action="mail" method="POST">
-		<input type="text" name="authEmail">
+		<input type="text" name="userEmail">
 		<input type="submit" value="인증번호받기">
 	
 	</form>

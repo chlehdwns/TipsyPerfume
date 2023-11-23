@@ -33,13 +33,12 @@ public class UserDao {
 		return sqlSession.selectOne("userMapper.emailCheck", checkEmail);
 	}
 
-	public void insertSecret(SqlSessionTemplate sqlSession, AuthVO authVo) {
-		sqlSession.insert("userMapper.insertSecret", authVo);
+	public int insertSecret(SqlSessionTemplate sqlSession, AuthVO authVo) {
+		return sqlSession.insert("userMapper.insertSecret", authVo);
 		
 	}
 
 	public Receiver selectReceiver(SqlSessionTemplate sqlSession, int userNo) {
-		//System.out.println(userNo);
 		return sqlSession.selectOne("userMapper.selectReceiver", userNo);
 	}
 
@@ -58,10 +57,12 @@ public class UserDao {
 		return result != null;
 	}
 
-	public void deleteCert(SqlSessionTemplate sqlSession, AuthVO authVo) {
-		sqlSession.delete("userMapper.deleteCert", authVo);
+	public void deleteAuth(SqlSessionTemplate sqlSession, AuthVO authVo) {
+		sqlSession.delete("userMapper.deleteAuth", authVo);
 		
 	}
+
+	
 
 	
 

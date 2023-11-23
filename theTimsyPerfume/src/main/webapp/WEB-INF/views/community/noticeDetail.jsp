@@ -68,6 +68,7 @@
 	<a href="noticeRestart?noticeNo=${notice.noticeNo }">공지 재시작하기</a>
 </c:otherwise>
 </c:choose>
+	<a href="noticeUpdate?noticeNo=${notice.noticeNo }">공지 수정하기</a>
 </c:if>
     <div id="content-title">
         공지사항
