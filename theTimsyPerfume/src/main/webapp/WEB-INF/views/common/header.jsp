@@ -207,7 +207,9 @@
     display: inline-block;
     margin: 0px;
     font-size: 22px;
+    font-weight: 600;
     line-height: 60px;
+    color: rgb(124 94 69);
 }
 #header-bar-toolbar{
 	width: 200px;
