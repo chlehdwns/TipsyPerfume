@@ -91,7 +91,7 @@
 		<tr>
 			<th><label>제품</label></th>
 			<td></td>
-			<td><input type="hidden" id="reviewScore" name="pdtNo" value="1"></td>
+			<td><input type="hidden" id="pdtNo" name="pdtNo" value="1"></td>
 		</tr>
         <tr>
 			<th><label>별점</label></th>
@@ -162,6 +162,7 @@
     function setScore(score){
         const scoreImg=document.getElementsByClassName("score")[0];
         $("#reviewScore").val(score);
+        console.log($("#reviewScore").val());
         scoreImg.style.width=score+"0%";
     }
 </script>

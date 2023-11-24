@@ -70,12 +70,14 @@
 		background-image: url("resources/image/common/star-bg.svg");
         background-repeat: repeat-x;
         background-position: 0px 0px;
+        background-size: auto 100%;
 	}
     .score{
         height: 100%;
         background-image: url("resources/image/common/star.svg");
         background-repeat: repeat-x;
         background-position: 0px 0px;
+        background-size: auto 100%;
     }
     .preview-wrap{
         height: 50px;
