@@ -2515,8 +2515,8 @@ SEQ_NOTICE.NEXTVAL,
 
 
 자세한 사항은 하기의 이미지를 참고부탁드립니다.',
-'resources/image/community/notice/tn1.jpg',
-'resources/image/community/notice/n1.jpg'
+'resources/image/community/notice/notice_2023112214245827402.jpg',
+'resources/image/community/notice/notice_2023112214245817848.jpg'
 );
 
 COMMIT;
