@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.kh.ttp.community.board.model.service.BoardService;
-import com.kh.ttp.community.model.vo.RecommendVO;
+import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 @Controller
 public class AjaxBoardController {

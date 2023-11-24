@@ -32,11 +32,14 @@
     }
     .table td{
         vertical-align: middle;
-        border-color: rgb(160, 160, 160);
+        border-color: rgb(214, 214, 214);
         border-bottom: 1px solid;
     }
-    tbody tr{
+    tbody>tr{
     	cursor: pointer;
+    }
+    tbody>tr>td:not(:nth-child(2n)){
+        background-color: rgb(240, 240, 240);
     }
 
     .board-no{
@@ -74,7 +77,7 @@
         background-color: rgb(255, 255, 255);
         color: rgb(223, 190, 106);
     }
-    .board-btn:active{
+    .board-btn:hover{
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
@@ -128,7 +131,7 @@
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage-1 }">&lt;</a></li>
+	        	<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${pi.currentPage-1 }">&lt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     	
@@ -138,7 +141,7 @@
 					<li class="page-item active"><a class="page-link" href="#">${p }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${p }">${p }</a></li>
+					<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${p }">${p }</a></li>
 				</c:otherwise>
 			</c:choose>
         </c:forEach>
@@ -148,7 +151,7 @@
 	    		<li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
-        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgy}&page=${pi.currentPage+1 }">&gt;</a></li>
+        		<li class="page-item"><a class="page-link" href="board?boardCtgy=${boardCtgyCode}&page=${pi.currentPage+1 }">&gt;</a></li>
 	    	</c:otherwise>
     	</c:choose>
     </ul>

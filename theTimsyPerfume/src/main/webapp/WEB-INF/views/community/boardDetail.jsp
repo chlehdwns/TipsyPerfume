@@ -80,7 +80,7 @@
         margin: 0 auto;
     }
     .img{
-        width: 100%;
+        max-width: 100%;
     }
     
     .write-area{
@@ -135,7 +135,8 @@
         background-color: rgb(255, 255, 255);
         color: rgb(223, 190, 106);
     }
-    .board-btn:active{
+    .board-btn:hover
+    {
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
@@ -237,6 +238,13 @@ ${board.boardContent }
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
             const userNo = "${loginUser.userNo}";
+            
+            if($commentContent.val().trim()==""){
+            	$commentContent.val("").focus();
+                alert("내용을 작성해 주세요!");
+                return;
+            }
+            
             $.ajax({
                 url:"insertComment",
                 type:"post",

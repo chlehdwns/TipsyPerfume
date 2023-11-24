@@ -19,6 +19,7 @@
     
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
+    <script src="resources/js/common/easy-scroll.js"></script>
     <style>
     #header_1_right_bottom {height: 30%; padding: 10px 140px 0px 0px;}
     #header_1_right_bottom form{width: 100%;}
@@ -206,7 +207,9 @@
     display: inline-block;
     margin: 0px;
     font-size: 22px;
+    font-weight: 600;
     line-height: 60px;
+    color: rgb(124 94 69);
 }
 #header-bar-toolbar{
 	width: 200px;
@@ -267,22 +270,22 @@
         <div id="header-bar-toolbar">
         <c:choose>
         <c:when test="${empty loginUser }">
-            <a class="header-link" href="loginForm.me"><i class="fa fa-sign-in" style="font-size:30px"></i></a>
-            <a class="header-link" href="enrollForm.me"><i class="material-icons" style="font-size:30px">person_add</i></a>
-            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px"></i></a>
+            <a class="header-link" href="loginForm.me"><i class="fa fa-sign-in" style="font-size:30px; color: rgb(124 94 69);"></i></a>
+            <a class="header-link" href="enrollForm.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person_add</i></a>
+            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
         </c:when>
         <c:otherwise>
-            <a class="header-link" href="logout.me"><i class="fa fa-sign-out" style="font-size:30px"></i></a>
+            <a class="header-link" href="logout.me"><i class="fa fa-sign-out" style="font-size:30px; color: rgb(124 94 69);"></i></a>
             <c:choose>
             <c:when test="${loginUser.memberType eq 'A'}">
-            	<a class="header-link" href="adminForm.me"><i class="material-icons" style="font-size:30px">person</i></a>
+            	<a class="header-link" href="adminForm.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person</i></a>
             </c:when>
                             	
             <c:otherwise>
-            	<a class="header-link" href="myPage.me"><i class="material-icons" style="font-size:30px">person</i></a>
+            	<a class="header-link" href="myPage.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person</i></a>
             </c:otherwise>
             </c:choose>
-            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px"></i></a>
+            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
         </c:otherwise>
         </c:choose>
         </div>

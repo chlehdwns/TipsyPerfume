@@ -46,6 +46,16 @@
         font-size: 15px;
         margin-left: 5px;
     }
+	.score-bg{
+        width: 115px;
+        height: 19px;
+		background-image: url("resources/image/common/star-bg.svg");
+	}
+    .score{
+        width: 50%;
+        height: 100%;
+        background-image: url("resources/image/common/star.svg");
+    }
     .article-wrap{
         white-space: pre-wrap;
     }
@@ -149,8 +159,8 @@
                         ${review.userNo } <span>${review.reviewCreateDate }</span>
                     </div>
                 </div>
-                <div>
-                    ★★★☆☆
+                <div class="score-bg">
+                    <div class="score" style="width: ${review.reviewScore*11}px;"></div>
                 </div>
 <pre class="article-wrap bottom-interval">
 ${review.reviewContent }
@@ -253,6 +263,13 @@ ${review.reviewContent }
             const $commentGroup = $(this).prevAll(".comment-no");
             const $commentDepth = $(this).prevAll(".comment-depth");
             const userNo = "${loginUser.userNo}";
+            
+            if($commentContent.val().trim()==""){
+            	$commentContent.val("").focus();
+                alert("내용을 작성해 주세요!");
+                return;
+            }
+            
             $.ajax({
                 url:"insertComment",
                 type:"post",

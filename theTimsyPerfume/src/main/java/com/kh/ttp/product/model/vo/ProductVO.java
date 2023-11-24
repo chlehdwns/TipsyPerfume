@@ -1,10 +1,15 @@
 package com.kh.ttp.product.model.vo;
 
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class ProductVO {
 	/*
 	PDT_NO	NUMBER
@@ -37,6 +42,9 @@ public class ProductVO {
 	private int pdtDiscount;
 	private String pdtStatus;
 	private String pdtGpStatus;
+	
+	private int orderPrice;
+	private int orderQuantity;
 	
 	
 	

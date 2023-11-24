@@ -12,8 +12,9 @@
 		<typeAlias type="com.kh.ttp.community.review.model.vo.ReviewVO" alias="review"/>
 		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardVO" alias="board"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.CommentVO" alias="comment"/>
-		<typeAlias type="com.kh.ttp.community.model.vo.RecommendVO" alias="recommend"/>
+		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardFileVO" alias="boardFile"/>
+		<typeAlias type="com.kh.ttp.community.common.model.vo.CommentVO" alias="comment"/>
+		<typeAlias type="com.kh.ttp.community.common.model.vo.RecommendVO" alias="recommend"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductSelectVO" alias="productSelect" />
@@ -31,6 +32,7 @@
 		<mapper resource="/mapper/notice-mapper.xml"/>
 		<mapper resource="/mapper/board-mapper.xml"/>
 		<mapper resource="/mapper/pedia-mapper.xml"/>
+		<mapper resource="/mapper/comment-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper1.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />

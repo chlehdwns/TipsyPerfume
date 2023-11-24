@@ -59,7 +59,6 @@ public class ProductServiceImpl1 implements ProductService1 {
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtCteg", "F");
 		pMap.put("sort", sort);
-		
 		return productDao.selectPerfumePdtList(sqlSession, pMap, rowBounds);
 	}
 
