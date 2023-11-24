@@ -59,10 +59,8 @@
 				<c:forEach var="count" begin="1" end="12">
 					<input type="hidden" value="${pdtList[count].pdtNo}">
 					<div class="container col pdt-list-container-col">
-						<!-- <div class="pdt-list-icon-area"> -->
-							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishlist(${pdtList[count].pdtNo * 2});"></div>
-							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
-						<!-- </div> -->
+						<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishlist(${pdtList[count].pdtNo * 2});"></div>
+						<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
 						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[count].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[count].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName pdtDetail">${pdtList[count].pdtName}</div>
@@ -74,28 +72,48 @@
 			</div>
         </div>
     </span>
+    
+    <style>
+    
+    	.abc{
+    		opacity : 100 !important;
+    	}
+    	
+    	.bcd{
+    		opacity : 0 !important;
+    	}
+    </style>
 
 	
     <script>
     	// 온로드 시점에 하트클래스부여
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
 		// 채운장바구니 bi bi-cart-plus-fill 안채운장바구니 bi bi-cart-plus
-
+		
+		$pdtImgArea = $('.pdt-list-pdtImgSrc');
 	    $pdtIconArea = $('.pdt-list-icon-area');
+    	
+    	
 	    $pdtListCart = $('.pdt-list-cart');
 	    $pdtListHeart = $('.pdt-list-heart');
   	
 	    // 마우스enter, 마우스leave 시 하트와 장바구니 보이게 / 안보이게
-		$pdtIconArea.on({
-			mouseenter : () => {
+ 		$($pdtImgArea).on({
+			mouseenter : (e) => {
 		        console.log('마우스엔터');
-		        $pdtIconArea.css('opacity', '100');
-			},
-			mouseleave : () => {
-				console.log('아웃');
-		        $pdtIconArea.css('opacity', '0');
+		        //$pdtIconArea.css('opacity', '100');
+		        $(e.target).parent().find('.pdt-list-icon-area').addClass('abc');
 			}
-		});
+
+		}); 
+	    
+ 		$($pdtImgArea).on('mouseleave', (e) => {
+				console.log('나')
+		        //$pdtIconArea.css('opacity', '0');
+				console.log(e.target);
+				$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc')
+ 		}
+		); 
     
 		// 하트 한개! // ajax 요청 후 좋아요 누른 게시글에는 하트fill / 아니면 빈하트
 /* 	    function ajaxChangeWishlist() {
