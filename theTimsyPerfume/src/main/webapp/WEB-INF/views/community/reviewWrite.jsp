@@ -86,6 +86,7 @@
 	리뷰 작성
 </div>
 <form id="writeForm" method="post" action="reviewWrite.do" enctype="multipart/form-data">
+	<input type="hidden" name="userNo" value="${loginUser.userNo }">
 	<table class="table">
 		<tr>
 			<th><label>제품</label></th>
@@ -134,17 +135,11 @@
 </section>
 <script>
     $(()=>{
-        const $reviewTitle = $("#reviewTitle");
         const $reviewContent = $("#reviewContent");
         const $writeForm = $("#writeForm");
         setScore(1);
         $("#submit-btn").click(()=>{
-
-            if($reviewTitle.val().trim()==""){
-                $reviewTitle.val("").focus();
-                alert("제목을 작성해 주세요!");
-            }
-            else if($reviewContent.val().trim()==""){
+            if($reviewContent.val().trim()==""){
                 $reviewContent.val("").focus();
                 alert("내용을 작성해 주세요!");
             } else{
