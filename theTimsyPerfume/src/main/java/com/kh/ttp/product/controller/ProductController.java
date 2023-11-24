@@ -169,7 +169,7 @@ public class ProductController {
 			
 			e.printStackTrace();
 		}
-		return "/resources/uploadFiles/" + changeName;
+		return changeName;
 	}
 	@RequestMapping("funding.list")
 	private String selectFundingList(Model model) {
