@@ -82,27 +82,39 @@
 	top: 0%;
 	height: 47.3%;
 	position:absolute;
-	font-size: 80px;
-	padding-top: 35%;
+	font-size: 22px;
 	/* opacity: 0; */
 }
 #pdtListOuterRight .pdt-list-icon-area div{
-	width:35%;
+	width:16%;
+	height: 14%;
+	background-color: rgb(223, 190, 106);
+	border-radius: 100%;
 	padding:0px;
+
+	
 }
 
 #pdtListOuterRight .bi.pdt-list-cart{
 	float: right;
+	position:absolute;
+	top: 60%;
+	right: 8%;
 }
 
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
+	position:absolute;
+	top: 60%;
+	left: 8%;
 }
 
 #pdtListOuterRight .bi.pdt-list-cart:hover,
 #pdtListOuterRight .bi.pdt-list-heart:hover{
+	width:17%;
+	height: 15%;
 	cursor: pointer;
-	font-size: 83px;
+	font-size: 23px;
 }
 
 
