@@ -1,12 +1,20 @@
 package com.kh.ttp.community.board.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.board.model.service.BoardService;
+import com.kh.ttp.community.board.model.vo.BoardVO;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 
 @Controller
@@ -48,5 +56,17 @@ public class AjaxBoardController {
 	@ResponseBody
 	public String ajaxCountRecommend(int contentNo) {
 		return new Gson().toJson(boardService.countRecommend(contentNo));
+	}
+	
+	@GetMapping(value = "boardList", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String ajaxBoardList(int page, int boardNo, String boardCtgy) {
+		int listCount = boardService.countBoardList(boardCtgy);
+		PageInfo pi = Pagination.getPageInfo(listCount, page, 5, 5);
+		HashMap map = new HashMap();
+		map.put("boardNo",boardNo);
+		map.put("boardCtgy",boardCtgy);
+		
+		return new Gson().toJson(boardService.selectDetailBoardList(map, pi));
 	}
 }

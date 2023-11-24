@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.community.common.model.vo.RecommendVO;
+import com.kh.ttp.community.review.model.vo.ReviewFileVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Repository
@@ -42,6 +43,14 @@ public class ReviewDAO {
 
 	public RecommendVO countRecommend(SqlSessionTemplate sqlSession, int contentNo) {
 		return sqlSession.selectOne("reviewMapper.countRecommend", contentNo);
+	}
+
+	public int insertReview(SqlSessionTemplate sqlSession, ReviewVO re) {
+		return sqlSession.insert("reviewMapper.insertReview", re);
+	}
+
+	public int insertReviewFile(SqlSessionTemplate sqlSession, ArrayList<ReviewFileVO> fileList) {
+		return sqlSession.insert("reviewMapper.insertReviewFile", fileList);
 	}
 
 

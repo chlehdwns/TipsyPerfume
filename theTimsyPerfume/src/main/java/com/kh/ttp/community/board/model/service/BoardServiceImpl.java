@@ -1,6 +1,7 @@
 package com.kh.ttp.community.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -87,6 +88,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int deleteBoard(int boardNo) {
 		return boardDao.deleteBoard(sqlSession,boardNo);
+	}
+
+	@Override
+	public ArrayList<BoardVO> selectDetailBoardList(HashMap map, PageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return boardDao.selectDetailBoardList(sqlSession, map, rowBounds);
 	}
 
 

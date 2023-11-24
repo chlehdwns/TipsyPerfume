@@ -23,6 +23,7 @@
 		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
+		<typeAlias type="com.kh.ttp.adminManage.model.vo.AdminVo" alias="admin"/>
 	</typeAliases>
 
 	  <mappers>
@@ -35,5 +36,6 @@
 		<mapper resource="/mapper/product-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper1.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />
+		<mapper resource="/mapper/admin-mapper.xml" />
 	</mappers>
 </configuration>

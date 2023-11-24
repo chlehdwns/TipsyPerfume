@@ -184,21 +184,7 @@ function getCookie(cookieName) {
 	</div>
 	
 	<div class="box"></div>
-	<!--  
-	<div class="title">
-		<h4 class="title" align="center">간편 로그인</h4>
-	</div>
 
-
-	<div class="center-wrapper" align="center">
-		<div class="enroll-wrapper" align="center">
-			<div class="enroll-wrapper" >
-				<input type="submit" value="카카오톡으로 로그인"><br>
-				<input type="submit" value="네이버로 로그인">
-			</div>
-		</div>
-	</div>
-	-->
 
 <jsp:include page="../common/footer.jsp" />
 </body>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
+import com.kh.ttp.community.review.model.vo.ReviewFileVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 public interface ReviewService {
@@ -17,4 +18,5 @@ public interface ReviewService {
 	public String selectRecommend(RecommendVO rc);
 	public int reviewRecommend(RecommendVO rc);
 	public RecommendVO countRecommend(int contentNo);
+	public int insertReview(ReviewVO re, ArrayList<ReviewFileVO> fileList);
 }
