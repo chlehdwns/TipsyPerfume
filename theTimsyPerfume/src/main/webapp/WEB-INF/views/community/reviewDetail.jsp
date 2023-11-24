@@ -99,6 +99,7 @@
         width: 85%;
         height: 100px;
         border-radius: 6px;
+        padding: 2px 10px;
     }
     .comment-btn{
         width: 10%;

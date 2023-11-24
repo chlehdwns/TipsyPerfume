@@ -97,16 +97,34 @@
         width: 85%;
         height: 100px;
         border-radius: 6px;
+        padding: 2px 10px;
     }
     .comment-btn{
-        width: 10%;
-        height: 60px;
+        width: 12%;
+        height: 80px;
         margin-left: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .comment-btn:hover
+    {
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
     }
     .disabled-btn{
-        width: 10%;
-        height: 60px;
+        width: 12%;
+        height: 80px;
         margin-left: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
     }
     .board-comment{
         padding-bottom: 10px;

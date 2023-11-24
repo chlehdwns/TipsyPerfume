@@ -190,10 +190,10 @@
 	display: flex;
 }
 #header-bar-logo{width: 150px;}
-.header-bar-middle{width: 900px;}
+.header-bar-middle{width: 660px;}
 #header-bar-menu {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 }
 #header-bar-menu .dropdown {
     width: 20%;
