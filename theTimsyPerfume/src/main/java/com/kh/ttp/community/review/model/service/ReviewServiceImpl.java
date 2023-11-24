@@ -6,10 +6,14 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.community.board.model.vo.BoardFileVO;
+import com.kh.ttp.community.board.model.vo.BoardVO;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.dao.ReviewDAO;
+import com.kh.ttp.community.review.model.vo.ReviewFileVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
 @Service
@@ -55,5 +59,16 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public RecommendVO countRecommend(int contentNo) {
 		return reviewDao.countRecommend(sqlSession, contentNo);
+	}
+	
+	@Override
+	@Transactional
+	public int insertReview(ReviewVO re, ArrayList<ReviewFileVO> fileList) {
+		int result1 = reviewDao.insertReview(sqlSession, re);
+		int result2 = 1;
+		if(!fileList.isEmpty()) {
+			result2 = reviewDao.insertReviewFile(sqlSession, fileList);
+		}
+		return result1 * result2;
 	}
 }
