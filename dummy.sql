@@ -139,6 +139,149 @@ INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     '오드 퍼퓸'
 );
 
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '홍길동',
+    '맥주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '이길동',
+    '사케'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '김길동',
+    '소주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '최동준',
+    '맥주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    'james',
+    '와인'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '고길동',
+    '소주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '박길동',
+    '맥주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    'JIMI',
+    '막걸리'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '홍길순',
+    '사케'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'A',
+    'B',
+    '복순',
+    '복분자주'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    'TOM',
+    '오드 뚜왈렛'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    'BOB',
+    '오드 퍼퓸'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    '남길동',
+    '오드 빠르펭'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    '남길순',
+    '오드코롱'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    '이길순',
+    '샤워 코롱'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    'JACK',
+    '오드 뚜왈렛'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    '장길동',
+    '오드코롱'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    'JUN',
+    '샤워 코롱'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    'SAM',
+    '오드 뚜왈렛'
+);
+INSERT INTO TB_PRODUCT_CATEGORY VALUES(
+    SEQ_PRODUCT_CATEGORY.NEXTVAL,
+    'F',
+    'B',
+    '최동준',
+    '오드 퍼퓸'
+);
+
+
+
 
 
 INSERT INTO TB_PRODUCT(
@@ -961,17 +1104,6 @@ INSERT INTO TB_PRODUCT_FILE(
     'perfume_1.jpg'
 );
 
-
-
--- 더미추가 1124 MJY
--- (주류)
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '홍길동',
-    '맥주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -985,8 +1117,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    21,
     'KH 맥주',
     4000,
     500,
@@ -1012,21 +1144,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '500ML',
-    '4.5도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '이길동',
-    '사케'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1040,8 +1158,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    22,
     'KH 사케',
     15000,
     100,
@@ -1067,21 +1185,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '750ML',
-    '8.5도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '김길동',
-    '소주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1095,8 +1199,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    23,
     'KH 소주',
     3000,
     1000,
@@ -1122,21 +1226,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '600ML',
-    '23도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '최동준',
-    '맥주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1150,8 +1240,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    24,
     '구로 맥주',
     4200,
     255,
@@ -1177,21 +1267,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '500ML',
-    '5도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    'james',
-    '와인'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1205,8 +1281,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    25,
     'KH 와인',
     30000,
     50,
@@ -1232,21 +1308,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '750ML',
-    '9도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '고길동',
-    '소주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1260,8 +1322,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    26,
     '맛소',
     5000,
     200,
@@ -1287,21 +1349,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '150ML',
-    '25도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '박길동',
-    '맥주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1315,8 +1363,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    27,
     '달빛 맥주',
     6000,
     300,
@@ -1342,21 +1390,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '330ML',
-    '5도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    'JIMI',
-    '막걸리'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1370,8 +1404,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    28,
     '막걸리나',
     3000,
     50,
@@ -1397,21 +1431,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '450ML',
-    '12도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '홍길순',
-    '사케'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1425,8 +1445,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    29,
     '맛있는 사케',
     3000,
     20,
@@ -1452,21 +1472,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '750ML',
-    '11도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '복순',
-    '복분자주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1480,8 +1486,8 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
+    SEQ_PRODUCT.nextval,
+    30,
     'KH 복분자',
     9000,
     80,
@@ -1507,21 +1513,7 @@ INSERT INTO TB_PRODUCT_FILE(
     'absolut_blue.png',
     'alcohol_1.png'
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '750ML',
-    '15도'
-);
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '홍길동',
-    '맥주'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1535,15 +1527,15 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 맥주',
-    4000,
-    500,
-    '목 넘김이 좋은 밀 향 맥주',
-    '홍길동님이 만드신 깊고 찐한 밀 향 맥주 알코올 도수는 4.5도입니다',
-    '밀,알코올..',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
+    SEQ_PRODUCT.nextval,
+    31,
+    'KH 향수',
+    70000,
+    20,
+    '오드 뚜왈렛',
+    '향이 오래가고 상큼한 향의 향수',
+    '코코넛 오일,증류수,천연 색소',
+    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
     'Y',
     'N'
 );
@@ -1558,25 +1550,11 @@ INSERT INTO TB_PRODUCT_FILE(
     SEQ_PRODUCT_FILE.NEXTVAL,
     SEQ_PRODUCT.CURRVAL,
     0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '500ML',
-    '4.5도'
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
 );
 
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '이길동',
-    '사케'
-);
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
@@ -1590,15 +1568,138 @@ INSERT INTO TB_PRODUCT(
     PDT_STATUS,
     PDT_GP_STATUS
 ) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 사케',
-    15000,
+    SEQ_PRODUCT.nextval,
+    32,
+    'GOOD PERFUME',
+    40000,
+    25,
+    '오드 퍼퓸',
+    '향이 찐하며 우드 향 향수입니다.',
+    '호호바 오일',
+    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    33,
+    'ORANGE PERFUME',
+    35000,
+    30,
+    '오드 빠르펭',
+    '지속시간 대략 4시간이며 오렌지향 향수입니다. 상큼한 옷에 잘 어울리는 무거운 향입니다.',
+    '감귤 오일',
+    '배송일은 펀딩 확정 이후 7일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    34,
+    'HAHA PERFUME',
+    90000,
+    10,
+    '오드코롱',
+    '향이 무거우며 지속시간은 대략 2시간 정도입니다.정장이나 어두운 색의 코디와 잘 어울립니다.',
+    '천연 색소,호호바 오일',
+    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    35,
+    'LIGHT PERFUME',
+    2500,
     100,
-    '깔끔하고 상큼한 사케',
-    '10년 장인 이길동님이 만드신 깔끔한 맛 사케입니다.',
-    '물,쌀,누룩',
-    '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
+    '샤워 코롱 ',
+    '매우 가벼운 향이며 지속시간은 10시간입니다.',
+    '코코넛 오일, 알코올',
+    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
     'Y',
     'N'
 );
@@ -1613,1580 +1714,468 @@ INSERT INTO TB_PRODUCT_FILE(
     SEQ_PRODUCT_FILE.NEXTVAL,
     SEQ_PRODUCT.CURRVAL,
     0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    36,
+    'TSP PERFUME',
+    40000,
+    30,
+    '오드 뚜왈렛',
+    '여튼 엄청 좋은 향수입니다',
+    '호호바 오일',
+    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    37,
+    'HOHO PERFUME',
+    75000,
+    30,
+    '오드코롱',
+    '상큼한 복숭아향 데일리 향수로 좋습니다.',
+    '복숭아 향,코코넛 오일',
+    '배송일은 펀딩 확정 이후 6일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    38,
+    'WOW PERFUME',
+    55000,
+    25,
+    '샤워 코롱',
+    '코튼 향 상긋하며 지속시간이 깁니다.',
+    '호호바 오일,코튼향',
+    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    39,
+    '한국 향수',
+    10000,
+    100,
+    '오드 뚜왈렛',
+    '한국인들이라면 모두가 좋아할 향 . 우드 향.',
+    '코코넛 오일, 증류수',
+    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_PRICE,
+    PDT_STOCK,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS,
+    PDT_GP_STATUS
+) VALUES (
+    SEQ_PRODUCT.nextval,
+    40,
+    'DDP PERFUME',
+    25000,
+    50,
+    '오드 퍼퓸',
+    '남성에게 잘 어울리는 무겁고 찐한 향',
+    '호호바 오일,증류수',
+    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
+    'Y',
+    'N'
+);
+INSERT INTO TB_PRODUCT_FILE(
+    PDT_FILE_NO,
+    PDT_NO,
+    PDT_FILE_INDEX,
+    PDT_FILE_PATH,
+    PDT_FILE_ORIGIN,
+    PDT_FILE_UPLOAD
+) VALUES (
+    SEQ_PRODUCT_FILE.NEXTVAL,
+    SEQ_PRODUCT.CURRVAL,
+    0,
+    'resources/image/product/perfume',
+    'yvessaint.jpg',
+    'perfume_1.jpg'
+);
+
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    21,
+    '500ML',
+    '4.5EJ'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    22,
     '750ML',
     '8.5도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '김길동',
-    '소주'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 소주',
-    3000,
-    1000,
-    '깔끔하고 삼겹살과 매우 잘 어울리는 소주 향',
-    '알코올 도수는 23도이며 모든 음식과 잘 어울리지만 특히 삼겹살과 잘 어울리는 소주입니다.',
-    '물,알코올,보리',
-    '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    23,
     '600ML',
     '23도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '최동준',
-    '맥주'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '구로 맥주',
-    4200,
-    255,
-    '구로 전통 맥주',
-    '알코올 도수는 5도입니다',
-    '맥아, 물 ',
-    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    24,
     '500ML',
     '5도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    'james',
-    '와인'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 와인',
-    30000,
-    50,
-    '레드 와인',
-    '이탈리아에서 유명한 JAMES씨가 만든 수제 맥주입니다.알코올 도수는 9도이며 치즈와 잘 어울립니다.',
-    '포도',
-    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    25,
     '750ML',
     '9도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '고길동',
-    '소주'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '맛소',
-    5000,
-    200,
-    '목이 타들어가는듯한 짜릿함 ',
-    '고길동님이 만드신 깊고 찐한 소주! 알코올 도수는 25도입니다',
-    '물,알코올',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '150ML',
+    26,
+    '500ML',
     '25도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '박길동',
-    '맥주'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '달빛 맥주',
-    6000,
-    300,
-    '찐하고 맛있는 맥주!',
-    '알코올 도수는 5도입니다. 엄청 시원합니다.',
-    '맥아',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '330ML',
+    27,
+    '500ML',
     '5도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    'JIMI',
-    '막걸리'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '막걸리나',
-    3000,
-    50,
-    '외국인이 만든 한국 전통 막걸리',
-    'JIMI씨가 한국에와서 막걸리를 먹고 감명받아 만든 JIMI씨만의 특별한 막걸리',
-    '쌀,알코올,물',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    28,
     '450ML',
     '12도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '홍길순',
-    '사케'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '맛있는 사케',
-    3000,
-    20,
-    '뒷맛이 묵직한 사케',
-    '알코올 도수는 11도이며 조금 무겁지만 깊은맛에 사케입니다.',
-    '누룩,물,알코올',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    29,
     '750ML',
     '11도'
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'A',
-    'B',
-    '복순',
-    '복분자주'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 복분자',
-    9000,
-    80,
-    '찐하고 상큼한 복분자주',
-    '가족끼리 마시기 좋아요.복분자는 복순씨가 직접 재배한 복분자입니다.',
-    '복분자,알코올..',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/alcohol',
-    'absolut_blue.png',
-    'alcohol_1.png'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '750ML',
+    30,
+    '450ML',
     '15도'
 );
-
-
--- (향수)
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'TOM',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 향수',
-    70000,
-    20,
-    '오드 뚜왈렛',
-    '향이 오래가고 상큼한 향의 향수',
-    '코코넛 오일,증류수,천연 색소',
-    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    31,
     '250ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'BOB',
-    '오드 퍼퓸'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'GOOD PERFUME',
-    40000,
-    25,
-    '오드 퍼퓸',
-    '향이 찐하며 우드 향 향수입니다.',
-    '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '150ML',
+    32,
+    '250ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '남길동',
-    '오드 빠르펭'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'ORANGE PERFUME',
-    35000,
-    30,
-    '오드 빠르펭',
-    '지속시간 대략 4시간이며 오렌지향 향수입니다. 상큼한 옷에 잘 어울리는 무거운 향입니다.',
-    '감귤 오일',
-    '배송일은 펀딩 확정 이후 7일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '80ML',
+    33,
+    '350ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '남길순',
-    '오드코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'HAHA PERFUME',
-    90000,
-    10,
-    '오드코롱',
-    '향이 무거우며 지속시간은 대략 2시간 정도입니다.정장이나 어두운 색의 코디와 잘 어울립니다.',
-    '천연 색소,호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    34,
+    '200ML',
+    ''
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    35,
+    '300ML',
+    ''
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    36,
+    '300ML',
+    ''
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    37,
+    '250ML',
+    ''
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    38,
+    '350ML',
+    ''
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    39,
+    '250ML',
+    ''
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    40,
     '200ML',
     ''
 );
 
 
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '이길순',
-    '샤워 코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'LIGHT PERFUME',
-    2500,
-    100,
-    '샤워 코롱 ',
-    '매우 가벼운 향이며 지속시간은 10시간입니다.',
-    '코코넛 오일, 알코올',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+
+
+
+
+
+
+
+
+
+
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    1,
+    '500ML',
+    '4.5EJ'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '170ML',
-    ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'JACK',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'TSP PERFUME',
-    40000,
-    30,
-    '오드 뚜왈렛',
-    '여튼 엄청 좋은 향수입니다',
-    '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    2,
+    '750ML',
+    '8.5도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '2500ML',
-    ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '장길동',
-    '오드코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'HOHO PERFUME',
-    75000,
-    30,
-    '오드코롱',
-    '상큼한 복숭아향 데일리 향수로 좋습니다.',
-    '복숭아 향,코코넛 오일',
-    '배송일은 펀딩 확정 이후 6일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    3,
+    '600ML',
+    '23도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '15ML',
-    ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'JUN',
-    '샤워 코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'WOW PERFUME',
-    55000,
-    25,
-    '샤워 코롱',
-    '코튼 향 상긋하며 지속시간이 깁니다.',
-    '호호바 오일,코튼향',
-    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    4,
+    '500ML',
+    '5도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '35ML',
-    ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'SAM',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '한국 향수',
-    10000,
-    100,
-    '오드 뚜왈렛',
-    '한국인들이라면 모두가 좋아할 향 . 우드 향.',
-    '코코넛 오일, 증류수',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    5,
+    '750ML',
+    '9도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '25ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '최동준',
-    '오드 퍼퓸'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'DDP PERFUME',
-    25000,
-    50,
-    '오드 퍼퓸',
-    '남성에게 잘 어울리는 무겁고 찐한 향',
-    '호호바 오일,증류수',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    6,
+    '500ML',
+    '25도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '20ML',
-    ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'TOM',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'KH 향수',
-    70000,
-    20,
-    '오드 뚜왈렛',
-    '향이 오래가고 상큼한 향의 향수',
-    '코코넛 오일,증류수,천연 색소',
-    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+    7,
+    '500ML',
+    '5도'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    8,
+    '450ML',
+    '12도'
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    9,
+    '750ML',
+    '11도'
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    10,
+    '450ML',
+    '15도'
+);
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    11,
     '250ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'BOB',
-    '오드 퍼퓸'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'GOOD PERFUME',
-    40000,
-    25,
-    '오드 퍼퓸',
-    '향이 찐하며 우드 향 향수입니다.',
-    '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '150ML',
+    12,
+    '250ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '남길동',
-    '오드 빠르펭'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'ORANGE PERFUME',
-    35000,
-    30,
-    '오드 빠르펭',
-    '지속시간 대략 4시간이며 오렌지향 향수입니다. 상큼한 옷에 잘 어울리는 무거운 향입니다.',
-    '감귤 오일',
-    '배송일은 펀딩 확정 이후 7일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '80ML',
+    13,
+    '350ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '남길순',
-    '오드코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'HAHA PERFUME',
-    90000,
-    10,
-    '오드코롱',
-    '향이 무거우며 지속시간은 대략 2시간 정도입니다.정장이나 어두운 색의 코디와 잘 어울립니다.',
-    '천연 색소,호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
+    14,
     '200ML',
     ''
 );
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '이길순',
-    '샤워 코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'LIGHT PERFUME',
-    2500,
-    100,
-    '샤워 코롱 ',
-    '매우 가벼운 향이며 지속시간은 10시간입니다.',
-    '코코넛 오일, 알코올',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
+INSERT INTO TB_PRODUCT_OPTION VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    15,
+    '300ML',
+    ''
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '170ML',
+    16,
+    '300ML',
     ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'JACK',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'TSP PERFUME',
-    40000,
-    30,
-    '오드 뚜왈렛',
-    '여튼 엄청 좋은 향수입니다',
-    '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '2500ML',
+    17,
+    '250ML',
     ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '장길동',
-    '오드코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'HOHO PERFUME',
-    75000,
-    30,
-    '오드코롱',
-    '상큼한 복숭아향 데일리 향수로 좋습니다.',
-    '복숭아 향,코코넛 오일',
-    '배송일은 펀딩 확정 이후 6일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '15ML',
+    18,
+    '350ML',
     ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'JUN',
-    '샤워 코롱'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'WOW PERFUME',
-    55000,
-    25,
-    '샤워 코롱',
-    '코튼 향 상긋하며 지속시간이 깁니다.',
-    '호호바 오일,코튼향',
-    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '35ML',
+    19,
+    '250ML',
     ''
-);
-
-
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    'SAM',
-    '오드 뚜왈렛'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    '한국 향수',
-    10000,
-    100,
-    '오드 뚜왈렛',
-    '한국인들이라면 모두가 좋아할 향 . 우드 향.',
-    '코코넛 오일, 증류수',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
 );
 INSERT INTO TB_PRODUCT_OPTION VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '25ML',
+    20,
+    '200ML',
     ''
 );
-INSERT INTO TB_PRODUCT_CATEGORY VALUES(
-    SEQ_PRODUCT_CATEGORY.NEXTVAL,
-    'F',
-    'B',
-    '최동준',
-    '오드 퍼퓸'
-);
-INSERT INTO TB_PRODUCT(
-    PDT_NO,
-    PDT_CATEG_NO,
-    PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
-    PDT_INTRO,
-    PDT_DESCRIPTION,
-    PDT_INGREDIENT,
-    PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
-) VALUES (
-    SEQ_PRODUCT.NEXTVAL,
-    SEQ_PRODUCT_CATEGORY.CURRVAL,
-    'DDP PERFUME',
-    25000,
-    50,
-    '오드 퍼퓸',
-    '남성에게 잘 어울리는 무겁고 찐한 향',
-    '호호바 오일,증류수',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
-);
-INSERT INTO TB_PRODUCT_FILE(
-    PDT_FILE_NO,
-    PDT_NO,
-    PDT_FILE_INDEX,
-    PDT_FILE_PATH,
-    PDT_FILE_ORIGIN,
-    PDT_FILE_UPLOAD
-) VALUES (
-    SEQ_PRODUCT_FILE.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    0,
-    'resources/image/product/perfume',
-    'yvessaint.jpg',
-    'perfume_1.jpg'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    SEQ_PRODUCT.CURRVAL,
-    '20ML',
-    ''
-);
--- 더미추가 끝 MJY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 COMMIT;
 
 INSERT INTO TB_USER(
