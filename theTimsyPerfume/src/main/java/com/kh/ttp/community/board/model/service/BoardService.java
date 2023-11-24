@@ -1,6 +1,7 @@
 package com.kh.ttp.community.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.community.board.model.vo.BoardFileVO;
@@ -23,4 +24,5 @@ public interface BoardService {
 	public int insertBoard(BoardVO bo, ArrayList<BoardFileVO> fileList);
 	public int updateBoard(BoardVO bo);
 	public int deleteBoard(int boardNo);
+	public ArrayList<BoardVO> selectDetailBoardList(HashMap map, PageInfo pi);
 }
