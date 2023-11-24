@@ -41,4 +41,9 @@ public class ReviewController {
 		
 		return mv;
 	}
+	@GetMapping("reviewWrite")
+	public ModelAndView reviewWriteForm(ModelAndView mv) {
+		mv.setViewName("community/reviewWrite");
+		return mv;
+	}
 }

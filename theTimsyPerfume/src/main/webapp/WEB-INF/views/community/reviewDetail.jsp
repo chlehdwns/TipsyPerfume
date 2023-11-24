@@ -47,12 +47,11 @@
         margin-left: 5px;
     }
 	.score-bg{
-        width: 115px;
+        width: 113px;
         height: 19px;
 		background-image: url("resources/image/common/star-bg.svg");
 	}
     .score{
-        width: 50%;
         height: 100%;
         background-image: url("resources/image/common/star.svg");
     }
@@ -160,7 +159,7 @@
                     </div>
                 </div>
                 <div class="score-bg">
-                    <div class="score" style="width: ${review.reviewScore*11}px;"></div>
+                    <div class="score" style="width: ${review.reviewScore*10}%;"></div>
                 </div>
 <pre class="article-wrap bottom-interval">
 ${review.reviewContent }
