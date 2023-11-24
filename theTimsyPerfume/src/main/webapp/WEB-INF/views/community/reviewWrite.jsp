@@ -117,7 +117,7 @@
 		</tr>
         <tr>
         	<th><label>사진</label></th>
-        	<td><input multiple="multiple" type="file" class="uploadImg" class="form-control-file border" name="uploadImg" accept="image/gif, image/jpeg, image/png" onchange="loadImg(this);"></td>
+        	<td><input multiple="multiple" type="file" class="uploadImg" class="form-control-file border" name="uploadImg" accept="image/gif, image/jpeg, image/png" onchange="loadImg(this);" required></td>
         </tr>
 		<tr>
 			<th><label for="reviewContent">내용</label></th>
