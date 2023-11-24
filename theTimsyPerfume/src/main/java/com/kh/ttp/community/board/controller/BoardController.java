@@ -104,6 +104,7 @@ public class BoardController {
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {
@@ -130,7 +131,7 @@ public class BoardController {
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		int ranNum = (int)(Math.random()*90000+10000);
 		String ext =  originName.substring(originName.lastIndexOf("."));
-		String changeName = "board_"+curTime + ranNum + ext;
+		String changeName = curTime + ranNum + ext;
 		String savePath = session.getServletContext().getRealPath("/resources/image/community/board/");
 		
 		try {
