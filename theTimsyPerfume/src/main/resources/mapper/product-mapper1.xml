@@ -103,6 +103,18 @@
 	</select>
 	
 	
+	<!-- ajax 위시리스트 셀렉구문 -->
+	
+	<!-- ajax 위시리스트 INSERT구문 -->
+	<insert id="ajaxChangeWishlist" parameterType="_int">
+		INSERT
+		  INTO
+		  	   TB_WISHLIST(PDT_NO, USER_NO)
+		VALUES
+			   	
+
+	</insert>
+	
 	
 	
 </mapper>

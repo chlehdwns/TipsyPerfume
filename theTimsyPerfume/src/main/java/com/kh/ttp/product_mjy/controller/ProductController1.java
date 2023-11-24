@@ -54,7 +54,7 @@ public class ProductController1 {
 									 Model m) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
-
+		System.out.println(productService.selectPerfumePdtList(sort, pi));
 		m.addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi));
 		return "product/productList";
 	}

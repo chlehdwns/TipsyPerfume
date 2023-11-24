@@ -55,20 +55,20 @@
             	</c:choose>
             </div>
             
-     		<div class="row row-cols-3">
+     		<div id="pdtListContentArea" class="row row-cols-3">
 				<c:forEach var="count" begin="1" end="12">
+					<input type="hidden" value="${pdtList[count].pdtNo}">
 					<div class="container col pdt-list-container-col">
 						<div class="pdt-list-icon-area">
-							<div class="bi bi-suit-heart container pdt-list-heart"></div>
+							<div class="bi bi-suit-heart container pdt-list-heart" onclick="ajaxChangeWishlist(${pdtList[count].pdtNo * 2});"></div>
 							<div class="bi bi-cart-plus  container pdt-list-cart"></div>
 						</div>
-						
-						<div class="row pdt-list-pdtImgSrc"><img src="${pdtList[count].pdtImgSrc}"></div>
-		                <div class="row pdt-list-pdtManufac">${pdtList[count].pdtManufac}</div>
-		                <div class="row pdt-list-pdtName">${pdtList[count].pdtName}</div>
-		                <div class="row pdt-list-reviewAvg"><c:if test="${not empty pdtList[count].reviewAvg}">★ ${pdtList[count].reviewAvg}/5</c:if></div>
-		                <div class="row pdt-list-pdtIntro">${pdtList[count].pdtIntro}</div>
-		                <div class="row pdt-list-pdtDescription">${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}</div>
+						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[count].pdtImgSrc}"></div>
+		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[count].pdtManufac}</div>
+		                <div class="row pdt-list-pdtName pdtDetail">${pdtList[count].pdtName}</div>
+		                <div class="row pdt-list-reviewAvg pdtDetail"><c:if test="${not empty pdtList[count].reviewAvg}">★ ${pdtList[count].reviewAvg}/5</c:if></div>
+		                <div class="row pdt-list-pdtIntro pdtDetail">${pdtList[count].pdtIntro}</div>
+		                <div class="row pdt-list-pdtDescription pdtDetail">${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}${pdtList[count].pdtDescription}</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -80,27 +80,74 @@
     	// 온로드 시점에 하트클래스부여
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
 		// 채운장바구니 bi bi-cart-plus-fill 안채운장바구니 bi bi-cart-plus
-    $pdtImgArea = $('#pdtListOuterRight .pdt-list-pdtImgSrc');
-    $pdtIconArea = $('.pdt-list-icon-area');
-    $pdtListCart = $('.pdt-list-cart');
-    $pdtListHeart = $('.pdt-list-heart');
-  
-/*
-    $pdtIconArea.on({
-    	mouseenter : () => {
-            console.log('Mouse entered');
-            $pdtIconArea.css('opacity', '100');
-    	},
-    	mouseleave : () => {
-            console.log('Mouse left');
-            $pdtIconArea.css('opacity', '0');
-    	}
-    });
-*/	
-    	
+
+	    $pdtIconArea = $('.pdt-list-icon-area');
+	    $pdtListCart = $('.pdt-list-cart');
+	    $pdtListHeart = $('.pdt-list-heart');
+  	
+	    // 마우스enter, 마우스leave 시 하트와 장바구니 보이게 / 안보이게
+		$pdtIconArea.on({
+			mouseenter : () => {
+		        console.log('마우스엔터');
+		        $pdtIconArea.css('opacity', '100');
+			},
+			mouseleave : () => {
+				console.log('아웃');
+		        $pdtIconArea.css('opacity', '0');
+			}
+		});
+    
+		// 하트 한개! // ajax 요청 후 좋아요 누른 게시글에는 하트fill / 아니면 빈하트
+/* 	    function ajaxChangeWishlist() {
+			$.ajax({
+				url : ajaxChangeWishlist.pa,
+				data : ,
+				success : result => {
+			
+				},
+				error : () => {
+					
+				}
+			});
+		};
+		
+
+	    $pdtListHeart.click(() => {
+			console.log('하트');
+			// 반복문으로 호출
+		}); */
+		
+		// 이건 후순위!! 하트는 필수, 장바구니는 선택
+		/*
+		$pdtListCart.click(() => {
+			console.log('장바구니');
+			// ajax 요청 후 장바구니 담은게 있으면 장바구니fill / 아니면 빈장바구니
+		});
+		*/
+		
+		
+		
+    
     </script>
+
+    <script>
     
+    $(() => {
+    	$('.pdtDetail').click(() => {
+    		console.log('디테일클릭');
+    	});
+    	
+    })
+    function pdtDetail(pdtNo) {
+    	console.log($('#pdtListContentArea'));
+    	
+    }
     
+    function ajaxChangeWishlist(pdtNo) {
+    	console.log(pdtNo);
+    }
+
+    </script>
     <script src="resources/js/product/productList.js"></script>
 </body>
 
