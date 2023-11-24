@@ -59,10 +59,10 @@
 				<c:forEach var="count" begin="1" end="12">
 					<input type="hidden" value="${pdtList[count].pdtNo}">
 					<div class="container col pdt-list-container-col">
-						<div class="pdt-list-icon-area">
-							<div class="bi bi-suit-heart container pdt-list-heart" onclick="ajaxChangeWishlist(${pdtList[count].pdtNo * 2});"></div>
-							<div class="bi bi-cart-plus  container pdt-list-cart"></div>
-						</div>
+						<!-- <div class="pdt-list-icon-area"> -->
+							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishlist(${pdtList[count].pdtNo * 2});"></div>
+							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
+						<!-- </div> -->
 						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[count].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[count].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName pdtDetail">${pdtList[count].pdtName}</div>

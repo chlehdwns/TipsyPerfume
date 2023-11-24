@@ -40,9 +40,9 @@
     border: solid 1px black;
     position: relative;
 }
-#pdtListContentArea .pdt-list-container-col div{
+/* #pdtListContentArea .pdt-list-container-col div{
 	margin: 0px 5px 5px 5px;
-}
+} */
 
 #pdtListContentArea .pdt-list-pdtImgSrc{height: 50%;}
 #pdtListContentArea .pdt-list-pdtImgSrc img {
@@ -62,6 +62,7 @@
     overflow: hidden; /* 튀어나가는 글자 숨김 */
     justify-content: center; /* 정렬 */
 	align-items: center;
+	margin: 0px 5px 5px 5px;
 }
 
 #pdtListContentArea .row.pdt-list-reviewAvg {
@@ -70,42 +71,43 @@
 }
 
 /* 하트, 장바구니 아이콘 */
-#pdtListContentArea .pdt-list-icon-area{
+/* #pdtListContentArea .pdt-list-icon-area{
 	width:80%;
 	left: 7.7%;
 	top: 0%;
-	height: 47.3%;
+	height: 5%;
 	position:absolute;
 	font-size: 22px;
+
 	opacity: 0;
-}
-#pdtListContentArea .pdt-list-icon-area div{
-	width:16%;
-	height: 14%;
+} */
+
+#pdtListContentArea .pdt-list-icon-area{
+	width:12.5%;
 	background-color: rgb(223, 190, 106);
 	border-radius: 100%;
 	padding:0px;
-
-}
-
-#pdtListContentArea .bi.pdt-list-cart{
-	float: right;
+	margin: 0 auto;
+	font-size: 22px;
 	position:absolute;
-	top: 60%;
-	right: 8%;
+	top: 30%;
 }
 
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
-	position:absolute;
-	top: 60%;
-	left: 8%;
+	left: 25%;
+
+	
 }
+#pdtListContentArea .bi.pdt-list-cart{
+	float: right;
+	right: 25%;
+}
+
 
 #pdtListContentArea .pdt-list-heart:hover,
 #pdtListContentArea .bi.pdt-list-cart:hover{
-	width:17%;
-	height: 15%;
+	width:12.5%;
 	cursor: pointer;
 	font-size: 23px;
 }
