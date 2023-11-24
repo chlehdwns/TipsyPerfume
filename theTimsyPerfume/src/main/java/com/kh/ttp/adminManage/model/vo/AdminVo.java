@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @AllArgsConstructor @NoArgsConstructor
-public class adminVo {
+@Data  @NoArgsConstructor
+public class AdminVo {
 
 	//상품(product)
 	private int pdtNo;

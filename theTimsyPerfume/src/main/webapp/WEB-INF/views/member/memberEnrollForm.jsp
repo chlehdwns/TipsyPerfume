@@ -179,7 +179,10 @@
 	
 
  		
-	</div><!-- 제일 겉 div -->
+	
+	
+	
+	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
 		function execDaumPostcode(){
@@ -210,21 +213,15 @@
 		
 		
 		<script>
-		//아이디 중복체크(여기에 이메일 인증도 같이 넣음 )
-		
-		
+		//아이디 중복체크
 		$(function(){
 			const $emailInput = $('.form-group #userEmail');
 			const $checkResult = $('#checkResult');
 			const $enrollFormSubmit = $('#enroll-form :submit');
-			
 			const $emailSendInput = $('#emailSendButton');
-			
 			let checkEmailSend = false;
-			
 			const $emailSendCheck = $('.form-group #emailSendConfirm');
 			const $emailSendCheckButton = $('#emailSendConfirmButton');
-			
 			let checkEmailRight = false;
 			
 			$emailInput.keyup(function(){
@@ -233,13 +230,10 @@
 						url : 'emailCheck.me',
 						data : {checkEmail : $emailInput.val()},
 						success : function(result){
-							//console.log(result.substr(14));
 							if(result.substr(14) === 'N') {//사용불가능
 								$checkResult.show().css('color', 'crimson').text('중복된 아이디가 존재합니다');
 								$enrollFormSubmit.attr('disabled', true);
-								
 								checkEmailSend = false; //사용불가능을 false나오니 true로 진행
-								//$emailSendInput.attr('disabled', true);
 							}
 							else { // 사용가능
 								$checkResult.show().css('color', 'lightgreen').text('사용 가능한 아이디(이메일)입니다!');
@@ -247,7 +241,6 @@
 								checkEmailSend = true;
 								$emailSendInput.removeAttr('disabled');
 								$emailSendInput.attr('disabled', false);
-								
 							}
 						},
 						error : function(){
@@ -257,7 +250,7 @@
 				} 
 				else {
 					$checkResult.hide();
-					$enrollFormSubmit.attr('disabled', true);
+					//$enrollFormSubmit.attr('disabled', true);
 				}
 			});
 			
