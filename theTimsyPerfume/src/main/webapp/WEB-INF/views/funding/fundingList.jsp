@@ -108,7 +108,7 @@
 			<div class="fundingList-area">
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(0).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(0).cuttingDate }</h6>
 					
 					<h4 class="percent">달성률 : ${drinkFundingList.get(0).fundingFee} / ${drinkFundingList.get(0).cuttingPrice }원 </h4>
@@ -126,7 +126,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(1).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(1).cuttingDate }</h6>
 					
 					<h4 class="percent">달성률 : ${drinkFundingList.get(1).fundingFee} / ${drinkFundingList.get(1).cuttingPrice }원 </h4>
@@ -138,7 +138,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(2).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(2).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkFundingList.get(2).fundingFee} / ${drinkFundingList.get(2).cuttingPrice }원 </h4>
 					
@@ -149,7 +149,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkFundingList.get(3).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(3).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkFundingList.get(3).fundingFee} / ${drinkFundingList.get(3).cuttingPrice }원 </h4>
 					
@@ -167,7 +167,7 @@
 			<div class="fundingList-area">
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkHotFundingList.get(0).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkHotFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkHotFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(0).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkHotFundingList.get(0).fundingFee} / ${drinkHotFundingList.get(0).cuttingPrice }원 </h4>
 					
@@ -179,7 +179,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkHotFundingList.get(1).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkHotFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkHotFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(1).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkHotFundingList.get(1).fundingFee} / ${drinkHotFundingList.get(1).cuttingPrice }원 </h4>
 					
@@ -192,7 +192,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkHotFundingList.get(2).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkHotFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkHotFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(2).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkHotFundingList.get(2).fundingFee} / ${drinkHotFundingList.get(2).cuttingPrice }원 </h4>
 					
@@ -204,7 +204,7 @@
 				</div>
 				<div class="funding-list">
 					<input type="hidden" value="${ drinkHotFundingList.get(3).pdtNo}" class="pno"/>
-					<img src="/ttp${drinkHotFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${drinkHotFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(3).cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${drinkHotFundingList.get(3).fundingFee} / ${drinkHotFundingList.get(3).cuttingPrice }원 </h4>
 					

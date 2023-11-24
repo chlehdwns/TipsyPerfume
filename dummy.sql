@@ -2995,5 +2995,843 @@ INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE
     '맥주 안주로 좋은 것은 육포나 생선포, 비타민이 듬뿍 든 신선한 과일과 채소가 적당하다. 육포는 고단백이라 알코올 흡수를 지연시킨다. 오징어는 몸에 좋은 콜레스테롤이 많으며, 간 해독 성분인 타우린이 많아 맥주 안주로 적당하다. 양주의 가장 좋은 안주는 ''물''이다.',
     'RECIP'
 );
+INSERT INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '맥주'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '사케'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '막걸리'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '와인'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '소주'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '맥주'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '사케'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '와인'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '와인'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '소주'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '막걸리'
+    );
+    INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+        SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '사케'
+    );
+INSERT 
+    INTO
+        TB_PRODUCT_CATEGORY
+    VALUES(
+       SEQ_PRODUCT_CATEGORY.nextval,
+        'A',
+        'C',
+        '최동준',
+        '와인'
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        41,
+        '시원한 맥주',
+        4000,
+        300,
+        SYSDATE,
+        '시원하고 깔끔한 치킨과 잘 어울리는 밀 맥주',
+        '세상에서 제일 시원한 목넘김 부드럽가 깔끔합니당',
+        '밀,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        42,
+        '사아케',
+        90000,
+        100,
+        SYSDATE,
+        '맛있는 사케',
+        '일본식 전통 막걸리, 찐하고 맛있습니다.',
+        '누룩,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        43,
+        '마악걸리',
+        5000,
+        200,
+        SYSDATE,
+        '한국 전통 막걸리',
+        '아는 맛이 가장 무섭다.전이랑 매우 잘떡궁합',
+        '물,알코올,쌀',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        44,
+        '와아인',
+        80000,
+        50,
+        SYSDATE,
+        '포도주',
+        '무겁고 둔탁한 맛의 와인 맛있습니다.',
+        '포도,알코올,물',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        45,
+        '소오주',
+        4000,
+        300,
+        SYSDATE,
+        '세상에서 가장 시원하고 깔끔한 소주',
+        '세상에서 제일 시원한 목넘김 부드럽가 깔끔합니당',
+        '증류수,물',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        46,
+        '매액주',
+        5000,
+        100,
+        SYSDATE,
+        '맥주의 정석',
+        '부드럽고 깔끔한 맥주 .',
+        '벼,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        47,
+        '사케사케',
+        50000,
+        100,
+        SYSDATE,
+        '고급 술 , 좋은 사람 좋은 곳에서!',
+        '고급진 사케.그 무엇과도 비교할수 없을만큼 맛있다!!',
+        '쌀,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        48,
+        '맛돌이 와인',
+        100000,
+        50,
+        SYSDATE,
+        '좋은 사람 좋은 곳에서 먹기 좋은 와인',
+        '스파클링 화이트 와인 톡 쏘는맛이 맛있습니다.',
+        '탄산,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        49,
+        '와이와인',
+        80000,
+        100,
+        SYSDATE,
+        '정석적인 와인',
+        '가볍고 간단하게 먹기 좋은 포도주',
+        '포도,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        50,
+        '미친 소주',
+        4000,
+        200,
+        SYSDATE,
+        '먹다보면 아침인 미친 소주',
+        '이렇게 맛있는 소주는 본적이 없다. 둘이 먹다 다음날 아침이 되는 소주',
+        '증류수,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        51,
+        '마그걸리',
+        10000,
+        100,
+        SYSDATE,
+        '막걸리 치고 높은 도수',
+        '목이 타는듯한 느낌을 받을 수 있는 고량 막걸리',
+        '누룩,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+        SEQ_PRODUCT.nextval,
+        52,
+        '맛있는 사케',
+        150000,
+        50,
+        SYSDATE,
+        '맛있는 사케',
+        '맛있는 사케',
+        '쌀,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT
+    VALUES(
+       SEQ_PRODUCT.nextval,
+        53,
+        '화이트 와인',
+        50000,
+        100,
+        SYSDATE,
+        '연인과 먹기 좋은 화이트 와인',
+        '부드럽고 깔끔한 와인',
+        '밀,알코올',
+        '배송비 무료',
+        0,
+        0,
+       'Y',
+       'N'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            41,
+            500,
+            7
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            42,
+            750,
+            10
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            43,
+            750,
+            8
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            44,
+            1000,
+            8
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            45,
+            500,
+            17
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            46,
+            500,
+            4
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            47,
+            750,
+            10
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            48,
+            750,
+            7
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            49,
+            750,
+            8
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            50,
+            500,
+            18
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            51,
+            500,
+            30
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            52,
+            800,
+            7
+        
+        );
+INSERT
+    INTO
+        TB_PRODUCT_OPTION
+    VALUES
+        (
+            SEQ_PRODUCT_OPTION.nextval,
+            53,
+            750,
+            11
+        
+        );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        41,
+        0,
+        '23/12/25',
+        0,
+        1000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        42,
+        0,
+        '23/12/12',
+        0,
+        3000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        43,
+        0,
+        '24/01/01',
+        0,
+        1500000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        44,
+        0,
+        '23/12/01',
+        0,
+        4000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        45,
+        0,
+        '23/12/23',
+        0,
+        2000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        46,
+        0,
+        '23/12/25',
+        0,
+        1000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        47,
+        0,
+        '23/12/27',
+        0,
+        3000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+       SEQ_FUNDING.nextval,
+        48,
+        0,
+        '23/12/02',
+        0,
+        5000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        49,
+        0,
+        '23/12/20',
+        0,
+        1000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        50,
+        0,
+        '23/12/03',
+        0,
+        2000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        51,
+        0,
+        '23/11/25',
+        0,
+        3000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        52,
+        0,
+        '23/12/25',
+        0,
+        2000000
+    );
+INSERT
+    INTO
+        TB_FUNDING
+    VALUES(
+        SEQ_FUNDING.nextval,
+        53,
+        0,
+        '23/12/29',
+        0,
+        4000000
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        41,
+        0,
+        'resources/uploadFiles',
+        '6.jpg',
+        '6.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        42,
+        0,
+        'resources/uploadFiles',
+        '1.png',
+        '1.png'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        43,
+        0,
+        'resources/uploadFiles',
+        '12.jpg',
+        '12.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        44,
+        0,
+        'resources/uploadFiles',
+        '9.jpg',
+        '9.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        45,
+        0,
+        'resources/uploadFiles',
+        '8.jpg',
+        '8.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        46,
+        0,
+        'resources/uploadFiles',
+        '3.jpg',
+        '3.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        47,
+        0,
+        'resources/uploadFiles',
+        '7.jpg',
+        '7.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        48,
+        0,
+        'resources/uploadFiles',
+        '11.jpg',
+        '11.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        49,
+        0,
+        'resources/uploadFiles',
+        '4.jpg',
+        '4.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        50,
+        0,
+        'resources/uploadFiles',
+        '14.jpg',
+        '14.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        51,
+        0,
+        'resources/uploadFiles',
+        '13.jpg',
+        '13.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        52,
+        0,
+        'resources/uploadFiles',
+        '5.jpg',
+        '5.jpg'
+        
+    );
+INSERT
+    INTO
+        TB_PRODUCT_FILE
+    VALUES(
+        SEQ_PRODUCT_FILE.nextval,
+        53,
+        0,
+        'resources/uploadFiles',
+        '10.jpg',
+        '10.jpg'
+        
+    );
+
+
+
+
+
+
+
 
 COMMIT;

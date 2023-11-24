@@ -106,7 +106,7 @@ VALUES(
 				SEQ_PRODUCT_FILE.NEXTVAL,
 				#{pdtNo},
 				0,
-				'/resources/uploadFiles',
+				'resources/uploadFiles',
 				#{pdtFileOrigin},
 				#{pdtFileUpload}
 				
@@ -146,7 +146,7 @@ VALUES(
 		    PDT_OPTION_SECOND,
             PF.PDT_FILE_PATH,
             PF.PDT_FILE_ORIGIN,
-            PF.PDT_FILE_UPLOAD,
+            PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
             P.PDT_DATE,
             PDT_GROUP,
             PDT_MANUFAC,
@@ -183,7 +183,7 @@ VALUES(
 		    PC.PDT_FAMILY,
 		    PDT_OPTION_FIRST,
 		    PDT_OPTION_SECOND,
-            PF.PDT_FILE_UPLOAD,
+            PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
             P.PDT_DATE,
             PDT_GROUP,
             PDT_MANUFAC,
@@ -225,7 +225,7 @@ VALUES(
 		    PDT_OPTION_SECOND,
             PF.PDT_FILE_PATH,
             PF.PDT_FILE_ORIGIN,
-            PF.PDT_FILE_UPLOAD,
+            PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
             P.PDT_DATE,
             PDT_GROUP,
             F.FUNDING_NO,
@@ -260,7 +260,7 @@ VALUES(
 		    PC.PDT_FAMILY,
 		    PDT_OPTION_FIRST,
 		    PDT_OPTION_SECOND,
-            PF.PDT_FILE_UPLOAD,
+            PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
             P.PDT_DATE,
             PDT_GROUP,
             PDT_MANUFAC,
@@ -279,7 +279,7 @@ VALUES(
 	</select>
 	<select id="newDrinkFundingDetail" parameterType="_int" resultMap="fundingSelectResultSet">
 		SELECT
-			PF.PDT_FILE_UPLOAD,
+			PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
 			P.PDT_COUNT,
 			P.PDT_NAME,
 			P.PDT_PRICE,
@@ -328,7 +328,7 @@ VALUES(
 			PO.PDT_OPTION_FIRST,
 			PO.PDT_OPTION_SECOND,
 			PF.PDT_FILE_ORIGIN,
-			PF.PDT_FILE_UPLOAD,
+			PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
 			F.CUTTING_DATE,
 			F.CUTTING_PRICE
 		FROM
