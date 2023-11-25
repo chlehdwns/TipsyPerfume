@@ -364,7 +364,7 @@
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
 				}
 			}
-			else { // 로그인X / 실패 시 여기로 돌아옴!(ajax아니고 서버단에서 getHeader(Referer하기))
+			else { // 로그인X / 실패 시 여기로 돌아오도록!(@@@서버단에서 getHeader(Referer하기))
 			
 				$('#pdtMainFirstModal').modal("show");
 				

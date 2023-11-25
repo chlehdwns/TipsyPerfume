@@ -25,7 +25,7 @@ public class AjaxProductController1 {
 	
 	@PostMapping("ajaxChangeWishOne.pa")
 	public void ajaxChangeWishOne(int pdtNo, HttpSession session) {
-		
+		// LoginInterceptor
 	}
 	
 	

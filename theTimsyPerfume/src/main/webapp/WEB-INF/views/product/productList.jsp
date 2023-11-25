@@ -57,11 +57,11 @@
 
             
      		<div id="pdtListContentArea" class="row row-cols-3">
-				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복 / 마지막페이지 예쁘게 하려면 반복횟수 제한, 반복횟수는 = 3 * (floor((배열길이 - 1) / 3)) + 1) 일단 넘어가기 -->
+				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복 / @@@마지막페이지 예쁘게 하려면 반복횟수 제한, 반복횟수는 = 3 * (floor((배열길이 - 1) / 3)) + 1) 일단 넘어가기 -->
 					<div class="container col pdt-list-container-col">
 					<c:if test="${not empty pdtList[(pdt - 1)]}">
-						<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}">
-						<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(${pdtList[(pdt - 1)].pdtNo});"></div>
+						<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
+						<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(this);"></div>
 						<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
 						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
@@ -119,6 +119,127 @@
 	        
         </div>
     </div>
+
+
+    <!-- 모달1: 로그인 / 회원가입 선택 버튼 ~~~~~~~~~~~~~~~~~~~~ -->
+    <div class="modal fade" id="pdtMainFirstModal" tabindex="-1" aria-labelledby="pdtMainFirstModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div id="pdtMainFirstModalLabel" class="modal-title">
+						로그인이 필요한 서비스입니다
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" align="center">
+					<button type="button" id="pdtFirstModalLoginBtn" class="btn btn-primary">로그인하러 가기</button>
+					<br><br>
+					<button type="button" id="pdtFirstModalEnrollBtn" class="btn btn-info">회원가입하러 가기</button>
+					<br><br><br>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <!-- 모달2: 로그인 양식 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div class="modal fade" id="pdtLoginModal" tabindex="-1" aria-labelledby="pdtLoginModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div id="pdtLoginModalLabel" class="modal-title">
+						로그인이 필요한 서비스입니다
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" align="center">
+					<div class="box"></div>
+						<div class="header">
+							<div class="title">
+								<h4 class="title" align="center">로그인</h4>
+							</div>
+							<div class="center-wrapper" align="center">
+								<div class="login-wrapper" >
+									<form action="login.me" method="post"  id="login-form">
+										<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요." >
+										<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요." >
+										<input type="checkbox" id="idSaveCheck" style="font-size:small; height:10px;">
+				  						<label for="remember" style="font-size:small">아이디 저장</label><br>
+										<input type="submit" value="Login">
+										<br><br><br>
+									</form>
+								</div>
+							</div>
+						</div>
+					<div class="box"></div>
+				</div><!-- 바디끝 -->
+			</div>
+		</div>
+	</div>
+    
+    
+    <!-- 모달3: 회원가입 양식 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div class="modal fade" id="pdtMainEnrollFormModal" tabindex="-1" aria-labelledby="pdtMainEnrollFormModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div id="pdtMainEnrollFormModalLabel" class="modal-title">
+						회원가입
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" align="center">
+					<div>필수 입력 사항</div>
+					<br>
+					<form action="insert.me" method="post" id="enroll-form"><!-- id="enroll-form" --> 
+						<div class="form-group pdt-main-form-group">
+
+							<label> *회원 구분 : </label> &nbsp;&nbsp;
+							<input type="radio" id="User" value="U" name="memberType" checked>
+							<label for="User">개인 회원</label> &nbsp;&nbsp;
+							<input type="radio" id="Sale" value="S" name="memberType">
+							<label for="Sale">사업자 회원</label><br>
+							
+							<label for="userEmail">* 아이디(이메일) : </label>
+							<input type="text" class="form-control" id="userEmail" placeholder="아이디를 입력해주세요." name="userEmail" required><br>
+							<div id="checkResult"></div>
+
+							<label for="userPwd">* 비밀번호 : </label>
+							<input type="text" class="form-control" id="userPwd" name="userPwd" onchange="check_pw();" placeholder="비밀번호를 입력해주세요."  required><br>
+							<label for="checkPwd">* 비밀번호 확인 : </label>
+							<input type="text" class="form-control" id="checkPwd" name="checkPwd" onchange="check_pw();" placeholder="비밀번호를 다시 입력해주세요."  required><br>
+							<span id="check"></span>
+							
+							<label for="userName">* 이름 : </label>
+							<input type="text" class="form-control" id="userName" placeholder="이름을 입력해주세요." name="userName" required><br>
+							<label for="nickName">* 닉네임 : </label>
+							<input type="text" class="form-control" id="nickName" placeholder="닉네임을 입력해주세요." name="nickName" required><br>
+							<label for="birthDate">* 생년월일 : </label>
+							<input type="date" class="form-control" id="birthDate" data-placeholder="생년월일을 입력해주세요." name="birthDate" required><br>
+							<label for="phone">* 전화번호 : </label>
+							<input type="text" class="form-control" id="phone" placeholder="전화번호를 입력해주세요." name="phone" required><br>
+							
+							<label>* 주소</label><br>
+							<label for="receiverName">* 받는 사람 이름 : </label>
+							<input type="text" class="form-control" id="receiverName" placeholder="받는 사람 이름을 입력해주세요." name="receiverName" required><br>
+							
+							<button type="button" onclick="execDaumPostcode();" id="pdtMainPoCodeBtn" class="form-control btn btn-info">우편번호찾기</button><br><br>
+							<input type="text" class="form-control" id="postalCode" placeholder="우편번호" name="postalCode" required><br><br>
+							
+							<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br><br>
+							<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail"><br>
+						</div>
+						<br>
+						<div class="modal-footer" align="center">
+							<button type="reset" id="pdtMainResetBtn" class="btn btn-danger">초기화</button>
+							<button type="submit" id="pdtMainSubmitBtn" class="btn btn-primary">회원가입</button>
+						</div>
+					</form> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+    
     
 	<script>
 		$pdtImgArea = $('.pdt-list-pdtImgSrc');
@@ -135,7 +256,7 @@
 			//console.log(e.target);
 			$(e.target).parent().find('.pdt-list-icon-area').removeClass('pdt-list-max-opacity');
 		});
-		/* 처음에 event.stopPropagation();나 pointer-events: none;같은걸 활용했다면 더 좋았을까? */
+		/* @@@처음에 event.stopPropagation();나 pointer-events: none;같은걸 활용했다면 더 좋았을까? */
 	</script>
 	
 	
@@ -157,20 +278,42 @@
 	    
 	    
 		// 하트 한개만 변경!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-		function ajaxChangeWishOne(pdtNo) {
+		function ajaxChangeWishOne(e) {
+			//<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> 
+				//console.log($(e).prev('input[type=hidden]').val());
+			if('${loginUser}' != ''){
+				console.log('로그인 한 유저');
+				/*
 				$.ajax({
-				url : ajaxChangeWishOne.pa,
-				data : { pdtNo : pdtNo },
-				success : result => {
-					console.log('성공');
-					console.log(result);
-					// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택 
-					// addClass부여! => result > 0
-				},
-				error : () => {
-					console.log('실패');
-				}
-			});
+					url : ajaxChangeWishOne.pa,
+					data : { pdtNo : $(e).prev('input[type=hidden]').val() },
+					success : result => {
+						console.log('성공');
+						console.log(result);
+						// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택 
+						// addClass부여! => result > 0
+					},
+					error : () => {
+						console.log('실패');
+					}
+				}); */
+			} else {
+				console.log('로그인 안한 유저');
+				// @@@일단 그냥 모달 다 복붙
+				$('#pdtMainFirstModal').modal("show");
+				
+				$('#pdtFirstModalLoginBtn').click(() => {
+					$('#pdtMainFirstModal').modal("hide");
+					$('#pdtLoginModal').modal("show");
+					console.log('로그인요청');
+				});
+				
+				$('#pdtFirstModalEnrollBtn').click(() => {
+					$('#pdtMainFirstModal').modal("hide");
+					$('#pdtMainEnrollFormModal').modal("show");
+					console.log('회원가입요청');
+				});
+			}
 		};
 		
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
