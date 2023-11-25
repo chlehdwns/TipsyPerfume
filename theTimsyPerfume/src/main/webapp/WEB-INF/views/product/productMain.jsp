@@ -30,11 +30,9 @@
 
 	<!-- CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
-<<<<<<< HEAD
     <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
-=======
->>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
+
     	
 </head>
 
@@ -391,7 +389,7 @@
 
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- 	<script src="resources/js/product/productMain.js"></script> -->
+	<script src="resources/js/product/productMain.js"></script>
     <script src="resources/js/member/loginForm.js"></script>
 	<script src="resources/js/member/memberEnrollForm.js"></script>
 

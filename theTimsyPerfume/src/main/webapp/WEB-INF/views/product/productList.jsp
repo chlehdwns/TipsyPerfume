@@ -23,16 +23,10 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- productMain.jsp의 CSS파일 경로적기 -->
-    <link href="resources/css/product/productMain.css" rel="stylesheet">
     <link href="resources/css/product/productList.css" rel="stylesheet">
-<<<<<<< HEAD
-
     <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
-=======
-    
 
->>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
 </head>
 
 
@@ -413,7 +407,7 @@
 	    
 		// 하트 한개만 변경!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
 		function ajaxChangeWishOne(pdtNo) {
-			//if('${loginUser}' == ''){
+			if('${loginUser}' != ''){
 				console.log('로그인 한 유저'); // @@잠시==함
 				
 				$.ajax({
@@ -430,7 +424,7 @@
 						console.log('실패');
 					}
 				});
-				/*
+			
 			} else {
 				console.log('로그인 안한 유저');
 				// @@@일단 그냥 모달 복붙
@@ -448,7 +442,6 @@
 					console.log('회원가입요청');
 				});
 			}
-				*/
 		};
 	
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
@@ -458,6 +451,13 @@
 			// ajax 요청 후 장바구니 담은게 있으면 장바구니fill / 아니면 빈장바구니
 		});
 		*/
+		
+		// date타입 날짜 비활성화
+		$(() => {
+			var $pdtModalDateInput = $('#birthDate');
+			$pdtModalDateInput.prop('min', '1900-01-01').prop('max', new Date().toISOString().split('T')[0]);
+			//$pdtModalDateInput.prop('min', new Date().toISOString().split('T')[0]); 오늘 이전 비활성화 시
+		});
     </script>
     <script>
 	    // 글 디테일 보기
@@ -468,12 +468,13 @@
     </script>
     
     
->>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
-    <script src="resources/js/product/productList.js"></script>
-    <script src="resources/js/member/loginForm.js"></script>
+    
+   	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="resources/js/product/productMain.js"></script>
 	<script src="resources/js/member/memberEnrollForm.js"></script>
-	<script src="resources/js/frags/loginJoinModal.js"></script>
-</body>
+    <script src="resources/js/member/loginForm.js"></script>
 
+</body>
+<input type="date" value="dddddddddddddd">
 
 </html>
