@@ -89,11 +89,16 @@
 	border-radius: 100%;
 	padding:0px;
 	margin: 0 auto;
-	opacity: 0;
 	position:absolute;
 	top: 30%;
+	opacity: 0; /* 로딩 시 투명도0 : 이 스타일이 위에 있어야함 */
 }
-
+#pdtListContentArea .abc{
+    		opacity : 100;
+}
+#pdtListContentArea .bcd{
+    		opacity : 0;
+    	}
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
 	left: 25%;
@@ -113,7 +118,7 @@
 }
 #pdtListContentArea .pdt-list-pdtImgSrc:hover{
 	cursor: pointer;
-	opacity: 100;
+	/* opacity: 100; */
 }
 
 

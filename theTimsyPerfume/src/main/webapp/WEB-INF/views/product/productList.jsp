@@ -74,14 +74,12 @@
     </span>
     
     <style>
-    
+    /*
     	.abc{
-    		opacity : 100 !important;
+    		opacity : 100;
     	}
-    	
-    	.bcd{
-    		opacity : 0 !important;
-    	}
+    */
+
     </style>
 
 	
@@ -96,24 +94,59 @@
     	
 	    $pdtListCart = $('.pdt-list-cart');
 	    $pdtListHeart = $('.pdt-list-heart');
-  	
+  		let pdtListMouseTimeout;
 	    // 마우스enter, 마우스leave 시 하트와 장바구니 보이게 / 안보이게
- 		$($pdtImgArea).on({
+    
+ 		$pdtImgArea.on('mouseenter', e => {
+		        console.log('마우스엔터');
+		        //$pdtIconArea.css('opacity', '100');
+		        clearTimeout(pdtListMouseTimeout);
+		        $(e.target).parent().find('.pdt-list-icon-area').removeClass('bcd');
+		        $(e.target).parent().find('.pdt-list-icon-area').addClass('abc');
+ 			
+ 		});
+ 		$pdtImgArea.on('mouseleave', e => {
+				console.log('마우스리브')
+				console.log(e.target);
+		        //$pdtIconArea.css('opacity', '0');
+				clearTimeout(pdtListMouseTimeout);
+				pdtListMouseTimeout = setTimeout(() => {
+					/*$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc');
+					(e.target).parent().find('.pdt-list-icon-area').addClass('bcd');*/
+				}, 150);
+ 			
+ 		});
+	    
+	    
+	    
+	    /*$($pdtImgArea).on({
 			mouseenter : (e) => {
 		        console.log('마우스엔터');
 		        //$pdtIconArea.css('opacity', '100');
-		        $(e.target).parent().find('.pdt-list-icon-area').addClass('abc');
+		        clearTimeout(pdtListMouseTimeout);
+			        $(e.target).parent().find('.pdt-list-icon-area').removeClass('bcd');
+			        $(e.target).parent().find('.pdt-list-icon-area').addClass('abc');
+			},
+			mouseleave : (e) => {
+				console.log('마우스리브')
+				console.log(e.target);
+		        //$pdtIconArea.css('opacity', '0');
+				clearTimeout(pdtListMouseTimeout);
+				pdtListMouseTimeout = setTimeout(() => {
+					$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc');
+					$(e.target).parent().find('.pdt-list-icon-area').addClass('bcd');
+				}, 100);
 			}
-
-		}); 
-	    
- 		$($pdtImgArea).on('mouseleave', (e) => {
+		});
+		   */
+ /*		$($pdtImgArea).on('mouseleave', (e) => {
 				console.log('나')
 		        //$pdtIconArea.css('opacity', '0');
 				console.log(e.target);
-				$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc')
- 		}
-		); 
+				$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc');
+				$(e.target).parent().find('.pdt-list-icon-area').addClass('bcd');
+	 		};
+		); */
     
 		// 하트 한개! // ajax 요청 후 좋아요 누른 게시글에는 하트fill / 아니면 빈하트
 /* 	    function ajaxChangeWishlist() {
