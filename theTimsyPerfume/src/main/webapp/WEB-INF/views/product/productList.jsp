@@ -25,8 +25,7 @@
     <!-- productMain.jsp의 CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
     <link href="resources/css/product/productList.css" rel="stylesheet">
-    
-
+    <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
 </head>
 
 
@@ -238,7 +237,7 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- @@@모달말고 window.open('loginOrLogoutModal.me', '_blank', 'width=600,height=400');같은거 로그인창 생각해보기 -->
     
     
 	<script>
@@ -260,6 +259,9 @@
 	</script>
 	
 	
+	
+	
+	
     <script>
     	// 온로드 시점에 좋아요여부 체크 => 하트클래스 변경
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
@@ -273,6 +275,7 @@
 		let wishPdtNumsArr = [];
 		$(() => {
 			// pdtNo 배열 만들어 넘김
+			// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
 			
 		});
 	    
@@ -289,34 +292,42 @@
 					success : result => {
 						console.log('성공');
 						console.log(result);
-						// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택 
+						else if(result === 'true') {
+							
+						}
+						else if(result === 'false') {
+							
+						}
 						// addClass부여! => result > 0
 					},
 					error : () => {
 						console.log('실패');
 					}
 				});
-				/*
 			} else {
 				console.log('로그인 안한 유저');
-				// @@@일단 그냥 모달 복붙
-				$('#pdtMainFirstModal').modal("show");
-				
-				$('#pdtFirstModalLoginBtn').click(() => {
-					$('#pdtMainFirstModal').modal("hide");
-					$('#pdtLoginModal').modal("show");
-					console.log('로그인요청');
-				});
-				
-				$('#pdtFirstModalEnrollBtn').click(() => {
-					$('#pdtMainFirstModal').modal("hide");
-					$('#pdtMainEnrollFormModal').modal("show");
-					console.log('회원가입요청');
-				});
+				function pdtListLoginModal();
 			}
-				*/
 		};
-	
+		
+		function pdtListLoginModal() {
+			// @@@일단 그냥 모달 복붙 (@@@나중에 새창열기같은거 생각해보기)
+			$('#pdtMainFirstModal').modal("show");
+			
+			$('#pdtFirstModalLoginBtn').click(() => {
+				$('#pdtMainFirstModal').modal("hide");
+				$('#pdtLoginModal').modal("show");
+				console.log('로그인요청');
+			});
+			
+			$('#pdtFirstModalEnrollBtn').click(() => {
+				$('#pdtMainFirstModal').modal("hide");
+				$('#pdtMainEnrollFormModal').modal("show");
+				console.log('회원가입요청');
+			});
+		};
+		
+		
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
 		/*
 		$pdtListCart.click(() => {
@@ -332,8 +343,6 @@
 	   		console.log($(e.target).parent().find('input'));
 	   	});
     </script>
-    
-    
     <script src="resources/js/product/productList.js"></script>
 </body>
 

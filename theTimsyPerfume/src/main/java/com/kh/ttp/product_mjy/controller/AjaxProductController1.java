@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.ttp.product.model.vo.WishlistVO;
@@ -29,7 +30,7 @@ public class AjaxProductController1 {
 	 */
 	@ResponseBody
 	@PostMapping("ajaxChangeWishOne.pa")
-	public String ajaxChangeWishOne(int pdtNo, HttpSession session) {
+	public String ajaxChangeWishOne(@RequestParam (value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
 		// @@@Ajax는 LoginInterceptor를 따로 만들어야..! @@@일단 그냥 session에서 뽑음
 		System.out.println(pdtNo + "pdt넘버ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ");
 		boolean result = false;
@@ -39,7 +40,7 @@ public class AjaxProductController1 {
 			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			result = productService.ajaxChangeWishOne(wishlist);
 		} else {
-			return "NOTLOGINED";
+			return "";
 		}
 		System.out.println(result + " <<< 반환반환반환!!!!!!!!!!!!!!!!!!!!!!!!");
 		return result + "";
