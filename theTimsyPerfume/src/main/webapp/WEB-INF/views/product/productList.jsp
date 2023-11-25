@@ -93,6 +93,11 @@
 	        			</c:when>
 	        			<c:otherwise> <!-- 앞 화살표 / 그 외에는 일반 li(a링크 curentPage - 1) -->
 	       				    <li class="page-item">
+	       				    	<c:set var="hrefPage" value="${pdtCteg eq 'A' ? 'selectAlcoholPdtList.pr' : 'selectPerfumePdtList.pr'}" />
+						        <a class="page-link" href="${hrefPage}?currentPage=${pi.currentPage - 1}" aria-label="Previous">
+						      		<span aria-hidden="true">&laquo;</span>
+						        </a>
+	       				    	<!--
 				       			<c:choose>
 				        			<c:when test="${pdtCteg eq 'A'}">
 								        <a class="page-link" href="selectAlcoholPdtList.pr?currentPage=${pi.currentPage - 1}" aria-label="Previous">
@@ -105,6 +110,8 @@
 								        </a>				        			
 				        			</c:otherwise>
 				        		</c:choose>
+				        		-->
+				        		
 						    </li>
 	        			</c:otherwise>
 	        		</c:choose>
