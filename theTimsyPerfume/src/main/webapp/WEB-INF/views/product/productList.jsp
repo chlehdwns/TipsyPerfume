@@ -33,7 +33,7 @@
 <body>
 	<jsp:include page="../common/header.jsp" />
 
-    <span id="productListWrap">
+    <div id="productListWrap">
         <div id="pdtListOuterLeft">
             <jsp:include page="productSideBar.jsp" />
         </div>
@@ -114,7 +114,7 @@
 	        
 	        
         </div>
-    </span>
+    </div>
     
 	<script>
 		$pdtImgArea = $('.pdt-list-pdtImgSrc');
