@@ -73,18 +73,38 @@
 	        <div id="pdtListPaginationArea" class="row">
 	        	<ul class="pagination">
 	        		<c:choose>
+	        			<c:when test="${pdtCteg eq 'A'}">
+	        			
+	        			
+	        			</c:when>
+	        			<c:otherwise>
+	        			
+	        			</c:otherwise>
+	        		</c:choose>
+	        	
+	        	
+	        		<c:choose>
 	        			<c:when test="${pi.currentPage eq 1}"> <!-- 앞 화살표 / 현재페이지 1이면 disabled -->
 	       				    <li class="page-item">
-						        <a class="page-link" href="#" aria-label="Previous">
+						        <a class="page-link disabled" href="#" aria-label="Previous">
 						      		<span aria-hidden="true">&laquo;</span>
 						        </a>
 						    </li>
 	        			</c:when>
 	        			<c:otherwise> <!-- 앞 화살표 / 그 외에는 일반 li(a링크 curentPage - 1) -->
 	       				    <li class="page-item">
-						        <a class="page-link" href="#" aria-label="Previous">
-						      		<span aria-hidden="true">&laquo;</span>
-						        </a>
+				       			<c:choose>
+				        			<c:when test="${pdtCteg eq 'A'}">
+								        <a class="page-link" href="selectAlcoholPdtList.pr?currentPage=${pi.currentPage - 1}" aria-label="Previous">
+								      		<span aria-hidden="true">&laquo;</span>
+								        </a>
+				        			</c:when>
+				        			<c:otherwise>
+								        <a class="page-link" href="selectPerfumePdtList.pr?currentPage=${pi.currentPage -1}" aria-label="Previous">
+								      		<span aria-hidden="true">&laquo;</span>
+								        </a>				        			
+				        			</c:otherwise>
+				        		</c:choose>
 						    </li>
 	        			</c:otherwise>
 	        		</c:choose>
