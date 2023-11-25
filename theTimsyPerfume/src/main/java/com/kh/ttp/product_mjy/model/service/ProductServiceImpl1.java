@@ -113,14 +113,17 @@ public class ProductServiceImpl1 implements ProductService1 {
 	public int deleteWishOne(WishlistVO wishlist) {
 		return productDao.deleteWishOne(sqlSession, wishlist);
 	}
-
-	
 	/***************** ajax 요청 *****************/
 	@Override
 	public boolean ajaxChangeWishOne(WishlistVO wishlist) {
 		// 카운트 후 INSERT or DELETE 수행 => (result > 0)로 성공1은 true, 실패0은 false반환
-		int result = (countWishOne(wishlist) == 0) ? insertWishOne(wishlist) : deleteWishOne(wishlist);
-		return (result > 0);
+		boolean isFilledHeart = false;
+		if(countWishOne(wishlist) == 0) { // count 0이었을 때? 위시리스트 없음 => insert 성공 시 : 하트채우기(true)
+			isFilledHeart = (insertWishOne(wishlist) > 0) ? true : false;
+		} else { // count 1이었을 때? 위시리스트 있음 => delete 성공 시 : 하트비우기(false)
+			isFilledHeart = (deleteWishOne(wishlist) > 0) ? false : true;
+		}
+		return isFilledHeart;
 	}
 
 

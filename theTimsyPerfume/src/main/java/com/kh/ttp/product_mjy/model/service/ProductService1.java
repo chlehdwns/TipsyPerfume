@@ -67,7 +67,9 @@ public interface ProductService1 {
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
 	 * 없으면 추가(INSERT), 이미 있으면 위시리스트 취소(DELETE)
 	 * @param wishlist : 상품번호 pdtNo(PK), 유저번호userNo(PK)가 담긴 WishlistVO 인스턴스
-	 * @return : 요청 성공 혹은 실패 여부 boolean타입 반환
+	 * @return : 위시리스트에 INSERT 혹은 DELETE구문 수행 후<br>
+	 * 결과에 따라 위시리스트가 있는 상태로 표시해야하는지(true)<br>
+	 * 비워진 상태로 표시해야하는지(false) boolean타입 반환<br>
 	 */
 	boolean ajaxChangeWishOne(WishlistVO wishlist);
 	

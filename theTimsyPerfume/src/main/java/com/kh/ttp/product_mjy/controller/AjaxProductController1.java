@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.product_mjy.model.service.ProductService1;
@@ -22,8 +23,11 @@ public class AjaxProductController1 {
 	 * @param pdtNo : 위시리스트를 추가하려는 상품 번호(PK)
 	 * @param session : 로그인 유저 번호(PK)를 뽑기위한 세션
 	 * @return
-	 * 성공 시 문자열 "true", 실패 시 문자열 "false"반환 (가독성을 위해 "1", "0"대신 boolean반환) 
+	 * 위시리스트가 있는 상태로 표시해야 할 때 문자열 "true"반환<br>
+	 * 비워진 상태로 표시해야할 때 문자열 "false" 반환<br>
+	 * (가독성을 위해 "true", "false"반환)
 	 */
+	@ResponseBody
 	@PostMapping("ajaxChangeWishOne.pa")
 	public String ajaxChangeWishOne(int pdtNo, HttpSession session) {
 		// @@@Ajax는 LoginInterceptor를 따로 만들어야..! @@@일단 그냥 session에서 뽑음
@@ -34,6 +38,8 @@ public class AjaxProductController1 {
 			wishlist.setPdtNo(pdtNo);
 			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			result = productService.ajaxChangeWishOne(wishlist);
+		} else {
+			return "NOTLOGINED";
 		}
 		System.out.println(result + " <<< 반환반환반환!!!!!!!!!!!!!!!!!!!!!!!!");
 		return result + "";
