@@ -101,20 +101,16 @@
 		        console.log('마우스엔터');
 		        //$pdtIconArea.css('opacity', '100');
 		        clearTimeout(pdtListMouseTimeout);
-		        $(e.target).parent().find('.pdt-list-icon-area').removeClass('bcd');
-		        $(e.target).parent().find('.pdt-list-icon-area').addClass('abc');
+		        $(e.target).parent().find('.pdt-list-icon-area').addClass('pdt-list-max-opacity');
  			
  		});
+	    
  		$pdtImgArea.on('mouseleave', e => {
 				console.log('마우스리브')
 				console.log(e.target);
 		        //$pdtIconArea.css('opacity', '0');
 				clearTimeout(pdtListMouseTimeout);
-				pdtListMouseTimeout = setTimeout(() => {
-					/*$(e.target).parent().find('.pdt-list-icon-area').removeClass('abc');
-					(e.target).parent().find('.pdt-list-icon-area').addClass('bcd');*/
-				}, 150);
- 			
+				$(e.target).parent().find('.pdt-list-icon-area').removeClass('pdt-list-max-opacity');
  		});
 	    
 	    
