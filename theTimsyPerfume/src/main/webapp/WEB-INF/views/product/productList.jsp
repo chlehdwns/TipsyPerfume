@@ -55,6 +55,7 @@
             	</c:choose>
             </div>
             
+            
      		<div id="pdtListContentArea" class="row row-cols-3">
 				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복  -->
 					<div class="container col pdt-list-container-col">
@@ -70,83 +71,48 @@
 					</div>
 				</c:forEach>
 			</div>
+
+			
 	        <div id="pdtListPaginationArea" class="row">
+       		<c:set var="hrefPage" value="${pdtCteg eq 'A' ? 'selectAlcoholPdtList.pr' : 'selectPerfumePdtList.pr'}" />
 	        	<ul class="pagination">
-	        		<c:choose>
-	        			<c:when test="${pdtCteg eq 'A'}">
-	        			
-	        			
-	        			</c:when>
-	        			<c:otherwise>
-	        			
-	        			</c:otherwise>
-	        		</c:choose>
-	        	
-	        	
-	        		<c:choose>
-	        			<c:when test="${pi.currentPage eq 1}"> <!-- 앞 화살표 / 현재페이지 1이면 disabled -->
-	       				    <li class="page-item">
-						        <a class="page-link disabled" href="#" aria-label="Previous">
+   				    <li class="page-item">
+	        			<c:choose>
+		        			<c:when test="${pi.currentPage eq 1}"> <!-- 앞 화살표 / 현재페이지 1이면 disabled -->
+						        <a class="page-link disabled" aria-label="Previous">
 						      		<span aria-hidden="true">&laquo;</span>
 						        </a>
-						    </li>
-	        			</c:when>
-	        			<c:otherwise> <!-- 앞 화살표 / 그 외에는 일반 li(a링크 curentPage - 1) -->
-	       				    <li class="page-item">
-	       				    	<c:set var="hrefPage" value="${pdtCteg eq 'A' ? 'selectAlcoholPdtList.pr' : 'selectPerfumePdtList.pr'}" />
+		        			</c:when>
+		        			<c:otherwise> <!-- 앞 화살표 / 그 외에는 일반 li(a링크 curentPage - 1) -->
 						        <a class="page-link" href="${hrefPage}?currentPage=${pi.currentPage - 1}" aria-label="Previous">
 						      		<span aria-hidden="true">&laquo;</span>
 						        </a>
-	       				    	<!--
-				       			<c:choose>
-				        			<c:when test="${pdtCteg eq 'A'}">
-								        <a class="page-link" href="selectAlcoholPdtList.pr?currentPage=${pi.currentPage - 1}" aria-label="Previous">
-								      		<span aria-hidden="true">&laquo;</span>
-								        </a>
-				        			</c:when>
-				        			<c:otherwise>
-								        <a class="page-link" href="selectPerfumePdtList.pr?currentPage=${pi.currentPage -1}" aria-label="Previous">
-								      		<span aria-hidden="true">&laquo;</span>
-								        </a>				        			
-				        			</c:otherwise>
-				        		</c:choose>
-				        		-->
-				        		
-						    </li>
-	        			</c:otherwise>
-	        		</c:choose>
+		        			</c:otherwise>
+	        			</c:choose>
+				    </li>
 	        		
-	        		<c:choose>
-	        			<c:when test="${pdtCteg eq 'A'}">
-			        		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}"> <!-- 페이지버튼영역 / 시작페이지 ~ 끝페이지만큼 반복 -->
-			        			<li class="page-item"><a class="page-link" href="selectAlcoholPdtList.pr?currentPage=${i}">${i}</a></li>
-			        		</c:forEach>
-	        			</c:when>
-	        			<c:otherwise>
-			        		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}"> <!-- 페이지버튼영역 / 시작페이지 ~ 끝페이지만큼 반복 -->
-			        			<li class="page-item"><a class="page-link" href="selectPerfumePdtList.pr?currentPage=${i}">${i}</a></li>
-			        		</c:forEach>	        			
-	        			</c:otherwise>
-	        		</c:choose>
+	        		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}"> <!-- 페이지버튼영역 / 시작페이지 ~ 끝페이지만큼 반복 -->
+	        			<li class="page-item"><a class="page-link" href="${hrefPage}?currentPage=${i}">${i}</a></li>
+	        		</c:forEach>
 	        		
-	        		<c:choose>
-	        			<c:when test="${pi.currentPage eq pi.maxPage}"> <!-- 뒤 화살표 : 현재페이지 eq 전체 페이지개수면 disabled -->
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
+					<li class="page-item">
+	        			<c:choose>
+		        			<c:when test="${pi.currentPage eq pi.maxPage}"> <!-- 뒤 화살표 : 현재페이지 eq 전체 페이지개수면 disabled -->
+								<a class="page-link disabled" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
-							</li>	        			
-	        			</c:when>
-	        			<c:otherwise> <!-- 뒤 화살표 / 그 외에는 일반li(a링크 currentPage + 1) -->
-	        				<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
+		        			</c:when>
+		        			<c:otherwise> <!-- 뒤 화살표 / 그 외에는 일반li(a링크 currentPage + 1) -->
+								<a class="page-link" href="${hrefPage}?=${pi.currentPage + 1}" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
-							</li>	
-	        			</c:otherwise>
-	        		</c:choose>
+		        			</c:otherwise>
+	        			</c:choose>
+					</li>	
 	        	</ul>
 	        </div>
+	        
+	        
         </div>
     </span>
     
