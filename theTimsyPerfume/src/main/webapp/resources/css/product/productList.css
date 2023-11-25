@@ -79,6 +79,7 @@
 #pdtListContentArea .pdt-list-icon-area{
 	width:12.5%;
 	font-size: 22px;
+	color: red;
 	background-color: rgb(223, 190, 106);
 	border-radius: 100%;
 	padding:0px;
@@ -90,15 +91,14 @@
 	     혹은 pdt-list-max-opacity에 important */
 }
 #pdtListContentArea .pdt-list-max-opacity{
-    		opacity : 100;
+	opacity : 100;
 }
 
 #pdtListOuterRight .bi.pdt-list-heart{
 	float: left;
 	left: 25%;
-
-	
 }
+
 #pdtListContentArea .bi.pdt-list-cart{
 	float: right;
 	right: 25%;

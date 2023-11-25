@@ -25,7 +25,14 @@
     <!-- productMain.jsp의 CSS파일 경로적기 -->
     <link href="resources/css/product/productMain.css" rel="stylesheet">
     <link href="resources/css/product/productList.css" rel="stylesheet">
+<<<<<<< HEAD
+
     <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
+    <link href="resources/css/member/loginForm.css" rel="stylesheet">
+=======
+    
+
+>>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
 </head>
 
 
@@ -60,8 +67,8 @@
 					<div class="container col pdt-list-container-col">
 						<c:if test="${not empty pdtList[(pdt - 1)]}">
 							<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
-							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(${pdtList[(pdt - 1)].pdtNo});"></div>
-							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart" onclick="ajaxAddCartOne(${pdtList[(pdt - 1)].pdtNo});"></div>
+							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(this);"></div>
+							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart" onclick="ajaxAddCartOne(this);"></div>
 							<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
 			                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
 			                <div class="row pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
@@ -118,6 +125,131 @@
 	        
         </div>
     </div>
+
+
+	    
+	<script>
+		$pdtImgArea = $('.pdt-list-pdtImgSrc');
+	    $pdtIconArea = $('.pdt-list-icon-area');
+	    
+   		// 마우스enter, 마우스leave 시 하트와 장바구니 보이게 / 안보이게
+		$pdtImgArea.on('mouseenter', e => {
+	        //console.log('마우스엔터');
+	        $(e.target).parent().find('.pdt-list-icon-area').addClass('pdt-list-max-opacity');
+		});
+		
+   		$pdtImgArea.on('mouseleave', e => {
+			//console.log('마우스리브')
+			//console.log(e.target);
+			$(e.target).parent().find('.pdt-list-icon-area').removeClass('pdt-list-max-opacity');
+		});
+		/* @@@처음에 event.stopPropagation();나 pointer-events: none;같은걸 활용했다면 더 좋았을까? */
+	</script>
+	
+	
+	
+	
+	
+    <script>
+    	// 온로드 시점에 좋아요여부 체크 => 하트클래스 변경
+		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
+		// 채운장바구니 bi bi-cart-plus-fill 안채운장바구니 bi bi-cart-plus
+	    $pdtListCart = $('.pdt-list-cart');
+	    $pdtListHeart = $('.pdt-list-heart');
+
+	    	
+		// 페이지 온로드 시 상품 여러개 하트 조회 ajax 요청!
+		// 좋아요 누른 게시글에는 filled하트 / 아니면 빈하트
+		//let wishPdtNumsArr = [];
+		//$(() => {
+			// pdtNo 배열 만들어 넘김
+			// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
+			
+		//});
+	    
+	    
+		// 하트 한개만 변경!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
+		function ajaxChangeWishOne(e) {
+			if('${loginUser}' != '') {
+				console.log('로그인 한 유저');
+				$.ajax({
+					url : 'ajaxChangeWishOne.pa',
+					method : 'POST',
+					data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
+					success : result => {
+						console.log('성공');
+						console.log(result);
+						if(result === 'true') {
+							$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
+						}
+						else if(result === 'false') {
+							//bi-suit-heart
+							$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
+						}
+						else {
+							console.log('뭔가잘못됨');
+						}
+						// addClass부여! => result > 0
+					},
+					error : () => {
+						console.log('실패');
+					}
+				});
+			} else {
+				console.log('로그인 안한 유저');
+				pdtListLoginModal();
+			};
+			
+		};
+		
+		function pdtListLoginModal() {
+			// @@@일단 그냥 모달 복붙 (@@@나중에 새창열기같은거 생각해보기)
+			$('#pdtMainFirstModal').modal("show");
+			
+			$('#pdtFirstModalLoginBtn').click(() => {
+				$('#pdtMainFirstModal').modal("hide");
+				$('#pdtLoginModal').modal("show");
+				console.log('로그인요청');
+			});
+			
+			$('#pdtFirstModalEnrollBtn').click(() => {
+				$('#pdtMainFirstModal').modal("hide");
+				$('#pdtMainEnrollFormModal').modal("show");
+				console.log('회원가입요청');
+			});
+		};
+		
+		
+		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
+		/*
+		$pdtListCart.click(() => {
+			console.log('장바구니');
+			// ajax 요청 후 장바구니 담은게 있으면 장바구니fill / 아니면 빈장바구니
+		});
+		*/
+    </script>
+    <script>
+	    // 글 디테일 보기
+	   	$('.pdtDetail').click(e => {
+	   		console.log('디테일클릭');
+	   		console.log($(e.target).parent().find('input'));
+	   	});
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- 모달1: 로그인 / 회원가입 선택 버튼 ~~~~~~~~~~~~~~~~~~~~ -->
@@ -237,8 +369,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- @@@모달말고 window.open('loginOrLogoutModal.me', '_blank', 'width=600,height=400');같은거 로그인창 생각해보기 -->
+
     
+<<<<<<< HEAD
+
+=======
     
 	<script>
 		$pdtImgArea = $('.pdt-list-pdtImgSrc');
@@ -259,9 +394,6 @@
 	</script>
 	
 	
-	
-	
-	
     <script>
     	// 온로드 시점에 좋아요여부 체크 => 하트클래스 변경
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
@@ -275,7 +407,6 @@
 		let wishPdtNumsArr = [];
 		$(() => {
 			// pdtNo 배열 만들어 넘김
-			// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
 			
 		});
 	    
@@ -292,42 +423,34 @@
 					success : result => {
 						console.log('성공');
 						console.log(result);
-						else if(result === 'true') {
-							
-						}
-						else if(result === 'false') {
-							
-						}
+						// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택 
 						// addClass부여! => result > 0
 					},
 					error : () => {
 						console.log('실패');
 					}
 				});
+				/*
 			} else {
 				console.log('로그인 안한 유저');
-				function pdtListLoginModal();
+				// @@@일단 그냥 모달 복붙
+				$('#pdtMainFirstModal').modal("show");
+				
+				$('#pdtFirstModalLoginBtn').click(() => {
+					$('#pdtMainFirstModal').modal("hide");
+					$('#pdtLoginModal').modal("show");
+					console.log('로그인요청');
+				});
+				
+				$('#pdtFirstModalEnrollBtn').click(() => {
+					$('#pdtMainFirstModal').modal("hide");
+					$('#pdtMainEnrollFormModal').modal("show");
+					console.log('회원가입요청');
+				});
 			}
+				*/
 		};
-		
-		function pdtListLoginModal() {
-			// @@@일단 그냥 모달 복붙 (@@@나중에 새창열기같은거 생각해보기)
-			$('#pdtMainFirstModal').modal("show");
-			
-			$('#pdtFirstModalLoginBtn').click(() => {
-				$('#pdtMainFirstModal').modal("hide");
-				$('#pdtLoginModal').modal("show");
-				console.log('로그인요청');
-			});
-			
-			$('#pdtFirstModalEnrollBtn').click(() => {
-				$('#pdtMainFirstModal').modal("hide");
-				$('#pdtMainEnrollFormModal').modal("show");
-				console.log('회원가입요청');
-			});
-		};
-		
-		
+	
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
 		/*
 		$pdtListCart.click(() => {
@@ -343,7 +466,13 @@
 	   		console.log($(e.target).parent().find('input'));
 	   	});
     </script>
+    
+    
+>>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
     <script src="resources/js/product/productList.js"></script>
+    <script src="resources/js/member/loginForm.js"></script>
+	<script src="resources/js/member/memberEnrollForm.js"></script>
+	<script src="resources/js/frags/loginJoinModal.js"></script>
 </body>
 
 
