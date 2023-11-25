@@ -103,18 +103,43 @@
 	</select>
 	
 	
-	<!-- ajax 위시리스트 셀렉구문 -->
+	<!-- 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트) -->
+	<select id="countWishOne" parameterType="wishlist" resultType="_int">
+		SELECT
+			   COUNT(1) "RESULT"
+		  FROM
+		  	   TB_WISHLIST
+		 WHERE
+		  	   PDT_NO = #{pdtNo}
+		   AND
+		  	   USER_NO = #{userNo}
+	</select>
 	
-	<!-- ajax 위시리스트 INSERT구문 -->
-	<insert id="ajaxChangeWishlist" parameterType="_int">
+	<!-- 위시리스트 INSERT구문 -->
+	<insert id="insertWishOne" parameterType="wishlist">
 		INSERT
 		  INTO
-		  	   TB_WISHLIST(PDT_NO, USER_NO)
+		  	   TB_WISHLIST
+		  	   (
+		  	   PDT_NO,
+		  	   USER_NO
+		  	   )
 		VALUES
-			   	
-
+			   	(
+			   	#{pdtNo},
+			   	#{userNo}
+			   	)
 	</insert>
 	
+	<!-- 위시리스트 DELETE구문 -->
+	<delete id="deleteWishOne" parameterType="wishlist">
+		DELETE
+			   TB_WISHLIST
+		 WHERE
+			   PDT_NO = #{pdtNo}
+		   AND
+			   USER_NO = #{userNo}
+	</delete>
 	
 	
 </mapper>

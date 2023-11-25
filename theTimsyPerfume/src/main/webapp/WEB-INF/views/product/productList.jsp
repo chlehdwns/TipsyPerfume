@@ -59,19 +59,19 @@
      		<div id="pdtListContentArea" class="row row-cols-3">
 				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복 / @@@마지막페이지 예쁘게 하려면 반복횟수 제한, 반복횟수는 = 3 * (floor((배열길이 - 1) / 3)) + 1) 일단 넘어가기 -->
 					<div class="container col pdt-list-container-col">
-					<c:if test="${not empty pdtList[(pdt - 1)]}">
-						<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
-						<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(this);"></div>
-						<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
-						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
-		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
-		                <div class="row pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
-		                <div class="row pdt-list-reviewAvg pdtDetail">
-		                	<c:if test="${not empty pdtList[(pdt - 1)]}">★ ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
-		                </div>
-		                <div class="row pdt-list-pdtIntro pdtDetail">${pdtList[(pdt - 1)].pdtIntro}</div>
-		                <div class="row pdt-list-pdtDescription pdtDetail">${pdtList[(pdt - 1)].pdtDescription}${pdtList[(pdt - 1)].pdtDescription}</div>
-					</c:if>
+						<c:if test="${not empty pdtList[(pdt - 1)]}">
+							<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
+							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(${pdtList[(pdt - 1)].pdtNo});"></div>
+							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart" onclick="ajaxAddCartOne(${pdtList[(pdt - 1)].pdtNo});"></div>
+							<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
+			                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
+			                <div class="row pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
+			                <div class="row pdt-list-reviewAvg pdtDetail">
+			                	<c:if test="${not empty pdtList[(pdt - 1)]}">★ ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
+			                </div>
+			                <div class="row pdt-list-pdtIntro pdtDetail">${pdtList[(pdt - 1)].pdtIntro}</div>
+			                <div class="row pdt-list-pdtDescription pdtDetail">${pdtList[(pdt - 1)].pdtDescription}${pdtList[(pdt - 1)].pdtDescription}</div>
+						</c:if>
 					</div>
 				</c:forEach>
 			</div>
@@ -278,15 +278,14 @@
 	    
 	    
 		// 하트 한개만 변경!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-		function ajaxChangeWishOne(e) {
-			//<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> 
-				//console.log($(e).prev('input[type=hidden]').val());
-			if('${loginUser}' != ''){
-				console.log('로그인 한 유저');
-				/*
+		function ajaxChangeWishOne(pdtNo) {
+			//if('${loginUser}' == ''){
+				console.log('로그인 한 유저'); // @@잠시==함
+				
 				$.ajax({
-					url : ajaxChangeWishOne.pa,
-					data : { pdtNo : $(e).prev('input[type=hidden]').val() },
+					url : 'ajaxChangeWishOne.pa',
+					method : 'POST',
+					data : { pdtNo : pdtNo },
 					success : result => {
 						console.log('성공');
 						console.log(result);
@@ -296,10 +295,11 @@
 					error : () => {
 						console.log('실패');
 					}
-				}); */
+				});
+				/*
 			} else {
 				console.log('로그인 안한 유저');
-				// @@@일단 그냥 모달 다 복붙
+				// @@@일단 그냥 모달 복붙
 				$('#pdtMainFirstModal').modal("show");
 				
 				$('#pdtFirstModalLoginBtn').click(() => {
@@ -314,8 +314,9 @@
 					console.log('회원가입요청');
 				});
 			}
+				*/
 		};
-		
+	
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
 		/*
 		$pdtListCart.click(() => {

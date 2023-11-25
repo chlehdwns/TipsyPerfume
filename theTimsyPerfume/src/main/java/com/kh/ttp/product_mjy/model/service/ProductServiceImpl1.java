@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
+import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.product_mjy.model.dao.ProductDao1;
 
 @Service
@@ -93,6 +94,33 @@ public class ProductServiceImpl1 implements ProductService1 {
 		//pMap.put("pdtNo", pdtNo);
 		//pMap.put("pdtCteg", "A");
 		return null;
+	}
+
+
+	@Override
+	public int countWishOne(WishlistVO wishlist) {
+		return productDao.countWishOne(sqlSession, wishlist);
+	}
+
+
+	@Override
+	public int insertWishOne(WishlistVO wishlist) {
+		return productDao.insertWishOne(sqlSession, wishlist);
+	}
+
+
+	@Override
+	public int deleteWishOne(WishlistVO wishlist) {
+		return productDao.deleteWishOne(sqlSession, wishlist);
+	}
+
+	
+	/***************** ajax 요청 *****************/
+	@Override
+	public boolean ajaxChangeWishOne(WishlistVO wishlist) {
+		// 카운트 후 INSERT or DELETE 수행 => (result > 0)로 성공1은 true, 실패0은 false반환
+		int result = (countWishOne(wishlist) == 0) ? insertWishOne(wishlist) : deleteWishOne(wishlist);
+		return (result > 0);
 	}
 
 

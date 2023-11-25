@@ -23,13 +23,14 @@
 	
 	<context:component-scan base-package="com.kh.ttp" />
 	
+	<!--
 	<interceptors>
 		<interceptor>
-			<mapping path="/ajaxChangeWishOne.pa" /><!-- 좋아요요청 -->
-			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" /> <!-- 인터셉터 종류 등록 -->
+			<mapping path="" />
+			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 	</interceptors>
-	
+	-->
 	
 	
 </beans:beans>

@@ -23,6 +23,7 @@
 		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.WishlistVO" alias="wishlist"/>
 	</typeAliases>
 
 	  <mappers>

@@ -54,7 +54,9 @@ public class ProductController1 {
 									   Model m) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
-		System.out.println(productService.selectPerfumePdtList(sort, pi));
+		
+		//System.out.println(productService.selectPerfumePdtList(sort, pi));
+		
 		m.addAttribute("pdtList", productService.selectAlcoholPdtList(sort, pi)) // 향수는 그냥 기본, 식별자 안넘김
 		 .addAttribute("pi", pi);
 		return "product/productList";
@@ -77,7 +79,7 @@ public class ProductController1 {
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		
-		System.out.println(productService.selectAlcoholPdtList(sort, pi));
+		//System.out.println(productService.selectAlcoholPdtList(sort, pi));
 		
 		m.addAttribute("pdtCteg", "A")
 		 .addAttribute("pdtList", productService.selectAlcoholPdtList(sort, pi))
