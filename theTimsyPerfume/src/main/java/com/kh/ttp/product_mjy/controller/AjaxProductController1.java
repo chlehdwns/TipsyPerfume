@@ -3,6 +3,7 @@ package com.kh.ttp.product_mjy.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.ttp.product.model.service.ProductService;
@@ -21,6 +22,12 @@ public class AjaxProductController1 {
 		}
 		return "";
 	}
+	
+	@PostMapping("ajaxChangeWishOne.pa")
+	public void ajaxChangeWishOne(int pdtNo, HttpSession session) {
+		
+	}
+	
 	
 	
 	
