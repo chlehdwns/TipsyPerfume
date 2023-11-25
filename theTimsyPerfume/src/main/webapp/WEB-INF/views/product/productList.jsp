@@ -54,20 +54,24 @@
             		</c:otherwise>
             	</c:choose>
             </div>
-            
+
             
      		<div id="pdtListContentArea" class="row row-cols-3">
-				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복  -->
+				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복 / 마지막페이지 예쁘게 하려면 반복횟수 제한, 반복횟수는 = 3 * (floor((배열길이 - 1) / 3)) + 1) 일단 넘어가기 -->
 					<div class="container col pdt-list-container-col">
+					<c:if test="${not empty pdtList[(pdt - 1)]}">
 						<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}">
 						<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(${pdtList[(pdt - 1)].pdtNo});"></div>
 						<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart"></div>
 						<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
 		                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
 		                <div class="row pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
-		                <div class="row pdt-list-reviewAvg pdtDetail">★ ${pdtList[(pdt - 1)].reviewAvg}/5</div>
+		                <div class="row pdt-list-reviewAvg pdtDetail">
+		                	<c:if test="${not empty pdtList[(pdt - 1)]}">★ ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
+		                </div>
 		                <div class="row pdt-list-pdtIntro pdtDetail">${pdtList[(pdt - 1)].pdtIntro}</div>
 		                <div class="row pdt-list-pdtDescription pdtDetail">${pdtList[(pdt - 1)].pdtDescription}${pdtList[(pdt - 1)].pdtDescription}</div>
+					</c:if>
 					</div>
 				</c:forEach>
 			</div>
@@ -103,7 +107,7 @@
 								</a>
 		        			</c:when>
 		        			<c:otherwise> <!-- 뒤 화살표 / 그 외에는 일반li(a링크 currentPage + 1) -->
-								<a class="page-link" href="${hrefPage}?=${pi.currentPage + 1}" aria-label="Next">
+								<a class="page-link" href="${hrefPage}?currentPage=${pi.currentPage + 1}" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
 		        			</c:otherwise>
