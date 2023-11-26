@@ -27,6 +27,7 @@
 	
 	
 	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
+	<!-- if로 쓴 이유 -> otherwise에 쓸 내용 없고, 이 경우 if를 쓰든 choose-when-otherwise를 쓰든 성능차이 크지 않을것, 가독성 좋은방향이 더 낫다 생각함 -->
 	<select id="productSelectList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
 			   PDT_NO,
@@ -114,6 +115,7 @@
 		   AND
 		  	   USER_NO = #{userNo}
 	</select>
+	
 	
 	<!-- 위시리스트 INSERT구문 -->
 	<insert id="insertWishOne" parameterType="wishlist">
