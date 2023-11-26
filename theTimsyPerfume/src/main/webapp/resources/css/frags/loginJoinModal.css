@@ -62,15 +62,18 @@ input[type='date'] {
 }
 
 /* 인풋요소들 플레이스홀더 폰트크기 */
+#enroll-form #birthDate,
 #enroll-form .pdt-main-form-group input::placeholder {
-	font-size: 1px;
+	font-size: 8px;
+	color: grey;
 }
-
+/*
 #enroll-form input[type='date']::before {
 content: attr(data-placeholder);
 width: 100%;
 font-size: 1px;
 }
+*/
 
 /* 기타 */
 #checkResult {

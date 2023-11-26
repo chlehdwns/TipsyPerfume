@@ -15,14 +15,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Swiper -->
-	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-
 	<!-- Google Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <!-- productMain.jsp의 CSS파일 경로적기 -->
+    <!-- CSS파일 경로적기 -->
     <link href="resources/css/product/productList.css" rel="stylesheet">
     <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
@@ -451,12 +447,19 @@
 			// ajax 요청 후 장바구니 담은게 있으면 장바구니fill / 아니면 빈장바구니
 		});
 		*/
-		
-		// date타입 날짜 비활성화
+			
 		$(() => {
 			var $pdtModalDateInput = $('#birthDate');
 			$pdtModalDateInput.prop('min', '1900-01-01').prop('max', new Date().toISOString().split('T')[0]);
 			//$pdtModalDateInput.prop('min', new Date().toISOString().split('T')[0]); 오늘 이전 비활성화 시
+		});
+
+		// 버튼 리셋 혹은 서브밋
+		$('#pdtMainResetBtn').click(() => {
+			return confirm('리셋하시겠습니까?');
+		});
+		$('#pdtMainSubmitBtn').click(() => {
+			return confirm('입력하신 정보로 회원가입을 할까요?');
 		});
     </script>
     <script>
@@ -475,6 +478,5 @@
     <script src="resources/js/member/loginForm.js"></script>
 
 </body>
-<input type="date" value="dddddddddddddd">
 
 </html>

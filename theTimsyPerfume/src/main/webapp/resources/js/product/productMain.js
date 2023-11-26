@@ -2,7 +2,7 @@
 
 // date타입 날짜 비활성화
 $(() => {
-	var $pdtModalDateInput = $('#pdtMainBirthDate');
+	var $pdtModalDateInput = $('#birthDate');
 	$pdtModalDateInput.prop('min', '1900-01-01').prop('max', new Date().toISOString().split('T')[0]);
 	//$pdtModalDateInput.prop('min', new Date().toISOString().split('T')[0]); 오늘 이전 비활성화 시
 });

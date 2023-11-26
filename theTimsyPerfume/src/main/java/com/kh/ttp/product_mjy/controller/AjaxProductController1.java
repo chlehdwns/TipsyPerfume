@@ -39,11 +39,7 @@ public class AjaxProductController1 {
 			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			result = productService.ajaxChangeWishOne(wishlist);
 		} else {
-<<<<<<< HEAD
 			return "ERROR";
-=======
-			return "NOTLOGINED";
->>>>>>> parent of 34ed99f (로그인+회원가입 모달창 css, js분리 - MJY)
 		}
 		return result + "";
 	}

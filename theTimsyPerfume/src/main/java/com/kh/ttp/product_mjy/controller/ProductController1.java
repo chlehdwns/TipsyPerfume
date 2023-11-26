@@ -98,6 +98,11 @@ public class ProductController1 {
 	}
 	
 	
+	@GetMapping("cartMain.ca")
+	public String cartMain() {
+		return "orderKinds/cartMain";
+	}
+	
 	
 	
 	
