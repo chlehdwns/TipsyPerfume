@@ -190,7 +190,8 @@ VALUES(
             F.FUNDING_NO,
             CUTTING_DATE,
             CUTTING_PRICE,
-            PDT_COUNT
+            PDT_COUNT,
+            FUNDING_FEE
             
 		FROM
 		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
@@ -267,7 +268,8 @@ VALUES(
             F.FUNDING_NO,
             CUTTING_DATE,
             CUTTING_PRICE,
-            PDT_COUNT
+            PDT_COUNT,
+            FUNDING_FEE
             
 		FROM
 		    TB_PRODUCT P JOIN TB_PRODUCT_CATEGORY PC ON(P.PDT_CATEG_NO=PC.PDT_CATEG_NO)
@@ -419,6 +421,78 @@ VALUES(
 			FUNDING_FEE = FUNDING_FEE+#{fundingFee}
 		WHERE
 			PDT_NO = #{pdtNo}
+	</update>
+	<insert id="confirmFundingPV" parameterType="pay">
+		INSERT
+			INTO
+		   TB_PAY
+		   (
+		   		PAY_NO,
+		   		PAY_METHOD,
+		   		PAY_TOTAL,
+		   		PAY_BANK,
+		   		PAY_NAME,
+		   		PAY_STATUS
+		   )
+		     VALUES(
+		     	SEQ_PAY.NEXTVAL,
+		     	#{payMethod},
+		     	#{payTotal},
+		     	#{payBank},
+		     	#{payName},
+		     	'Y'
+		     	
+		     )
+	</insert>
+	<insert id="confirmFundingDrinkO" parameterType="order" >
+		INSERT
+			INTO
+		TB_ORDER
+		(
+			ORDER_NO,
+			USER_NO,
+			RECEIVER_NO,
+			ORDER_DATE
+		)
+		VALUES(
+			SEQ_ORDER.NEXTVAL,
+			#{userNo},
+			#{receiverNo},
+			SYSDATE		
+			
+			)
+	</insert>
+	<select id="selectOrderNo" resultType="_int">
+		SELECT 
+		    SEQ_ORDER.CURRVAL
+		FROM
+		    DUAL
+	</select>
+	<select id="selectPayNo" resultType="_int">
+		SELECT
+			SEQ_PAY.CURRVAL
+		FROM
+			DUAL
+	</select>
+	<insert id="confirmFundingDrinkOD" parameterType="orderDetail">
+		INSERT
+			INTO
+		TB_ORDER_DETAIL
+			VALUES(
+				SEQ_ORDER_DETAIL.NEXTVAL,
+				#{orderNo},
+				#{payNo}
+			)
+	</insert>
+	<update id="decreaseStock" parameterType="product">
+		UPDATE
+			TB_PRODUCT
+		SET
+			PDT_STOCK = PDT_STOCK-#{orderQuantity}
+		WHERE
+			PDT_NO = #{pdtNo}
+		
+		
 	</update>
 		
 	

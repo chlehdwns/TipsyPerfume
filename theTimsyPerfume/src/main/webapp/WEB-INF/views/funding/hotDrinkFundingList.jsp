@@ -49,6 +49,7 @@
 		height : 100%;
 		width : 25%;
 		float:left;
+		margin-bottom : 50px;
 	}
 	.fundingList-area{
 		height : 80%;

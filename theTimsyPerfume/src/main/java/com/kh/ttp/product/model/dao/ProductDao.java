@@ -7,6 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.FundingSelectVO;
+import com.kh.ttp.product.model.vo.OrderDetailVO;
+import com.kh.ttp.product.model.vo.OrderVO;
+import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 
@@ -68,7 +71,7 @@ public class ProductDao {
 	}
 
 	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductVO p) {
-		return  ( sqlSession.update("productMapper.updateDrinkFundingP",p));
+		return  sqlSession.update("productMapper.updateDrinkFundingP",p);
 		
 	}
 
@@ -79,6 +82,30 @@ public class ProductDao {
 
 	public int deleteDrinkFunding(SqlSessionTemplate sqlSession, int pdtNo) {
 		return sqlSession.update("productMapper.deleteDrinkFunding",pdtNo);
+	}
+
+	public int confirmFundingDrinkPV(SqlSessionTemplate sqlSession, PayVO pv) {
+		return sqlSession.insert("productMapper.confirmFundingPV",pv);
+	}
+
+	public int confirmFundingDrinkO(SqlSessionTemplate sqlSession, OrderVO o) {
+		return sqlSession.insert("productMapper.confirmFundingDrinkO",o);
+	}
+
+	public int selectOrderNo(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("productMapper.selectOrderNo");
+	}
+
+	public int confirmFundingDrinkOD(SqlSessionTemplate sqlSession, OrderDetailVO od) {
+		return sqlSession.insert("productMapper.confirmFundingDrinkOD",od);
+	}
+
+	public int selectPayNo(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("productMapper.selectPayNo");
+	}
+
+	public int decreaseStock(SqlSessionTemplate sqlSession, ProductVO p) {
+		return sqlSession.update("productMapper.decreaseStock",p);
 	}
 	
 

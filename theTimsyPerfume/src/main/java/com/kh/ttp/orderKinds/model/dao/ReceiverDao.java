@@ -18,5 +18,14 @@ public class ReceiverDao {
 		return sqlSession.insert("receiverMapper.insertReceiver", receiver);
 	}
 
+	public int insertReceiver(SqlSessionTemplate sqlSession, Receiver r) {
+		return sqlSession.insert("receiverMapper.insertReceiverf",r);
+	}
+
+	public int selectReceiverNo(SqlSessionTemplate sqlSession, Receiver r) {
+		return sqlSession.selectOne("receiverMapper.selectReceiverNo",r);
+		
+	}
+
 
 }
