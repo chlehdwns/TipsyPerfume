@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.ttp.product.model.service.ProductServicePR;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
-import com.kh.ttp.product_mjy.model.service.ProductService1;
 import com.kh.ttp.user.model.vo.User;
 
 @Controller
 public class AjaxProductControllerPR {
 	
 	@Autowired
-	private ProductService1 productService;
+	private ProductServicePR productService;
 	
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
