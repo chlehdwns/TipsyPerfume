@@ -43,6 +43,9 @@ public class ProductDao {
 	public ArrayList<FundingSelectVO> newDrinkFundingList(SqlSessionTemplate sqlSession,RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapper.newDrinkFundingList",null,rowBounds);
 	}
+	public ArrayList<FundingSelectVO> hotDrinkFundingList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("productMapper.hotDrinkFundingList",null,rowBounds);
+	}
 
 	public FundingSelectVO newDrinkFundingDetail(SqlSessionTemplate sqlSession, int pdtNo) {
 		
@@ -57,9 +60,7 @@ public class ProductDao {
 		return (ArrayList)sqlSession.selectList("productMapper.selectHotFundingList");
 	}
 
-	public ArrayList<FundingSelectVO> hotDrinkFundingList(SqlSessionTemplate sqlSession, RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper.hotDrinkFundingList",null,rowBounds);
-	}
+	
 
 	public FundingSelectVO selectDrinkFundingList(SqlSessionTemplate sqlSession, int pdtNo) {
 		
