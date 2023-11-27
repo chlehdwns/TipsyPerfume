@@ -26,7 +26,9 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="" />
+			<mapping path="/pedia/*" />
+			<mapping path="/boardWrite" />
+			<mapping path="/reviewWrite" />
 			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 	</interceptors>
