@@ -27,9 +27,13 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/pedia/*" />
-			<mapping path="/boardWrite" />
-			<mapping path="/reviewWrite" />
+			<mapping path="/boardWrite/*" />
+			<mapping path="/reviewWrite/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/noticeWrite" />
+			<beans:bean class="com.kh.ttp.common.interceptor.AdminInterceptor" id="AdminInterceptor" />
 		</interceptor>
 	</interceptors>
 	
