@@ -64,6 +64,13 @@ public interface ProductService1 {
 	// 주류 디테일조회 alcoholPdtDetail
 	ProductSelectVO alcoholPdtDetail(int pdtNo);
 	
+	// 장바구니 전체조회
+	/**
+	 * 장바구니 전체 조회
+	 * @param userNo(유저번호PK)
+	 * @return : 장바구니 정보가 담긴 CartVO
+	 */
+	CartVO cartMain(int userNo);
 	
 
 	
@@ -113,6 +120,9 @@ public interface ProductService1 {
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
 	int updateCartOneQuantity(CartVO cart);
+
+
+
 	
 	
 	

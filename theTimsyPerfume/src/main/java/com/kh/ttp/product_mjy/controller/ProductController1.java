@@ -1,5 +1,7 @@
 package com.kh.ttp.product_mjy.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.product_mjy.model.service.ProductService1;
+import com.kh.ttp.user.model.vo.User;
 
 @Controller
 public class ProductController1 {
@@ -97,8 +100,14 @@ public class ProductController1 {
 	
 	
 	@GetMapping("cartMain.ca")
-	public String cartMain() {
-		return "orderKinds/cartMain";
+	public ModelAndView cartMain(ModelAndView mv, HttpSession session) {
+		if(null != session.getAttribute("loginUser")) {
+			mv.addObject(productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
+			  .setViewName("orderKinds/cartMain");
+		} else {
+			mv.addObject("errorMsg", "장바구니 조회 실패").setViewName("common/errorPage");
+		}
+		return mv;
 	}
 	
 	

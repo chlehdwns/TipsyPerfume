@@ -115,6 +115,10 @@ public class ProductServiceImpl1 implements ProductService1 {
 
 
 
+	@Override
+	public CartVO cartMain(int userNo) {
+		return productDao.cartMain(sqlSession, userNo);
+	}
 
 
 	@Override
@@ -172,5 +176,7 @@ public class ProductServiceImpl1 implements ProductService1 {
 	public int updateCartOneQuantity(CartVO cart) {
 		return productDao.updateCartOneQuantity(sqlSession, cart);
 	}
+
+
 
 }

@@ -73,7 +73,7 @@
 		                    <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 		               	<c:if test="${pdtCteg eq 'F' }">
-		               		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+		               		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -116,7 +116,7 @@
 				         <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
-				    		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+				    		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    </div>
 				    <!-- Slider main container -->
@@ -159,7 +159,7 @@
 		                    <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
-	                		<button type="button" onclick="location.href='perfumeList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+	                		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                </div>
 	                <!-- Slider main container -->
