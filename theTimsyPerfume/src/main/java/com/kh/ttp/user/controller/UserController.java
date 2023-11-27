@@ -57,8 +57,8 @@ public class UserController {
 				session.setAttribute("loginUser", loginUser);
 				mv.setViewName("redirect:/");
 			} else {
-				mv.addObject("errorMsg", "로그인 실패ㅠ");
-				mv.setViewName("common/errorPage");
+				mv.addObject("alertMsg", "로그인 실패ㅠ");
+				mv.setViewName("member/LoginForm");
 			}
 				return mv;
 			}
@@ -90,7 +90,7 @@ public class UserController {
 			u.setUserNo(u.getUserNo());
 			
 			if(userService.insertUser(u) > 0) { // 성공=>메인페이지
-				return "redirect:/";
+				return "member/LoginForm";
 			} else { // 실패 => 에러메세지 담아서 에러페이지로 포워딩
 				model.addAttribute("errorMsg", "회원가입 실패");
 				return "common/errorPage";

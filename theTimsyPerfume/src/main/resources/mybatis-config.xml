@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.ttp.community.notice.model.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardVO" alias="board"/>
 		<typeAlias type="com.kh.ttp.community.board.model.vo.BoardFileVO" alias="boardFile"/>
+		<typeAlias type="com.kh.ttp.community.pedia.model.vo.PediaVO" alias="pedia"/>
 		<typeAlias type="com.kh.ttp.community.common.model.vo.CommentVO" alias="comment"/>
 		<typeAlias type="com.kh.ttp.community.common.model.vo.RecommendVO" alias="recommend"/>
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
@@ -25,8 +26,11 @@
 		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.PayVO" alias="pay"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.WishlistVO" alias="wishlist"/>
+
 		<typeAlias type="com.kh.ttp.product.model.vo.OrderVO" alias="order"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.OrderDetailVO" alias="orderDetail"/>
+
+		<typeAlias type="com.kh.ttp.product.model.vo.CartVO" alias="cart" />
 
 		<typeAlias type="com.kh.ttp.adminManage.model.vo.AdminVo" alias="admin"/>
 

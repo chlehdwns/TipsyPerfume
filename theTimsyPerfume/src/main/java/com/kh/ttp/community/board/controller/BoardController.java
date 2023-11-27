@@ -74,14 +74,14 @@ public class BoardController {
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		
-		System.out.println(uploadImg.length);
-		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
-		for(int i=0;i<uploadImg.length;i++) {
-			BoardFileVO file = saveFile(uploadImg[i], i, session);
-			String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
-			bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
-			fileList.add(file);
+		if(!uploadImg[0].getOriginalFilename().equals("")) {
+			for(int i=0;i<uploadImg.length;i++) {
+				BoardFileVO file = saveFile(uploadImg[i], i, session);
+				String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
+				bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
+				fileList.add(file);
+			}
 		}
 		
 		if(boardService.insertBoard(bo, fileList)>0) {
@@ -102,11 +102,11 @@ public class BoardController {
 	}
 	@PostMapping("boardUpdate.do")
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
-		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		/*bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라
+		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라*/
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {

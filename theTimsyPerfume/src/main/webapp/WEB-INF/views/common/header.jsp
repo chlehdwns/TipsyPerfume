@@ -19,7 +19,7 @@
     
     <!-- header.html CSS파일 경로적기 -->
     <link href="resources/css/common/header.css" rel="stylesheet">
-    <script src="resources/js/common/easy-scroll.js"></script>
+    <!-- <script src="resources/js/common/easy-scroll.js"></script> -->
     <style>
     #header_1_right_bottom {height: 30%; padding: 10px 140px 0px 0px;}
     #header_1_right_bottom form{width: 100%;}
@@ -85,14 +85,14 @@
                     </div>
                     <div id="header_inner_top_bannerline_4" class="full_height_divs">
                         <c:choose>
-                            <c:when test="">
+                            <c:when test="${not empty loginUser}">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">장바구니</a>
+                                    <a class="header-link" href="cartMain.ca">장바구니</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#">장바구니</a>
+                                    <a class="header-link" href="#" onclick="alert('로그인이 필요한 서비스입니다');">장바구니</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>

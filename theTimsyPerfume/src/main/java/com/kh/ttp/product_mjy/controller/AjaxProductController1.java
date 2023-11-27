@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.product_mjy.model.service.ProductService1;
 import com.kh.ttp.user.model.vo.User;
@@ -27,22 +29,44 @@ public class AjaxProductController1 {
 	 * 비워진 상태로 표시해야할 때 문자열 "false" 반환<br>
 	 * (가독성을 위해 "true", "false"반환)
 	 */
-	@ResponseBody
-	@PostMapping("ajaxChangeWishOne.pa")
-	public String ajaxChangeWishOne(int pdtNo, HttpSession session) {
-		// @@@Ajax는 LoginInterceptor를 따로 만들어야..! @@@일단 그냥 session에서 뽑음
-		System.out.println(pdtNo + "pdt넘버ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ");
-		boolean result = false;
-		if(null != session.getAttribute("loginUser") && (pdtNo > 0)) {
+	@ResponseBody // @@@Ajax는 만약 LoginInterceptor가 필요하면 따로 만들어야..!
+	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
+	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
+		if(pdtNo > 0) {
 			WishlistVO wishlist = new WishlistVO();
 			wishlist.setPdtNo(pdtNo);
 			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
-			result = productService.ajaxChangeWishOne(wishlist);
+			boolean isFilledHeart = productService.ajaxChangeWishOne(wishlist); // 가독성 위해
+			return isFilledHeart + "";
 		} else {
 			return "ERROR";
 		}
-		return result + "";
 	}
+	
+	/**
+	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
+	 * @param pdtNo
+	 * @param session
+	 * @return : 추가 성공 시 "1"문자열, 실패 시 "0"문자열 반환
+	 */
+	@ResponseBody
+	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8")
+	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
+		if(pdtNo > 0) {
+			CartVO cart = new CartVO();
+			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
+			cart.setPdtNo(pdtNo);
+			return productService.ajaxAddCartSingleQuan(cart) + "";
+		} else {
+			return "ERROR";
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

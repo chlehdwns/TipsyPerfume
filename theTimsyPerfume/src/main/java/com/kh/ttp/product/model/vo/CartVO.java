@@ -1,7 +1,5 @@
 package com.kh.ttp.product.model.vo;
 
-import com.kh.ttp.user.model.vo.User;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,9 +18,9 @@ public class CartVO {
 	CART_QUANTIRY	NUMBER
 	*/
 	private int cartNo;
-	private User user;
-	ProductVO product;
-	private int CartQuantity;
-	
+	private int userNo;
+	private int pdtNo;
+	private int cartQuantity;
+	private int cartAddingQuantity;
 	
 }
