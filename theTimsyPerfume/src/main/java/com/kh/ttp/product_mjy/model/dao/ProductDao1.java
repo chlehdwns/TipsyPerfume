@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
+import com.kh.ttp.product.model.vo.WishlistVO;
 
 @Repository
 public class ProductDao1 {
@@ -53,6 +54,27 @@ public class ProductDao1 {
 	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
+
+	/**
+	 * 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트)
+	 */
+	public int countWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
+		return sqlSession.selectOne("productMapper1.countWishOne", wishlist);
+	}
+	/**
+	 * 위시리스트 추가
+	 */
+	public int insertWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
+		return sqlSession.insert("productMapper1.insertWishOne", wishlist);
+	}
+
+	/**
+	 * 위시리스트 삭제
+	 */
+	public int deleteWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
+		return sqlSession.delete("productMapper1.deleteWishOne", wishlist);
+	}
+
 
 	// 주류 디테일조회
 	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {

@@ -261,20 +261,31 @@
 
 
 <body>
-
+	${pi.currentPage}${currentPage}${currentPage}${currentPage}
+	${pdtCteg}${pdtCteg}${pdtCteg}${pdtCteg}${sort}${sort}${sort}${sort}
 	<form id="pdtSideBarForm" action="#" method="post">
 		<div id="productSideBarWrap" class="d-none d-lg-block">
 		    <div id="pdtSideBarSortArea" class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="sort" id="sideBarSortBtn1" autocomplete="off" checked>
+		    	<input type="hidden" name="sort" value="${pdtCteg}">
+				<input type="radio" class="btn-check pdt-side-bar-sort" name="sort" value="New" id="sideBarSortBtn1" autocomplete="off" checked>
 				<label class="btn btn-outline-primary" for="sideBarSortBtn1"></label>
 				
-				<input type="radio" class="btn-check" name="sort" id="sideBarSortBtn2" autocomplete="off">
+				<input type="radio" class="btn-check pdt-side-bar-sort" name="sort" value="BestSeller" id="sideBarSortBtn2" autocomplete="off">
 				<label class="btn btn-outline-primary" for="sideBarSortBtn2"></label>
 				
-				<input type="radio" class="btn-check" name="sort" id="sideBarSortBtn3" autocomplete="off">
+				<input type="radio" class="btn-check pdt-side-bar-sort" name="sort" value="Popular" id="sideBarSortBtn3" autocomplete="off">
 				<label class="btn btn-outline-primary" for="sideBarSortBtn3"></label>
 			</div>
-		    
+		    <script>
+/* 		    	$('.pdt-side-bar-sort').on('click', (e) => {
+			    	let $pdtSidebarSort = $(e.target).val();
+		    		if(${pdtCteg eq 'A'}) {
+			    		location.href="selectAlcoholPdtList.pr?sort=" + $pdtSidebarSort + "&currentPage=${pi.currentPage}";
+		    		} else {
+		    			location.href="selectPerfumePdtList.pr?sort=" + $pdtSidebarSort + "&currrentPage=${pi.currentPage}";
+		    		}
+		    	}); */
+		    </script>
 		    
 			<div class="accordion" id="accordionPanelsStayOpenExample">
 		        <div class="accordion-item">
