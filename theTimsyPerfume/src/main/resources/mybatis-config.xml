@@ -23,8 +23,10 @@
 		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
-
+		<typeAlias type="com.kh.ttp.product.model.vo.PayVO" alias="pay"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.WishlistVO" alias="wishlist"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.OrderVO" alias="order"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.OrderDetailVO" alias="orderDetail"/>
 
 		<typeAlias type="com.kh.ttp.adminManage.model.vo.AdminVo" alias="admin"/>
 
