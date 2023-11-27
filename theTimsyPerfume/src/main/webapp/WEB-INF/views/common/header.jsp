@@ -263,7 +263,7 @@
                   <li><a class="dropdown-item" href="board?boardCtgy=RECIP">주류&페어링 추천</a></li>
                   <li><a class="dropdown-item" href="board?boardCtgy=FASHI">코디 추천</a></li>
                   <li><a class="dropdown-item" href="review">리뷰</a></li>
-                  <li><a class="dropdown-item" href="pedia">도감 채우기</a></li>
+                  <c:if test="${not empty loginUser }"><li><a class="dropdown-item" href="pedia">도감 채우기</a></li></c:if>
                 </ul>
             </div>
         </div>
