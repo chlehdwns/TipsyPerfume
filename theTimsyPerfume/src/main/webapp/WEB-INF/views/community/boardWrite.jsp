@@ -25,10 +25,12 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
+
 <script src="resources/js/board/summernote-lite.js"></script>
 <script src="resources/js/board/lang/summernote-ko-KR.js"></script>
 
 <link rel="stylesheet" href="resources/css/board/summernote-lite.css">
+
 <section>
 <div id="writer-wrap">
 <div id="sub-title">
