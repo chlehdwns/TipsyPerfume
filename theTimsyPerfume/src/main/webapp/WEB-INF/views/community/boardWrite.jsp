@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script src="resources/js/board/summernote-lite.js"></script>
-<script src="resources/js/board/lang/summernote-ko-KR.js"></script>
-
-<link rel="stylesheet" href="resources/css/board/summernote-lite.css">
 <style>
 	#writer-wrap{
 		width: 900px;
@@ -29,6 +25,10 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
+<script src="resources/js/board/summernote-lite.js"></script>
+<script src="resources/js/board/lang/summernote-ko-KR.js"></script>
+
+<link rel="stylesheet" href="resources/css/board/summernote-lite.css">
 <section>
 <div id="writer-wrap">
 <div id="sub-title">
@@ -79,20 +79,45 @@
         })
 
         $('#boardContent').summernote({
-		    height: 300,                 // 에디터 높이
-		    minHeight: null,             // 최소 높이
-		    maxHeight: null,             // 최대 높이
-		    focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		    lang: "ko-KR",					// 한글 설정
-		    placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+		    height: 500,
+		    width: 800,
+		    minHeight: null,
+		    maxHeight: null,
+		    focus: true,
+		    lang: "ko-KR",
+		    placeholder: '내용을 작성해 주세요.',
+		    callbacks:{
+		    	onImageUpload:function(files){
+		    		uploadBoardImageFile(files[0]);
+		    	},
+		    	onPaste:function(e){
+		    		var clipboardData = e.originalEvent.clipboardData;
+		    		if(clipboardData && clipboardData.items && clipboardData.items.length){
+		    			var item = clipboardData.items[0];
+		    			if (item.kind == 'file' && item.type.indexOf('image/') != -1){
+		    				e.preventDefault();
+		    			}
+		    		}
+		    	}
+		    }
 	    });
-    })
-    function loadImg(inputFile){
-        const boardContent = document.getElementById("boardContent");
-        //boardContent.value = boardContent.value.replace(/{img%d}/g, "");
-        for(let i=0;i<inputFile.files.length;i++){
-            boardContent.value+="\n{img"+(i+1)+"}\n";
-        }
+    });
+    function uploadBoardImageFile(file){
+    	data = new FormData();
+    	data.append("file",file);
+    	$.ajax({
+    		data : data,
+    		type : "POST",
+    		url : "uploadBoardImageFile",
+    		contentType : false,
+    		processData : false,
+    		success : (data)=>{
+    			$('#boardContent').summernote('insertImage', data.url);
+    		},
+    		error:()=>{
+    			console.log("통신실패");
+    		}
+    	});
     }
 </script>
 <jsp:include page="../common/footer.jsp"/>

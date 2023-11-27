@@ -69,10 +69,11 @@ public class BoardController {
 	}
 	@PostMapping("boardWrite.do")
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
-		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		System.out.println(bo.getBoardContent());
+		/*bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));*/
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
 		if(!uploadImg[0].getOriginalFilename().equals("")) {
