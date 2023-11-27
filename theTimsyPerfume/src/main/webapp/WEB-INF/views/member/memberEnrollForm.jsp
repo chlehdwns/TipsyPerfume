@@ -160,7 +160,7 @@
 					
 						<br>
 						<div class="btns" align="center">
-		                    <button type="submit" class="btn btn-primary" disabled>회원가입</button>
+		                    <button id="submitButton" type="button" class="btn btn-primary" disabled>회원가입</button>
 		                    <button type="reset" class="btn btn-danger">초기화</button>
 		                </div>
 					
@@ -216,6 +216,8 @@
 			const $emailSendCheckButton = $('#emailSendConfirmButton');
 			let checkEmailRight = false;
 			
+			const $submitButtonCheck = $('#submitButton');
+			
 			$emailInput.keyup(function(){
 				if($emailInput.val().length >= 15){
 					$.ajax({
@@ -246,9 +248,8 @@
 			});
 			
 			$('#emailSendButton').click(() =>{
+				//메일보내는 ajax
 				if(checkEmailSend){
-					//메일보내는 ajax
-				//console.log('5678');
 					$.ajax({
 						url:'mail',
 						method: "post",
@@ -257,9 +258,7 @@
 							console.log(result);
 							if(result == "1") {
 								$emailSendCheckButton.removeAttr('disabled');
-								checkEmailRight=true;
-								
-								//키업할때 disabled해놓기. 
+								checkEmailRight=true;//키업할때 disabled해놓기. 
 								$emailSendInput.removeAttr('disabled');
 								$emailSendInput.attr('disabled', true);
 							}
@@ -303,6 +302,9 @@
 								//키업할때 disabled해놓기. 
 								$emailSendCheckButton.removeAttr('disabled');
 								$emailSendCheckButton.attr('disabled', true);
+								
+								$submitButtonCheck.removeAttr('disabled');
+								
 							} else {
 								alert('이메일 인증 실패!');
 							}
@@ -312,19 +314,20 @@
 							console.log('통신 실패');
 						}
 					})
-					
-					
 				};
+			});
+
+			
+			$('#submitButton').click(() =>{
+				if( checkEmailSend == true && checkEmailRight == true ){
+					$('#enroll-form').submit();
+					
+				}
+				//플래그가다트루가댓들경우에만)서브밋에 되도록.ifelse돌려서 되도록 하기 
 				
-				
-				
-				
-				
-			})					
+			});
 			
 			
-			
-	
 		});
 		</script>
 			
