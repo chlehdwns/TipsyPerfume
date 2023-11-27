@@ -1,4 +1,4 @@
-package com.kh.ttp.product_mjy.model.service;
+package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,16 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
-import com.kh.ttp.product_mjy.model.dao.ProductDao1;
 
 @Service
-public class ProductServiceImpl1 implements ProductService1 {
+public class ProductServicePRImpl implements ProductServicePR {
 
 	@Autowired
-	private ProductDao1 productDao;
+	private ProductDaoPR productDao;
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
