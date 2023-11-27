@@ -25,13 +25,8 @@
 
 </head>
 
-
 <body>
-	<jsp:include page="../common/header.jsp">
-		<jsp:param name="pdtCteg" value="${pdtCteg}" />
-		<jsp:param name="sort" value="${sort}" />
-		<jsp:param name="currentPage" value="${pi.currentPage}" />
-	</jsp:include>
+	<jsp:include page="../common/header.jsp" />
 
     <div id="productListWrap">
         <div id="pdtListOuterLeft">
@@ -477,7 +472,7 @@
     
     
    	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="resources/js/product/productMain.js"></script>
+	<!-- <script src="resources/js/product/productMain.js"></script> -->
 	<script src="resources/js/member/memberEnrollForm.js"></script>
     <script src="resources/js/member/loginForm.js"></script>
 

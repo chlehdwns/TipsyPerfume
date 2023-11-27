@@ -261,7 +261,8 @@
 
 
 <body>
-	${pdtCteg}${pdtCteg}${pdtCteg}${pdtCteg}
+	${pi.currentPage}${currentPage}${currentPage}${currentPage}
+	${pdtCteg}${pdtCteg}${pdtCteg}${pdtCteg}${sort}${sort}${sort}${sort}
 	<form id="pdtSideBarForm" action="#" method="post">
 		<div id="productSideBarWrap" class="d-none d-lg-block">
 		    <div id="pdtSideBarSortArea" class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -276,18 +277,14 @@
 				<label class="btn btn-outline-primary" for="sideBarSortBtn3"></label>
 			</div>
 		    <script>
-			    $(() => {
-			    	if(${sort eq })
-			    	$('input[value=${sort}]')
-			    });
-		    	$('.pdt-side-bar-sort').on('click', (e) => {
+/* 		    	$('.pdt-side-bar-sort').on('click', (e) => {
 			    	let $pdtSidebarSort = $(e.target).val();
 		    		if(${pdtCteg eq 'A'}) {
-			    		location.href="selectAlcoholPdtList.pr?sort=" + $pdtSidebarSort + "&currentPage=" + ${currentPage};
+			    		location.href="selectAlcoholPdtList.pr?sort=" + $pdtSidebarSort + "&currentPage=${pi.currentPage}";
 		    		} else {
-		    			location.href="selectPerfumePdtList.pr?sort=" + $pdtSidebarSort + "$currrentPage=" + ${currentPage};
+		    			location.href="selectPerfumePdtList.pr?sort=" + $pdtSidebarSort + "&currrentPage=${pi.currentPage}";
 		    		}
-		    	});
+		    	}); */
 		    </script>
 		    
 			<div class="accordion" id="accordionPanelsStayOpenExample">

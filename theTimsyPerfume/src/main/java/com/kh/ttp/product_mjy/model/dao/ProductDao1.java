@@ -52,8 +52,6 @@ public class ProductDao1 {
 	
 	//주류 전체조회
 	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
-		System.out.println(pMap.get("sort") + "pMap솔트ㅡㅡㅡㅡㅡ");
-		System.out.println("결과ㅏㅏ" + sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds));
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 

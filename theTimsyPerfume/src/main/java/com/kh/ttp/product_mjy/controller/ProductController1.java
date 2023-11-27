@@ -50,14 +50,16 @@ public class ProductController1 {
 	// 향수 전체조회
 	@GetMapping("selectPerfumePdtList.pr")
 	public String selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-									   @RequestParam(value="sort", defaultValue="") String sort,
+									   @RequestParam(value="sort", defaultValue="New") String sort,
 									   Model m) {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
+		
 		System.out.println(sort + "넘어오나");
 		System.out.println(productService.selectPerfumePdtList(sort, pi));
 		
 		m.addAttribute("pdtCteg", "F") // 향수도 식별자 넘겨야함(사이드바 정렬보기 요청 시 필요)
+		 .addAttribute("sort", sort)
 		 .addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi))
 		 .addAttribute("pi", pi);
 		return "product/productList";
@@ -74,7 +76,7 @@ public class ProductController1 {
 	// 주류전체조회
 	@GetMapping("selectAlcoholPdtList.pr")
 	public String selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-									   String sort,
+									   @RequestParam(value="sort", defaultValue="New") String sort,
 									   Model m) {
 		System.out.println(sort);
 		int listCount = productService.selectProductCount("A");
