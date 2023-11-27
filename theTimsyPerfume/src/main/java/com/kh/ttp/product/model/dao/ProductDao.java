@@ -22,8 +22,8 @@ public class ProductDao {
 		return null; //@@@@@@@@@@@@null해둠!!!주의*******
 	}
 
-	public int drinkFundingInsert(SqlSessionTemplate sqlSession, ProductVO p) {
-		return sqlSession.insert("productMapper.insertProduct", p);
+	public int drinkFundingInsert(SqlSessionTemplate sqlSession, ProductVO product) {
+		return sqlSession.insert("productMapper.insertProduct", product);
 	}
 
 	public int drinkFundingSelect(SqlSessionTemplate sqlSession) {
@@ -70,13 +70,13 @@ public class ProductDao {
 		return sqlSession.selectOne("productMapper.selectDrinkFundingList",pdtNo);
 	}
 
-	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductVO p) {
-		return  sqlSession.update("productMapper.updateDrinkFundingP",p);
+	public int updateDrinkFunding(SqlSessionTemplate sqlSession, ProductVO product) {
+		return  sqlSession.update("productMapper.updateDrinkFundingP",product);
 		
 	}
 
-	public int selectPdtNo(SqlSessionTemplate sqlSession, ProductVO p) {
-		return sqlSession.selectOne("productMapper.selectPdtNo",p);
+	public int selectPdtNo(SqlSessionTemplate sqlSession, ProductVO product) {
+		return sqlSession.selectOne("productMapper.selectPdtNo",product);
 		 
 	}
 
