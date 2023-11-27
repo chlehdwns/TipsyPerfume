@@ -4,13 +4,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
 public interface ProductService1 {
 
-	// 상품 개수 조회
+	/**
+	 * 전체상품 COUNT / 브랜드 주류 or 향수(판매중 상태Y)의 전체 개수 
+	 * @param pdtCteg
+	 * @return
+	 */
 	int selectProductCount(String pdtCteg);
+	
+	
+	/**
+	 * 1개 상품의 재고 COUNT, 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 */
+	int countProductStock(int pdtNo);
+
+	/**
+	 * 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트)
+	 */
+	int countWishOne(WishlistVO wishlist);
+	
+	/**
+	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품을 장바구니에 추가한 내역이 있는지 조회
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK)
+	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 */
+	int countCartOne(CartVO cart);
+	
+	
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
 	/**
@@ -40,19 +65,13 @@ public interface ProductService1 {
 	ProductSelectVO alcoholPdtDetail(int pdtNo);
 	
 	
-	// 위시리스트 카운트(위시리스트 존재 여부 조회)
-	/**
-	 * 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트)
-	 */
-	int countWishOne(WishlistVO wishlist);
+
 	
-	// 위시리스트 추가(INSERT)
 	/**
 	 * 위시리스트 추가(INSERT)
 	 */
 	int insertWishOne(WishlistVO wishlist);
 	
-	// 위시리스트 삭제(DELETE / 완전삭제)
 	/**
 	 * 위시리스트 삭제(DELETE / 완전삭제)
 	 */
@@ -72,9 +91,28 @@ public interface ProductService1 {
 	 * 비워진 상태로 표시해야하는지(false) boolean타입 반환<br>
 	 */
 	boolean ajaxChangeWishOne(WishlistVO wishlist);
+
+	/**
+	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
+	 * @param cart : 유저번호(PK), 상품번호(PK)
+	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
+	 */
+	int ajaxAddCartSingleQuan(CartVO cart);
+
 	
+	/**
+	 * 장바구니 INSERT
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
+	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 */
+	int insertCartOne(CartVO cart);
 	
-	
+	/**
+	 * 장바구니 수량 UPDATE
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
+	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 */
+	int updateCartOneQuantity(CartVO cart);
 	
 	
 	

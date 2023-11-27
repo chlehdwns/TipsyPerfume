@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
@@ -15,10 +16,40 @@ import com.kh.ttp.product.model.vo.WishlistVO;
 public class ProductDao1 {
 
 	
+	/**
+	 * 전체상품 COUNT / 브랜드 주류 or 향수(판매중 상태Y)의 전체 개수
+	 * @param pdtCteg : 상품카테고리(알콜 'A', 향수'F')
+	 */
 	public int selectProductCount(SqlSessionTemplate sqlSession, String pdtCteg) {
 		return sqlSession.selectOne("productMapper1.selectProductCount", pdtCteg);
 	}
 
+	/**
+	 * 1개 상품의 재고 COUNT
+	 * @param pdtNo
+	 */
+	public int countProductStock(SqlSessionTemplate sqlSession, int pdtNo) {
+		return sqlSession.selectOne("productMapper1.countProductStock", pdtNo);
+	}
+	
+	/**
+	 * 위시리스트 COUNT / 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회
+	 * @param wishlist : userNo(유저번호PK), pdtNo(상품번호PK)
+	 */
+	public int countWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
+		return sqlSession.selectOne("productMapper1.countWishOne", wishlist);
+	}
+	
+
+	/**
+	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품을 장바구니에 추가한 내역이 있는지 조회
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK)
+	 */
+	public int countCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.selectOne("productMapper1.countCartOne", cart);
+	}
+	
+	
 	/**
 	 * 주류/향수 식별자(pdtCteg)를 받아 해당되는 상품을 각 정렬 기준별로 조회해 ArrayList(ProductSelectVO리터럴)로 반환한다<br>
 	 * 최신순, 베스트셀러순, 위시리스트순으로 조회한다
@@ -42,7 +73,6 @@ public class ProductDao1 {
 
 	//향수 전체조회
 	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
-		System.out.println("DAO에 넘어온 sort : " + pMap.get("sort"));
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
@@ -56,12 +86,7 @@ public class ProductDao1 {
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
-	/**
-	 * 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트)
-	 */
-	public int countWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
-		return sqlSession.selectOne("productMapper1.countWishOne", wishlist);
-	}
+
 	/**
 	 * 위시리스트 추가
 	 */
@@ -74,6 +99,27 @@ public class ProductDao1 {
 	 */
 	public int deleteWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
 		return sqlSession.delete("productMapper1.deleteWishOne", wishlist);
+	}
+
+
+
+	/**
+	 * 상품 재고가 있는지 체크 후 장바구니에 해당 상품 1개 추가
+	 * @param cart : 유저번호(PK), 상품번호(PK)
+	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
+	 */
+	public int insertCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.insert("productMapper1.insertCartOne", cart);
+	}
+
+
+	/**
+	 * 장바구니 수량 UPDATE
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
+	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 */
+	public int updateCartOneQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.update("productMapper1.updateCartOneQuantity", cart);
 	}
 
 

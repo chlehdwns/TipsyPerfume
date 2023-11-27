@@ -261,8 +261,6 @@
 
 
 <body>
-	${pi.currentPage}${currentPage}${currentPage}${currentPage}
-	${pdtCteg}${pdtCteg}${pdtCteg}${pdtCteg}${sort}${sort}${sort}${sort}
 	<form id="pdtSideBarForm" action="#" method="post">
 		<div id="productSideBarWrap" class="d-none d-lg-block">
 		    <div id="pdtSideBarSortArea" class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -277,11 +275,12 @@
 				<label class="btn btn-outline-primary" for="sideBarSortBtn3"></label>
 			</div>
 		    <script>
+		    	// 사이드바 현재 정렬로 체크상태 되도록 함
 		    	$(() => {
-		    		console.log($('input[value=${sort}]'));
 		    		$('input[value=${sort}]').attr('checked', 'true');
 		    	});
 		    
+		    	// 사이드바 정렬기준 클릭 시 정렬에 맞춰 조회
  		    	$('.pdt-side-bar-sort').on('click', (e) => {
 			    	let $pdtSidebarSort = $(e.target).val();
 		    		if(${pdtCteg eq 'A'}) {
