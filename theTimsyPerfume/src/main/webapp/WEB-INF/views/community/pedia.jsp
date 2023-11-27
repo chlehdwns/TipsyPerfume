@@ -170,10 +170,11 @@
                 <img class="img" src="resources/image/product/alcohol/alcohol_1.png">
             </div>
             <div id="detail-info">
-                구매 횟수 : 2<br>
-                총 사용 금액 : ￦677,800<br>
-                리뷰 수 : 1,234건<br>
-                내가 쓴 리뷰 수 : 0건<br>
+                가격 : <span id="pdtPrice"></span><br>
+                구매 횟수 : <span id="userBuy"></span><br>
+                총 사용 금액 : <span id="totalPrice"></span><br>
+                리뷰 수 : <span id="totalReview"></span>건<br>
+                내가 쓴 리뷰 수 : <span id="userReview"></span>건<br>
             </div>
         </div>
         <div id="detail-title">
@@ -209,14 +210,22 @@
         //ajax
         $.ajax({
         	url:"selectPediaInfo",
-        	data:{"pdtNo":pdtNo},
+        	data:{
+        		"pdtNo":pdtNo,
+    			"userNo":${loginUser.userNo}
+        	},
         	async:false,
         	success:(result)=>{
         		console.log(result);
         		const $pediaWrap = $("#pedia-wrap");
-    			$("#detail-img img").attr("src",result.pdtGpStatus);
+    			$("#detail-img img").attr("src",result.pdtImage);
     			$("#detail-title").text(result.pdtName);
     			$("#detail-article").text(result.pdtDescription);
+    			$("#pdtPrice").text(result.pdtPrice);
+    			$("#userBuy").text(result.userBuy);
+    			$("#totalPrice").text(result.totalPrice);
+    			$("#totalReview").text(result.totalReview);
+    			$("#userReview").text(result.userReview);
         	},
         	error:()=>{
         		console.log("통신실패");
@@ -228,15 +237,26 @@
     function loadPedia(pdtCteg){
     	$.ajax({
     		url:"selectPediaList",
-    		data:{"pdtCteg":pdtCteg},
+    		data:{
+    			"pdtCteg":pdtCteg,
+    			"userNo":${loginUser.userNo}
+    		},
     		async:false,
     		success:(result)=>{
+    			console.log(result);
     			const $pediaWrap = $("#pedia-wrap");
     			let value="";
     			for(let i in result){
-    				value+=  "<div class='pedia-item disable' onclick='view("+result[i].pdtNo+");'>"
-    	            		+"<img class='img' src="+result[i].pdtGpStatus+">"
-    	            		+"</div>";
+    				if(result[i].userBuy!="0"){
+    					value+=  "<div class='pedia-item' onclick='view("+result[i].pdtNo+");'>"
+	            		+"<img class='img' src="+result[i].pdtImage+">"
+	            		+"</div>";
+    				}
+    				else{
+    					value+=  "<div class='pedia-item disable' onclick='view("+result[i].pdtNo+");'>"
+	            		+"<img class='img' src="+result[i].pdtImage+">"
+	            		+"</div>";
+    				}
     			}
     			$pediaWrap.html(value);
     		},

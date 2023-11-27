@@ -127,7 +127,7 @@
 <div id="paging-area">
     <ul class="pagination">
     	<c:choose>
-	    	<c:when test="${pi.currentPage ge 1 }">
+	    	<c:when test="${pi.currentPage le 1 }">
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>
