@@ -55,8 +55,8 @@ public class ProductController1 {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		
-		System.out.println(sort + "넘어오나");
-		System.out.println(productService.selectPerfumePdtList(sort, pi));
+		System.out.println("향수 전체조회 sort : " + sort + " 넘어오나");
+		System.out.println("향수 전체조회 결과 : " + productService.selectPerfumePdtList(sort, pi));
 		
 		m.addAttribute("pdtCteg", "F") // 향수도 식별자 넘겨야함(사이드바 정렬보기 요청 시 필요)
 		 .addAttribute("sort", sort)

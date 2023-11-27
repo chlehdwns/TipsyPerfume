@@ -42,6 +42,7 @@ public class ProductDao1 {
 
 	//향수 전체조회
 	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
+		System.out.println("DAO에 넘어온 sort : " + pMap.get("sort"));
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
 
