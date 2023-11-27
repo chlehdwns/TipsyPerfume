@@ -18,7 +18,6 @@ public class AjaxPediaController {
 	@GetMapping(value = "selectPediaList", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String ajaxSelectPediaList(String pdtCteg, int userNo) {
-		System.out.println("1");
 		HashMap map = new HashMap();
 		map.put("userNo", userNo);
 		map.put("pdtCteg", pdtCteg);

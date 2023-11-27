@@ -243,10 +243,11 @@
     		},
     		async:false,
     		success:(result)=>{
+    			console.log(result);
     			const $pediaWrap = $("#pedia-wrap");
     			let value="";
     			for(let i in result){
-    				if(result[i].userPrice){
+    				if(result[i].userBuy!="0"){
     					value+=  "<div class='pedia-item' onclick='view("+result[i].pdtNo+");'>"
 	            		+"<img class='img' src="+result[i].pdtImage+">"
 	            		+"</div>";

@@ -18,7 +18,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if(session.getAttribute("loginUser") != null) {
 			return true;
 		} else {
-			session.setAttribute("alertMsg", "로그인 해");
+			session.setAttribute("alertMsg", "로그인을 해주세요");
 			response.sendRedirect(request.getContextPath());
 			return false;
 		}
