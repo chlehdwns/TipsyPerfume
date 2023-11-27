@@ -74,6 +74,8 @@ public class BoardController {
 		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		
+		System.out.println(uploadImg.length);
+		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
 		for(int i=0;i<uploadImg.length;i++) {
 			BoardFileVO file = saveFile(uploadImg[i], i, session);
