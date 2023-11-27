@@ -7,7 +7,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
@@ -85,7 +84,18 @@ public class ProductDao1 {
 	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
 	}
-
+	
+	
+	// 주류 디테일조회
+	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	//	return null;
+	//}
+	
+	
+	public CartVO cartMain(SqlSessionTemplate sqlSession, int userNo) {
+		return null;
+	}
+	
 
 	/**
 	 * 위시리스트 추가
@@ -123,9 +133,6 @@ public class ProductDao1 {
 	}
 
 
-	// 주류 디테일조회
-	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
-	//	return null;
-	//}
+
 
 }

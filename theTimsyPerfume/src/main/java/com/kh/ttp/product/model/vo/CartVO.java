@@ -1,7 +1,5 @@
 package com.kh.ttp.product.model.vo;
 
-import com.kh.ttp.user.model.vo.User;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,8 +22,5 @@ public class CartVO {
 	private int pdtNo;
 	private int cartQuantity;
 	private int cartAddingQuantity;
-	private User user;
-	private ProductVO product;
-	
 	
 }
