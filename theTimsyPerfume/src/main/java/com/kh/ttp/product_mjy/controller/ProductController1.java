@@ -55,9 +55,6 @@ public class ProductController1 {
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		
-		System.out.println(sort + "넘어오나");
-		System.out.println(productService.selectPerfumePdtList(sort, pi));
-		
 		m.addAttribute("pdtCteg", "F") // 향수도 식별자 넘겨야함(사이드바 정렬보기 요청 시 필요)
 		 .addAttribute("sort", sort)
 		 .addAttribute("pdtList", productService.selectPerfumePdtList(sort, pi))
@@ -78,11 +75,8 @@ public class ProductController1 {
 	public String selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									   @RequestParam(value="sort", defaultValue="New") String sort,
 									   Model m) {
-		System.out.println(sort);
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
-		
-		System.out.println(productService.selectAlcoholPdtList(sort, pi));
 		
 		m.addAttribute("pdtCteg", "A")
 		 .addAttribute("sort", sort)

@@ -20,9 +20,12 @@ public class CartVO {
 	CART_QUANTIRY	NUMBER
 	*/
 	private int cartNo;
+	private int userNo;
+	private int pdtNo;
+	private int cartQuantity;
+	private int cartAddingQuantity;
 	private User user;
-	ProductVO product;
-	private int CartQuantity;
+	private ProductVO product;
 	
 	
 }

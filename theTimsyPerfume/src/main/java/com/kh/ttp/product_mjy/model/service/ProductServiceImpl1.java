@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.product_mjy.model.dao.ProductDao1;
@@ -29,6 +30,23 @@ public class ProductServiceImpl1 implements ProductService1 {
 		return productDao.selectProductCount(sqlSession, pdtCteg);
 	}
 
+	
+	@Override
+	public int countProductStock(int pdtNo) {
+		return productDao.countProductStock(sqlSession, pdtNo);
+	}
+	
+	@Override
+	public int countWishOne(WishlistVO wishlist) {
+		return productDao.countWishOne(sqlSession, wishlist);
+	}
+	
+	@Override
+	public int countCartOne(CartVO cart) {
+		return productDao.countCartOne(sqlSession, cart);
+	}
+	
+	
 	
 	@Override
 	public HashMap<String, Object> productMainList(String pdtCteg, PageInfo pi) {
@@ -82,8 +100,6 @@ public class ProductServiceImpl1 implements ProductService1 {
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtCteg", "A");
 		pMap.put("sort", sort);
-		System.out.println(sort + "솔트담음" + pMap.get("pdtCteg") + "cteg담음");
-		System.out.println(pMap + "pmap");
 		return productDao.selectAlcoholPdtList(sqlSession, pMap, rowBounds);
 	}
 
@@ -98,10 +114,7 @@ public class ProductServiceImpl1 implements ProductService1 {
 	}
 
 
-	@Override
-	public int countWishOne(WishlistVO wishlist) {
-		return productDao.countWishOne(sqlSession, wishlist);
-	}
+
 
 
 	@Override
@@ -114,6 +127,9 @@ public class ProductServiceImpl1 implements ProductService1 {
 	public int deleteWishOne(WishlistVO wishlist) {
 		return productDao.deleteWishOne(sqlSession, wishlist);
 	}
+	
+	
+	
 	/***************** ajax 요청 *****************/
 	@Override
 	public boolean ajaxChangeWishOne(WishlistVO wishlist) {
@@ -128,6 +144,33 @@ public class ProductServiceImpl1 implements ProductService1 {
 	}
 
 
+	// stock있을 경우1 select해서1이면 => update
+	// stock 있을 경우1 select해서 0이면 => insert
+	@Override
+	public int ajaxAddCartSingleQuan(CartVO cart) {
+//		System.out.println(countProductStock(cart.getPdtNo()) + " : 재고 개수");
+//		System.out.println(countCartOne(cart) + " : 카트에 있는지 카운트");
+//		System.out.println(insertCartOne(cart) + " : 카트 insert");
+//		System.out.println(updateCartOneQuantity(cart) + " : 카트 개수 업데이트");
+		if(countProductStock(cart.getPdtNo()) > 0) { // 재고 1개 이상인지 조회(최종 재고 반영은 주문&결제 시 UPDATE)
+			cart.setCartAddingQuantity(1);
+			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartOneQuantity(cart);
+		} else { // 재고가 없음
+			return -1;
+		}
+	}
+
+
+
+	@Override
+	public int insertCartOne(CartVO cart) {
+		return productDao.insertCartOne(sqlSession, cart);
+	}
+
+
+	@Override
+	public int updateCartOneQuantity(CartVO cart) {
+		return productDao.updateCartOneQuantity(sqlSession, cart);
+	}
 
 }
-
