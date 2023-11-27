@@ -412,6 +412,14 @@ VALUES(
 		WHERE
 			PDT_NO = #{pdtNo}
 	</update>
+	<update id="updateFundingFee" parameterType="funding">
+		UPDATE
+			TB_FUNDING
+		SET
+			FUNDING_FEE = FUNDING_FEE+#{fundingFee}
+		WHERE
+			PDT_NO = #{pdtNo}
+	</update>
 		
 	
 

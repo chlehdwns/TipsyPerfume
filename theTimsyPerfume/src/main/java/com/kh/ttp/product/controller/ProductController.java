@@ -242,10 +242,9 @@ public class ProductController {
 		
 	}
 	@RequestMapping("funding.fd")
-	public String confrimFundingDrink(Model model,int pdtNo,int userNo,int orderQuantiry,int fundingFee,
-									 int pdtPrice,int postalCode,String address,String addressDetail,String receiverName,String orderMessage,
-									 String payMethod,String payBank,String payName,String phone) {
-		int orderPrice = (pdtPrice*orderQuantiry)+fundingFee;
+	public String confirmFundingDrink(Model model,OrderDetailVO od,OrderVO o,User u,ProductVO p,PayVO pv,Funding f) {
+		int orderPrice =  (p.getPdtPrice()*p.getOrderQuantity())+f.getFundingFee();
+				//(pdtPrice*orderQuantiry)+fundingFee;
 		//System.out.println(pdtNo);
 		//System.out.println(userNo);
 		//System.out.println(orderQuantiry);
@@ -260,26 +259,15 @@ public class ProductController {
 		//System.out.println(payMethod);
 		//System.out.println(payBank);
 		//System.out.println(payName);
-		OrderDetailVO od = new OrderDetailVO();
 		
-		OrderVO o = new OrderVO();
-		o.setUserNo(userNo);
-		User u = new User();
-		u.setAddress(address);
-		u.setAddressDetail(addressDetail);
-		u.setPostalCode(postalCode);
-		u.setReceiverName(receiverName);
-		u.setUserNo(userNo);
-		u.setPhone(phone);
-		
-		ProductVO p = new ProductVO();
-		p.setPdtNo(pdtNo);
 		p.setOrderPrice(orderPrice);
-		PayVO pv = new PayVO();
-		pv.setPayMethod(payMethod);
-		pv.setPayTotal(orderPrice);
-		pv.setPayBank(payBank);
-		pv.setPayName(payName);
+		//System.out.println(od);
+		//System.out.println(o);
+		//System.out.println(u);
+		//System.out.println(p);
+		//System.out.println(pv);
+		System.out.println(f);
+		productService.confirmFundingDrink(od,o,u,p,pv,f);
 		
 		return "";
 	}
