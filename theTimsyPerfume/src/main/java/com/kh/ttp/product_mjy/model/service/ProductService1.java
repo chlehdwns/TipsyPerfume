@@ -68,9 +68,9 @@ public interface ProductService1 {
 	/**
 	 * 장바구니 전체 조회
 	 * @param userNo(유저번호PK)
-	 * @return : 장바구니 정보가 담긴 CartVO
+	 * @return : 장바구니 정보가 담긴 CartVO리터럴의 ArrayList
 	 */
-	CartVO cartMain(int userNo);
+	ArrayList<CartVO> cartMain(int userNo);
 	
 
 	

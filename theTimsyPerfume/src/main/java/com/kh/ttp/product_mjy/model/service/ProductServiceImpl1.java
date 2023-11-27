@@ -116,7 +116,7 @@ public class ProductServiceImpl1 implements ProductService1 {
 
 
 	@Override
-	public CartVO cartMain(int userNo) {
+	public ArrayList<CartVO> cartMain(int userNo) {
 		return productDao.cartMain(sqlSession, userNo);
 	}
 

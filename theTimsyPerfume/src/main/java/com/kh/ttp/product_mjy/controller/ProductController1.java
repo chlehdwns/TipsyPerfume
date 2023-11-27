@@ -102,7 +102,7 @@ public class ProductController1 {
 	@GetMapping("cartMain.ca")
 	public ModelAndView cartMain(ModelAndView mv, HttpSession session) {
 		if(null != session.getAttribute("loginUser")) {
-			mv.addObject(productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
+			mv.addObject("cartList", productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
 			  .setViewName("orderKinds/cartMain");
 		} else {
 			mv.addObject("errorMsg", "장바구니 조회 실패").setViewName("common/errorPage");

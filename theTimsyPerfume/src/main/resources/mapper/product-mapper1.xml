@@ -146,6 +146,10 @@
 	</select>
 	
 
+	<!-- 장바구니 전체조회 -->
+	<select id="cartMain" parameterType="_int" resultMap="cart">
+	
+	</select>
 	
 	
 	<!-- 위시리스트 INSERT구문 -->

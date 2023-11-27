@@ -92,8 +92,11 @@ public class ProductDao1 {
 	//}
 	
 	
-	public CartVO cartMain(SqlSessionTemplate sqlSession, int userNo) {
-		return null;
+	/**
+	 * 장바구니 전체조회
+	 */
+	public ArrayList<CartVO> cartMain(SqlSessionTemplate sqlSession, int userNo) {
+		return (ArrayList)sqlSession.selectList("productMapper1.cartMain", userNo);
 	}
 	
 
