@@ -49,7 +49,7 @@ WHERE
     BOARD_STATE='Y'
 AND
     BOARD_CTGY_CODE=#{boardCtgy}
-ORDER BY BOARD_CREATE_DATE DESC
+ORDER BY BOARD_NO DESC
 </select>
 <update id="increaseBoardCount" parameterType="_int">
 UPDATE TB_BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_NO=#{boardNo}
@@ -199,6 +199,6 @@ AND
 	#{boardNo} > BOARD_NO
 AND
     BOARD_CTGY_CODE=#{boardCtgy}
-ORDER BY BOARD_CREATE_DATE DESC
+ORDER BY BOARD_NO DESC
 </select>
 </mapper>
