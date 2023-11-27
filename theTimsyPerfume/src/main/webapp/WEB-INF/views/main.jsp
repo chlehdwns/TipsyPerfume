@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +8,41 @@
 <title>The Tipsy Perfume</title>
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+	<!-- 술 펀딩용 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
 <style>
 #alcohol{
-		
 			border-radius: 50%;
 			margin:10px;
-			
 		}
 		
 .category1{
-			
 			border-radius: 50%;
 			
 }
+
+
+.3_1_1{
+	margin:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 
@@ -30,7 +53,7 @@
 	
 	<jsp:include page="common/header.jsp" />
 	
-	<div style="width: 1200px; height: 2000px; margin: auto; text-align: center;">
+	<div style="width: 1200px; height: 1600px; margin: auto; text-align: center;">
 		
 		
 		<div id="content_1">
@@ -56,7 +79,7 @@
 			</div>
 		</div>
 		
-		<div id="content_2" style="width: 1200px; height: 1000px; margin: auto; text-align: center; margin-top: 50px;">
+		<div id="content_2" style="width: 1200px; height: 300px; margin: auto; text-align: center; margin-top: 50px;">
 			<div class="category1" >
 				<a href="productMain.pr?pdtCteg=A"><img src="resources/image/common/alcohol.jpg" width="120" height="120" id="alcohol"></a>
 				<a href="productMain.pr?pdtCteg=F"><img src="resources/image/common/perfume.jpg" width="120" height="120" id="alcohol"></a>
@@ -64,13 +87,49 @@
 				<a href="funding.list"><img src="resources/image/common/perfume1.jpg" width="120" height="120" id="alcohol"></a>
 			</div>
 			<div class="category2">
-			<br>
-			<pre>  주류        |       향수        |     펀딩 주류     |     펀딩 향수</pre>
+				<br>
+				<pre>  주류        |       향수        |     펀딩 주류     |     펀딩 향수</pre>
 			</div>
 		
 		</div>
 	
-	
+		<div id="content_3">
+			<div class="title" style="margin-bottom:50px;">
+				<h5>Promotion</h5>
+				<h1>지금 핫한 펀딩</h1>
+				<hr>
+			</div>
+			<div class="3_1" align="left" style="float:right; margin-right:50px;" >
+				<div class="3_1_1">
+					<a href="funding.list"><img src="resources/image/common/alcohol2.jpg" width="400" height="300" align="right" id="pro1" ></a>
+				</div>
+			</div>
+			<div class="3_1_2" align="right" style="float:right; margin-right:60px;">
+					<h2><b>기억에 남는 낭만</b><br></h2>
+					<h2>		KH 와인</h2>
+					<h5>
+					포르투갈 북서부에 자리한 빈티지스러운 도시 포르토(Porto)에서 온,<br> 세상 달콤하고 높은 알콜 도수를 가진 두 얼굴의 와인, <br>포르투, 포트, 포르토 와인입니다.
+					</h5>
+				</div>
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+		
+		</div>
+		
+		
+		
+		
+		
+		
 	
 	​
 		
