@@ -16,4 +16,8 @@ public class FundingDao {
 		return sqlSession.update("productMapper.updateDrinkFundingF",f);
 	}
 
+	public int confirmFundingDrink(SqlSessionTemplate sqlSession,Funding f) {
+		return sqlSession.update("productMapper.updateFundingFee",f);
+	}
+
 }

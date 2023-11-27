@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
+import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.product_mjy.model.dao.ProductDao1;
 
 @Service
@@ -80,8 +81,9 @@ public class ProductServiceImpl1 implements ProductService1 {
 		
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtCteg", "A");
-		if(sort != null) pMap.put("sort", sort);
-		
+		pMap.put("sort", sort);
+		System.out.println(sort + "솔트담음" + pMap.get("pdtCteg") + "cteg담음");
+		System.out.println(pMap + "pmap");
 		return productDao.selectAlcoholPdtList(sqlSession, pMap, rowBounds);
 	}
 
@@ -93,6 +95,36 @@ public class ProductServiceImpl1 implements ProductService1 {
 		//pMap.put("pdtNo", pdtNo);
 		//pMap.put("pdtCteg", "A");
 		return null;
+	}
+
+
+	@Override
+	public int countWishOne(WishlistVO wishlist) {
+		return productDao.countWishOne(sqlSession, wishlist);
+	}
+
+
+	@Override
+	public int insertWishOne(WishlistVO wishlist) {
+		return productDao.insertWishOne(sqlSession, wishlist);
+	}
+
+
+	@Override
+	public int deleteWishOne(WishlistVO wishlist) {
+		return productDao.deleteWishOne(sqlSession, wishlist);
+	}
+	/***************** ajax 요청 *****************/
+	@Override
+	public boolean ajaxChangeWishOne(WishlistVO wishlist) {
+		// 카운트 후 INSERT or DELETE 수행 => (result > 0)로 성공1은 true, 실패0은 false반환
+		boolean isFilledHeart = false;
+		if(countWishOne(wishlist) == 0) { // count 0이었을 때? 위시리스트 없음 => insert 성공 시 : 하트채우기(true)
+			isFilledHeart = (insertWishOne(wishlist) > 0) ? true : false;
+		} else { // count 1이었을 때? 위시리스트 있음 => delete 성공 시 : 하트비우기(false)
+			isFilledHeart = (deleteWishOne(wishlist) > 0) ? false : true;
+		}
+		return isFilledHeart;
 	}
 
 

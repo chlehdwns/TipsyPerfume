@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 div {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     box-sizing: border-box;
 }
 /* 에러페이지 전체 래핑 */
