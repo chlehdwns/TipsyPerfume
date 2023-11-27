@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.dao.FundingDao;
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.orderKinds.model.dao.ReceiverDao;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.dao.ProductDao;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
@@ -40,7 +42,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductOptionDao productOptionDao;
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+	@Autowired
+	private ReceiverDao receiverDao;
 	@Override
 	public int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
 		    if(productCategoryDao.drinkFundingInsert(sqlSession,pc)>0) {
@@ -144,10 +147,28 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
 	}
 	@Override
-	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f) {
+	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f,Receiver r) {
 		if(fundingDao.confirmFundingDrink(sqlSession,f)>0) {
+			int result1= productDao.confirmFundingDrinkPV(sqlSession,pv);
+			int result  = receiverDao.selectReceiverNo(sqlSession,r);
+			int payNo = productDao.selectPayNo(sqlSession);
+			o.setReceiverNo(result);
+			int result2=productDao.confirmFundingDrinkO(sqlSession,o);
+			int orderNo = productDao.selectOrderNo(sqlSession);
+			od.setOrderNo(orderNo);
+			od.setPayNo(payNo);
+			int result3 = productDao.confirmFundingDrinkOD(sqlSession,od);
+			int result4 = productDao.decreaseStock(sqlSession,p);
+			if(result1*result*result2*result3 != 0) {
+				return 1;
+			}
 			
 		};
+		return 0;
+	}
+	@Override
+	public int insertReceiver(Receiver r) {
+		receiverDao.insertReceiver(sqlSession,r);
 		return 0;
 	}
 

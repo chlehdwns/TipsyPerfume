@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.service.ProductService;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
@@ -242,8 +243,9 @@ public class ProductController {
 		
 	}
 	@RequestMapping("funding.fd")
-	public String confirmFundingDrink(Model model,OrderDetailVO od,OrderVO o,User u,ProductVO p,PayVO pv,Funding f) {
+	public String confirmFundingDrink(HttpSession session,OrderDetailVO od,OrderVO o,User u,ProductVO p,PayVO pv,Funding f,Receiver r,int selectAddress) {
 		int orderPrice =  (p.getPdtPrice()*p.getOrderQuantity())+f.getFundingFee();
+		
 				//(pdtPrice*orderQuantiry)+fundingFee;
 		//System.out.println(pdtNo);
 		//System.out.println(userNo);
@@ -260,16 +262,29 @@ public class ProductController {
 		//System.out.println(payBank);
 		//System.out.println(payName);
 		
-		p.setOrderPrice(orderPrice);
+		
+		pv.setPayTotal(orderPrice);
 		//System.out.println(od);
 		//System.out.println(o);
 		//System.out.println(u);
 		//System.out.println(p);
 		//System.out.println(pv);
-		System.out.println(f);
-		productService.confirmFundingDrink(od,o,u,p,pv,f);
+		//System.out.println(f);
+		//System.out.println(r);
+		//System.out.println(selectAddress);
+		//만약 selectAddress값의 value가 2이면 새로운 receiver 등록 아니면 select해서 receiver 번호 가져오기
+		if(selectAddress==2) {
+			productService.insertReceiver(r);
+		}
 		
-		return "";
+		if(productService.confirmFundingDrink(od,o,u,p,pv,f,r)>0) {
+			
+			return "common/buyConfirmPage";
+		}else {
+			return "common/errorPage";
+		}
+		
+		
 	}
 		
 	
