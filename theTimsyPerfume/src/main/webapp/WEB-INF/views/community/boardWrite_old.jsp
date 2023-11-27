@@ -8,11 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script src="resources/js/board/summernote-lite.js"></script>
-<script src="resources/js/board/lang/summernote-ko-KR.js"></script>
-
-<link rel="stylesheet" href="resources/css/board/summernote-lite.css">
 <style>
 	#writer-wrap{
 		width: 900px;
@@ -48,7 +43,7 @@
         </tr>
 		<tr>
 			<th><label for="boardContent">내용</label></th>
-			<td><textarea  id="boardContent" class="form-control" name="boardContent" required></textarea></td>
+			<td><textarea id="boardContent" class="form-control" rows="20" style="resize:none;" name="boardContent" required></textarea></td>
 		</tr>
 	</table>
 	<div align="center">
@@ -77,15 +72,6 @@
                 $writeForm.submit();
             }
         })
-
-        $('#boardContent').summernote({
-		    height: 300,                 // 에디터 높이
-		    minHeight: null,             // 최소 높이
-		    maxHeight: null,             // 최대 높이
-		    focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		    lang: "ko-KR",					// 한글 설정
-		    placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-	    });
     })
     function loadImg(inputFile){
         const boardContent = document.getElementById("boardContent");

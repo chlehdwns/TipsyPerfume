@@ -118,7 +118,8 @@
         height: 250px;
     }
     #detail-info{
-        padding: 0px 20px;
+        padding: 0px 10px;
+        font-size: 13px;
     }
     #detail-title{
         font-size: 32px;
