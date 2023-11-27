@@ -14,10 +14,10 @@
 			margin: auto;
 			border: 1px solid red;
 		}
+		
 		.box{
-		height:30px;
+			height:30px;
 		}
-	
 	
 		.content1{
 			width:300px;
@@ -26,7 +26,6 @@
 			margin:left;
 			background-color : rgb(195, 195, 195);
 			float : left;
-		
 		}
 		
 		.content1_1{
@@ -48,18 +47,16 @@
 		}
 		
 		#blank-profile{
-		margin-top:10px;
-		margin-left:10px;
-		border-radius: 50%;
+			margin-top:10px;
+			margin-left:10px;
+			border-radius: 50%;
 		}
-		
 		
 		.nickName{
 			float : left;
 			margin-top :50px;
 			margin-left:20px;
 			font-size:18px;
-		
 		}
 		
 		.content2{
@@ -70,28 +67,16 @@
 			margin-left:30px;
 			width:850px;
 			height:100%;
-
-		}
-		
-		.content2_1{
-			
-		}
-		
-		.enroll{
-			
 		}
 	
 		.navi1{
 			margin-left:30px;
-		
 		}
 	
 		 #navi1 a{
             text-decoration:none;
 			line-height : 35px;
 			font-weight : 800;
-			
-			
 		}
 		
 		#navi1 > li{
@@ -104,21 +89,25 @@
 			 font-size : 22px;
 		}
 		
-		
 		 #navi1 > li > ul{
             list-style : none;
 		}
 	
-		#pagingArea {width:fit-content; margin:auto;}
+		#pagingArea {
+			width:fit-content; 	
+			margin:auto;
+		}
         
         #searchForm {
             width:80%;
             margin:auto;
         }
+        
         #searchForm>* {
             float:left;
             margin:5px;
         }
+        
         .select {width:20%;}
         .text {width:53%;}
         .searchBtn {width:20%;}
@@ -131,179 +120,188 @@
 
 	<!-- 메뉴바 -->
 		<jsp:include page="../common/header.jsp" />
+		<!-- -------------------------------------- -->
 		<div class="content">
-			<!--  <div class="box"></div>-->
-			<div class="content1">
-			<div class="content1_1"></div>
-			
-			<div class="profile">
-				<div class="userProfile">
-					<img src="resources/image/common/blank-profile.png" width="100" height="100" id="blank-profile">
-				</div>
-				<div class="nickName">
-					<label>${ sessionScope.loginUser.nickName }</label> 
-				</div>
-			</div>
-			
-			<div class="box"></div>
-			
-			<br>
-			
-				<ul id="navi1">
-					<li><a href="#">사용자 관리</a>
-						<ul>
-							<li><a href="#">판매자 계정 승인</a>
-						</ul>
-					</li>
-					
-					<br><br>
-					
-					<li><a href="#">판매 관리</a>
-						<ul>
-							<li><a href="#">술 판매 관리</a>
-							<li><a href="#">향수 판매 관리</a>
-							<li><a href="#">주문 관리 승인</a>
-						</ul>
-					
-					</li>
-				
-				
-				</ul>
-			
-			
-			</div>
-			
-			<div class="content2">
-				<br>
-				<h2>사용자 관리</h2>
-				<hr>
-				
-				<div class="content2_1">
-					<h3>판매 제품</h3>
-				</div>
-				<br>
-				<div class="enroll">
-					<a href="adminAlcoholEnrollForm.me">와인 상품 등록하기</a>
-					<a href="#">향수 상품 등록하기</a>
-				</div>
-				
-				
-				<!-- -------------------------------------- -->
-				
-				
-            <br>
-            <br>
-            <table id="boardList" class="table table-hover" align="center">
-                <thead>
-                    <tr>
-                        <th>상품 번호</th>
-                        <th>주류 향수 구분</th>
-                        <th>상품명</th>
-                        <th>판매 가격</th>
-                        <th>등록일</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    
-						<tr>
-							<td>상품 번호</td>
-							<td>주류 항수 구분</td>
-							<td>상품명</td>
-							<td>판매 가격</td>
-							<td>등록일</td>
-							
-						</tr>
-					
-                </tbody>
-            </table>
-				
-				
-				
-				
-			 <div id="pagingArea">
-                <ul class="pagination">
-                	<c:choose>
-                		<c:when test="${ pi.currentPage eq 1 }">
-                    		<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<li class="page-item"><a class="page-link" href="list.bo?cPage=${ pi.currentPage - 1 }">Previous</a></li>
-                    	</c:otherwise>
-                    </c:choose>
-                    
-                    <c:forEach begin="${ pi.startPage }" end="${ pi.endPage }" var="p">
-                    <li class="page-item"><a class="page-link" href="list.bo?cPage=${ p }">${p}</a></li>
-                    </c:forEach>
-                    
-                    <c:choose>
-                    	<c:when test="${ pi.currentPage eq maxPage }">
-                    		<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<li class="page-item"><a class="page-link" href="list.bo?cPage=${ pi.maxPage -1 }">Next</a></li>
-                    	</c:otherwise>
-                    </c:choose>
-                    
-                </ul>
-            </div>	
-				
-				
-				 <br clear="both"><br>
+		<jsp:include page="../adminManage/adminSideBar.jsp" />
+        <br><br>
+        
+         <style>
+        .content {
+            background-color:rgb(247, 245, 245);
 
-            <form id="searchForm" action="" method="get" align="center">
-                <div class="select">
-                    <select class="custom-select" name="condition">
-                        <option value="writer">카테고리 번호</option>
-                        <option value="title">상품명</option>
-                    </select>
-                </div>
-                <div class="text">
-                    <input type="text" class="form-control" name="keyword">
-                </div>
-                <button type="submit" class="searchBtn btn btn-secondary">검색</button>
-            </form>
-            <br><br>
+            margin:auto;
+        }
+        
+        .innerOuter {
+            
+            width:80%;
+            margin:auto;
+            padding:5% 10%;
+            background-color:white;
+            align:right;
+            margin-left:200px;
+        }
+        
+        .hr-dashed {
+		  border : 0px;
+		  border-top: 5px dashed #663399;
+		}
+    </style>
+        
+        
+        <div class="innerOuter">
+            <h2>마이페이지</h2>
+            <br>
+
+            <form action="update.me" method="post">
+                <div class="form-group">
+                	<label for="memberType"> 회원 구분 : </label> &nbsp;&nbsp;
+                    <input type="radio" id="User" value="U" name="memberType" checked>
+                    <label for="User">개인 회원</label> &nbsp;&nbsp;
+                    <input type="radio" id="Sale" value="S" name="memberType">
+                    <label for="Sale">사업자 회원</label> &nbsp;&nbsp;
+                	<br><br>
+                
+                	<label for="userEmail">아이디(이메일) : </label>
+					<input type="text" class="form-control" value="${ sessionScope.loginUser.userEmail }" name="userEmail" readonly><br>
+					<br>
+
+					<label for="nickName">닉네임 : </label>
+					<input type="text" class="form-control" value="${ sessionScope.loginUser.nickName  }" name="nickName" required><br>
+					<br>
+						
+					<div class="btns1" align="right">
+		                <button type="submit" class="btn btn-primary">수정하기</button>
+		                 </div>
+		         
+		        </div>
+		        
+		    </form>
+		    <br>
+		
+			<br><br>
+			
+			  		
+			
+	
+	<script>
+		$(() => {
+			$('#receiverForm').submit(e => {
+				e.preventDefault();
+				//console.log(e);
+				var $receiverForm = $('#receiverForm');
+				//console.log($receiverForm);
+				
+				$.ajax({
+					url : 'ajaxInsertReceiver.re',
+					data : $receiverForm.serialize(),
+					type : 'POST',
+					success : result => {
+						console.log('성공');
+						// 성공 얼럿
+						alert(result);
+						// 폼 리셋 (reset은 바닐라자바 => [0]으로 추출)
+						$receiverForm[0].reset();
+					},
+					error : result => {
+						console.log('실패');
+						alert(result);
+					}
+				});
+				return false;
+			});
+		});
+	</script>
+       
+        	</div>
         </div>
         <br><br>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+        
+    
+
+    
+    
+
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   
+   <!-- 배송지 div 복사해주는 script -->
+   <script>
+   	function copyDiv(){
+   		//addressBox node선택
+   		const addressBoxDiv = document.getElementById('addressBox');
+   		
+   		//노드복사
+   		const newNode = addressBoxDiv.cloneNode(true);
+   		
+   		//복사된 Node id변경
+   		newNode.id = 'copyNode';
+   		
+   		//복사한 노드 붙여넣기
+   		addressBoxDiv.after(newNode);
+   	}
+   
+   
+   
+   </script>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+		<script>
+		function execDaumPostcode(){
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		        	 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+
+		            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+		            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		            let addr = ''; // 주소 변수
+
+		            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+		            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+		                addr = data.roadAddress;
+		            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+		                addr = data.jibunAddress;
+		            }
+
+		            $("#postalCode").val(data.zonecode);
+		            $("#address").val(addr);
+		            $("#address").focus();
+		          }
+		      }).open();
+		}
+		</script>
+
+		<script>
+		function postFormSubmit(num){
+    		if(num == 0){
+    			// 수정하기 클릭 시
+    			$('#postForm').attr('action', 'updateForm.bo').submit();
+    		} 
+    		else if(num == 1){
+    			// 삭제하기 클릭 시
+    			$('#postForm').attr('action', 'delete.bo').submit();
+    		}
+    		
+    		
+    	}
+		
+		
+		</script>
+			
 			</div><!-- content2끝 -->
 			
-			
-			
-			
-			
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		</div><!-- content 끝 div -->
 		<jsp:include page="../common/footer.jsp" />
 </body>

@@ -101,7 +101,7 @@
 	<h2 class="buy-title">${pdtName} 펀딩 창</h2>
 	<div class="wrapper">
 			<div class="product-img">
-				<img alt="사진" src="/ttp${pdtFileUpload }">
+				<img alt="사진" src="${pdtFileUpload }">
 						
 			</div>
 			

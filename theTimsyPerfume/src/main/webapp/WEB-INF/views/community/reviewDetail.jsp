@@ -47,14 +47,19 @@
         margin-left: 5px;
     }
 	.score-bg{
-        width: 115px;
+        width: 113px;
         height: 19px;
 		background-image: url("resources/image/common/star-bg.svg");
+        background-repeat: repeat-x;
+        background-position: 0px 0px;
+        background-size: auto 100%;
 	}
     .score{
-        width: 50%;
         height: 100%;
         background-image: url("resources/image/common/star.svg");
+        background-repeat: repeat-x;
+        background-position: 0px 0px;
+        background-size: auto 100%;
     }
     .article-wrap{
         white-space: pre-wrap;
@@ -94,6 +99,7 @@
         width: 85%;
         height: 100px;
         border-radius: 6px;
+        padding: 2px 10px;
     }
     .comment-btn{
         width: 10%;
@@ -160,7 +166,7 @@
                     </div>
                 </div>
                 <div class="score-bg">
-                    <div class="score" style="width: ${review.reviewScore*11}px;"></div>
+                    <div class="score" style="width: ${review.reviewScore*10}%;"></div>
                 </div>
 <pre class="article-wrap bottom-interval">
 ${review.reviewContent }

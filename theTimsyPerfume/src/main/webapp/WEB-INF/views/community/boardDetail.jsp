@@ -6,7 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>${board.boardTitle } - Tipsy Perfume</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -93,16 +97,34 @@
         width: 85%;
         height: 100px;
         border-radius: 6px;
+        padding: 2px 10px;
     }
     .comment-btn{
-        width: 10%;
-        height: 60px;
+        width: 12%;
+        height: 80px;
         margin-left: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
+    }
+    .comment-btn:hover
+    {
+        background-color: rgb(223, 190, 106);
+        color: rgb(255, 255, 255);
     }
     .disabled-btn{
-        width: 10%;
-        height: 60px;
+        width: 12%;
+        height: 80px;
         margin-left: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 4px solid rgb(223, 190, 106);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(223, 190, 106);
     }
     .board-comment{
         padding-bottom: 10px;
@@ -140,6 +162,57 @@
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
+    
+    #board-list-wrap{
+        margin: 0 auto;
+    	margin-top: 50px;
+    	margin-bottom: 10px;
+    }
+    #board-list-wrap .table{
+    	margin-bottom: 0px;
+    	text-align: center;
+        border-collapse: collapse;
+    }
+    #board-list-wrap .table td{
+        vertical-align: middle;
+        border-color: rgb(214, 214, 214);
+        border-bottom: 1px solid;
+    }
+    #board-list-wrap tbody>tr{
+    	cursor: pointer;
+    }
+    #board-list-wrap tbody>tr>td:not(:nth-child(2n)){
+        background-color: rgb(240, 240, 240);
+    }
+    .thead-dark{
+    	position: sticky;
+        top: 60px;
+    }
+    .board-no{
+        width: 15%;
+    }
+    .board-title{
+        width: 40%;
+        text-align: left;
+    }
+    .board-writer{
+        width: 18%;
+    }
+    .board-date{
+        width: 15%;
+    }
+    .board-count{
+        width: 12%;
+    }
+    .comment-count{
+    	font-size: 15px;
+    	color: rgb(223, 190, 106);
+    }
+    #more-list{
+    	display: block;
+    	width: 300px;
+    	margin: 0 auto;
+    }
 </style>
 <section>
 <input id="board-no" type="hidden" value="${board.boardNo}">
@@ -148,6 +221,8 @@
         ${board.boardTitle }
         <c:if test="${loginUser.userNo eq board.boardWriterNo}">
             <button class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
+        </c:if>
+        <c:if test="${loginUser.userNo eq board.boardWriterNo or loginUser.memberType eq 'A'}">
             <button class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
         </c:if>
     </div>
@@ -208,12 +283,31 @@ ${board.boardContent }
         <div id="board-comment-wrap">
         </div>
     </div>
+    <div id="board-list-wrap">
+    	<table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody id="board-list">
+        </tbody>
+    </table>
+    </div>
+    <button id="more-list" class="board-btn">더보기</button>
 </div>
 </section>
 <script>
     $(()=>{
+    	let page=1;
+    	
     	loadRecommend();
         loadAllCommentList();
+        loadBoardList(page);
         
     	$("#like").click(()=>{
         	recommend('L');
@@ -270,6 +364,11 @@ ${board.boardContent }
                     console.log("통신실패");
                 }
             });
+        });
+        
+        $("#more-list").click(()=>{
+        	page++;
+        	loadBoardList(page);
         });
     });
     
@@ -406,6 +505,43 @@ ${board.boardContent }
                 console.log("통신실패");
             }
         });
+    }
+    function loadBoardList(page){
+    	$.ajax({
+    		url:"boardList",
+    		type:"get",
+    		data:{
+    			"page":page,
+    			"boardNo":${board.boardNo },
+    			"boardCtgy":"${board.boardCtgyCode }"
+    		},
+    		success:(result)=>{
+    			console.log(result);
+    			if(result.length){
+    				const boardList = document.getElementById("board-list");
+                    let value="";
+                    for(let i in result){
+                    	value+="<tr onclick=\"location.href='boardDetail?boardNo="+result[i].boardNo+"'\">"
+                        	+"<td class='board-no'>"+result[i].boardNo+"</td>"
+                        	+"<td class='board-title'>"+result[i].boardTitle+" ";
+                        if(result[i].commentCount){
+                        	value+="<span class='comment-count'>["+result[i].commentCount+"]</span>";
+                        }
+                        value+="</td><td class='board-writer'>"+result[i].boardWriter+"</td>"
+                        	+"<td class='board-date'>"+result[i].boardCreateDate+"</td>"
+                        	+"<td class='board-count'>"+result[i].boardCount+"</td>"
+                    		+"</tr>";
+                    }
+                    boardList.innerHTML+=value;
+    			}
+    			else{
+    				$("#more-list").css("display","none");
+    			}
+    		},
+    		error:()=>{
+    			console.log("통신실패");
+    		}
+    	})
     }
 </script>
 <jsp:include page="../common/footer.jsp"/>

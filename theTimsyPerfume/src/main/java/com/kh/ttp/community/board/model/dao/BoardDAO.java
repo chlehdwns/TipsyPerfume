@@ -1,6 +1,7 @@
 package com.kh.ttp.community.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -63,6 +64,10 @@ public class BoardDAO {
 
 	public int insertBoardFile(SqlSessionTemplate sqlSession, ArrayList<BoardFileVO> fileList) {
 		return sqlSession.insert("boardMapper.insertBoardFile", fileList);
+	}
+
+	public ArrayList<BoardVO> selectDetailBoardList(SqlSessionTemplate sqlSession, HashMap map, RowBounds rowBounds) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectDetailBoardList", map, rowBounds);
 	}
 
 

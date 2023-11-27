@@ -99,7 +99,7 @@
 			<c:forEach items="${totalHotDrinkFunding }" var="thdf">
 				<div class="funding-list">
 					<input type="hidden" value="${thdf.pdtNo}" class="pno"/>
-					<img src="/ttp${thdf.pdtFileUpload}" alt="썸네일 이미지"/>
+					<img src="${thdf.pdtFileUpload}" alt="썸네일 이미지"/>
 					<h6 class="cutting-date">마감 날짜 : ${thdf.cuttingDate }</h6>
 					<h4 class="percent">달성률 : ${thdf.fundingFee} / ${thdf.cuttingPrice }원 </h4>
 					

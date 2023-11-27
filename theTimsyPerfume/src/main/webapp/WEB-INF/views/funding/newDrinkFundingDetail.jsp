@@ -69,7 +69,7 @@
 		<h4 class="detail-title">${fundingDetailList.pdtName }의 펀딩 정보</h4>
 		<div class="wrapper">
 			<div class="product-img">
-				<img alt="사진" src="/ttp${fundingDetailList.pdtFileUpload }">
+				<img alt="사진" src="${fundingDetailList.pdtFileUpload }">
 				<h6>review:0개            조회수:${fundingDetailList.pdtCount }</h6>
 				<c:if test="${sessionScope.loginUser.memberType eq 'S'}">
 					<form method="post" action="updateForm.fd">
