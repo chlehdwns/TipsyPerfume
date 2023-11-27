@@ -120,6 +120,7 @@
 		
 		<br/>
 		<br/>	
+		<br/>	
 		
 		<div id="cartSummary" class="row">
 			<div class="col">
@@ -136,7 +137,7 @@
 	
 	<br/><br/><br/>
 	<br/><br/><br/>	
-
+	<br/><br/><br/>	
 
 </body>
 </html>

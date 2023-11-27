@@ -27,7 +27,11 @@
 
 
 <body>
-	<jsp:include page="../common/header.jsp" />
+	<jsp:include page="../common/header.jsp">
+		<jsp:param name="pdtCteg" value="${pdtCteg}" />
+		<jsp:param name="sort" value="${sort}" />
+		<jsp:param name="currentPage" value="${pi.currentPage}" />
+	</jsp:include>
 
     <div id="productListWrap">
         <div id="pdtListOuterLeft">

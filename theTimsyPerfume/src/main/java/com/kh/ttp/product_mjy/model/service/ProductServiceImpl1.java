@@ -60,6 +60,7 @@ public class ProductServiceImpl1 implements ProductService1 {
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtCteg", "F");
 		pMap.put("sort", sort);
+		System.out.println(sort + "솔트ㅡㅡㅡ");
 		return productDao.selectPerfumePdtList(sqlSession, pMap, rowBounds);
 	}
 
@@ -81,8 +82,9 @@ public class ProductServiceImpl1 implements ProductService1 {
 		
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtCteg", "A");
-		if(sort != null) pMap.put("sort", sort);
-		
+		pMap.put("sort", sort);
+		System.out.println(sort + "솔트담음" + pMap.get("pdtCteg") + "cteg담음");
+		System.out.println(pMap + "pmap");
 		return productDao.selectAlcoholPdtList(sqlSession, pMap, rowBounds);
 	}
 

@@ -14,7 +14,6 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
-	
 	<!-- 브랜드 주류/향수(판매중 상태Y)의 전체 개수 카운트 -->
 	<select id="selectProductCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
