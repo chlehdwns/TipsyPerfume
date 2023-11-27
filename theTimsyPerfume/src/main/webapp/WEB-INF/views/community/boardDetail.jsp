@@ -236,9 +236,9 @@
         </tr>
     </table>
     <div class="board-content-wrap">
-        <pre class="board-content">
+        <p class="board-content">
 ${board.boardContent }
-        </pre>
+        </p>
         <div class="like-wrap">
                     <c:choose>
                     <c:when test="${empty loginUser }">
