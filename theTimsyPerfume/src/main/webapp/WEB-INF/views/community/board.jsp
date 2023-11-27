@@ -81,6 +81,11 @@
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
+    .modify-text{
+    	color: rgb(110, 110, 110);
+    	font-size: 10px;
+    	vertical-align: top;
+    }
 </style>
 </head>
 <body>
@@ -113,7 +118,7 @@
         <c:forEach items="${list }" var="board">
         	<tr onclick="location.href='boardDetail?boardNo=${board.boardNo }'">
                 <td class="board-no">${board.boardNo }</td>
-                <td class="board-title">${board.boardTitle } <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
+                <td class="board-title">${board.boardTitle }<c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if> <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
                 <td class="board-count">${board.boardCount }</td>
