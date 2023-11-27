@@ -14,7 +14,6 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
-	
 	<!-- 브랜드 주류/향수(판매중 상태Y)의 전체 개수 카운트 -->
 	<select id="selectProductCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
@@ -27,6 +26,7 @@
 	
 	
 	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
+	<!-- if로 쓴 이유 -> otherwise에 쓸 내용 없고, 이 경우 if를 쓰든 choose-when-otherwise를 쓰든 성능차이 크지 않을것, 가독성 좋은방향이 더 낫다 생각함 -->
 	<select id="productSelectList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
 			   PDT_NO,
@@ -103,6 +103,44 @@
 	</select>
 	
 	
+	<!-- 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트) -->
+	<select id="countWishOne" parameterType="wishlist" resultType="_int">
+		SELECT
+			   COUNT(1) "RESULT"
+		  FROM
+		  	   TB_WISHLIST
+		 WHERE
+		  	   PDT_NO = #{pdtNo}
+		   AND
+		  	   USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 위시리스트 INSERT구문 -->
+	<insert id="insertWishOne" parameterType="wishlist">
+		INSERT
+		  INTO
+		  	   TB_WISHLIST
+		  	   (
+		  	   PDT_NO,
+		  	   USER_NO
+		  	   )
+		VALUES
+			   	(
+			   	#{pdtNo},
+			   	#{userNo}
+			   	)
+	</insert>
+	
+	<!-- 위시리스트 DELETE구문 -->
+	<delete id="deleteWishOne" parameterType="wishlist">
+		DELETE
+			   TB_WISHLIST
+		 WHERE
+			   PDT_NO = #{pdtNo}
+		   AND
+			   USER_NO = #{userNo}
+	</delete>
 	
 	
 </mapper>

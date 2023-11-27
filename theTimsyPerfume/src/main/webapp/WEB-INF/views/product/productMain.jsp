@@ -29,8 +29,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 	<!-- CSS파일 경로적기 -->
-    <link href="resources/css/member/loginForm.css" rel="stylesheet">
     <link href="resources/css/product/productMain.css" rel="stylesheet">
+    <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
+    <link href="resources/css/member/loginForm.css" rel="stylesheet">
     	
 </head>
 
@@ -364,7 +365,7 @@
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
 				}
 			}
-			else { // 로그인X / 실패 시 여기로 돌아옴!(ajax아니고 서버단에서 getHeader(Referer하기))
+			else { // 로그인X / 실패 시 여기로 돌아오도록!(@@@서버단에서 getHeader(Referer하기))
 			
 				$('#pdtMainFirstModal').modal("show");
 				
@@ -382,14 +383,11 @@
 			}
 		};
 	</script>
-	
-	
-
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- 	<script src="resources/js/product/productMain.js"></script> -->
-    <script src="resources/js/member/loginForm.js"></script>
+	<script src="resources/js/product/productMain.js"></script>
 	<script src="resources/js/member/memberEnrollForm.js"></script>
+    <script src="resources/js/member/loginForm.js"></script>
 
 </body>
 
