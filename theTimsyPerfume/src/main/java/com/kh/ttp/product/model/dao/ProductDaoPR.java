@@ -20,7 +20,7 @@ public class ProductDaoPR {
 	 * @param pdtCteg : 상품카테고리(알콜 'A', 향수'F')
 	 */
 	public int selectProductCount(SqlSessionTemplate sqlSession, String pdtCteg) {
-		return sqlSession.selectOne("productMapper1.selectProductCount", pdtCteg);
+		return sqlSession.selectOne("productMapperPR.selectProductCount", pdtCteg);
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class ProductDaoPR {
 	 * @param pdtNo
 	 */
 	public int countProductStock(SqlSessionTemplate sqlSession, int pdtNo) {
-		return sqlSession.selectOne("productMapper1.countProductStock", pdtNo);
+		return sqlSession.selectOne("productMapperPR.countProductStock", pdtNo);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class ProductDaoPR {
 	 * @param wishlist : userNo(유저번호PK), pdtNo(상품번호PK)
 	 */
 	public int countWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
-		return sqlSession.selectOne("productMapper1.countWishOne", wishlist);
+		return sqlSession.selectOne("productMapperPR.countWishOne", wishlist);
 	}
 	
 
@@ -45,7 +45,7 @@ public class ProductDaoPR {
 	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK)
 	 */
 	public int countCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
-		return sqlSession.selectOne("productMapper1.countCartOne", cart);
+		return sqlSession.selectOne("productMapperPR.countCartOne", cart);
 	}
 	
 	
@@ -67,12 +67,12 @@ public class ProductDaoPR {
 	public ArrayList<ProductSelectVO> productMainList(SqlSessionTemplate sqlSession,
 													  Map<String, Object> pMap,
 													  RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapperPR.productSelectList", pMap, rowBounds);
 	}
 
 	//향수 전체조회
 	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapperPR.productSelectList", pMap, rowBounds);
 	}
 
 	// 향수 디테일조회
@@ -82,7 +82,7 @@ public class ProductDaoPR {
 	
 	//주류 전체조회
 	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
-		return (ArrayList)sqlSession.selectList("productMapper1.productSelectList", pMap, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapperPR.productSelectList", pMap, rowBounds);
 	}
 	
 	
@@ -96,7 +96,7 @@ public class ProductDaoPR {
 	 * 장바구니 전체조회
 	 */
 	public ArrayList<CartVO> cartMain(SqlSessionTemplate sqlSession, int userNo) {
-		return (ArrayList)sqlSession.selectList("productMapper1.cartMain", userNo);
+		return (ArrayList)sqlSession.selectList("productMapperPR.cartMain", userNo);
 	}
 	
 
@@ -104,14 +104,14 @@ public class ProductDaoPR {
 	 * 위시리스트 추가
 	 */
 	public int insertWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
-		return sqlSession.insert("productMapper1.insertWishOne", wishlist);
+		return sqlSession.insert("productMapperPR.insertWishOne", wishlist);
 	}
 
 	/**
 	 * 위시리스트 삭제
 	 */
 	public int deleteWishOne(SqlSessionTemplate sqlSession, WishlistVO wishlist) {
-		return sqlSession.delete("productMapper1.deleteWishOne", wishlist);
+		return sqlSession.delete("productMapperPR.deleteWishOne", wishlist);
 	}
 
 
@@ -122,7 +122,7 @@ public class ProductDaoPR {
 	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
 	 */
 	public int insertCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
-		return sqlSession.insert("productMapper1.insertCartOne", cart);
+		return sqlSession.insert("productMapperPR.insertCartOne", cart);
 	}
 
 
@@ -132,7 +132,7 @@ public class ProductDaoPR {
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
 	public int updateCartOneQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
-		return sqlSession.update("productMapper1.updateCartOneQuantity", cart);
+		return sqlSession.update("productMapperPR.updateCartOneQuantity", cart);
 	}
 
 

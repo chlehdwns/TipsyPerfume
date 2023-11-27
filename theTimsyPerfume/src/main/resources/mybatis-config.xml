@@ -39,7 +39,7 @@
 		<mapper resource="/mapper/pedia-mapper.xml"/>
 		<mapper resource="/mapper/comment-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
-		<mapper resource="/mapper/product-mapper1.xml" />
+		<mapper resource="/mapper/product-mapper-pr.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />
 		<mapper resource="/mapper/admin-mapper.xml" />
 	</mappers>
