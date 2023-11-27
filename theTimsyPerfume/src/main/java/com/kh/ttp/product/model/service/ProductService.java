@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
+import com.kh.ttp.product.model.vo.OrderDetailVO;
+import com.kh.ttp.product.model.vo.OrderVO;
+import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
 import com.kh.ttp.productOption.model.vo.ProductOption;
+import com.kh.ttp.user.model.vo.User;
 
 public interface ProductService {
 	
@@ -38,6 +42,8 @@ public interface ProductService {
 	public FundingSelectVO selectDrinkFundingList(int pdtNo);
 
 	public int deleteDrinkFunding(int pdtNo);
+
+	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f);
 
 	
 

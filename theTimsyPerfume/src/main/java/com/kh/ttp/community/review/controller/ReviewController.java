@@ -62,8 +62,8 @@ public class ReviewController {
 		re.setReviewContent(re.getReviewContent().replace(">", "&gt;"));
 		
 		ArrayList<ReviewFileVO> fileList = new ArrayList<ReviewFileVO>();
-		for(int i=0;i<uploadImg.length;i++) {
-			ReviewFileVO file = saveFile(uploadImg[i], i, session);
+		for(int i=uploadImg.length;i>0;i--) {
+			ReviewFileVO file = saveFile(uploadImg[i-1], uploadImg.length-i, session);
 			fileList.add(file);
 		}
 		

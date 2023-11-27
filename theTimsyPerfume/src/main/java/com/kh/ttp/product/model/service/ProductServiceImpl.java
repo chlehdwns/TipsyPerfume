@@ -12,6 +12,9 @@ import com.kh.ttp.funding.model.dao.FundingDao;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.product.model.dao.ProductDao;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
+import com.kh.ttp.product.model.vo.OrderDetailVO;
+import com.kh.ttp.product.model.vo.OrderVO;
+import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.dao.ProductCategoryDao;
@@ -20,6 +23,7 @@ import com.kh.ttp.productFile.model.dao.ProductFileDao;
 import com.kh.ttp.productFile.model.vo.ProductFile;
 import com.kh.ttp.productOption.model.dao.ProductOptionDao;
 import com.kh.ttp.productOption.model.vo.ProductOption;
+import com.kh.ttp.user.model.vo.User;
 
 
 @Service
@@ -138,6 +142,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int deleteDrinkFunding(int pdtNo) {
 		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
+	}
+	@Override
+	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f) {
+		if(fundingDao.confirmFundingDrink(sqlSession,f)>0) {
+			
+		};
+		return 0;
 	}
 
 	

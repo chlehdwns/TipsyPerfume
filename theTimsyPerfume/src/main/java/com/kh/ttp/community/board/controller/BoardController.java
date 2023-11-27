@@ -75,11 +75,13 @@ public class BoardController {
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
-		for(int i=0;i<uploadImg.length;i++) {
-			BoardFileVO file = saveFile(uploadImg[i], i, session);
-			String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
-			bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
-			fileList.add(file);
+		if(!uploadImg[0].getOriginalFilename().equals("")) {
+			for(int i=0;i<uploadImg.length;i++) {
+				BoardFileVO file = saveFile(uploadImg[i], i, session);
+				String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
+				bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
+				fileList.add(file);
+			}
 		}
 		
 		if(boardService.insertBoard(bo, fileList)>0) {
