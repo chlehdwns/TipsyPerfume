@@ -103,6 +103,10 @@ public class ProductDao {
 	public int selectPayNo(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("productMapper.selectPayNo");
 	}
+
+	public int decreaseStock(SqlSessionTemplate sqlSession, ProductVO p) {
+		return sqlSession.update("productMapper.decreaseStock",p);
+	}
 	
 
 }

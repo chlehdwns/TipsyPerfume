@@ -158,6 +158,7 @@ public class ProductServiceImpl implements ProductService {
 			od.setOrderNo(orderNo);
 			od.setPayNo(payNo);
 			int result3 = productDao.confirmFundingDrinkOD(sqlSession,od);
+			int result4 = productDao.decreaseStock(sqlSession,p);
 			if(result1*result*result2*result3 != 0) {
 				return 1;
 			}

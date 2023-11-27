@@ -484,6 +484,16 @@ VALUES(
 				#{payNo}
 			)
 	</insert>
+	<update id="decreaseStock" parameterType="product">
+		UPDATE
+			TB_PRODUCT
+		SET
+			PDT_STOCK = PDT_STOCK-#{orderQuantity}
+		WHERE
+			PDT_NO = #{pdtNo}
+		
+		
+	</update>
 		
 	
 
