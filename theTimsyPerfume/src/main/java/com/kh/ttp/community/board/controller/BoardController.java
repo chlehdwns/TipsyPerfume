@@ -79,8 +79,6 @@ public class BoardController {
 		if(!uploadImg[0].getOriginalFilename().equals("")) {
 			for(int i=0;i<uploadImg.length;i++) {
 				BoardFileVO file = saveFile(uploadImg[i], i, session);
-				String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
-				bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
 				fileList.add(file);
 			}
 		}
