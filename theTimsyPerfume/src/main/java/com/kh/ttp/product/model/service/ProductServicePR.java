@@ -1,4 +1,4 @@
-package com.kh.ttp.product_mjy.model.service;
+package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
-public interface ProductService1 {
+public interface ProductServicePR {
 
 	/**
 	 * 전체상품 COUNT / 브랜드 주류 or 향수(판매중 상태Y)의 전체 개수 
@@ -68,9 +68,9 @@ public interface ProductService1 {
 	/**
 	 * 장바구니 전체 조회
 	 * @param userNo(유저번호PK)
-	 * @return : 장바구니 정보가 담긴 CartVO
+	 * @return : 장바구니 정보가 담긴 CartVO리터럴의 ArrayList
 	 */
-	CartVO cartMain(int userNo);
+	ArrayList<CartVO> cartMain(int userNo);
 	
 
 	

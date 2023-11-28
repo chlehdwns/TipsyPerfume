@@ -1,4 +1,4 @@
-package com.kh.ttp.product_mjy.controller;
+package com.kh.ttp.product.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
-import com.kh.ttp.product_mjy.model.service.ProductService1;
-import com.kh.ttp.user.model.vo.User;
+import com.kh.ttp.product.model.service.ProductServicePR;
 
 @Controller
-public class ProductController1 {
+public class ProductControllerPR {
 
 	@Autowired
-	private ProductService1 productService;
+	private ProductServicePR productService;
 	
 	
 	
@@ -34,13 +34,14 @@ public class ProductController1 {
 	 * 이 HashMap을 ModelAndView에 pMap이라는 키값으로 담는다
 	 */
 	@GetMapping("productMain.pr") // productMain.pr?pdtCteg=A
-	public ModelAndView productMainList(String pdtCteg, ModelAndView mv) {
+	public ModelAndView productMainList(@RequestParam(value="sort", defaultValue="New") String sort, String pdtCteg, ModelAndView mv) {
 		if("A".equals(pdtCteg) || "F".equals(pdtCteg)) {
 			int listCount = productService.selectProductCount(pdtCteg);
 			PageInfo pi = Pagination.getPageInfo(listCount, 1, 6, 10);
 			
 			mv.addObject("pMap", productService.productMainList(pdtCteg, pi))
 			  .addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
+			  .addObject("sort", sort)
 			  .setViewName("product/productMain");
 		} else {
 			mv.addObject("errorMsg", "상품 메인화면 이동 실패...")
@@ -100,14 +101,15 @@ public class ProductController1 {
 	
 	
 	@GetMapping("cartMain.ca")
-	public ModelAndView cartMain(ModelAndView mv, HttpSession session) {
-		if(null != session.getAttribute("loginUser")) {
-			mv.addObject(productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
-			  .setViewName("orderKinds/cartMain");
-		} else {
-			mv.addObject("errorMsg", "장바구니 조회 실패").setViewName("common/errorPage");
-		}
-		return mv;
+	public String cartMain(ModelAndView mv, HttpSession session) {
+//		if(null != session.getAttribute("loginUser")) {
+//			mv.addObject("cartList", productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
+//			  .setViewName("orderKinds/cartMain");
+//		} else {
+//			mv.addObject("errorMsg", "장바구니 조회 실패").setViewName("common/errorPage");
+//		}
+//		return mv;
+		return "orderKinds/cartMain";
 	}
 	
 	
