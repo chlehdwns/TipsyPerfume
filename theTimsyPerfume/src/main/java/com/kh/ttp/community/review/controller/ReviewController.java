@@ -52,8 +52,11 @@ public class ReviewController {
 	}
 	
 	@GetMapping("reviewWrite")
-	public ModelAndView reviewWriteForm(ModelAndView mv) {
+	public ModelAndView reviewWriteForm(ModelAndView mv,int pdtNo,String pdtName) {
+		mv.addObject("pdtNo",pdtNo);
+		mv.addObject("pdtName",pdtName);
 		mv.setViewName("community/reviewWrite");
+		
 		return mv;
 	}
 	@PostMapping("reviewWrite.do")

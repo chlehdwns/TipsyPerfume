@@ -95,6 +95,23 @@
 	.review > div{
 		border : 1px solid black;
 	}
+	  .review-link{
+        color: black;
+    }
+    .review-link:hover{
+        color: rgb(223, 190, 106);
+        text-decoration: none;
+    }
+    .review-title{
+    	text-align : center;
+    }
+    .finish{
+    	width : 400px;
+    	height : 30px;
+    	color : red;
+    	margin-left: 200px;
+    }
+    
 	
 	
 	
@@ -108,7 +125,7 @@
 		<div class="wrapper">
 			<div class="product-img">
 				<img alt="사진" src="${fundingDetailList.pdtFileUpload }">
-				<h6>review:0개            조회수:${fundingDetailList.pdtCount }</h6>
+				<h6>review:${listCount}개            조회수:${fundingDetailList.pdtCount }</h6>
 				<c:if test="${sessionScope.loginUser.memberType eq 'S'}">
 					<form method="post" action="updateForm.fd">
 						
@@ -151,7 +168,8 @@
 									</c:when>
 								
 								<c:otherwise>
-									<button type="button" disabled>마감</button>
+									<button type="button" disabled class="finish">마감</button><br>
+									
 								</c:otherwise>
 							</c:choose>
 					
@@ -161,6 +179,16 @@
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>
 				
+					<c:if test="${cutting eq false}">
+						<form action="reviewWrite">
+							<button type="submit" class="finish">리뷰쓰기</button>
+							<input type="hidden" name="pdtNo" value="${pno }">
+							<input type="hidden" name="pdtName" value="${fundingDetailList.pdtName }">
+						</form>
+					</c:if>
+				
+				
+				
 					
 					
 				
@@ -169,6 +197,7 @@
 			
 		</div>
 		<div id="review-info">
+			<h3 class="review-title">리뷰</h3>
 			<div id="pagingArea">
 				<ul class="pagination">
 					<c:choose>
@@ -183,15 +212,15 @@
 			</div>
 			<c:forEach items="${reviewList }" var="reviewList">
 				<div class="review">
-					
-					<div id="review-img">
-						<img src="${reviewList.thumbnail }" alt="리뷰사진"/>
-					</div>
-					<div id="review-content">
-						<h6>작성자 : ${reviewList.userNo }</h6>
-						<h6>별점 : ${reviewList.reviewScore }</h6>
-					</div>
-					
+					<a class="review-link" href="reviewViewer?reviewNo=${reviewList.reviewNo }">
+						<div id="review-img">
+							<img src="${reviewList.thumbnail }" alt="리뷰사진"/>
+						</div>
+						<div id="review-content">
+							<h6>작성자 : ${reviewList.userNo }</h6>
+							<h6>별점 : ${reviewList.reviewScore }</h6>
+						</div>
+					</a>
 				</div>
 			</c:forEach>
 			

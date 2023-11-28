@@ -148,6 +148,7 @@ public class ProductController {
 			model.addAttribute("pno",pdtNo);
 			model.addAttribute("reviewList",reviewList);
 			model.addAttribute("pi",pi);
+			model.addAttribute("listCount",listCount);
 			return "funding/newDrinkFundingDetail";
 		}else {
 				return "common/errorPage";
