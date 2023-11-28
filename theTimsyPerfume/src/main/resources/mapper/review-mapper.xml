@@ -18,21 +18,6 @@
 	<result column="PDT_PRICE" property="productPrice"/>
 </resultMap>
 
-<resultMap type="comment" id="commentResultSet">
-	<result column="COMMENT_NO" property="commentNo"/>
-	<result column="nickname" property="userNo"/>
-	<result column="BOARD_NO" property="boardNo"/>
-	<result column="REVIEW_NO" property="reviewNo"/>
-	<result column="COMMENT_CONTENT" property="commentContent"/>
-	<result column="COMMENT_CREATE_DATE" property="commentCreateDate"/>
-	<result column="COMMENT_MODIFY_DATE" property="commentModifyDate"/>
-	<result column="COMMENT_GROUP" property="commentGroup"/>
-	<result column="COMMENT_INDEX" property="commentIndex"/>
-	<result column="COMMENT_DEPTH" property="commentDepth"/>
-	<result column="COMMENT_STATE" property="commentState"/>
-	<result column="GROUP_COUNT" property="groupCount"/>
-</resultMap>
-
 <select id="countReviewList" resultType="_int">
 select
 	count(*)
