@@ -104,8 +104,12 @@
 				 JOIN TB_REVIEW USING(PDT_NO)
 				 <if test="sort eq 'BestSeller'">
 				 LEFT
+				 JOIN
+				 	  TB_ORDER_PRODUCT USING(PDT_NO)
+				 LEFT
                  JOIN
-                 	  TB_ORDER_DETAIL USING(PDT_NO)
+                 
+                 	  TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
                  LEFT
                  JOIN
                  	  TB_PAY USING(PAY_NO)

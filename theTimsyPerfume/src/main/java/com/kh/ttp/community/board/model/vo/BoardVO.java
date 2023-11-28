@@ -17,4 +17,6 @@ public class BoardVO {
 	private String boardCount;
 	
 	private String commentCount;
+	private String likeCount;
+	private String dislikeCount;
 }
