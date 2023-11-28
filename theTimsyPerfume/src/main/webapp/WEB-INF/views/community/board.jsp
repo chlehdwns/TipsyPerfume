@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-    #notice-wrap{
+    #board-wrap{
         width: 900px;
         margin: 0 auto;
         overflow: hidden;
@@ -42,22 +42,12 @@
         background-color: rgb(240, 240, 240);
     }
 
-    .board-no{
-        width: 15%;
-    }
-    .board-title{
-        width: 40%;
-        text-align: left;
-    }
-    .board-writer{
-        width: 18%;
-    }
-    .board-date{
-        width: 15%;
-    }
-    .board-count{
-        width: 12%;
-    }
+    .board-no{width: 12%;}
+    .board-title{width: 35%;text-align: left;}
+    .board-writer{width: 15%;}
+    .board-date{width: 15%;}
+    .board-count{ width: 12%;}
+    .like-count{width: 11%;}
     .comment-count{
     	font-size: 15px;
     	color: rgb(223, 190, 106);
@@ -106,6 +96,7 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
+                <th>좋아요</th>
                 <th>조회수</th>
             </tr>
         </thead>
@@ -121,6 +112,7 @@
                 <td class="board-title">${board.boardTitle }<c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if> <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
+                <td class="like-count">${board.likeCount }</td>
                 <td class="board-count">${board.boardCount }</td>
             </tr>
         </c:forEach>

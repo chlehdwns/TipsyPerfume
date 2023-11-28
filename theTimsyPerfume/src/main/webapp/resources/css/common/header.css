@@ -2,6 +2,7 @@
 
 
 header{
+	width: 100%;
 	background-image: linear-gradient(to bottom, rgb(223, 190, 106), rgb(244,235, 211));
 }
 header div {

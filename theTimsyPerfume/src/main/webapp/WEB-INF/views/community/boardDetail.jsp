@@ -236,8 +236,9 @@
             <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
             <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
             <td>작성일 <span class="top-text">${board.boardCreateDate }</span><c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if></td>
-            <td>조회수 <span class="top-text">${board.boardCount }</span></td>
-            <td>추천수 <span id="title-like" class="top-text">51</span></td>
+            <td><i class="fa fa-eye" style="font-size:20px"></i> <span class="top-text">${board.boardCount }</span></td>
+            <td><i class='fa fa-thumbs-o-up' style='font-size:18px'></i> <span id="title-like" class="top-text">0</span></td>
+            <td><i class='fa fa-thumbs-o-down' style='font-size:18px; transform: scaleX(-1);'></i> <span id="title-dislike" class="top-text">0</span></td>
         </tr>
     </table>
     <div class="board-content-wrap">
@@ -405,6 +406,7 @@ ${board.boardContent }
     		success:(result)=>{
     			$("#title-like").text(result.likeCount);
     			$("#like-count").text(result.likeCount);
+    			$("#title-dislike").text(result.dislikeCount);
     			$("#dislike-count").text(result.dislikeCount);
     		},
     		error:()=>{
@@ -490,6 +492,7 @@ ${board.boardContent }
             success:(result)=>{
                 console.log(result);
                 const $commentWrap = $(".comment-no[value="+commentGroup+"]").parent().next(".re-comment-wrap");
+                const $commentOpenBtn = $(".comment-no[value="+commentGroup+"]").parent().parent().prev(".re-comment-open");
                 let value="";
                 for(let i in result){
                     console.log("dd");
@@ -504,6 +507,7 @@ ${board.boardContent }
                             +"<div>"+result[i].commentCreateDate+"</div>"
                             +"</div>";
                 }
+                $commentOpenBtn.text("답글 "+result.length);
                 $commentWrap.html(value);
             },
             error:()=>{
