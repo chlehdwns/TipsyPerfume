@@ -1,4 +1,4 @@
-package com.kh.ttp.product_mjy.model.service;
+package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,16 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
-import com.kh.ttp.product_mjy.model.dao.ProductDao1;
 
 @Service
-public class ProductServiceImpl1 implements ProductService1 {
+public class ProductServicePRImpl implements ProductServicePR {
 
 	@Autowired
-	private ProductDao1 productDao;
+	private ProductDaoPR productDao;
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -116,7 +116,7 @@ public class ProductServiceImpl1 implements ProductService1 {
 
 
 	@Override
-	public CartVO cartMain(int userNo) {
+	public ArrayList<CartVO> cartMain(int userNo) {
 		return productDao.cartMain(sqlSession, userNo);
 	}
 
@@ -146,7 +146,8 @@ public class ProductServiceImpl1 implements ProductService1 {
 		}
 		return isFilledHeart;
 	}
-
+	// @@@ 여기서 장바구니에 SELECT할 때 현재 실 재고 개수가 DB에 즉각 반영되어야할 필요는 없음
+	// => But 결제 시 현재 재고가 있는지 파악 + 재고 마이너스 + 돈을 빼고 넣는 작업은 => ACID보장되어야 
 
 	// stock있을 경우1 select해서1이면 => update
 	// stock 있을 경우1 select해서 0이면 => insert

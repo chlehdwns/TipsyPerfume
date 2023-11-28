@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="productMapper1">
+<mapper namespace="productMapperPR">
 	
 	<resultMap id="productSelectResultSet" type="productSelect">
 		<result column="PDT_NO" property="pdtNo" />
@@ -146,7 +146,12 @@
 	</select>
 	
 
+	<!-- 장바구니 전체조회 -->
+	<!--
+	<select id="cartMain" parameterType="_int" resultMap="cart">
 	
+	</select>
+	-->
 	
 	<!-- 위시리스트 INSERT구문 -->
 	<insert id="insertWishOne" parameterType="wishlist">
