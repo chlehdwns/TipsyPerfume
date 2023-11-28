@@ -45,10 +45,6 @@
 			<td><input type="text" id="boardTitle" class="form-control" name="boardTitle" required></td>
 		</tr>
 		<tr>
-        	<th><label for="upfile">첨부파일</label></th>
-        	<td><input multiple="multiple" type="file" class="uploadImg" class="form-control-file border" name="uploadImg" accept="image/gif, image/jpeg, image/png" onchange="loadImg(this);"></td>
-        </tr>
-		<tr>
 			<th><label for="boardContent">내용</label></th>
 			<td><textarea  id="boardContent" class="form-control" name="boardContent" required></textarea></td>
 		</tr>
