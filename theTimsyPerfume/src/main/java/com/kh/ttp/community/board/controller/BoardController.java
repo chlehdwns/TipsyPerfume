@@ -69,10 +69,9 @@ public class BoardController {
 	}
 	@PostMapping("boardWrite.do")
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
-		System.out.println(bo.getBoardContent());
-		/*bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
+		/*bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));*/
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
@@ -101,9 +100,9 @@ public class BoardController {
 	}
 	@PostMapping("boardUpdate.do")
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
-		/*bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
+		/*bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
 		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
 		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라*/
 		if(boardService.updateBoard(bo)>0) {
