@@ -90,8 +90,10 @@
 	<table class="table">
 		<tr>
 			<th><label>제품</label></th>
-			<td></td>
-			<td><input type="hidden" id="pdtNo" name="pdtNo" value="1"></td>
+			<td>${pdtName }</td>
+			<td>
+				<input type="hidden" id="pdtNo" name="pdtNo" value="${pdtNo }">
+			</td>
 		</tr>
         <tr>
 			<th><label>별점</label></th>

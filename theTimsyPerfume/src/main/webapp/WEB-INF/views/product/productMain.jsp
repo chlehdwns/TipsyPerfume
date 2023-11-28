@@ -70,10 +70,10 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 		               	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="adultValidation('New');" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 		               	<c:if test="${pdtCteg eq 'F' }">
-		               		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+		               		<button type="button" onclick="location.href='selectPerfumePdtList.pr?sort=New'" class="btn btn-outline-info">더보기 &gt;</button>
 		               	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -113,10 +113,10 @@
 				    </div>
 				    <div div class="pdt-list-btn">
 				    	<c:if test="${pdtCteg eq 'A'}">
-				         <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+				         <button type="button" onclick="adultValidation('BestSeller');" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    	<c:if test="${pdtCteg eq 'F' }">
-				    		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+				    		<button type="button" onclick="location.href='selectPerfumePdtList.pr?sort=BestSeller'" class="btn btn-outline-info">더보기 &gt;</button>
 				    	</c:if>
 				    </div>
 				    <!-- Slider main container -->
@@ -156,10 +156,10 @@
 	                </div>
 	                <div div class="pdt-list-btn">
 	                	<c:if test="${pdtCteg eq 'A'}">
-		                    <button type="button" onclick="adultValidation();" class="btn btn-outline-info">더보기 &gt;</button>
+		                    <button type="button" onclick="adultValidation('Popular');" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                	<c:if test="${pdtCteg eq 'F' }">
-	                		<button type="button" onclick="location.href='selectPerfumePdtList.pr'" class="btn btn-outline-info">더보기 &gt;</button>
+	                		<button type="button" onclick="location.href='selectPerfumePdtList.pr?sort=Popular'" class="btn btn-outline-info">더보기 &gt;</button>
 	                	</c:if>
 	                </div>
 	                <!-- Slider main container -->
@@ -354,12 +354,12 @@
 		// 로그인O 성인인증X => 성인인증 해야함
 		// 로그인X 성인인증X => 로그인 원함
 		// 로그인X 성인인증X => 회원가입 원함
-		function adultValidation(pdtNo) {
+		function adultValidation(param) {
 			var loginUserStatus = '${loginUser.status}';
 			if(loginUserStatus == 'Y') { // 로그인O
 				if(loginUserStatus == 'Y') { // 로그인O 성인인증O
-					location.href = !(isNaN(pdtNo)) ? "alcoholPdtDetail.pr?pdtNo=" + pdtNo
-												    : "selectAlcoholPdtList.pr?currentPage="; //@@@@@@화면만들고 
+					location.href = !(isNaN(param)) ? "alcoholPdtDetail.pr?pdtNo=" + param;
+												    : "selectAlcoholPdtList.pr?sort=" + param;
 				}
 				else { // 로그인O 성인인증X
 					// @@@@@@@@성인인증 기능 아직 없음(지민님/1124다시 더블체크하기)
