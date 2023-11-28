@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.dao.FundingDao;
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.orderKinds.model.dao.ReceiverDao;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.dao.ProductDao;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
@@ -40,22 +42,24 @@ public class ProductServiceImpl implements ProductService {
 	private ProductOptionDao productOptionDao;
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+	@Autowired
+	private ReceiverDao receiverDao;
 	@Override
-	public int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
-		    if(productCategoryDao.drinkFundingInsert(sqlSession,pc)>0) {
+	public int drinkFundingInsert(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding,
+			ProductCategory productCategory) {
+		    if(productCategoryDao.drinkFundingInsert(sqlSession,productCategory)>0) {
 				int result=productCategoryDao.drinkFundingSelect(sqlSession);
-				p.setPdtCategNo(result);
+				product.setPdtCategNo(result);
 				//System.out.println(p);
-				if(productDao.drinkFundingInsert(sqlSession,p)>0) {
+				if(productDao.drinkFundingInsert(sqlSession,product)>0) {
 					int pdtNo = productDao.drinkFundingSelect(sqlSession);
-					pf.setPdtNo(pdtNo);
-					po.setPdtNo(pdtNo);
-					f.setPdtNo(pdtNo);
+					productFile.setPdtNo(pdtNo);
+					productOption.setPdtNo(pdtNo);
+					funding.setPdtNo(pdtNo);
 					
-					productOptionDao.drinkFundingInsert(sqlSession,po);
-					productFileDao.drinkFundingInsert(sqlSession,pf);
-					fundingDao.drinkFundingInsert(sqlSession,f);
+					productOptionDao.drinkFundingInsert(sqlSession,productOption);
+					productFileDao.drinkFundingInsert(sqlSession,productFile);
+					fundingDao.drinkFundingInsert(sqlSession,funding);
 					
 					
 					
@@ -70,15 +74,16 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 	@Override
-	public int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc) {
-		if(productDao.updateDrinkFunding(sqlSession,p)>0) {
-			int categNo = productDao.selectPdtNo(sqlSession,p);
+	public int updateDrinkFunding(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, 
+			ProductCategory productCategory) {
+		if(productDao.updateDrinkFunding(sqlSession,product)>0) {
+			int categNo = productDao.selectPdtNo(sqlSession,product);
 			//System.out.println(categNo);
-			pc.setPdtCategNo(categNo);
-			productCategoryDao.updateDrinkFunding(sqlSession,pc);
-			productOptionDao.updateDrinkFundingPO(sqlSession,po);
-			fundingDao.updateDrinkFundingF(sqlSession,f);
-			productFileDao.updateDrinkFundingPF(sqlSession,pf);
+			productCategory.setPdtCategNo(categNo);
+			productCategoryDao.updateDrinkFunding(sqlSession,productCategory);
+			productOptionDao.updateDrinkFundingPO(sqlSession,productOption);
+			fundingDao.updateDrinkFundingF(sqlSession,funding);
+			productFileDao.updateDrinkFundingPF(sqlSession,productFile);
 			
 		}else {
 			
@@ -144,10 +149,29 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
 	}
 	@Override
-	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f) {
-		if(fundingDao.confirmFundingDrink(sqlSession,f)>0) {
+	public int confirmFundingDrink(OrderDetailVO orderDetail, OrderVO order, User user, ProductVO product, PayVO pay,Funding funding,
+			Receiver receiver) {
+		if(fundingDao.confirmFundingDrink(sqlSession,funding)>0) {
+			int result1= productDao.confirmFundingDrinkPV(sqlSession,pay);
+			int result  = receiverDao.selectReceiverNo(sqlSession,receiver);
+			int payNo = productDao.selectPayNo(sqlSession);
+			order.setReceiverNo(result);
+			int result2=productDao.confirmFundingDrinkO(sqlSession,order);
+			int orderNo = productDao.selectOrderNo(sqlSession);
+			orderDetail.setOrderNo(orderNo);
+			orderDetail.setPayNo(payNo);
+			int result3 = productDao.confirmFundingDrinkOD(sqlSession,orderDetail);
+			int result4 = productDao.decreaseStock(sqlSession,product);
+			if(result1*result*result2*result3*result4 > 0) {
+				return 1;
+			}
 			
 		};
+		return 0;
+	}
+	@Override
+	public int insertReceiver(Receiver r) {
+		receiverDao.insertReceiver(sqlSession,r);
 		return 0;
 	}
 

@@ -22,9 +22,8 @@ public class OrderDetailVO {
 	*/
 	private int orderDetailNo;
 	
-	private PayVO pay;
-	private OrderVO order;
+	private int payNo;
+	private int orderNo;
 	
-	private ArrayList<ProductVO> product;
-	
+	private ArrayList<OrderProduct> orderProduct;
 }

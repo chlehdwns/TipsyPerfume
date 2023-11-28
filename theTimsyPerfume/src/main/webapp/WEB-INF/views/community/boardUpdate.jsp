@@ -24,6 +24,12 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
+
+<script src="resources/js/board/summernote-lite.js"></script>
+<script src="resources/js/board/lang/summernote-ko-KR.js"></script>
+
+<link rel="stylesheet" href="resources/css/board/summernote-lite.css">
+
 <section>
 <div id="writer-wrap">
 <div id="sub-title">
@@ -49,25 +55,66 @@
 </div>
 </section>
 <script>
-    $(()=>{
-        const $boardTitle = $("#boardTitle");
-        const $boardContent = $("#boardContent");
-        const $writeForm = $("#writeForm");
+$(()=>{
+    const $boardTitle = $("#boardTitle");
+    const $boardContent = $("#boardContent");
+    const $writeForm = $("#writeForm");
 
-        $("#submit-btn").click(()=>{
+    $("#submit-btn").click(()=>{
 
-            if($boardTitle.val().trim()==""){
-                $boardTitle.val("").focus();
-                alert("제목을 작성해 주세요!");
-            }
-            else if($boardContent.val().trim()==""){
-                $boardContent.val("").focus();
-                alert("내용을 작성해 주세요!");
-            } else{
-                $writeForm.submit();
-            }
-        })
+        if($boardTitle.val().trim()==""){
+            $boardTitle.val("").focus();
+            alert("제목을 작성해 주세요!");
+        }
+        else if($boardContent.val().trim()==""){
+            $boardContent.val("").focus();
+            alert("내용을 작성해 주세요!");
+        } else{
+            $writeForm.submit();
+        }
     })
+
+    $('#boardContent').summernote({
+	    height: 500,
+	    width: 800,
+	    minHeight: null,
+	    maxHeight: null,
+	    focus: true,
+	    lang: "ko-KR",
+	    placeholder: '내용을 작성해 주세요.',
+	    callbacks:{
+	    	onImageUpload:function(files){
+	    		uploadBoardImageFile(files[0]);
+	    	},
+	    	onPaste:function(e){
+	    		var clipboardData = e.originalEvent.clipboardData;
+	    		if(clipboardData && clipboardData.items && clipboardData.items.length){
+	    			var item = clipboardData.items[0];
+	    			if (item.kind == 'file' && item.type.indexOf('image/') != -1){
+	    				e.preventDefault();
+	    			}
+	    		}
+	    	}
+	    }
+    });
+});
+function uploadBoardImageFile(file){
+	data = new FormData();
+	data.append("file",file);
+	$.ajax({
+		data : data,
+		type : "POST",
+		url : "uploadBoardImageFile",
+		contentType : false,
+		processData : false,
+		success : (data)=>{
+			$('#boardContent').summernote('insertImage', data.url);
+		},
+		error:()=>{
+			console.log("통신실패");
+		}
+	});
+}
 </script>
 <jsp:include page="../common/footer.jsp"/>
 </body>

@@ -213,6 +213,11 @@
     	width: 300px;
     	margin: 0 auto;
     }
+    .modify-text{
+    	color: rgb(100, 100, 100);
+    	font-size: 10px;
+    	vertical-align: top;
+    }
 </style>
 <section>
 <input id="board-no" type="hidden" value="${board.boardNo}">
@@ -230,15 +235,15 @@
         <tr class="title-head">
             <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
             <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
-            <td>작성일 <span class="top-text">${board.boardCreateDate }</span></td>
+            <td>작성일 <span class="top-text">${board.boardCreateDate }</span><c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if></td>
             <td>조회수 <span class="top-text">${board.boardCount }</span></td>
             <td>추천수 <span id="title-like" class="top-text">51</span></td>
         </tr>
     </table>
     <div class="board-content-wrap">
-        <pre class="board-content">
+        <p class="board-content">
 ${board.boardContent }
-        </pre>
+        </p>
         <div class="like-wrap">
                     <c:choose>
                     <c:when test="${empty loginUser }">
