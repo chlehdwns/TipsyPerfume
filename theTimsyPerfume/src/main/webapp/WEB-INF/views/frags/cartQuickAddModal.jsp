@@ -20,13 +20,6 @@
 </head>
 <body>
 
-
-	<!-- 모달trigger
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cartQuickAddModal">
-	  Launch demo modal
-	</button>
-	-->
-
 	<!-- 장바구니 수량선택 모달 -->
 	<div class="modal fade" id="cartQuickAddModal" tabindex="-1"
 		aria-labelledby="cartQuickAddModalLabel" aria-hidden="true">
@@ -52,48 +45,8 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		// 호출 시
-		
-		var $cartModalSelectInput = $('#cartQuickAddSelect');
-		
-		function showCartQuickAddModal(pdtNo) {
-			$.ajax({
-				url : 'ajaxShowCartQuickAddModal.pa',
-				data : { pdtNo : pdtNo },
-				success : result => {
-					$cartModalSelectInput.before('<div>${pdtName}<div>');
-					var valueStr = '';
- 					for(let i in result) {
-						valueStr += '<option value="' + result[i].pdtOptionNo + '">' + result[i].pdtOptionFirst + '</option>';
-					}
- 					$cartModalSelectInput.html(valueStr);
-					$('#cartQuickAddModal').modal("show");
-				},
-				error : () => {
-					hideCartQuickAddModal();
-					alert('에러발생! 잠시 후 다시 시도해주세요!');
-				}
-			})
-		};
-		
-		function hideCartQuickAddModal() {
-			$('#cartQuickAddModal').modal("hide");
-		}
-
-	</script>
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<script src="resources/js/frags/cartQuickAddModal.js"></script>
 	
 </body>
 </html>

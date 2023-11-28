@@ -58,7 +58,7 @@
 							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart" onclick="ajaxAddCartOne(this);"></div>
 							<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
 			                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
-			                <div class="row pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
+			                <div class="row pdt-name pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
 			                <div class="row pdt-list-reviewAvg pdtDetail">
 			                	<c:if test="${not empty pdtList[(pdt - 1)]}">★ ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
 			                </div>
@@ -111,7 +111,7 @@
         </div>
     </div>
     
-    <!-- 로그인 회원가입 모달 -->
+	    <!-- 로그인 회원가입 모달 -->
     <jsp:include page="../frags/loginJoinModal.jsp" />
     <jsp:include page="../frags/cartQuickAddModal.jsp" />
 
@@ -163,9 +163,10 @@
 		function ajaxAddCartOne(e) {
   			if('${loginUser}' == '') {
   				var $pdtNo = $(e).siblings('input[type=hidden]').val();
+  				var $pdtName = $(e).siblings('.pdt-name').text();
 				var $pdtOptionNo = $('#cartQuickAddSelect').attr('option', 'selected').val();
-  				
-				showCartQuickAddModal($pdtNo);
+				
+				showCartQuickAddModal($pdtNo, $pdtName);
 				
 				$('#cartQuickAddBtn').click(() => {
 					$.ajax({
