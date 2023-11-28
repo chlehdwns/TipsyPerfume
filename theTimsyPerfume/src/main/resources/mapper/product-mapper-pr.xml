@@ -21,6 +21,13 @@
 		<result column="CART_QUANTITY" property="cartQuantity" />
 	</resultMap>
 	
+	<resultMap id="productOptionResultSet" type="productOption">
+		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
+		<result column="PDT_NO" property="pdtNo" />
+		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst" />
+		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond" />
+	</resultMap>
+	
 	
 	<!-- SELECT -->
 	<!-- 전체상품 COUNT / 브랜드 주류 or 향수(판매중 상태Y)의 전체 개수 -->
@@ -149,7 +156,21 @@
 			   PDT_NO DESC
 	</select>
 	
-
+	
+	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	
+	<select id="selectPdtOptionOne" parameterType="_int" resultMap="productOptionResultSet">
+		SELECT
+			   PDT_OPTION_NO,
+			   PDT_NO,
+			   PDT_OPTION_FIRST,
+			   PDT_OPTION_SECOND
+		  FROM
+		  	   TB_PRODUCT_OPTION
+		 WHERE
+		 	   PDT_NO = #{pdtNo}
+	</select>
+	
+	
 	<!-- 장바구니 전체조회 -->
 	<!--
 	<select id="cartMain" parameterType="_int" resultMap="cart">
@@ -205,8 +226,7 @@
 	</update>
 	
 	
-	
-	
+
 	
 	
 	

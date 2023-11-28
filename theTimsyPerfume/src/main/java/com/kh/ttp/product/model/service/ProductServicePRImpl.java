@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
+import org.json.simple.JSONArray;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
@@ -176,6 +178,12 @@ public class ProductServicePRImpl implements ProductServicePR {
 	@Override
 	public int updateCartOneQuantity(CartVO cart) {
 		return productDao.updateCartOneQuantity(sqlSession, cart);
+	}
+
+
+	@Override
+	public ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo) {
+		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
 	}
 
 

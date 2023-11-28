@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
@@ -133,6 +134,10 @@ public class ProductDaoPR {
 	 */
 	public int updateCartOneQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
 		return sqlSession.update("productMapperPR.updateCartOneQuantity", cart);
+	}
+
+	public ArrayList<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {
+		return (ArrayList)sqlSession.selectList("productMapperPR.selectPdtOptionOne", pdtNo);
 	}
 
 

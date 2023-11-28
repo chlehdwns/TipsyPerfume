@@ -52,19 +52,6 @@ function adultValidation(pdtNo) {
 	else { // 로그인X
 	// 로그인 실패 시 여기로 돌아오도록!(@@@서버단에서 getHeader(Referer하기))
 	// @@@중복부분은 모듈 export라는거 찾아보기
-	
-		$('#pdtMainFirstModal').modal("show");
-		
-		$('#pdtFirstModalLoginBtn').click(() => {
-			$('#pdtMainFirstModal').modal("hide");
-			$('#pdtLoginModal').modal("show");
-			console.log('로그인요청');
-		});
-		
-		$('#pdtFirstModalEnrollBtn').click(() => {
-			$('#pdtMainFirstModal').modal("hide");
-			$('#pdtMainEnrollFormModal').modal("show");
-			console.log('회원가입요청');
-		});
+		openloginJoinModal();
 	}
 };

@@ -1,15 +1,20 @@
 package com.kh.ttp.product.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.kh.ttp.product.model.service.ProductServicePR;
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.user.model.vo.User;
 
@@ -62,8 +67,16 @@ public class AjaxProductControllerPR {
 		}
 	}
 	
-	
-	
+	/**
+	 * 상품 번호로 상품이 가진 옵션을 조회하는 메소드
+	 * @param pdtNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping(value="ajaxShowCartQuickAddModal.pa", produces="application/json; charset=UTF-8")
+	public String ajaxShowCartQuickAddModal(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
+		return new Gson().toJson(productService.ajaxShowCartQuickAddModal(pdtNo));
+	}
 	
 	
 	

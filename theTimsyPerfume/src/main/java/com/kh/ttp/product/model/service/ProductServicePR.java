@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
@@ -122,7 +123,13 @@ public interface ProductServicePR {
 	int updateCartOneQuantity(CartVO cart);
 
 
-
+	/**
+	 * 특정 상품의 옵션들을 선택해서 ArrayList로 반환
+	 * @param pdtNo
+	 * @return
+	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
+	 */
+	ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo);
 	
 	
 	
