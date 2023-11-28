@@ -170,7 +170,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	public String saveFile(MultipartFile upfile, HttpSession session) {
+	private String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
 		
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
