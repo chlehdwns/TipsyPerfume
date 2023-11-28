@@ -41,6 +41,14 @@ from
 where
 	review_state = 'Y'
 </select>
+<select id="countFundingReview" resultType="_int">
+	SELECT
+		COUNT(*)
+	FROM
+		TB_REVIEW
+	WHERE
+		REVIEW_STATE = 'Y' AND PDT_NO=#{pdtNo}
+</select>
 <select id="seletcReviewList" parameterType="review" resultMap="reviewResultSet">
 SELECT
     REVIEW_NO,
@@ -64,6 +72,24 @@ WHERE
 AND
 	PDT_FILE_INDEX = 0
 ORDER BY REVIEW_CREATE_DATE DESC
+</select>
+<select id="selectReviewFunding" parameterType="_int" resultMap="reviewResultSet">
+	SELECT
+		REVIEW_NO,
+		REVIEW_SCORE,
+		REVIEW_CONTENT,
+		NICKNAME,
+		REVIEW_FILE_PATH||'/'||REVIEW_FILE_UPLOAD "thumbnail_path"
+	FROM
+	 	TB_REVIEW
+	 	JOIN TB_REVIEW_FILE USING(REVIEW_NO)
+	 	JOIN TB_USER USING(USER_NO)
+	 WHERE
+	 	PDT_NO = #{pdtNo}
+	 AND
+	 	REVIEW_FILE_INDEX=0
+	 ORDER BY REVIEW_CREATE_DATE DESC
+	
 </select>
 <select id="selectReviewDetail" parameterType="_int" resultMap="reviewResultSet">
 SELECT

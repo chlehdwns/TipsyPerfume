@@ -3905,6 +3905,78 @@ INSERT
         '10.jpg'
         
     );
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        5,
+        '엄청 맛있고 좋아용',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        4,
+        '배송이 너무 늦었어요ㅜㅜㅜㅡㅜ',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        5,
+        '배송이 너무 늦었어요ㅜㅜㅜㅡㅜ',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        11
+    );
+    INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        12
+    );
+    INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        13
+    );
 
 
 

@@ -21,7 +21,7 @@
 	}
 	.wrapper{
 		width : 1200px;
-		height : 1000px;
+		height : 800px;
 		margin-left : 350px;
 	}
 	.wrapper>div{
@@ -62,6 +62,44 @@
 		list-style: none;
 		text-decoration: none;
 	}
+	#review-info{
+		width : 1200px;
+		height : 300px;
+		margin-left : 350px;
+		margin-bottom : 100px;
+		
+	}
+	#review-info>div{
+		height : 100%;
+		float: left;
+	}
+	.review{
+		width:18%;
+		margin-left : 20px;
+		margin-right : 20px;
+	}
+	.review>div{
+		width:100%;
+		
+	}
+	#review-img{
+		height : 70%;
+	}
+	#review-content{
+		height : 30%;
+	}
+	#review-img img{
+		width : 100%;
+		height : 100%;
+	}
+	.review > div{
+		border : 1px solid black;
+	}
+	
+	
+	
+	
+	#pagingArea {width:fit-content; margin:auto;}
 </style>
 </head>
 <body>
@@ -128,6 +166,47 @@
 				
 			</div>
 			
+			
+		</div>
+		<div id="review-info">
+			<div id="pagingArea">
+				<ul class="pagination">
+					<c:choose>
+	                	<c:when test="${pi.currentPage eq 1 }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item"><a class="page-link" href="detail.fList">&lt;</a></li>
+	                    </c:otherwise>
+                    </c:choose>
+                  </ul>
+			</div>
+			<c:forEach items="${reviewList }" var="reviewList">
+				<div class="review">
+					
+					<div id="review-img">
+						<img src="${reviewList.thumbnail }" alt="리뷰사진"/>
+					</div>
+					<div id="review-content">
+						<h6>작성자 : ${reviewList.userNo }</h6>
+						<h6>별점 : ${reviewList.reviewScore }</h6>
+					</div>
+					
+				</div>
+			</c:forEach>
+			
+			<div id="pagingArea">
+				<ul class="pagination">
+					<c:choose>
+	                	<c:when test="${pi.currentPage eq 1 }">
+	                    	<li class="page-item disabled"><a class="page-link" href="#">&gt;</a></li>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<li class="page-item"><a class="page-link" href="detail.fList">&gt;</a></li>
+	                    </c:otherwise>
+                    </c:choose>
+                  </ul>
+			</div>
 			
 		</div>
 	<jsp:include page="../common/footer.jsp"/>

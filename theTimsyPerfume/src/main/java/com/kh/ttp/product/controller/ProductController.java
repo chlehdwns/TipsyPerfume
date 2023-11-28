@@ -2,7 +2,6 @@ package com.kh.ttp.product.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -11,13 +10,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
+import com.kh.ttp.community.review.model.service.ReviewService;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.service.ProductService;
@@ -36,6 +36,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ReviewService reviewService;
 	
 	
 	
@@ -134,6 +136,9 @@ public class ProductController {
 		
 		if(productService.increaseCount(pdtNo) > 0) {
 			FundingSelectVO ps= productService.newDrinkFundingDetail(pdtNo);
+			int listCount = reviewService.countFundingReview(pdtNo);
+			PageInfo pi = Pagination.getPageInfo(listCount, 1, 4, 5);
+			ArrayList<ReviewVO> reviewList = reviewService.selectReviewFunding(pi,pdtNo);
 			java.util.Date d = ps.getCuttingDate();
 			//System.out.println("date : "+d);
 			//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
@@ -141,6 +146,8 @@ public class ProductController {
 			model.addAttribute("cutting",(d.compareTo(new java.util.Date())>=0));
 			model.addAttribute("fundingDetailList", ps);
 			model.addAttribute("pno",pdtNo);
+			model.addAttribute("reviewList",reviewList);
+			model.addAttribute("pi",pi);
 			return "funding/newDrinkFundingDetail";
 		}else {
 				return "common/errorPage";

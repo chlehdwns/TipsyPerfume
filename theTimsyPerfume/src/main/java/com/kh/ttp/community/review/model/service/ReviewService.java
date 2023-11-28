@@ -19,4 +19,6 @@ public interface ReviewService {
 	public int reviewRecommend(RecommendVO rc);
 	public RecommendVO countRecommend(int contentNo);
 	public int insertReview(ReviewVO re, ArrayList<ReviewFileVO> fileList);
+	public int countFundingReview(int pdtNo);
+	public ArrayList<ReviewVO> selectReviewFunding(PageInfo pi,int pdtNo);
 }

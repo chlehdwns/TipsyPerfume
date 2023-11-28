@@ -71,4 +71,15 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return result1 * result2;
 	}
+	
+	@Override
+	public int countFundingReview(int pdtNo) {
+		return reviewDao.countFundingReview(sqlSession,pdtNo);
+	}
+	@Override
+	public ArrayList<ReviewVO> selectReviewFunding(PageInfo pi,int pdtNo) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return reviewDao.selectReviewFunding(sqlSession,rowBounds,pdtNo);
+	}
 }
