@@ -22,9 +22,9 @@ public interface ProductService {
 	// 프로젝트 메인 조회 메소드(SELECT)
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
 
-	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	int drinkFundingInsert(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, ProductCategory productCategory);
 	
-	int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	int updateDrinkFunding(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, ProductCategory productCategory);
 
 	public ArrayList<FundingSelectVO> selectNewFundingList();
 

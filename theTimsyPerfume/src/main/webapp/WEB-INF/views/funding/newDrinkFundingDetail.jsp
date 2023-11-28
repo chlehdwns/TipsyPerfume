@@ -93,7 +93,7 @@
 				용량 : ${fundingDetailList.pdtOptionFirst }ml
 				도수 : ${fundingDetailList.pdtOptionSecond }도" ></textarea>
 				<h5 class="product-dinfo">배송비 및 배송방법 : ${fundingDetailList.pdtShipping }</h5>
-				<h5 class="product-dinfo">0/${fundingDetailList.cuttingPrice }</h5>
+				<h5 class="product-dinfo">${fundingDetailList.fundingFee}/${fundingDetailList.cuttingPrice }</h5>
 				<h6 class="product-dinfo">마감 날짜 : ${fundingDetailList.cuttingDate }</h6>
 				<form id="fundingForm" method="post" action="purchase.fd">
 					<input type="hidden" name="pno" value="${pno }">

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,49 +44,16 @@ public class ProductController {
 	
 	
 	@RequestMapping("insertDrink.fun")
-	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,
-			String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,
-			String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond) {
-		//System.out.println(upfile);
-		//System.out.println(pdtName);
-		//System.out.println(pdtIntro);
-		//System.out.println(pdtDescription);
-		//System.out.println(pdtShipping);
-		//System.out.println(cuttingPrice);
-		//System.out.println(pdtPrice);
-		//System.out.println(cuttingDate);
-		//System.out.println(pdtManufac);
-		//System.out.println(pdtGroup);
-		//System.out.println(pdtIngredient);
-		ProductVO p = new ProductVO();
-		p.setPdtName(pdtName);
-		p.setPdtIntro(pdtIntro);
-		p.setPdtDescription(pdtDescription);
-		p.setPdtShipping(pdtShipping);
-		p.setPdtPrice(pdtPrice);
-		p.setPdtIngredient(pdtIngredient);
-		p.setPdtStock(pdtStock);
-		ProductCategory pc = new ProductCategory();
-		pc.setPdtManufac(pdtManufac);
-		pc.setPdtGroup(pdtGroup);
+	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,ProductVO product,ProductCategory productCategory
+			,ProductFile productFile, ProductOption productOption,Funding funding			) {
 		
 		
-		ProductFile pf = new ProductFile();
-		
-		
-		ProductOption po = new ProductOption();
-		po.setPdtOptionFirst(pdtOptionFirst);
-		po.setPdtOptionSecond(pdtOptionSecond);
-		
-		Funding f = new Funding();
-		f.setCuttingDate(cuttingDate);
-		f.setCuttingPrice(cuttingPrice);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
-			pf.setPdtFileOrigin(upfile.getOriginalFilename());
-			pf.setPdtFileUpload(saveFile(upfile,session));
+			productFile.setPdtFileOrigin(upfile.getOriginalFilename());
+			productFile.setPdtFileUpload(saveFile(upfile,session));
 		}
-		if(productService.drinkFundingInsert(p,pf,po,f,pc)>0) {
+		if(productService.drinkFundingInsert(product,productFile,productOption,funding,productCategory)>0) {
 			session.setAttribute("alertMsg", "펀딩 상품 등록 완료.");
 			return "redirect:funding.list";
 		} else {
@@ -99,54 +67,17 @@ public class ProductController {
 		
 	}
 	@RequestMapping("updateDrink.fun")
-	public String updateDrinkFunding(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond,int pdtNo) {
-		//System.out.println(pdtNo);
-		//System.out.println(upfile);
-		//System.out.println(pdtName);
-		//System.out.println(pdtIntro);
-		//System.out.println(pdtDescription);
-		//System.out.println(pdtShipping);
-		//System.out.println(cuttingPrice);
-		//System.out.println(pdtPrice);
-		//System.out.println(cuttingDate);
-		//System.out.println(pdtManufac);
-		//System.out.println(pdtGroup);
-		//System.out.println(pdtIngredient);
-		ProductVO p = new ProductVO();
-		p.setPdtNo(pdtNo);
-		p.setPdtName(pdtName);
-		p.setPdtIntro(pdtIntro);
-		p.setPdtDescription(pdtDescription);
-		p.setPdtShipping(pdtShipping);
-		p.setPdtPrice(pdtPrice);
-		p.setPdtIngredient(pdtIngredient);
-		p.setPdtStock(pdtStock);
-		ProductCategory pc = new ProductCategory();
-		
-		pc.setPdtManufac(pdtManufac);
-		pc.setPdtGroup(pdtGroup);
+	public String updateDrinkFunding(MultipartFile upfile,HttpSession session,Model model,
+									ProductVO product,ProductCategory productCategory,ProductFile productFile,ProductOption productOption,
+									Funding funding) {
 		
 		
-		ProductFile pf = new ProductFile();
-		
-		
-		
-		ProductOption po = new ProductOption();
-		po.setPdtOptionFirst(pdtOptionFirst);
-		po.setPdtOptionSecond(pdtOptionSecond);
-		po.setPdtNo(pdtNo);
-		
-		Funding f = new Funding();
-		f.setCuttingDate(cuttingDate);
-		f.setCuttingPrice(cuttingPrice);
-		f.setPdtNo(pdtNo);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
-			pf.setPdtFileOrigin(upfile.getOriginalFilename());
-			pf.setPdtFileUpload(saveFile(upfile,session));
-			pf.setPdtNo(pdtNo);
+			productFile.setPdtFileOrigin(upfile.getOriginalFilename());
+			productFile.setPdtFileUpload(saveFile(upfile,session));
 		}
-		if(productService.updateDrinkFunding(p,pf,po,f,pc)>0) {
+		if(productService.updateDrinkFunding(product,productFile,productOption,funding,productCategory)>0) {
 			session.setAttribute("alertMsg", "펀딩 상품 업데이트 완료.");
 			return "redirect:funding.list";
 		} else {
@@ -243,41 +174,19 @@ public class ProductController {
 		
 	}
 	@RequestMapping("funding.fd")
-	public String confirmFundingDrink(HttpSession session,OrderDetailVO od,OrderVO o,User u,ProductVO p,PayVO pv,Funding f,Receiver r,int selectAddress) {
-		int orderPrice =  (p.getPdtPrice()*p.getOrderQuantity())+f.getFundingFee();
-		
-				//(pdtPrice*orderQuantiry)+fundingFee;
-		//System.out.println(pdtNo);
-		//System.out.println(userNo);
-		//System.out.println(orderQuantiry);
-		//System.out.println(fundingFee);
-		//System.out.println(pdtPrice);
-		//System.out.println(postalCode);
-		//System.out.println(orderPrice);
-		//System.out.println(address);
-		//System.out.println(addressDetail);
-		//System.out.println(receiverName);
-		//System.out.println(orderMessage);
-		//System.out.println(payMethod);
-		//System.out.println(payBank);
-		//System.out.println(payName);
+	public String confirmFundingDrink(HttpSession session,OrderDetailVO orderDetail,OrderVO order,User user,ProductVO product,PayVO pay,
+			Funding funding,Receiver receiver,int selectAddress) {
+		int orderPrice =  (product.getPdtPrice()*product.getOrderQuantity())+funding.getFundingFee();//(상품가격 *상품개수)+후원비
 		
 		
-		pv.setPayTotal(orderPrice);
-		//System.out.println(od);
-		//System.out.println(o);
-		//System.out.println(u);
-		//System.out.println(p);
-		//System.out.println(pv);
-		//System.out.println(f);
-		//System.out.println(r);
-		//System.out.println(selectAddress);
-		//만약 selectAddress값의 value가 2이면 새로운 receiver 등록 아니면 select해서 receiver 번호 가져오기
+		
+		pay.setPayTotal(orderPrice);
+		
 		if(selectAddress==2) {
-			productService.insertReceiver(r);
+			productService.insertReceiver(receiver);
 		}
 		
-		if(productService.confirmFundingDrink(od,o,u,p,pv,f,r)>0) {
+		if(productService.confirmFundingDrink(orderDetail,order,user,product,pay,funding,receiver)>0) {
 			
 			return "common/buyConfirmPage";
 		}else {
