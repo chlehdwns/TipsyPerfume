@@ -490,6 +490,7 @@ ${board.boardContent }
             success:(result)=>{
                 console.log(result);
                 const $commentWrap = $(".comment-no[value="+commentGroup+"]").parent().next(".re-comment-wrap");
+                const $commentOpenBtn = $(".comment-no[value="+commentGroup+"]").parent().parent().prev(".re-comment-open");
                 let value="";
                 for(let i in result){
                     console.log("dd");
@@ -504,6 +505,7 @@ ${board.boardContent }
                             +"<div>"+result[i].commentCreateDate+"</div>"
                             +"</div>";
                 }
+                $commentOpenBtn.text("답글 "+result.length);
                 $commentWrap.html(value);
             },
             error:()=>{
