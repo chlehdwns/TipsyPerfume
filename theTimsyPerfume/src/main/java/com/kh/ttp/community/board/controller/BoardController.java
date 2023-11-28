@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +46,8 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardDetail")
-	public ModelAndView boardDetail(int boardNo, ModelAndView mv) {
-		if(boardService.increaseBoardCount(boardNo)>0) {
+	public ModelAndView boardDetail(int boardNo, HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+		if(boardCountUp(boardNo, request, response)) {
 			BoardVO board = boardService.selectBoard(boardNo);
 			mv.addObject("board",board).
 			setViewName("community/boardDetail");
@@ -53,6 +56,42 @@ public class BoardController {
 			mv.setViewName("common/errorPage");
 		}
 		return mv;
+	}
+	private boolean boardCountUp(int boardNo, HttpServletRequest request, HttpServletResponse response) {
+		boolean success = false;
+		Cookie oldCookie = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies!=null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("boardViews")) {
+					oldCookie = cookie;
+				}
+			}
+		}
+		if(oldCookie!=null) {
+			if(oldCookie.getValue().contains("["+boardNo+"]")) {
+				success = true;
+			} else {
+				if(boardService.increaseBoardCount(boardNo)>0) {
+					oldCookie.setValue(oldCookie.getValue()+"["+boardNo+"]");
+					oldCookie.setMaxAge(60*60*24);
+					response.addCookie(oldCookie);
+					success = true;
+				} else {
+					success = false;
+				}
+			}
+		} else {
+			if(boardService.increaseBoardCount(boardNo)>0) {
+				Cookie newCookie = new Cookie("boardViews", "["+boardNo+"]");
+				newCookie.setMaxAge(60*60*24);
+				response.addCookie(newCookie);
+				success = true;
+			} else {
+				success = false;
+			}
+		}
+		return success;
 	}
 	
 	@GetMapping("boardWrite")
@@ -125,7 +164,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	public BoardFileVO saveFile(MultipartFile upfile, int index, HttpSession session) {
+	private BoardFileVO saveFile(MultipartFile upfile, int index, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
 		
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
