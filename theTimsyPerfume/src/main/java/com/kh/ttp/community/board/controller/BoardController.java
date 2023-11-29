@@ -24,11 +24,13 @@ import com.kh.ttp.community.board.model.service.BoardService;
 import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class BoardController {
 	
-	@Autowired
-	BoardService boardService;
+	private final BoardService boardService;
 	
 	@GetMapping("board")
 	public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1")int page, String boardCtgy, ModelAndView mv) {
