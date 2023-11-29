@@ -12,7 +12,6 @@ import com.kh.ttp.community.pedia.model.vo.PediaVO;
 public class PediaDAO {
 
 	public ArrayList<PediaVO> selectPediaList(SqlSessionTemplate sqlSession, HashMap map) {
-		System.out.println((ArrayList)sqlSession.selectList("pediaMapper.selectPediaList", map) == null);
 		return (ArrayList)sqlSession.selectList("pediaMapper.selectPediaList", map);
 	}
 	
