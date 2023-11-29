@@ -41,12 +41,20 @@
 	</select>
 	
 	
-	<!-- 1개 상품의 재고 COUNT -->
-	<select id="countProductStock" parameterType="_int" resultType="_int">
-		SELECT PDT_STOCK
-		FROM TB_PRODUCT
-		WHERE PDT_NO = #{pdtNo}
-		AND PDT_STATUS = 'Y'
+	<!-- 1개 상품(특정 옵션)의 재고 개수 조회 -->
+	<select id="selectStockWithOption" parameterType="_int" resultType="_int">
+		SELECT
+			   PDT_STOCK
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+			   TB_PRODUCT_OPTION USING(PDT_NO)
+	 	 WHERE
+			   PDT_NO = #{pdtNo}
+		   AND
+		  	   PDT_OPTION_NO = #{pdtOptionNo}
+		   AND
+		  	   PDT_STATUS = 'Y'
 	</select>
 	
 	<!-- 위시리스트 COUNT / 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회 -->

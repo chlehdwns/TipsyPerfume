@@ -1,28 +1,25 @@
 package com.kh.ttp.product.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.kh.ttp.product.model.service.ProductServicePR;
 import com.kh.ttp.product.model.vo.CartVO;
-import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.user.model.vo.User;
 
-@Controller
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequiredArgsConstructor
 public class AjaxProductControllerPR {
 	
-	@Autowired
-	private ProductServicePR productService;
+	private final ProductServicePR productService;
 	
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
@@ -34,10 +31,10 @@ public class AjaxProductControllerPR {
 	 * 비워진 상태로 표시해야할 때 문자열 "false" 반환<br>
 	 * (가독성을 위해 "true", "false"반환)
 	 */
-	@ResponseBody // @@@Ajax는 만약 LoginInterceptor가 필요하면 따로 만들어야..!
+	// @@@Ajax는 만약 LoginInterceptor가 필요하면 따로 만들어야..!
 	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
 	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
-		if(pdtNo > 0) {
+		if((session.getAttribute("loginUser") != null) && pdtNo > 0) {
 			WishlistVO wishlist = new WishlistVO();
 			wishlist.setPdtNo(pdtNo);
 			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
@@ -54,13 +51,18 @@ public class AjaxProductControllerPR {
 	 * @param session
 	 * @return : 추가 성공 시 "1"문자열, 실패 시 "0"문자열 반환
 	 */
-	@ResponseBody
 	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8")
-	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
-		if(pdtNo > 0) {
+	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
+										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
+										HttpSession session) {
+		System.out.println(pdtNo + "옵션 : " + pdtOptionNo);
+		System.out.println("유저번호 : " + ((User)session.getAttribute("loginUser")).getUserNo());
+		if(pdtNo != 0) { // 옵션은 없을 수도 있음 / @@@서버단 유저 null체크 필요한가 ㄴ
 			CartVO cart = new CartVO();
 			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			cart.setPdtNo(pdtNo);
+			cart.setPdtOptionNo(pdtOptionNo);
+			cart.setCartAddingQuantity(1);
 			return productService.ajaxAddCartSingleQuan(cart) + "";
 		} else {
 			return "ERROR";
@@ -72,7 +74,6 @@ public class AjaxProductControllerPR {
 	 * @param pdtNo
 	 * @return
 	 */
-	@ResponseBody
 	@GetMapping(value="ajaxShowCartQuickAddModal.pa", produces="application/json; charset=UTF-8")
 	public String ajaxShowCartQuickAddModal(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
 		return new Gson().toJson(productService.ajaxShowCartQuickAddModal(pdtNo));

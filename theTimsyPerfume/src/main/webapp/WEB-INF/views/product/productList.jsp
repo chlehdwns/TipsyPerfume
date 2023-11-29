@@ -24,8 +24,14 @@
 </head>
 
 <body>
+	<!-- 헤더 include -->
 	<jsp:include page="../common/header.jsp" />
-
+	
+    <!-- 모달종류 include -->
+    <jsp:include page="../frags/loginJoinModal.jsp" />
+    <jsp:include page="../frags/cartQuickAddModal.jsp" />
+    
+    
     <div id="productListWrap">
         <div id="pdtListOuterLeft">
             <jsp:include page="productSideBar.jsp" />
@@ -111,64 +117,35 @@
         </div>
     </div>
     
-	    <!-- 로그인 회원가입 모달 -->
-    <jsp:include page="../frags/loginJoinModal.jsp" />
-    <jsp:include page="../frags/cartQuickAddModal.jsp" />
-
-
-
-
-
-
-
-
 
 
 	    
 	<script>
-		var $pdtImgArea = $('.pdt-list-pdtImgSrc');
-	    var $pdtIconArea = $('.pdt-list-icon-area');
-	    
-	    
-   		// 마우스enter, 마우스leave 시 하트와 장바구니 보이게 / 안보이게
-		$pdtImgArea.on('mouseenter', e => {
-	        //console.log('마우스엔터');
-	        $(e.target).parent().find('.pdt-list-icon-area').addClass('pdt-list-max-opacity');
-		});
-   		$pdtImgArea.on('mouseleave', e => {
-			//console.log('마우스리브')
-			//console.log(e.target);
-			$(e.target).parent().find('.pdt-list-icon-area').removeClass('pdt-list-max-opacity');
-		});
-		/* @@@처음에 event.stopPropagation();나 pointer-events: none;같은걸 활용했다면 더 좋았을까? */
-		
-				
+		// 페이지 온로드 시 상품 여러개 하트 조회 ajax 요청!
 		// 온로드 시점에 좋아요여부 체크 => 하트클래스 변경
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
+		// pdtNo 배열 만들어 넘김
+		// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
+
+		var $pdtImgArea = $('.pdt-list-pdtImgSrc');
+		var $pdtIconArea = $('.pdt-list-icon-area');
 	    var $pdtListCart = $('.pdt-list-cart');
 	    var $pdtListHeart = $('.pdt-list-heart');
+	    
 
-	    	
-		// 페이지 온로드 시 상품 여러개 하트 조회 ajax 요청!
-		// 좋아요 누른 게시글에는 filled하트 / 아니면 빈하트
-		//let wishPdtNumsArr = [];
-		//$(() => {
-			// pdtNo 배열 만들어 넘김
-			// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
-			
-		//});
 	    
 		
-	    // 장바구니 추가! (여기선 추가만 가능)
+	    // 상품 1개 장바구니 추가! (여기선 추가만 가능)
 		function ajaxAddCartOne(e) {
-  			if('${loginUser}' == '') {
+  			if('${loginUser}' != '') {
   				var $pdtNo = $(e).siblings('input[type=hidden]').val();
   				var $pdtName = $(e).siblings('.pdt-name').text();
-				var $pdtOptionNo = $('#cartQuickAddSelect').attr('option', 'selected').val();
-				
 				showCartQuickAddModal($pdtNo, $pdtName);
-				
+				$('#cartQuickAddSelect').click(() => {
+					console.log();
+				})
 				$('#cartQuickAddBtn').click(() => {
+					var $pdtOptionNo = $('#cartQuickAddSelect').attr('option', 'selected').val();
 					$.ajax({
 						url : 'ajaxAddCartSingleQuan.pa',
 						method : 'POST',
@@ -207,34 +184,44 @@
 	    	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
 	    }
 	    
-		// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-		function ajaxChangeWishOne(e) {
-			if('${loginUser}' != '') {
-				console.log('로그인 한 유저');
-				$.ajax({
-					url : 'ajaxChangeWishOne.pa',
-					method : 'POST',
-					data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
-					success : result => {
-						console.log(result);
-						if(result === 'true') {
-							$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
-						}
-						else if(result === 'false') {
-							$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
-						}
-						else {
-							alert('잠시 후 다시 시도해주세요');
-						}
-					},
-					error : () => {
-						alert('요청 실패');
-					}
-				});
-			} else {
-				pdtListLoginModal();
-			}
-		};
+	
+	    
+	 // 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
+	    function ajaxChangeWishOne(e) {
+	    console.log(('${loginUser}' != '') + 'dd');
+	    	if('${loginUser}' != '') {
+	    		console.log('로그인 한 유저');
+	    		
+	    		$.ajax({
+	    			url : 'ajaxChangeWishOne.pa',
+	    			method : 'POST',
+	    			data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
+	    			success : result => {
+	    				console.log(result);
+	    				if(result === 'true') {
+	    					$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
+	    				}
+	    				else if(result === 'false') {
+	    					$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
+	    				}
+	    				else {
+	    					alert('잠시 후 다시 시도해주세요');
+	    				}
+	    			},
+	    			error : () => {
+	    				alert('요청 실패');
+	    			}
+	    		});
+	    	} else {
+	    		openloginJoinModal();
+	    	}
+		 }
+	    
+	    
+	    
+	    
+	    
+	    
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
 		/*
 		$pdtListCart.click(() => {
@@ -245,7 +232,7 @@
     </script>
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!-- <script src="resources/js/product/productMain.js"></script> -->
+	<script src="resources/js/product/productList.js"></script>
 
 </body>
 

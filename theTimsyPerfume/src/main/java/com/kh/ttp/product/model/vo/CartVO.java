@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CartVO {
+public class CartVO extends ProductVO {
 	
 	/*
 	CART_NO	NUMBER
@@ -21,6 +21,7 @@ public class CartVO {
 	private int userNo;
 	private int pdtNo;
 	private int cartQuantity;
+	private int pdtOptionNo;
 	private int cartAddingQuantity;
 	
 }

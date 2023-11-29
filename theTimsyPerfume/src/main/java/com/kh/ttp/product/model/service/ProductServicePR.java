@@ -20,9 +20,9 @@ public interface ProductServicePR {
 	
 	
 	/**
-	 * 1개 상품의 재고 COUNT, 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 * 1개 상품(특정옵션 / 판매중 상태 Y)의 재고 개수 조회
 	 */
-	int countProductStock(int pdtNo);
+	int selectStockWithOption(CartVO cart);
 
 	/**
 	 * 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회(위시리스트 카운트)
@@ -30,8 +30,8 @@ public interface ProductServicePR {
 	int countWishOne(WishlistVO wishlist);
 	
 	/**
-	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품을 장바구니에 추가한 내역이 있는지 조회
-	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK)
+	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품(특정옵션)을 장바구니에 추가한 내역이 있는지 조회
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), pdtOptionNo(옵션번호PK)
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
 	int countCartOne(CartVO cart);
