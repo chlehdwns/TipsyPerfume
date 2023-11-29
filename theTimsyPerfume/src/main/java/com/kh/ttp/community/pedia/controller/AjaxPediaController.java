@@ -23,6 +23,7 @@ public class AjaxPediaController {
 		HashMap map = new HashMap();
 		map.put("userNo", userNo);
 		map.put("pdtCteg", pdtCteg);
+		System.out.println(userNo+", "+pdtCteg);
 		return new Gson().toJson(pediaService.selectPediaList(map));
 	}
 	
