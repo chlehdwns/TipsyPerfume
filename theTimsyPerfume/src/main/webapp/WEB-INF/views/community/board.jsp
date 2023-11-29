@@ -103,7 +103,7 @@
         <tbody>
         <c:choose>
         <c:when test="${empty list }">
-        	<tr><td colspan="5"><br><br>게시글이 없습니다!<br><br><br></td></tr>
+        	<tr><td colspan="6"><br><br>게시글이 없습니다!<br><br><br></td></tr>
         </c:when>
         <c:otherwise>
         <c:forEach items="${list }" var="board">
