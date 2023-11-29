@@ -217,7 +217,6 @@
         	},
         	async:false,
         	success:(result)=>{
-        		console.log(result);
         		const $pediaWrap = $("#pedia-wrap");
     			$("#detail-img img").attr("src",result.pdtImage);
     			$("#detail-title").text(result.pdtName);
@@ -244,7 +243,6 @@
     		},
     		async:false,
     		success:(result)=>{
-    			console.log(result);
     			const $pediaWrap = $("#pedia-wrap");
     			let value="";
     			for(let i in result){
