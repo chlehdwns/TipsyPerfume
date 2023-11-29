@@ -82,7 +82,7 @@
 			
 		<div id="cartContentBar" class="row">
 			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">상품</div>
+			<div class="col-4 ps-5">상품(옵션)</div>
 			<div class="col">수량</div>
 			<div class="col-2">가격</div>
 			<div class="col-2">할인적용/배송</div>
@@ -92,7 +92,7 @@
 		
 		<div class="row cart-content-block">
 			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">향긋향수</div>
+			<div class="col-4 ps-5">향긋향수 50ML</div>
 			<div class="col">1개</div>
 			<div class="col-2">100,000원</div>
 			<div class="col-2 p-0 cart-extra-info-area">
@@ -105,7 +105,7 @@
 		</div>
 		<div class="row cart-content-block">
 			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">영혼을 달래주는 술</div>
+			<div class="col-4 ps-5">영혼을 달래주는 술 800ML</div>
 			<div class="col">2개</div>
 			<div class="col-2">150,000원</div>
 			<div class="col-2 p-0 cart-extra-info-area">

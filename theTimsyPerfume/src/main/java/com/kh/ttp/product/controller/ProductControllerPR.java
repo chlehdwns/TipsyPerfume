@@ -99,7 +99,7 @@ public class ProductControllerPR {
 	}
 	
 	
-	@GetMapping("cartMain.ca")
+	@GetMapping("cartMain.pr")
 	public String cartMain(ModelAndView mv, HttpSession session) {
 //		if(null != session.getAttribute("loginUser")) {
 //			mv.addObject("cartList", productService.cartMain(((User)session.getAttribute("loginUser")).getUserNo()))
@@ -112,7 +112,10 @@ public class ProductControllerPR {
 	}
 	
 	
-	
+	@GetMapping("orderSheet.pr")
+	public String orderSheet() {
+		return "orderKinds/OrderSheet";
+	}
 	
 	
 }
