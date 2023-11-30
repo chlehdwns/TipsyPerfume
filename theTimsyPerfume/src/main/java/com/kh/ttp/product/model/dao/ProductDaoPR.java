@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
@@ -24,11 +25,11 @@ public class ProductDaoPR {
 	}
 
 	/**
-	 * 1개 상품의 재고 COUNT
+	 * 1개 상품(특정옵션 / 판매중 상태 Y)의 재고 COUNT
 	 * @param pdtNo
 	 */
-	public int countProductStock(SqlSessionTemplate sqlSession, int pdtNo) {
-		return sqlSession.selectOne("productMapperPR.countProductStock", pdtNo);
+	public int selectStockWithOption(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.selectOne("productMapperPR.selectStockWithOption", cart);
 	}
 	
 	/**
@@ -41,8 +42,8 @@ public class ProductDaoPR {
 	
 
 	/**
-	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품을 장바구니에 추가한 내역이 있는지 조회
-	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK)
+	 * 장바구니 등록여부COUNT / 특정 유저가 한 상품(특정 옵션)을 장바구니에 추가한 내역이 있는지 조회
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), pdtOptionNo(옵션번호PK)
 	 */
 	public int countCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
 		return sqlSession.selectOne("productMapperPR.countCartOne", cart);
@@ -133,6 +134,10 @@ public class ProductDaoPR {
 	 */
 	public int updateCartOneQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
 		return sqlSession.update("productMapperPR.updateCartOneQuantity", cart);
+	}
+
+	public ArrayList<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {
+		return (ArrayList)sqlSession.selectList("productMapperPR.selectPdtOptionOne", pdtNo);
 	}
 
 

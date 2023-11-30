@@ -21,15 +21,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Swiper -->
-	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-
 	<!-- Google Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 	<!-- CSS파일 경로적기 -->
-    <link href="resources/css/product/productMain.css" rel="stylesheet">
     <link href="resources/css/frags/loginJoinModal.css" rel="stylesheet">
     <link href="resources/css/member/loginForm.css" rel="stylesheet">
     	

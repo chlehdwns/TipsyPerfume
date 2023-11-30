@@ -5,23 +5,24 @@ import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class ProductServicePRImpl implements ProductServicePR {
 
-	@Autowired
-	private ProductDaoPR productDao;
+	private final ProductDaoPR productDao;
 	
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private final SqlSessionTemplate sqlSession;
 	
 	
 	
@@ -32,8 +33,8 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 	
 	@Override
-	public int countProductStock(int pdtNo) {
-		return productDao.countProductStock(sqlSession, pdtNo);
+	public int selectStockWithOption(CartVO cart) {
+		return productDao.selectStockWithOption(sqlSession, cart);
 	}
 	
 	@Override
@@ -146,19 +147,15 @@ public class ProductServicePRImpl implements ProductServicePR {
 		}
 		return isFilledHeart;
 	}
+	
 	// @@@ 여기서 장바구니에 SELECT할 때 현재 실 재고 개수가 DB에 즉각 반영되어야할 필요는 없음
 	// => But 결제 시 현재 재고가 있는지 파악 + 재고 마이너스 + 돈을 빼고 넣는 작업은 => ACID보장되어야 
-
-	// stock있을 경우1 select해서1이면 => update
-	// stock 있을 경우1 select해서 0이면 => insert
+	// 최종 재고 반영은 주문&결제 시 UPDATE 트랜잭션 하나로
+	
+	// 재고 있는지 조회 => 카트에 없는 제품(0)이면 INSERT, 이미 있는 제품이면(1) UPDATE (수량 1개 추가)
 	@Override
 	public int ajaxAddCartSingleQuan(CartVO cart) {
-//		System.out.println(countProductStock(cart.getPdtNo()) + " : 재고 개수");
-//		System.out.println(countCartOne(cart) + " : 카트에 있는지 카운트");
-//		System.out.println(insertCartOne(cart) + " : 카트 insert");
-//		System.out.println(updateCartOneQuantity(cart) + " : 카트 개수 업데이트");
-		if(countProductStock(cart.getPdtNo()) > 0) { // 재고 1개 이상인지 조회(최종 재고 반영은 주문&결제 시 UPDATE)
-			cart.setCartAddingQuantity(1);
+		if(selectStockWithOption(cart) > 0) {
 			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartOneQuantity(cart);
 		} else { // 재고가 없음
 			return -1;
@@ -176,6 +173,12 @@ public class ProductServicePRImpl implements ProductServicePR {
 	@Override
 	public int updateCartOneQuantity(CartVO cart) {
 		return productDao.updateCartOneQuantity(sqlSession, cart);
+	}
+
+
+	@Override
+	public ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo) {
+		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
 	}
 
 
