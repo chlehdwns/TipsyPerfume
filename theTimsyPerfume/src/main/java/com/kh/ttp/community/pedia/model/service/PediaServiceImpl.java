@@ -16,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class PediaServiceImpl implements PediaService {
 	
-	PediaDAO pediaDao;
-	SqlSessionTemplate sqlSession;
+	private final PediaDAO pediaDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public ArrayList<PediaVO> selectPediaList(HashMap map) {
