@@ -43,11 +43,11 @@
     }
 
     .board-no{width: 12%;}
-    .board-title{width: 35%;text-align: left;}
+    .board-title{width: 39%;text-align: left;}
     .board-writer{width: 15%;}
-    .board-date{width: 15%;}
-    .board-count{ width: 12%;}
-    .like-count{width: 11%;}
+    .board-date{width: 13%;}
+    .board-count{ width: 11%;}
+    .like-count{width: 10%;}
     .comment-count{
     	font-size: 15px;
     	color: rgb(223, 190, 106);

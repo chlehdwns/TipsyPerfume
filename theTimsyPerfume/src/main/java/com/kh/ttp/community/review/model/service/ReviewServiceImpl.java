@@ -16,13 +16,14 @@ import com.kh.ttp.community.review.model.dao.ReviewDAO;
 import com.kh.ttp.community.review.model.vo.ReviewFileVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-	@Autowired
-	private ReviewDAO reviewDao;
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private final ReviewDAO reviewDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int countReviewList() {

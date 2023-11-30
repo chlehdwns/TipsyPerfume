@@ -1,19 +1,20 @@
 package com.kh.ttp.community.review.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 import com.kh.ttp.community.review.model.service.ReviewService;
 
-@Controller
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
 public class AjaxReviewController {
 	
-	@Autowired
-	private ReviewService reviewService;
+	private final ReviewService reviewService;
 	
 	@GetMapping(value = "reviewRecommend", produces = "text/html; charset=UTF-8")
 	@ResponseBody

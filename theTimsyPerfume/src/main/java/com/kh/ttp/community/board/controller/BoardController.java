@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -112,9 +111,10 @@ public class BoardController {
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace("\"", "&quot;"));
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
-		if(!uploadImg[0].getOriginalFilename().equals("")) {
+		if(uploadImg!=null && !uploadImg[0].getOriginalFilename().equals("")) {
 			for(int i=0;i<uploadImg.length;i++) {
 				BoardFileVO file = saveFile(uploadImg[i], i, session);
 				fileList.add(file);
@@ -141,6 +141,7 @@ public class BoardController {
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace("\"", "&quot;"));
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {
