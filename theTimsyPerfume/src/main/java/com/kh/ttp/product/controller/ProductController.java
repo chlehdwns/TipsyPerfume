@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -192,8 +193,10 @@ public class ProductController {
 		
 		
 		pay.setPayTotal(orderPrice);
+		//System.out.println(selectAddress);
+		System.out.println(receiver);
 		
-		if(selectAddress==2) {
+		if(selectAddress==2 ) {
 			productService.insertReceiver(receiver);
 		}
 		
@@ -210,6 +213,11 @@ public class ProductController {
 	public String insertFundingBasket(CartVO cart,Model model) {
 		productService.insertFundingBasket(cart);
 		return "redirect:funding.list";
+	}
+	@GetMapping("cartMain.f")
+	public String fundingCart(int userNo) {
+			System.out.println(userNo);
+		return "funding/fundingBascket";
 	}
 	
 		

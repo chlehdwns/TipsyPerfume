@@ -101,7 +101,7 @@
                         <c:choose>
                             <c:when test="${not empty loginUser}">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="cartMain.f">펀딩장바구니</a>
+                                    <a class="header-link" href="cartMain.f?userNo=${loginUser.userNo }">펀딩장바구니</a>
                                 </p>
                             </c:when>
                             <c:otherwise>

@@ -102,7 +102,6 @@
 			
 			<div class="product-info">
 			<form method="post" action="funding.fd">
-			<input type="hidden" name="phone" value="${loginUser.phone }"/>
 			<input type="hidden" name="pdtNo" value="${pdtNo }"/>
 			<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
 				가격 : <input class="order-info" type="text" name="pdtPrice" value="${pdtPrice}  " readonly>
@@ -140,7 +139,7 @@
 				<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
 				<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail" required><br>
 				받는사람 : <input type="text" class="form-control" id="receiver" name="receiverName" required>
-				휴대전화번호 : <input type="text" class="form-control" id="phone" name="phone" value="${loginUser.phone }" required><br>
+				휴대전화번호 : <input type="text" class="form-control" id="phone" name="phone"   required><br>
 				배송 요청 사항 : <input type="text" class="form-control" id="order-message" name="orderMessage">
 				
 				

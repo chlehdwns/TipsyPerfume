@@ -72,7 +72,7 @@
 		FROM
 			TB_RECEIVER
 		WHERE
-			USER_NO = #{userNo} AND POSTAL_CODE = #{postalCode}
+			RECEIVER_NAME = #{receiverName} AND PHONE=#{phone} AND POSTAL_CODE = #{postalCode}
 	</select>
 	
 	
