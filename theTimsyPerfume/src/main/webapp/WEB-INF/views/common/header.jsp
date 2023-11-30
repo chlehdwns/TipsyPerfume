@@ -97,6 +97,20 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                    <div id="header_inner_top_bannerline_5" class="full_height_divs">
+                        <c:choose>
+                            <c:when test="${not empty loginUser}">
+                                <p class="text-center fw-semibold">
+                                    <a class="header-link" href="cartMain.f">펀딩장바구니</a>
+                                </p>
+                            </c:when>
+                            <c:otherwise>
+                                <p class="text-center fw-semibold">
+                                    <a class="header-link" href="#" onclick="cartLoginConfirm();">펀딩 장바구니</a>
+                                </p>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
                 <!------------------------------------------------------------------------------------------>
 
