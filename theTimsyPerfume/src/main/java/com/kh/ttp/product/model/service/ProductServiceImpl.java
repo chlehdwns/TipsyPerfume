@@ -13,6 +13,7 @@ import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.orderKinds.model.dao.ReceiverDao;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.dao.ProductDao;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
 import com.kh.ttp.product.model.vo.OrderVO;
@@ -172,6 +173,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int insertReceiver(Receiver r) {
 		receiverDao.insertReceiver(sqlSession,r);
+		return 0;
+	}
+	@Override
+	public int insertFundingBasket(CartVO cart) {
+		productDao.insertFundingBasket(sqlSession,cart);
 		return 0;
 	}
 

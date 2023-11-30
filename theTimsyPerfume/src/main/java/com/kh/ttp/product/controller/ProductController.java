@@ -22,6 +22,7 @@ import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.service.ProductService;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
 import com.kh.ttp.product.model.vo.OrderVO;
@@ -204,6 +205,12 @@ public class ProductController {
 		
 		
 	}
+	@PostMapping("fundingBasket.insert")
+	public String insertFundingBasket(CartVO cart,Model model) {
+		productService.insertFundingBasket(cart);
+		return "redirect:funding.list";
+	}
+	
 		
 	
 	

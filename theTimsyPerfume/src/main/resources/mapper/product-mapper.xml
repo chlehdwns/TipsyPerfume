@@ -494,6 +494,17 @@ VALUES(
 		
 		
 	</update>
+	<insert id="insertFundingBasket" parameterType="cart">
+		INSERT
+			INTO
+		TB_CART
+			VALUES(
+				SEQ_CART.NEXTVAL,
+				#{userNo},
+				#{pdtNo},
+				#{cartQuantity}
+			)
+	</insert>
 		
 	
 

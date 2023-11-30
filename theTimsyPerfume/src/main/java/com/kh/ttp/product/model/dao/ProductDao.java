@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
 import com.kh.ttp.product.model.vo.OrderVO;
@@ -106,6 +107,10 @@ public class ProductDao {
 
 	public int decreaseStock(SqlSessionTemplate sqlSession, ProductVO p) {
 		return sqlSession.update("productMapper.decreaseStock",p);
+	}
+
+	public int insertFundingBasket(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.insert("productMapper.insertFundingBasket",cart);
 	}
 	
 

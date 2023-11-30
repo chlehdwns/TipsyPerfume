@@ -118,7 +118,9 @@
     	background-color : brown;
     	color : white;
     }
-    
+    .cartQuantity{
+    	width : 50px;
+    }
     
 	
 	
@@ -186,8 +188,9 @@
 					
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>
-					<form method="post" action="basket.fd">
+					<form method="post" action="fundingBasket.insert">
 						<button type="submit" class="basket-button">장바구니</button>
+						<input type="number" class="cartQuantity" name="cartQuantity" value="1" min="1" max="10" required/>
 						<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
 						<input type="hidden" name="pdtNo" value="${pno }"/>
 					</form>
