@@ -87,19 +87,19 @@
                         <c:choose>
                             <c:when test="${not empty loginUser}">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="cartMain.ca">장바구니</a>
+                                    <a class="header-link" href="cartMain.pr">장바구니</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="#" onclick="alert('로그인이 필요한 서비스입니다');">장바구니</a>
+                                    <a class="header-link" href="#" onclick="cartLoginConfirm();">장바구니</a>
                                 </p>
                             </c:otherwise>
                         </c:choose>
                     </div>
                 </div>
                 <!------------------------------------------------------------------------------------------>
-                
+
                 <div id="header_1_right_mid" class="full_width_divs">
                     <!-- 배너 이미지 or 여백 영역 -->
                 </div>
@@ -272,7 +272,7 @@
         <c:when test="${empty loginUser }">
             <a class="header-link" href="loginForm.me"><i class="fa fa-sign-in" style="font-size:30px; color: rgb(124 94 69);"></i></a>
             <a class="header-link" href="enrollForm.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person_add</i></a>
-            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
+            <a class="header-link" onclick="cartLoginConfirm();"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
         </c:when>
         <c:otherwise>
             <a class="header-link" href="logout.me"><i class="fa fa-sign-out" style="font-size:30px; color: rgb(124 94 69);"></i></a>
@@ -285,7 +285,7 @@
             	<a class="header-link" href="myPage.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person</i></a>
             </c:otherwise>
             </c:choose>
-            <a class="header-link" href="#"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
+            <a class="header-link" href="cartMain.pr"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
         </c:otherwise>
         </c:choose>
         </div>
@@ -303,5 +303,7 @@ $(()=>{
     });
 });
 </script>
+
+	<script src="resources/js/common/header.js"></script>
 </body>
 </html>

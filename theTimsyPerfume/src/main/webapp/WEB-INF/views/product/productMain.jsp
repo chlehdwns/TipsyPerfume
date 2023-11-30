@@ -45,10 +45,16 @@
     -->
 
 	<jsp:include page="../common/header.jsp" />
+	<jsp:include page="../frags/addressEnrollForm.jsp" />
 	
 	<div align="center">
-		<button type="button" class="btn btn-primary btn-lg" onclick="location.href='addressEnrollForm.re'">배송지 입력페이지 가기</button>
+		<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addressContainer">배송지 입력페이지 가기</button>
 	</div>
+	<script>
+		function abc() {
+			$('#addressContainer').modal("show");
+		}
+	</script>
 	
     <div id="productMainWrap" class="container">
 		<c:choose>
