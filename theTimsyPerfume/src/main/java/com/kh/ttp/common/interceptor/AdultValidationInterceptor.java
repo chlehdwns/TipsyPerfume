@@ -13,11 +13,11 @@ public class AdultValidationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("loginUser");
-		if(user != null && user.getAdultStatus() == "Y") {
+		if(user != null && "Y".equals(user.getAdultStatus())) {
 			return true;
 		} else {
+			//System.out.println(request.getHeader("referer") + "리퍼페이지");
 			session.setAttribute("adultResult", "N");
-			System.out.println(request.getHeader("referer") + "리퍼페이지");
 			response.sendRedirect(request.getHeader("referer"));
 			return false;
 		}
