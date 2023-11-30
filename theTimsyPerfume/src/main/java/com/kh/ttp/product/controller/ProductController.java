@@ -115,6 +115,7 @@ public class ProductController {
 		ArrayList<FundingSelectVO> hfs = productService.selectHotFundingList();
 		model.addAttribute("drinkFundingList", nfs);
 		model.addAttribute("drinkHotFundingList",hfs);
+		
 		return "funding/fundingList";
 	}
 	@RequestMapping("newDrinkFunding.list")
