@@ -24,10 +24,13 @@ import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.notice.model.service.NoticeService;
 import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class NoticeController {
-	@Autowired
-	private NoticeService noticeService;
+	
+	private final NoticeService noticeService;
 	
 	@GetMapping("noticeWrite")
 	public String noticeWriteForm() {

@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.community.notice.model.dao.NoticeDAO;
 import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class NoticeServiceImpl implements NoticeService {
-	@Autowired
-	private NoticeDAO noticeDao;
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	
+	private final NoticeDAO noticeDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int countNoticeList() {
