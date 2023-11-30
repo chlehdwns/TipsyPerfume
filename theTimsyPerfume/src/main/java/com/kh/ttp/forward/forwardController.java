@@ -24,7 +24,7 @@ public class forwardController {
 	
 	@GetMapping("addressEnrollForm.re")
 	public String search() {
-		return "orderKinds/addressEnrollForm";
+		return "frags/addressEnrollForm";
 	}
 	
 	
