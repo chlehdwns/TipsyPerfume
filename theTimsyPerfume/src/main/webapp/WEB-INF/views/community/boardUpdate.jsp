@@ -49,7 +49,8 @@
 	</table>
 	<div align="center">
 		<button type="button" id="submit-btn" class="btn btn-primary">수정하기</button>
-		<button type="reset" class="btn btn-danger">취소하기</button>
+		<button type="reset" class="btn btn-danger" onclick="summerReset();">취소하기</button>
+		<button type="button" class="btn btn-dark" onclick="location.href='boardDetail?boardNo=${board.boardNo }'">돌아가기</button>
 	</div>
 </form>
 </div>
@@ -66,7 +67,7 @@ $(()=>{
             $boardTitle.val("").focus();
             alert("제목을 작성해 주세요!");
         }
-        else if($boardContent.val().trim()==""){
+        else if($('#boardContent').summernote('isEmpty')){
             $boardContent.val("").focus();
             alert("내용을 작성해 주세요!");
         } else{
@@ -82,6 +83,16 @@ $(()=>{
 	    focus: true,
 	    lang: "ko-KR",
 	    placeholder: '내용을 작성해 주세요.',
+	    toolbar:[
+	    	['style', ['style']],
+	    	['font', ['bold', 'underline', 'clear']],
+	    	['fontname', ['fontname']],
+	    	['color', ['color']],
+	    	['para', ['ul', 'ol', 'paragraph']],
+	    	['table', ['table']],
+	    	['insert', ['link', 'picture', 'video']],
+	    	['view', ['codeview', 'help']]
+	    ],
 	    callbacks:{
 	    	onImageUpload:function(files){
 	    		uploadBoardImageFile(files[0]);
@@ -114,6 +125,9 @@ function uploadBoardImageFile(file){
 			console.log("통신실패");
 		}
 	});
+}
+function summerReset(){
+	$('#boardContent').summernote('reset');
 }
 </script>
 <jsp:include page="../common/footer.jsp"/>

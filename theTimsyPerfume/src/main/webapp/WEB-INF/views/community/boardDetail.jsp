@@ -188,22 +188,12 @@
     	position: sticky;
         top: 60px;
     }
-    .board-no{
-        width: 15%;
-    }
-    .board-title{
-        width: 40%;
-        text-align: left;
-    }
-    .board-writer{
-        width: 18%;
-    }
-    .board-date{
-        width: 15%;
-    }
-    .board-count{
-        width: 12%;
-    }
+    .board-no{width: 12%;}
+    .board-title{width: 39%;text-align: left;}
+    .board-writer{width: 15%;}
+    .board-date{width: 13%;}
+    .board-count{ width: 11%;}
+    .like-count{width: 10%;}
     .comment-count{
     	font-size: 15px;
     	color: rgb(223, 190, 106);
@@ -297,6 +287,7 @@ ${board.boardContent }
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
+                <th>좋아요</th>
                 <th>조회수</th>
             </tr>
         </thead>
@@ -538,6 +529,7 @@ ${board.boardContent }
                         }
                         value+="</td><td class='board-writer'>"+result[i].boardWriter+"</td>"
                         	+"<td class='board-date'>"+result[i].boardCreateDate+"</td>"
+                        	+"<td class='like-count'>"+result[i].likeCount+"</td>"
                         	+"<td class='board-count'>"+result[i].boardCount+"</td>"
                     		+"</tr>";
                     }
