@@ -41,20 +41,4 @@ const swiper = new Swiper('.swiper', {
 function adultValidation(param) {
 	location.href = !(isNaN(param)) ? "alcoholPdtDetail.pr?pdtNo=" + param
 								    : "selectAlcoholPdtList.pr?sort=" + param;
-/*
-	var loginUserStatus = '${loginUser.adultStatus}';
-	console.log(loginUserStatus);
-	
-	// 컨트롤러에서 하기
-	if(loginUserStatus == 'Y') { // 로그인O 성인인증O
-	console.log(loginUserStatus);
-	location.href = !(isNaN(param)) ? "alcoholPdtDetail.pr?pdtNo=" + param
-								    : "selectAlcoholPdtList.pr?sort=" + param;
-	}
-	else { // 로그인X
-	// 로그인 실패 시 여기로 돌아오도록!(@@@서버단에서 getHeader(Referer하기))
-	// @@@중복부분은 모듈 export라는거 찾아보기
-		openloginJoinModal();
-	}
-*/
 };
