@@ -38,11 +38,11 @@
 
 	  <mappers>
 		<mapper resource="/mapper/member-mapper.xml"/>
-		<mapper resource="/mapper/review-mapper.xml"/>
-		<mapper resource="/mapper/notice-mapper.xml"/>
-		<mapper resource="/mapper/board-mapper.xml"/>
-		<mapper resource="/mapper/pedia-mapper.xml"/>
-		<mapper resource="/mapper/comment-mapper.xml"/>
+		<mapper resource="/mapper/community/review-mapper.xml"/>
+		<mapper resource="/mapper/community/notice-mapper.xml"/>
+		<mapper resource="/mapper/community/board-mapper.xml"/>
+		<mapper resource="/mapper/community/pedia-mapper.xml"/>
+		<mapper resource="/mapper/community/comment-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper-pr.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />

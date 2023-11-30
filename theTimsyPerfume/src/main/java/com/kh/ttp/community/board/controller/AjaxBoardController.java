@@ -9,12 +9,11 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
@@ -24,11 +23,13 @@ import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.board.model.service.BoardService;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 
-@Controller
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
 public class AjaxBoardController {
 	
-	@Autowired
-	BoardService boardService;
+	private final BoardService boardService;
 	
 	
 	@PostMapping(value="/uploadBoardImageFile", produces = "application/json")

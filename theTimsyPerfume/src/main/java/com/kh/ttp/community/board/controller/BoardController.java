@@ -24,11 +24,13 @@ import com.kh.ttp.community.board.model.service.BoardService;
 import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class BoardController {
 	
-	@Autowired
-	BoardService boardService;
+	private final BoardService boardService;
 	
 	@GetMapping("board")
 	public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1")int page, String boardCtgy, ModelAndView mv) {
@@ -110,8 +112,6 @@ public class BoardController {
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		/*bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));*/
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
 		if(!uploadImg[0].getOriginalFilename().equals("")) {
@@ -141,9 +141,6 @@ public class BoardController {
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		/*bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라*/
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {

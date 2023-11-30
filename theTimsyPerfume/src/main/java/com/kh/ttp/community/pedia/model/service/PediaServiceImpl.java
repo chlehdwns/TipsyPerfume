@@ -10,13 +10,14 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.community.pedia.model.dao.PediaDAO;
 import com.kh.ttp.community.pedia.model.vo.PediaVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class PediaServiceImpl implements PediaService {
 	
-	@Autowired
-	SqlSessionTemplate sqlSession;
-	@Autowired
-	PediaDAO pediaDao;
+	private final PediaDAO pediaDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public ArrayList<PediaVO> selectPediaList(HashMap map) {

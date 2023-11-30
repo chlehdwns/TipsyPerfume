@@ -10,7 +10,6 @@
 	<result column="PDT_STOCK" property="pdtStock"/>
 	<result column="PDT_INTRO" property="pdtIntro"/>
 	<result column="PDT_DESCRIPTION" property="pdtDescription"/>
-	<result column="PDT_INGREDIENT" property="pdtIngredient"/>
 	<result column="USER_BUY" property="userBuy"/>
 	<result column="TOTAL_PRICE" property="totalPrice"/>
 	<result column="TOTAL_REVIEW" property="totalReview"/>
@@ -29,8 +28,8 @@ FROM TB_PRODUCT
     LEFT JOIN (
         SELECT 
             PDT_NO,
-            TO_CHAR(SUM(ORDER_QUANTIRY),'FM999,999,999') "USER_BUY",
-            TO_CHAR(SUM(PDT_PRICE * ORDER_QUANTIRY),'L999,999,999') "TOTAL_PRICE"
+            TO_CHAR(SUM(ORDER_QUANTITY),'FM999,999,999') "USER_BUY",
+            TO_CHAR(SUM(PDT_PRICE * ORDER_QUANTITY),'L999,999,999') "TOTAL_PRICE"
         FROM TB_ORDER_DETAIL
             JOIN TB_ORDER_PRODUCT USING(ORDER_DETAIL_NO)
             JOIN TB_PRODUCT USING(PDT_NO)
@@ -71,8 +70,8 @@ FROM TB_PRODUCT
     LEFT JOIN (
         SELECT 
             PDT_NO,
-            TO_CHAR(SUM(ORDER_QUANTIRY),'FM999,999,999') "USER_BUY",
-            TO_CHAR(SUM(PDT_PRICE * ORDER_QUANTIRY),'L999,999,999') "TOTAL_PRICE"
+            TO_CHAR(SUM(ORDER_QUANTITY),'FM999,999,999') "USER_BUY",
+            TO_CHAR(SUM(PDT_PRICE * ORDER_QUANTITY),'L999,999,999') "TOTAL_PRICE"
         FROM TB_ORDER_DETAIL
             JOIN TB_ORDER_PRODUCT USING(ORDER_DETAIL_NO)
             JOIN TB_PRODUCT USING(PDT_NO)

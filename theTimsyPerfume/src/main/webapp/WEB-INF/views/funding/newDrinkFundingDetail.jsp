@@ -111,6 +111,14 @@
     	color : red;
     	margin-left: 200px;
     }
+    .basket-button{
+    	margin-top : 100px;
+    	margin-left : 50px;
+    	width : 200px;
+    	background-color : brown;
+    	color : white;
+    }
+    
     
 	
 	
@@ -178,6 +186,11 @@
 					
 					<a href="funding.list" id="back">뒤로가기</a>
 				</form>
+					<form method="post" action="basket.fd">
+						<button type="submit" class="basket-button">장바구니</button>
+						<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
+						<input type="hidden" name="pdtNo" value="${pno }"/>
+					</form>
 				
 					<c:if test="${cutting eq false}">
 						<form action="reviewWrite">
