@@ -190,6 +190,8 @@
 		</c:choose>
     </div>
 	
+	
+	
 	<!-- 로그인/회원가입 모달 include -->
 	<jsp:include page="../frags/loginJoinModal.jsp" />
 	
