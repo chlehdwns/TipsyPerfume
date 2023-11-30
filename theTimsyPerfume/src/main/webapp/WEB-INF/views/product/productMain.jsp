@@ -47,6 +47,10 @@
 	<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../frags/addressEnrollForm.jsp" />
 	
+	<c:if test="${result eq 'N'}">
+		<script>openloginJoinModal();</script>
+	</c:if>
+	
 	<div align="center">
 		<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addressContainer">배송지 입력페이지 가기</button>
 	</div>
@@ -200,7 +204,6 @@
 	
 	<!-- 로그인/회원가입 모달 include -->
 	<jsp:include page="../frags/loginJoinModal.jsp" />
-	
 	<!-- js파일 -->
 	<script src="resources/js/product/productMain.js"></script>
 </body>

@@ -27,6 +27,13 @@
 </head>
 <body>
 <header>
+	<c:if test="${not empty alertMsg }">
+		<script>
+			alertify.alert("${alertMsg}");
+		</script>
+		<c:remove var="alertMsg"/>
+	</c:if>
+
     <div id="headerWrap" class="container">
         <div id="header_1" class="full_width_divs">
             <div id="header_1_left" class="full_height_divs">
