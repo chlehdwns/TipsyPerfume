@@ -44,7 +44,7 @@
 	</div>
 	
 	
-	<script src="resources/js/frags/chooseLoginEnrollModal.js"></script>
+	<script src="resources/js/frags/loginJoinModal.js"></script>
 
 </body>
 

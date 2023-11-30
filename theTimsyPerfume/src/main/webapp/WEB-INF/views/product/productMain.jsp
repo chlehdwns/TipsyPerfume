@@ -194,8 +194,6 @@
 
 	<!-- js파일 -->
 	<script src="resources/js/product/productMain.js"></script>
-	<script src="resources/js/frags/loginJoinModal.js"></script>
-	
 	
 	<script>
 		$(() => {
