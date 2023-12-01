@@ -18,7 +18,7 @@ public class CartSelectVO {
 	private String pdtShipping;
 	private int pdtOptionNo;
 	private String pdtOptionFirst;
-	private String pdtOptionPirce;
+	private String pdtOptionPrice;
 	private int pdtFileNo;
 	private String pdtFileUpload;
 	private String pdtManufac;
@@ -26,7 +26,7 @@ public class CartSelectVO {
 	private String cuttingDate;
 	private int fundingFee;
 	private int cuttingPrice;
-	
+	private int total;
 	
 	
 	

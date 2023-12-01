@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.vo.Funding;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
+import com.kh.ttp.product.model.vo.CartSelectVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.OrderDetailVO;
@@ -50,6 +51,8 @@ public interface ProductService {
 	public int insertReceiver(Receiver r);
 
 	public int insertFundingBasket(CartVO cart);
+	
+	public ArrayList<CartSelectVO> selectFundingCart(int userNo);
 
 
 	

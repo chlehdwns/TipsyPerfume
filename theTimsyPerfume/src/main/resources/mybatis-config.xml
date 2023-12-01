@@ -33,6 +33,7 @@
 		<typeAlias type="com.kh.ttp.product.model.vo.CartVO" alias="cart" />
 
 		<typeAlias type="com.kh.ttp.adminManage.model.vo.AdminVo" alias="admin"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.CartSelectVO" alias="cartSelect"/>
 
 	</typeAliases>
 
