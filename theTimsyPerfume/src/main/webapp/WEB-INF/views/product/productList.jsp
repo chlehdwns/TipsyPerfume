@@ -175,9 +175,7 @@
 						}
 					});
 				});
-			} else {
-				openloginJoinModal();
-			}
+			};
 	    };
 	    
 	    function pdtListConfirmRemaining(){
@@ -186,9 +184,8 @@
 	    
 	
 	    
-	 // 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
+		// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
 	    function ajaxChangeWishOne(e) {
-	    console.log(('${loginUser}' != '') + 'dd');
 	    	if('${loginUser}' != '') {
 	    		console.log('로그인 한 유저');
 	    		
@@ -212,8 +209,6 @@
 	    				alert('요청 실패');
 	    			}
 	    		});
-	    	} else {
-	    		openloginJoinModal();
 	    	}
 		 }
 	    

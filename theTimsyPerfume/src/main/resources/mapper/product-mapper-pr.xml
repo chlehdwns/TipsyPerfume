@@ -168,14 +168,25 @@
 	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	
 	<select id="selectPdtOptionOne" parameterType="_int" resultMap="productOptionResultSet">
 		SELECT
-			   PDT_OPTION_NO,
-			   PDT_NO,
-			   PDT_OPTION_FIRST,
-			   PDT_OPTION_SECOND
+			   PDT_NAME,
+			   PDT_CATEG_NO,
+			   PDT_CTEG,
+			   PDT_FAMILY,
+			   PDT_MANUFAC,
+			   PDT_GROUP,
+			   PDT_OPTION_DETAIL
 		  FROM
-		  	   TB_PRODUCT_OPTION
+		  	   TB_PRODUCT_CATEGORY
+		  JOIN
+		  	   TB_PRODUCT	    
 		 WHERE
 		 	   PDT_NO = #{pdtNo}
+		   AND
+		   	   PDT_FAMILY = 'B'
+		   AND
+		   	   PDT_STATUS = 'Y'
+		   AND
+		   	   PDT_STOCK > 0
 	</select>
 	
 	
