@@ -215,12 +215,13 @@
     <div id="content-title">
         ${board.boardTitle }
         <c:if test="${loginUser.userNo eq board.boardWriterNo}">
-            <button class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
+            <button type="button" class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
         </c:if>
         <c:if test="${loginUser.userNo eq board.boardWriterNo or loginUser.memberType eq 'A'}">
-            <button class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
+            <button type="button" class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
         </c:if>
     </div>
+    <button type="button" class="board-btn" onclick="history.back();">돌아가기</button>
     <table class="table">
         <tr class="title-head">
             <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
