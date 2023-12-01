@@ -216,7 +216,7 @@ public class ProductController {
 	}
 	@GetMapping("cartMain.f")
 	public String fundingCart(int userNo) {
-			System.out.println(userNo);
+			//productService.selectFundingCart(userNo);
 		return "funding/fundingBascket";
 	}
 	

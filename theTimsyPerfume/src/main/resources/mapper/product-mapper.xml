@@ -89,7 +89,14 @@ VALUES(
 	<insert id="insertProductOption" parameterType="productOption">
 		INSERT
 			INTO
+		
 		TB_PRODUCT_OPTION
+			(
+				PDT_OPTION_NO,
+				PDT_NO,
+				PDT_OPTION_FIRST,
+				PDT_OPTION_SECOND
+			)
 			VALUES(
 				SEQ_PRODUCT_OPTION.NEXTVAL,
 				#{pdtNo},
