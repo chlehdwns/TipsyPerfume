@@ -177,7 +177,7 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 
 	@Override
-	public ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo) {
+	public ArrayList<ProductOption> ajaxCreateCartQuickAddModal(int pdtNo) {
 		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
 	}
 

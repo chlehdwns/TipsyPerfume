@@ -135,52 +135,57 @@
 
 	    
 		
-	    // 상품 1개 장바구니 추가! (여기선 추가만 가능)
+	    // 장바구니 모달창 생성 후 띄우기
 		function ajaxAddCartOne(e) {
   			if('${loginUser}' != '') {
-  				var $pdtNo = $(e).siblings('input[type=hidden]').val();
-  				var $pdtName = $(e).siblings('.pdt-name').text();
-				showCartQuickAddModal($pdtNo, $pdtName);
-				$('#cartQuickAddSelect').click(() => {
-					console.log();
-				})
-				$('#cartQuickAddBtn').click(() => {
-					var $pdtOptionNo = $('#cartQuickAddSelect').attr('option', 'selected').val();
-					$.ajax({
-						url : 'ajaxAddCartSingleQuan.pa',
-						method : 'POST',
-						data : { pdtNo : $pdtNo,
-								 pdtOptionNo : $pdtOptionNo },
-						success : result => {
-							console.log(result);
-							hideCartQuickAddModal();
-							if(result === '1') {
-								// 쇼핑 계속하기버튼 or 장바구니 가기버튼 팝업
-								if(pdtListConfirmRemaining()) {
-									location.href = "cartMain.pr";
-								}
-							}
-							else if(result === '-1') {
-								hideCartQuickAddModal();
-								alert('재고가 없는 상품입니다!');
-							}
-							else {
-								hideCartQuickAddModal();
-								alert('잠시 후 다시 시도해주세요!');
-							}
-						},
-						error : () => {
-							hideCartQuickAddModal();
-							alert('요청 실패');
-						}
-					});
-				});
+  				let $pdtNo = $(e).siblings('input[type=hidden]').val();
+  				let $pdtName = $(e).siblings('.pdt-name').text();
+  				ajaxCreateCartQuickAddModal($pdtNo, $pdtName);
+				console.log('스코프 밖 / pdtNo : ' + $pdtNo + ' / pdtName : ' + $pdtName);
+				
 			};
 	    };
 	    
+	    // 장바구니 담기 버튼 클릭 시 이벤트
+		$('#cartQuickAddBtn').click(() => {
+			let $pdtOptionNo = $('#cartModalSelectInput').attr('option', 'selected').val();
+			console.log('스코프 안 / pdtNo : ' + $pdtNo + ' / pdtName : ' + $pdtName + ' / pdtOptionNo : ' + $pdtOptionNo);						
+		
+			
+			$.ajax({
+				url : 'ajaxAddCartSingleQuan.pa',
+				method : 'POST',
+				data : { pdtNo : $pdtNo,
+						 pdtOptionNo : $pdtOptionNo },
+				success : result => {
+					console.log('result : ' + result);
+					console.log('-----------------------------');
+					//hideCartQuickAddModal();
+					if(result === '1') {
+						// 쇼핑 계속하기버튼 or 장바구니 가기버튼 팝업
+						if(pdtListConfirmRemaining()) {
+							location.href = "cartMain.pr";
+						}
+						// 취소하면 뭔가 문제생김
+					}
+					else if(result === '-1') {
+						alert('재고가 없는 상품입니다!');
+					}
+					else {
+						alert('잠시 후 다시 시도해주세요!');
+					}
+				},
+				error : () => {
+					alert('요청 실패');
+				}
+			});
+			
+		});
+		
+		// 상품 1개 추가 후 장바구니로 이동할지 여부 체크
 	    function pdtListConfirmRemaining(){
 	    	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
-	    }
+	    };
 	    
 	
 	    

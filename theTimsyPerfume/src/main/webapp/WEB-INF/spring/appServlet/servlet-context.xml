@@ -44,6 +44,8 @@
 			<mapping path="/alcoholPdtDetail.pr/*" />
 			<mapping path="/selectAlcoholPdtList.pr" />
 			<mapping path="/selectAlcoholPdtList.pr/*" />
+			<mapping path="/ajaxAddCartSingleQuan.pa" />
+			<mapping path="/ajaxAddCartSingleQuan.pa/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.AdultValidationInterceptor" id="AdultValidationInterceptor" />
 		</interceptor>
 	</interceptors>

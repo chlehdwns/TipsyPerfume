@@ -57,9 +57,10 @@ public class AjaxProductControllerPR {
 	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
 										HttpSession session) {
-		System.out.println(pdtNo + "옵션 : " + pdtOptionNo);
+		System.out.println("상품번호 : " + pdtNo + " / 옵션 : " + pdtOptionNo);
 		System.out.println("유저번호 : " + ((User)session.getAttribute("loginUser")).getUserNo());
-		if(pdtNo != 0) { // 옵션은 없을 수도 있음 / @@@서버단 유저 null체크 필요한가 ㄴ
+		
+		if(pdtNo != 0) {
 			CartVO cart = new CartVO();
 			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			cart.setPdtNo(pdtNo);
@@ -76,9 +77,9 @@ public class AjaxProductControllerPR {
 	 * @param pdtNo
 	 * @return
 	 */
-	@GetMapping(value="ajaxShowCartQuickAddModal.pa", produces="application/json; charset=UTF-8")
-	public String ajaxShowCartQuickAddModal(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
-		return new Gson().toJson(productService.ajaxShowCartQuickAddModal(pdtNo));
+	@GetMapping(value="ajaxCreateCartQuickAddModal.pa", produces="application/json; charset=UTF-8")
+	public String ajaxCreateCartQuickAddModal(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
+		return new Gson().toJson(productService.ajaxCreateCartQuickAddModal(pdtNo));
 	}
 	
 	

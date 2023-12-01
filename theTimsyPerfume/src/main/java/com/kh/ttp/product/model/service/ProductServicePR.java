@@ -129,7 +129,7 @@ public interface ProductServicePR {
 	 * @return
 	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
 	 */
-	ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo);
+	ArrayList<ProductOption> ajaxCreateCartQuickAddModal(int pdtNo);
 	
 	
 	

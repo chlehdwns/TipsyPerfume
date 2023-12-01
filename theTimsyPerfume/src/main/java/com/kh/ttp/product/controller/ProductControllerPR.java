@@ -95,6 +95,7 @@ public class ProductControllerPR {
 	}
 	
 	
+	// 카트 메인 가기
 	@GetMapping("cartMain.pr")
 	public String cartMain(ModelAndView mv, HttpSession session) {
 //		if(null != session.getAttribute("loginUser")) {

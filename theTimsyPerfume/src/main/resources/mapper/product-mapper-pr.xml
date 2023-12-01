@@ -41,21 +41,7 @@
 	</select>
 	
 	
-	<!-- 1개 상품(특정 옵션)의 재고 개수 조회 -->
-	<select id="selectStockWithOption" parameterType="_int" resultType="_int">
-		SELECT
-			   PDT_STOCK
-		  FROM
-		  	   TB_PRODUCT
-		  JOIN
-			   TB_PRODUCT_OPTION USING(PDT_NO)
-	 	 WHERE
-			   PDT_NO = #{pdtNo}
-		   AND
-		  	   PDT_OPTION_NO = #{pdtOptionNo}
-		   AND
-		  	   PDT_STATUS = 'Y'
-	</select>
+
 	
 	<!-- 위시리스트 COUNT / 특정 유저가 한 상품에 위시리스트 추가한 내역이 있는지 조회 -->
 	<select id="countWishOne" parameterType="wishlist" resultType="_int">
@@ -80,6 +66,22 @@
 			   USER_NO = #{userNo}
 		   AND
 		   	   PDT_NO = #{pdtNo}
+	</select>
+	
+	<!-- 1개 상품(특정 옵션)의 재고 개수 조회 -->
+	<select id="selectStockWithOption" parameterType="_int" resultType="_int">
+		SELECT
+			   NVL(PDT_STOCK, 0)
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+			   TB_PRODUCT_OPTION USING(PDT_NO)
+	 	 WHERE
+			   PDT_NO = #{pdtNo}
+		   AND
+		  	   PDT_OPTION_NO = #{pdtOptionNo}
+		   AND
+		  	   PDT_STATUS = 'Y'
 	</select>
 	
 	
@@ -168,25 +170,23 @@
 	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	
 	<select id="selectPdtOptionOne" parameterType="_int" resultMap="productOptionResultSet">
 		SELECT
-			   PDT_NAME,
-			   PDT_CATEG_NO,
-			   PDT_CTEG,
-			   PDT_FAMILY,
-			   PDT_MANUFAC,
-			   PDT_GROUP,
-			   PDT_OPTION_DETAIL
+		       PDT_NAME,
+		       PDT_OPTION_NO,
+		       PDT_NO,
+		       PDT_OPTION_FIRST,
+		       PDT_OPTION_SECOND,
+		       PDT_OPTION_PRICE,
+		       PDT_OPTION_STOCK
 		  FROM
-		  	   TB_PRODUCT_CATEGORY
+		       TB_PRODUCT_OPTION
 		  JOIN
-		  	   TB_PRODUCT	    
+		       TB_PRODUCT USING(PDT_NO)	    
 		 WHERE
-		 	   PDT_NO = #{pdtNo}
+		       PDT_NO = #{pdtNo}
 		   AND
-		   	   PDT_FAMILY = 'B'
+		       PDT_STATUS = 'Y'
 		   AND
-		   	   PDT_STATUS = 'Y'
-		   AND
-		   	   PDT_STOCK > 0
+		   	   PDT_OPTION_STOCK > 0
 	</select>
 	
 	
