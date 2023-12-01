@@ -68,9 +68,9 @@ public class ProductControllerPR {
 	
 	// 향수 디테일조회
 	@GetMapping("perfumePdtDetail.pr") // pdtNo, F
-	public void perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
+	public String perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 								 ModelAndView mv) {
-		//
+		return "product/ProductDetail";
 	}
 	
 	// 주류전체조회
@@ -90,12 +90,8 @@ public class ProductControllerPR {
 	
 	// 주류 디테일조회
 	@GetMapping("alcoholPdtDetail.pr")
-	public void alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
-		if(pdtNo > 0) {
-			
-		} else {
-			
-		}
+	public String alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
+		return "product/productDetail";
 	}
 	
 	

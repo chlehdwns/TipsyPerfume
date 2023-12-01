@@ -52,7 +52,7 @@
 	<div align="center">
 		<button type="button" id="submit-btn" class="btn btn-primary">작성하기</button>
 		<button type="reset" class="btn btn-danger" onclick="summerReset();">취소하기</button>
-		<button type="button" class="btn btn-dark" onclick="location.href='board?boardCtgy=${boardCtgyCode }'">돌아가기</button>
+		<button type="button" class="btn btn-dark" onclick="history.back();">돌아가기</button>
 	</div>
 </form>
 </div>

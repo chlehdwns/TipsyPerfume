@@ -19,16 +19,8 @@
 </head>
 <body>
 	<br><br>
-	
-	<!-- Modal -->
 
-	
-	
-	
-	
-	
-	
-	<div id="addressContainer" class="container mt-3 modal fade" tabindex="-1" aria-labelledby="addressContainerLabel" aria-hidden="true">
+	<div id="addressContainer" class="mt-3 modal fade" tabindex="-1" aria-labelledby="addressContainerLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 		

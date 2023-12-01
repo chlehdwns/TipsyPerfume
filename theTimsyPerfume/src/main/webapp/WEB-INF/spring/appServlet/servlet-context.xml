@@ -39,6 +39,13 @@
 			<mapping path="/noticeWrite/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.AdminInterceptor" id="AdminInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/alcoholPdtDetail.pr" />
+			<mapping path="/alcoholPdtDetail.pr/*" />
+			<mapping path="/selectAlcoholPdtList.pr" />
+			<mapping path="/selectAlcoholPdtList.pr/*" />
+			<beans:bean class="com.kh.ttp.common.interceptor.AdultValidationInterceptor" id="AdultValidationInterceptor" />
+		</interceptor>
 	</interceptors>
 	
 	

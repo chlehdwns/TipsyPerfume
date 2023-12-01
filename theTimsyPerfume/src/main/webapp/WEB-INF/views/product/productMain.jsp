@@ -34,19 +34,14 @@
 </head>
 
 <body>
-    <!--
-        pdtCateg(PRODUCT_CATEGORY주류향수구분)
-        주류면? (식별자 A)
-        ${pdtMainTitleText} = BEST LIQOURS
-        ${pdtCateg} = 주류
-        향수면? (식별자B)
-        ${pdtMainTitleText} = BEST PERFUMES
-        ${pdtCateg} = 향수
-    -->
+
 
 	<jsp:include page="../common/header.jsp" />
-	<jsp:include page="../frags/addressEnrollForm.jsp" />
+	<!-- 로그인/회원가입 모달 -->
+	<jsp:include page="../frags/loginJoinModal.jsp" />
 	
+
+	<!--
 	<div align="center">
 		<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addressContainer">배송지 입력페이지 가기</button>
 	</div>
@@ -55,7 +50,7 @@
 			$('#addressContainer').modal("show");
 		}
 	</script>
-	
+	-->
     <div id="productMainWrap" class="container">
 		<c:choose>
 			<c:when test="${not empty pdtCteg and (pdtCteg eq 'A' or pdtCteg eq 'F')}">
@@ -196,13 +191,33 @@
 		</c:choose>
     </div>
 	
-	
-	
-	<!-- 로그인/회원가입 모달 include -->
-	<jsp:include page="../frags/loginJoinModal.jsp" />
-	
+
 	<!-- js파일 -->
 	<script src="resources/js/product/productMain.js"></script>
+	
+	<script>
+		$(() => {
+			console.log('${adultResult}');
+		})
+	</script>
+	
+	<c:if test="${adultResult eq 'N'}">
+		<script>
+			$(() => {
+				$('#pdtMainFirstModal').modal("show");
+			});
+		</script>
+		<c:remove var="adultResult" scope="session" />
+	</c:if>
+	
+	<script>
+		$(() => {
+			console.log('지운 후');
+			console.log('${adultResult}');
+		})
+	</script>
+	
+
 </body>
 
 </html>

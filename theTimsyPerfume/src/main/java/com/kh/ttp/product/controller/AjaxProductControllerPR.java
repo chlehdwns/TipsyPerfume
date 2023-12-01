@@ -34,10 +34,12 @@ public class AjaxProductControllerPR {
 	// @@@Ajax는 만약 LoginInterceptor가 필요하면 따로 만들어야..!
 	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
 	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
-		if((session.getAttribute("loginUser") != null) && pdtNo > 0) {
+		User user = (User)session.getAttribute("loginUser");
+		System.out.println(pdtNo + " <<pdtNo" + user + " << 유저");
+		if((user != null) && pdtNo > 0) {
 			WishlistVO wishlist = new WishlistVO();
 			wishlist.setPdtNo(pdtNo);
-			wishlist.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
+			wishlist.setUserNo(user.getUserNo());
 			boolean isFilledHeart = productService.ajaxChangeWishOne(wishlist); // 가독성 위해
 			return isFilledHeart + "";
 		} else {
