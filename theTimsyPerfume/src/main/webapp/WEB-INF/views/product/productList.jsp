@@ -127,92 +127,11 @@
 		// pdtNo 배열 만들어 넘김
 		// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
 
-		var $pdtImgArea = $('.pdt-list-pdtImgSrc');
-		var $pdtIconArea = $('.pdt-list-icon-area');
-	    var $pdtListCart = $('.pdt-list-cart');
-	    var $pdtListHeart = $('.pdt-list-heart');
 	    
 
 	    
 		
-	    // 장바구니 모달창 생성 후 띄우기
-		function ajaxAddCartOne(e) {
-  			if('${loginUser}' != '') {
-  				let $pdtNo = $(e).siblings('input[type=hidden]').val();
-  				let $pdtName = $(e).siblings('.pdt-name').text();
-  				ajaxCreateCartQuickAddModal($pdtNo, $pdtName);
-				console.log('스코프 밖 / pdtNo : ' + $pdtNo + ' / pdtName : ' + $pdtName);
-			};
-	    };
-	    
-	    // 장바구니 담기 버튼 클릭 시 이벤트
-		$('#cartQuickAddBtn').click(() => {
-			let $pdtNo = $('#cartSelectedPdtNo').attr('class');
-			let $pdtOptionNo = $('#cartModalSelectInput').attr('option', 'selected').val();
-			console.log($pdtNo + '<<상품넘버 ' + $pdtOptionNo + '<<옵션넘버')
-			$.ajax({
-				url : 'ajaxAddCartSingleQuan.pa',
-				method : 'POST',
-				data : { pdtNo : $pdtNo,
-						 pdtOptionNo : $pdtOptionNo },
-				success : result => {
-					console.log('result : ' + result);
-					console.log('-----------------------------');
-					//hideCartQuickAddModal();
-					if(result === '1') {
-						// 쇼핑 계속하기버튼 or 장바구니 가기버튼 팝업
-						if(pdtListConfirmRemaining()) {
-							location.href = "cartMain.pr";
-						}
-					}
-					else if(result === '-1') {
-						alert('재고가 없는 상품입니다!');
-					}
-					else {
-						alert('잠시 후 다시 시도해주세요!');
-					}
-				},
-				error : () => {
-					alert('요청 실패');
-				}
-			});
-			
-		});
-		
-		// 상품 1개 추가 후 장바구니로 이동할지 여부 체크
-	    function pdtListConfirmRemaining(){
-	    	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
-	    };
-	    
-	
-	    
-		// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-	    function ajaxChangeWishOne(e) {
-	    	if('${loginUser}' != '') {
-	    		console.log('로그인 한 유저');
-	    		
-	    		$.ajax({
-	    			url : 'ajaxChangeWishOne.pa',
-	    			method : 'POST',
-	    			data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
-	    			success : result => {
-	    				console.log(result);
-	    				if(result === 'true') {
-	    					$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
-	    				}
-	    				else if(result === 'false') {
-	    					$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
-	    				}
-	    				else {
-	    					alert('잠시 후 다시 시도해주세요');
-	    				}
-	    			},
-	    			error : () => {
-	    				alert('요청 실패');
-	    			}
-	    		});
-	    	}
-		 }
+
 	    
 	    
 	    

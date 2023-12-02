@@ -88,9 +88,9 @@ public class ProductDaoPR {
 	
 	
 	// 주류 디테일조회
-	//public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
-	//	return null;
-	//}
+	public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+		return null;
+	}
 	
 	
 	/**

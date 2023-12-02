@@ -91,6 +91,8 @@ public class ProductControllerPR {
 	// 주류 디테일조회
 	@GetMapping("alcoholPdtDetail.pr")
 	public String alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo) {
+		System.out.println(pdtNo);
+		System.out.println(productService.alcoholPdtDetail(pdtNo));
 		return "product/productDetail";
 	}
 	
