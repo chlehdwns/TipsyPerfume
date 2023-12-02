@@ -8,9 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.CartVO;
-import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
+import com.kh.ttp.productOption.model.vo.ProductOption;
 
 @Repository
 public class ProductDaoPR {

@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class PayVO {
+public class PayVO extends OrderDetailVO {
 	/*
 	PAY_NO	NUMBER
 	PAY_METHOD	VARCHAR2(1 BYTE)
@@ -20,7 +20,6 @@ public class PayVO {
 	PAY_STATUS	VARCHAR2(1 BYTE)
 	PAY_DATE	DATE
 	*/
-	private int payNo;
 	private String payMethod;
 	private int payTotal;
 	private int payAdjust;
@@ -28,5 +27,5 @@ public class PayVO {
 	private String payName;
 	private String payStatus;
 	private String payDate;
-
+	
 }

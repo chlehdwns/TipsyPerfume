@@ -1,14 +1,15 @@
 // 카트 수량선택 모달 호출
 function ajaxCreateCartQuickAddModal($pdtNo, $pdtName) {
-	console.log('모달창 내부 : ' + $pdtNo);
+	console.log('모달창 내부 : ' + $pdtNo + 'ajaxCreateCartQuickAddModal.pa' + '/' + $pdtNo);
 
 	$.ajax({
-		url : 'ajaxCreateCartQuickAddModal.pa',
-		data : { pdtNo : $pdtNo },
+		url: '/tipsyPerfume/ajaxCreateCartQuickAddModal.pa/' + $pdtNo,
+		type : 'GET',
 		success : result => {
+			
 			let $cartModalSelectInput = $('#cartModalSelectInput');
 			
-			$cartModalSelectInput.prev('div').html($pdtName + '<br><br>').attr('id', $pdtNo);
+			$cartModalSelectInput.prev('div').html($pdtName + '<br><br>').attr('id', 'cartSelectedPdtNo').attr('class', $pdtNo);
 			
 			var optionValStr = '';
 			for(let i in result) {

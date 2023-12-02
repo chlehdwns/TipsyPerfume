@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class OrderDetailVO {
+public abstract class OrderDetailVO {
 	/*
 	ORDER_DETAIL_NO	NUMBER
 	ORDER_NO	NUMBER
@@ -21,9 +21,8 @@ public class OrderDetailVO {
 	ORDER_QUANTITY	NUMBER
 	*/
 	private int orderDetailNo;
-	
-	private int payNo;
 	private int orderNo;
+	private int payNo;
 	
 	private ArrayList<OrderProduct> orderProduct;
 }

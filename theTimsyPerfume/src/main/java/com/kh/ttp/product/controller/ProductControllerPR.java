@@ -37,7 +37,7 @@ public class ProductControllerPR {
 		if("A".equals(pdtCteg) || "F".equals(pdtCteg)) {
 			int listCount = productService.selectProductCount(pdtCteg);
 			PageInfo pi = Pagination.getPageInfo(listCount, 1, 6, 10);
-			
+
 			mv.addObject("pMap", productService.productMainList(pdtCteg, pi))
 			  .addObject("pdtCteg", pdtCteg) // 주류 / 향수 식별자
 			  .addObject("sort", sort)

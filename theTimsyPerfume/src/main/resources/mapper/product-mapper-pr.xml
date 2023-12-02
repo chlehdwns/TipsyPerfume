@@ -18,6 +18,7 @@
 		<result column="CART_NO" property="cartNo" />
 		<result column="USER_NO" property="userNo" />
 		<result column="PDT_NO" property="pdtNo" />
+		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
 		<result column="CART_QUANTITY" property="cartQuantity" />
 	</resultMap>
 	
@@ -227,9 +228,9 @@
 	<insert id="insertCartOne" parameterType="cart">
 		INSERT
 		  INTO
-		  	   TB_CART(CART_NO, USER_NO, PDT_NO, CART_QUANTITY)
+		  	   TB_CART(CART_NO, USER_NO, PDT_NO, PDT_OPTION_NO, CART_QUANTITY)
 		VALUES
-			   (SEQ_CART.NEXTVAL, #{userNo}, #{pdtNo}, #{cartAddingQuantity})
+			   (SEQ_CART.NEXTVAL, #{userNo}, #{pdtNo}, #{pdtOptionNo}, #{cartAddingQuantity})
 	</insert>
 	
 	<!-- 장바구니 수량 UPDATE구문 -->
@@ -242,6 +243,8 @@
 		 	   USER_NO = #{userNo}
 		   AND
 		 	   PDT_NO = #{pdtNo}
+		   AND
+		 	   PDT_OPTION_NO = #{pdtOptionNo}
 	</update>
 	
 	

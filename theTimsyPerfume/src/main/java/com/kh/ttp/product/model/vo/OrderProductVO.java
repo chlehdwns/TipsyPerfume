@@ -5,9 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter@Setter@NoArgsConstructor
-public abstract class OrderProduct {
+public class OrderProduct {
 
+	private int orderDetailNo;
 	private int pdtNo;
+	private int pdtOptionNo;
 	private int orderQuantity;
 	
 }
