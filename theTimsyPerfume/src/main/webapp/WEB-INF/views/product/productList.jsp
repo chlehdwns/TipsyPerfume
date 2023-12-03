@@ -27,8 +27,7 @@
 	<!-- 헤더 include -->
 	<jsp:include page="../common/header.jsp" />
 	
-    <!-- 모달종류 include -->
-    <jsp:include page="../frags/loginJoinModal.jsp" />
+    <!-- 카트 include -->
     <jsp:include page="../frags/cartQuickAddModal.jsp" />
     
     
@@ -117,6 +116,8 @@
         </div>
     </div>
     
+    <!-- 푸터 -->
+    <jsp:include page="../common/footer.jsp" />
 
 
 	    
