@@ -72,7 +72,7 @@
 	<!-- 1개 상품(특정 옵션)의 재고 개수 조회 -->
 	<select id="selectStockWithOption" parameterType="_int" resultType="_int">
 		SELECT
-			   NVL(PDT_STOCK, 0)
+			   NVL(PDT_OPTION_STOCK, 0)
 		  FROM
 		  	   TB_PRODUCT
 		  JOIN

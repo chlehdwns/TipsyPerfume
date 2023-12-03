@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter@Setter@NoArgsConstructor
-public class OrderProduct {
+public class OrderProductVO {
 
 	private int orderDetailNo;
 	private int pdtNo;
