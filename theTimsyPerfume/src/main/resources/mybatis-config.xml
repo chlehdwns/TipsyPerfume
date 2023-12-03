@@ -19,18 +19,20 @@
 		<typeAlias type="com.kh.ttp.productCategory.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductVO" alias="product"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.ProductSelectVO" alias="productSelect" />
+		<typeAlias type="com.kh.ttp.product.model.vo.ProductDetailSelectVO" alias="productDetailSelect" />
 		<typeAlias type="com.kh.ttp.productOption.model.vo.ProductOption" alias="productOption"/>
 		<typeAlias type="com.kh.ttp.productFile.model.vo.ProductFile" alias="productFile"/>
 		<typeAlias type="com.kh.ttp.funding.model.vo.Funding" alias="funding"/>
-		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.FundingSelectVO" alias="fundingSelect"/>
-		<typeAlias type="com.kh.ttp.product.model.vo.PayVO" alias="pay"/>
+		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
+		
 		<typeAlias type="com.kh.ttp.product.model.vo.WishlistVO" alias="wishlist"/>
-
-		<typeAlias type="com.kh.ttp.product.model.vo.OrderVO" alias="order"/>
-		<typeAlias type="com.kh.ttp.product.model.vo.OrderDetailVO" alias="orderDetail"/>
-
 		<typeAlias type="com.kh.ttp.product.model.vo.CartVO" alias="cart" />
+
+		<typeAlias type="com.kh.ttp.product.model.vo.OrderDetailVO" alias="orderDetail"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.OrderVO" alias="order"/>
+		<typeAlias type="com.kh.ttp.product.model.vo.PayVO" alias="pay"/>
+
 
 		<typeAlias type="com.kh.ttp.adminManage.model.vo.AdminVo" alias="admin"/>
 

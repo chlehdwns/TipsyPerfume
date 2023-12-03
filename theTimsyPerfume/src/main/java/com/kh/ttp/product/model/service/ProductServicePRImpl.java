@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductDetailSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.productOption.model.vo.ProductOption;
@@ -84,11 +85,11 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 	
 	@Override
-	public ProductSelectVO perfumePdtDetail(int pdtNo) {  // pdtNo, F
-		//HashMap<String, Object> pMap = new HashMap();
-		//pMap.put("pdtNo", pdtNo);
-		//pMap.put("pdtCteg", "F");
-		return null;
+	public ArrayList<ProductDetailSelectVO> perfumePdtDetail(int pdtNo) {  // pdtNo, F
+		HashMap<String, Object> pMap = new HashMap();
+		pMap.put("pdtNo", pdtNo);
+		pMap.put("pdtCteg", "F");
+		return productDao.perfumePdtDetail(sqlSession, pMap);
 	}
 
 	
@@ -106,12 +107,12 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 	
 	@Override
-	public ProductSelectVO alcoholPdtDetail(int pdtNo) {  // pdtNo, A
-		
-		//HashMap<String, Object> pMap = new HashMap();
-		//pMap.put("pdtNo", pdtNo);
-		//pMap.put("pdtCteg", "A");
-		return null;
+	public ArrayList<ProductDetailSelectVO> alcoholPdtDetail(int pdtNo) {  // pdtNo, A
+		HashMap<String, Object> pMap = new HashMap();
+		pMap.put("pdtNo", pdtNo);
+		pMap.put("pdtCteg", "A");
+		System.out.println("다녀오나");
+		return productDao.alcoholPdtDetail(sqlSession, pMap);
 	}
 
 

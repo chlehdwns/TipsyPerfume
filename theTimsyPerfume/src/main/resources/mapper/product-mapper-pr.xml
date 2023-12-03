@@ -14,6 +14,26 @@
 		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
 	</resultMap>
 	
+	<resultMap id="productDetailSelectResultSet" type="productDetailSelect">
+		<result column="PDT_NO" property="pdtNo" />
+		<result column="PDT_NAME" property="pdtName" />
+		<result column="PDT_INTRO" property="pdtIntro" />
+		<result column="PDT_DESCRIPTION" property="pdtDescription" />
+		<result column="PDT_SHIPPING" property="pdtShipping" />
+		<result column="PDT_COUNT" property="pdtCount" />
+		<result column="PDT_CATEG_NO" property="pdtCategNo" />
+		<result column="PDT_MANUFAC" property="pdtManufac" />
+		<result column="PDT_GROUP" property="pdtGroup" />
+		<result column="PDT_FILE_NO" property="pdtFileNo" />
+		<result column="PDT_FILE_INDEX" property="pdtFileIndex" />
+		<result column="PDT_DETAIL_IMG_SRC" property="pdtDetailImgSrc" />
+		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
+		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst" />
+		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond" />
+		<result column="PDT_OPTION_PRICE" property="pdtOptionPrice" />
+		<result column="PDT_OPTION_STOCK" property="pdtOptionStock" />
+	</resultMap>
+	
 	<resultMap id="cartResultSet" type="cart">
 		<result column="CART_NO" property="cartNo" />
 		<result column="USER_NO" property="userNo" />
@@ -28,6 +48,8 @@
 		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst" />
 		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond" />
 	</resultMap>
+	
+	
 	
 	
 	<!-- SELECT -->
@@ -169,7 +191,7 @@
 	
 	
 	<!-- 상품 디테일 조회 -->
-	<select id="productDetailList" resultMap="productDetailListResultMap">
+	<select id="productDetailList" parameterType="map" resultMap="productDetailSelectResultSet">
 		SELECT
 			   PDT_NO,
 			   PDT_NAME,
@@ -185,7 +207,7 @@
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_DETAIL_IMG_SRC",
 			   PDT_OPTION_NO,
 			   PDT_OPTION_FIRST,
-			   <if test="pdtCteg eq 'A'">
+			   <if test='pdtCteg eq "A"'>
 			   PDT_OPTION_SECOND,
 			   </if>
 			   PDT_OPTION_PRICE,
@@ -206,12 +228,7 @@
 			   PDT_FAMILY = 'B'
 	</select>
 	<!-- PDT_FAMILY = 'B'는 최소한의 조건체크 -->
-	
-	<resultMap id="productDetailListResultMap" type="">
-		<id property="" column="" />
-		<association property="" resultMap="">
-		</association>
-	</resultMap>
+
 	
 	
 	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	

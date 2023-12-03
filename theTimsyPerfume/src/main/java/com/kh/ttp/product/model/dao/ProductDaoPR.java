@@ -1,6 +1,7 @@
 package com.kh.ttp.product.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -8,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.CartVO;
+import com.kh.ttp.product.model.vo.ProductDetailSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.productOption.model.vo.ProductOption;
@@ -51,6 +53,7 @@ public class ProductDaoPR {
 	
 	
 	/**
+	 * 상품 메인 조회<br>
 	 * 주류/향수 식별자(pdtCteg)를 받아 해당되는 상품을 각 정렬 기준별로 조회해 ArrayList(ProductSelectVO리터럴)로 반환한다<br>
 	 * 최신순, 베스트셀러순, 위시리스트순으로 조회한다
 	 * @param pMap	:<br>
@@ -75,11 +78,11 @@ public class ProductDaoPR {
 	public ArrayList<ProductSelectVO> selectPerfumePdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
 		return (ArrayList)sqlSession.selectList("productMapperPR.productSelectList", pMap, rowBounds);
 	}
-
-	// 향수 디테일조회
-	//public ProductSelectVO perfumePdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
-	//	return null;
-	//}
+	
+	// 향수 디테일 조회
+	public ArrayList<ProductDetailSelectVO> perfumePdtDetail(SqlSessionTemplate sqlSession, HashMap<String, Object> pMap) {
+		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
+	}
 	
 	//주류 전체조회
 	public ArrayList<ProductSelectVO> selectAlcoholPdtList(SqlSessionTemplate sqlSession, Map<String, Object> pMap, RowBounds rowBounds) {
@@ -88,8 +91,8 @@ public class ProductDaoPR {
 	
 	
 	// 주류 디테일조회
-	public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
-		return null;
+	public ArrayList<ProductDetailSelectVO> alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
 	}
 	
 	
@@ -139,6 +142,8 @@ public class ProductDaoPR {
 	public ArrayList<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {
 		return (ArrayList)sqlSession.selectList("productMapperPR.selectPdtOptionOne", pdtNo);
 	}
+
+
 
 
 
