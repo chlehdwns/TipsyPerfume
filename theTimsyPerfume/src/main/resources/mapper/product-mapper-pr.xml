@@ -168,6 +168,52 @@
 	</select>
 	
 	
+	<!-- 상품 디테일 조회 -->
+	<select id="productDetailList" resultMap="productDetailListResultMap">
+		SELECT
+			   PDT_NO,
+			   PDT_NAME,
+			   PDT_INTRO,
+			   PDT_DESCRIPTION,
+			   PDT_SHIPPING,
+			   PDT_COUNT,
+			   PDT_CATEG_NO,
+			   PDT_MANUFAC,
+			   PDT_GROUP,
+			   PDT_FILE_NO,
+			   PDT_FILE_INDEX,
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_DETAIL_IMG_SRC",
+			   PDT_OPTION_NO,
+			   PDT_OPTION_FIRST,
+			   <if test="pdtCteg eq 'A'">
+			   PDT_OPTION_SECOND,
+			   </if>
+			   PDT_OPTION_PRICE,
+			   PDT_OPTION_STOCK
+		  FROM
+			   TB_PRODUCT
+		  JOIN
+			   TB_PRODUCT_FILE USING(PDT_NO)
+		  JOIN
+			   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+		  JOIN
+			   TB_PRODUCT_OPTION USING(PDT_NO)
+		 WHERE
+			   PDT_NO = #{pdtNo}
+		   AND
+			   PDT_STATUS = 'Y'
+		   AND
+			   PDT_FAMILY = 'B'
+	</select>
+	<!-- PDT_FAMILY = 'B'는 최소한의 조건체크 -->
+	
+	<resultMap id="productDetailListResultMap" type="">
+		<id property="" column="" />
+		<association property="" resultMap="">
+		</association>
+	</resultMap>
+	
+	
 	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	
 	<select id="selectPdtOptionOne" parameterType="_int" resultMap="productOptionResultSet">
 		SELECT
