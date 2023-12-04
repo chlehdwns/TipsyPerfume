@@ -35,7 +35,7 @@
 
 <body>
 
-
+	<!-- 헤더 -->
 	<jsp:include page="../common/header.jsp" />
 	<!-- 로그인/회원가입 모달 -->
 	<jsp:include page="../frags/loginJoinModal.jsp" />
@@ -190,7 +190,9 @@
 			
 		</c:choose>
     </div>
-	
+    
+    <!-- 푸터 -->
+	<jsp:include page="../common/footer.jsp" />
 
 	<!-- js파일 -->
 	<script src="resources/js/product/productMain.js"></script>

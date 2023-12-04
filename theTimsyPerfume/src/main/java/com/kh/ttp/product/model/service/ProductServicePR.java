@@ -5,9 +5,9 @@ import java.util.HashMap;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.product.model.vo.CartVO;
-import com.kh.ttp.product.model.vo.ProductOption;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
+import com.kh.ttp.productOption.model.vo.ProductOption;
 
 public interface ProductServicePR {
 
@@ -57,13 +57,13 @@ public interface ProductServicePR {
 	ArrayList<ProductSelectVO> selectPerfumePdtList(String sort, PageInfo pi);
 	
 	// 향수 디테일조회 perfumePdtDetail
-	ProductSelectVO perfumePdtDetail(int pdtNo);
+	ArrayList<ProductSelectVO> perfumePdtDetail(int pdtNo);
 	
 	// 주류 전체조회 selectAlcoholPdtList
 	ArrayList<ProductSelectVO> selectAlcoholPdtList(String sort, PageInfo pi);
 	
 	// 주류 디테일조회 alcoholPdtDetail
-	ProductSelectVO alcoholPdtDetail(int pdtNo);
+	ArrayList<ProductSelectVO> alcoholPdtDetail(int pdtNo);
 	
 	// 장바구니 전체조회
 	/**
@@ -129,7 +129,7 @@ public interface ProductServicePR {
 	 * @return
 	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
 	 */
-	ArrayList<ProductOption> ajaxShowCartQuickAddModal(int pdtNo);
+	ArrayList<ProductOption> ajaxCreateCartQuickAddModal(int pdtNo);
 	
 	
 	

@@ -1,4 +1,4 @@
-package com.kh.ttp.product.model.vo;
+package com.kh.ttp.orderKinds.model.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class OrderVO {
+public class OrderVO extends OrderDetailVO {
 	/*
 	ORDER_NO	NUMBER
 	USER_NO	NUMBER
@@ -19,11 +19,11 @@ public class OrderVO {
 	ORDER_ARRIV_DATE	DATE
 	ORDER_MESSAGE	VARCHAR2(90 BYTE)
 	*/
-	private int orderNo;
 	private int userNo;
 	private int ReceiverNo;
 	private String orderDate;
 	private String orderEstDate;
 	private String orderArrivDate;
 	private String orderMessage;
+
 }

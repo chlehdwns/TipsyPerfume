@@ -1,10 +1,13 @@
 package com.kh.ttp.productFile.model.vo;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @Builder
 public class ProductFile {
 	private int pdtFileNo;
 	private int pdtNo;

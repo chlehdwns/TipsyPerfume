@@ -1,10 +1,13 @@
 package com.kh.ttp.productCategory.model.vo;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @Builder
 public class ProductCategory {
 	private int pdtCategNo; 
 	private String pdtCteg; //주류 향수 구분 주류 : A 향수 : F

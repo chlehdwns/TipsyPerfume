@@ -1,17 +1,16 @@
-package com.kh.ttp.product.model.vo;
+package com.kh.ttp.orderKinds.model.vo;
 
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-public class OrderDetailVO {
+
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
+public abstract class OrderDetailVO {
 	/*
 	ORDER_DETAIL_NO	NUMBER
 	ORDER_NO	NUMBER
@@ -21,9 +20,8 @@ public class OrderDetailVO {
 	ORDER_QUANTITY	NUMBER
 	*/
 	private int orderDetailNo;
-	
-	private int payNo;
 	private int orderNo;
+	private int payNo;
 	
-	private ArrayList<OrderProduct> orderProduct;
+	private ArrayList<OrderProductVO> orderProduct;
 }
