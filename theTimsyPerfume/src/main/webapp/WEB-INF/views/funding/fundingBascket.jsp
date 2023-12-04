@@ -77,8 +77,8 @@
 
 	<div id="cartMainWrap" class="container">
 		<div id="cartMainBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col ps-5">전체선택</div>
+			<div class="cart-box-area"><input type="checkbox" id="check-all"></div>
+			<div class="col ps-5" >전체선택</div>
 			<div class="col-2"><button class="btn btn-danger">삭제</button></div>
 			<div class="col-2"><button class="btn btn-primary">주문</button></div>
 		</div>
@@ -134,13 +134,26 @@
 	<br/><br/><br/>	
 	
 	<script>
+	// 상품 왼쪽 체크박스 누를시 하단에 전체 금액이 바뀌게 하는 script
 		$(function(){
 			$('.cart-checked').click(() => {
-				if ($('.cart-checked').attr('checked',true)){
-					console.log(1);
+				if ($(this).attr('checked',true)){
+					console.log($(this).val());
 				}
 			})
 		})
+		//전체 체크 해제 기능
+		$(function(){
+			$('#check-all').click(() => {
+				let $all = $('#check-all').prop('checked');
+				if($all){
+					$('.cart-checked').prop('checked',true);
+				}
+				else{
+					$('.cart-checked').prop('checked',false);
+				}
+			})
+		});
 	</script>
 
 </body>
