@@ -106,7 +106,7 @@
 					<div class="col-12 ext-info-1">${cartSelect.fundingFee }/${cartSelect.cuttingPrice }</div>
 				</div>
 			</div>
-			<div class="col-2">${cartSelect.total }원</div>
+			<div class="col-2 total-price">${cartSelect.total }</div>
 		</div>
 		</c:forEach>
 		
@@ -119,8 +119,8 @@
 		<div id="cartSummary" class="row">
 			<div class="col">
 				<div class="row ps-5" >전체금액</div>
-				<div class="row ps-5" class="funding-total"></div>
-				<div class="row ps-5" class="funding-total"></div>
+				<div class="row ps-5" id="funding-total1">0</div>
+				<div class="row ps-5" id="funding-total2">0</div>
 			</div>
 			<div class="col-4">
 				<button class="btn btn-primary">주문</button>
@@ -136,9 +136,22 @@
 	<script>
 	// 상품 왼쪽 체크박스 누를시 하단에 전체 금액이 바뀌게 하는 script
 		$(function(){
-			$('.cart-checked').click(() => {
-				if ($(this).attr('checked',true)){
-					console.log($(this).val());
+			var a = ' ';
+			$('.cart-checked').click(function() {
+				if ($(this).is(':checked')){
+					//console.log($(this).parent().nextAll(".total-price").text());
+					const total = Number($(this).parent().nextAll(".total-price").text());
+					console.log(total);
+					
+					a =Number(a)+ total;
+					$('#funding-total2').html(a);
+					
+				}
+				else{
+					
+					const total = Number($(this).parent().nextAll(".total-price").text());
+					a = Number(a) - total;	
+					$('#funding-total2').html(a);
 				}
 			})
 		})
