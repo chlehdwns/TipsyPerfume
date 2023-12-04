@@ -9,7 +9,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.ttp.product.model.vo.CartVO;
-import com.kh.ttp.product.model.vo.ProductDetailSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
 import com.kh.ttp.productOption.model.vo.ProductOption;
@@ -80,7 +79,7 @@ public class ProductDaoPR {
 	}
 	
 	// 향수 디테일 조회
-	public ArrayList<ProductDetailSelectVO> perfumePdtDetail(SqlSessionTemplate sqlSession, HashMap<String, Object> pMap) {
+	public ArrayList<ProductSelectVO> perfumePdtDetail(SqlSessionTemplate sqlSession, HashMap<String, Object> pMap) {
 		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
 	}
 	
@@ -91,7 +90,7 @@ public class ProductDaoPR {
 	
 	
 	// 주류 디테일조회
-	public ArrayList<ProductDetailSelectVO> alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+	public ArrayList<ProductSelectVO> alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
 		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
 	}
 	

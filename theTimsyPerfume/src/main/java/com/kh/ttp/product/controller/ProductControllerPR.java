@@ -68,7 +68,7 @@ public class ProductControllerPR {
 	
 	// 향수 디테일조회
 	@GetMapping("perfumePdtDetail.pr") // pdtNo, F
-	public void perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
+	public ModelAndView perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 								   ModelAndView mv) {
 		if(pdtNo > 0) {
 			mv.addObject("pdtDetailList", productService.perfumePdtDetail(pdtNo))
@@ -78,7 +78,7 @@ public class ProductControllerPR {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")
 			  .setViewName("common/errorPage");
 		}
-		System.out.println("번호가없어요 퍼퓸디테일");
+		return mv;
 	}
 	
 	// 주류전체조회
@@ -98,7 +98,7 @@ public class ProductControllerPR {
 	
 	// 주류 디테일조회
 	@GetMapping("alcoholPdtDetail.pr")
-	public void alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
+	public ModelAndView alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										 ModelAndView mv) {
 		if(pdtNo > 0) {
 			System.out.println(productService.alcoholPdtDetail(pdtNo));
@@ -108,7 +108,7 @@ public class ProductControllerPR {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")
 			  .setViewName("common/errorPage");
 		}
-		System.out.println(pdtNo + "<<=번호가없어요 주류디테일");
+		return mv;
 	}
 	
 	

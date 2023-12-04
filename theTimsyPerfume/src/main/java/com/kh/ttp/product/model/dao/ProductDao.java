@@ -6,22 +6,17 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.orderKinds.model.vo.OrderDetailVO;
+import com.kh.ttp.orderKinds.model.vo.OrderVO;
+import com.kh.ttp.orderKinds.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
-import com.kh.ttp.product.model.vo.OrderDetailVO;
-import com.kh.ttp.product.model.vo.OrderVO;
-import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 
 @Repository
 public class ProductDao {
 	
-
-	
-	public ArrayList<ProductSelectVO> productMain(SqlSessionTemplate sqlSession, String pdtIdenKey) {
-		return null; //@@@@@@@@@@@@null해둠!!!주의*******
-	}
 
 	public int drinkFundingInsert(SqlSessionTemplate sqlSession, ProductVO product) {
 		return sqlSession.insert("productMapper.insertProduct", product);

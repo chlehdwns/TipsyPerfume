@@ -9,29 +9,16 @@
 		<result column="PDT_NAME" property="pdtName" />
 		<result column="PDT_INTRO" property="pdtIntro" />
 		<result column="PDT_DESCRIPTION" property="pdtDescription" />
-		<result column="PDT_MANUFAC" property="pdtManufac" />
-		<result column="REVIEW_AVG" property="reviewAvg" />
-		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
-	</resultMap>
-	
-	<resultMap id="productDetailSelectResultSet" type="productDetailSelect">
-		<result column="PDT_NO" property="pdtNo" />
-		<result column="PDT_NAME" property="pdtName" />
-		<result column="PDT_INTRO" property="pdtIntro" />
-		<result column="PDT_DESCRIPTION" property="pdtDescription" />
 		<result column="PDT_SHIPPING" property="pdtShipping" />
 		<result column="PDT_COUNT" property="pdtCount" />
 		<result column="PDT_CATEG_NO" property="pdtCategNo" />
+		<result column="PDT_CTEG" property="pdtCteg" />
 		<result column="PDT_MANUFAC" property="pdtManufac" />
 		<result column="PDT_GROUP" property="pdtGroup" />
 		<result column="PDT_FILE_NO" property="pdtFileNo" />
 		<result column="PDT_FILE_INDEX" property="pdtFileIndex" />
-		<result column="PDT_DETAIL_IMG_SRC" property="pdtDetailImgSrc" />
-		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
-		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst" />
-		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond" />
-		<result column="PDT_OPTION_PRICE" property="pdtOptionPrice" />
-		<result column="PDT_OPTION_STOCK" property="pdtOptionStock" />
+		<result column="PDT_IMG_SRC" property="pdtImgSrc" />
+		<result column="REVIEW_AVG" property="reviewAvg" />
 	</resultMap>
 	
 	<resultMap id="cartResultSet" type="cart">
@@ -191,7 +178,7 @@
 	
 	
 	<!-- 상품 디테일 조회 -->
-	<select id="productDetailList" parameterType="map" resultMap="productDetailSelectResultSet">
+	<select id="productDetailList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
 			   PDT_NO,
 			   PDT_NAME,
@@ -204,22 +191,13 @@
 			   PDT_GROUP,
 			   PDT_FILE_NO,
 			   PDT_FILE_INDEX,
-			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_DETAIL_IMG_SRC",
-			   PDT_OPTION_NO,
-			   PDT_OPTION_FIRST,
-			   <if test='pdtCteg eq "A"'>
-			   PDT_OPTION_SECOND,
-			   </if>
-			   PDT_OPTION_PRICE,
-			   PDT_OPTION_STOCK
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_DETAIL_IMG_SRC"
 		  FROM
 			   TB_PRODUCT
 		  JOIN
-			   TB_PRODUCT_FILE USING(PDT_NO)
-		  JOIN
 			   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
 		  JOIN
-			   TB_PRODUCT_OPTION USING(PDT_NO)
+			   TB_PRODUCT_FILE USING(PDT_NO)
 		 WHERE
 			   PDT_NO = #{pdtNo}
 		   AND

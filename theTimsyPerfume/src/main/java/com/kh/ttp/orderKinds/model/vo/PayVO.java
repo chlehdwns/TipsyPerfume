@@ -1,4 +1,4 @@
-package com.kh.ttp.product.model.vo;
+package com.kh.ttp.orderKinds.model.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

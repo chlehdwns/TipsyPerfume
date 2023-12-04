@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,9 +125,10 @@
 		<div id="pdtDetailLeft" class="container pdt-detail-container">
 			
 			<div id="pdtDetailThumbnail" class="row pdt-dtl-mg-top-30">
-				<img src="resources/image/product/alcohol/alcohol_2.jpg">
+				<img src="${pdtDetailList[0].pdtDetailImgSrc}">
 			</div>
-
+			
+			<!-- 리뷰 미리보기 ajax -->
 			<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">
 					<div class="col-3">
 						<img src="resources/image/product/alcohol/alcohol_1.png">
@@ -145,6 +147,7 @@
 					<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
 				</div>
 			</div>
+			
 			<div id="pdtDetailReviewEnd" class="row detail-bg">
 				<div class="col-8 pdt-dt-align">리뷰 000개</div>
 				<div class="col-4 pdt-dt-align">평점 : 4.8/5</div>
@@ -156,7 +159,7 @@
 		<div id="pdtDetailRight" class="container pdt-detail-container">
 		
 			<div class="row pdt-section-tl pdt-dtl-mg-top-30">
-				<h4 class="pdt-dt-align-center">브랜드 이름 | 오 드 뚜왈렛</h4>
+				<h4 class="pdt-dt-align-center">${pdtDetailList[0]. } | 오 드 뚜왈렛</h4>
 			</div>
 			<div class="row pdt-section-tl">
 				<h2 class="pdt-dt-align-center">향수이름</h2>
