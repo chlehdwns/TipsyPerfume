@@ -1,9 +1,8 @@
 // 카트 수량선택 모달 호출
 function ajaxCreateCartQuickAddModal($pdtNo, $pdtName) {
-	console.log('모달창 내부 : ' + $pdtNo + 'ajaxCreateCartQuickAddModal.pa' + '/' + $pdtNo);
 
 	$.ajax({
-		url: '/tipsyPerfume/ajaxCreateCartQuickAddModal.pa/' + $pdtNo,
+		url: '/tipsyPerfume/ajaxSelectPdtOptionOne.pa/' + $pdtNo,
 		type : 'GET',
 		success : result => {
 			

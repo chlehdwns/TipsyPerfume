@@ -84,7 +84,7 @@
 		                            <div class="swiper-slide" onclick="adultValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
-		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+		                            <div class="swiper-slide" onclick="location.href='perfumePdtDetail.pr?pdtNo=${product.pdtNo}'">
 		                        </c:if>
 			                        <img src="${product.pdtImgSrc}">
 			                        <div class="productBlockText1">${product.pdtManufac}</div>
@@ -127,7 +127,7 @@
 				                 <div class="swiper-slide" onclick="adultValidation('${product.pdtNo}');">
 				             </c:if>
 				             <c:if test="${pdtCteg eq 'F'}">
-				                 <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+				                 <div class="swiper-slide" onclick="location.href='perfumePdtDetail.pr?pdtNo=${product.pdtNo}'">
 				             </c:if>
 				              <img src="${product.pdtImgSrc}">
 				              <div class="productBlockText1">${product.pdtManufac}</div>
@@ -170,7 +170,7 @@
 		                            <div class="swiper-slide" onclick="adultValidation('${product.pdtNo}');">
 		                        </c:if>
 		                        <c:if test="${pdtCteg eq 'F'}">
-		                            <div class="swiper-slide" onclick="location.href='#${pdtNo}'">
+		                            <div class="swiper-slide" onclick="location.href='perfumePdtDetail.pr?pdtNo=${product.pdtNo}'">
 		                        </c:if>
 			                        <img src="${product.pdtImgSrc}">
 			                        <div class="productBlockText1">${product.pdtManufac}</div>

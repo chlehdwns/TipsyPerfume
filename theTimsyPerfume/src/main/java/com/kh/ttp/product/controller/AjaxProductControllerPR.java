@@ -1,6 +1,7 @@
 package com.kh.ttp.product.controller;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.product.model.service.ProductServicePR;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
@@ -31,6 +33,19 @@ public class AjaxProductControllerPR {
 	
 	private final ProductServicePR productService;
 	
+	
+	private HttpHeaders makeHeader(String type, String subtype, String encoding) {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(new MediaType(type, subtype, Charset.forName(encoding)));
+		return header;
+	}
+	
+	private ResponseEntity<String> returnAjaxErrorStr() {
+		return new ResponseEntity<String>("ERROR", makeHeader("text", "html", "UTF-8"), HttpStatus.OK);
+	}
+	 
+	
+	
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
 	 * 이미 있으면 위시리스트 취소(DELETE), 없으면 추가(INSERT)
@@ -44,7 +59,6 @@ public class AjaxProductControllerPR {
 	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
 	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
 		User user = (User)session.getAttribute("loginUser");
-		System.out.println(pdtNo + " <<pdtNo" + user + " << 유저");
 		if((user != null) && pdtNo > 0) {
 			WishlistVO wishlist = new WishlistVO();
 			wishlist.setPdtNo(pdtNo);
@@ -66,9 +80,6 @@ public class AjaxProductControllerPR {
 	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
 										HttpSession session) {
-		System.out.println("상품번호 : " + pdtNo + " / 옵션 : " + pdtOptionNo);
-		System.out.println("유저번호 : " + ((User)session.getAttribute("loginUser")).getUserNo());
-		
 		if(pdtNo != 0) {
 			CartVO cart = new CartVO();
 			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
@@ -86,20 +97,33 @@ public class AjaxProductControllerPR {
 	 * @param pdtNo
 	 * @return
 	 */
-	@GetMapping("ajaxCreateCartQuickAddModal.pa/{pdtNo}")
-	public ResponseEntity<List<ProductOption>> ajaxCreateCartQuickAddModal(@PathVariable(name="pdtNo") int pdtNo) {
-		System.out.println(pdtNo + "PdtNo임");
-		if(pdtNo > 0) {
-			HttpHeaders header = new HttpHeaders();
-			header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-			return new ResponseEntity<List<ProductOption>>(productService.ajaxCreateCartQuickAddModal(pdtNo), header, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+	@GetMapping("ajaxSelectPdtOptionOne.pa/{pdtNo}")
+	public ResponseEntity ajaxCreateCartQuickAddModal(@PathVariable(name="pdtNo") int pdtNo) {
+		return (pdtNo <= 0) ? returnAjaxErrorStr()
+							: new ResponseEntity<List<ProductOption>>(productService.ajaxSelectPdtOptionOne(pdtNo), makeHeader("application", "json", "UTF-8"), HttpStatus.OK);
 	}
 	
 	
-	
+	/**
+	 * 상품 번호, rowNum(여기서는 2)로 최신순 리뷰 2개를 조회하는 메소드
+	 * @param pdtNo
+	 * @return
+	 */
+	@GetMapping("ajaxSelectRecentTwoReview.pr/{pdtNo}")
+	public ResponseEntity ajaxSelectRecentTwoReview(@PathVariable(name="pdtNo") int pdtNo) {
+
+		if(pdtNo <= 0) {
+			return returnAjaxErrorStr();
+		} else {
+			
+			HashMap<String, Integer> pMap = new HashMap();
+			pMap.put("pdtNo", pdtNo);
+			pMap.put("rowNum", 2);
+			return new ResponseEntity<List<ReviewVO>>(productService.selectRecentReviewWithRownum(pMap),
+					makeHeader("application", "json", "UTF-8"),
+					HttpStatus.OK);
+		}
+	}
 	
 	
 	

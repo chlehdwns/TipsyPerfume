@@ -2,12 +2,14 @@ package com.kh.ttp.product.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
@@ -79,8 +81,8 @@ public class ProductDaoPR {
 	}
 	
 	// 향수 디테일 조회
-	public ArrayList<ProductSelectVO> perfumePdtDetail(SqlSessionTemplate sqlSession, HashMap<String, Object> pMap) {
-		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
+	public ProductSelectVO perfumePdtDetail(SqlSessionTemplate sqlSession, HashMap<String, Object> pMap) {
+		return sqlSession.selectOne("productMapperPR.productDetail", pMap);
 	}
 	
 	//주류 전체조회
@@ -90,8 +92,8 @@ public class ProductDaoPR {
 	
 	
 	// 주류 디테일조회
-	public ArrayList<ProductSelectVO> alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
-		return (ArrayList)sqlSession.selectList("productMapperPR.productDetailList", pMap);
+	public ProductSelectVO alcoholPdtDetail(SqlSessionTemplate sqlSession, Map<String, Object> pMap) {
+		return sqlSession.selectOne("productMapperPR.productDetail", pMap);
 	}
 	
 	
@@ -120,7 +122,7 @@ public class ProductDaoPR {
 
 
 	/**
-	 * 상품 재고가 있는지 체크 후 장바구니에 해당 상품 1개 추가
+	 * 장바구니에 특정 상품 추가
 	 * @param cart : 유저번호(PK), 상품번호(PK)
 	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
 	 */
@@ -138,8 +140,13 @@ public class ProductDaoPR {
 		return sqlSession.update("productMapperPR.updateCartOneQuantity", cart);
 	}
 
-	public ArrayList<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {
+	public List<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {
 		return (ArrayList)sqlSession.selectList("productMapperPR.selectPdtOptionOne", pdtNo);
+	}
+	
+	// 최근 N개 리뷰 조회 (pdtNo, Rownum)
+	public ArrayList<ReviewVO> selectRecentReviewWithRownum(SqlSessionTemplate sqlSession, HashMap<String, Integer> pMap) {
+		return (ArrayList)sqlSession.selectList("productMapperPR.selectRecentReviewWithRownum", pMap);
 	}
 
 

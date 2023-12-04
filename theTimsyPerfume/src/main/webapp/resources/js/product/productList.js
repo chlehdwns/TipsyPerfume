@@ -60,38 +60,38 @@ $('#cartQuickAddBtn').click(() => {
 	
 });
 		
-		// 상품 1개 추가 후 장바구니로 이동할지 여부 체크
-	    function pdtListConfirmRemaining(){
-	    	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
-	    };
+// 상품 1개 추가 후 장바구니로 이동할지 여부 체크
+function pdtListConfirmRemaining(){
+	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
+};
 	    
 	
 	    
-		// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-	    function ajaxChangeWishOne(e) {
-	    	if('${loginUser}' != '') {
-	    		console.log('로그인 한 유저');
-	    		
-	    		$.ajax({
-	    			url : 'ajaxChangeWishOne.pa',
-	    			method : 'POST',
-	    			data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
-	    			success : result => {
-	    				console.log(result);
-	    				if(result === 'true') {
-	    					$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
-	    				}
-	    				else if(result === 'false') {
-	    					$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
-	    				}
-	    				else {
-	    					alert('잠시 후 다시 시도해주세요');
-	    				}
-	    			},
-	    			error : () => {
-	    				alert('요청 실패');
-	    			}
-	    		});
-	    	}
-		 }
+// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
+function ajaxChangeWishOne(e) {
+	if('${loginUser}' != '') {
+		console.log('로그인 한 유저');
+		
+		$.ajax({
+			url : 'ajaxChangeWishOne.pa',
+			method : 'POST',
+			data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
+			success : result => {
+				console.log(result);
+				if(result === 'true') {
+					$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
+				}
+				else if(result === 'false') {
+					$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
+				}
+				else {
+					alert('잠시 후 다시 시도해주세요');
+				}
+			},
+			error : () => {
+				alert('요청 실패');
+			}
+		});
+	}
+}
 

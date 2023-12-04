@@ -117,115 +117,151 @@
 	</style>
 </head>
 <body>
-	
+
 	<!-- 헤더 -->
 	<jsp:include page="../common/header.jsp" />
 	
-	<div id="pdtDetailWrap">
-		<div id="pdtDetailLeft" class="container pdt-detail-container">
-			
-			<div id="pdtDetailThumbnail" class="row pdt-dtl-mg-top-30">
-				<img src="${pdtDetailList[0].pdtDetailImgSrc}">
-			</div>
-			
-			<!-- 리뷰 미리보기 ajax -->
-			<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">
-					<div class="col-3">
-						<img src="resources/image/product/alcohol/alcohol_1.png">
-					</div>
-					<div class="col-9">
-						<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰제목</div>
-						<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
-					</div>
-			</div>
-			<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">
-				<div class="col-3">
-					<img src="resources/image/product/alcohol/alcohol_1.png">
-				</div>
-				<div class="col-9">
-					<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰제목</div>
-					<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
-				</div>
-			</div>
-			
-			<div id="pdtDetailReviewEnd" class="row detail-bg">
-				<div class="col-8 pdt-dt-align">리뷰 000개</div>
-				<div class="col-4 pdt-dt-align">평점 : 4.8/5</div>
-			</div>
-		</div>
-
-
-
-		<div id="pdtDetailRight" class="container pdt-detail-container">
-		
-			<div class="row pdt-section-tl pdt-dtl-mg-top-30">
-				<h4 class="pdt-dt-align-center">${pdtDetailList[0]. } | 오 드 뚜왈렛</h4>
-			</div>
-			<div class="row pdt-section-tl">
-				<h2 class="pdt-dt-align-center">향수이름</h2>
-			</div>
-
-
-			<div id="pdtDetailIntro" class="row pdt-dt-pad-lf pdt-dtl-mg-top-50">
-				<h5 class="pdt-dt-align">상품기본소개상품기본소개</h5>
-			</div>
-			<div id="pdtDetailDescription" class="row pdt-dt-align pdt-dt-pad-lf detail-bg">
-				<h6 class="pdt-dt-align">
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-					상품상세설명설명설명상품상세설명설명설명상품상세설명설명설명
-				</h6>
-			</div>
-
-
-			<div class="row pdt-section-su pdt-dt-align pdt-dt-pad-lf pdt-dtl-mg-top-50 detail-bg">
-				100,000원
-			</div>
-			<div class="row pdt-section-su detail-bg">
-				<div class="col-7 pdt-dt-align-center">용량 : 50ml 100ml 150ml</div>
-				<div class="col-5 pdt-dt-align-center">배송비 : 무료배송</div>
-			</div>
-
-
-			<div class="row pdt-section-or pdt-dtl-mg-top-50 detail-bg">
-				<div id="pdtDetailClear" class="pdt-dt-align-center">
-					<i class="bi bi-x"></i>
-				</div>
-				<div class="col pdt-dt-align-center">
-					<select id="pdtDetailSelectInput" class="form-select form-select-sm pdt-dt-input">
-						<option value="" selected disabled>옵션선택</option>
-						<option value="1">50ml</option>
-						<option value="2">100ml</option>
-						<option value="3">150ml</option>
-					</select>
-				</div>
-				<div class="col-5 pdt-dt-align-center detail-bg">
-					<input id="pdtDetailQnanInput" type="number" min="1" class="pdt-dt-input form-control" placeholder="수량선택">
-				</div>
-			</div>
-			<div class="row pdt-section-or detail-bg">
-				<div class="col pdt-dt-align-center ">200,000원</div>
-				<div class="col-3 pdt-dt-align-center ">
-					<button class="btn btn-sm btn-primary">장바구니</button>
-				</div>
-				<div class="col-3 pdt-dt-align-center ">
-					<button class="btn btn-sm btn-primary">주문하기</button>
-				</div>
-				
-			</div>
-
-		</div>
-		
 	
+	<div id="pdtDetailWrap">
+		<c:choose>
+			<c:when test="${not empty pdtDetail}">
+				<div id="pdtDetailLeft" class="container pdt-detail-container">
+					
+					<div id="pdtDetailThumbnail" class="row pdt-dtl-mg-top-30">
+						<img src="${pdtDetail.pdtImgSrc}">
+					</div>
+					
+					<!-- 리뷰 미리보기 ajax -->
+					<div class="row pdt-dt-rv-row pdt-dtl-mg-top$-30">
+							<div class="col-3">
+					
+								<img src="resources/image/product/alcohol/alcohol_1.png">
+							</div>
+							<div class="col-9">
+								<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰작성자</div>
+								<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
+							</div>
+					</div>
+					<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">
+						<div class="col-3">
+							<img src="resources/image/product/alcohol/alcohol_1.png">
+						</div>
+						<div class="col-9">
+							<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰작성자</div>
+							<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
+						</div>
+					</div>
+					
+					<div id="pdtDetailReviewEnd" class="row detail-bg">
+						<div class="col-3 pdt-dt-align-center">조회${pdtDetail.pdtCount}</div>
+						<div class="col-6 pdt-dt-align-center">리뷰 000개</div>
+						<div class="col-3 pdt-dt-align-center">★ 4.8/5</div>
+					</div>
+				</div>
+		
+				<div id="pdtDetailRight" class="container pdt-detail-container">
+				
+					<div class="row pdt-section-tl pdt-dtl-mg-top-30">
+						<h4 class="pdt-dt-align-center">${pdtDetail.pdtManufac } | ${pdtDetail.pdtGroup }</h4>
+					</div>
+					<div class="row pdt-section-tl">
+						<h2 class="pdt-dt-align-center">${pdtDetail.pdtName }</h2>
+					</div>
+		
+		
+					<div id="pdtDetailIntro" class="row pdt-dt-pad-lf pdt-dtl-mg-top-50">
+						<h5 class="pdt-dt-align">${pdtDetail.pdtIntro }</h5>
+					</div>
+					<div id="pdtDetailDescription" class="row pdt-dt-align pdt-dt-pad-lf detail-bg">
+						<h6 class="pdt-dt-align">
+							${pdtDetail.pdtDescription }
+						</h6>
+					</div>
+		
+		
+					<div class="row pdt-section-su pdt-dt-align pdt-dt-pad-lf pdt-dtl-mg-top-50 detail-bg">
+						${pdtDetail.pdtPrice }
+					</div>
+					<div class="row pdt-section-su detail-bg">
+						<div class="col-7 pdt-dt-align-center">용량 : 50ml 100ml 150ml</div>
+						<div class="col-5 pdt-dt-align-center">배송비 : ${pdtDetail.pdtShipping }</div>
+					</div>
+		
+		
+					<div class="row pdt-section-or pdt-dtl-mg-top-50 detail-bg">
+						<div id="pdtDetailClear" class="pdt-dt-align-center">
+							<i class="bi bi-x"></i>
+						</div>
+						<div class="col pdt-dt-align-center">
+							<select id="pdtDetailSelectInput" class="form-select form-select-sm pdt-dt-input">
+								<!-- 옵션 띄워질 영역 -->
+							</select>
+						</div>
+						<div class="col-5 pdt-dt-align-center detail-bg">
+							<input id="pdtDetailQnanInput" type="number" min="1" class="pdt-dt-input form-control" placeholder="수량선택">
+						</div>
+					</div>
+					<div class="row pdt-section-or detail-bg">
+						<div class="col pdt-dt-align-center ">상품가격 * 선택개수 script로 200,000원</div>
+						<div class="col-3 pdt-dt-align-center ">
+							<button class="btn btn-sm btn-primary">장바구니</button>
+						</div>
+						<div class="col-3 pdt-dt-align-center ">
+							<button class="btn btn-sm btn-primary">주문하기</button>
+						</div>
+						
+					</div>
+		
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="pdt-dt-align-center">표시할 상품 정보가 없습니다</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
+	
+	
+	<script>
+
+		
+
+		// ajax요청으로 리뷰 조회 후
+		$(() => {
+			$.ajax({
+				url : 'ajaxSelectRecentTwoReview.pr/${pdtDetail.pdtNo}',
+				type : 'GET',
+				success : result => {
+					console.log('리뷰 통신성공');
+					console.log(result);
+				},
+				error : () => {
+					console.log('리뷰 조회 에러발생')
+				}
+			})
+		});
+		
+		
+		// on change하면 max설정
+		
+		
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 푸터 -->
 	<jsp:include page="../common/footer.jsp" />
 	
-
+	<script src="resources/js/product/productDetail.js"></script>
+	
 
 </body>
 </html>

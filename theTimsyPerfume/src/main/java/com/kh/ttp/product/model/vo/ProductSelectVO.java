@@ -21,6 +21,5 @@ public class ProductSelectVO extends ProductVO {
 	private int pdtFileNo;
 	private int pdtFileIndex;
 	private String pdtImgSrc;
-	
 
 }

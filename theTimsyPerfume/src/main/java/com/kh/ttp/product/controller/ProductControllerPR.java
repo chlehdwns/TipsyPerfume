@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.product.model.service.ProductServicePR;
+import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -71,9 +72,8 @@ public class ProductControllerPR {
 	public ModelAndView perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 								   ModelAndView mv) {
 		if(pdtNo > 0) {
-			mv.addObject("pdtDetailList", productService.perfumePdtDetail(pdtNo))
+			mv.addObject("pdtDetail", productService.perfumePdtDetail(pdtNo))
 			  .setViewName("product/productDetail");
-			System.out.println(productService.perfumePdtDetail(pdtNo));
 		} else {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")
 			  .setViewName("common/errorPage");
@@ -101,8 +101,7 @@ public class ProductControllerPR {
 	public ModelAndView alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										 ModelAndView mv) {
 		if(pdtNo > 0) {
-			System.out.println(productService.alcoholPdtDetail(pdtNo));
-			mv.addObject("pdtDetailList", productService.alcoholPdtDetail(pdtNo))
+			mv.addObject("pdtDetail", productService.alcoholPdtDetail(pdtNo))
 			  .setViewName("product/productDetail");
 		} else {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")

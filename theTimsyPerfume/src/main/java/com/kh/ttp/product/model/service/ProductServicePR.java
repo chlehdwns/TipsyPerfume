@@ -2,8 +2,10 @@ package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.WishlistVO;
@@ -57,13 +59,13 @@ public interface ProductServicePR {
 	ArrayList<ProductSelectVO> selectPerfumePdtList(String sort, PageInfo pi);
 	
 	// 향수 디테일조회 perfumePdtDetail
-	ArrayList<ProductSelectVO> perfumePdtDetail(int pdtNo);
+	ProductSelectVO perfumePdtDetail(int pdtNo);
 	
 	// 주류 전체조회 selectAlcoholPdtList
 	ArrayList<ProductSelectVO> selectAlcoholPdtList(String sort, PageInfo pi);
 	
 	// 주류 디테일조회 alcoholPdtDetail
-	ArrayList<ProductSelectVO> alcoholPdtDetail(int pdtNo);
+	ProductSelectVO alcoholPdtDetail(int pdtNo);
 	
 	// 장바구니 전체조회
 	/**
@@ -129,7 +131,15 @@ public interface ProductServicePR {
 	 * @return
 	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
 	 */
-	ArrayList<ProductOption> ajaxCreateCartQuickAddModal(int pdtNo);
+	List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo);
+	
+	
+	/**
+	 * 상품 번호, 숫자N을 받아 최근순 리뷰 Top N개를 조회하는 메소드
+	 * @param pMap : pdtNo, rowNum
+	 * @return
+	 */
+	ArrayList<ReviewVO> selectRecentReviewWithRownum(HashMap<String, Integer> pMap);
 	
 	
 	
