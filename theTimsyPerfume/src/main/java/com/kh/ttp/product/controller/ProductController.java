@@ -26,6 +26,7 @@ import com.kh.ttp.orderKinds.model.vo.OrderVO;
 import com.kh.ttp.orderKinds.model.vo.PayVO;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.service.ProductService;
+import com.kh.ttp.product.model.vo.CartSelectVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
@@ -215,8 +216,9 @@ public class ProductController {
 		return "redirect:funding.list";
 	}
 	@GetMapping("cartMain.f")
-	public String fundingCart(int userNo) {
-			//productService.selectFundingCart(userNo);
+	public String fundingCart(int userNo,Model model) {
+			ArrayList<CartSelectVO> cartSelect = productService.selectFundingCart(userNo);
+			model.addAttribute("cartSelect", cartSelect);
 		return "funding/fundingBascket";
 	}
 	

@@ -30,9 +30,9 @@
 		
 		<typeAlias type="com.kh.ttp.product.model.vo.WishlistVO" alias="wishlist"/>
 		<typeAlias type="com.kh.ttp.product.model.vo.CartVO" alias="cart" />
-		
+		<typeAlias type="com.kh.ttp.product.model.vo.CartSelectVO" alias="cartSelect"/>
+      
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.Receiver" alias="receiver"/>
-
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.OrderVO" alias="order"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.PayVO" alias="pay"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.OrderDetailVO" alias="orderDetail"/>

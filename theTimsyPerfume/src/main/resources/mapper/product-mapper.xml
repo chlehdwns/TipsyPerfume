@@ -37,6 +37,32 @@
 		<result column="FUNDING_FEE" property="fundingFee"/>
 		<result column="CUTTING_PRICE" property="cuttingPrice"/>
 	</resultMap>
+	
+	
+	<resultMap  id="cartSelectResultSet" type="cartSelect">
+		<result column="CART_NO" property="cartNo"/>
+		<result column="USER_NO" property="userNo" />
+		<result column="PDT_NO" property="pdtNo" />
+		<result column="CART_QUANTITY" property="cartQuantity"/>
+		<result column="PDT_PRICE" property="pdtPrice" />
+		<result column="PDT_NAME" property="pdtName" />
+		<result column="PDT_SHIPPING" property="pdtShipping" />
+		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
+		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst"/>
+		<result column="PDT_OPTION_PRICE" property="pdtOptionPrice"/>
+		<result column="PDT_FILE_NO" property="pdtFileNo"/>
+		<result column="PDT_FILE_PATH" property="pdtFilePath"/>
+		<result column="PDT_FILE_ORIGIN" property="pdtFileOrigin"/>
+		<result column="PDT_FILE_UPLOAD" property="pdtFileUpload"/>
+		<result column="PDT_MANUFAC" property="pdtManufac"/>
+		<result column="FUNDING_NO" property="fundingNo"/>
+		<result column="CUTTING_DATE" property="cuttingDate" />
+		<result column="FUNDING_FEE" property="fundingFee" /> 
+		<result column="CUTTING_PRICE" property="cuttingPrice" />
+		<result column="TOTAL" property="total"/>
+		
+	</resultMap>
+	
 	<insert id="insertProductCategory" parameterType="productCategory">
 		INSERT
 			INTO
@@ -512,6 +538,35 @@ VALUES(
 				#{cartQuantity}
 			)
 	</insert>
+	<select id="selectFundingCart" parameterType="_int" resultMap="cartSelectResultSet">
+		SELECT
+			C.CART_NO,
+			C.USER_NO,
+			C.PDT_NO,
+			C.CART_QUANTITY,
+			P.PDT_PRICE,
+			P.PDT_NAME,
+			P.PDT_SHIPPING,
+			PO.PDT_OPTION_NO,
+			PO.PDT_OPTION_FIRST,
+			PO.PDT_OPTION_PRICE,
+			PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
+			F.FUNDING_NO,
+			F.CUTTING_DATE,
+			F.FUNDING_FEE,
+			F.CUTTING_PRICE,
+			(C.CART_QUANTITY*P.PDT_PRICE)+F.FUNDING_FEE "TOTAL"
+			
+		FROM
+			TB_CART C JOIN TB_PRODUCT P ON(C.PDT_NO=P.PDT_NO)
+		    JOIN TB_PRODUCT_OPTION PO ON C.PDT_NO = PO.PDT_NO
+		    JOIN TB_PRODUCT_FILE PF ON C.PDT_NO = PF.PDT_NO
+            JOIN TB_FUNDING F ON C.PDT_NO = F.PDT_NO
+         WHERE
+         	C.USER_NO = #{userNo}
+			
+		
+	</select>
 		
 	
 

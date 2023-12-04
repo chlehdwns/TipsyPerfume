@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +63,12 @@
 	
 	/* 총 합계, 주문버튼 */
 	#cartSummary .row{min-height: 50px;}
-
+	.product-img {
+		width : 100px;
+		height : 100px;
+		margin-right : 20px;
+		border : 1px solid black;
+	}
 </style>
 </head>
 <body>
@@ -71,8 +77,8 @@
 
 	<div id="cartMainWrap" class="container">
 		<div id="cartMainBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col ps-5">전체선택</div>
+			<div class="cart-box-area"><input type="checkbox" id="check-all"></div>
+			<div class="col ps-5" >전체선택</div>
 			<div class="col-2"><button class="btn btn-danger">삭제</button></div>
 			<div class="col-2"><button class="btn btn-primary">주문</button></div>
 		</div>
@@ -89,31 +95,21 @@
 			<div class="col-2">상품 합계</div>
 		</div>
 		
+		<c:forEach items="${cartSelect }" var="cartSelect">
+		<div class="row cart-content-block">
+			<div class="cart-box-area"><input type="checkbox" class="cart-checked"></div>
+			<div class="col-4 ps-5"><img alt="상품사진" src="${cartSelect.pdtFileUpload }" class="product-img">${cartSelect.pdtName }</div>
+			<div class="col">${cartSelect.cartQuantity }</div>
+			<div class="col-2">${cartSelect.pdtPrice }</div>
+			<div class="col-2 p-0 cart-extra-info-area">
+				<div class="row">
+					<div class="col-12 ext-info-1">${cartSelect.fundingFee }/${cartSelect.cuttingPrice }</div>
+				</div>
+			</div>
+			<div class="col-2">${cartSelect.total }원</div>
+		</div>
+		</c:forEach>
 		
-		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">향긋향수 50ML</div>
-			<div class="col">1개</div>
-			<div class="col-2">100,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">0/100000</div>
-				</div>
-			</div>
-			<div class="col-2">98,000원</div>
-		</div>
-		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">영혼을 달래주는 술 800ML</div>
-			<div class="col">2개</div>
-			<div class="col-2">150,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">0/200000</div>
-				</div>
-			</div>
-			<div class="col-2">294,000원</div>
-		</div>
 		
 		
 		<br/>
@@ -122,9 +118,9 @@
 		
 		<div id="cartSummary" class="row">
 			<div class="col">
-				<div class="row ps-5">전체금액</div>
-				<div class="row ps-5">400,000</div>
-				<div class="row ps-5">= 392,000원</div>
+				<div class="row ps-5" >전체금액</div>
+				<div class="row ps-5" class="funding-total"></div>
+				<div class="row ps-5" class="funding-total"></div>
 			</div>
 			<div class="col-4">
 				<button class="btn btn-primary">주문</button>
@@ -136,6 +132,29 @@
 	<br/><br/><br/>
 	<br/><br/><br/>	
 	<br/><br/><br/>	
+	
+	<script>
+	// 상품 왼쪽 체크박스 누를시 하단에 전체 금액이 바뀌게 하는 script
+		$(function(){
+			$('.cart-checked').click(() => {
+				if ($(this).attr('checked',true)){
+					console.log($(this).val());
+				}
+			})
+		})
+		//전체 체크 해제 기능
+		$(function(){
+			$('#check-all').click(() => {
+				let $all = $('#check-all').prop('checked');
+				if($all){
+					$('.cart-checked').prop('checked',true);
+				}
+				else{
+					$('.cart-checked').prop('checked',false);
+				}
+			})
+		});
+	</script>
 
 </body>
 </html>

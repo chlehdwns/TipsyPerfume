@@ -16,6 +16,7 @@ import com.kh.ttp.orderKinds.model.vo.OrderVO;
 import com.kh.ttp.orderKinds.model.vo.PayVO;
 import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.dao.ProductDao;
+import com.kh.ttp.product.model.vo.CartSelectVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
@@ -179,6 +180,10 @@ public class ProductServiceImpl implements ProductService {
 	public int insertFundingBasket(CartVO cart) {
 		productDao.insertFundingBasket(sqlSession,cart);
 		return 0;
+	}
+	@Override
+	public ArrayList<CartSelectVO> selectFundingCart(int userNo) {
+		return productDao.selectFundingCart(userNo,sqlSession);
 	}
 	
 

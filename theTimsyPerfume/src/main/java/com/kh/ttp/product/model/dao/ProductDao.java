@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.kh.ttp.orderKinds.model.vo.OrderDetailVO;
 import com.kh.ttp.orderKinds.model.vo.OrderVO;
 import com.kh.ttp.orderKinds.model.vo.PayVO;
+import com.kh.ttp.product.model.vo.CartSelectVO;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
@@ -106,6 +106,10 @@ public class ProductDao {
 
 	public int insertFundingBasket(SqlSessionTemplate sqlSession, CartVO cart) {
 		return sqlSession.insert("productMapper.insertFundingBasket",cart);
+	}
+
+	public ArrayList<CartSelectVO> selectFundingCart(int userNo,SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("productMapper.selectFundingCart",userNo);
 	}
 	
 
