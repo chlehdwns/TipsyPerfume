@@ -89,10 +89,10 @@
 	.pdt-dt-rv-row {height: 120px;}
 	.pdt-dt-rv-row .col-3 {text-align: center; height: 100%; }
 	.pdt-dt-rv-row img { height: 100%; }
-	.pdt-dt-rv-title { height: 30%; }
 	.pdt-dt-rv-content {
-		height: 70%;
+		height: 100%;
         overflow: hidden;
+        padding: 10px;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -123,6 +123,7 @@
 	
 	
 	<div id="pdtDetailWrap">
+	<input id="pdtNoDetail" type="hidden" value="${pdtDetail.pdtNo}">
 		<c:choose>
 			<c:when test="${not empty pdtDetail}">
 				<div id="pdtDetailLeft" class="container pdt-detail-container">
@@ -131,31 +132,15 @@
 						<img src="${pdtDetail.pdtImgSrc}">
 					</div>
 					
-					<!-- 리뷰 미리보기 ajax -->
-					<div class="row pdt-dt-rv-row pdt-dtl-mg-top$-30">
-							<div class="col-3">
-					
-								<img src="resources/image/product/alcohol/alcohol_1.png">
-							</div>
-							<div class="col-9">
-								<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰작성자</div>
-								<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
-							</div>
+					<!-- 리뷰 미리보기 영역 ajax -->
+					<div id="pdtDetailReviewArea">
 					</div>
-					<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">
-						<div class="col-3">
-							<img src="resources/image/product/alcohol/alcohol_1.png">
-						</div>
-						<div class="col-9">
-							<div class="row pdt-dt-rv-title pdt-dt-align detail-bg">리뷰작성자</div>
-							<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">리뷰내리뷰내용내뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용뷰내용내용리뷰내용내용용리뷰내용내용</div>
-						</div>
-					</div>
+
 					
 					<div id="pdtDetailReviewEnd" class="row detail-bg">
-						<div class="col-3 pdt-dt-align-center">조회${pdtDetail.pdtCount}</div>
-						<div class="col-6 pdt-dt-align-center">리뷰 000개</div>
-						<div class="col-3 pdt-dt-align-center">★ 4.8/5</div>
+						<div class="col-3 pdt-dt-align-center">조회수 ${pdtDetail.pdtCount}</div>
+						<div class="col-4 pdt-dt-align-center">평점 ★${pdtDetail.reviewAvg}/5</div>
+						<div class="col-5 pdt-dt-align-center">리뷰 더보기 &gt;&gt;</div>
 					</div>
 				</div>
 		
@@ -229,11 +214,30 @@
 		// ajax요청으로 리뷰 조회 후
 		$(() => {
 			$.ajax({
-				url : 'ajaxSelectRecentTwoReview.pr/${pdtDetail.pdtNo}',
+				url : 'ajaxSelectRecentTwoReview.pr/' + $('#pdtNoDetail').val(),
 				type : 'GET',
 				success : result => {
+					let reviewValue = '';
 					console.log('리뷰 통신성공');
-					console.log(result);
+					console.log(typeof(result));
+					
+					for(let i in result) {
+						reviewValue += '<div class="row pdt-dt-rv-row pdt-dtl-mg-top-30">'
+									 + '<div class="col-3">'
+									 + '<img src="' + result[i].thumbnail + '">'
+									 + '</div>'
+									 + '<div class="col-9">'
+									 + '<div class="row pdt-dt-rv-content pdt-dt-align detail-bg">' + result[i].reviewContent + '</div>'
+									 + '</div>'
+									 + '</div>'
+					}
+					$('#pdtDetailReviewArea').html(reviewValue);
+					
+					
+					//for(let i in result){
+					//	$('#reviewImg' + i).attr('src', result[i].thumbnail);
+					//	$('#reviewContent' + i).html(result[i].reviewContent);
+					//}
 				},
 				error : () => {
 					console.log('리뷰 조회 에러발생')
@@ -244,7 +248,7 @@
 		
 		// on change하면 max설정
 		
-		
+
 	</script>
 	
 	
