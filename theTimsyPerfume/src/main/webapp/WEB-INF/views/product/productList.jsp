@@ -27,8 +27,7 @@
 	<!-- 헤더 include -->
 	<jsp:include page="../common/header.jsp" />
 	
-    <!-- 모달종류 include -->
-    <jsp:include page="../frags/loginJoinModal.jsp" />
+    <!-- 카트 include -->
     <jsp:include page="../frags/cartQuickAddModal.jsp" />
     
     
@@ -117,6 +116,8 @@
         </div>
     </div>
     
+    <!-- 푸터 -->
+    <jsp:include page="../common/footer.jsp" />
 
 
 	    
@@ -127,90 +128,11 @@
 		// pdtNo 배열 만들어 넘김
 		// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
 
-		var $pdtImgArea = $('.pdt-list-pdtImgSrc');
-		var $pdtIconArea = $('.pdt-list-icon-area');
-	    var $pdtListCart = $('.pdt-list-cart');
-	    var $pdtListHeart = $('.pdt-list-heart');
 	    
 
 	    
 		
-	    // 상품 1개 장바구니 추가! (여기선 추가만 가능)
-		function ajaxAddCartOne(e) {
-  			if('${loginUser}' != '') {
-  				var $pdtNo = $(e).siblings('input[type=hidden]').val();
-  				var $pdtName = $(e).siblings('.pdt-name').text();
-				showCartQuickAddModal($pdtNo, $pdtName);
-				$('#cartQuickAddSelect').click(() => {
-					console.log();
-				})
-				$('#cartQuickAddBtn').click(() => {
-					var $pdtOptionNo = $('#cartQuickAddSelect').attr('option', 'selected').val();
-					$.ajax({
-						url : 'ajaxAddCartSingleQuan.pa',
-						method : 'POST',
-						data : { pdtNo : $pdtNo,
-								 pdtOptionNo : $pdtOptionNo },
-						success : result => {
-							console.log(result);
-							hideCartQuickAddModal();
-							if(result === '1') {
-								// 쇼핑 계속하기버튼 or 장바구니 가기버튼 팝업
-								if(pdtListConfirmRemaining()) {
-									location.href = "cartMain.pr";
-								}
-							}
-							else if(result === '-1') {
-								hideCartQuickAddModal();
-								alert('재고가 없는 상품입니다!');
-							}
-							else {
-								hideCartQuickAddModal();
-								alert('잠시 후 다시 시도해주세요!');
-							}
-						},
-						error : () => {
-							hideCartQuickAddModal();
-							alert('요청 실패');
-						}
-					});
-				});
-			};
-	    };
-	    
-	    function pdtListConfirmRemaining(){
-	    	return confirm('상품 1개가 장바구니에 추가되었습니다! 장바구니로 이동하시겠습니까?');
-	    }
-	    
-	
-	    
-		// 하트 추가or삭제!(온클릭 시 호출) 하트 좋아요여부 조회 후 변경함
-	    function ajaxChangeWishOne(e) {
-	    	if('${loginUser}' != '') {
-	    		console.log('로그인 한 유저');
-	    		
-	    		$.ajax({
-	    			url : 'ajaxChangeWishOne.pa',
-	    			method : 'POST',
-	    			data : { pdtNo : $(e).siblings('input[type=hidden]').val() },
-	    			success : result => {
-	    				console.log(result);
-	    				if(result === 'true') {
-	    					$(e).removeClass('bi-suit-heart').addClass('bi-suit-heart-fill');
-	    				}
-	    				else if(result === 'false') {
-	    					$(e).removeClass('bi-suit-heart-fill').addClass('bi-suit-heart');
-	    				}
-	    				else {
-	    					alert('잠시 후 다시 시도해주세요');
-	    				}
-	    			},
-	    			error : () => {
-	    				alert('요청 실패');
-	    			}
-	    		});
-	    	}
-		 }
+
 	    
 	    
 	    

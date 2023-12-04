@@ -11,7 +11,7 @@
     <link href="resources/css/common/footer.css" rel="stylesheet">
 </head>
 <body>
-<footer>
+<footer id="footer">
     <div class="footer-top-wrap">
         <div class="footerWrap">
             <div id="footer_inner_1" class="footer_inner">
