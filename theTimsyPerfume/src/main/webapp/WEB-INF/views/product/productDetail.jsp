@@ -70,7 +70,7 @@
 	/* 마진(탑) & 패딩(좌측) 스타일 */
 	#pdtDetailWrap .pdt-dtl-mg-top-30 { margin-top: 30px; }
 	#pdtDetailWrap .pdt-dtl-mg-top-50 { margin-top: 50px; }
-	#pdtDetailWrap .pdt-dt-pad-lf {padding-left: 50px;}
+	#pdtDetailWrap .pdt-dt-pad {padding: 20px 30px 20px 30px;}
 
 	/* h요소 마진설정 */
 	#pdtDetailWrap h2, h3, h4, h5, h6 {margin: 0;}
@@ -154,17 +154,17 @@
 					</div>
 		
 		
-					<div id="pdtDetailIntro" class="row pdt-dt-pad-lf pdt-dtl-mg-top-50">
+					<div id="pdtDetailIntro" class="row pdt-dt-pad pdt-dtl-mg-top-50">
 						<h5 class="pdt-dt-align">${pdtDetail.pdtIntro }</h5>
 					</div>
-					<div id="pdtDetailDescription" class="row pdt-dt-align pdt-dt-pad-lf detail-bg">
+					<div id="pdtDetailDescription" class="row pdt-dt-align pdt-dt-pad detail-bg">
 						<h6 class="pdt-dt-align">
 							${pdtDetail.pdtDescription }
 						</h6>
 					</div>
 		
 		
-					<div class="row pdt-section-su pdt-dt-align pdt-dt-pad-lf pdt-dtl-mg-top-50 detail-bg">
+					<div class="row pdt-section-su pdt-dt-align pdt-dt-pad pdt-dtl-mg-top-50 detail-bg">
 						${pdtDetail.pdtPrice }
 					</div>
 					<div class="row pdt-section-su detail-bg">
@@ -247,7 +247,21 @@
 		
 		
 		// on change하면 max설정
+		$('#pdtDetailQnanInput').change(() => {
+			let $pdtStock = $('#pdtDetailSelectInput option:selected').attr('class');
+			let $quantityInput = $('#pdtDetailQnanInput');
+			let $selectedQuantity = 
+			
+			$quantityInput.attr('max', $pdtStock); // 키업에는 의미 없음
+			
+			if($pdtStock > 0 && $quantityInput.val() > $pdtStock) {
+				console.log('너무큰숫자');
+				$quantityInput.val($pdtStock);
+				alert('재고가 충분하지 않습니다! 현재 재고는 ' + $pdtStock + '개 입니다');
+			}
+		});
 		
+
 
 	</script>
 	

@@ -17,7 +17,8 @@ $(() => {
 			} else { // 옵션 영역 만들어줌
 				let valueStr = '<option value="" selected disabled>옵션선택</option>';
 				for(let i in result) {
-					valueStr += '<option value="' + result[i].pdtOptionNo + '">'
+					valueStr += '<option value="' + result[i].pdtOptionNo + '"'
+							  + ' class="' + result[i].pdtOptionStock + '">'
 							  + result[i].pdtOptionFirst + '</option>';
 				}
 				$('#pdtDetailSelectInput').html(valueStr);
