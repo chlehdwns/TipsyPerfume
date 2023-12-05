@@ -106,7 +106,7 @@
 	#pdtDetailClear {width: 30px;}
 	#pdtDetailSelectInput { width: 90%; border-radius: 5px; }
 	#pdtDetailSelectInput option[value=""] {display: none;}
-	#pdtDetailQnanInput { width: 90%; border-radius: 5px;}
+	#pdtDetailQuanInput { width: 90%; border-radius: 5px;}
 	.pdt-dt-input {
 		color: grey;
 		text-align: center;
@@ -183,16 +183,16 @@
 							</select>
 						</div>
 						<div class="col-5 pdt-dt-align-center detail-bg">
-							<input id="pdtDetailQnanInput" type="number" min="1" class="pdt-dt-input form-control" placeholder="수량선택">
+							<input id="pdtDetailQuanInput" type="number" min="1" class="pdt-dt-input form-control" placeholder="수량선택">
 						</div>
 					</div>
 					<div class="row pdt-section-or detail-bg">
-						<div class="col pdt-dt-align-center ">상품가격 * 선택개수 script로 200,000원</div>
+						<div id="pdtDetailTotalPrice" class="col pdt-dt-align-center ">상품가격 * 선택개수 script로 200,000원</div>
 						<div class="col-3 pdt-dt-align-center ">
-							<button class="btn btn-sm btn-primary">장바구니</button>
+							<button onclick="ajaxPdtDetailAddCart" class="btn btn-sm btn-primary">장바구니</button>
 						</div>
 						<div class="col-3 pdt-dt-align-center ">
-							<button class="btn btn-sm btn-primary">주문하기</button>
+							<button onclick="location.href='productOrder.pr'" class="btn btn-sm btn-primary">주문하기</button>
 						</div>
 						
 					</div>
@@ -245,23 +245,26 @@
 			})
 		});
 		
-		
-		// on change하면 max설정
-		$('#pdtDetailQnanInput').change(() => {
+		// 옵션선택, 수량선택 변화가 일어날 시
+		// 1. 수량선택 요소 포워딩 당시 stock개수로 제한 (실시간 재고 반영은 주문결제 시 & stock만 조회하는 ajax요청 인터벌 15분정도 줘도 좋을듯)
+		// 2. 옵션별 가격 * 선택한 개수 = 상품금액 계산 업데이트 
+		$('#pdtDetailQuanInput, #pdtDetailSelectInput').on('change', () => {
+			console.log('체인지~');
 			let $pdtStock = $('#pdtDetailSelectInput option:selected').attr('class');
-			let $quantityInput = $('#pdtDetailQnanInput');
-			let $selectedQuantity = 
+			let $numberInput = $('#pdtDetailQuanInput');
+			let $totalPriceArea = $('#pdtDetailTotalPrice');
 			
-			$quantityInput.attr('max', $pdtStock); // 키업에는 의미 없음
+			$numberInput.attr('max', $pdtStock); // 키업에는 의미 없음
+			$totalPriceArea.html(Number($pdtStock) * Number($numberInput.val()));
 			
-			if($pdtStock > 0 && $quantityInput.val() > $pdtStock) {
-				console.log('너무큰숫자');
-				$quantityInput.val($pdtStock);
+			//console.log(typeof $pdtStock); 100부터 안됨 => 타입이 문자열이라
+			//console.log(typeof $numberInput.val() + '넘버인풋 밸류');
+			if((Number($pdtStock) > 0) && (Number($numberInput.val()) > $pdtStock)) {
+				$numberInput.val($pdtStock);
 				alert('재고가 충분하지 않습니다! 현재 재고는 ' + $pdtStock + '개 입니다');
+				console.log('너무큰숫자');
 			}
 		});
-		
-
 
 	</script>
 	
