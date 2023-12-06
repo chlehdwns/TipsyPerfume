@@ -130,9 +130,12 @@
 				 LEFT
 				 JOIN TB_REVIEW USING(PDT_NO)
 				 <if test="sort eq 'BestSeller'">
+                 LEFT
+				 JOIN
+                     TB_PRODUCT_OPTION USING(PDT_NO)
 				 LEFT
 				 JOIN
-				 	  TB_ORDER_PRODUCT USING(PDT_NO)
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
 				 LEFT
                  JOIN
                  
