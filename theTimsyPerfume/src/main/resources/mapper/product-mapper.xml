@@ -15,8 +15,8 @@
 		<result column="PDT_NO" property="pdtNo"/>
 		<result column="PDT_CTEG_NO" property="pdtCategNo"/>
 		<result column="PDT_NAME" property="pdtName"/>
-		<result column="PDT_PRICE" property="pdtPrice"/>
-		<result column="PDT_STOCK" property="pdtStock"/>
+		<result column="PDT_OPTION_PRICE" property="pdtOptionPrice"/>
+		<result column="PDT_OPTION_STOCK" property="pdtOptionStock"/>
 		<result column="PDT_DATE" property="pdtDate"/>
 		<result column="PDT_INTRO" property="pdtIntro"/>
 		<result column="PDT_DESCRIPTION" property="pdtDescription"/>
@@ -44,7 +44,7 @@
 		<result column="USER_NO" property="userNo" />
 		<result column="PDT_NO" property="pdtNo" />
 		<result column="CART_QUANTITY" property="cartQuantity"/>
-		<result column="PDT_PRICE" property="pdtPrice" />
+		<result column="PDT_OPTION_PRICE" property="pdtPrice" />
 		<result column="PDT_NAME" property="pdtName" />
 		<result column="PDT_SHIPPING" property="pdtShipping" />
 		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
@@ -87,8 +87,6 @@ INSERT INTO
 		PDT_NO,
 		PDT_CATEG_NO,
 		PDT_NAME,
-		PDT_PRICE,
-		PDT_STOCK,
 		PDT_INTRO,
 		PDT_DESCRIPTION,
 		PDT_INGREDIENT,
@@ -98,8 +96,6 @@ VALUES(
 	SEQ_PRODUCT.NEXTVAL,
 	#{pdtCategNo},
 	#{pdtName},
-	#{pdtPrice},
-	#{pdtStock},
 	#{pdtIntro},
 	#{pdtDescription},
 	#{pdtIngredient},
@@ -121,13 +117,17 @@ VALUES(
 				PDT_OPTION_NO,
 				PDT_NO,
 				PDT_OPTION_FIRST,
-				PDT_OPTION_SECOND
+				PDT_OPTION_SECOND,
+				PDT_OPTION_PRICE,
+				PDT_OPTION_STOCK
 			)
 			VALUES(
 				SEQ_PRODUCT_OPTION.NEXTVAL,
 				#{pdtNo},
 				#{pdtOptionFirst},
-				#{pdtOptionSecond}
+				#{pdtOptionSecond},
+				#{pdtOptionPrice},
+				#{pdtOptionStock}
 			)
 	
 	</insert>
@@ -168,8 +168,8 @@ VALUES(
 		    P.PDT_NO,
 		    P.PDT_CATEG_NO,
 		    P.PDT_NAME,
-		    P.PDT_PRICE,
-		    P.PDT_STOCK,
+		    PO.PDT_OPTION_PRICE,
+		    PO.PDT_OPTION_STOCK,
 		    P.PDT_INTRO,
 		    P.PDT_DESCRIPTION,
 		    P.PDT_INGREDIENT,
@@ -208,7 +208,7 @@ VALUES(
 		    P.PDT_NO,
 		    P.PDT_CATEG_NO,
 		    P.PDT_NAME,
-		    P.PDT_PRICE,
+		    PO.PDT_OPTION_PRICE,
 		    P.PDT_INTRO,
 		    P.PDT_DESCRIPTION,
 		    P.PDT_INGREDIENT,
@@ -248,8 +248,8 @@ VALUES(
 		    P.PDT_NO,
 		    P.PDT_CATEG_NO,
 		    P.PDT_NAME,
-		    P.PDT_PRICE,
-		    P.PDT_STOCK,
+		    PO.PDT_OPTION_PRICE,
+		    PO.PDT_OPTION_STOCK,
 		    P.PDT_INTRO,
 		    P.PDT_DESCRIPTION,
 		    P.PDT_INGREDIENT,
@@ -286,7 +286,7 @@ VALUES(
 		    P.PDT_NO,
 		    P.PDT_CATEG_NO,
 		    P.PDT_NAME,
-		    P.PDT_PRICE,
+		    PO.PDT_OPTION_PRICE,
 		    P.PDT_INTRO,
 		    P.PDT_DESCRIPTION,
 		    P.PDT_INGREDIENT,
@@ -315,9 +315,10 @@ VALUES(
 	<select id="newDrinkFundingDetail" parameterType="_int" resultMap="fundingSelectResultSet">
 		SELECT
 			PF.PDT_FILE_PATH ||'/'|| PF.PDT_FILE_UPLOAD "PDT_FILE_UPLOAD",
+			PO.PDT_OPTION_NO,
 			P.PDT_COUNT,
 			P.PDT_NAME,
-			P.PDT_PRICE,
+			PO.PDT_OPTION_PRICE,
 			P.PDT_DESCRIPTION,
 			P.PDT_INGREDIENT,
 		    P.PDT_SHIPPING,
@@ -352,8 +353,8 @@ VALUES(
 		SELECT
 			P.PDT_NAME,
 			P.PDT_CATEG_NO,
-			P.PDT_PRICE,
-			P.PDT_STOCK,
+			PO.PDT_OPTION_PRICE,
+			PO.PDT_OPTION_STOCK,
 			P.PDT_INTRO,
 			P.PDT_DESCRIPTION,
 			P.PDT_INGREDIENT,
@@ -393,8 +394,6 @@ VALUES(
 		SET
 			
 			PDT_NAME = #{pdtName},
-			PDT_PRICE = #{pdtPrice},
-			PDT_STOCK = #{pdtStock},
 			PDT_INTRO = #{pdtIntro},
 			PDT_DESCRIPTION = #{pdtDescription},
 			PDT_INGREDIENT = #{pdtIngredient},
@@ -416,7 +415,9 @@ VALUES(
 			TB_PRODUCT_OPTION
 		SET
 			PDT_OPTION_FIRST = #{pdtOptionFirst},
-			PDT_OPTION_SECOND = #{pdtOptionSecond}
+			PDT_OPTION_SECOND = #{pdtOptionSecond},
+			PDT_OPTION_PRICE = #{pdtOptionPrice},
+			PDT_OPTION_STOCK = #{pdtOptionStock}
 		WHERE
 			PDT_NO = #{pdtNo}
 	</update>
@@ -521,7 +522,7 @@ VALUES(
 		UPDATE
 			TB_PRODUCT
 		SET
-			PDT_STOCK = PDT_STOCK-#{orderQuantity}
+			PDT_OPTION_STOCK = PDT_OPTION_STOCK-#{orderQuantity}
 		WHERE
 			PDT_NO = #{pdtNo}
 		
@@ -535,7 +536,9 @@ VALUES(
 				SEQ_CART.NEXTVAL,
 				#{userNo},
 				#{pdtNo},
+				#{pdtOptionNo},
 				#{cartQuantity}
+				
 			)
 	</insert>
 	<select id="selectFundingCart" parameterType="_int" resultMap="cartSelectResultSet">
@@ -544,7 +547,7 @@ VALUES(
 			C.USER_NO,
 			C.PDT_NO,
 			C.CART_QUANTITY,
-			P.PDT_PRICE,
+			PO.PDT_OPTION_PRICE,
 			P.PDT_NAME,
 			P.PDT_SHIPPING,
 			PO.PDT_OPTION_NO,
@@ -555,7 +558,7 @@ VALUES(
 			F.CUTTING_DATE,
 			F.FUNDING_FEE,
 			F.CUTTING_PRICE,
-			(C.CART_QUANTITY*P.PDT_PRICE)+F.FUNDING_FEE "TOTAL"
+			(C.CART_QUANTITY*PO.PDT_OPTION_PRICE)+F.FUNDING_FEE "TOTAL"
 			
 		FROM
 			TB_CART C JOIN TB_PRODUCT P ON(C.PDT_NO=P.PDT_NO)

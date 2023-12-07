@@ -104,7 +104,7 @@
 			<form method="post" action="funding.fd">
 			<input type="hidden" name="pdtNo" value="${pdtNo }"/>
 			<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
-				가격 : <input class="order-info" type="text" name="pdtPrice" value="${pdtPrice}  " readonly>
+				가격 : <input class="order-info" type="text" name="pdtOptionPrice" value="${pdtOptionPrice}  " readonly>
 				
 				개수 : <select name="orderQuantity" id="order" required>
 					<option value="1" selected>1</option>
@@ -200,7 +200,7 @@
 				//console.log('${loginUser.addressDetail}');
 				//console.log('${loginUser.postalCode}');
 		
-				const total = '총가격 : '+ a*${pdtPrice} + '원';
+				const total = '총가격 : '+ a*${pdtOptionPrice} + '원';
 				console.log(total);
 				$('.buy-info').html(total);
 			})

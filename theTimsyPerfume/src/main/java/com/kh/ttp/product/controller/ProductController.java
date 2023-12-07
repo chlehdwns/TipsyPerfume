@@ -176,10 +176,10 @@ public class ProductController {
 				return "common/errorPage";
 	}
 	@RequestMapping("purchase.fd")
-	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtPrice,String pdtShipping,String pdtFileUpload) {
+	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtOptionPrice,String pdtShipping,String pdtFileUpload) {
 		model.addAttribute("pdtNo", pno);
 		model.addAttribute("pdtName",pdtName);
-		model.addAttribute("pdtPrice",pdtPrice);
+		model.addAttribute("pdtOptionPrice",pdtOptionPrice);
 		model.addAttribute("pdtShipping",pdtShipping);
 		model.addAttribute("pdtFileUpload",pdtFileUpload);
 		
@@ -187,9 +187,9 @@ public class ProductController {
 		
 	}
 	@RequestMapping("funding.fd")
-	public String confirmFundingDrink(HttpSession session,OrderDetailVO orderDetail,OrderVO order,User user,ProductVO product,PayVO pay,
+	public String confirmFundingDrink(HttpSession session,OrderDetailVO orderDetail,OrderVO order,User user,ProductVO product,PayVO pay,ProductOption productOption,
 			Funding funding,Receiver receiver,int selectAddress) {
-		int orderPrice =  (product.getPdtPrice()*product.getOrderQuantity())+funding.getFundingFee();//(상품가격 *상품개수)+후원비
+		int orderPrice =  (productOption.getPdtOptionPrice()*product.getOrderQuantity())+funding.getFundingFee();//(상품가격 *상품개수)+후원비
 		
 		
 		
@@ -212,6 +212,7 @@ public class ProductController {
 	}
 	@PostMapping("fundingBasket.insert")
 	public String insertFundingBasket(CartVO cart,Model model) {
+		System.out.println(cart);
 		productService.insertFundingBasket(cart);
 		return "redirect:funding.list";
 	}

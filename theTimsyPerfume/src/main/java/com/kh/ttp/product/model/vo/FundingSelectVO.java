@@ -24,6 +24,8 @@ public class FundingSelectVO extends ProductVO {
 	private Date cuttingDate;
 	private int fundingFee;
 	private int cuttingPrice;
+	private int pdtOptionPrice;
+	private int pdtOptionStock;
 	
 
 }

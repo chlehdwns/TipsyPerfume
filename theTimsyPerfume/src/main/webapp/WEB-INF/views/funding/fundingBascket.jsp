@@ -100,7 +100,7 @@
 			<div class="cart-box-area"><input type="checkbox" class="cart-checked"></div>
 			<div class="col-4 ps-5"><img alt="상품사진" src="${cartSelect.pdtFileUpload }" class="product-img">${cartSelect.pdtName }</div>
 			<div class="col">${cartSelect.cartQuantity }</div>
-			<div class="col-2">${cartSelect.pdtPrice }</div>
+			<div class="col-2">${cartSelect.pdtOptionPrice }</div>
 			<div class="col-2 p-0 cart-extra-info-area">
 				<div class="row">
 					<div class="col-12 ext-info-1">${cartSelect.fundingFee }/${cartSelect.cuttingPrice }</div>

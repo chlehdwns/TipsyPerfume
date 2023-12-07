@@ -151,7 +151,7 @@
 			<div class="product-info">
 				
 				<h5 class="product-dinfo">제품명 : ${fundingDetailList.pdtName }</h5>
-				<h5 class="product-dinfo">가격 : ${fundingDetailList.pdtPrice }</h5>
+				<h5 class="product-dinfo">가격 : ${fundingDetailList.pdtOptionPrice }</h5>
 				<h5 class="product-dinfo">만든사람 : ${fundingDetailList.pdtManufac }</h5>
 				<h5 class="product-dinfo">상품 설명  </h5> 
 				<textarea id="product-description" readonly placeholder="${fundingDetailList.pdtDescription }
@@ -163,7 +163,7 @@
 				<form id="fundingForm" method="post" action="purchase.fd">
 					<input type="hidden" name="pno" value="${pno }">
 					<input type="hidden" name="pdtName" value="${fundingDetailList.pdtName }">
-					<input type="hidden" name="pdtPrice" value=" ${fundingDetailList.pdtPrice }">
+					<input type="hidden" name="pdtOptionPrice" value=" ${fundingDetailList.pdtOptionPrice }">
 					<input type="hidden" name="pdtShipping" value="${fundingDetailList.pdtShipping }">
 					<input type="hidden" name="pdtFileUpload" value="${fundingDetailList.pdtFileUpload }">
 					
@@ -193,6 +193,7 @@
 						<input type="number" class="cartQuantity" name="cartQuantity" value="1" min="1" max="10" required/>
 						<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
 						<input type="hidden" name="pdtNo" value="${pno }"/>
+						<input type="hidden" name="pdtOptionNo" value="${fundingDetailList.pdtOptionNo }" />
 					</form>
 				
 					<c:if test="${cutting eq false}">
