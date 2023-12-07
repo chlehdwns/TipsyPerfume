@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.product.model.service.ProductServicePR;
+import com.kh.ttp.product.model.vo.ProductSelectVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -55,6 +56,7 @@ public class ProductControllerPR {
 	public String selectPerfumePdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									   @RequestParam(value="sort", defaultValue="New") String sort,
 									   Model m) {
+		
 		int listCount = productService.selectProductCount("F");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
 		
@@ -71,9 +73,8 @@ public class ProductControllerPR {
 	public ModelAndView perfumePdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 								   ModelAndView mv) {
 		if(pdtNo > 0) {
-			mv.addObject("pdtDetailList", productService.perfumePdtDetail(pdtNo))
+			mv.addObject("pdtDetail", productService.perfumePdtDetail(pdtNo))
 			  .setViewName("product/productDetail");
-			System.out.println(productService.perfumePdtDetail(pdtNo));
 		} else {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")
 			  .setViewName("common/errorPage");
@@ -83,8 +84,8 @@ public class ProductControllerPR {
 	
 	// 주류전체조회
 	@GetMapping("selectAlcoholPdtList.pr")
-	public String selectAlcoholPdtList(@RequestParam(value="currentPage", defaultValue="1") int currentPage,
-									   @RequestParam(value="sort", defaultValue="New") String sort,
+	public String selectAlcoholPdtList(@RequestParam(value="sort", defaultValue="New") String sort,
+									   @RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									   Model m) {
 		int listCount = productService.selectProductCount("A");
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 12, 10);
@@ -93,6 +94,7 @@ public class ProductControllerPR {
 		 .addAttribute("sort", sort)
 		 .addAttribute("pdtList", productService.selectAlcoholPdtList(sort, pi))
 		 .addAttribute("pi", pi);
+		
 		return "product/productList";
 	}
 	
@@ -101,8 +103,7 @@ public class ProductControllerPR {
 	public ModelAndView alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										 ModelAndView mv) {
 		if(pdtNo > 0) {
-			System.out.println(productService.alcoholPdtDetail(pdtNo));
-			mv.addObject("pdtDetailList", productService.alcoholPdtDetail(pdtNo))
+			mv.addObject("pdtDetail", productService.alcoholPdtDetail(pdtNo))
 			  .setViewName("product/productDetail");
 		} else {
 			mv.addObject("errorMsg", "상품 번호가 올바르지 않습니다")

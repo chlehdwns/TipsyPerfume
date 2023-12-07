@@ -94,12 +94,12 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
-
+	/*
 	@Override
 	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey) {
 		return productDao.productMain(sqlSession, pdtIdenKey);
 	}
-
+	*/
 	
 	@Override
 	public ArrayList<FundingSelectVO> selectNewFundingList() {

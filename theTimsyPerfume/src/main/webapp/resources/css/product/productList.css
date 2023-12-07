@@ -53,22 +53,23 @@
 
 #pdtListContentArea .pdt-list-pdtManufac,
 #pdtListContentArea .pdt-list-pdtIntro,
-#pdtListContentArea .pdt-list-pdtName{height: 10%;}
-#pdtListContentArea .pdt-list-reviewAvg{height: 5%;}
+#pdtListContentArea .pdt-list-pdtName{height: 9%;}
+#pdtListContentArea .pdt-list-reviewAvg{height: 8%;}
 #pdtListContentArea .pdt-list-pdtDescription{height: 15%;}
 
-#pdtListContentArea .pdtDetail {
+#pdtListContentArea .pdt-detail,
+#pdtListContentArea .pdt-list-reviewAvg {
     overflow: hidden; /* 튀어나가는 글자 숨김 */
 	margin: 0px 5px 5px 5px;
 }
 
 #pdtListContentArea .row.pdt-list-reviewAvg {
-    justify-content: flex-end;
+    justify-content: flex-end; /* 리뷰 별점 정렬 */
     align-items: center;
 }
 
 /* flex 수직수평 가운데 정렬 */
-#pdtListContentArea .pdtDetail,
+#pdtListContentArea .pdt-detail,
 #pdtListPaginationArea .pagination {
 	justify-content: center;
     align-items: center;
@@ -110,7 +111,9 @@
 	cursor: pointer;
 	font-size: 23px;
 }
-#pdtListContentArea .pdt-list-pdtImgSrc:hover{
+#pdtListContentArea .pdt-list-pdtImgSrc,
+#pdtListContentArea .pdt-detail,
+#pdtListContentArea .pdt-list-reviewAvg:hover{
 	cursor: pointer;
 	/* opacity: 100; */
 }

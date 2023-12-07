@@ -33,7 +33,8 @@
 		<result column="PDT_OPTION_NO" property="pdtOptionNo" />
 		<result column="PDT_NO" property="pdtNo" />
 		<result column="PDT_OPTION_FIRST" property="pdtOptionFirst" />
-		<result column="PDT_OPTION_SECOND" property="pdtOptionSecond" />
+		<result column="PDT_OPTION_PRICE" property="pdtOptionPrice" />
+		<result column="PDT_OPTION_STOCK" property="pdtOptionStock" />
 	</resultMap>
 	
 	
@@ -105,7 +106,7 @@
 			   PDT_DESCRIPTION,
 			   PDT_MANUFAC,
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   REVIEW_AVG
+			   NVL(REVIEW_AVG, 0) "REVIEW_AVG"
 		  FROM
 		  	   TB_PRODUCT
 		  JOIN
@@ -123,16 +124,18 @@
   		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH",
   		  	   		  </if>
   		  	   		  PDT_NO,
-  		  	   		  AVG(NVL(REVIEW_SCORE, 0)) "REVIEW_AVG"
-  		  	   		  
+  		  	   		  ROUND(AVG(REVIEW_SCORE), 1) "REVIEW_AVG"
 				 FROM
 				 	  TB_PRODUCT
 				 LEFT
 				 JOIN TB_REVIEW USING(PDT_NO)
 				 <if test="sort eq 'BestSeller'">
+                 LEFT
+				 JOIN
+                     TB_PRODUCT_OPTION USING(PDT_NO)
 				 LEFT
 				 JOIN
-				 	  TB_ORDER_PRODUCT USING(PDT_NO)
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
 				 LEFT
                  JOIN
                  
@@ -178,7 +181,7 @@
 	
 	
 	<!-- 상품 디테일 조회 -->
-	<select id="productDetailList" parameterType="map" resultMap="productSelectResultSet">
+	<select id="productDetail" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
 			   PDT_NO,
 			   PDT_NAME,
@@ -191,28 +194,44 @@
 			   PDT_GROUP,
 			   PDT_FILE_NO,
 			   PDT_FILE_INDEX,
-			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_DETAIL_IMG_SRC"
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
+			   NVL(REVIEW_AVG, 0) "REVIEW_AVG"
 		  FROM
 			   TB_PRODUCT
 		  JOIN
 			   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
 		  JOIN
 			   TB_PRODUCT_FILE USING(PDT_NO)
+		  LEFT
+		  JOIN
+		  	   (
+			   SELECT
+					  PDT_NO,
+					  ROUND(AVG(REVIEW_SCORE), 1) "REVIEW_AVG"
+			     FROM
+					  TB_REVIEW
+			    WHERE
+					  PDT_NO = #{pdtNo}
+			    GROUP
+			       BY
+					  PDT_NO
+			   		  ) USING(PDT_NO)
 		 WHERE
 			   PDT_NO = #{pdtNo}
 		   AND
 			   PDT_STATUS = 'Y'
 		   AND
+		   	   PDT_CTEG = #{pdtCteg}
+		   AND
 			   PDT_FAMILY = 'B'
 	</select>
-	<!-- PDT_FAMILY = 'B'는 최소한의 조건체크 -->
+	<!-- PDT_CTEG, PDT_FAMILY = 'B'는 최소한의 조건체크 -->
 
 	
 	
 	<!-- 상품 번호로 상품의 옵션 정보 조회 -->	
 	<select id="selectPdtOptionOne" parameterType="_int" resultMap="productOptionResultSet">
 		SELECT
-		       PDT_NAME,
 		       PDT_OPTION_NO,
 		       PDT_NO,
 		       PDT_OPTION_FIRST,
@@ -221,17 +240,46 @@
 		       PDT_OPTION_STOCK
 		  FROM
 		       TB_PRODUCT_OPTION
-		  JOIN
-		       TB_PRODUCT USING(PDT_NO)	    
 		 WHERE
 		       PDT_NO = #{pdtNo}
 		   AND
-		       PDT_STATUS = 'Y'
-		   AND
 		   	   PDT_OPTION_STOCK > 0
+		 ORDER
+            BY
+               TO_NUMBER(REGEXP_REPLACE(PDT_OPTION_FIRST, '[^0-9]'))
 	</select>
 	
-	
+	<!-- 상품에 달린 리뷰 조회 -->
+	<select id="selectRecentReviewWithRownum" parameterType="map" resultType="review">
+		SELECT
+			   REVIEW_NO reviewNo,
+			   REVIEW_SCORE reviewScore,
+			   REVIEW_CONTENT reviewContent,
+			   THUMBNAIL thumbnail
+		  FROM
+		  	   (
+			   SELECT
+			   		  REVIEW_NO,
+			   		  REVIEW_SCORE,
+			   		  REVIEW_CONTENT,
+			   		  NVL2(REVIEW_FILE_UPLOAD, REVIEW_FILE_PATH || '/' || REVIEW_FILE_UPLOAD, 'NOIMAGE') "THUMBNAIL"
+				 FROM
+			   		  TB_REVIEW
+			   	 JOIN
+			   		  TB_REVIEW_FILE USING(REVIEW_NO)
+			    WHERE
+			   		  PDT_NO = #{pdtNo}
+			   	  AND
+			   		  REVIEW_FILE_INDEX = 0
+			   	  AND
+			   		  REVIEW_STATE = 'Y'
+			   	ORDER
+			   	   BY
+			   		  REVIEW_NO DESC
+		  	   )
+		 WHERE
+		 	   ROWNUM <![CDATA[ <= ]]> #{rowNum}
+	</select>
 	<!-- 장바구니 전체조회 -->
 	<!--
 	<select id="cartMain" parameterType="_int" resultMap="cart">
@@ -287,8 +335,6 @@
 		   AND
 		 	   PDT_OPTION_NO = #{pdtOptionNo}
 	</update>
-	
-	
 
 	
 	

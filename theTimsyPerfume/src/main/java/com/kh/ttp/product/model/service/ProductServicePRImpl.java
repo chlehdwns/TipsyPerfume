@@ -2,12 +2,14 @@ package com.kh.ttp.product.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.common.model.vo.PageInfo;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.product.model.dao.ProductDaoPR;
 import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
@@ -19,9 +21,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ProductServicePRImpl implements ProductServicePR {
-
-	private final ProductDaoPR productDao;
 	
+	
+	private final ProductDaoPR productDao;
 	private final SqlSessionTemplate sqlSession;
 	
 	
@@ -84,7 +86,7 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 	
 	@Override
-	public ArrayList<ProductSelectVO> perfumePdtDetail(int pdtNo) {  // pdtNo, F
+	public ProductSelectVO perfumePdtDetail(int pdtNo) {  // pdtNo, F
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtNo", pdtNo);
 		pMap.put("pdtCteg", "F");
@@ -106,7 +108,7 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 	
 	@Override
-	public ArrayList<ProductSelectVO> alcoholPdtDetail(int pdtNo) {  // pdtNo, A
+	public ProductSelectVO alcoholPdtDetail(int pdtNo) {  // pdtNo, A
 		HashMap<String, Object> pMap = new HashMap();
 		pMap.put("pdtNo", pdtNo);
 		pMap.put("pdtCteg", "A");
@@ -131,6 +133,30 @@ public class ProductServicePRImpl implements ProductServicePR {
 	@Override
 	public int deleteWishOne(WishlistVO wishlist) {
 		return productDao.deleteWishOne(sqlSession, wishlist);
+	}
+	
+
+	@Override
+	public int insertCartOne(CartVO cart) {
+		return productDao.insertCartOne(sqlSession, cart);
+	}
+
+
+	@Override
+	public int updateCartOneQuantity(CartVO cart) {
+		return productDao.updateCartOneQuantity(sqlSession, cart);
+	}
+
+
+	@Override
+	public List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo) {
+		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
+	}
+
+
+	@Override
+	public ArrayList<ReviewVO> selectRecentReviewWithRownum(HashMap<String, Integer> pMap) {
+		return productDao.selectRecentReviewWithRownum(sqlSession, pMap);
 	}
 	
 	
@@ -162,24 +188,7 @@ public class ProductServicePRImpl implements ProductServicePR {
 		}
 	}
 
-
-
-	@Override
-	public int insertCartOne(CartVO cart) {
-		return productDao.insertCartOne(sqlSession, cart);
-	}
-
-
-	@Override
-	public int updateCartOneQuantity(CartVO cart) {
-		return productDao.updateCartOneQuantity(sqlSession, cart);
-	}
-
-
-	@Override
-	public ArrayList<ProductOption> ajaxCreateCartQuickAddModal(int pdtNo) {
-		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
-	}
+	/********************************************************/
 
 
 
