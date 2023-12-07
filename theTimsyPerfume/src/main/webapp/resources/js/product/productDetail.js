@@ -15,13 +15,19 @@ $(() => {
 			if(result === 'ERROR') {
 				needPdtNoAlert();
 			} else { // 옵션 영역 만들어줌
-				let valueStr = '<option value="" selected disabled>옵션선택</option>';
+				let pdtNoStr = '<option value="" selected disabled>옵션선택</option>';
+				let optionInfoStr = '';
 				for(let i in result) {
-					valueStr += '<option value="' + result[i].pdtOptionNo + '"'
-							  + ' class="' + result[i].pdtOptionStock + '">'
+					pdtNoStr += '<option value="' + result[i].pdtOptionNo + '">'
 							  + result[i].pdtOptionFirst + '</option>';
+					optionInfoStr += '<input type="hidden" placeholder="pdtOptionStock pdtOptionPrice" '
+					               + 'class="' + result[i].pdtOptionStock
+					               + ' '
+					               + result[i].pdtOptionPrice +'">';
 				}
-				$('#pdtDetailSelectInput').html(valueStr);
+				$('#pdtDetailSelectInput').html(pdtNoStr);
+				$('#pdtDetailOptionInfo').html(optionInfoStr);
+				
 			}
 		},
 		error : () => {

@@ -13,6 +13,7 @@ public class CartSelectVO {
 	private int userNo;
 	private int pdtNo;
 	private int cartQuantity;
+	
 	private int pdtPrice;
 	private String pdtName;
 	private String pdtShipping;

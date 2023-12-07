@@ -21,9 +21,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ProductServicePRImpl implements ProductServicePR {
-
-	private final ProductDaoPR productDao;
 	
+	
+	private final ProductDaoPR productDao;
 	private final SqlSessionTemplate sqlSession;
 	
 	
@@ -135,6 +135,30 @@ public class ProductServicePRImpl implements ProductServicePR {
 		return productDao.deleteWishOne(sqlSession, wishlist);
 	}
 	
+
+	@Override
+	public int insertCartOne(CartVO cart) {
+		return productDao.insertCartOne(sqlSession, cart);
+	}
+
+
+	@Override
+	public int updateCartOneQuantity(CartVO cart) {
+		return productDao.updateCartOneQuantity(sqlSession, cart);
+	}
+
+
+	@Override
+	public List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo) {
+		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
+	}
+
+
+	@Override
+	public ArrayList<ReviewVO> selectRecentReviewWithRownum(HashMap<String, Integer> pMap) {
+		return productDao.selectRecentReviewWithRownum(sqlSession, pMap);
+	}
+	
 	
 	
 	/***************** ajax 요청 *****************/
@@ -165,29 +189,6 @@ public class ProductServicePRImpl implements ProductServicePR {
 	}
 
 	/********************************************************/
-
-	@Override
-	public int insertCartOne(CartVO cart) {
-		return productDao.insertCartOne(sqlSession, cart);
-	}
-
-
-	@Override
-	public int updateCartOneQuantity(CartVO cart) {
-		return productDao.updateCartOneQuantity(sqlSession, cart);
-	}
-
-
-	@Override
-	public List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo) {
-		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
-	}
-
-
-	@Override
-	public ArrayList<ReviewVO> selectRecentReviewWithRownum(HashMap<String, Integer> pMap) {
-		return productDao.selectRecentReviewWithRownum(sqlSession, pMap);
-	}
 
 
 

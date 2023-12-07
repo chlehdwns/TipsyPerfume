@@ -53,27 +53,47 @@
             	</c:choose>
             </div>
 
-            
+
      		<div id="pdtListContentArea" class="row row-cols-3">
 				<c:forEach var="pdt" begin="1" end="12"> <!-- 마지막 페이지 상품정보 없어도 정렬 깨지지 않도록 1 ~ 12로 12번 반복 / @@@마지막페이지 예쁘게 하려면 반복횟수 제한, 반복횟수는 = 3 * (floor((배열길이 - 1) / 3)) + 1) 일단 넘어가기 -->
 					<div class="container col pdt-list-container-col">
 						<c:if test="${not empty pdtList[(pdt - 1)]}">
-							<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
+							<input type="hidden" value="${pdtList[(pdt - 1)].pdtNo}" class="${pdtCteg}"> <!-- @@@사용자가 보내는 요청이 조작되지 않은 pdtNo인걸 어떻게 검증하지? => 일단 돌리고 나중에 -->
 							<div class="bi bi-suit-heart container pdt-list-icon-area pdt-list-heart" onclick="ajaxChangeWishOne(this);"></div>
 							<div class="bi bi-cart-plus  container pdt-list-icon-area pdt-list-cart" onclick="ajaxAddCartOne(this);"></div>
-							<div class="row pdt-list-pdtImgSrc pdtDetail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
-			                <div class="row pdt-list-pdtManufac pdtDetail">${pdtList[(pdt - 1)].pdtManufac}</div>
-			                <div class="row pdt-name pdt-list-pdtName pdtDetail">${pdtList[(pdt - 1)].pdtName}</div>
-			                <div class="row pdt-list-reviewAvg pdtDetail">
-			                	<c:if test="${not empty pdtList[(pdt - 1)]}">★ ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
+							<div class="row pdt-list-pdtImgSrc pdt-detail"><img src="${pdtList[(pdt - 1)].pdtImgSrc}"></div>
+			                <div class="row pdt-list-pdtManufac pdt-detail">${pdtList[(pdt - 1)].pdtManufac}</div>
+			                <div class="row pdt-name pdt-list-pdtName pdt-detail">${pdtList[(pdt - 1)].pdtName}</div>
+			                <div class="row pdt-list-reviewAvg">
+			                	<c:if test="${not empty pdtList[(pdt - 1)]}">★리뷰 ${pdtList[(pdt - 1)].reviewAvg}/5</c:if><!-- 마지막페이지 상품 없을 때 별점0.0뜨지 않도록 -->
 			                </div>
-			                <div class="row pdt-list-pdtIntro pdtDetail">${pdtList[(pdt - 1)].pdtIntro}</div>
-			                <div class="row pdt-list-pdtDescription pdtDetail">${pdtList[(pdt - 1)].pdtDescription}${pdtList[(pdt - 1)].pdtDescription}</div>
+			                <div class="row pdt-list-pdtIntro pdt-detail">${pdtList[(pdt - 1)].pdtIntro}</div>
+			                <div class="row pdt-list-pdtDescription pdt-detail">${pdtList[(pdt - 1)].pdtDescription}${pdtList[(pdt - 1)].pdtDescription}</div>
 						</c:if>
 					</div>
 				</c:forEach>
 			</div>
-
+			<script>
+            	$('.pdt-detail, .pdt-detail-img').on('click', e => {
+            		let $pdtHiddenInput = $(e.target).closest('.pdt-list-container-col').find('input[type=hidden]');
+            		let $pdtNo = $pdtHiddenInput.val();
+            		let $pdtCteg = $pdtHiddenInput.attr('class');
+            		if($pdtCteg === 'A') {
+            			console.log('주류');
+            			location.href='alcoholPdtDetail.pr?pdtNo=' + $pdtNo;
+            		}
+            		else if($pdtCteg === 'F') {
+            			console.log('향수');
+            			location.href='perfumePdtDetail.pr?pdtNo=' + $pdtNo;
+            		}
+            		else {
+            			alert('잘못된 요청입니다!')
+            		}
+            		console.log($pdtNo);
+            		console.log($pdtCteg);
+            		
+            	});
+            </script>
 			
 	        <div id="pdtListPaginationArea" class="row">
        		<c:set var="hrefPage" value="${pdtCteg eq 'A' ? 'selectAlcoholPdtList.pr' : 'selectPerfumePdtList.pr'}" />
@@ -127,17 +147,6 @@
 		// 채운하트 bi bi-suit-heart-fill 안채운하트 bi bi-suit-heart
 		// pdtNo 배열 만들어 넘김
 		// list 받아 반복문으로 각 (pdtNo요소).parent().find(.pdt-list-heart) 하트아이콘 선택
-
-	    
-
-	    
-		
-
-	    
-	    
-	    
-	    
-	    
 	    
 		// 이건 후순위!! 하트 채워주는건 필수, 장바구니는 아이콘은 선택
 		/*

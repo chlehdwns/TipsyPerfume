@@ -22,7 +22,7 @@ import com.kh.ttp.user.model.vo.User;
 public interface ProductService {
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
-	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
+	//public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
 
 	int drinkFundingInsert(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, ProductCategory productCategory);
 	

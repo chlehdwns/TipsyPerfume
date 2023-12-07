@@ -79,11 +79,17 @@
 	/* 상품 대표 이미지 영역 */
 	#pdtDetailThumbnail {
 		height: 420.38px;
+		width: 100%;
 		text-align: center;
-		margin-bottom: 50px;
 		display: inline-block;
+		margin: 0 auto;
+		margin-bottom: 50px;
 	}
-	#pdtDetailThumbnail img { width: 90%; }
+	#pdtDetailThumbnail img {
+		width: 90%;
+		height: 100%;
+		object-fit: cover; /* 이미지가 div에 맞춰지면서 비율 유지 */
+	}
 	
 	/* 리뷰 영역 */
 	.pdt-dt-rv-row {height: 120px;}
@@ -112,6 +118,7 @@
 		text-align: center;
 		height: 70%;
 	}
+	#pdtDetailOptionInfo { display : none; }
 	
 
 	</style>
@@ -181,6 +188,9 @@
 							<select id="pdtDetailSelectInput" class="form-select form-select-sm pdt-dt-input">
 								<!-- 옵션 띄워질 영역 -->
 							</select>
+							<div id="pdtDetailOptionInfo">
+								<!-- 부가정보가 띄워질 영역 -->
+							</div>
 						</div>
 						<div class="col-5 pdt-dt-align-center detail-bg">
 							<input id="pdtDetailQuanInput" type="number" min="1" class="pdt-dt-input form-control" placeholder="수량선택">
@@ -250,12 +260,17 @@
 		// 2. 옵션별 가격 * 선택한 개수 = 상품금액 계산 업데이트 
 		$('#pdtDetailQuanInput, #pdtDetailSelectInput').on('change', () => {
 			console.log('체인지~');
-			let $pdtStock = $('#pdtDetailSelectInput option:selected').attr('class');
+			let $pdtStock = $('#pdtDetailSelectInput option:selected'); // .indexOf('pdtOptionStockIs');
+			console.log($('#pdtOptionStock').val());
+			//let $index = $pdtStock.indexOf('pdtOptionPriceIs');
+			//console.log(($pdtStock).indexOf('pdtOptionPriceIs')); //replace(/^pdtOptionPriceIs/gi, ''));
+			//console.log($pdtStock.slice($index, $pdtStock.length));	
+		/*
 			let $numberInput = $('#pdtDetailQuanInput');
 			let $totalPriceArea = $('#pdtDetailTotalPrice');
 			
 			$numberInput.attr('max', $pdtStock); // 키업에는 의미 없음
-			$totalPriceArea.html(Number($pdtStock) * Number($numberInput.val()));
+			$totalPriceArea.html((Number($pdtStock) * Number($numberInput.val())) + '원');
 			
 			//console.log(typeof $pdtStock); 100부터 안됨 => 타입이 문자열이라
 			//console.log(typeof $numberInput.val() + '넘버인풋 밸류');
@@ -264,6 +279,7 @@
 				alert('재고가 충분하지 않습니다! 현재 재고는 ' + $pdtStock + '개 입니다');
 				console.log('너무큰숫자');
 			}
+			*/
 		});
 
 	</script>

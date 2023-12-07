@@ -88,6 +88,20 @@ public interface ProductServicePR {
 	int deleteWishOne(WishlistVO wishlist);
 	
 	
+	// 디테일뷰 -> 장바구니 INSERT / 유저넘버, 옵션번호, 수량
+	
+	// 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*********** ajax 요청 ***********/
 	
@@ -118,21 +132,11 @@ public interface ProductServicePR {
 	int insertCartOne(CartVO cart);
 	
 	/**
-	 * 장바구니 수량 UPDATE
+	 * 장바구니 수량 1개 UPDATE
 	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
 	int updateCartOneQuantity(CartVO cart);
-
-
-	/**
-	 * 특정 상품의 옵션들을 선택해서 ArrayList로 반환
-	 * @param pdtNo
-	 * @return
-	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
-	 */
-	List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo);
-	
 	
 	/**
 	 * 상품 번호, 숫자N을 받아 최근순 리뷰 Top N개를 조회하는 메소드
@@ -141,6 +145,13 @@ public interface ProductServicePR {
 	 */
 	ArrayList<ReviewVO> selectRecentReviewWithRownum(HashMap<String, Integer> pMap);
 	
+	/**
+	 * 특정 상품의 옵션들을 선택해서 ArrayList로 반환
+	 * @param pdtNo
+	 * @return
+	 * PDT_NO, PDT_NAME, PDT_OPTION_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_STOCK
+	 */
+	List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo);
 	
 	
 	
