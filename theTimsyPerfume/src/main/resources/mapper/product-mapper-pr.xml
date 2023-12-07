@@ -43,12 +43,18 @@
 	<!-- SELECT -->
 	<!-- 전체상품 COUNT / 브랜드 주류 or 향수(판매중 상태Y)의 전체 개수 -->
 	<select id="selectProductCount" parameterType="string" resultType="_int">
-		SELECT COUNT(1) "RESULT"
-		FROM TB_PRODUCT
-		JOIN TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
-		WHERE PDT_CTEG = #{pdtCteg}
-		AND PDT_FAMILY = 'B'
-		AND PDT_STATUS = 'Y'
+		SELECT
+			   COUNT(1) "RESULT"
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+		 WHERE
+		 	   PDT_CTEG = #{pdtCteg}
+		   AND
+		   	   PDT_FAMILY = 'B'
+		   AND
+		   	   PDT_STATUS = 'Y'
 	</select>
 	
 	
@@ -95,9 +101,9 @@
 		  	   PDT_STATUS = 'Y'
 	</select>
 	
+	<!-- if로 쓴 이유 -> otherwise에 쓸 내용 없고, 이 경우 if를 쓰든 choose-when-otherwise를 쓰든 성능차이 크지 않을것, 가독성 좋은방향이 더 낫다 생각함 -->
 	
 	<!-- 브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
-	<!-- if로 쓴 이유 -> otherwise에 쓸 내용 없고, 이 경우 if를 쓰든 choose-when-otherwise를 쓰든 성능차이 크지 않을것, 가독성 좋은방향이 더 낫다 생각함 -->
 	<select id="productSelectList" parameterType="map" resultMap="productSelectResultSet">
 		SELECT
 			   PDT_NO,
@@ -106,13 +112,95 @@
 			   PDT_DESCRIPTION,
 			   PDT_MANUFAC,
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   NVL(REVIEW_AVG, 0) "REVIEW_AVG"
+			   REVIEW_AVG
 		  FROM
 		  	   TB_PRODUCT
 		  JOIN
 		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
   		  JOIN
   		  	   TB_PRODUCT_FILE USING(PDT_NO)
+  		  LEFT
+  		  JOIN
+  		  	   (
+  		  	   SELECT 
+  		  	   		  PDT_NO,
+  		  	   		  TO_CHAR(NVL(ROUND(AVG(REVIEW_SCORE), 1), 0), 'FM0.0') "REVIEW_AVG"
+  		  	   		  <if test="sort eq 'BestSeller'">
+  		  	   		  ,
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
+      				  TRUNC(AVG(NVL(PAY_TOTAL, 0) + NVL(PAY_ADJUST, 0))) "SALES_AVG"
+  		  	   		  </if>
+  		  			  <if test="sort eq 'Popular'">
+  		  	   		  ,
+  		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH"
+  		  	   		  </if>
+				 FROM
+				 	  TB_PRODUCT
+				 JOIN
+				 	  TB_PRODUCT_OPTION USING(PDT_NO)
+				 LEFT
+				 JOIN TB_REVIEW USING(PDT_OPTION_NO)
+				 <if test="sort eq 'BestSeller'">
+				 LEFT
+				 JOIN
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
+				 LEFT
+                 JOIN
+                 
+                 	  TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
+                 LEFT
+                 JOIN
+                 	  TB_PAY USING(PAY_NO)
+				 </if>
+				 <if test="sort eq 'Popular'">
+				 LEFT
+ 				 JOIN
+ 				 	  TB_WISHLIST W USING(PDT_NO)
+				 </if>
+				WHERE
+				<if test="sort eq 'BestSeller'">
+				 	  PAY_STATUS = 'Y'
+				   OR
+      				  PAY_STATUS IS NULL
+               	  AND
+				</if>
+					  REVIEW_STATE = 'Y'
+				   OR
+				   	  REVIEW_STATE IS NULL
+				GROUP
+				   BY
+				   	  PDT_NO
+			   ) USING(PDT_NO)
+		 WHERE
+			   PDT_CTEG = #{pdtCteg}
+		   AND
+		   	   PDT_FAMILY = 'B'
+   		   AND
+   		   	   PDT_STATUS = 'Y'
+   		   AND
+   		   	   PDT_FILE_INDEX = 0
+		 ORDER
+		    BY
+			   <if test="sort eq 'BestSeller'">
+			   TOTAL_SALES DESC,
+			   SALES_AVG DESC,
+			   </if>
+			   <if test="sort eq 'Popular'">
+			   TOTAL_WISH DESC,
+			   </if>
+			   PDT_NO DESC
+	</select>
+	
+	
+	
+	
+	<!-- @@@@@@@@@@@@@@브랜드 주류/향수 상품 메인보기(6개조회) & 전체보기(12개조회)를 위한 쿼리문 -->
+<!--
+		  	   ... FROM
+		  	   	   TB_PRODUCT(상품)
+		  	   	   TB_PRODUCT_CATEGORY(카테고리)
+		  	   	   TB_PRODUCT_FILE(파일/사진)
+		  	   	   INNER JOIN 결과 ...
   		  LEFT
   		  JOIN
   		  	   (
@@ -177,7 +265,86 @@
 			   TOTAL_WISH DESC,
 			</if>
 			   PDT_NO DESC
-	</select>
+	</select> -->
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	
+		<!-- @@@@@@@@@@@@@@인라인뷰구조 -->
+<!-- 	
+		  ... TB_PRODUCT(상품), TB_PRODUCT_CATEGORY(카테고리), TB_PRODUCT_FILE(파일/사진)
+		 	  INNER JOIN 결과 ...
+
+
+
+
+
+  		  LEFT
+  		  JOIN
+  		  	   (
+  		  	   SELECT 
+  		  	   		  <if test="sort eq 'BestSeller'">
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
+  		  	   		  TRUNC(AVG(NVL(PAY_TOTAL, 0) + NVL(PAY_ADJUST, 0))) "SALES_AVG"
+  		  	   		  </if>
+  		  			  <if test="sort eq 'Popular'">
+  		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH",
+  		  	   		  </if>
+  		  	   		  
+  		  	   		  PDT_NO,
+  		  	   		  ROUND(AVG(REVIEW_SCORE), 1) "REVIEW_AVG"
+  		  	   		  
+  		  	   		  
+  		  	   		  
+				 FROM
+				 	  TB_PRODUCT
+				 LEFT
+				 JOIN TB_REVIEW USING(PDT_NO)
+				 
+				 <if test="sort eq 'BestSeller'">
+                 LEFT
+				 JOIN
+                     TB_PRODUCT_OPTION USING(PDT_NO)
+				 LEFT
+				 JOIN
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
+				 LEFT
+                 JOIN
+                 
+                 	  TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
+                 LEFT
+                 JOIN
+                 	  TB_PAY USING(PAY_NO)
+				 </if>
+				 
+				 <if test="sort eq 'Popular'">
+				 LEFT
+ 				 JOIN TB_WISHLIST W USING(PDT_NO)
+				 </if>
+				 
+				 
+				 
+				WHERE
+				<if test="sort eq 'BestSeller'">
+				 	  PAY_STATUS = 'Y'
+               	  AND
+				</if>
+					  REVIEW_STATE = 'Y'
+				   OR
+				   	  REVIEW_STATE IS NULL
+				GROUP
+				   BY
+				   	  PDT_NO
+			   ) USING(PDT_NO)
+			   
+			   ... 아우터 SQL의 WHERE절, ORDER BY절 ...
+
+ -->
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@인라인뷰구조 -->
+	
+	
+	
+	
+	
+	
 	
 	
 	<!-- 상품 디테일 조회 -->
