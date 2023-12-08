@@ -18,12 +18,10 @@ public class UserDao {
 	}
 	
 	public int insertUser(SqlSessionTemplate sqlSession, User u) {
-		//System.out.println(u);
 		return sqlSession.insert("userMapper.insertUser", u);
 	}
 	
 	public int insertUser1(SqlSessionTemplate sqlSession, User u) {
-		//System.out.println(u);
 		return sqlSession.insert("userMapper.insertUser2", u);
 	}
 	

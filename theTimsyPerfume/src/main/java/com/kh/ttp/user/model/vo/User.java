@@ -2,11 +2,20 @@ package com.kh.ttp.user.model.vo;
 
 import java.sql.Date;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.kh.ttp.product.model.vo.ProductVO;
 
-@Data
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+//@Data
+//@NoArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@ToString
 public class User {
 
 	private int userNo;

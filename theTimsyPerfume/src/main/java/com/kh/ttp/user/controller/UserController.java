@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.ttp.orderKinds.model.vo.Receiver;
@@ -52,12 +53,11 @@ public class UserController {
 									ModelAndView mv) {
 				
 			User loginUser = userService.loginUser(u);
-			//System.out.println(bcrypt.encode(u.getUserPwd()));
 			if(loginUser != null && bcrypt.matches(u.getUserPwd(), loginUser.getUserPwd())) {
 				session.setAttribute("loginUser", loginUser);
 				mv.setViewName("redirect:/");
 			} else {
-				mv.addObject("alertMsg", "로그인 실패ㅠ");
+				mv.addObject("alertMsg", "로그인에 실패했습니다.");
 				mv.setViewName("member/LoginForm");
 			}
 				return mv;
@@ -80,18 +80,17 @@ public class UserController {
 	
 		
 		//회원가입
+		
 		@RequestMapping("insert.me")
-		public String insertUser(User u, Model model, HttpSession session) { //, Model model ) {
+		public String insertUser(User u, Model model, HttpSession session) {
 			
-			//System.out.println(u + "컨트롤러ㅓㅓㅓㅓ");
 			String encPwd = bcrypt.encode(u.getUserPwd());
-			
 			u.setUserPwd(encPwd);
 			u.setUserNo(u.getUserNo());
 			
-			if(userService.insertUser(u) > 0) { // 성공=>메인페이지
+			if(userService.insertUser(u) > 0) { 
 				return "member/LoginForm";
-			} else { // 실패 => 에러메세지 담아서 에러페이지로 포워딩
+			} else { 
 				model.addAttribute("errorMsg", "회원가입 실패");
 				return "common/errorPage";
 			}
@@ -164,20 +163,15 @@ public class UserController {
 		@ResponseBody
 		@RequestMapping("emailCheck.me")
 		public String emailCheck(String checkEmail) {
-			//System.out.println(checkEmail);
 			return userService.emailCheck(checkEmail) > 0 ? "NNNNNNNNNNNNNNN" : "NNNNNNNNNNNNNNY";
 		}
 		
 		
 		
-		//이거 ajax자체에다가 post를 설정해줘야된다고 함 내일와서하기>>완료
+		//이메일 발송
 		@PostMapping(value="mail", produces="text/html; charset=UTF-8")
 		@ResponseBody
 			public String ajaxMail(String userEmail, HttpServletRequest request) throws MessagingException{ 
-				
-				//System.out.println(userEmail);
-				
-					
 				MimeMessage message = sender.createMimeMessage();
 				MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 					
@@ -195,11 +189,9 @@ public class UserController {
 					helper.setTo(userEmail);
 					helper.setSubject("인증번호 보내드립니다");
 					helper.setText("인증번호 : " + authCode);
-					
 					sender.send(message);
 					
 					return Integer.toString(userService.sendMail(authVo));
-			
 		}
 		
 		

@@ -161,27 +161,28 @@ function getCookie(cookieName) {
 				<h4 class="title" align="center">로그인</h4>
 			</div>
 			
-
 			<div class="center-wrapper" align="center">
-			
 				<div class="login-wrapper" >
 					<form action="login.me" method="post"  id="login-form">
 						<input type="text" id="userEmail" name="userEmail" placeholder="이메일을 입력해주세요." >
 						<input type="password" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요." >
-						
 						<input type="checkbox" id="idSaveCheck" style="font-size:small; height:10px;">
   						<label for="remember" style="font-size:small">아이디 저장</label><br>
-						
-						
 						<input type="submit" value="Login">
-						
 						<br><br><br>
 					</form>
 				</div>
-				
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<div class="box"></div>
 
