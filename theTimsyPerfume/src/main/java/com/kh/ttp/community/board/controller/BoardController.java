@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +23,13 @@ import com.kh.ttp.community.board.model.service.BoardService;
 import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class BoardController {
 	
-	@Autowired
-	BoardService boardService;
+	private final BoardService boardService;
 	
 	@GetMapping("board")
 	public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1")int page, String boardCtgy, ModelAndView mv) {
@@ -43,8 +47,8 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardDetail")
-	public ModelAndView boardDetail(int boardNo, ModelAndView mv) {
-		if(boardService.increaseBoardCount(boardNo)>0) {
+	public ModelAndView boardDetail(int boardNo, HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+		if(boardCountUp(boardNo, request, response)) {
 			BoardVO board = boardService.selectBoard(boardNo);
 			mv.addObject("board",board).
 			setViewName("community/boardDetail");
@@ -53,6 +57,42 @@ public class BoardController {
 			mv.setViewName("common/errorPage");
 		}
 		return mv;
+	}
+	private boolean boardCountUp(int boardNo, HttpServletRequest request, HttpServletResponse response) {
+		boolean success = false;
+		Cookie oldCookie = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies!=null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("boardViews")) {
+					oldCookie = cookie;
+				}
+			}
+		}
+		if(oldCookie!=null) {
+			if(oldCookie.getValue().contains("["+boardNo+"]")) {
+				success = true;
+			} else {
+				if(boardService.increaseBoardCount(boardNo)>0) {
+					oldCookie.setValue(oldCookie.getValue()+"["+boardNo+"]");
+					oldCookie.setMaxAge(60*60*24);
+					response.addCookie(oldCookie);
+					success = true;
+				} else {
+					success = false;
+				}
+			}
+		} else {
+			if(boardService.increaseBoardCount(boardNo)>0) {
+				Cookie newCookie = new Cookie("boardViews", "["+boardNo+"]");
+				newCookie.setMaxAge(60*60*24);
+				response.addCookie(newCookie);
+				success = true;
+			} else {
+				success = false;
+			}
+		}
+		return success;
 	}
 	
 	@GetMapping("boardWrite")
@@ -71,15 +111,12 @@ public class BoardController {
 	public ModelAndView boardWrite(BoardVO bo, MultipartFile uploadImg[], HttpSession session, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
+		bo.setBoardTitle(bo.getBoardTitle().replace("\"", "&quot;"));
 		
 		ArrayList<BoardFileVO> fileList = new ArrayList<BoardFileVO>();
-		if(!uploadImg[0].getOriginalFilename().equals("")) {
+		if(uploadImg!=null && !uploadImg[0].getOriginalFilename().equals("")) {
 			for(int i=0;i<uploadImg.length;i++) {
 				BoardFileVO file = saveFile(uploadImg[i], i, session);
-				String imgPath="<img class='img' src='"+file.getBoardFilePath()+"/"+file.getBoardFileUpload()+"'>";
-				bo.setBoardContent(bo.getBoardContent().replace("{img"+(i+1)+"}", imgPath));
 				fileList.add(file);
 			}
 		}
@@ -104,9 +141,7 @@ public class BoardController {
 	public ModelAndView updateBoard(BoardVO bo, ModelAndView mv) {
 		bo.setBoardTitle(bo.getBoardTitle().replace("<", "&lt;"));
 		bo.setBoardTitle(bo.getBoardTitle().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("<", "&lt;"));
-		bo.setBoardContent(bo.getBoardContent().replace(">", "&gt;"));
-		bo.setBoardContent(bo.getBoardContent().replace("&lt;img", "<img"));//@@@@@@@@@@다시해라
+		bo.setBoardTitle(bo.getBoardTitle().replace("\"", "&quot;"));
 		if(boardService.updateBoard(bo)>0) {
 			mv.setViewName("redirect:boardDetail?boardNo="+bo.getBoardNo());
 		} else {
@@ -127,7 +162,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	public BoardFileVO saveFile(MultipartFile upfile, int index, HttpSession session) {
+	private BoardFileVO saveFile(MultipartFile upfile, int index, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
 		
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());

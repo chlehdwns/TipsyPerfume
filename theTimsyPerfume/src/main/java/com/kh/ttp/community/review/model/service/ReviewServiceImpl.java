@@ -16,13 +16,14 @@ import com.kh.ttp.community.review.model.dao.ReviewDAO;
 import com.kh.ttp.community.review.model.vo.ReviewFileVO;
 import com.kh.ttp.community.review.model.vo.ReviewVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-	@Autowired
-	private ReviewDAO reviewDao;
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private final ReviewDAO reviewDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int countReviewList() {
@@ -70,5 +71,16 @@ public class ReviewServiceImpl implements ReviewService {
 			result2 = reviewDao.insertReviewFile(sqlSession, fileList);
 		}
 		return result1 * result2;
+	}
+	
+	@Override
+	public int countFundingReview(int pdtNo) {
+		return reviewDao.countFundingReview(sqlSession,pdtNo);
+	}
+	@Override
+	public ArrayList<ReviewVO> selectReviewFunding(PageInfo pi,int pdtNo) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return reviewDao.selectReviewFunding(sqlSession,rowBounds,pdtNo);
 	}
 }

@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.orderKinds.model.vo.OrderDetailVO;
+import com.kh.ttp.orderKinds.model.vo.OrderVO;
+import com.kh.ttp.orderKinds.model.vo.PayVO;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
+import com.kh.ttp.product.model.vo.CartSelectVO;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
-import com.kh.ttp.product.model.vo.OrderDetailVO;
-import com.kh.ttp.product.model.vo.OrderVO;
-import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductSelectVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
@@ -19,11 +22,11 @@ import com.kh.ttp.user.model.vo.User;
 public interface ProductService {
 	
 	// 프로젝트 메인 조회 메소드(SELECT)
-	public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
+	//public ArrayList<ProductSelectVO> productMain(String pdtIdenKey);
 
-	int drinkFundingInsert(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	int drinkFundingInsert(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, ProductCategory productCategory);
 	
-	int updateDrinkFunding(ProductVO p, ProductFile pf, ProductOption po, Funding f, ProductCategory pc);
+	int updateDrinkFunding(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, ProductCategory productCategory);
 
 	public ArrayList<FundingSelectVO> selectNewFundingList();
 
@@ -43,7 +46,14 @@ public interface ProductService {
 
 	public int deleteDrinkFunding(int pdtNo);
 
-	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f);
+	public int confirmFundingDrink(OrderDetailVO od, OrderVO o, User u, ProductVO p, PayVO pv,Funding f,Receiver r);
+
+	public int insertReceiver(Receiver r);
+
+	public int insertFundingBasket(CartVO cart);
+	
+	public ArrayList<CartSelectVO> selectFundingCart(int userNo);
+
 
 	
 

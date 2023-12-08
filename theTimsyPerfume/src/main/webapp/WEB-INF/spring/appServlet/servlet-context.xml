@@ -23,14 +23,33 @@
 	
 	<context:component-scan base-package="com.kh.ttp" />
 	
-	<!--
+	
 	<interceptors>
 		<interceptor>
-			<mapping path="" />
+			<mapping path="/pedia" />
+			<mapping path="/pedia/*" />
+			<mapping path="/boardWrite" />
+			<mapping path="/boardWrite/*" />
+			<mapping path="/reviewWrite" />
+			<mapping path="/reviewWrite/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/noticeWrite" />
+			<mapping path="/noticeWrite/*" />
+			<beans:bean class="com.kh.ttp.common.interceptor.AdminInterceptor" id="AdminInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/alcoholPdtDetail.pr" />
+			<mapping path="/alcoholPdtDetail.pr/*" />
+			<mapping path="/selectAlcoholPdtList.pr" />
+			<mapping path="/selectAlcoholPdtList.pr/*" />
+			<mapping path="/ajaxAddCartSingleQuan.pa" />
+			<mapping path="/ajaxAddCartSingleQuan.pa/*" />
+			<beans:bean class="com.kh.ttp.common.interceptor.AdultValidationInterceptor" id="AdultValidationInterceptor" />
+		</interceptor>
 	</interceptors>
-	-->
+	
 	
 	
 </beans:beans>

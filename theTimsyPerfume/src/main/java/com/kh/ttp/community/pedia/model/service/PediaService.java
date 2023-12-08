@@ -1,10 +1,11 @@
 package com.kh.ttp.community.pedia.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import com.kh.ttp.product.model.vo.ProductVO;
+import com.kh.ttp.community.pedia.model.vo.PediaVO;
 
 public interface PediaService {
-	public ArrayList<ProductVO> selectPediaList(String pdtCteg);
-	public ProductVO selectPediaInfo(int pdtNo);
+	public ArrayList<PediaVO> selectPediaList(HashMap map);
+	public PediaVO selectPediaInfo(HashMap map);
 }

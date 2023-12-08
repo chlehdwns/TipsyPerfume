@@ -50,7 +50,7 @@
 		
 		펀딩 목표 최소 가격 : <input type="number" id="min-price" name="cuttingPrice" class="form-control" placeholder="${fdi.cuttingPrice }숫자만 입력해주세요 "required>
 		
-		가격 	: <input type="number" id="funding-price" name="pdtPrice" class="form-control" placeholder="${fdi.pdtPrice }숫자만 입력해주세요" required>
+		가격 	: <input type="number" id="funding-price" name="pdtOptionPrice" class="form-control" placeholder="${fdi.pdtOptionPrice }숫자만 입력해주세요" required>
 		
 		마감 날짜 : <input type="date" id="cutting-date" name="cuttingDate" placeholder="${fdi.cuttingDate}"required>
 		
@@ -65,7 +65,7 @@
 				  </select>
 				  <br>
 		원료 재료 : <input type="text" id="ingredient" name="pdtIngredient" class="form-control" placeholder="${fdi.pdtIngredient }">
-		재고 : <input type="number" id="stock" name="pdtStock" class="form-control" placeholder="${fdi.pdtStock }">
+		재고 : <input type="number" id="stock" name="pdtOptionStock" class="form-control" placeholder="${fdi.pdtOptionStock }">
 		용량 : <input type="number" id="ml" name="pdtOptionFirst" class="form-control" placeholder="${fdi.pdtOptionFirst }  숫자만 입력하세요. 기준은 ml입니다.">
 		도수 : <input type="number" id="dosu" name="pdtOptionSecond" class="form-control" placeholder="${fdi.pdtOptionSecond }  숫자만 입력하세요. 기준은 도입니다.">
 	</div>

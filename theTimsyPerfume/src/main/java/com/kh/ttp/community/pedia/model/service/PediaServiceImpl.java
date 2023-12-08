@@ -1,30 +1,32 @@
 package com.kh.ttp.community.pedia.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.ttp.community.pedia.model.dao.PediaDAO;
-import com.kh.ttp.product.model.vo.ProductVO;
+import com.kh.ttp.community.pedia.model.vo.PediaVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class PediaServiceImpl implements PediaService {
 	
-	@Autowired
-	SqlSessionTemplate sqlSession;
-	@Autowired
-	PediaDAO pediaDao;
+	private final PediaDAO pediaDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
-	public ArrayList<ProductVO> selectPediaList(String pdtCteg) {
-		return pediaDao.selectPediaList(sqlSession, pdtCteg);
+	public ArrayList<PediaVO> selectPediaList(HashMap map) {
+		return pediaDao.selectPediaList(sqlSession, map);
 	}
 
 	@Override
-	public ProductVO selectPediaInfo(int pdtNo) {
-		return pediaDao.selectPediaInfo(sqlSession, pdtNo);
+	public PediaVO selectPediaInfo(HashMap map) {
+		return pediaDao.selectPediaInfo(sqlSession, map);
 	}
 
 }

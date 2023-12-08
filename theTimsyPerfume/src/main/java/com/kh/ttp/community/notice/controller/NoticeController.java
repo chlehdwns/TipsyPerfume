@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,10 +23,13 @@ import com.kh.ttp.common.template.Pagination;
 import com.kh.ttp.community.notice.model.service.NoticeService;
 import com.kh.ttp.community.notice.model.vo.NoticeVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class NoticeController {
-	@Autowired
-	private NoticeService noticeService;
+	
+	private final NoticeService noticeService;
 	
 	@GetMapping("noticeWrite")
 	public String noticeWriteForm() {
@@ -63,8 +68,8 @@ public class NoticeController {
 		return mv;
 	}
 	@GetMapping("noticeDetail")
-	public ModelAndView noticeDetail(int noticeNo, ModelAndView mv) {
-		if(noticeService.increaseNoticeCount(noticeNo)>0) {
+	public ModelAndView noticeDetail(int noticeNo, HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+		if(noticeCountUp(noticeNo, request, response)) {
 			NoticeVO notice = noticeService.selectNoticeDetail(noticeNo);
 			mv.addObject("notice", notice).
 			setViewName("community/noticeDetail");
@@ -74,6 +79,43 @@ public class NoticeController {
 		}
 		return mv;
 	}
+	private boolean noticeCountUp(int noticeNo, HttpServletRequest request, HttpServletResponse response) {
+		boolean success = false;
+		Cookie oldCookie = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies!=null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("noticeViews")) {
+					oldCookie = cookie;
+				}
+			}
+		}
+		if(oldCookie!=null) {
+			if(oldCookie.getValue().contains("["+noticeNo+"]")) {
+				success = true;
+			} else {
+				if(noticeService.increaseNoticeCount(noticeNo)>0) {
+					oldCookie.setValue(oldCookie.getValue()+"["+noticeNo+"]");
+					oldCookie.setMaxAge(60*60*24);
+					response.addCookie(oldCookie);
+					success = true;
+				} else {
+					success = false;
+				}
+			}
+		} else {
+			if(noticeService.increaseNoticeCount(noticeNo)>0) {
+				Cookie newCookie = new Cookie("noticeViews", "["+noticeNo+"]");
+				newCookie.setMaxAge(60*60*24);
+				response.addCookie(newCookie);
+				success = true;
+			} else {
+				success = false;
+			}
+		}
+		return success;
+	}
+	
 	@GetMapping("noticeEnd")
 	public ModelAndView noticeEnd(int noticeNo, ModelAndView mv) {
 		if(noticeService.noticeEnd(noticeNo)>0) {
@@ -130,7 +172,7 @@ public class NoticeController {
 		return mv;
 	}
 	
-	public String saveFile(MultipartFile upfile, HttpSession session) {
+	private String saveFile(MultipartFile upfile, HttpSession session) {
 		String originName = upfile.getOriginalFilename();
 		
 		String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());

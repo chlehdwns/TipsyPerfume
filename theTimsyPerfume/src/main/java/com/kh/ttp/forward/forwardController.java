@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class forwardController {
+	
 	@RequestMapping("fundingMain.list")
 	public String fundingListPage() {
 		return"funding/fundingList";
@@ -24,8 +25,10 @@ public class forwardController {
 	
 	@GetMapping("addressEnrollForm.re")
 	public String search() {
-		return "orderKinds/addressEnrollForm";
+		return "frags/addressEnrollForm";
 	}
+	
+	
 	
 	
 

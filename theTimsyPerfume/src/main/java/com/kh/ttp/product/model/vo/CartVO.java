@@ -1,17 +1,13 @@
 package com.kh.ttp.product.model.vo;
 
-import com.kh.ttp.user.model.vo.User;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-public class CartVO {
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
+public class CartVO extends ProductVO {
 	
 	/*
 	CART_NO	NUMBER
@@ -23,9 +19,7 @@ public class CartVO {
 	private int userNo;
 	private int pdtNo;
 	private int cartQuantity;
+	private int pdtOptionNo;
 	private int cartAddingQuantity;
-	private User user;
-	private ProductVO product;
-	
 	
 }

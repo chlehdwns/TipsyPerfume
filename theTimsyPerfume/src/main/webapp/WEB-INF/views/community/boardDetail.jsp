@@ -188,22 +188,12 @@
     	position: sticky;
         top: 60px;
     }
-    .board-no{
-        width: 15%;
-    }
-    .board-title{
-        width: 40%;
-        text-align: left;
-    }
-    .board-writer{
-        width: 18%;
-    }
-    .board-date{
-        width: 15%;
-    }
-    .board-count{
-        width: 12%;
-    }
+    .board-no{width: 12%;}
+    .board-title{width: 39%;text-align: left;}
+    .board-writer{width: 15%;}
+    .board-date{width: 13%;}
+    .board-count{ width: 11%;}
+    .like-count{width: 10%;}
     .comment-count{
     	font-size: 15px;
     	color: rgb(223, 190, 106);
@@ -213,6 +203,11 @@
     	width: 300px;
     	margin: 0 auto;
     }
+    .modify-text{
+    	color: rgb(100, 100, 100);
+    	font-size: 10px;
+    	vertical-align: top;
+    }
 </style>
 <section>
 <input id="board-no" type="hidden" value="${board.boardNo}">
@@ -220,25 +215,27 @@
     <div id="content-title">
         ${board.boardTitle }
         <c:if test="${loginUser.userNo eq board.boardWriterNo}">
-            <button class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
+            <button type="button" class="board-btn" onclick="location.href='boardUpdate?boardNo=${board.boardNo }'">수정</button>
         </c:if>
         <c:if test="${loginUser.userNo eq board.boardWriterNo or loginUser.memberType eq 'A'}">
-            <button class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
+            <button type="button" class="board-btn" onclick="location.href='boardDelete?boardNo=${board.boardNo }&boardCtgy=${board.boardCtgyCode }'">삭제</button>
         </c:if>
     </div>
+    <button type="button" class="board-btn" onclick="history.back();">돌아가기</button>
     <table class="table">
         <tr class="title-head">
             <td>분류 <span class="top-text">${board.boardCtgyName }</span></td>
             <td>작성자 <span class="top-text">${board.boardWriter }</span></td>
-            <td>작성일 <span class="top-text">${board.boardCreateDate }</span></td>
-            <td>조회수 <span class="top-text">${board.boardCount }</span></td>
-            <td>추천수 <span id="title-like" class="top-text">51</span></td>
+            <td>작성일 <span class="top-text">${board.boardCreateDate }</span><c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if></td>
+            <td><i class="fa fa-eye" style="font-size:20px"></i> <span class="top-text">${board.boardCount }</span></td>
+            <td><i class='fa fa-thumbs-o-up' style='font-size:18px'></i> <span id="title-like" class="top-text">0</span></td>
+            <td><i class='fa fa-thumbs-o-down' style='font-size:18px; transform: scaleX(-1);'></i> <span id="title-dislike" class="top-text">0</span></td>
         </tr>
     </table>
     <div class="board-content-wrap">
-        <pre class="board-content">
+        <p class="board-content">
 ${board.boardContent }
-        </pre>
+        </p>
         <div class="like-wrap">
                     <c:choose>
                     <c:when test="${empty loginUser }">
@@ -291,6 +288,7 @@ ${board.boardContent }
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
+                <th>좋아요</th>
                 <th>조회수</th>
             </tr>
         </thead>
@@ -400,6 +398,7 @@ ${board.boardContent }
     		success:(result)=>{
     			$("#title-like").text(result.likeCount);
     			$("#like-count").text(result.likeCount);
+    			$("#title-dislike").text(result.dislikeCount);
     			$("#dislike-count").text(result.dislikeCount);
     		},
     		error:()=>{
@@ -485,6 +484,7 @@ ${board.boardContent }
             success:(result)=>{
                 console.log(result);
                 const $commentWrap = $(".comment-no[value="+commentGroup+"]").parent().next(".re-comment-wrap");
+                const $commentOpenBtn = $(".comment-no[value="+commentGroup+"]").parent().parent().prev(".re-comment-open");
                 let value="";
                 for(let i in result){
                     console.log("dd");
@@ -499,6 +499,7 @@ ${board.boardContent }
                             +"<div>"+result[i].commentCreateDate+"</div>"
                             +"</div>";
                 }
+                $commentOpenBtn.text("답글 "+result.length);
                 $commentWrap.html(value);
             },
             error:()=>{
@@ -529,6 +530,7 @@ ${board.boardContent }
                         }
                         value+="</td><td class='board-writer'>"+result[i].boardWriter+"</td>"
                         	+"<td class='board-date'>"+result[i].boardCreateDate+"</td>"
+                        	+"<td class='like-count'>"+result[i].likeCount+"</td>"
                         	+"<td class='board-count'>"+result[i].boardCount+"</td>"
                     		+"</tr>";
                     }

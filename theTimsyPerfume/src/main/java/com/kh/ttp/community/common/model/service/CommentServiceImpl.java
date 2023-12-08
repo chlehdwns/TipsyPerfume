@@ -11,13 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.ttp.community.common.model.dao.CommentDAO;
 import com.kh.ttp.community.common.model.vo.CommentVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class CommentServiceImpl implements CommentService {
 
-	@Autowired
-	private CommentDAO commentDao;
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private final CommentDAO commentDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public ArrayList<CommentVO> selectCommentList(HashMap<String, Integer> map) {

@@ -41,7 +41,7 @@
 		height : 50%;
 	}
 	.buy-info {
-		margin-top : 20px;
+		
 		margin-bottom : 20px;
 		margin-left : 20px;
 	}
@@ -60,13 +60,7 @@
 	#receiver{
 		margin-bottom : 50px;
 	}
-	#funding-drink{
-		border-radius : 10px;
-		width : 400px;
-		color: white;
-		background-color : skyblue;
-		height : 40px;
-		
+	
 	}
 	#funding-drink:hover{
 		color : black;
@@ -79,6 +73,7 @@
 		text-decoration : none;
 		font-size : 25px;
 		margin-left : 200px;
+		
 	}
 	
 	
@@ -107,12 +102,11 @@
 			
 			<div class="product-info">
 			<form method="post" action="funding.fd">
-			<input type="hidden" name="phone" value="${loginUser.phone }"/>
 			<input type="hidden" name="pdtNo" value="${pdtNo }"/>
 			<input type="hidden" name="userNo" value="${loginUser.userNo }"/>
-				가격 : <input class="order-info" type="text" name="pdtPrice" value="${pdtPrice}  " readonly>
+				가격 : <input class="order-info" type="text" name="pdtOptionPrice" value="${pdtOptionPrice}  " readonly>
 				
-				개수 : <select name="orderQuantiry" id="order" required>
+				개수 : <select name="orderQuantity" id="order" required>
 					<option value="1" selected>1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -131,7 +125,7 @@
 				<br>
 				배송 안내 : <input class="order-info" type="text" name="pdtShipping" value="${pdtShipping}" readonly> <br>
 				
-				주소 선택 : <select id="selectAddress" >
+				주소 선택 : <select id="selectAddress" name="selectAddress">
 					<option selected id="oldAddress" value="1">회원 가입 시 입력했던 주소</option>
 					<option value="2" id="newAddress">새로운 주소</option>
 					
@@ -145,6 +139,7 @@
 				<input type="text" class="form-control" id="address" placeholder="주소" name="address" required><br>
 				<input type="text" class="form-control" id="addressDetail" placeholder="상세주소" name="addressDetail" required><br>
 				받는사람 : <input type="text" class="form-control" id="receiver" name="receiverName" required>
+				휴대전화번호 : <input type="text" class="form-control" id="phone" name="phone"   required><br>
 				배송 요청 사항 : <input type="text" class="form-control" id="order-message" name="orderMessage">
 				
 				
@@ -205,7 +200,7 @@
 				//console.log('${loginUser.addressDetail}');
 				//console.log('${loginUser.postalCode}');
 		
-				const total = '총가격 : '+ a*${pdtPrice} + '원';
+				const total = '총가격 : '+ a*${pdtOptionPrice} + '원';
 				console.log(total);
 				$('.buy-info').html(total);
 			})
@@ -231,6 +226,9 @@
 					
 				} else{
 					$('#postalCode').val('');
+					$('#address').val('');
+					$('#addressDetail').val('');
+					$('#receiver').val('');
 				}
 				
 				

@@ -2,6 +2,7 @@
 
 /* 푸터 전체 요소 */
 footer{
+	width: 100%;
     background-color: rgb(85, 85, 85);
     color: rgb(255, 255, 255);
 }

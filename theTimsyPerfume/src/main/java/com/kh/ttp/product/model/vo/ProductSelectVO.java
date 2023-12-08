@@ -1,21 +1,25 @@
 package com.kh.ttp.product.model.vo;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
 public class ProductSelectVO extends ProductVO {
 	
 	private float reviewAvg;
+	
+	private int pdtCategNo;
 	private String pdtCteg;
 	private String pdtManufac;
-	private String pdtImgSrc;
+	private String pdtGroup;
 	
+	private int pdtFileNo;
+	private int pdtFileIndex;
+	private String pdtImgSrc;
 
 }

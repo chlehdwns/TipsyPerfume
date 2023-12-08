@@ -56,7 +56,7 @@
 		font-size : 32px;
 		cursor : pointer;
 	}
-	#pagingArea {width:fit-content; margin:auto;}
+	#pagingArea {width:10%;}
 </style>
 </head>
 <body>

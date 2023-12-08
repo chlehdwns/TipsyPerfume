@@ -15,13 +15,14 @@ import com.kh.ttp.community.board.model.vo.BoardFileVO;
 import com.kh.ttp.community.board.model.vo.BoardVO;
 import com.kh.ttp.community.common.model.vo.RecommendVO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class BoardServiceImpl implements BoardService {
 	
-	@Autowired
-	SqlSessionTemplate sqlSession;
-	@Autowired
-	BoardDAO boardDao;
+	private final BoardDAO boardDao;
+	private final SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int countBoardList(String boardCtgy) {

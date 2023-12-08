@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-    #notice-wrap{
+    #board-wrap{
         width: 900px;
         margin: 0 auto;
         overflow: hidden;
@@ -42,22 +42,12 @@
         background-color: rgb(240, 240, 240);
     }
 
-    .board-no{
-        width: 15%;
-    }
-    .board-title{
-        width: 40%;
-        text-align: left;
-    }
-    .board-writer{
-        width: 18%;
-    }
-    .board-date{
-        width: 15%;
-    }
-    .board-count{
-        width: 12%;
-    }
+    .board-no{width: 12%;}
+    .board-title{width: 39%;text-align: left;}
+    .board-writer{width: 15%;}
+    .board-date{width: 13%;}
+    .board-count{ width: 11%;}
+    .like-count{width: 10%;}
     .comment-count{
     	font-size: 15px;
     	color: rgb(223, 190, 106);
@@ -81,6 +71,11 @@
         background-color: rgb(223, 190, 106);
         color: rgb(255, 255, 255);
     }
+    .modify-text{
+    	color: rgb(110, 110, 110);
+    	font-size: 10px;
+    	vertical-align: top;
+    }
 </style>
 </head>
 <body>
@@ -101,21 +96,23 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
+                <th>좋아요</th>
                 <th>조회수</th>
             </tr>
         </thead>
         <tbody>
         <c:choose>
         <c:when test="${empty list }">
-        	<tr><td colspan="5"><br><br>게시글이 없습니다!<br><br><br></td></tr>
+        	<tr><td colspan="6"><br><br>게시글이 없습니다!<br><br><br></td></tr>
         </c:when>
         <c:otherwise>
         <c:forEach items="${list }" var="board">
         	<tr onclick="location.href='boardDetail?boardNo=${board.boardNo }'">
                 <td class="board-no">${board.boardNo }</td>
-                <td class="board-title">${board.boardTitle } <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
+                <td class="board-title">${board.boardTitle }<c:if test="${not empty board.boardModifyDate }"><span class="modify-text"> *수정됨</span></c:if> <c:if test="${not empty board.commentCount }"><span class="comment-count">[${board.commentCount }]</span></c:if></td>
                 <td class="board-writer">${board.boardWriter }</td>
                 <td class="board-date">${board.boardCreateDate }</td>
+                <td class="like-count">${board.likeCount }</td>
                 <td class="board-count">${board.boardCount }</td>
             </tr>
         </c:forEach>
@@ -127,7 +124,7 @@
 <div id="paging-area">
     <ul class="pagination">
     	<c:choose>
-	    	<c:when test="${pi.currentPage ge 1 }">
+	    	<c:when test="${pi.currentPage le 1 }">
 	        	<li class="page-item disabled"><a class="page-link" href="#">&lt;</a></li>
 	    	</c:when>
 	    	<c:otherwise>

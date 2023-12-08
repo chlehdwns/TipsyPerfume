@@ -1,0 +1,15 @@
+#addressContainer {width : 100%;}
+
+/* 인풋 포커스 테두리 효과 없애기 CSS */
+#postalCode:focus, 
+#address:focus {   
+	caret-color: transparent;
+	outline: none;
+		box-shadow: none;
+		border: 1px solid #ced4da;
+}
+
+#searchingAreaPopUp:hover,
+#searchingAreaPopUp input:hover {
+	cursor: pointer;
+}

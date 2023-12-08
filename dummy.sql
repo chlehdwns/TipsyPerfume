@@ -1,3 +1,4 @@
+--------- INSERT INTO TB_PRODUCT_CATEGORY 1 시작
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
@@ -146,6 +147,7 @@ INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     '홍길동',
     '맥주'
 );
+
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
@@ -153,6 +155,7 @@ INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     '이길동',
     '사케'
 );
+
 INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     SEQ_PRODUCT_CATEGORY.NEXTVAL,
     'A',
@@ -279,35 +282,28 @@ INSERT INTO TB_PRODUCT_CATEGORY VALUES(
     '최동준',
     '오드 퍼퓸'
 );
+--------- INSERT INTO TB_PRODUCT_CATEGORY 1 끝
 
 
-
-
-
+--------- INSERT INTO TB_PRODUCT시작
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     1,
     'KH 맥주',
-    4000,
-    500,
     '목 넘김이 좋은 밀 향 맥주',
     '홍길동님이 만드신 깊고 찐한 밀 향 맥주 알코올 도수는 4.5도입니다',
     '밀,알코올..',
     '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -329,26 +325,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     2,
     'KH 사케',
-    15000,
-    100,
     '깔끔하고 상큼한 사케',
     '10년 장인 이길동님이 만드신 깔끔한 맛 사케입니다.',
     '물,쌀,누룩',
     '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -370,26 +360,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     3,
     'KH 소주',
-    3000,
-    1000,
     '깔끔하고 삼겹살과 매우 잘 어울리는 소주 향',
     '알코올 도수는 23도이며 모든 음식과 잘 어울리지만 특히 삼겹살과 잘 어울리는 소주입니다.',
     '물,알코올,보리',
     '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -411,26 +395,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     4,
     '구로 맥주',
-    4200,
-    255,
     '구로 전통 맥주',
     '알코올 도수는 5도입니다',
     '맥아, 물 ',
     '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -452,26 +430,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     5,
     'KH 와인',
-    30000,
-    50,
     '레드 와인',
     '이탈리아에서 유명한 JAMES씨가 만든 수제 맥주입니다.알코올 도수는 9도이며 치즈와 잘 어울립니다.',
     '포도',
     '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -493,26 +465,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     6,
     '맛소',
-    5000,
-    200,
     '목이 타들어가는듯한 짜릿함 ',
     '고길동님이 만드신 깊고 찐한 소주! 알코올 도수는 25도입니다',
     '물,알코올',
     '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -534,26 +500,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     7,
     '달빛 맥주',
-    6000,
-    300,
     '찐하고 맛있는 맥주!',
     '알코올 도수는 5도입니다. 엄청 시원합니다.',
     '맥아',
     '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -575,26 +535,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     8,
     '막걸리나',
-    3000,
-    50,
     '외국인이 만든 한국 전통 막걸리',
     'JIMI씨가 한국에와서 막걸리를 먹고 감명받아 만든 JIMI씨만의 특별한 막걸리',
     '쌀,알코올,물',
     '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -616,26 +570,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     9,
     '맛있는 사케',
-    3000,
-    20,
     '뒷맛이 묵직한 사케',
     '알코올 도수는 11도이며 조금 무겁지만 깊은맛에 사케입니다.',
     '누룩,물,알코올',
     '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -657,26 +605,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     10,
     'KH 복분자',
-    9000,
-    80,
     '찐하고 상큼한 복분자주',
     '가족끼리 마시기 좋아요.복분자는 복순씨가 직접 재배한 복분자입니다.',
     '복분자,알코올..',
     '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -698,26 +640,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     11,
     'KH 향수',
-    70000,
-    20,
     '오드 뚜왈렛',
     '향이 오래가고 상큼한 향의 향수',
     '코코넛 오일,증류수,천연 색소',
     '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -739,26 +675,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     12,
     'GOOD PERFUME',
-    40000,
-    25,
     '오드 퍼퓸',
     '향이 찐하며 우드 향 향수입니다.',
     '호호바 오일',
     '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -780,26 +710,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     13,
     'ORANGE PERFUME',
-    35000,
-    30,
     '오드 빠르펭',
     '지속시간 대략 4시간이며 오렌지향 향수입니다. 상큼한 옷에 잘 어울리는 무거운 향입니다.',
     '감귤 오일',
     '배송일은 펀딩 확정 이후 7일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -821,26 +745,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     14,
     'HAHA PERFUME',
-    90000,
-    10,
     '오드코롱',
     '향이 무거우며 지속시간은 대략 2시간 정도입니다.정장이나 어두운 색의 코디와 잘 어울립니다.',
     '천연 색소,호호바 오일',
     '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -862,26 +780,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     15,
     'LIGHT PERFUME',
-    2500,
-    100,
     '샤워 코롱 ',
     '매우 가벼운 향이며 지속시간은 10시간입니다.',
     '코코넛 오일, 알코올',
     '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -903,26 +815,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     16,
     'TSP PERFUME',
-    40000,
-    30,
     '오드 뚜왈렛',
     '좋은 향기가 남',
     '호호바 오일',
     '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -944,26 +850,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     17,
     'HOHO PERFUME',
-    75000,
-    30,
     '오드코롱',
     '상큼한 복숭아향 데일리 향수로 좋습니다.',
     '복숭아 향,코코넛 오일',
     '배송일은 펀딩 확정 이후 6일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -985,26 +885,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     18,
     'WOW PERFUME',
-    55000,
-    25,
     '샤워 코롱',
     '코튼 향 상긋하며 지속시간이 깁니다.',
     '호호바 오일,코튼향',
     '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1026,26 +920,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     19,
     '한국 향수',
-    10000,
-    100,
     '오드 뚜왈렛',
     '한국인들이라면 모두가 좋아할 향 . 우드 향.',
     '코코넛 오일, 증류수',
     '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1067,26 +955,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     20,
     'DDP PERFUME',
-    25000,
-    50,
     '오드 퍼퓸',
     '남성에게 잘 어울리는 무겁고 찐한 향',
     '호호바 오일,증류수',
     '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1103,31 +985,26 @@ INSERT INTO TB_PRODUCT_FILE(
     'yvessaint.jpg',
     'perfume_1.jpg'
 );
-
+--------- INSERT INTO TB_PRODUCT (커스텀 끝)
+--------- INSERT INTO TB_PRODUCT (브랜드 시작)
 INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     21,
     'KH 맥주',
-    4000,
-    500,
     '목 넘김이 좋은 밀 향 맥주',
     '홍길동님이 만드신 깊고 찐한 밀 향 맥주 알코올 도수는 4.5도입니다',
     '밀,알코올..',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1149,26 +1026,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     22,
     'KH 사케',
-    15000,
-    100,
     '깔끔하고 상큼한 사케',
     '10년 장인 이길동님이 만드신 깔끔한 맛 사케입니다.',
     '물,쌀,누룩',
-    '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1190,26 +1061,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     23,
     'KH 소주',
-    3000,
-    1000,
     '깔끔하고 삼겹살과 매우 잘 어울리는 소주 향',
     '알코올 도수는 23도이며 모든 음식과 잘 어울리지만 특히 삼겹살과 잘 어울리는 소주입니다.',
     '물,알코올,보리',
-    '배송일은 펀딩 확정 이후 3일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1231,26 +1096,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     24,
     '구로 맥주',
-    4200,
-    255,
     '구로 전통 맥주',
     '알코올 도수는 5도입니다',
     '맥아, 물 ',
-    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1272,26 +1131,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     25,
     'KH 와인',
-    30000,
-    50,
     '레드 와인',
     '이탈리아에서 유명한 JAMES씨가 만든 수제 맥주입니다.알코올 도수는 9도이며 치즈와 잘 어울립니다.',
     '포도',
-    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1313,26 +1166,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     26,
     '맛소',
-    5000,
-    200,
     '목이 타들어가는듯한 짜릿함 ',
     '고길동님이 만드신 깊고 찐한 소주! 알코올 도수는 25도입니다',
     '물,알코올',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1354,26 +1201,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     27,
     '달빛 맥주',
-    6000,
-    300,
     '찐하고 맛있는 맥주!',
     '알코올 도수는 5도입니다. 엄청 시원합니다.',
     '맥아',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1395,26 +1236,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     28,
     '막걸리나',
-    3000,
-    50,
     '외국인이 만든 한국 전통 막걸리',
     'JIMI씨가 한국에와서 막걸리를 먹고 감명받아 만든 JIMI씨만의 특별한 막걸리',
     '쌀,알코올,물',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1436,26 +1271,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     29,
     '맛있는 사케',
-    3000,
-    20,
     '뒷맛이 묵직한 사케',
     '알코올 도수는 11도이며 조금 무겁지만 깊은맛에 사케입니다.',
     '누룩,물,알코올',
-    '배송일은 펀딩 확정 이후 5일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1477,26 +1306,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     30,
     'KH 복분자',
-    9000,
-    80,
     '찐하고 상큼한 복분자주',
     '가족끼리 마시기 좋아요.복분자는 복순씨가 직접 재배한 복분자입니다.',
     '복분자,알코올..',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1518,26 +1341,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     31,
     'KH 향수',
-    70000,
-    20,
     '오드 뚜왈렛',
     '향이 오래가고 상큼한 향의 향수',
     '코코넛 오일,증류수,천연 색소',
-    '배송일은 펀딩 확정 이후 15일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1559,26 +1376,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     32,
     'GOOD PERFUME',
-    40000,
-    25,
     '오드 퍼퓸',
     '향이 찐하며 우드 향 향수입니다.',
     '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1600,26 +1411,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     33,
     'ORANGE PERFUME',
-    35000,
-    30,
     '오드 빠르펭',
     '지속시간 대략 4시간이며 오렌지향 향수입니다. 상큼한 옷에 잘 어울리는 무거운 향입니다.',
     '감귤 오일',
-    '배송일은 펀딩 확정 이후 7일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '3,000원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1641,26 +1446,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     34,
     'HAHA PERFUME',
-    90000,
-    10,
     '오드코롱',
     '향이 무거우며 지속시간은 대략 2시간 정도입니다.정장이나 어두운 색의 코디와 잘 어울립니다.',
     '천연 색소,호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1682,26 +1481,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     35,
     'LIGHT PERFUME',
-    2500,
-    100,
     '샤워 코롱 ',
     '매우 가벼운 향이며 지속시간은 10시간입니다.',
     '코코넛 오일, 알코올',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1723,26 +1516,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     36,
     'TSP PERFUME',
-    40000,
-    30,
     '오드 뚜왈렛',
     '여튼 엄청 좋은 향수입니다',
     '호호바 오일',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '3,000원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1764,26 +1551,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     37,
     'HOHO PERFUME',
-    75000,
-    30,
     '오드코롱',
     '상큼한 복숭아향 데일리 향수로 좋습니다.',
     '복숭아 향,코코넛 오일',
-    '배송일은 펀딩 확정 이후 6일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1805,26 +1586,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     38,
     'WOW PERFUME',
-    55000,
-    25,
     '샤워 코롱',
     '코튼 향 상긋하며 지속시간이 깁니다.',
     '호호바 오일,코튼향',
-    '배송일은 펀딩 확정 이후 8일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1846,26 +1621,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     39,
     '한국 향수',
-    10000,
-    100,
-    '오드 뚜왈렛',
+    '오드 뚜왈렛 향수입니다',
     '한국인들이라면 모두가 좋아할 향 . 우드 향.',
     '코코넛 오일, 증류수',
-    '배송일은 펀딩 확정 이후 12일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '무료배송',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1887,26 +1656,20 @@ INSERT INTO TB_PRODUCT(
     PDT_NO,
     PDT_CATEG_NO,
     PDT_NAME,
-    PDT_PRICE,
-    PDT_STOCK,
     PDT_INTRO,
     PDT_DESCRIPTION,
     PDT_INGREDIENT,
     PDT_SHIPPING,
-    PDT_STATUS,
-    PDT_GP_STATUS
+    PDT_STATUS
 ) VALUES (
     SEQ_PRODUCT.nextval,
     40,
     'DDP PERFUME',
-    25000,
-    50,
-    '오드 퍼퓸',
+    '지속력이 좋은 오드 퍼퓸입니다.',
     '남성에게 잘 어울리는 무겁고 찐한 향',
     '호호바 오일,증류수',
-    '배송일은 펀딩 확정 이후 10일뒤 배송 예정입니다',
-    'Y',
-    'N'
+    '2,500원',
+    'Y'
 );
 INSERT INTO TB_PRODUCT_FILE(
     PDT_FILE_NO,
@@ -1923,261 +1686,541 @@ INSERT INTO TB_PRODUCT_FILE(
     'yvessaint.jpg',
     'perfume_1.jpg'
 );
+--------- INSERT INTO TB_PRODUCT (브랜드) 끝
 
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    21,
-    '500ML',
-    '4.5EJ'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    22,
-    '750ML',
-    '8.5도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    23,
-    '600ML',
-    '23도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    24,
-    '500ML',
-    '5도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    25,
-    '750ML',
-    '9도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    26,
-    '500ML',
-    '25도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    27,
-    '500ML',
-    '5도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    28,
-    '450ML',
-    '12도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    29,
-    '750ML',
-    '11도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    30,
-    '450ML',
-    '15도'
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    31,
-    '250ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    32,
-    '250ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    33,
-    '350ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    34,
-    '200ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    35,
-    '300ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    36,
-    '300ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    37,
-    '250ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    38,
-    '350ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    39,
-    '250ML',
-    ''
-);
-INSERT INTO TB_PRODUCT_OPTION VALUES(
-    SEQ_PRODUCT_OPTION.NEXTVAL,
-    40,
-    '200ML',
-    ''
-);
-
-
-
-
-
-
-
-
-
-
-
-
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+--------- INSERT INTO TB_PRODUCT_OPTION 1 (커스텀) 시작
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     1,
     '500ML',
-    '4.5EJ'
+    '4.5도',
+    3000,
+    100
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     2,
     '750ML',
-    '8.5도'
+    '8.5도',
+    10000,
+    50
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     3,
     '600ML',
-    '23도'
+    '23도',
+    5000,
+    100
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     4,
     '500ML',
-    '5도'
+    '5도',
+    15000,
+    100
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     5,
     '750ML',
-    '9도'
+    '9도',
+    3000,
+    150
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     6,
     '500ML',
-    '25도'
+    '25도',
+    3500,
+    100
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     7,
     '500ML',
-    '5도'
+    '5도',
+    5000,
+    80
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     8,
     '450ML',
-    '12도'
+    '12도',
+    12000,
+    70
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     9,
     '750ML',
-    '11도'
+    '11도',
+    10000,
+    300
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     10,
     '450ML',
-    '15도'
+    '15도',
+    15000,
+    200
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     11,
     '250ML',
-    ''
+    10000,
+    100
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     12,
     '250ML',
-    ''
+    8000,
+    120
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     13,
     '350ML',
-    ''
+    7000,
+    70
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     14,
     '200ML',
-    ''
+    11500,
+    50
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     15,
     '300ML',
-    ''
+    13000,
+    70
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     16,
     '300ML',
-    ''
+    10000,
+    25
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     17,
     '250ML',
-    ''
+    8500,
+    80
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     18,
     '350ML',
-    ''
+    10000,
+    50
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     19,
     '250ML',
-    ''
+    30000,
+    10
 );
-INSERT INTO TB_PRODUCT_OPTION VALUES(
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
     SEQ_PRODUCT_OPTION.NEXTVAL,
     20,
     '200ML',
-    ''
+    36000,
+    30
+);
+--------- INSERT INTO TB_PRODUCT_OPTION 1 (커스텀) 끝
+
+--------- INSERT INTO TB_PRODUCT_OPTION 1 (브랜드) 시작
+-- 브랜드주류
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    21,
+    '500ML',
+    '4.5도',
+    20000,
+    10
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    21,
+    '1000ML',
+    '4.5도',
+    37000,
+    30
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    22,
+    '150ML',
+    '8.5도',
+    30000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    22,
+    '300ML',
+    '8.5도',
+    57000,
+    30
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    22,
+    '550ML',
+    '8.5도',
+    100000,
+    15
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    23,
+    '150ML',
+    '23도',
+    3000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    23,
+    '200ML',
+    '23도',
+    5000,
+    100
+);
+
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    24,
+    '330ML',
+    '5도',
+    2200,
+    500
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    24,
+    '500ML',
+    '5도',
+    3000,
+    500
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    25,
+    '300ML',
+    '9도',
+    10000,
+    300
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    25,
+    '700ML',
+    '9도',
+    20000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    25,
+    '1500ML',
+    '9도',
+    40000,
+    100
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    26,
+    '200ML',
+    '25도',
+    5000,
+    200
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    26,
+    '300ML',
+    '25도',
+    7000,
+    100
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    27,
+    '500ML',
+    '5도',
+    5000,
+    500
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    27,
+    '700ML',
+    '5도',
+    7000,
+    500
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    27,
+    '950ML',
+    '5도',
+    9000,
+    100
+);
+
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    28,
+    '330ML',
+    '12도',
+    3300,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    28,
+    '450ML',
+    '12도',
+    4200,
+    100
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    29,
+    '150ML',
+    '11도',
+    20000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    29,
+    '250ML',
+    '11도',
+    30000,
+    50
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    30,
+    '500ML',
+    '15도',
+    50000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    30,
+    '800ML',
+    '15도',
+    70000,
+    30
+);
+
+-- 브랜드향수
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    31,
+    '10ML',
+    10000,
+    30
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    31,
+    '30ML',
+    29000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    31,
+    '70ML',
+    58000,
+    50
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    32,
+    '10ML',
+    100000,
+    10
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    32,
+    '25ML',
+    250000,
+    25
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    32,
+    '50ML',
+    470000,
+    100
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    33,
+    '50ML',
+    25000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    33,
+    '100ML',
+    50000,
+    200
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    34,
+    '100ML',
+    50000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    34,
+    '200ML',
+    90000,
+    50
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    35,
+    '100ML',
+    20000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    35,
+    '300ML',
+    58000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    35,
+    '500ML',
+    90000,
+    10
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    36,
+    '10ML',
+    5000,
+    30
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    36,
+    '50ML',
+    23000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    36,
+    '100ML',
+    42000,
+    30
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    37,
+    '250ML',
+    30000,
+    30
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    38,
+    '150ML',
+    25000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    38,
+    '300ML',
+    49000,
+    50
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    38,
+    '600ML',
+    95000,
+    50
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    39,
+    '50ML',
+    30000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    39,
+    '120ML',
+    60000,
+    50
+);
+
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    40,
+    '30ML',
+    100000,
+    100
+);
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
+    SEQ_PRODUCT_OPTION.NEXTVAL,
+    40,
+    '200ML',
+    200000,
+    200
 );
 COMMIT;
+--------- INSERT INTO TB_PRODUCT_OPTION 1 (브랜드) 끝
 
+--------- INSERT INTO TB_USER 시작
 INSERT INTO TB_USER(
     USER_NO,
     USER_EMAIL,
@@ -2333,10 +2376,10 @@ INSERT INTO TB_USER(
     '19951114'
 );
 COMMIT;
+--------- INSERT INTO TB_USER 끝
 
-
-
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+--------- INSERT INTO TB_REVIEW, TB_REVIEW_FILE, TB_NOTICE 시작
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     1,
@@ -2351,7 +2394,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     1,
@@ -2369,7 +2412,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     1,
@@ -2384,7 +2427,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     4,
@@ -2400,7 +2443,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     4,
@@ -2415,7 +2458,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     4,
@@ -2430,7 +2473,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     5,
@@ -2446,7 +2489,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     4,
@@ -2464,7 +2507,7 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     5,
@@ -2479,12 +2522,42 @@ INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
 ) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
 
-INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_NO
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
 ) VALUES (
     SEQ_REVIEW.NEXTVAL,
     5,
     2,
     '넘느려요',
+    33
+);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',0,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic2.jpg','review_2.jpg','resources/image/community/review',1,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
+
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
+) VALUES (
+    SEQ_REVIEW.NEXTVAL,
+    5,
+    3,
+    '쓸만함',
+    33
+);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic1.png','review_1.png','resources/image/community/review',0,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic2.jpg','review_2.jpg','resources/image/community/review',1,SEQ_REVIEW.CURRVAL);
+INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
+) VALUES (SEQ_REVIEW_FILE.NEXTVAL,'pic3.jpg','review_3.jpg','resources/image/community/review',2,SEQ_REVIEW.CURRVAL);
+
+INSERT INTO TB_REVIEW(REVIEW_NO,USER_NO,REVIEW_SCORE,REVIEW_CONTENT,PDT_OPTION_NO
+) VALUES (
+    SEQ_REVIEW.NEXTVAL,
+    5,
+    5,
+    '맘에들어요',
     33
 );
 INSERT INTO TB_REVIEW_FILE(REVIEW_FILE_NO,REVIEW_FILE_ORIGIN,REVIEW_FILE_UPLOAD,REVIEW_FILE_PATH,REVIEW_FILE_INDEX,REVIEW_NO
@@ -2542,11 +2615,12 @@ SEQ_NOTICE.NEXTVAL,
 'resources/image/community/notice/notice_2023112214245827402.jpg',
 'resources/image/community/notice/notice_2023112214245817848.jpg'
 );
-
+--------- INSERT INTO TB_REVIEW, TB_REVIEW_FILE, TB_NOTICE 끝
 COMMIT;
 
+
 -- 더미추가
--- TB_RECEIVER
+--------- INSERT INTO TB_RECEIVER 시작
 INSERT INTO TB_RECEIVER (RECEIVER_NO, USER_NO, RECEIVER_NAME, PHONE, ADDRESS, POSTAL_CODE) VALUES (SEQ_RECEIVER.NEXTVAL,2,'받는홍길동','010-1234-5678','서울 서대문구',22222);
 
 INSERT INTO TB_RECEIVER (RECEIVER_NO, USER_NO, RECEIVER_NAME, PHONE, ADDRESS, POSTAL_CODE) VALUES (SEQ_RECEIVER.NEXTVAL,3,'받는김길동','010-3333-2222','서울 종로구',33333);
@@ -2555,8 +2629,10 @@ INSERT INTO TB_RECEIVER (RECEIVER_NO, USER_NO, RECEIVER_NAME, PHONE, ADDRESS, PO
 
 INSERT INTO TB_RECEIVER (RECEIVER_NO, USER_NO, RECEIVER_NAME, PHONE, ADDRESS, POSTAL_CODE) VALUES (SEQ_RECEIVER.NEXTVAL,5,'받는최길동','010-1234-2222','서울 강남구',55555);
 COMMIT;
+--------- INSERT INTO TB_RECEIVER 끝
+select PDT_NO, PDT_OPTION_NO from TB_PRODUCT_OPTION;
 
--- TB_ORDER
+--------- INSERT INTO TB_ORDER 1 시작
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,1,1);
 
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,1,2);
@@ -2617,8 +2693,9 @@ INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,
 
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,5,4);
 COMMIT;
+--------- INSERT INTO TB_ORDER 1 끝
 
--- TB_ORDER2
+--------- INSERT INTO TB_ORDER 2 시작
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,1,1);
 
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,1,2);
@@ -2669,8 +2746,9 @@ INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,
 
 INSERT INTO TB_ORDER (ORDER_NO, USER_NO, RECEIVER_NO) VALUES (SEQ_ORDER.NEXTVAL,5,4);
 COMMIT;
+--------- INSERT INTO TB_ORDER 2 끝
 
--- TB_PAY
+--------- INSERT INTO TB_PAY 1 시작
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'B',100000,'KH은행','관리자');
 
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'B',200000,'KH은행','판매자');
@@ -2731,8 +2809,9 @@ INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (S
 
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'D',30003,'KH은행','최유저');
 COMMIT;
+--------- INSERT INTO TB_PAY 1 끝
 
--- TB_PAY2
+--------- INSERT INTO TB_PAY 2 시작
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'B',100000,'KH은행','관리자');
 
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'B',200000,'KH은행','판매자');
@@ -2784,179 +2863,181 @@ INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (S
 INSERT INTO TB_PAY (PAY_NO, PAY_METHOD, PAY_TOTAL, PAY_BANK, PAY_NAME) VALUES (SEQ_PAY.NEXTVAL,'D',100005,'KH은행','최유저');
 
 COMMIT;
+--------- INSERT INTO TB_PAY 2 끝
 
--- TB_ORDER_DETAIL
+--------- INSERT INTO TB_ORDER_DETAIL 1 시작
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,1,1);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 21, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 21, 1);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,2,2);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 22, 2);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 23, 2);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,3,3);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 23, 3);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 27, 3);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,4,4);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 24, 4);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 28, 4);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,5,5);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 25, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 30, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,6,6);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 26, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 33, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,7,7);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 31, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 44, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,8,8);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 32, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 47, 8);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,9,9);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 33, 9);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 50, 9);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,10,10);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 34, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 52, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,11,11);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 21, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 22, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,12,12);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 22, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 25, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,13,13);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 23, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 27, 8);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,14,14);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 24, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 29, 1);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,15,15);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 25, 3);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 31, 3);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,16,16);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 26, 4);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 34, 4);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,17,17);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 27, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 36, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,18,18);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 28, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 39, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,19,19);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 29, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 41, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,20,20);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 30, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 43, 8);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,21,21);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 31, 9);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 45, 9);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,22,22);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 32, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 48, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,23,23);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 31, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 46, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,24,24);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 34, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 53, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,25,25);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 35, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 55, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,26,26);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 36, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 58, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,27,27);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 37, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 60, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,28,28);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 38, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 62, 1);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,29,29);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 39, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 65, 1);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,30,30);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 30, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 43, 1);
 COMMIT;
+--------- INSERT INTO TB_ORDER_DETAIL 1 끝
 
--- TB_ORDER_DETAIL2
+--------- INSERT INTO TB_ORDER_DETAIL 2 시작
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,1,1);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 1, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 1, 10);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,2,2);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 2, 2);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 2, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,3,3);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 3, 3);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 3, 3);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,4,4);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 4, 4);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 4, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,5,5);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 5, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 5, 2);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,6,6);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 6, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 6, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,7,7);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 7, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 7, 3);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,8,8);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 8, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 8, 10);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,9,9);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 9, 9);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 9, 15);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,10,10);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 10, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 10, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,11,11);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 11, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 11, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,12,12);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 12, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 12, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,13,13);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 13, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 13, 8);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,14,14);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 14, 1);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 14, 1);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,15,15);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 15, 3);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 15, 3);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,16,16);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 16, 4);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 16, 4);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,17,17);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 17, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 17, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,18,18);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 18, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 18, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,19,19);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 19, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 19, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,20,20);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 20, 8);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 20, 8);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,21,21);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 21, 9);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 21, 9);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,22,22);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 22, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 22, 5);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,23,23);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 1, 6);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 1, 6);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,24,24);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 2, 7);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 2, 7);
 
 INSERT INTO TB_ORDER_DETAIL (ORDER_DETAIL_NO, ORDER_NO, PAY_NO) VALUES (SEQ_ORDER_DETAIL.NEXTVAL,25,25);
-INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_NO, ORDER_QUANTIRY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 3, 5);
+INSERT INTO TB_ORDER_PRODUCT (ORDER_DETAIL_NO, PDT_OPTION_NO, ORDER_QUANTITY) VALUES (SEQ_ORDER_DETAIL.CURRVAL, 3, 5);
 
 COMMIT;
+--------- INSERT INTO TB_ORDER_DETAIL 2 끝
 
--- TB_WISHLIST
-
+--------- INSERT INTO TB_WISHLIST 시작
 INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (1,3);
 
 INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (2,3);
@@ -3060,7 +3141,9 @@ INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (39,5);
 INSERT INTO TB_WISHLIST (PDT_NO, USER_NO) VALUES (40,1);
 
 COMMIT;
+--------- INSERT INTO TB_WISHLIST 끝
 
+--------- INSERT INTO TB_BOARD_CTGY, TB_BOARD 시작
 INSERT INTO TB_BOARD_CTGY(BOARD_CTGY_CODE,BOARD_CTGY_NAME
 ) VALUES ('RECIP','안주 추천');
 INSERT INTO TB_BOARD_CTGY(BOARD_CTGY_CODE,BOARD_CTGY_NAME
@@ -3074,6 +3157,85 @@ INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE
     '맥주 안주로 좋은 것은 육포나 생선포, 비타민이 듬뿍 든 신선한 과일과 채소가 적당하다. 육포는 고단백이라 알코올 흡수를 지연시킨다. 오징어는 몸에 좋은 콜레스테롤이 많으며, 간 해독 성분인 타우린이 많아 맥주 안주로 적당하다. 양주의 가장 좋은 안주는 ''물''이다.',
     'RECIP'
 );
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE
+) VALUES (
+    SEQ_BOARD.NEXTVAL,
+    2,
+    '찰나를 담은 나만의 향…요즘 대세는 ''니치 향수''',
+    '니치 향수란 전문 조향사가 소수의 취향을 만족시키기 위해 만든 프리미엄 향수를 뜻한다. ''틈새''를 뜻하는 이탈리아어 니치(niche)에서 파생됐으며 딥티크, 조말론, 바이레도, 크리드, 논픽션, 산타마리아노벨라, 트루동 등의 브랜드가 대표적이다.',
+    'FASHI'
+);
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+INSERT INTO TB_BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_CTGY_CODE)
+VALUES (SEQ_BOARD.NEXTVAL,3,SEQ_BOARD.CURRVAL||'번 제목',SEQ_BOARD.CURRVAL||'번 게시글 내용','FASHI');
+--------- INSERT INTO TB_BOARD_CTGY, TB_BOARD 끝
+
+--------- INSERT INTO TB_PRODUCT_CATEGORY 2 시작
 INSERT INTO
         TB_PRODUCT_CATEGORY
     VALUES(
@@ -3203,409 +3365,367 @@ INSERT
         '최동준',
         '와인'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+--------- INSERT INTO TB_PRODUCT_CATEGORY 2 끝
+
+--------- INSERT INTO TB_PRODUCT 2 (커스텀) 시작
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         41,
         '시원한 맥주',
-        4000,
-        300,
-        SYSDATE,
         '시원하고 깔끔한 치킨과 잘 어울리는 밀 맥주',
         '세상에서 제일 시원한 목넘김 부드럽가 깔끔합니당',
         '밀,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         42,
         '사아케',
-        90000,
-        100,
-        SYSDATE,
         '맛있는 사케',
         '일본식 전통 막걸리, 찐하고 맛있습니다.',
         '누룩,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'        
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         43,
         '마악걸리',
-        5000,
-        200,
-        SYSDATE,
         '한국 전통 막걸리',
         '아는 맛이 가장 무섭다.전이랑 매우 잘떡궁합',
         '물,알코올,쌀',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         44,
         '와아인',
-        80000,
-        50,
-        SYSDATE,
         '포도주',
         '무겁고 둔탁한 맛의 와인 맛있습니다.',
         '포도,알코올,물',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         45,
         '소오주',
-        4000,
-        300,
-        SYSDATE,
         '세상에서 가장 시원하고 깔끔한 소주',
         '세상에서 제일 시원한 목넘김 부드럽가 깔끔합니당',
         '증류수,물',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         46,
         '매액주',
-        5000,
-        100,
-        SYSDATE,
         '맥주의 정석',
         '부드럽고 깔끔한 맥주 .',
         '벼,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         47,
         '사케사케',
-        50000,
-        100,
-        SYSDATE,
         '고급 술 , 좋은 사람 좋은 곳에서!',
         '고급진 사케.그 무엇과도 비교할수 없을만큼 맛있다!!',
         '쌀,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         48,
         '맛돌이 와인',
-        100000,
-        50,
-        SYSDATE,
         '좋은 사람 좋은 곳에서 먹기 좋은 와인',
         '스파클링 화이트 와인 톡 쏘는맛이 맛있습니다.',
         '탄산,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         49,
         '와이와인',
-        80000,
-        100,
-        SYSDATE,
         '정석적인 와인',
         '가볍고 간단하게 먹기 좋은 포도주',
         '포도,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         50,
         '미친 소주',
-        4000,
-        200,
-        SYSDATE,
         '먹다보면 아침인 미친 소주',
         '이렇게 맛있는 소주는 본적이 없다. 둘이 먹다 다음날 아침이 되는 소주',
         '증류수,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         51,
         '마그걸리',
-        10000,
-        100,
-        SYSDATE,
         '막걸리 치고 높은 도수',
         '목이 타는듯한 느낌을 받을 수 있는 고량 막걸리',
         '누룩,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
         SEQ_PRODUCT.nextval,
         52,
         '맛있는 사케',
-        150000,
-        50,
-        SYSDATE,
         '맛있는 사케',
         '맛있는 사케',
         '쌀,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT
+INSERT INTO TB_PRODUCT(
+    PDT_NO,
+    PDT_CATEG_NO,
+    PDT_NAME,
+    PDT_INTRO,
+    PDT_DESCRIPTION,
+    PDT_INGREDIENT,
+    PDT_SHIPPING,
+    PDT_STATUS)
     VALUES(
        SEQ_PRODUCT.nextval,
         53,
         '화이트 와인',
-        50000,
-        100,
-        SYSDATE,
         '연인과 먹기 좋은 화이트 와인',
         '부드럽고 깔끔한 와인',
         '밀,알코올',
         '배송비 무료',
-        0,
-        0,
-       'Y',
-       'N'
-        
+       'Y'
     );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+--------- INSERT INTO TB_PRODUCT 2 (커스텀) 끝
+
+--------- INSERT INTO TB_PRODUCT_OPTION 2 (커스텀) 시작
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             41,
             500,
-            7
-        
+            7,
+            10000,
+            100
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             42,
             750,
-            10
-        
+            10,
+            5700,
+            500
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             43,
             750,
-            8
-        
+            8,
+            3000,
+            300
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             44,
             1000,
-            8
-        
+            8,
+            5000,
+            200
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             45,
             500,
-            17
-        
+            17,
+            12000,
+            250
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             46,
             500,
-            4
-        
+            4,
+            8000,
+            150
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             47,
             750,
-            10
-        
+            10,
+            9000,
+            100
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             48,
             750,
-            7
-        
+            7,
+            12000,
+            50
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             49,
             750,
-            8
-        
+            8,
+            6700,
+            70
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             50,
             500,
-            18
-        
+            18,
+            7000,
+            52
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             51,
             500,
-            30
-        
+            30,
+            1000,
+            50
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             52,
             800,
-            7
-        
+            7,
+            15000,
+            30
         );
-INSERT
-    INTO
-        TB_PRODUCT_OPTION
-    VALUES
-        (
+INSERT INTO TB_PRODUCT_OPTION(PDT_OPTION_NO, PDT_NO, PDT_OPTION_FIRST, PDT_OPTION_SECOND, PDT_OPTION_PRICE, PDT_OPTION_STOCK) VALUES(
             SEQ_PRODUCT_OPTION.nextval,
             53,
             750,
-            11
-        
+            11,
+            9500,
+            70
         );
+        select * from tb_product;
+--------- INSERT INTO TB_PRODUCT_OPTION 2 (커스텀) 끝
+
+--------- INSERT INTO TB_FUNDING 시작
 INSERT
     INTO
         TB_FUNDING
@@ -3905,7 +4025,82 @@ INSERT
         '10.jpg'
         
     );
+--------- INSERT INTO TB_FUNDING 끝
 
+--------- INSERT INTO TB_REVIEW 시작
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        5,
+        '엄청 맛있고 좋아용',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        4,
+        '배송이 너무 늦었어요ㅜㅜㅜㅡㅜ',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW
+    VALUES(
+        SEQ_REVIEW.nextval,
+        4,
+        5,
+        '배송이 너무 늦었어요ㅜㅜㅜㅡㅜ',
+        SYSDATE,
+        NULL,
+        'Y',
+        42
+    );
+INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        11
+    );
+    INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        12
+    );
+    INSERT
+    INTO
+        TB_REVIEW_FILE
+    VALUES(
+        SEQ_REVIEW_FILE.nextval,
+        'pic1.jpg',
+        'review_4.jpg',
+        'resources/image/community/review',
+        0,
+        13
+    );
+--------- INSERT INTO TB_REVIEW 끝
 
 
 

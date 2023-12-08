@@ -2,7 +2,6 @@ package com.kh.ttp.product.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -11,18 +10,25 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.common.template.Pagination;
+import com.kh.ttp.community.review.model.service.ReviewService;
+import com.kh.ttp.community.review.model.vo.ReviewVO;
 import com.kh.ttp.funding.model.vo.Funding;
+import com.kh.ttp.orderKinds.model.vo.OrderDetailVO;
+import com.kh.ttp.orderKinds.model.vo.OrderVO;
+import com.kh.ttp.orderKinds.model.vo.PayVO;
+import com.kh.ttp.orderKinds.model.vo.Receiver;
 import com.kh.ttp.product.model.service.ProductService;
+import com.kh.ttp.product.model.vo.CartSelectVO;
+import com.kh.ttp.product.model.vo.CartVO;
 import com.kh.ttp.product.model.vo.FundingSelectVO;
-import com.kh.ttp.product.model.vo.OrderDetailVO;
-import com.kh.ttp.product.model.vo.OrderVO;
-import com.kh.ttp.product.model.vo.PayVO;
 import com.kh.ttp.product.model.vo.ProductVO;
 import com.kh.ttp.productCategory.model.vo.ProductCategory;
 import com.kh.ttp.productFile.model.vo.ProductFile;
@@ -34,6 +40,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ReviewService reviewService;
 	
 	
 	
@@ -41,50 +49,17 @@ public class ProductController {
 	
 	
 	
-	@RequestMapping("insertDrink.fun")
-	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,
-			String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,
-			String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond) {
-		//System.out.println(upfile);
-		//System.out.println(pdtName);
-		//System.out.println(pdtIntro);
-		//System.out.println(pdtDescription);
-		//System.out.println(pdtShipping);
-		//System.out.println(cuttingPrice);
-		//System.out.println(pdtPrice);
-		//System.out.println(cuttingDate);
-		//System.out.println(pdtManufac);
-		//System.out.println(pdtGroup);
-		//System.out.println(pdtIngredient);
-		ProductVO p = new ProductVO();
-		p.setPdtName(pdtName);
-		p.setPdtIntro(pdtIntro);
-		p.setPdtDescription(pdtDescription);
-		p.setPdtShipping(pdtShipping);
-		p.setPdtPrice(pdtPrice);
-		p.setPdtIngredient(pdtIngredient);
-		p.setPdtStock(pdtStock);
-		ProductCategory pc = new ProductCategory();
-		pc.setPdtManufac(pdtManufac);
-		pc.setPdtGroup(pdtGroup);
+	@PostMapping("insertDrink.fun")
+	public String drinkFundinginsert(MultipartFile upfile,HttpSession session,ProductVO product,ProductCategory productCategory
+			,ProductFile productFile, ProductOption productOption,Funding funding			) {
 		
 		
-		ProductFile pf = new ProductFile();
-		
-		
-		ProductOption po = new ProductOption();
-		po.setPdtOptionFirst(pdtOptionFirst);
-		po.setPdtOptionSecond(pdtOptionSecond);
-		
-		Funding f = new Funding();
-		f.setCuttingDate(cuttingDate);
-		f.setCuttingPrice(cuttingPrice);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
-			pf.setPdtFileOrigin(upfile.getOriginalFilename());
-			pf.setPdtFileUpload(saveFile(upfile,session));
+			productFile.setPdtFileOrigin(upfile.getOriginalFilename());
+			productFile.setPdtFileUpload(saveFile(upfile,session));
 		}
-		if(productService.drinkFundingInsert(p,pf,po,f,pc)>0) {
+		if(productService.drinkFundingInsert(product,productFile,productOption,funding,productCategory)>0) {
 			session.setAttribute("alertMsg", "펀딩 상품 등록 완료.");
 			return "redirect:funding.list";
 		} else {
@@ -98,54 +73,17 @@ public class ProductController {
 		
 	}
 	@RequestMapping("updateDrink.fun")
-	public String updateDrinkFunding(MultipartFile upfile,HttpSession session,Model model,String pdtName,String pdtIntro,String pdtDescription,String pdtShipping, int cuttingPrice,int pdtPrice,Date cuttingDate,String pdtManufac,String pdtGroup,String pdtIngredient,int pdtStock,String pdtOptionFirst,String pdtOptionSecond,int pdtNo) {
-		//System.out.println(pdtNo);
-		//System.out.println(upfile);
-		//System.out.println(pdtName);
-		//System.out.println(pdtIntro);
-		//System.out.println(pdtDescription);
-		//System.out.println(pdtShipping);
-		//System.out.println(cuttingPrice);
-		//System.out.println(pdtPrice);
-		//System.out.println(cuttingDate);
-		//System.out.println(pdtManufac);
-		//System.out.println(pdtGroup);
-		//System.out.println(pdtIngredient);
-		ProductVO p = new ProductVO();
-		p.setPdtNo(pdtNo);
-		p.setPdtName(pdtName);
-		p.setPdtIntro(pdtIntro);
-		p.setPdtDescription(pdtDescription);
-		p.setPdtShipping(pdtShipping);
-		p.setPdtPrice(pdtPrice);
-		p.setPdtIngredient(pdtIngredient);
-		p.setPdtStock(pdtStock);
-		ProductCategory pc = new ProductCategory();
-		
-		pc.setPdtManufac(pdtManufac);
-		pc.setPdtGroup(pdtGroup);
+	public String updateDrinkFunding(MultipartFile upfile,HttpSession session,Model model,
+									ProductVO product,ProductCategory productCategory,ProductFile productFile,ProductOption productOption,
+									Funding funding) {
 		
 		
-		ProductFile pf = new ProductFile();
-		
-		
-		
-		ProductOption po = new ProductOption();
-		po.setPdtOptionFirst(pdtOptionFirst);
-		po.setPdtOptionSecond(pdtOptionSecond);
-		po.setPdtNo(pdtNo);
-		
-		Funding f = new Funding();
-		f.setCuttingDate(cuttingDate);
-		f.setCuttingPrice(cuttingPrice);
-		f.setPdtNo(pdtNo);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
-			pf.setPdtFileOrigin(upfile.getOriginalFilename());
-			pf.setPdtFileUpload(saveFile(upfile,session));
-			pf.setPdtNo(pdtNo);
+			productFile.setPdtFileOrigin(upfile.getOriginalFilename());
+			productFile.setPdtFileUpload(saveFile(upfile,session));
 		}
-		if(productService.updateDrinkFunding(p,pf,po,f,pc)>0) {
+		if(productService.updateDrinkFunding(product,productFile,productOption,funding,productCategory)>0) {
 			session.setAttribute("alertMsg", "펀딩 상품 업데이트 완료.");
 			return "redirect:funding.list";
 		} else {
@@ -179,6 +117,7 @@ public class ProductController {
 		ArrayList<FundingSelectVO> hfs = productService.selectHotFundingList();
 		model.addAttribute("drinkFundingList", nfs);
 		model.addAttribute("drinkHotFundingList",hfs);
+		
 		return "funding/fundingList";
 	}
 	@RequestMapping("newDrinkFunding.list")
@@ -202,6 +141,9 @@ public class ProductController {
 		
 		if(productService.increaseCount(pdtNo) > 0) {
 			FundingSelectVO ps= productService.newDrinkFundingDetail(pdtNo);
+			int listCount = reviewService.countFundingReview(pdtNo);
+			PageInfo pi = Pagination.getPageInfo(listCount, 1, 4, 5);
+			ArrayList<ReviewVO> reviewList = reviewService.selectReviewFunding(pi,pdtNo);
 			java.util.Date d = ps.getCuttingDate();
 			//System.out.println("date : "+d);
 			//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
@@ -209,6 +151,9 @@ public class ProductController {
 			model.addAttribute("cutting",(d.compareTo(new java.util.Date())>=0));
 			model.addAttribute("fundingDetailList", ps);
 			model.addAttribute("pno",pdtNo);
+			model.addAttribute("reviewList",reviewList);
+			model.addAttribute("pi",pi);
+			model.addAttribute("listCount",listCount);
 			return "funding/newDrinkFundingDetail";
 		}else {
 				return "common/errorPage";
@@ -231,10 +176,10 @@ public class ProductController {
 				return "common/errorPage";
 	}
 	@RequestMapping("purchase.fd")
-	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtPrice,String pdtShipping,String pdtFileUpload) {
+	public String buyDrinkFunding(Model model,int pno,String pdtName,int pdtOptionPrice,String pdtShipping,String pdtFileUpload) {
 		model.addAttribute("pdtNo", pno);
 		model.addAttribute("pdtName",pdtName);
-		model.addAttribute("pdtPrice",pdtPrice);
+		model.addAttribute("pdtOptionPrice",pdtOptionPrice);
 		model.addAttribute("pdtShipping",pdtShipping);
 		model.addAttribute("pdtFileUpload",pdtFileUpload);
 		
@@ -242,35 +187,42 @@ public class ProductController {
 		
 	}
 	@RequestMapping("funding.fd")
-	public String confirmFundingDrink(Model model,OrderDetailVO od,OrderVO o,User u,ProductVO p,PayVO pv,Funding f) {
-		int orderPrice =  (p.getPdtPrice()*p.getOrderQuantity())+f.getFundingFee();
-				//(pdtPrice*orderQuantiry)+fundingFee;
-		//System.out.println(pdtNo);
-		//System.out.println(userNo);
-		//System.out.println(orderQuantiry);
-		//System.out.println(fundingFee);
-		//System.out.println(pdtPrice);
-		//System.out.println(postalCode);
-		//System.out.println(orderPrice);
-		//System.out.println(address);
-		//System.out.println(addressDetail);
-		//System.out.println(receiverName);
-		//System.out.println(orderMessage);
-		//System.out.println(payMethod);
-		//System.out.println(payBank);
-		//System.out.println(payName);
+	public String confirmFundingDrink(HttpSession session,OrderDetailVO orderDetail,OrderVO order,User user,ProductVO product,PayVO pay,ProductOption productOption,
+			Funding funding,Receiver receiver,int selectAddress) {
+		int orderPrice =  (productOption.getPdtOptionPrice()*product.getOrderQuantity())+funding.getFundingFee();//(상품가격 *상품개수)+후원비
 		
-		p.setOrderPrice(orderPrice);
-		//System.out.println(od);
-		//System.out.println(o);
-		//System.out.println(u);
-		//System.out.println(p);
-		//System.out.println(pv);
-		System.out.println(f);
-		productService.confirmFundingDrink(od,o,u,p,pv,f);
 		
-		return "";
+		
+		pay.setPayTotal(orderPrice);
+		//System.out.println(selectAddress);
+		System.out.println(receiver);
+		
+		if(selectAddress==2 ) {
+			productService.insertReceiver(receiver);
+		}
+		
+		if(productService.confirmFundingDrink(orderDetail,order,user,product,pay,funding,receiver)>0) {
+			
+			return "common/buyConfirmPage";
+		}else {
+			return "common/errorPage";
+		}
+		
+		
 	}
+	@PostMapping("fundingBasket.insert")
+	public String insertFundingBasket(CartVO cart,Model model) {
+		System.out.println(cart);
+		productService.insertFundingBasket(cart);
+		return "redirect:funding.list";
+	}
+	@GetMapping("cartMain.f")
+	public String fundingCart(int userNo,Model model) {
+			ArrayList<CartSelectVO> cartSelect = productService.selectFundingCart(userNo);
+			model.addAttribute("cartSelect", cartSelect);
+		return "funding/fundingBascket";
+	}
+	
 		
 	
 	

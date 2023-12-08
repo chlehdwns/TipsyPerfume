@@ -42,6 +42,41 @@
 		  	   #{primaryStatus}
 		  	   )
 	</insert>
+	<insert id="insertReceiverf" parameterType="receiver">
+		INSERT
+			INTO
+				TB_RECEIVER
+				(
+				   RECEIVER_NO,
+			  	   USER_NO,
+			  	   RECEIVER_NAME,
+			  	   PHONE,
+			  	   ADDRESS,
+			  	   ADDRESS_DETAIL,
+			  	   POSTAL_CODE
+				)
+			VALUES
+				(
+				   SEQ_RECEIVER.NEXTVAL,
+			  	   #{userNo},
+			  	   #{receiverName},
+			  	   #{phone},
+			  	   #{address},
+			  	   #{addressDetail},
+			  	   #{postalCode}
+				)
+	</insert>
+	<select id="selectReceiverNo" parameterType="receiver" resultType="_int">
+		SELECT
+			RECEIVER_NO
+		FROM
+			TB_RECEIVER
+		WHERE
+			RECEIVER_NAME = #{receiverName} AND PHONE=#{phone} AND POSTAL_CODE = #{postalCode}
+	</select>
+	
+	
+	
 
 
 
