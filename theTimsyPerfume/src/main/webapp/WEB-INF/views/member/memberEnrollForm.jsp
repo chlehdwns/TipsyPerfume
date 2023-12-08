@@ -26,7 +26,7 @@
     .content{
 	    align:center;
 	    width:800px;
-	    height:2000px;
+	    height:2200px;
 	    margin:auto;
     }
     
@@ -60,17 +60,30 @@
 
 				<h4>필수 입력 사항</h4>
 				
-				<form action="insert.me" method="post" id="enroll-form">
+				<form action="insert.me" method="post" id="enroll-form" enctype="multipart/form-data">
 					<div class="form-group">	
 				
 				
-				<label for="memberType"> *회원 구분 : </label> &nbsp;&nbsp;
-                    <input type="radio" id="User" value="U" name="memberType" checked>
-                    <label for="User">개인 회원</label> &nbsp;&nbsp;
-                    <input type="radio" id="Sale" value="S" name="memberType">
-                    <label for="Sale">사업자 회원</label> &nbsp;&nbsp;
-                <br><br>
-
+					<label for="memberType"> *회원 구분 : </label> &nbsp;&nbsp;
+	                    <input type="radio" id="User" value="U" name="memberType" checked>
+	                    <label for="User">개인 회원</label> &nbsp;&nbsp;
+	                    <input type="radio" id="Sale" value="S" name="memberType">
+	                    <label for="Sale" >사업자 회원</label> &nbsp;&nbsp;
+	                <br><br>
+				
+				
+				<!--  
+				<div id="file" style="font-size:1em; display:none;">
+					<label for="upfile">* 첨부파일</label>
+	                <input type="file" id="upfile" class="form-control-file border" name="upfile" required>
+	                 <br>  
+				</div>
+				-->
+				
+				
+				
+				
+				
 				
 						<label for="userEmail">* 아이디(이메일) : </label>
 						<input type="text" class="form-control" id="userEmail" placeholder="아이디를 입력해주세요." name="userEmail" required><br>
@@ -86,6 +99,12 @@
 							<label for="emailSendConfirm">* 인증 번호 입력 : </label>
 							<input type="text" class="form-control" id="emailSendConfirm" placeholder="인증번호를 입력해주세요." name="emailSendConfirm" required><br>
 							<div id="confirmResult" style="font-size:1em; display:none;"></div><!-- 이건 결과글띄워주는 숨김 -->
+							
+							<span class="target_time">
+					            <span id="remaining_min">3</span> :
+					            <span id="remaining_sec">00</span>
+					        </span>
+												
 							
 							
 							<div class="emailSendConfirmButton" >
@@ -178,7 +197,19 @@
 	<!-- 회원가입 이메일 인증용 script.나중에 스크립트 파일로 빼야 함 -->
 	
 
- 		
+ 	<script>
+				$(function(){
+					const $file = $('#file');
+					
+					$('#Sale').click(() =>{
+						$('#file').show();
+					});
+					
+					$('#User').click(() =>{
+						$('#file').hide();
+					});
+				});
+	</script>	
 	
 	
 	
@@ -204,131 +235,154 @@
 		</script>
 		
 		
+		
+		
+		
+		
+		
 		<script>
-		//아이디 중복체크
 		$(function(){
-			const $emailInput = $('.form-group #userEmail');
-			const $checkResult = $('#checkResult');
-			const $enrollFormSubmit = $('#enroll-form :submit');
-			const $emailSendInput = $('#emailSendButton');
-			let checkEmailSend = false;
-			const $emailSendCheck = $('.form-group #emailSendConfirm');
+			const $emailInput = $('.form-group #userEmail'); // userEmail 입력란 form-group class명
+			const $checkResult = $('#checkResult'); // 이메일 사용 가능/불가 여부 표시 css id임 
+			const $emailSendInput = $('#emailSendButton'); // 인증번호 받기 버튼
+			let checkEmailSend = false; // flag
+			
+				$emailInput.keyup(function(){
+					if($emailInput.val().length >= 15){
+						$.ajax({
+							url : 'emailCheck.me',
+							data : {checkEmail : $emailInput.val()},
+							success : function(result){
+								if(result.substr(14) === 'N') {
+									$checkResult.show().css('color', 'crimson').text('중복된 이메일이 존재합니다.');
+									checkEmailSend = false; 
+								}
+								else { 
+									$checkResult.show().css('color', 'lightgreen').text('사용 가능한 이메일입니다!');
+									checkEmailSend = true;
+									$emailSendInput.removeAttr('disabled');
+									$emailSendInput.attr('disabled', false);
+								}
+							},
+							error : function(){
+								console.log('아이디 중복체크용 AJAX통신 실패');
+							}
+						});				
+					} 
+					else {
+						$checkResult.hide();
+					}
+				});
+			
+			
+			const $emailSendCheck = $('.form-group #emailSendConfirm'); // 인증번호 입력란
 			const $emailSendCheckButton = $('#emailSendConfirmButton');
-			let checkEmailRight = false;
-			
-			const $submitButtonCheck = $('#submitButton');
-			
-			$emailInput.keyup(function(){
-				if($emailInput.val().length >= 15){
-					$.ajax({
-						url : 'emailCheck.me',
-						data : {checkEmail : $emailInput.val()},
-						success : function(result){
-							if(result.substr(14) === 'N') {//사용불가능
-								$checkResult.show().css('color', 'crimson').text('중복된 아이디가 존재합니다');
-								$enrollFormSubmit.attr('disabled', true);
-								checkEmailSend = false; //사용불가능=false -> true로 진행
+			let checkEmailRight = false; // flag
+				//인증 번호 받기 누를 시 메일보내는 ajax
+				$('#emailSendButton').click(() =>{
+					if(checkEmailSend){
+						$.ajax({
+							url:'mail',
+							method: "post",
+							data : {userEmail : $emailInput.val()},
+							success : function(result){
+								if(result == "1") {
+									$emailSendCheckButton.removeAttr('disabled');
+									checkEmailRight=true;//키업할때 disabled해놓기. 
+									$emailSendInput.removeAttr('disabled');
+									$emailSendInput.attr('disabled', true);
+								}
+								else{
+									alert('이메일 발송 실패');
+								}
+							},
+							error : function(){
+								console.log('통신 실패');
 							}
-							else { // 이메일 사용가능
-								$checkResult.show().css('color', 'lightgreen').text('사용 가능한 아이디(이메일)입니다!');
-								$enrollFormSubmit.removeAttr('disabled');
-								checkEmailSend = true;
-								$emailSendInput.removeAttr('disabled');
-								$emailSendInput.attr('disabled', false);
-							}
-						},
-						error : function(){
-							console.log('아이디 중복체크용 AJAX통신 실패 ~ ');
-						}
-					});				
-				} 
-				else {
-					$checkResult.hide();
-				}
-			});
-			
-			$('#emailSendButton').click(() =>{
-				//메일보내는 ajax
-				if(checkEmailSend){
-					$.ajax({
-						url:'mail',
-						method: "post",
-						data : {userEmail : $emailInput.val()},
-						success : function(result){
-							console.log(result);
-							if(result == "1") {
-								$emailSendCheckButton.removeAttr('disabled');
-								checkEmailRight=true;//키업할때 disabled해놓기. 
-								$emailSendInput.removeAttr('disabled');
-								$emailSendInput.attr('disabled', true);
-							}
-							else{
-								alert('이메일 발송 실패');
-							}
-						},
-						error : function(){
-							console.log('통신 실패');
-						}
-					})
-				}
-			})
-			
-			
-			//인증 번호 입력에 6글자 입력햇을 경우 버튼이 활성화되게. 
-			/*$emailSendCheck.keyup(function(){
-				if($emailSendCheck.val().length >= 6){ //사용가능
-					checkEmailRight = true;
-					$emailSendCheckButton.removeAttr('disabled');
-				}
-				else 
-				{
-					checkEmailRight = false;}
+						})
+					}
 				})
-				*/
 				
-			
+				
+				
+					//인증번호 받기 누르고 3분동안 체크하는 거
+					const remainingMin = document.getElementById("remaining_min");
+					const remainingSec = document.getElementById("remaining_sec");
+					//const $emailSendCheckButton = $('#emailSendConfirmButton');이거사용중임!
+					let interval;
+					let time = 180;
+					$('#emailSendButton').click(() => {
+						clearInterval(interval);
+						let time=180;
+						interval=setInterval(function () {
+					    if (time > 0) { // >= 0 으로하면 -1까지 출력된다.
+					      time = time - 1; // 여기서 빼줘야 3분에서 3분 또 출력되지 않고, 바로 2분 59초로 넘어간다.
+					      let min = Math.floor(time / 60);
+					      let sec = String(time % 60).padStart(2, "0");
+					      remainingMin.innerText = min;
+					      remainingSec.innerText = sec;
+					    } else {
+					    	$emailSendCheckButton.removeAttr('disabled');
+							$emailSendCheckButton.attr('disabled', true);
+							//인증번호받기 다시 disabled풀어주기
+							$emailSendInput.attr('disabled', false);
+					    }
+					  }, 1000);
+					});
+				
+				
+				
+				
+				
+				
+				const $submitButtonCheck = $('#submitButton'); // 회원가입 submit버튼
 				//이메일 인증번호 맞는지 체크해주기 
-			$('#emailSendConfirmButton').click(() =>{	
-				if(checkEmailRight){
-					$.ajax({
-						url : 'check',
-						method: "post",
-						data : {authCode : $emailSendCheck.val()},
-						success : function(result){
-							console.log(result);
-							if (result == "true"){
-								alert('이메일 인증 완료!');
-								
-								//키업할때 disabled해놓기. 
-								$emailSendCheckButton.removeAttr('disabled');
-								$emailSendCheckButton.attr('disabled', true);
-								
-								$submitButtonCheck.removeAttr('disabled');
-								
-							} else {
-								alert('이메일 인증 실패!');
+				$('#emailSendConfirmButton').click(() =>{	
+					if(checkEmailRight){
+						$.ajax({
+							url : 'check',
+							method: "post",
+							data : {authCode : $emailSendCheck.val()},
+							success : function(result){
+								console.log(result);
+								if (result == "true"){
+									alert('이메일 인증 완료!');
+									//키업할때 disabled해놓기. 
+									$emailSendCheckButton.removeAttr('disabled');
+									$emailSendCheckButton.attr('disabled', true);
+									$submitButtonCheck.removeAttr('disabled');
+								} else {
+									alert('이메일 인증 실패!');
+								}
+							},
+							error : function(){
+								console.log('통신 실패');
 							}
-							
-						},
-						error : function(){
-							console.log('통신 실패');
-						}
-					})
-				};
-			});
-
-			
-			$('#submitButton').click(() =>{
-				if( checkEmailSend == true && checkEmailRight == true ){
-					$('#enroll-form').submit();
-					
-				}
-				//플래그가다트루가댓들경우에만)서브밋에 되도록.ifelse돌려서 되도록 하기 
+						})
+					};
+				});
+	
 				
+				//모든 필수 입력란들이 다 1글자 이상인지 확인
+				const $required = $('.form-control');
+				let requiredfinal = false; // flag
+				
+				$required.keyup(function(){
+					for(i = 0; i<$required.length; i++){
+						if($required.val().length >= 1 ){
+						requiredfinal = true;
+						}
+					}
+				});
+				
+				
+				//플래그가 다 true가 되었을 경우에만 회원가입 버튼이 열리도록
+				$('#submitButton').click(() =>{
+					if(checkEmailSend == true && checkEmailRight == true && requiredfinal == true){
+						$('#enroll-form').submit();
+					}
+				});
 			});
-			
-			
-		});
 		</script>
 			
 			
@@ -345,7 +399,6 @@
 					document.getElementById('check').innerHTML ='비밀번호가 일치하지 않습니다.';
 					document.getElementById('check').style.color='red';
 			}
-			
 		}
 		}
 		</script> 

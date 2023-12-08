@@ -24,34 +24,23 @@
             USER_NAME userName,
             STATUS status,
             MEMBER_TYPE memberType,
-            BUSINESS_REG businessReg,
-            
             CASE
 		        WHEN extract(YEAR FROM SYSDATE)-extract(YEAR FROM BIRTH_DATE) >= 19 THEN 'Y'
 		        ELSE 'N'
 		    END adultStatus,
-		    
             BIRTH_DATE birthDate,
             ENROLL_DATE enrollDate,
             USER_PROFILE userProfile,
-			
 			PHONE phone,
 			ADDRESS address,
 			ADDRESS_DETAIL addressDetail,
 			POSTAL_CODE postalCode
-			
 		FROM
 			TB_USER
 		left JOIN
 			TB_RECEIVER USING(USER_NO)
 		WHERE
 			USER_EMAIL = #{userEmail}
-			
-		<!--  사용자는 DB_userPwd컬럼에 저장된 암호화된 비밀번호를 알 수 없기 때문에 비밀번호 조건을 나중에 제거
-		AND
-			USER_PWD = #{userPwd}
-		-->
-			
 		AND
 			STATUS='Y'
 	</select>
@@ -61,55 +50,53 @@
 
 	<!-- 회원가입용 쿼리문1 -->
 	<insert id="insertUser" parameterType="user">
-	INSERT
-	INTO
-		TB_USER
-		(
-			USER_NO ,
-            USER_EMAIL ,
-            NICKNAME ,
-            USER_PWD ,
-            USER_NAME ,
-            BIRTH_DATE 
-		)
-	VALUES
-		(
-		SEQ_USER.NEXTVAL,
-        #{userEmail},
-        #{nickName},
-        #{userPwd},
-        #{userName},
-        #{birthDate}
-		)
+	   INSERT
+	     INTO 
+	           TB_USER(
+		       USER_NO,
+		       USER_EMAIL,
+		       NICKNAME,
+		       USER_PWD,
+		       USER_NAME,
+		       BIRTH_DATE,
+		       MEMBER_TYPE
+		      )
+	  VALUES (
+		       SEQ_USER.NEXTVAL,
+		       #{userEmail},
+		       #{nickName},
+		       #{userPwd},
+		       #{userName},
+		       #{birthDate},
+		       #{memberType}
+		     )
 	</insert>
-
-	<!-- 회원가입용 쿼리문2 -->
-	<insert id="insertUser2" parameterType="user">
-	INSERT
-	INTO
-		TB_RECEIVER
-			(
-			RECEIVER_NO,
-			USER_NO,
-			RECEIVER_NAME,
-
-			PHONE ,
-			ADDRESS ,
-			ADDRESS_DETAIL ,
-			POSTAL_CODE
-			)
-	VALUES
-		(
-		SEQ_RECEIVER.NEXTVAL,
-		SEQ_USER.CURRVAL,
-		#{receiverName},
-		
-		#{phone},
-		#{address},
-		#{addressDetail},
-		#{postalCode}
-		)
-	</insert>
+	
+	
+		<!-- 회원가입용 쿼리문2 -->
+		<insert id="insertUser2" parameterType="user">
+		INSERT
+		  INTO
+			  TB_RECEIVER(
+			  RECEIVER_NO,
+			  USER_NO,
+			  RECEIVER_NAME,
+			  PHONE,
+			  ADDRESS,
+			  ADDRESS_DETAIL,
+			  POSTAL_CODE
+			  )
+		VALUES
+			  (
+			  SEQ_RECEIVER.NEXTVAL,
+			  SEQ_USER.CURRVAL,
+			  #{receiverName},
+			  #{phone},
+			  #{address},
+			  #{addressDetail},
+			  #{postalCode}
+			  )
+		</insert>
 
 
 	<select id="emailCheck" parameterType="string" resultType="_int">
@@ -221,12 +208,12 @@
 
 
 	<delete id="deleteAuth" parameterType="com.kh.ttp.user.model.vo.AuthVO">
-			delete 
-				TB_AUTH 
-			where 
-				AUTH_EMAIL = #{authEmail} 
-			and 
-				AUTH_CODE = #{authCode}
+	delete 
+		TB_AUTH 
+	where 
+		AUTH_EMAIL = #{authEmail} 
+	and 
+		AUTH_CODE = #{authCode}
 	</delete>
 
 </mapper>
