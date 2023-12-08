@@ -3,6 +3,7 @@ package com.kh.ttp.user.model.service;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.orderKinds.model.vo.Receiver;
@@ -11,7 +12,7 @@ import com.kh.ttp.user.model.vo.AuthVO;
 import com.kh.ttp.user.model.vo.User;
 
 @Service
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -27,9 +28,9 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	//@Transactional
+	@Transactional("transactionManager")
 	public int insertUser(User u) {
-		userDao.insertUser(sqlSession, u);
+			   userDao.insertUser(sqlSession, u);
 		return userDao.insertUser1(sqlSession, u);
 	}
 
