@@ -217,7 +217,7 @@
 			   PDT_FILE_NO,
 			   PDT_FILE_INDEX,
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   NVL(REVIEW_AVG, 0) "REVIEW_AVG"
+			   TO_CHAR(NVL(REVIEW_AVG, 0), 'FM0.0') "REVIEW_AVG"
 		  FROM
 			   TB_PRODUCT
 		  JOIN
@@ -229,9 +229,11 @@
 		  	   (
 			   SELECT
 					  PDT_NO,
-					  ROUND(AVG(REVIEW_SCORE), 1) "REVIEW_AVG"
+					  AVG(REVIEW_SCORE) "REVIEW_AVG"
 			     FROM
 					  TB_REVIEW
+                 JOIN
+                      TB_PRODUCT_OPTION USING(PDT_OPTION_NO)					  
 			    WHERE
 					  PDT_NO = #{pdtNo}
 			    GROUP
