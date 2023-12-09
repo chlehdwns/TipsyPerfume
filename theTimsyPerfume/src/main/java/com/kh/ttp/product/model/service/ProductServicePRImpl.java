@@ -143,8 +143,8 @@ public class ProductServicePRImpl implements ProductServicePR {
 
 
 	@Override
-	public int updateCartOneQuantity(CartVO cart) {
-		return productDao.updateCartOneQuantity(sqlSession, cart);
+	public int updateCartAddUpQuantity(CartVO cart) {
+		return productDao.updateCartAddUpQuantity(sqlSession, cart);
 	}
 
 
@@ -180,9 +180,9 @@ public class ProductServicePRImpl implements ProductServicePR {
 	
 	// 재고 있는지 조회 => 카트에 없는 제품(0)이면 INSERT, 이미 있는 제품이면(1) UPDATE (수량 1개 추가)
 	@Override
-	public int ajaxAddCartSingleQuan(CartVO cart) {
+	public int checkStockAndAddCart(CartVO cart) {
 		if(selectStockWithOption(cart) > 0) {
-			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartOneQuantity(cart);
+			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartAddUpQuantity(cart);
 		} else { // 재고가 없음
 			return -1;
 		}

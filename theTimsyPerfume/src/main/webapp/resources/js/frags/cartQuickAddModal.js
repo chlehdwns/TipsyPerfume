@@ -1,4 +1,4 @@
-// 카트 수량선택 모달 호출
+// 장바구니 빠른추가 모달 생성
 function ajaxCreateCartQuickAddModal($pdtNo, $pdtName) {
 
 	$.ajax({
@@ -27,7 +27,7 @@ function ajaxCreateCartQuickAddModal($pdtNo, $pdtName) {
 	console.log('모달창 내부 Ajax요청 후 돌아올 때 : ' + $pdtNo);
 };
 
-// 카트 수량선택 모달 닫기
+// 장바구니 빠른추가 모달 닫기
 function hideCartQuickAddModal() {
 	$('#cartQuickAddModal').modal("hide");
 }

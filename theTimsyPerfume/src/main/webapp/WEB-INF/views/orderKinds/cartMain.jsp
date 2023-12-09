@@ -57,8 +57,6 @@
 		width: 100%;
 		height: 100%;
 	}
-	#cartMainWrap .cart-extra-info-area .ext-info-1 {height: 70%;}
-	#cartMainWrap .cart-extra-info-area .ext-info-2 {height: 30%;}
 	
 	/* 총 합계, 주문버튼 */
 	#cartSummary .row{min-height: 50px;}
@@ -83,6 +81,7 @@
 		<div id="cartContentBar" class="row">
 			<div class="cart-box-area"><input type="checkbox"></div>
 			<div class="col-4 ps-5">상품(옵션)</div>
+			
 			<div class="col">수량</div>
 			<div class="col-2">가격</div>
 			<div class="col-2">할인적용/배송</div>
@@ -93,31 +92,43 @@
 		<div class="row cart-content-block">
 			<div class="cart-box-area"><input type="checkbox"></div>
 			<div class="col-4 ps-5">향긋향수 50ML</div>
-			<div class="col">1개</div>
-			<div class="col-2">100,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">-2,000원<br/>회원할인 2%</div>
-					<div class="col-12 ext-info-2">배송비 3,000</div>
-				</div>
+			<div class="col">
+				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
 			</div>
+			<div class="col-2">100,000원</div>
+			<div class="col-2 p-0 cart-extra-info-area">배송비 3,000</div>	
 			<div class="col-2">98,000원</div>
 		</div>
+		
 		<div class="row cart-content-block">
 			<div class="cart-box-area"><input type="checkbox"></div>
 			<div class="col-4 ps-5">영혼을 달래주는 술 800ML</div>
-			<div class="col">2개</div>
-			<div class="col-2">150,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">-6,000원<br/>회원할인 2%</div>
-					<div class="col-12 ext-info-2">무료배송</div>
-				</div>
+			<div class="col">
+				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
 			</div>
+			<div class="col-2">150,000원</div>
+			<div class="col-2 p-0 cart-extra-info-area">무료배송</div>
 			<div class="col-2">294,000원</div>
 		</div>
+		<!-- cart에서 상품수량 가격(1개) PDT_NO
+PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
+		<script>
+			$('.cartQuantity').on('click', () => {
+				
+				$.ajax({
+					url : 'GET',
+					data : '상품번호',
+					
+					
+					
+				});
+			});
+			
+		
+		</script>
 		
 		
+	
 		<br/>
 		<br/>	
 		<br/>	
@@ -125,7 +136,7 @@
 		<div id="cartSummary" class="row">
 			<div class="col">
 				<div class="row ps-5">전체금액</div>
-				<div class="row ps-5">400,000 - 8,000할인 | 무료배송</div>
+				<div class="row ps-5">400,000원 | 무료배송(10만원 이상)</div>
 				<div class="row ps-5">= 392,000원</div>
 			</div>
 			<div class="col-4">

@@ -32,6 +32,10 @@
 			<mapping path="/boardWrite/*" />
 			<mapping path="/reviewWrite" />
 			<mapping path="/reviewWrite/*" />
+			<mapping path="ajaxChangeWishOne.pa" />
+			<mapping path="ajaxChangeWishOne.pa/*)" />
+			<mapping path="/ajaxAddCartSingleQuan.pa" />
+			<mapping path="/ajaxAddCartSingleQuan.pa/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -44,8 +48,6 @@
 			<mapping path="/alcoholPdtDetail.pr/*" />
 			<mapping path="/selectAlcoholPdtList.pr" />
 			<mapping path="/selectAlcoholPdtList.pr/*" />
-			<mapping path="/ajaxAddCartSingleQuan.pa" />
-			<mapping path="/ajaxAddCartSingleQuan.pa/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.AdultValidationInterceptor" id="AdultValidationInterceptor" />
 		</interceptor>
 	</interceptors>

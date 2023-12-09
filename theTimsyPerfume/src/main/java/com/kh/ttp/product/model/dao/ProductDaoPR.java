@@ -136,8 +136,8 @@ public class ProductDaoPR {
 	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
-	public int updateCartOneQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
-		return sqlSession.update("productMapperPR.updateCartOneQuantity", cart);
+	public int updateCartAddUpQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.update("productMapperPR.updateCartAddUpQuantity", cart);
 	}
 
 	public List<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {

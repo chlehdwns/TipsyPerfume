@@ -128,9 +128,10 @@
 	<!-- 헤더 -->
 	<jsp:include page="../common/header.jsp" />
 	
-	
+	${pdtDetail.pdtCteg}${pdtDetail.pdtCteg}${pdtDetail.pdtCteg}${pdtDetail.pdtCteg}${pdtDetail.pdtCteg}dd
 	<div id="pdtDetailWrap">
 	<input id="pdtNoDetail" type="hidden" value="${pdtDetail.pdtNo}">
+	<input id="pdtCtegDetail" type="hidden" value="${pdtDetail.pdtCteg}">
 		<c:choose>
 			<c:when test="${not empty pdtDetail}">
 				<div id="pdtDetailLeft" class="container pdt-detail-container">
@@ -199,13 +200,54 @@
 					<div class="row pdt-section-or detail-bg">
 						<div id="pdtDetailTotalPrice" class="col pdt-dt-align-center ">상품가격 * 선택개수 script로 200,000원</div>
 						<div class="col-3 pdt-dt-align-center ">
-							<button onclick="ajaxPdtDetailAddCart" class="btn btn-sm btn-primary">장바구니</button>
+							<button id="detailAddCartBtn" class="btn btn-sm btn-primary">장바구니</button>
 						</div>
 						<div class="col-3 pdt-dt-align-center ">
 							<button onclick="location.href='productOrder.pr'" class="btn btn-sm btn-primary">주문하기</button>
 						</div>
 						
 					</div>
+					
+					<script>
+					
+					
+						$('#detailAddCartBtn').on('click', () => {
+							/*
+							USER_NO
+							PDT_NO
+							PDT_OPTION_NO
+							CART_QUANTITY
+							*/
+							let $pdtNo = $('#pdtNoDetail').val();
+							let $pdtOptionNo = $('#pdtDetailSelectInput option:selected').val();
+							let $cartQuantity = $('#pdtDetailQuanInput').val();
+							
+							if(Number($pdtNo * $pdtOptionNo * $cartQuantity) > 0) { // 딱 내가 원하는 경우만(빈문자열이고 다른 형태고 뭐고 아니고 넘버인데 0보다 큰 경우만)
+								console.log('장바구니 추가하기 가능');
+								$.ajax({
+									url : 'ajaxPdtDetailAddCart.ca',
+									data : {
+										pdtNo : $pdtNo,
+										pdtOptionNo : $pdtOptionNo,
+										cartQuantity : $cartQuantity
+									},
+									success : result => {
+										console.log('성공! 장바구니로 이동하시겠습니까?')
+									},
+									error : () => {
+										console.log('통신실패');
+									}
+								});
+							}
+							else {
+								console.log('옵션과 수량을 정확하게 선택해주세요!');
+								alert('옵션과 수량을 정확하게 선택해주세요!');
+							}
+							
+						});
+					
+					
+					</script>
 		
 				</div>
 			</c:when>
@@ -222,9 +264,10 @@
 		
 
 		// ajax요청으로 리뷰 조회 후
+		/*
 		$(() => {
 			$.ajax({
-				url : 'ajaxSelectRecentTwoReview.pr/' + $('#pdtNoDetail').val(),
+				//url : 'ajaxSelectRecentTwoReview.pr/' + $('#pdtNoDetail').val(),
 				type : 'GET',
 				success : result => {
 					let reviewValue = '';
@@ -254,7 +297,7 @@
 				}
 			})
 		});
-		
+		*/
 		// 옵션선택, 수량선택 변화가 일어날 시
 		// 1. 수량선택 요소 포워딩 당시 stock개수로 제한 (실시간 재고 반영은 주문결제 시 & stock만 조회하는 ajax요청 인터벌 15분정도 줘도 좋을듯)
 		// 2. 옵션별 가격 * 선택한 개수 = 상품금액 계산 업데이트 

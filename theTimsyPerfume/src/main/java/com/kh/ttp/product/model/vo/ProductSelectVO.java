@@ -13,7 +13,6 @@ public class ProductSelectVO extends ProductVO {
 	
 	private float reviewAvg;
 	
-	private int pdtCategNo;
 	private String pdtCteg;
 	private String pdtManufac;
 	private String pdtGroup;

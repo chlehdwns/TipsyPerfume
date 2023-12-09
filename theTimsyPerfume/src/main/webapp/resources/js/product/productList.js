@@ -37,7 +37,9 @@ $('#cartQuickAddBtn').click(() => {
 		url : 'ajaxAddCartSingleQuan.pa',
 		method : 'POST',
 		data : { pdtNo : $pdtNo,
-				 pdtOptionNo : $pdtOptionNo },
+				 pdtOptionNo : $pdtOptionNo,
+				 pdtCteg : $('#pdtCtegDetail')
+				  },
 		success : result => {
 			hideCartQuickAddModal();
 			if(result === '1') {

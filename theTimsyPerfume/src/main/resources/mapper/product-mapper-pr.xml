@@ -212,6 +212,7 @@
 			   PDT_SHIPPING,
 			   PDT_COUNT,
 			   PDT_CATEG_NO,
+			   PDT_CTEG,
 			   PDT_MANUFAC,
 			   PDT_GROUP,
 			   PDT_FILE_NO,
@@ -347,7 +348,7 @@
 	</insert>
 	
 	<!-- 장바구니 수량 UPDATE구문 -->
-	<update id="updateCartOneQuantity" parameterType="cart">
+	<update id="updateCartAddUpQuantity" parameterType="cart">
 		UPDATE
 			   TB_CART
 		   SET

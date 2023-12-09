@@ -45,6 +45,15 @@ public class AjaxProductControllerPR {
 	}
 	 
 	
+	// pdtCteg가 F나 A인지 검증해 boolean반환하는 메소드
+	private boolean checkPdtCtegStr(String pdtCteg) {
+		if(null != pdtCteg && (pdtCteg.equals("F") || pdtCteg.equals("A"))) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
@@ -56,7 +65,7 @@ public class AjaxProductControllerPR {
 	 * 비워진 상태로 표시해야할 때 문자열 "false" 반환<br>
 	 * (가독성을 위해 "true", "false"반환)
 	 */
-	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
+	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8") // 로그인 인터셉터거침
 	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
 		User user = (User)session.getAttribute("loginUser");
 		if((user != null) && pdtNo > 0) {
@@ -76,21 +85,33 @@ public class AjaxProductControllerPR {
 	 * @param session
 	 * @return : 추가 성공 시 "1"문자열, 실패 시 "0"문자열 반환
 	 */
-	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8")
+	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8") // 로그인 인터셉터 거침 (알콜 리스트/디테일은 성인인증 인터셉터)
 	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
+										@RequestParam String pdtCteg,
 										HttpSession session) {
-		if(pdtNo != 0) {
+		if((pdtNo * pdtOptionNo > 0) && checkPdtCtegStr(pdtCteg)) {
 			CartVO cart = new CartVO();
 			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			cart.setPdtNo(pdtNo);
 			cart.setPdtOptionNo(pdtOptionNo);
 			cart.setCartAddingQuantity(1);
-			return productService.ajaxAddCartSingleQuan(cart) + "";
+			return String.valueOf(productService.checkStockAndAddCart(cart));
 		} else {
 			return "ERROR";
 		}
 	}
+	
+	@GetMapping("ajaxPdtDetailAddCart.ca")
+	public void ajaxPdtDetailAddCart(CartVO cart, HttpSession session) { // 로그인 인터셉터 거침 (알콜 리스트/디테일은 성인인증 인터셉터)
+		if(cart.getPdtNo() * cart.getPdtOptionNo() * cart.getCartQuantity() > 0) {
+			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
+			System.out.println(productService.checkStockAndAddCart(cart));
+		}
+		//return returnAjaxErrorStr();
+	}
+	
+
 	
 	/**
 	 * 상품 번호로 상품이 가진 옵션을 조회하는 메소드
@@ -111,19 +132,20 @@ public class AjaxProductControllerPR {
 	 */
 	@GetMapping("ajaxSelectRecentTwoReview.pr/{pdtNo}")
 	public ResponseEntity ajaxSelectRecentTwoReview(@PathVariable(name="pdtNo") int pdtNo) {
-
-		if(pdtNo <= 0) {
-			return returnAjaxErrorStr();
-		} else {
-			
+		if(pdtNo > 0) {
 			HashMap<String, Integer> pMap = new HashMap();
 			pMap.put("pdtNo", pdtNo);
 			pMap.put("rowNum", 2);
 			return new ResponseEntity<List<ReviewVO>>(productService.selectRecentReviewWithRownum(pMap),
-					makeHeader("application", "json", "UTF-8"),
-					HttpStatus.OK);
+													  makeHeader("application", "json", "UTF-8"),
+													  HttpStatus.OK);
 		}
+		return returnAjaxErrorStr();
 	}
+	
+	
+
+	
 	
 	
 	
