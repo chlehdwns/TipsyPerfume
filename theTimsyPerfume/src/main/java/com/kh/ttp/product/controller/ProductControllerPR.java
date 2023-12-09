@@ -83,7 +83,7 @@ public class ProductControllerPR {
 	}
 	
 	// 주류전체조회
-	@GetMapping("selectAlcoholPdtList.pr") // 성인 인터셉터 거침
+	@GetMapping("selectAlcoholPdtList.pr") // 성인 인터셉터 거침(세션에 N)
 	public String selectAlcoholPdtList(@RequestParam(value="sort", defaultValue="New") String sort,
 									   @RequestParam(value="currentPage", defaultValue="1") int currentPage,
 									   Model m) {
@@ -99,7 +99,7 @@ public class ProductControllerPR {
 	}
 	
 	// 주류 디테일조회
-	@GetMapping("alcoholPdtDetail.pr") // 성인 인터셉터 거침
+	@GetMapping("alcoholPdtDetail.pr") // 성인 인터셉터 거침(세션에 N)
 	public ModelAndView alcoholPdtDetail(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
 										 ModelAndView mv) {
 		if(pdtNo > 0) {

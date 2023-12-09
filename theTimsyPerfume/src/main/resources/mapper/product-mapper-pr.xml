@@ -347,8 +347,8 @@
 			   (SEQ_CART.NEXTVAL, #{userNo}, #{pdtNo}, #{pdtOptionNo}, #{cartAddingQuantity})
 	</insert>
 	
-	<!-- 장바구니 수량 UPDATE구문 -->
-	<update id="updateCartAddUpQuantity" parameterType="cart">
+	<!-- 장바구니 수량 기존수량에 추가 UPDATE구문 -->
+	<update id="updateCartAddUpOne" parameterType="cart">
 		UPDATE
 			   TB_CART
 		   SET

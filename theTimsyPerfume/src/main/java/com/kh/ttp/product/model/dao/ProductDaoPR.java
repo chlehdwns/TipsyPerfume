@@ -121,10 +121,10 @@ public class ProductDaoPR {
 
 
 
+	// 장바구니 상품 추가
 	/**
 	 * 장바구니에 특정 상품 추가
-	 * @param cart : 유저번호(PK), 상품번호(PK)
-	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), pdtOptionNo(상품옵션PK), cartAddingQuantity(추가하려는 수량)
 	 */
 	public int insertCartOne(SqlSessionTemplate sqlSession, CartVO cart) {
 		return sqlSession.insert("productMapperPR.insertCartOne", cart);
@@ -132,12 +132,11 @@ public class ProductDaoPR {
 
 
 	/**
-	 * 장바구니 수량 UPDATE
-	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
-	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
+	 * 장바구니 기존 수량에 추가 수량 UPDATE
+	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), pdtOptionNo(상품옵션PK), cartAddingQuantity(추가하려는 수량)
 	 */
-	public int updateCartAddUpQuantity(SqlSessionTemplate sqlSession, CartVO cart) {
-		return sqlSession.update("productMapperPR.updateCartAddUpQuantity", cart);
+	public int updateCartAddUpOne(SqlSessionTemplate sqlSession, CartVO cart) {
+		return sqlSession.update("productMapperPR.updateCartAddUpOne", cart);
 	}
 
 	public List<ProductOption> selectPdtOptionOne(SqlSessionTemplate sqlSession, int pdtNo) {

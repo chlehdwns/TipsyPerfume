@@ -116,12 +116,7 @@ public interface ProductServicePR {
 	 */
 	boolean ajaxChangeWishOne(WishlistVO wishlist);
 
-	/**
-	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
-	 * @param cart : 유저번호(PK), 상품번호(PK)
-	 * @return : 성공여부 반환, 성공 시 true, 실패 시 false
-	 */
-	int checkStockAndAddCart(CartVO cart);
+
 
 	
 	/**
@@ -132,11 +127,20 @@ public interface ProductServicePR {
 	int insertCartOne(CartVO cart);
 	
 	/**
-	 * 장바구니 수량 기존 + 추가 수량으로 UPDATE
+	 * 장바구니 기존 수량에 추가 UPDATE
 	 * @param cart : userNo(유저번호PK), pdtNo(상품번호PK), cartAddingQuantity(추가하려는 수량)
 	 * @return : 성공여부 int 반환, 성공 시 1 / 실패 시 0
 	 */
-	int updateCartAddUpQuantity(CartVO cart);
+	int updateCartAddUpOne(CartVO cart);
+	
+	
+	/**
+	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
+	 * @param cart : 유저번호(PK), 상품번호(PK)
+	 * @return : 성공여부 반환, 성공 시 1, 실패 시 0, 
+	 */
+	int checkStockAddCart(CartVO cart);
+	
 	
 	/**
 	 * 상품 번호, 숫자N을 받아 최근순 리뷰 Top N개를 조회하는 메소드

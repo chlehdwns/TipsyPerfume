@@ -85,12 +85,13 @@ public class AjaxProductControllerPR {
 	 * @param session
 	 * @return : 추가 성공 시 "1"문자열, 실패 시 "0"문자열 반환
 	 */
-	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8") // 로그인 인터셉터 거침 (알콜 리스트/디테일은 성인인증 인터셉터)
-	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
-										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
+	@PostMapping(value="ajaxCheckStockAddCart.ca", produces="text/html; charset=UTF-8") // 로그인 인터셉터 거침
+	public void ajaxCheckStockAddCart(CartVO cart,
 										@RequestParam String pdtCteg,
 										HttpSession session) {
-		if((pdtNo * pdtOptionNo > 0) && checkPdtCtegStr(pdtCteg)) {
+		// 카테고리 A면 성인 status Y일 때
+		/*
+		if((cart.getPdtNo() * cart.getPdtOptionNo() > 0) && checkPdtCtegStr(pdtCteg)) {
 			CartVO cart = new CartVO();
 			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
 			cart.setPdtNo(pdtNo);
@@ -100,18 +101,9 @@ public class AjaxProductControllerPR {
 		} else {
 			return "ERROR";
 		}
+			*/
+			System.out.println("카테고링ㄹㅇㅇㅇ");
 	}
-	
-	@GetMapping("ajaxPdtDetailAddCart.ca")
-	public void ajaxPdtDetailAddCart(CartVO cart, HttpSession session) { // 로그인 인터셉터 거침 (알콜 리스트/디테일은 성인인증 인터셉터)
-		if(cart.getPdtNo() * cart.getPdtOptionNo() * cart.getCartQuantity() > 0) {
-			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
-			System.out.println(productService.checkStockAndAddCart(cart));
-		}
-		//return returnAjaxErrorStr();
-	}
-	
-
 	
 	/**
 	 * 상품 번호로 상품이 가진 옵션을 조회하는 메소드
