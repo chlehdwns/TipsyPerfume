@@ -93,7 +93,7 @@
 			<div class="cart-box-area"><input type="checkbox"></div>
 			<div class="col-4 ps-5">향긋향수 50ML</div>
 			<div class="col">
-				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
+				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#">
 			</div>
 			<div class="col-2">100,000원</div>
 			<div class="col-2 p-0 cart-extra-info-area">배송비 3,000</div>	
@@ -102,17 +102,21 @@
 		
 		<div class="row cart-content-block">
 			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">영혼을 달래주는 술 800ML</div>
+			<div class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
 			<div class="col">
 				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
 			</div>
-			<div class="col-2">150,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">무료배송</div>
-			<div class="col-2">294,000원</div>
+			<div class="col-2">${pdtOptionPrice}원</div>
+			<div class="col-2 p-0 cart-extra-info-area">${pdtShipping}</div>
+			<div class="col-2">300,000(토탈가격)</div>
 		</div>
+		
+		
+		
 		<!-- cart에서 상품수량 가격(1개) PDT_NO
 PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
 		<script>
+		/*
 			$('.cartQuantity').on('click', () => {
 				
 				$.ajax({
@@ -123,10 +127,21 @@ PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
 					
 				});
 			});
-			
+			*/
 		
 		</script>
-		
+		<script>
+			$('#cartMainOrderBtn').on('click', () => {
+				console.log($(''))
+			});
+			
+			// 재고 조회 ajax
+			function checkPdtStock() => {
+				
+			}
+			//ProductOption
+			//
+		</script>
 		
 	
 		<br/>
@@ -140,11 +155,11 @@ PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
 				<div class="row ps-5">= 392,000원</div>
 			</div>
 			<div class="col-4">
-				<button class="btn btn-primary">주문</button>
+				<button id="cartMainOrderBtn" class="btn btn-primary">주문하기</button>
 			</div>
 		</div>
 	</div>
-	
+
 	
 	<br/><br/><br/>
 	<br/><br/><br/>	

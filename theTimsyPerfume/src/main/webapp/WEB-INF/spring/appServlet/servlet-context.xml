@@ -32,10 +32,12 @@
 			<mapping path="/boardWrite/*" />
 			<mapping path="/reviewWrite" />
 			<mapping path="/reviewWrite/*" />
-			<mapping path="ajaxChangeWishOne.pa" />
-			<mapping path="ajaxChangeWishOne.pa/*)" />
-			<mapping path="/checkStockAndAddCart.pa" />
-			<mapping path="/checkStockAndAddCart.pa/*" />
+			<mapping path="/ajaxChangeWishOne.pa" />
+			<mapping path="/ajaxChangeWishOne.pa/*)" />
+			<mapping path="/cartMain.ca/*" />
+			<mapping path="/cartMain.ca/*" />
+			<mapping path="/ajaxCheckStockAddCart.ca" />
+			<mapping path="/ajaxCheckStockAddCart.ca/*" />
 			<beans:bean class="com.kh.ttp.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 		<interceptor>

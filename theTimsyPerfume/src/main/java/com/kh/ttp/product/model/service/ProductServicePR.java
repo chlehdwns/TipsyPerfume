@@ -88,23 +88,6 @@ public interface ProductServicePR {
 	int deleteWishOne(WishlistVO wishlist);
 	
 	
-	//장바구니 추가 / CART_NO, USER_NO, PDT_NO, PDT_OPTION_NO, CART_QUANTITY 컬럼
-	
-	// 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*********** ajax 요청 ***********/
-	
 	// 위시리스트 클릭 시 추가 혹은 삭제 ajaxChangeWishOne
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
@@ -115,8 +98,6 @@ public interface ProductServicePR {
 	 * 비워진 상태로 표시해야하는지(false) boolean타입 반환<br>
 	 */
 	boolean ajaxChangeWishOne(WishlistVO wishlist);
-
-
 
 	
 	/**
@@ -135,9 +116,10 @@ public interface ProductServicePR {
 	
 	
 	/**
-	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
-	 * @param cart : 유저번호(PK), 상품번호(PK)
-	 * @return : 성공여부 반환, 성공 시 1, 실패 시 0, 
+	 * 장바구니에 상품 추가 요청이 들어오면 재고 및 현재 장바구니에 있는 상품인지 체크 함
+	 * 아직 추가되지 않은 상품은 cartQuantity만큼 INSERT, 이미 있는 경우 기존 수량에 더해 UPDATE 수행함
+	 * @param cart : pdtNo(상품PK), pdtOptionNo(상품옵션PK), cartQuantity(카트에 추가할 수량)
+	 * @return : INSERT 혹은 UPDATE 성공 시 1, 실패 시 0, 재고가 없을 시 -1 반환
 	 */
 	int checkStockAddCart(CartVO cart);
 	

@@ -28,11 +28,12 @@ $('#cartQuickAddBtn').click(() => {
 	$.ajax({
 		method : 'POST',
 		url : 'ajaxCheckStockAddCart.ca',
-		data : { pdtNo : $pdtNo,
-				 pdtOptionNo : $pdtOptionNo,
-				 pdtCteg : $('#pdtListCteg').val(),
-				 cartQuantity : 1
-				 },
+		data : {
+				pdtNo : $pdtNo,
+				pdtOptionNo : $pdtOptionNo,
+				pdtCteg : $('#pdtListCteg').val(),
+				cartQuantity : 1
+		},
 		success : result => {
 			hideCartQuickAddModal();
 			if(result === '1') {
