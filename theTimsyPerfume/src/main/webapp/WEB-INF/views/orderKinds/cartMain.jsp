@@ -117,7 +117,21 @@
 				let $cartCheckedItems = $('.cart-check-box-one:checked');
 				if($cartCheckedItems.length > 0) {
 					console.log($cartCheckedItems);
-					
+					$.ajax({
+						method : 'GET',
+						url : 'productPayment/prepare',
+						//data : {
+							
+							
+						//},
+						success : result => {
+							console.log('성공')
+							console.log(result);
+						},
+						error : () => {
+							console.log('에러발생');
+						}
+					});
 				}
 				//cart-item
 				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
