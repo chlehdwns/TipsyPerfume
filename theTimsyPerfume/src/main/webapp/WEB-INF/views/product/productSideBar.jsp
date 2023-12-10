@@ -14,16 +14,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="resources/css/product/productSideBar.css">
+
+
 </head>
 
 
 
 
 <body>
+
+
 	<form id="pdtSideBarForm" action="#" method="post">
 		<div id="productSideBarWrap" class="d-none d-lg-block">
 		    <div id="pdtSideBarSortArea" class="btn-group" role="group" aria-label="Basic radio toggle button group">
-		    	<input type="hidden" name="sort" value="${pdtCteg}">
+		    	<input type="hidden" id="sidebarPdtCteg" value="${pdtCteg}">
+		    	<input type="hidden" id="sidebarSort" value="${sort}">
+		    	<input type="hidden" id="sidebarCurrentPage" value="${pi.currentPage}">
+		    	
 				<input type="radio" class="btn-check pdt-side-bar-sort" name="sort" value="New" id="sideBarSortBtn1" autocomplete="off">
 				<label class="btn btn-outline-primary" for="sideBarSortBtn1"></label>
 				
@@ -33,7 +40,8 @@
 				<input type="radio" class="btn-check pdt-side-bar-sort" name="sort" value="Popular" id="sideBarSortBtn3" autocomplete="off">
 				<label class="btn btn-outline-primary" for="sideBarSortBtn3"></label>
 			</div>
-		    
+
+
 			<div class="accordion" id="accordionPanelsStayOpenExample">
 		        <div class="accordion-item">
 		          <h2 class="accordion-header" id="panelsStayOpen-headingOne">

@@ -1,3 +1,5 @@
+let $pdtListImgArea = $('.pdt-list-pdtImgSrc');
+
 // 마우스enter 시 하트와 장바구니 아이콘 보이게
 $pdtListImgArea.on('mouseenter', e => {
     $(e.target).parent().find('.pdt-list-icon-area').addClass('pdt-list-max-opacity');

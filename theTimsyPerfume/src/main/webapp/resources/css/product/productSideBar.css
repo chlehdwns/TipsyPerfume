@@ -3,25 +3,25 @@
 }
 
 /* 정렬기준 부분 */
- 	#pdtSideBarSortArea > label[for='sideBarSortBtn1'] {
- 		border-top-left-radius: 0.25rem;
- 		border-bottom-left-radius: 0.25rem;
- 	}
- 	
- 	#pdtSideBarSortArea label{
- 		width: 77px;  		
- 		height: 30px;
- 		background-repeat: no-repeat; 
- 	}
+#pdtSideBarSortArea > label[for='sideBarSortBtn1'] {
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+}
 
- #sideBarSortBtn1 + label{background-image: url('resources/image/product/productEtc/sortNewImgBl.png');}
- #sideBarSortBtn2 + label{background-image: url('resources/image/product/productEtc/sortBestSellerImgBl.png');}
- #sideBarSortBtn3 + label{background-image: url('resources/image/product/productEtc/sortPopularImgBl.png');}
-	
- #sideBarSortBtn1:checked + label {background-image: url('resources/image/product/productEtc/sortNewImg.png');}
- #btnradisideBarSortBtn2o2:checked + label {background-image: url('resources/image/product/productEtc/sortBestSellerImg.png');}
- #sideBarSortBtn3:checked + label {background-image: url('resources/image/product/productEtc/sortPopularImg.png');}
+#pdtSideBarSortArea label{
+	width: 77px;  		
+	height: 30px;
+	background-repeat: no-repeat; 
+}
 
+
+#sideBarSortBtn1 + label { background-image: url('../../image/product/productEtc/sortNewImgBl.png'); }
+#sideBarSortBtn2 + label { background-image: url('../../image/product/productEtc/sortBestSellerImgBl.png'); }
+#sideBarSortBtn3 + label { background-image: url('../../image/product/productEtc/sortPopularImgBl.png'); }
+
+#sideBarSortBtn1:checked + label { background-image: url('../../image/product/productEtc/sortNewImg.png'); }
+#sideBarSortBtn2:checked + label { background-image: url('../../image/product/productEtc/sortBestSellerImg.png'); }
+#sideBarSortBtn3:checked + label { background-image: url('../../image/product/productEtc/sortPopularImg.png'); }
 
 /* 아코디언 부분 */
 #accordionPanelsStayOpenExample {

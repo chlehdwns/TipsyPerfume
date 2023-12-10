@@ -136,7 +136,7 @@ PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
 			});
 			
 			// 재고 조회 ajax
-			function checkPdtStock() => {
+			function checkPdtStock() {
 				
 			}
 			//ProductOption
