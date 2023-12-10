@@ -1,75 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-
-<style>
-	#cartMainWrap{
-		width: 950px;
-		margin-top: 80px;
-		border: 1px solid black;
-	}
-	#cartMainWrap div{border: 1px solid black;}
+			
+	<!-- 부트스트랩 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
-	/* 장바구니 각 파트 상단 타이틀영역 */
-	#cartMainBar {height: 50px;}
-    #cartContentBar {height: 50px;}
-	#cartMainWrap .cart-content-block{min-height: 100px; margin-top: 30px;}
-	
-	/* 각 파트 내부div 정렬 */
-	#cartMainBar div,
-	#cartContentBar div,
-	#cartMainWrap .cart-content-block div,
-	#cartSummary .col-4,
-	#cartSummary .row {
-		display: flex;
-		align-items: center;
-	}
-	/* 중앙 정렬 요소들 */
-	#cartMainWrap .cart-box-area, /* 체크박스 */
-	#cartMainBar .col-2, /* 메인바 */
-	#cartContentBar .col, .col-2, /* 콘텐트바 */
-	#cartMainWrap .cart-content-block .col, /* 콘텐트블록 */
-	.col-2,
-	.cart-extra-info-area,
-	.cart-extra-info-area .col-12,
-	#cartSummary .col-4 /* 카트 서머리 */
-	 { 
-		justify-content: center;
-		text-align: center;}
-	/* 체크박스 */
-	#cartMainWrap .cart-box-area {
-		width: 30px;
-	}
-	/* 할인, 배송 정보 영역 */
-	#cartMainWrap .cart-extra-info-area .row {
-		width: 100%;
-		height: 100%;
-	}
-	
-	/* 총 합계, 주문버튼 */
-	#cartSummary .row{min-height: 50px;}
+	<!-- CSS파일 적는곳 -->
+	<link rel="stylesheet" href="resources/css/orderKinds/cartMain.css">
 
-</style>
 </head>
 <body>
 
 	<jsp:include page="../common/header.jsp" />
 
 	<div id="cartMainWrap" class="container">
+		
+		
 		<div id="cartMainBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<label class="check-box-label">
+					<input id="cartCheckBoxAll" type="checkbox">
+				</label>
+			</div>
 			<div class="col ps-5">전체선택</div>
 			<div class="col-2"><button class="btn btn-danger">삭제</button></div>
 			<div class="col-2"><button class="btn btn-primary">주문</button></div>
@@ -79,18 +42,24 @@
 		<br/>
 			
 		<div id="cartContentBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<!-- 프레임 맞추기 공백 -->
+			</div>
 			<div class="col-4 ps-5">상품(옵션)</div>
 			
 			<div class="col">수량</div>
 			<div class="col-2">가격</div>
-			<div class="col-2">할인적용/배송</div>
+			<div class="col-2">배송</div>
 			<div class="col-2">상품 합계</div>
 		</div>
 		
 		
 		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<label class="check-box-label">
+					<input class="cart-check-box-one" type="checkbox">
+				</label>
+			</div>
 			<div class="col-4 ps-5">향긋향수 50ML</div>
 			<div class="col">
 				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#">
@@ -101,7 +70,11 @@
 		</div>
 		
 		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<label class="check-box-label">
+					<input class="cart-check-box-one" type="checkbox">
+				</label>
+			</div>
 			<div class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
 			<div class="col">
 				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
@@ -113,35 +86,7 @@
 		
 		
 		
-		<!-- cart에서 상품수량 가격(1개) PDT_NO
-PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
-		<script>
-		/*
-			$('.cartQuantity').on('click', () => {
-				
-				$.ajax({
-					url : 'GET',
-					data : '상품번호',
-					
-					
-					
-				});
-			});
-			*/
-		
-		</script>
-		<script>
-			$('#cartMainOrderBtn').on('click', () => {
-				console.log($(''))
-			});
-			
-			// 재고 조회 ajax
-			function checkPdtStock() {
-				
-			}
-			//ProductOption
-			//
-		</script>
+
 		
 	
 		<br/>
@@ -159,8 +104,56 @@ PDT_OPTION_NO 상품합계(1개가격*개수) 상품번호 -->
 			</div>
 		</div>
 	</div>
-
-	
+		<!--
+		CART_NO,
+		USER_NO,
+		PDT_NO,
+		PDT_OPTION_NO,
+		CART_QUANTITY
+		-->
+		<script>
+			// 주문버튼 클릭 시 
+			$('#cartMainOrderBtn').on('click', () => {
+				let $cartCheckedItems = $('.cart-check-box-one:checked');
+				if($cartCheckedItems.length > 0) {
+					console.log($cartCheckedItems);
+					
+				}
+				//cart-item
+				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
+				//cart-content-block
+				
+			});
+			
+				
+			
+			// 재고 조회 ajax
+			//function checkPdtStock() {
+				
+			//}
+			//ProductOption
+			//
+		</script>
+		<script>
+			// 수량 변경 시 상품합계 업데이트(USER_NO, PDT_OPTION_NO, 상품합계(1개가격*개수) 상품번호
+			//$('.cartQuantity').on('change', () => {
+				//ajax
+			//});
+					
+			// 모든 상품 체크 선택 시 (주문 취소하거나 페이지 재렌더링은 그냥 체크 다 해제된 상태)
+			$('#cartCheckBoxAll').change(() => {
+				let $cartCheckBoxAll = $('#cartCheckBoxAll');
+				let $checkBoxOne = $('.cart-check-box-one');
+				
+				if($cartCheckBoxAll.prop('checked')) {
+					$checkBoxOne.prop('checked', true);
+				} else {
+					$checkBoxOne.prop('checked', false);
+				}
+			});
+		</script>
+		
+		
 	<br/><br/><br/>
 	<br/><br/><br/>	
 	<br/><br/><br/>	
