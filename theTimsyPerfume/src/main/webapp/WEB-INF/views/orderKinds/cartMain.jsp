@@ -115,11 +115,11 @@
 			// 주문버튼 클릭 시 
 			$('#cartMainOrderBtn').on('click', () => {
 				let $cartCheckedItems = $('.cart-check-box-one:checked');
-				if($cartCheckedItems.length > 0) {
+				//if($cartCheckedItems.length > 0) {
 					console.log($cartCheckedItems);
 					$.ajax({
-						method : 'GET',
-						url : 'productPayment/prepare',
+						method : 'POST',
+						url : 'kakaoPayment/prepare',
 						//data : {
 							
 							
@@ -127,12 +127,14 @@
 						success : result => {
 							console.log('성공')
 							console.log(result);
+							alert(result);
+							location.href = result;
 						},
 						error : () => {
 							console.log('에러발생');
 						}
 					});
-				}
+				//}
 				//cart-item
 				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
 				//cart-content-block

@@ -99,7 +99,7 @@
 						</div>
 						<div class="col-3 pdt-dt-align-center ">
 							<button onclick="location.href='productOrder.pr'" class="btn btn-sm btn-primary">주문하기</button>
-						</div>
+						</div><!--  -->
 						
 					</div>
 					
@@ -122,7 +122,8 @@
 	
 	
 	<script>
-
+		// 주문하기는 ㅈ아바구니랑 똑같은데 카카오결제 실패하면 장바구니에서 사라짐
+		// 장바구니는 실패해도 유지
 		
 
 		// ajax요청으로 리뷰 조회 후
