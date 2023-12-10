@@ -119,7 +119,7 @@
 					console.log($cartCheckedItems);
 					$.ajax({
 						method : 'POST',
-						url : 'kakaoPayment/prepare',
+						url : 'pay/kakao/ready',
 						//data : {
 							
 							
