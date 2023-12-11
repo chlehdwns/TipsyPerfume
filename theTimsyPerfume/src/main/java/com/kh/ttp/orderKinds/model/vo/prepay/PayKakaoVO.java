@@ -9,11 +9,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class PayKakaoVO extends Prepay {
 	
 	/*
-	 private String userEmail(Prepay클래스의 필드) = partner_user_id
+	private int userNo;
+	private String userEmail;
 	 */
 
 	private String payKakaoNo; // partner_order_id PAY_KAKAO_NO 유저 이메일 insert 후 결과

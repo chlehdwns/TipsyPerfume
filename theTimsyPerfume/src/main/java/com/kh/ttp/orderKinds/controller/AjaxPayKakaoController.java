@@ -1,6 +1,7 @@
 package com.kh.ttp.orderKinds.controller;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,8 +35,8 @@ public class AjaxPayKakaoController {
 	
 	
 	@PostMapping(value="/ready", produces="application/json; charset=UTF-8")
-	public void /* ResponseEntity<String> */ payKakaoReady(@RequestBody PayKakaoReady kakaoReady) {
-		//return payService.payKakaoReady(kakaoReady);
+	public ResponseEntity<String> payKakaoReady(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
+		return payService.payKakaoReady(kakaoReady, session);
 	}
 	
 	
