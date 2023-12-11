@@ -59,7 +59,7 @@
 					<input value="1" class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
-			<div class="col-4 ps-5">향긋향수 50ML</div>
+			<div id="cartItemName_0" class="col-4 ps-5">향긋향수 50ML</div>
 			<div class="col">
 				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#">
 			</div>
@@ -74,7 +74,7 @@
 					<input value=4 class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
-			<div class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
+			<div id="cartItemName_1" class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
 			<div class="col">
 				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
 			</div>
@@ -140,7 +140,8 @@
 						type : 'POST',
 						data : JSON.stringify({
 							totalAmount : $totalAmount,
-							itemCode : itemCodeArr
+							itemCode : itemCodeArr,
+							itemName : $('#cartItemName_0').text()
 							
 						}),
 						contentType:"application/json; charset=utf-8",

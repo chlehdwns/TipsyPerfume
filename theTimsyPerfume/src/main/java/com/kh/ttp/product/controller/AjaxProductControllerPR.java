@@ -112,6 +112,7 @@ public class AjaxProductControllerPR {
 		if(isPdtCtegValid(pdtCteg)) {
 			if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) {
 				/* 수행 구문 없음 */
+				return makeAjaxErrorResult();
 			} else {
 				cart.setUserNo(getLoginUser(session).getUserNo());
 				reponseEntity = new ResponseEntity<String>(String.valueOf(productService.checkStockAddCart(cart)),

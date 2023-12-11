@@ -41,7 +41,7 @@ $('#cartQuickAddBtn').click(() => {
 			if(result === '1') {
 				// 쇼핑 계속하기버튼 or 장바구니 가기버튼 팝업
 				if(pdtListConfirmRemaining()) {
-					location.href = "cartMain.pr";
+					location.href = "cartMain.ca";
 				}
 			}
 			else if(result === '-1') {
