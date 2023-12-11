@@ -5,10 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,10 +17,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,36 +29,50 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-
 public class PayServiceImpl implements PayService {
 	
 	
 	private final PayDao payDao;
 	private final SqlSessionTemplate sqlSession;
 	
+	
+	
+	@Override
 	@Transactional("transactionManager")
-	public ResponseEntity<String> payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
+	public int payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws IOException, ParseException {
+		/*ResponseEntity<String>*/
 		
+		int quantity = kakaoReady.getItemCodeList().size();
+		String itemName = kakaoReady.getItemName()  + " 외  " + (quantity - 1) + "개";
+
 		User user = (User)session.getAttribute("loginUser");
+		ArrayList itemCodeList = (ArrayList)kakaoReady.getItemCodeList();
+
+		String payKakaoNo;
 		String userEmail = user.getUserEmail();
+		String itemCode = String.join(",", itemCodeList);
+		
 		kakaoReady.setUserNo(user.getUserNo());
 		kakaoReady.setUserEmail(userEmail);
-		
-		
-		String payKakaoNo;
-		int quantity = kakaoReady.getItemCode().size();
-		String itemName = kakaoReady.getItemName()  + " 외  " + (quantity - 1) + "개";
-		ArrayList itemCode = (ArrayList)kakaoReady.getItemCode();
-		
 		
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		String approvalUrl = "http://localhost:8001/tipsyPerfume/pay/kakao/approve"
 						   + "?userEmail=" + userEmail;
 		String errorUrl = "http://localhost:8001/tipsyPerfume/errorPage.er";
 		
-		// 이메일로 INSERT하고 payKakaoNo초기화(검증나중에)
-		int insertEmailResult = payDao.insertEmailPayKakao(sqlSession, userEmail);
-		payKakaoNo=""; // partner_order_id PAY_KAKAO_NO 유저 이메일 insert 후 결과
+		
+		// 이메일로 INSERT하고 payKakaoNo초기화(검증나중에)userEmail, itemCode
+		Map<String, Object> kakaoReadyMap = new HashMap();
+		kakaoReadyMap.put("userEmail", userEmail);
+		kakaoReadyMap.put("itemCode", itemCode);
+		
+		if(payDao.insertKakaoReady(sqlSession, kakaoReadyMap) > 0) { //@@@@@@@@@select안되면 고의예외 발생시켜야함
+			payKakaoNo = payDao.selectSeqPayKakaoStr(sqlSession);
+			// partner_order_id PAY_KAKAO_NO (INSERT 후 시퀀스값)
+			// INSERT성공했으면 당연히 초기화됨
+		} else {
+			return 0;
+		}
 		
 		String param = "cid=" + AjaxPayKakaoController.CID // 가맹점 코드, 10자
 			     + "&partner_order_id=" + payKakaoNo // 가맹점 주문번호, 최대 100자
@@ -109,14 +120,16 @@ public class PayServiceImpl implements PayService {
 		//@@@@@@@@@@★ 이 시점에서 DB에 tid 넣어야함 (일단세션담음)
 		// INSERT
 		String tid = (String)result.get("tid");
+		
 		//session.setAttribute("tid", tid);
 		System.out.println("준비단계 tid DB에 넣어야함 / tid :aㅁ " + tid);
-		
+		/*
 		System.out.println();
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
-		return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
-		
+		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
+		*/
+		return 1;
 	}
 	
 	

@@ -112,7 +112,7 @@
 			   PDT_DESCRIPTION,
 			   PDT_MANUFAC,
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   TO_CHAR(NVL(REVIEW_AVG, 0), 'FM0.0') "REVIEW_AVG"
+			   TO_CHAR(REVIEW_AVG, 'FM0.0') "REVIEW_AVG"
 		  FROM
 		  	   TB_PRODUCT
 		  JOIN
@@ -124,7 +124,7 @@
   		  	   (
   		  	   SELECT 
   		  	   		  PDT_NO,
-  		  	   		  AVG(REVIEW_SCORE) "REVIEW_AVG"
+  		  	   		  NVL(TRUNC(AVG(REVIEW_SCORE), 2),0) "REVIEW_AVG"
   		  	   		  <if test="sort eq 'BestSeller'">
   		  	   		  ,
   		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
@@ -209,7 +209,7 @@
 			   PDT_FILE_NO,
 			   PDT_FILE_INDEX,
 			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   TO_CHAR(NVL(REVIEW_AVG, 0), 'FM0.0') "REVIEW_AVG"
+			   TO_CHAR(REVIEW_AVG, 'FM0.0') "REVIEW_AVG"
 		  FROM
 			   TB_PRODUCT
 		  JOIN
@@ -221,7 +221,7 @@
 		  	   (
 			   SELECT
 					  PDT_NO,
-					  AVG(REVIEW_SCORE) "REVIEW_AVG"
+					  NVL(TRUNC(AVG(REVIEW_SCORE), 2),0) "REVIEW_AVG"
 			     FROM
 					  TB_REVIEW
                  JOIN

@@ -44,34 +44,53 @@
 	<select id="productSelectList" parameterType="map" resultMap="productSelectResultSet">
 	
 	
-		SELECT
-			   ... 생략 ...
-			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
-			   TO_CHAR(NVL(REVIEW_AVG, 0), 'FM0.0') "REVIEW_AVG"
-		  FROM
-		  	   TB_PRODUCT
-		  JOIN
-		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
-  		  JOIN
-  		  	   TB_PRODUCT_FILE USING(PDT_NO)
+		  ... 생략 ...
   		  LEFT
   		  JOIN
   		  	   (
-  		  	   ... 인라인뷰 ...
-			   ) USING(PDT_NO)
-		 WHERE
-			   PDT_CTEG = #{pdtCteg}
-		  	   ... 생략 ...
-		 ORDER
-		    BY
-			   <if test="sort eq 'BestSeller'">
-			   TOTAL_SALES DESC,
-			   SALES_AVG DESC,
-			   </if>
-			   <if test="sort eq 'Popular'">
-			   TOTAL_WISH DESC,
-			   </if>
-			   PDT_NO DESC
+  		  	   SELECT 
+  		  	   		  PDT_NO,
+  		  	   		  NVL(TRUNC(AVG(REVIEW_SCORE), 2),0) "REVIEW_AVG"
+  		  	   		  <if test="sort eq 'BestSeller'">
+  		  	   		  ,
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) "TOTAL_SALES",
+      				  TRUNC(AVG(NVL(PAY_TOTAL, 0) + NVL(PAY_ADJUST, 0))) "SALES_AVG"
+  		  	   		  </if>
+  		  			  <if test="sort eq 'Popular'">
+  		  	   		  ,
+  		  	   		  NVL(SUM(W.USER_NO), 0) "TOTAL_WISH"
+  		  	   		  </if>
+				 FROM
+				 	   상품, 옵션, 리뷰 테이블 조인
+
+		  ... 생략 ...		 
+		  		
+				... 동적 SQL ...
+				<if test="sort eq 'BestSeller'">
+				 LEFT
+				 JOIN
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
+                 JOIN
+                 
+                 	  TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
+                 JOIN
+                 	  TB_PAY USING(PAY_NO)
+				</if>
+				<if test="sort eq 'Popular'">
+				 LEFT
+ 				 JOIN
+ 				 	  TB_WISHLIST W USING(PDT_NO)
+				</if>
+				WHERE
+				<if test="sort eq 'BestSeller'">
+				 	  PAY_STATUS = 'Y'
+				   OR
+      				  PAY_STATUS IS NULL
+               	  AND
+				</if>
+				... 생략 ...
+	
+			   
 			   
 			   
 	</select>

@@ -56,11 +56,14 @@
 		<div class="row cart-content-block">
 			<div class="cart-box-area">
 				<label class="check-box-label">
-					<input value="1" class="cart-check-box-one" type="checkbox">
+					<!-- 상품번호 -->
+					<input value="21" class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
+			<!-- 상품이름 (요청에 첫번째 것만 필요) -->
 			<div id="cartItemName_0" class="col-4 ps-5">향긋향수 50ML</div>
 			<div class="col">
+				<!-- 상품수량 -->
 				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#">
 			</div>
 			<div class="col-2">100,000원</div>
@@ -71,11 +74,13 @@
 		<div class="row cart-content-block">
 			<div class="cart-box-area">
 				<label class="check-box-label">${cartNo} <!-- cartNo이 value에 -->
-					<input value=4 class="cart-check-box-one" type="checkbox">
+					<!-- 상품번호 -->
+					<input value=22 class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
 			<div id="cartItemName_1" class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
 			<div class="col">
+				<!-- 상품수량 -->
 				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
 			</div>
 			<div class="col-2">${pdtOptionPrice}원</div>
@@ -128,11 +133,11 @@
 					let $totalAmount = $('#cartTotalAmount').val();
 
 					// itemCode배열 : 선택된 cartNo 배열로
-					let itemCodeArr = [];
+					let itemCodeList = [];
 					$cartCheckedItems.each((index, element) => {
-						itemCodeArr.push(element.value);
+						itemCodeList.push(element.value);
 					});	
-					console.log(itemCodeArr);
+					console.log(itemCodeList);
 					 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
 
 					$.ajax({
@@ -140,7 +145,7 @@
 						type : 'POST',
 						data : JSON.stringify({
 							totalAmount : $totalAmount,
-							itemCode : itemCodeArr,
+							itemCodeList : itemCodeList,
 							itemName : $('#cartItemName_0').text()
 							
 						}),

@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.parser.ParseException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,8 +34,10 @@ public class AjaxPayKakaoController {
 	
 	
 	@PostMapping(value="/ready", produces="application/json; charset=UTF-8")
-	public ResponseEntity<String> payKakaoReady(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
-		return payService.payKakaoReady(kakaoReady, session);
+	public /*ResponseEntity<String>*/void payKakaoReady(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
+		payService.payKakaoReady(kakaoReady, session);
+		System.out.println("컨트롤러 결과값 : " + payService.payKakaoReady(kakaoReady, session));
+		//return payService.payKakaoReady(kakaoReady, session);
 	}
 	
 	

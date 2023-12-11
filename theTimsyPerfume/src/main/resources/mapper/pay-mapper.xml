@@ -6,11 +6,14 @@
 	
 	
 	
-	<insert id="insertEmailPayKakao" parameterType="string">
-		INSERT INTO TB_PAY_KAKAO(PAY_KAKAO_NO, USER_EMAIL)
-		VALUES(SEQ_PAY_KAKAO.NEXTVAL, #{userEmail})
+	<insert id="insertKakaoReady" parameterType="map">
+		INSERT INTO TB_PAY_KAKAO(PAY_KAKAO_NO, USER_EMAIL, ITEM_CODE)
+		VALUES(SEQ_PAY_KAKAO.NEXTVAL, #{userEmail}, #{itemCode})
 	</insert>
 	
+	<select id="selectSeqPayKakaoStr" resultType="string">
+		SELECT SEQ_PAY_KAKAO.CURRVAL FROM DUAL
+	</select>
 	
 	
 	

@@ -21,7 +21,7 @@ public class PayKakaoReady extends PayKakaoVO {
 
 	private String payKakaoNo; // partner_order_id PAY_KAKAO_NO 유저 이메일 insert 후 결과
 	private String tid; // tid 추후 발급된 tid
-	private List<String> itemCode;
+	private List<String> itemCodeList;
 	*/
 	
 	private String itemName;
