@@ -53,7 +53,6 @@
 			<div class="col-2">상품 합계</div>
 		</div>
 		
-		
 		<div class="row cart-content-block">
 			<div class="cart-box-area">
 				<label class="check-box-label">
@@ -97,11 +96,14 @@
 			<div class="col">
 				<div class="row ps-5">전체금액</div>
 				<div id="123" class="row">
-					<div id="cartTotalAmount" class="col summary-col">400,000</div>
+					<input id="cartAmountBefore" value="400000" type="hidden"><!-- value .toLocaleString() 가공해서 띄움 -->
+					<div class="col summary-col">400,000</div>
 					<div class="col-1 summary-col"> | </div>
-					<div id="cartShipping" class="col summary-col">무료배송</div>
+					<input id="cartPdtShipping" value="0" type="hidden">
+					<div class="col summary-col">무료배송</div><!-- value 0이면 무료배송 -->
 				</div>
-				<div class="row ps-5">= 392,000원</div>
+				<input id="cartTotalAmount" value="392000" type="hidden">
+				<div class="row ps-5">= 392,000원</div><!-- cartTotalAmount영역에 value .toLocaleString() 가공해서 띄움 -->
 			</div>
 			<div class="col-4">
 				<button id="cartMainOrderBtn" class="btn btn-primary">주문하기</button>
@@ -122,28 +124,27 @@
 				
 				//if($cartCheckedItems.length > 0) {
 					
+					// totalAmount 비교용 토탈금액
+					let $totalAmount = $('#cartTotalAmount').val();
+
+					// itemCode배열 : 선택된 cartNo 배열로
 					let itemCodeArr = [];
-					let data;
-					
-					let $totalAmount = $('#cartTotalAmount');
-					let $pdtShipping = $('#cartShipping');
-					
 					$cartCheckedItems.each((index, element) => {
-						itemCode = { itemCode : element.value};
-						itemCodeArr.push(itemCode)
+						itemCodeArr.push(element.value);
 					});	
-					
+					console.log(itemCodeArr);
 					 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
-					 
-					
-					/*
+
 					$.ajax({
-						method : 'POST',
 						url : 'pay/kakao/ready',
-						//data : {
-							jsonData : $jsonData
+						type : 'POST',
+						data : JSON.stringify({
+							totalAmount : $totalAmount,
+							itemCode : itemCodeArr
 							
-						//},
+						}),
+						contentType:"application/json; charset=utf-8",
+						//dataType: 'json', // 받아올 때 타입 json parsing해서 객체로 써야함
 						success : result => {
 							console.log('성공')
 							console.log(result);
@@ -154,7 +155,6 @@
 							console.log('에러발생');
 						}
 					});
-					*/
 				//}
 				//cart-item
 				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');

@@ -5,30 +5,23 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoReady;
 
 import lombok.RequiredArgsConstructor;
 
@@ -63,24 +56,27 @@ public class AjaxPayKakaoController {
 	
 	
 	
-	
-	@PostMapping("/ready")
-	public void kakaoPayPrepare(@RequestParam String jsonData, HttpSession session) throws IOException, ParseException {
-		System.out.println("되나???111111");
+	@PostMapping(value="/ready", produces="application/json; charset=UTF-8")
+	public void kakaoPayPrepare(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws IOException, ParseException {
+		
 		
 		String url = "https://kapi.kakao.com/v1/payment/ready";
 		String approvalUrl = "http://localhost:8001/tipsyPerfume/pay/kakao/approve?userEmail=" + userEmail;
 		String errorUrl = "http://localhost:8001/tipsyPerfume/errorPage.er";
+		
+		int totalAmount = kakaoReady.getTotalAmount();
+		
+		
 		
 		
 		String param = "cid=" + CID // 가맹점 코드, 10자
 				     + "&partner_order_id=" + payKakaoNo // 가맹점 주문번호, 최대 100자
 				     + "&partner_user_id=" + userEmail // // 가맹점 회원 id, 최대 100자
 				     + "&item_name=" + itemName // 상품명, 최대 100자
-				     //+ "&item_code=" // 배열을 문자열 형태로 저장 / 상품코드, 최대 100자
+				     + "&item_code=" + String.join(",", kakaoReady.getItemCode()) // 배열을 문자열 형태로 저장 / 상품코드, 최대 100자
 				     + "&quantity=" + quantity // 상품 수량
 				     + "&total_amount=" + totalAmount // 상품 총액
-				     + "&tax_free_amount=" + taxFreeAmount // 상품 비과세 금액
+				     + "&tax_free_amount=" + 0 // 상품 비과세 금액
 				     + "&approval_url=" + approvalUrl // 결제 성공 시 redirect url, 최대 255자
 				     + "&cancel_url=" + errorUrl // 결제 취소 시 redirect url, 최대 255자
 				     + "&fail_url=" + errorUrl; // 결제 실패 시 redirect url, 최대 255자
@@ -112,10 +108,13 @@ public class AjaxPayKakaoController {
 		System.out.println(responseText);
 		
 		
-		JSONObject result = (JSONObject)(new JSONParser().parse(responseText));
+		//JSONObject result = (JSONObject)(new JSONParser().parse(responseText));
+		JsonObject result = JsonParser.parseString(responseText).getAsJsonObject();
+		
 		
 		//@@@@@@@@@@★ 이 시점에서 DB에 tid 넣어야함 (일단세션담음)
-		String tid = (String)result.get("tid");
+		String tid = result.get("tid").getAsString();
+		
 		session.setAttribute("tid", tid);
 		System.out.println("준비단계 tid DB에 넣어야함 / tid :aㅁ " + tid);
 		
@@ -123,12 +122,13 @@ public class AjaxPayKakaoController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
 		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
+		
 	}
 	
 	
 	
 	
-	
+	/*
 	@GetMapping("/approve")
 	public void kakaoPayApprove(@RequestParam(value = "pg_token") String pgToken,
 			HttpSession session) throws MalformedURLException, IOException {
@@ -172,6 +172,10 @@ public class AjaxPayKakaoController {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 		
 		
+		
+		
+		
+		
 		JsonObject totalObj = JsonParser.parseString(bufferedReader.readLine()).getAsJsonObject();
 		System.out.println(totalObj); // 콘솔창엔 똑같이 보임 근데 하나는 String, 하나는 오브젝트!
 		
@@ -180,7 +184,7 @@ public class AjaxPayKakaoController {
 		
 		JsonObject bodyObj = responseObj.getAsJsonObject("body");
 		System.out.println(bodyObj);
-		
+		*/
 		/* JsonObject.get("totalCount")까지는 그냥 .get이라 Element형태로 반환함 (우리는 int가 필요하니까 getAsInt로 함)
 		int totalCount = bodyObj.get("totalCount").getAsInt(); // "body"에 오니까 속성이 두개넹? 그 중에 totalCount(숫자)를 뽑아보자
 		System.out.println(totalCount);
@@ -209,7 +213,6 @@ public class AjaxPayKakaoController {
 			System.out.println(air);
 		}
 		
-		*/
 		
 		
 		
@@ -221,20 +224,21 @@ public class AjaxPayKakaoController {
 		
 
 				
-		bufferedReader.close();
-		urlConnection.disconnect();
+		//bufferedReader.close();
+		//urlConnection.disconnect();
 		
 
 		//JSONObject result = (JSONObject)(new JSONParser().parse(responseText));
+		 = JsonParser.parseString(responseText).getJ
 		
 		//HttpHeaders header = new HttpHeaders();
 		//header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
 		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
-		System.out.println("되나");
+		("되나");
 		
 		
 	}
-	
+	*/
 	
 	
 	
