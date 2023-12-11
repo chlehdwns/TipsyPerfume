@@ -21,7 +21,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.orderKinds.controller.AjaxPayKakaoController;
@@ -33,15 +32,14 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@EnableTransactionManagement
+
 public class PayServiceImpl implements PayService {
 	
 	
 	private final PayDao payDao;
 	private final SqlSessionTemplate sqlSession;
 	
-	
-	@Transactional
+	@Transactional("transactionManager")
 	public ResponseEntity<String> payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
 		
 		User user = (User)session.getAttribute("loginUser");
@@ -77,7 +75,6 @@ public class PayServiceImpl implements PayService {
 			     + "&cancel_url=" + errorUrl // 결제 취소 시 redirect url, 최대 255자
 			     + "&fail_url=" + errorUrl; // 결제 실패 시 redirect url, 최대 255자
 
-		
 		
 		HttpURLConnection urlConnection = (HttpURLConnection)new URL(url).openConnection();
 		urlConnection.setRequestMethod("POST");

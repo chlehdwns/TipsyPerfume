@@ -369,6 +369,101 @@
 	
 	
 	
+	<!-- 
+	
+			SELECT
+			   PDT_NO,
+			   PDT_NAME,
+			   PDT_INTRO,
+			   PDT_DESCRIPTION,
+			   PDT_MANUFAC,
+			   PDT_FILE_PATH || '/' || PDT_FILE_UPLOAD "PDT_IMG_SRC",
+			   REVIEW_AVG
+		  FROM
+		  	   TB_PRODUCT
+		  JOIN
+		  	   TB_PRODUCT_CATEGORY USING(PDT_CATEG_NO)
+  		  JOIN
+  		  	   TB_PRODUCT_FILE USING(PDT_NO)
+  		  LEFT
+  		  JOIN
+  		  	   (
+  		  	   SELECT 
+  		  	   		  NVL(SUM(ORDER_QUANTITY), 0) * (ROUND(((PAY_TOTAL + PAY_ADJUST)/10000) ,2)) "TOTAL_SALES",
+  		  	   		  PDT_NO,
+  		  	   		  TO_CHAR(NVL(ROUND(AVG(REVIEW_SCORE), 1), 0), 'FM0.0') "REVIEW_AVG"
+				 FROM
+				 	  TB_PRODUCT
+				 JOIN
+				 	  TB_PRODUCT_OPTION USING(PDT_NO)
+				 LEFT
+				 JOIN TB_REVIEW USING(PDT_OPTION_NO)
+				 LEFT
+				 JOIN
+				 	  TB_ORDER_PRODUCT USING(PDT_OPTION_NO)
+				 LEFT
+                 JOIN
+                 
+                 	  TB_ORDER_DETAIL USING(ORDER_DETAIL_NO)
+                 LEFT
+                 JOIN
+                 	  TB_PAY USING(PAY_NO)
+				WHERE
+				 	  PAY_STATUS = 'Y'
+               	  AND
+					  REVIEW_STATE = 'Y'
+				   OR
+				   	  REVIEW_STATE IS NULL
+				GROUP
+				   BY
+				   	  PDT_NO
+			   ) USING(PDT_NO)
+		 WHERE
+			   PDT_CTEG = 'A'
+		   AND
+		   	   PDT_FAMILY = 'B'
+   		   AND
+   		   	   PDT_STATUS = 'Y'
+   		   AND
+   		   	   PDT_FILE_INDEX = 0
+		 ORDER
+		    BY
+			   PDT_NO DESC;
+	
+	 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
