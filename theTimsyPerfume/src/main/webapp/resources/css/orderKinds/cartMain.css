@@ -15,7 +15,8 @@
 #cartContentBar div,
 #cartMainWrap .cart-content-block div,
 #cartSummary .col-4,
-#cartSummary .row {
+#cartSummary .row,
+#cartSummary .summary-col {
 	display: flex;
 	align-items: center;
 }
@@ -27,7 +28,8 @@
 .col-2,
 .cart-extra-info-area,
 .cart-extra-info-area .col-12,
-#cartSummary .col-4 /* 카트 서머리 */
+#cartSummary .col-4, /* 카트 서머리 */
+#cartSummary .summary-col
  { 
 	justify-content: center;
 	text-align: center;}
@@ -50,5 +52,7 @@
 	height: 100%;
 }
 
-/* 총 합계, 주문버튼 */
-#cartSummary .row{min-height: 50px;}
+/* 전체 금액, 배송비, 총 합계, 주문버튼 영역 */
+#cartSummary .row,
+#cartSummary .summary-col
+{min-height: 50px;}

@@ -57,7 +57,7 @@
 		<div class="row cart-content-block">
 			<div class="cart-box-area">
 				<label class="check-box-label">
-					<input class="cart-check-box-one" type="checkbox">
+					<input value="1" class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
 			<div class="col-4 ps-5">향긋향수 50ML</div>
@@ -71,8 +71,8 @@
 		
 		<div class="row cart-content-block">
 			<div class="cart-box-area">
-				<label class="check-box-label">
-					<input class="cart-check-box-one" type="checkbox">
+				<label class="check-box-label">${cartNo} <!-- cartNo이 value에 -->
+					<input value=4 class="cart-check-box-one" type="checkbox">
 				</label>
 			</div>
 			<div class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
@@ -96,7 +96,11 @@
 		<div id="cartSummary" class="row">
 			<div class="col">
 				<div class="row ps-5">전체금액</div>
-				<div class="row ps-5">400,000원 | 무료배송(10만원 이상)</div>
+				<div id="123" class="row">
+					<div id="cartTotalAmount" class="col summary-col">400,000</div>
+					<div class="col-1 summary-col"> | </div>
+					<div id="cartShipping" class="col summary-col">무료배송</div>
+				</div>
 				<div class="row ps-5">= 392,000원</div>
 			</div>
 			<div class="col-4">
@@ -115,13 +119,29 @@
 			// 주문버튼 클릭 시 
 			$('#cartMainOrderBtn').on('click', () => {
 				let $cartCheckedItems = $('.cart-check-box-one:checked');
+				
 				//if($cartCheckedItems.length > 0) {
-					console.log($cartCheckedItems);
+					
+					let itemCodeArr = [];
+					let data;
+					
+					let $totalAmount = $('#cartTotalAmount');
+					let $pdtShipping = $('#cartShipping');
+					
+					$cartCheckedItems.each((index, element) => {
+						itemCode = { itemCode : element.value};
+						itemCodeArr.push(itemCode)
+					});	
+					
+					 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
+					 
+					
+					/*
 					$.ajax({
 						method : 'POST',
 						url : 'pay/kakao/ready',
 						//data : {
-							
+							jsonData : $jsonData
 							
 						//},
 						success : result => {
@@ -134,6 +154,7 @@
 							console.log('에러발생');
 						}
 					});
+					*/
 				//}
 				//cart-item
 				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');

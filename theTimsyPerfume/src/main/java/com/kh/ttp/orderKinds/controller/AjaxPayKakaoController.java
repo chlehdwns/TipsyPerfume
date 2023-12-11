@@ -65,7 +65,7 @@ public class AjaxPayKakaoController {
 	
 	
 	@PostMapping("/ready")
-	public ResponseEntity<String> kakaoPayPrepare(HttpSession session) throws IOException, ParseException {
+	public void kakaoPayPrepare(@RequestParam String jsonData, HttpSession session) throws IOException, ParseException {
 		System.out.println("되나???111111");
 		
 		String url = "https://kapi.kakao.com/v1/payment/ready";
@@ -117,12 +117,12 @@ public class AjaxPayKakaoController {
 		//@@@@@@@@@@★ 이 시점에서 DB에 tid 넣어야함 (일단세션담음)
 		String tid = (String)result.get("tid");
 		session.setAttribute("tid", tid);
-		System.out.println("준비단계 tid DB에 넣어야함 / tid : " + tid);
+		System.out.println("준비단계 tid DB에 넣어야함 / tid :aㅁ " + tid);
 		
-		
+		System.out.println();
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
-		return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
+		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
 	}
 	
 	
