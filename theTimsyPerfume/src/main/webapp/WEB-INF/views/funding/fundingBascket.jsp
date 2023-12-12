@@ -139,7 +139,7 @@
 			var a = ' ';
 			$('.cart-checked').click(function() {
 				if ($(this).is(':checked')){
-					//console.log($(this).parent().nextAll(".total-price").text());
+					
 					const total = Number($(this).parent().nextAll(".total-price").text());
 					console.log(total);
 					

@@ -145,9 +145,6 @@ public class ProductController {
 			PageInfo pi = Pagination.getPageInfo(listCount, 1, 4, 5);
 			ArrayList<ReviewVO> reviewList = reviewService.selectReviewFunding(pi,pdtNo);
 			java.util.Date d = ps.getCuttingDate();
-			//System.out.println("date : "+d);
-			//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
-			//compareTo로 ps.cuttingDate(마감날짜) 와 new Date(현재날짜) 를 비교해서 마감 날짜가 현재 날짜보다 크면 true로 반환 작으면 false 
 			model.addAttribute("cutting",(d.compareTo(new java.util.Date())>=0));
 			model.addAttribute("fundingDetailList", ps);
 			model.addAttribute("pno",pdtNo);
@@ -160,6 +157,9 @@ public class ProductController {
 			}
 		
 	}
+	//System.out.println("date : "+d);
+	//System.out.println("bo : " + (d.compareTo(new java.util.Date())>=0));//java.sql.Date를 java.util.Date로 강제 형변환 후 
+	//compareTo로 ps.cuttingDate(마감날짜) 와 new Date(현재날짜) 를 비교해서 마감 날짜가 현재 날짜보다 크면 true로 반환 작으면 false 
 	@RequestMapping("updateForm.fd")
 	public String updateFormPage(@RequestParam(value="pno") int pdtNo,Model model) {
 		

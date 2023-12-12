@@ -190,16 +190,10 @@
 			
 	</div>
 	<script>
-		// 총 가격 구하기
+		
 		$(function(){
 			$('#order').change(() => {
 				const a = $('#order option:selected').val();
-				//console.log(a);
-				//console.log(${pdtPrice});
-				//console.log('${loginUser.address}');
-				//console.log('${loginUser.addressDetail}');
-				//console.log('${loginUser.postalCode}');
-		
 				const total = '총가격 : '+ a*${pdtOptionPrice} + '원';
 				console.log(total);
 				$('.buy-info').html(total);
@@ -207,23 +201,12 @@
 		})
 		$(function(){
 			$('#selectAddress').change(() => {
-				//console.log($('#selectAddress option:selected').val());
+				
 				if ($('#selectAddress option:selected').val() === '1'){
-					//console.log(String(${loginUser.postalCode}).padStart(5,'0'));
 					$('#postalCode').val(String(${loginUser.postalCode}).padStart(5,'0'));
-					/*if(${loginUser.postalCode} < 10000){
-						console.log('1');
-						$('#postalCode').val('0' + ${loginUser.postalCode});
-					}else{
-						console.log('2');
-						$('#postalCode').val(${loginUser.postalCode})
-					}*/
 					$('#address').val('${loginUser.address}');
 					$('#addressDetail').val('${loginUser.addressDetail}');
 					$('#receiver').val('${loginUser.userName}');
-					
-					
-					
 				} else{
 					$('#postalCode').val('');
 					$('#address').val('');

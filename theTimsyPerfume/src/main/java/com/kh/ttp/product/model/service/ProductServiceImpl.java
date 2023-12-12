@@ -6,6 +6,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.common.model.vo.PageInfo;
 import com.kh.ttp.funding.model.dao.FundingDao;
@@ -30,7 +32,7 @@ import com.kh.ttp.productOption.model.vo.ProductOption;
 import com.kh.ttp.user.model.vo.User;
 
 
-@Service
+@Service @EnableTransactionManagement
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private FundingDao fundingDao;
@@ -46,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
 	private SqlSessionTemplate sqlSession;
 	@Autowired
 	private ReceiverDao receiverDao;
-	@Override
+	@Override @Transactional
 	public int drinkFundingInsert(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding,
 			ProductCategory productCategory) {
 		    if(productCategoryDao.drinkFundingInsert(sqlSession,productCategory)>0) {
@@ -75,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
-	@Override
+	@Override @Transactional
 	public int updateDrinkFunding(ProductVO product, ProductFile productFile, ProductOption productOption, Funding funding, 
 			ProductCategory productCategory) {
 		if(productDao.updateDrinkFunding(sqlSession,product)>0) {
@@ -142,17 +144,17 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.hotDrinkFundingList(sqlSession,rowBounds);
 	}
 
-	@Override
+	@Override 
 	public FundingSelectVO selectDrinkFundingList(int pdtNo) {
 		return productDao.selectDrinkFundingList(sqlSession,pdtNo);
 	}
-	@Override
+	@Override @Transactional
 	public int deleteDrinkFunding(int pdtNo) {
 		return productDao.deleteDrinkFunding(sqlSession,pdtNo);
 	}
-	@Override
-	public int confirmFundingDrink(OrderDetailVO orderDetail, OrderVO order, User user, ProductVO product, PayVO pay,Funding funding,
-			Receiver receiver) {
+	@Override @Transactional
+	public int confirmFundingDrink(OrderDetailVO orderDetail, OrderVO order, User user, ProductVO product, 
+			PayVO pay,Funding funding,Receiver receiver) {
 		if(fundingDao.confirmFundingDrink(sqlSession,funding)>0) {
 			int result1= productDao.confirmFundingDrinkPV(sqlSession,pay);
 			int result  = receiverDao.selectReceiverNo(sqlSession,receiver);
@@ -171,12 +173,12 @@ public class ProductServiceImpl implements ProductService {
 		};
 		return 0;
 	}
-	@Override
+	@Override @Transactional
 	public int insertReceiver(Receiver r) {
 		receiverDao.insertReceiver(sqlSession,r);
 		return 0;
 	}
-	@Override
+	@Override @Transactional
 	public int insertFundingBasket(CartVO cart) {
 		productDao.insertFundingBasket(sqlSession,cart);
 		return 0;
