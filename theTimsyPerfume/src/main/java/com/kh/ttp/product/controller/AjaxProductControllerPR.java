@@ -34,17 +34,38 @@ public class AjaxProductControllerPR {
 	private final ProductServicePR productService;
 	
 	
+	////////////////
 	private HttpHeaders makeHeader(String type, String subtype, String encoding) {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(new MediaType(type, subtype, Charset.forName(encoding)));
 		return header;
 	}
 	
-	private ResponseEntity<String> returnAjaxErrorStr() {
+	private ResponseEntity<String> makeAjaxErrorResult() {
 		return new ResponseEntity<String>("ERROR", makeHeader("text", "html", "UTF-8"), HttpStatus.OK);
 	}
-	 
 	
+	/**
+	 * 세션의 attribute영역에 loginUser키의 값을 추출해 User객체로 반환
+	 * 로그인 인터셉터를 거치지 않는 메소드의 경우 추가적인 null처리가 필요함
+	 */
+	public User getLoginUser(HttpSession session) {
+		return (User)session.getAttribute("loginUser");
+	}
+		
+	/**
+	 * 매개변수로 들어온 pdtCteg(상품 카테고리)에 대한 값 체크
+	 * 값에대한 null체크 먼저 수행 / "F"(향수) 혹은 "A"(주류)가 맞는지 체크함 
+	 * 그 후 조건에 따라 boolean값을 반환함
+	 */
+	private boolean isPdtCtegValid(String pdtCteg) {
+		if(null != pdtCteg && (pdtCteg.equals("F") || pdtCteg.equals("A"))) {
+			return true;
+		}
+		return false;
+	}
+	
+	////////////////
 	
 	/**
 	 * 유저의 위시리스트에 이미 추가되어있는 상품인지 체크 후<br>
@@ -56,7 +77,7 @@ public class AjaxProductControllerPR {
 	 * 비워진 상태로 표시해야할 때 문자열 "false" 반환<br>
 	 * (가독성을 위해 "true", "false"반환)
 	 */
-	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8")
+	@PostMapping(value="ajaxChangeWishOne.pa", produces="text/html; charset=UTF-8") // 로그인 인터셉터거침
 	public String ajaxChangeWishOne(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo, HttpSession session) {
 		User user = (User)session.getAttribute("loginUser");
 		if((user != null) && pdtNo > 0) {
@@ -70,27 +91,39 @@ public class AjaxProductControllerPR {
 		}
 	}
 	
+
+	
+	
 	/**
-	 * 상품 재고가 1개 이상인지 조회 후 장바구니에 해당 상품 1개 추가
-	 * @param pdtNo
-	 * @param session
-	 * @return : 추가 성공 시 "1"문자열, 실패 시 "0"문자열 반환
+	 * 장바구니에 상품 추가 요청이 들어오면 재고 및 현재 장바구니에 있는 상품인지 체크 함
+	 * 아직 추가되지 않은 상품은 cartQuantity만큼 INSERT, 이미 있는 경우 기존 수량에 더해 UPDATE 수행함
+	 * @param cart : pdtNo(상품PK), pdtOptionNo(상품옵션PK), cartQuantity(카트에 추가할 수량)
+	 * @param pdtCteg : 상품 카테고리, "F"(향수) / "A"(주류)
+	 * @return : INSERT 혹은 UPDATE 성공 시 1, 실패 시 0, 재고가 없을 시 -1 반환
 	 */
-	@PostMapping(value="ajaxAddCartSingleQuan.pa", produces="text/html; charset=UTF-8")
-	public String ajaxAddCartSingleQuan(@RequestParam(value="pdtNo", defaultValue="0") int pdtNo,
-										@RequestParam(value="pdtOptionNo", defaultValue="0") int pdtOptionNo,
-										HttpSession session) {
-		if(pdtNo != 0) {
-			CartVO cart = new CartVO();
-			cart.setUserNo(((User)session.getAttribute("loginUser")).getUserNo());
-			cart.setPdtNo(pdtNo);
-			cart.setPdtOptionNo(pdtOptionNo);
-			cart.setCartAddingQuantity(1);
-			return productService.ajaxAddCartSingleQuan(cart) + "";
-		} else {
-			return "ERROR";
+	@PostMapping(value="ajaxCheckStockAddCart.ca", produces="text/html; charset=UTF-8")
+	public ResponseEntity<String> ajaxCheckStockAddCart(CartVO cart,
+									  			@RequestParam String pdtCteg,
+									  			HttpSession session) {
+		// 로그인 인터셉터 거침
+		
+		ResponseEntity<String> reponseEntity = makeAjaxErrorResult();
+		
+		if(isPdtCtegValid(pdtCteg)) {
+			/* if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) { */
+			if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) {
+				/* 수행 구문 없음 */
+				return makeAjaxErrorResult();
+			} else {
+				cart.setUserNo(getLoginUser(session).getUserNo());
+				reponseEntity = new ResponseEntity<String>(String.valueOf(productService.checkStockAddCart(cart)),
+												  makeHeader("text", "html", "UTF-8"),
+												  HttpStatus.OK);
+			}
 		}
+		return reponseEntity;
 	}
+		
 	
 	/**
 	 * 상품 번호로 상품이 가진 옵션을 조회하는 메소드
@@ -99,8 +132,10 @@ public class AjaxProductControllerPR {
 	 */
 	@GetMapping("ajaxSelectPdtOptionOne.pa/{pdtNo}")
 	public ResponseEntity ajaxCreateCartQuickAddModal(@PathVariable(name="pdtNo") int pdtNo) {
-		return (pdtNo <= 0) ? returnAjaxErrorStr()
-							: new ResponseEntity<List<ProductOption>>(productService.ajaxSelectPdtOptionOne(pdtNo), makeHeader("application", "json", "UTF-8"), HttpStatus.OK);
+		return (pdtNo <= 0) ? makeAjaxErrorResult()
+							: new ResponseEntity<List<ProductOption>>(productService.ajaxSelectPdtOptionOne(pdtNo),
+																	  makeHeader("application", "json", "UTF-8"),
+																	  HttpStatus.OK);
 	}
 	
 	
@@ -111,19 +146,20 @@ public class AjaxProductControllerPR {
 	 */
 	@GetMapping("ajaxSelectRecentTwoReview.pr/{pdtNo}")
 	public ResponseEntity ajaxSelectRecentTwoReview(@PathVariable(name="pdtNo") int pdtNo) {
-
-		if(pdtNo <= 0) {
-			return returnAjaxErrorStr();
-		} else {
-			
+		if(pdtNo > 0) {
 			HashMap<String, Integer> pMap = new HashMap();
 			pMap.put("pdtNo", pdtNo);
 			pMap.put("rowNum", 2);
 			return new ResponseEntity<List<ReviewVO>>(productService.selectRecentReviewWithRownum(pMap),
-					makeHeader("application", "json", "UTF-8"),
-					HttpStatus.OK);
+													  makeHeader("application", "json", "UTF-8"),
+													  HttpStatus.OK);
 		}
+		return makeAjaxErrorResult();
 	}
+	
+	
+
+	
 	
 	
 	

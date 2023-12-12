@@ -1,77 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-
-<style>
-	#cartMainWrap{
-		width: 950px;
-		margin-top: 80px;
-		border: 1px solid black;
-	}
-	#cartMainWrap div{border: 1px solid black;}
+			
+	<!-- 부트스트랩 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
-	/* 장바구니 각 파트 상단 타이틀영역 */
-	#cartMainBar {height: 50px;}
-    #cartContentBar {height: 50px;}
-	#cartMainWrap .cart-content-block{min-height: 100px; margin-top: 30px;}
-	
-	/* 각 파트 내부div 정렬 */
-	#cartMainBar div,
-	#cartContentBar div,
-	#cartMainWrap .cart-content-block div,
-	#cartSummary .col-4,
-	#cartSummary .row {
-		display: flex;
-		align-items: center;
-	}
-	/* 중앙 정렬 요소들 */
-	#cartMainWrap .cart-box-area, /* 체크박스 */
-	#cartMainBar .col-2, /* 메인바 */
-	#cartContentBar .col, .col-2, /* 콘텐트바 */
-	#cartMainWrap .cart-content-block .col, /* 콘텐트블록 */
-	.col-2,
-	.cart-extra-info-area,
-	.cart-extra-info-area .col-12,
-	#cartSummary .col-4 /* 카트 서머리 */
-	 { 
-		justify-content: center;
-		text-align: center;}
-	/* 체크박스 */
-	#cartMainWrap .cart-box-area {
-		width: 30px;
-	}
-	/* 할인, 배송 정보 영역 */
-	#cartMainWrap .cart-extra-info-area .row {
-		width: 100%;
-		height: 100%;
-	}
-	#cartMainWrap .cart-extra-info-area .ext-info-1 {height: 70%;}
-	#cartMainWrap .cart-extra-info-area .ext-info-2 {height: 30%;}
-	
-	/* 총 합계, 주문버튼 */
-	#cartSummary .row{min-height: 50px;}
+	<!-- CSS파일 적는곳 -->
+	<link rel="stylesheet" href="resources/css/orderKinds/cartMain.css">
 
-</style>
 </head>
 <body>
 
 	<jsp:include page="../common/header.jsp" />
 
 	<div id="cartMainWrap" class="container">
+		
+		
 		<div id="cartMainBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<label class="check-box-label">
+					<input id="cartCheckBoxAll" type="checkbox">
+				</label>
+			</div>
 			<div class="col ps-5">전체선택</div>
 			<div class="col-2"><button class="btn btn-danger">삭제</button></div>
 			<div class="col-2"><button class="btn btn-primary">주문</button></div>
@@ -81,43 +42,57 @@
 		<br/>
 			
 		<div id="cartContentBar" class="row">
-			<div class="cart-box-area"><input type="checkbox"></div>
+			<div class="cart-box-area">
+				<!-- 프레임 맞추기 공백 -->
+			</div>
 			<div class="col-4 ps-5">상품(옵션)</div>
+			
 			<div class="col">수량</div>
 			<div class="col-2">가격</div>
-			<div class="col-2">할인적용/배송</div>
+			<div class="col-2">배송</div>
 			<div class="col-2">상품 합계</div>
 		</div>
 		
-		
 		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">향긋향수 50ML</div>
-			<div class="col">1개</div>
-			<div class="col-2">100,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">-2,000원<br/>회원할인 2%</div>
-					<div class="col-12 ext-info-2">배송비 3,000</div>
-				</div>
+			<div class="cart-box-area">
+				<label class="check-box-label">
+					<!-- 상품번호 -->
+					<input value="21" class="cart-check-box-one" type="checkbox">
+				</label>
 			</div>
+			<!-- 상품이름 (요청에 첫번째 것만 필요) -->
+			<div id="cartItemName_0" class="col-4 ps-5">향긋향수 50ML</div>
+			<div class="col">
+				<!-- 상품수량 -->
+				<input id="cartQuantity_0" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#">
+			</div>
+			<div class="col-2">100,000원</div>
+			<div class="col-2 p-0 cart-extra-info-area">배송비 3,000</div>	
 			<div class="col-2">98,000원</div>
 		</div>
+		
 		<div class="row cart-content-block">
-			<div class="cart-box-area"><input type="checkbox"></div>
-			<div class="col-4 ps-5">영혼을 달래주는 술 800ML</div>
-			<div class="col">2개</div>
-			<div class="col-2">150,000원</div>
-			<div class="col-2 p-0 cart-extra-info-area">
-				<div class="row">
-					<div class="col-12 ext-info-1">-6,000원<br/>회원할인 2%</div>
-					<div class="col-12 ext-info-2">무료배송</div>
-				</div>
+			<div class="cart-box-area">
+				<label class="check-box-label">${cartNo} <!-- cartNo이 value에 -->
+					<!-- 상품번호 -->
+					<input value=22 class="cart-check-box-one" type="checkbox">
+				</label>
 			</div>
-			<div class="col-2">294,000원</div>
+			<div id="cartItemName_1" class="col-4 ps-5">${pdtName}&nbsp;${pdtOptionFirst}</div>
+			<div class="col">
+				<!-- 상품수량 -->
+				<input id="cartQuantity_1" type="number" min="1" class="cartQuantity pdt-dt-input form-control" name="#" placeholder="1">
+			</div>
+			<div class="col-2">${pdtOptionPrice}원</div>
+			<div class="col-2 p-0 cart-extra-info-area">${pdtShipping}</div>
+			<div class="col-2">300,000(토탈가격)</div>
 		</div>
 		
 		
+		
+
+		
+	
 		<br/>
 		<br/>	
 		<br/>	
@@ -125,16 +100,103 @@
 		<div id="cartSummary" class="row">
 			<div class="col">
 				<div class="row ps-5">전체금액</div>
-				<div class="row ps-5">400,000 - 8,000할인 | 무료배송</div>
-				<div class="row ps-5">= 392,000원</div>
+				<div id="123" class="row">
+					<input id="cartAmountBefore" value="400000" type="hidden"><!-- value .toLocaleString() 가공해서 띄움 -->
+					<div class="col summary-col">400,000</div>
+					<div class="col-1 summary-col"> | </div>
+					<input id="cartPdtShipping" value="0" type="hidden">
+					<div class="col summary-col">무료배송</div><!-- value 0이면 무료배송 -->
+				</div>
+				<input id="cartTotalAmount" value="392000" type="hidden">
+				<div class="row ps-5">= 392,000원</div><!-- cartTotalAmount영역에 value .toLocaleString() 가공해서 띄움 -->
 			</div>
 			<div class="col-4">
-				<button class="btn btn-primary">주문</button>
+				<button id="cartMainOrderBtn" class="btn btn-primary">주문하기</button>
 			</div>
 		</div>
 	</div>
-	
-	
+		<!--
+		CART_NO,
+		USER_NO,
+		PDT_NO,
+		PDT_OPTION_NO,
+		CART_QUANTITY
+		-->
+		<script>
+			// 주문버튼 클릭 시 
+			$('#cartMainOrderBtn').on('click', () => {
+				let $cartCheckedItems = $('.cart-check-box-one:checked');
+				
+				//if($cartCheckedItems.length > 0) {
+					
+					// totalAmount 비교용 토탈금액
+					let $totalAmount = $('#cartTotalAmount').val();
+
+					// itemCode배열 : 선택된 cartNo 배열로
+					let itemCodeList = [];
+					$cartCheckedItems.each((index, element) => {
+						itemCodeList.push(element.value);
+					});	
+					console.log(itemCodeList);
+					 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
+
+					$.ajax({
+						url : 'pay/kakao/ready',
+						type : 'POST',
+						data : JSON.stringify({
+							totalAmount : $totalAmount,
+							itemCodeList : itemCodeList,
+							itemName : $('#cartItemName_0').text()
+							
+						}),
+						contentType:"application/json; charset=utf-8",
+						//dataType: 'json', // 받아올 때 타입 json parsing해서 객체로 써야함
+						success : result => {
+							console.log('성공')
+							console.log(result);
+							alert(result);
+							location.href = result;
+						},
+						error : () => {
+							console.log('에러발생');
+						}
+					});
+				//}
+				//cart-item
+				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
+				//cart-content-block
+				
+			});
+			
+				
+			
+			// 재고 조회 ajax
+			//function checkPdtStock() {
+				
+			//}
+			//ProductOption
+			//
+		</script>
+		<script>
+			// 수량 변경 시 상품합계 업데이트(USER_NO, PDT_OPTION_NO, 상품합계(1개가격*개수) 상품번호
+			//$('.cartQuantity').on('change', () => {
+				//ajax
+			//});
+					
+			// 모든 상품 체크 선택 시 (주문 취소하거나 페이지 재렌더링은 그냥 체크 다 해제된 상태)
+			$('#cartCheckBoxAll').change(() => {
+				let $cartCheckBoxAll = $('#cartCheckBoxAll');
+				let $checkBoxOne = $('.cart-check-box-one');
+				
+				if($cartCheckBoxAll.prop('checked')) {
+					$checkBoxOne.prop('checked', true);
+				} else {
+					$checkBoxOne.prop('checked', false);
+				}
+			});
+		</script>
+		
+		
 	<br/><br/><br/>
 	<br/><br/><br/>	
 	<br/><br/><br/>	

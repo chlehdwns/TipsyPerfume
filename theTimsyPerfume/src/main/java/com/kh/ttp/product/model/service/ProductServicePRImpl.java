@@ -141,10 +141,24 @@ public class ProductServicePRImpl implements ProductServicePR {
 		return productDao.insertCartOne(sqlSession, cart);
 	}
 
-
+	
+	
 	@Override
-	public int updateCartOneQuantity(CartVO cart) {
-		return productDao.updateCartOneQuantity(sqlSession, cart);
+	public int updateCartAddUpOne(CartVO cart) {
+		return productDao.updateCartAddUpOne(sqlSession, cart);
+	}
+	
+	
+	// @@@ 여기서 장바구니에 SELECT할 때 현재 실 재고 개수가 DB에 즉각 반영되어야할 필요는 없음
+	// => But 결제 시 현재 재고가 있는지 파악 + 재고 마이너스 + 돈을 빼고 넣는 작업은 => ACID보장되어야 
+	// 최종 재고 반영은 주문&결제 시 UPDATE 트랜잭션 하나로
+	@Override
+	public int checkStockAddCart(CartVO cart) {
+		if(selectStockWithOption(cart) > 0) {
+			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartAddUpOne(cart);
+		} else { // 재고가 없음
+			return -1;
+		}
 	}
 
 
@@ -173,23 +187,26 @@ public class ProductServicePRImpl implements ProductServicePR {
 		}
 		return isFilledHeart;
 	}
-	
-	// @@@ 여기서 장바구니에 SELECT할 때 현재 실 재고 개수가 DB에 즉각 반영되어야할 필요는 없음
-	// => But 결제 시 현재 재고가 있는지 파악 + 재고 마이너스 + 돈을 빼고 넣는 작업은 => ACID보장되어야 
-	// 최종 재고 반영은 주문&결제 시 UPDATE 트랜잭션 하나로
-	
-	// 재고 있는지 조회 => 카트에 없는 제품(0)이면 INSERT, 이미 있는 제품이면(1) UPDATE (수량 1개 추가)
-	@Override
-	public int ajaxAddCartSingleQuan(CartVO cart) {
-		if(selectStockWithOption(cart) > 0) {
-			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartOneQuantity(cart);
-		} else { // 재고가 없음
-			return -1;
-		}
-	}
+
+
+
+
 
 	/********************************************************/
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 }

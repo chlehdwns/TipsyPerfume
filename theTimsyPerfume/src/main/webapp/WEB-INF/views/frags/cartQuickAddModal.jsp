@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<!-- 장바구니 수량선택 모달 -->
+	<!-- 장바구니 빠른추가 모달 -->
 	<div class="modal fade" id="cartQuickAddModal" tabindex="-1" aria-labelledby="cartQuickAddModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
