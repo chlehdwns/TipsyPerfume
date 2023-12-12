@@ -28,6 +28,10 @@ public class forwardController {
 		return "frags/addressEnrollForm";
 	}
 	
+	@GetMapping("errorPage.er")
+	public String errorPage() {
+		return "common/errorPage";
+	}
 	
 	
 	

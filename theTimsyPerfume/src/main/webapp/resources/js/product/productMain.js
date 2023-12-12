@@ -19,11 +19,11 @@ $('#pdtMainSubmitBtn').click(() => {
 
 // 슬라이더 동작 정의
 const swiper = new Swiper('.swiper', {
-    autoplay : {
-        delay : 2500, // 2.5초마다 이미지 변경
-        disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 슬라이딩 유지
-    },
-    loop : true, //반복 재생 여부
+    //autoplay : {
+        //delay : 2500, // 2.5초마다 이미지 변경
+    //    disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 슬라이딩 유지
+    //},
+    //loop : true, //반복 재생 여부
     slidesPerView : 3, // 이전, 이후 사진 미리보기 갯수
     pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
         el: '.swiper-pagination',

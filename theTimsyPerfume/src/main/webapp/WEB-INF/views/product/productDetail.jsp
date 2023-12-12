@@ -17,122 +17,18 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 	<!-- CSS파일 경로적기 -->
-
-	<style>
-	/* 전체, 좌, 우 영역 div들 기본설정 */
-	#pdtDetailWrap {
-		width: 950px;
-		margin: auto;
-		margin-top: 80px;
-	}
-	
-	#footer {
-		margin-top: 200px;
-		display: inline-block !important;
-	}
-	#pdtDetailWrap div {
-		border: 1px solid rgb(232, 232, 232);
-		box-sizing: border-box;
-	}
-
-	#pdtDetailLeft {float: left; width: 47%;}
-	#pdtDetailRight {float: right; width: 47%;}
-	#pdtDetailWrap .pdt-detail-container {
-		background-color: rgb(232, 232, 232);
-	}
-
-	/* 각 섹션 높이, 컬러 설정 */
-	.pdt-section-tl { height: 70px; background-color: rgb(223, 190, 106); }
-	#pdtDetailIntro { height: 60px; background-color: rgb(223, 190, 106);}
-	#pdtDetailDescription {
-		min-height: 300.37px;
-		max-height: 700px;
-		overflow: hidden;
-	}
-	.pdt-section-su { height: 60px; }
-	.pdt-section-or {
-		height: 70px;
-		background-color: rgb(247, 199, 131);
-	}
-	.detail-bg {background-color: rgb(223, 190, 106);}
-
-	/* 상하 정렬 */
-	#pdtDetailWrap .pdt-dt-align {
-		display: flex;
-    	align-items: center;
-	}
-	#pdtDetailWrap .pdt-dt-align-center {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	/* 마진(탑) & 패딩(좌측) 스타일 */
-	#pdtDetailWrap .pdt-dtl-mg-top-30 { margin-top: 30px; }
-	#pdtDetailWrap .pdt-dtl-mg-top-50 { margin-top: 50px; }
-	#pdtDetailWrap .pdt-dt-pad {padding: 20px 30px 20px 30px;}
-
-	/* h요소 마진설정 */
-	#pdtDetailWrap h2, h3, h4, h5, h6 {margin: 0;}
-
-	/* 좌측 */
-	/* 상품 대표 이미지 영역 */
-	#pdtDetailThumbnail {
-		height: 420.38px;
-		width: 100%;
-		text-align: center;
-		display: inline-block;
-		margin: 0 auto;
-		margin-bottom: 50px;
-	}
-	#pdtDetailThumbnail img {
-		width: 90%;
-		height: 100%;
-		object-fit: cover; /* 이미지가 div에 맞춰지면서 비율 유지 */
-	}
-	
-	/* 리뷰 영역 */
-	.pdt-dt-rv-row {height: 120px;}
-	.pdt-dt-rv-row .col-3 {text-align: center; height: 100%; }
-	.pdt-dt-rv-row img { height: 100%; }
-	.pdt-dt-rv-content {
-		height: 100%;
-        overflow: hidden;
-        padding: 10px;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-	}
-	#pdtDetailReviewEnd { margin-top: 30px; height: 50px; }
-
-
-	/* 우측 */
-	/* 옵션, 수량 인풋 요소 */
-	#pdtDetailClear {width: 30px;}
-	#pdtDetailSelectInput { width: 90%; border-radius: 5px; }
-	#pdtDetailSelectInput option[value=""] {display: none;}
-	#pdtDetailQuanInput { width: 90%; border-radius: 5px;}
-	.pdt-dt-input {
-		color: grey;
-		text-align: center;
-		height: 70%;
-	}
-	#pdtDetailOptionInfo { display : none; }
-	
-
-	</style>
+	<link rel="stylesheet" href="resources/css/product/productDetail.css">
 </head>
 <body>
 
 	<!-- 헤더 -->
 	<jsp:include page="../common/header.jsp" />
 	
-	
 	<div id="pdtDetailWrap">
-	<input id="pdtNoDetail" type="hidden" value="${pdtDetail.pdtNo}">
 		<c:choose>
 			<c:when test="${not empty pdtDetail}">
+				<input id="pdtNoDetail" type="hidden" value="${pdtDetail.pdtNo}">
+				<input id="pdtCtegDetail" type="hidden" value="${pdtDetail.pdtCteg}">
 				<div id="pdtDetailLeft" class="container pdt-detail-container">
 					
 					<div id="pdtDetailThumbnail" class="row pdt-dtl-mg-top-30">
@@ -199,13 +95,21 @@
 					<div class="row pdt-section-or detail-bg">
 						<div id="pdtDetailTotalPrice" class="col pdt-dt-align-center ">상품가격 * 선택개수 script로 200,000원</div>
 						<div class="col-3 pdt-dt-align-center ">
-							<button onclick="ajaxPdtDetailAddCart" class="btn btn-sm btn-primary">장바구니</button>
+							<button id="detailAddCartBtn" class="btn btn-sm btn-primary">장바구니</button>
 						</div>
 						<div class="col-3 pdt-dt-align-center ">
 							<button onclick="location.href='productOrder.pr'" class="btn btn-sm btn-primary">주문하기</button>
-						</div>
+						</div><!--  -->
 						
 					</div>
+					
+					<script>
+					
+					
+
+					
+					
+					</script>
 		
 				</div>
 			</c:when>
@@ -218,13 +122,15 @@
 	
 	
 	<script>
-
+		// 주문하기는 ㅈ아바구니랑 똑같은데 카카오결제 실패하면 장바구니에서 사라짐
+		// 장바구니는 실패해도 유지
 		
 
 		// ajax요청으로 리뷰 조회 후
+		/*
 		$(() => {
 			$.ajax({
-				url : 'ajaxSelectRecentTwoReview.pr/' + $('#pdtNoDetail').val(),
+				//url : 'ajaxSelectRecentTwoReview.pr/' + $('#pdtNoDetail').val(),
 				type : 'GET',
 				success : result => {
 					let reviewValue = '';
@@ -254,7 +160,7 @@
 				}
 			})
 		});
-		
+		*/
 		// 옵션선택, 수량선택 변화가 일어날 시
 		// 1. 수량선택 요소 포워딩 당시 stock개수로 제한 (실시간 재고 반영은 주문결제 시 & stock만 조회하는 ajax요청 인터벌 15분정도 줘도 좋을듯)
 		// 2. 옵션별 가격 * 선택한 개수 = 상품금액 계산 업데이트 

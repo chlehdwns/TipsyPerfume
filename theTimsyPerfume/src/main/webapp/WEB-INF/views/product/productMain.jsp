@@ -6,15 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 기본 메인</title>
-    	성인인가요
-	${loginUser.adultStatus}	성인인가요
-	${loginUser.adultStatus}	성인인가요
-	${loginUser.adultStatus}	성인인가요
-	${loginUser.adultStatus}	성인인가요
-	${loginUser.adultStatus}	성인인가요
-	${loginUser.adultStatus}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	
 	
 	<!-- Bootstrap v4 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -41,16 +33,6 @@
 	<jsp:include page="../frags/loginJoinModal.jsp" />
 	
 
-	<!--
-	<div align="center">
-		<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addressContainer">배송지 입력페이지 가기</button>
-	</div>
-	<script>
-		function abc() {
-			$('#addressContainer').modal("show");
-		}
-	</script>
-	-->
     <div id="productMainWrap" class="container">
 		<c:choose>
 			<c:when test="${not empty pdtCteg and (pdtCteg eq 'A' or pdtCteg eq 'F')}">
@@ -183,7 +165,6 @@
 	                </div>
 	            </div>
 			</c:when>
-			
 			<c:otherwise>
 				<jsp:forward page="../common/errorPage.jsp" />
 			</c:otherwise>
@@ -197,12 +178,7 @@
 	<!-- js파일 -->
 	<script src="resources/js/product/productMain.js"></script>
 	
-	<script>
-		$(() => {
-			console.log('${adultResult}');
-		})
-	</script>
-	
+	<!-- 성인 인터셉터에서 세션에 담긴 성인인증 상태 삭제 -->
 	<c:if test="${adultResult eq 'N'}">
 		<script>
 			$(() => {
@@ -210,14 +186,10 @@
 			});
 		</script>
 		<c:remove var="adultResult" scope="session" />
+		<script>
+			console.log('알콜리스트/디테일 인터셉터의 N 지운 후 메인 adultResult');
+		</script>
 	</c:if>
-	
-	<script>
-		$(() => {
-			console.log('지운 후');
-			console.log('${adultResult}');
-		})
-	</script>
 	
 
 </body>
