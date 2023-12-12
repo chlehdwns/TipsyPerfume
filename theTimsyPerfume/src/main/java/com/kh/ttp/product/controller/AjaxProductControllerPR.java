@@ -103,22 +103,17 @@ public class AjaxProductControllerPR {
 	 */
 	@PostMapping(value="ajaxCheckStockAddCart.ca", produces="text/html; charset=UTF-8")
 	public ResponseEntity<String> ajaxCheckStockAddCart(CartVO cart,
-									  			@RequestParam String pdtCteg,
-									  			HttpSession session) {
-		// 로그인 인터셉터 거침
-		
+									  					@RequestParam String pdtCteg,
+									  					HttpSession session) { // 로그인 인터셉터 거침
+		User loginUser = getLoginUser(session);
 		ResponseEntity<String> reponseEntity = makeAjaxErrorResult();
 		
 		if(isPdtCtegValid(pdtCteg)) {
-			/* if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) { */
-			if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) {
-				/* 수행 구문 없음 */
-				return makeAjaxErrorResult();
-			} else {
-				cart.setUserNo(getLoginUser(session).getUserNo());
+			if(!(pdtCteg.equals("A")) || loginUser.getAdultStatus().equals("Y")) {
+				cart.setUserNo(loginUser.getUserNo());
 				reponseEntity = new ResponseEntity<String>(String.valueOf(productService.checkStockAddCart(cart)),
-												  makeHeader("text", "html", "UTF-8"),
-												  HttpStatus.OK);
+														   makeHeader("text", "html", "UTF-8"),
+														   HttpStatus.OK);
 			}
 		}
 		return reponseEntity;

@@ -152,16 +152,34 @@ public class ProductServicePRImpl implements ProductServicePR {
 	// @@@ 여기서 장바구니에 SELECT할 때 현재 실 재고 개수가 DB에 즉각 반영되어야할 필요는 없음
 	// => But 결제 시 현재 재고가 있는지 파악 + 재고 마이너스 + 돈을 빼고 넣는 작업은 => ACID보장되어야 
 	// 최종 재고 반영은 주문&결제 시 UPDATE 트랜잭션 하나로
+	
+	
+	
+	
+	
+	
+	
+	
+	////////////////
+	
 	@Override
 	public int checkStockAddCart(CartVO cart) {
 		if(selectStockWithOption(cart) > 0) {
 			return (countCartOne(cart) == 0) ? insertCartOne(cart) : updateCartAddUpOne(cart);
-		} else { // 재고가 없음
-			return -1;
-		}
+		}																						 // 재고가 없음
+		return -1;
 	}
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<ProductOption> ajaxSelectPdtOptionOne(int pdtNo) {
 		return productDao.selectPdtOptionOne(sqlSession, pdtNo);
