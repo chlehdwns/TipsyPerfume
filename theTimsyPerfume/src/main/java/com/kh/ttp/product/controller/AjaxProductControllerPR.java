@@ -110,6 +110,7 @@ public class AjaxProductControllerPR {
 		ResponseEntity<String> reponseEntity = makeAjaxErrorResult();
 		
 		if(isPdtCtegValid(pdtCteg)) {
+			/* if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) { */
 			if(pdtCteg.equals("A") && !(getLoginUser(session).getAdultStatus().equals("Y"))) {
 				/* 수행 구문 없음 */
 				return makeAjaxErrorResult();
