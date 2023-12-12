@@ -60,6 +60,29 @@
 					<label for="nickName">닉네임 : </label>
 					<input type="text" class="form-control" value="${ sessionScope.loginUser.nickName  }" name="nickName" required><br>
 					<br>
+					
+					<!--  
+					<div id="file" style="font-size:1em; display:none;">
+					<label for="upfile">* 첨부파일</label>
+	                <input type="file" id="upfile" class="form-control-file border" name="upfile" required>
+	                 <br>  
+					</div>	
+						
+					<script>
+				$(function(){
+					const $file = $('#file');
+					
+					$('#Sale').click(() =>{
+						$('#file').show();
+					});
+					
+					$('#User').click(() =>{
+						$('#file').hide();
+					});
+				});
+					</script>	
+					-->	
+						
 						
 					<div class="btns1" align="right">
 		                <button type="submit" class="btn btn-primary">수정하기</button>

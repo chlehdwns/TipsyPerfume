@@ -10,7 +10,7 @@ import lombok.ToString;
 
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
-public abstract class OrderDetailVO {
+public class OrderDetailVO {
 	/*
 	ORDER_DETAIL_NO	NUMBER
 	ORDER_NO	NUMBER

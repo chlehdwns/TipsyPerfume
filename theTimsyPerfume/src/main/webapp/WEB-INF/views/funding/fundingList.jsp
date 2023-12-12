@@ -44,6 +44,7 @@
 		color : rgb(223, 190, 106);
 	}
 	
+	
 	.funding-list{
 		height : 100%;
 		width : 25%;
@@ -51,6 +52,9 @@
 	}
 	.fundingList-area{
 		height : 80%;
+	}
+	.fundingList-area > div {
+		float : left;
 	}
 	h3:hover {
 		font-size : 32px;
@@ -106,114 +110,38 @@
 		<div id="normal-drink">
 			<h3 class="subtitle">최신순 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkFundingList.get(0).pdtNo}" class="pno"/>
-					<img src="${drinkFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(0).cuttingDate }</h6>
-					
-					<h4 class="percent">달성률 : ${drinkFundingList.get(0).fundingFee} / ${drinkFundingList.get(0).cuttingPrice }원 </h4>
-					
-					<h6>${drinkFundingList.get(0).pdtName }</h6>
-					
-					<h6>${drinkFundingList.get(0).pdtIntro }</h6>
-					
-					<h5 class="wish-list">♡</h5>
-					
-					
-						
-					
-					
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkFundingList.get(1).pdtNo}" class="pno"/>
-					<img src="${drinkFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(1).cuttingDate }</h6>
-					
-					<h4 class="percent">달성률 : ${drinkFundingList.get(1).fundingFee} / ${drinkFundingList.get(1).cuttingPrice }원 </h4>
-					
-					<h6>${drinkFundingList.get(1).pdtName }</h6>
-					
-					<h6>${drinkFundingList.get(1).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkFundingList.get(2).pdtNo}" class="pno"/>
-					<img src="${drinkFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(2).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkFundingList.get(2).fundingFee} / ${drinkFundingList.get(2).cuttingPrice }원 </h4>
-					
-					<h6>${drinkFundingList.get(2).pdtName }</h6>
-					
-					<h6>${drinkFundingList.get(2).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkFundingList.get(3).pdtNo}" class="pno"/>
-					<img src="${drinkFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.get(3).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkFundingList.get(3).fundingFee} / ${drinkFundingList.get(3).cuttingPrice }원 </h4>
-					
-					<h6>${drinkFundingList.get(3).pdtName }</h6>
-					
-					<h6>${drinkFundingList.get(3).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
-				</div>
-			
+				<c:forEach items="${drinkFundingList }" var="drinkFundingList">
+					<div class="funding-list">
+						<input type="hidden" value="${ drinkFundingList.pdtNo}" class="pno"/>
+						<img src="${drinkFundingList.pdtFileUpload}" alt="썸네일 이미지"/>
+						<h6 class="cutting-date">마감 날짜 : ${drinkFundingList.cuttingDate }</h6>
+						<h4 class="percent">달성률 : ${drinkFundingList.fundingFee} / ${drinkFundingList.cuttingPrice }원 </h4>
+						<h6>${drinkFundingList.pdtName }</h6>
+						<h6>${drinkFundingList.pdtIntro }</h6>
+						<h5 class="wish-list">♡</h5>
+					</div>
+				</c:forEach>
 			</div>
-			
-		</div>
-		<div id="hot-drink">
+			</div>
+			<div id="hot-drink">
 			<h3 class="subtitle2">hot 주류 펀딩</h3>
 			<div class="fundingList-area">
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkHotFundingList.get(0).pdtNo}" class="pno"/>
-					<img src="${drinkHotFundingList.get(0).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(0).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkHotFundingList.get(0).fundingFee} / ${drinkHotFundingList.get(0).cuttingPrice }원 </h4>
-					
-					<h6>${drinkHotFundingList.get(0).pdtName }</h6>
-					
-					<h6>${drinkHotFundingList.get(0).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
 				
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkHotFundingList.get(1).pdtNo}" class="pno"/>
-					<img src="${drinkHotFundingList.get(1).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(1).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkHotFundingList.get(1).fundingFee} / ${drinkHotFundingList.get(1).cuttingPrice }원 </h4>
-					
-					<h6>${drinkHotFundingList.get(1).pdtName }</h6>
-					
-					<h6>${drinkHotFundingList.get(1).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
+					<c:forEach items="${drinkHotFundingList }" var="drinkHotFundingList">
+						<div class="funding-list">
+							<input type="hidden" value="${ drinkHotFundingList.pdtNo}" class="pno"/>
+							<img src="${drinkHotFundingList.pdtFileUpload}" alt="썸네일 이미지"/>
+							<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.cuttingDate }</h6>
+							<h4 class="percent">달성률 : ${drinkHotFundingList.fundingFee} / ${drinkHotFundingList.cuttingPrice }원 </h4>
+							
+							<h6>${drinkHotFundingList.pdtName }</h6>
+							
+							<h6>${drinkHotFundingList.pdtIntro }</h6>
+							<h5 class="wish-list">♡</h5>
+						</div>
+					</c:forEach>
 				
 				
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkHotFundingList.get(2).pdtNo}" class="pno"/>
-					<img src="${drinkHotFundingList.get(2).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(2).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkHotFundingList.get(2).fundingFee} / ${drinkHotFundingList.get(2).cuttingPrice }원 </h4>
-					
-					<h6>${drinkHotFundingList.get(2).pdtName }</h6>
-					
-					<h6>${drinkHotFundingList.get(2).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
-				
-				</div>
-				<div class="funding-list">
-					<input type="hidden" value="${ drinkHotFundingList.get(3).pdtNo}" class="pno"/>
-					<img src="${drinkHotFundingList.get(3).pdtFileUpload}" alt="썸네일 이미지"/>
-					<h6 class="cutting-date">마감 날짜 : ${drinkHotFundingList.get(3).cuttingDate }</h6>
-					<h4 class="percent">달성률 : ${drinkHotFundingList.get(3).fundingFee} / ${drinkHotFundingList.get(3).cuttingPrice }원 </h4>
-					
-					<h6>${drinkHotFundingList.get(3).pdtName }</h6>
-					
-					<h6>${drinkHotFundingList.get(3).pdtIntro }</h6>
-					<h5 class="wish-list">♡</h5>
-				
-				</div>
 			</div>
 		</div>
 		<div id="rank-drink">
@@ -233,7 +161,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+			
+		</div>
+		
+	
 	<script>
 	
 		$(function(){
