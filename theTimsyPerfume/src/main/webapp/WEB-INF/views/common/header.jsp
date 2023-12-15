@@ -94,7 +94,7 @@
                         <c:choose>
                             <c:when test="${not empty loginUser}">
                                 <p class="text-center fw-semibold">
-                                    <a class="header-link" href="cartMain.pr">장바구니</a>
+                                    <a class="header-link" href="cartMain.ca">장바구니</a>
                                 </p>
                             </c:when>
                             <c:otherwise>
@@ -306,7 +306,7 @@
             	<a class="header-link" href="myPage.me"><i class="material-icons" style="font-size:30px; color: rgb(124 94 69);">person</i></a>
             </c:otherwise>
             </c:choose>
-            <a class="header-link" href="cartMain.pr"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
+            <a class="header-link" href="cartMain.ca"><i class="fa fa-shopping-cart" style="font-size:30px; color: rgb(124 94 69);"></i></a>
         </c:otherwise>
         </c:choose>
         </div>

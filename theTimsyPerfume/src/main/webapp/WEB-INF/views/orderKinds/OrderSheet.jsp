@@ -62,8 +62,11 @@
 
 	<jsp:include page="../common/header.jsp" />
 	
+	<div>
+		오더 완료 시~~~~~~~~~
+	</div>
+	
 	<div id="OrderSheetWrap" class="container">
-
 		<div id="orderSheetMainBar" class="row">
 			<div class="order-sheet-box-area"><input type="checkbox"></div>
 			<div class="col ps-5">전체선택</div>
@@ -145,7 +148,6 @@
 				<button class="btn btn-primary">주문하기</button>
 			</div>
 		</div>
-
 	</div>
 
 </body>

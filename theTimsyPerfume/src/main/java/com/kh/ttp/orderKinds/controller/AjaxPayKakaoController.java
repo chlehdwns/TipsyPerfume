@@ -1,19 +1,31 @@
 package com.kh.ttp.orderKinds.controller;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kh.ttp.orderKinds.model.service.PayService;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.kh.ttp.orderKinds.model.service.PayKakaoService;
 import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoReady;
+import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoVO;
+import com.kh.ttp.user.model.vo.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,48 +40,42 @@ public class AjaxPayKakaoController {
 	public final static String SERVICE_KEY = "187196bd1303eec04b4d5abd920985f3";
 	public final static String CID = "TC0ONETIME";
 	
-	private final PayService payService;
+	private final PayKakaoService payKakaoService;
 	
 	
 	
 	
 	@PostMapping(value="/ready", produces="application/json; charset=UTF-8")
-	public /*ResponseEntity<String>*/void payKakaoReady(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
-		payService.payKakaoReady(kakaoReady, session);
-		System.out.println("컨트롤러 결과값 : " + payService.payKakaoReady(kakaoReady, session));
-		//return payService.payKakaoReady(kakaoReady, session);
+	public ResponseEntity<String> payKakaoReady(@RequestBody PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException {
+		return payKakaoService.payKakaoReady(kakaoReady, session);
 	}
 	
 	
-	
-	
-	/*
 	@GetMapping("/approve")
-	public void payKakaoApprove(@RequestParam(value = "pg_token") String pgToken,
-			HttpSession session) throws MalformedURLException, IOException {
+	public void payKakaoApprove(@RequestParam(value = "pg_token") String pgToken, String userEmail, HttpSession session) throws MalformedURLException, IOException {
 		
 		System.out.println("approve이 시점에 pgToken저장해야함 pgToken : " + pgToken);
 		System.out.println(pgToken + "토큰들어오나욤");
-		// 토큰 DB에 저장 (일단 여기선 세션)
-		session.setAttribute("pgToken", pgToken);
+		// 토큰 DB에 저장 => ㄴㄴ 필요없지않나? (일단 여기선 세션)
+		// session.setAttribute("pgToken", pgToken);
 		
+		User user = (User)session.getAttribute("loginUser");
 		String url = "https://kapi.kakao.com/v1/payment/approve";
 		
+		System.out.println("카페 결과~~~ kakaoNo" + payKakaoService.selectPayKakao(userEmail));
+		PayKakaoVO payKakao = payKakaoService.selectPayKakao(userEmail);
+
 		String param = "cid=" + CID
-					 + "&tid=" + session.getAttribute("tid")
-					 + "&partner_order_id=" + payKakaoNo
+					 + "&tid=" + payKakao.getTid()
+					 + "&partner_order_id=" + payKakao.getPayKakaoNo()
 					 + "&partner_user_id=" + userEmail
 					 + "&pg_token=" + pgToken;
-		
-		
 		
 		HttpURLConnection urlConnection = (HttpURLConnection)new URL(url).openConnection();
 		urlConnection.setRequestMethod("POST");
 		urlConnection.setRequestProperty("Authorization", "KakaoAK " + SERVICE_KEY);
 		urlConnection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		urlConnection.setDoOutput(true);
-		
-		
 		
 		
 		DataOutputStream dataOutputStream = new DataOutputStream(urlConnection.getOutputStream());
@@ -82,79 +88,13 @@ public class AjaxPayKakaoController {
 			System.out.println("여기까진될듯?");
 		}
 		
-		
-		
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 		
 		
-		
-		
-		
-		
 		JsonObject totalObj = JsonParser.parseString(bufferedReader.readLine()).getAsJsonObject();
-		System.out.println(totalObj); // 콘솔창엔 똑같이 보임 근데 하나는 String, 하나는 오브젝트!
-		
-		JsonObject responseObj = totalObj.getAsJsonObject("response"); // response속성에 접근 => {} 이렇게 생긴 JsonObject타입 반환
-		System.out.println(responseObj); // response속성에 접근해서 객체로 바꾼 것 => 이제 "body"속성에 접근!
-		
-		JsonObject bodyObj = responseObj.getAsJsonObject("body");
-		System.out.println(bodyObj);
-		*/
-		/* JsonObject.get("totalCount")까지는 그냥 .get이라 Element형태로 반환함 (우리는 int가 필요하니까 getAsInt로 함)
-		int totalCount = bodyObj.get("totalCount").getAsInt(); // "body"에 오니까 속성이 두개넹? 그 중에 totalCount(숫자)를 뽑아보자
-		System.out.println(totalCount);
-		
-		JsonArray itemArr = bodyObj.getAsJsonArray("items"); // items속성(배열형태)에 접근 => [] JsonArray로 뽑아보자
-		System.out.println(itemArr);
-		
-		/* itemArr(배열형태)까지 왔음! 이제 객체 하나에 있는 값을 VO의 필드에 담을 것
-		ArrayList<AirVo> list = new ArrayList();
-		for(int i = 0; i < itemArr.size(); i++) {
-			JsonObject item = itemArr.get(i).getAsJsonObject();
-			// System.out.println(item);
-			
-			AirVo air = new AirVo();
-			air.setStationName(item.get("stationName").getAsString());
-			air.setDataTime(item.get("dataTime").getAsString());
-			air.setSo2Value(item.get("so2Value").getAsString());
-			air.setPm10Value(item.get("pm10Value").getAsString());
-			air.setO3Value(item.get("o3Value").getAsString());
-			air.setKhaiValue(item.get("khaiValue").getAsString());
-
-			list.add(air);
-		}
-		
-		for(AirVo air : list) {
-			System.out.println(air);
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-				
-		//bufferedReader.close();
-		//urlConnection.disconnect();
-		
-
-		//JSONObject result = (JSONObject)(new JSONParser().parse(responseText));
-		 = JsonParser.parseString(responseText).getJ
-		
-		//HttpHeaders header = new HttpHeaders();
-		//header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
-		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
-		("되나");
-		
+		System.out.println(totalObj + " <<<<<<<<<total오브젝트"); // 콘솔창엔 똑같이 보임 근데 하나는 String, 하나는 오브젝트!
 		
 	}
-	*/
-	
 	
 	
 	

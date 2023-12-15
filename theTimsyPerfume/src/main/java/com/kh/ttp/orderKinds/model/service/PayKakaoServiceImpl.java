@@ -5,8 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,40 +17,44 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.ttp.orderKinds.controller.AjaxPayKakaoController;
-import com.kh.ttp.orderKinds.model.dao.PayDao;
+import com.kh.ttp.orderKinds.model.dao.PayKakaoDao;
 import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoReady;
+import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoVO;
 import com.kh.ttp.user.model.vo.User;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PayServiceImpl implements PayService {
+public class PayKakaoServiceImpl implements PayKakaoService {
 	
 	
-	private final PayDao payDao;
+	private final PayKakaoDao payKakaoDao;
 	private final SqlSessionTemplate sqlSession;
 	
 	
 	
 	@Override
 	@Transactional("transactionManager")
-	public int payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws IOException, ParseException {
-		/*ResponseEntity<String>*/
-		
-		int quantity = kakaoReady.getItemCodeList().size();
-		String itemName = kakaoReady.getItemName()  + " 외  " + (quantity - 1) + "개";
+	public ResponseEntity<String> payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws IOException, ParseException {
 
+		String payKakaoNo = "";
+		
 		User user = (User)session.getAttribute("loginUser");
 		ArrayList itemCodeList = (ArrayList)kakaoReady.getItemCodeList();
 
-		String payKakaoNo;
+		int quantity = itemCodeList.size();
 		String userEmail = user.getUserEmail();
 		String itemCode = String.join(",", itemCodeList);
+		String itemName = kakaoReady.getItemName()  + " 외  " + (quantity - 1) + "개";
 		
 		kakaoReady.setUserNo(user.getUserNo());
 		kakaoReady.setUserEmail(userEmail);
@@ -66,25 +70,25 @@ public class PayServiceImpl implements PayService {
 		kakaoReadyMap.put("userEmail", userEmail);
 		kakaoReadyMap.put("itemCode", itemCode);
 		
-		if(payDao.insertKakaoReady(sqlSession, kakaoReadyMap) > 0) { //@@@@@@@@@select안되면 고의예외 발생시켜야함
-			payKakaoNo = payDao.selectSeqPayKakaoStr(sqlSession);
+		if(payKakaoDao.insertInfoMakeKakaoNoSeq(sqlSession, kakaoReadyMap) > 0) { //@@@@@@@@@select안되면 고의예외 발생시켜야함
+			payKakaoNo = payKakaoDao.selectPayKakaoNoSeq(sqlSession);
 			// partner_order_id PAY_KAKAO_NO (INSERT 후 시퀀스값)
 			// INSERT성공했으면 당연히 초기화됨
 		} else {
-			return 0;
+			System.out.println("카카오serviceImpl Insert에렁ㅇㅇㅇㅇ");
 		}
 		
 		String param = "cid=" + AjaxPayKakaoController.CID // 가맹점 코드, 10자
-			     + "&partner_order_id=" + payKakaoNo // 가맹점 주문번호, 최대 100자
-			     + "&partner_user_id=" + userEmail // // 가맹점 회원 id, 최대 100자
-			     + "&item_name=" + itemName // 상품명, 최대 100자
-			     + "&item_code=" + String.join(",", itemCode) // 배열을 문자열 형태로 저장 / 상품코드, 최대 100자
-			     + "&quantity=" + quantity // 상품 수량
-			     + "&total_amount=" + kakaoReady.getTotalAmount() // 상품 총액
-			     + "&tax_free_amount=" + 0 // 상품 비과세 금액
-			     + "&approval_url=" + approvalUrl // 결제 성공 시 redirect url, 최대 255자
-			     + "&cancel_url=" + errorUrl // 결제 취소 시 redirect url, 최대 255자
-			     + "&fail_url=" + errorUrl; // 결제 실패 시 redirect url, 최대 255자
+				     + "&partner_order_id=" + payKakaoNo // 가맹점 주문번호, 최대 100자
+				     + "&partner_user_id=" + userEmail // // 가맹점 회원 id, 최대 100자
+				     + "&item_name=" + itemName // 상품명, 최대 100자
+				     + "&item_code=" + itemCode // 배열을 문자열 형태로 저장 / 상품코드, 최대 100자
+				     + "&quantity=" + quantity // 상품 수량
+				     + "&total_amount=" + kakaoReady.getTotalAmount() // 상품 총액
+				     + "&tax_free_amount=" + 0 // 상품 비과세 금액
+				     + "&approval_url=" + approvalUrl // 결제 성공 시 redirect url, 최대 255자
+				     + "&cancel_url=" + errorUrl // 결제 취소 시 redirect url, 최대 255자
+				     + "&fail_url=" + errorUrl; // 결제 실패 시 redirect url, 최대 255자
 
 		
 		HttpURLConnection urlConnection = (HttpURLConnection)new URL(url).openConnection();
@@ -115,21 +119,26 @@ public class PayServiceImpl implements PayService {
 		
 		JSONObject result = (JSONObject)(new JSONParser().parse(responseText));
 		//JsonObject result = JsonParser.parseString(responseText).getAsJsonObject();
-		
-		
 		//@@@@@@@@@@★ 이 시점에서 DB에 tid 넣어야함 (일단세션담음)
 		// INSERT
 		String tid = (String)result.get("tid");
+		kakaoReadyMap.put("payKakaoNo", payKakaoNo);
+		kakaoReadyMap.put("tid", tid);
 		
-		//session.setAttribute("tid", tid);
-		System.out.println("준비단계 tid DB에 넣어야함 / tid :aㅁ " + tid);
-		/*
-		System.out.println();
+		
+		if(payKakaoDao.insertTid(sqlSession, kakaoReadyMap) < 0) {
+			System.out.println("카카오 레디 ServiceImpl insertTid 실패");
+		};
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(new MediaType("html", "text", Charset.forName("UTF-8")));
-		//return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
-		*/
-		return 1;
+		return new ResponseEntity<String>((String)result.get("next_redirect_pc_url"), header, HttpStatus.OK);
+	}
+
+
+
+	@Override
+	public PayKakaoVO selectPayKakao(String userEmail) {
+		return payKakaoDao.selectPayKakao(sqlSession, userEmail);
 	}
 	
 	

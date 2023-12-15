@@ -9,11 +9,15 @@ import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
 
 import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoReady;
+import com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoVO;
 
-public interface PayService {
+public interface PayKakaoService {
 
 	//추후수정
-	/*ResponseEntity<String>*/int payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException;
+	ResponseEntity<String> payKakaoReady(PayKakaoReady kakaoReady, HttpSession session) throws MalformedURLException, IOException, ParseException;
+
+
+	PayKakaoVO selectPayKakao(String userEmail);
 
 	
 	

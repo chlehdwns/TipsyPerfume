@@ -38,6 +38,7 @@
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.OrderDetailVO" alias="orderDetail"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.OrderProductVO" alias="orderProduct"/>
 		<typeAlias type="com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoReady" alias="payKakaoReady"/>
+		<typeAlias type="com.kh.ttp.orderKinds.model.vo.prepay.PayKakaoVO" alias="payKakao" />
 	</typeAliases>
 
 	  <mappers>
@@ -49,7 +50,7 @@
 		<mapper resource="/mapper/community/comment-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper.xml"/>
 		<mapper resource="/mapper/product-mapper-pr.xml" />
-		<mapper resource="/mapper/pay-mapper.xml" />
+		<mapper resource="/mapper/pay-kakao-mapper.xml" />
 		<mapper resource="/mapper/receiver-mapper.xml" />
 		<mapper resource="/mapper/admin-mapper.xml" />
 	</mappers>

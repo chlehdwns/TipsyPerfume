@@ -115,6 +115,7 @@
 			</div>
 		</div>
 	</div>
+	
 		<!--
 		CART_NO,
 		USER_NO,
@@ -129,44 +130,43 @@
 				
 				//if($cartCheckedItems.length > 0) {
 					
-					// totalAmount 비교용 토탈금액
-					let $totalAmount = $('#cartTotalAmount').val();
+				// totalAmount 비교용 토탈금액
+				let $totalAmount = $('#cartTotalAmount').val();
 
-					// itemCode배열 : 선택된 cartNo 배열로
-					let itemCodeList = [];
-					$cartCheckedItems.each((index, element) => {
-						itemCodeList.push(element.value);
-					});	
-					console.log(itemCodeList);
-					 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
+				// itemCode배열 : 선택된 cartNo 배열로
+				let itemCodeList = [];
+				$cartCheckedItems.each((index, element) => {
+					itemCodeList.push(element.value);
+				});	
+				console.log(itemCodeList);
+				 // 체크된 상태면 어짜피 다른애들도 다 체크됐으니까 다른애들 가져와도 ㅇㅋ
 
-					$.ajax({
-						url : 'pay/kakao/ready',
-						type : 'POST',
-						data : JSON.stringify({
-							totalAmount : $totalAmount,
-							itemCodeList : itemCodeList,
-							itemName : $('#cartItemName_0').text()
-							
-						}),
-						contentType:"application/json; charset=utf-8",
-						//dataType: 'json', // 받아올 때 타입 json parsing해서 객체로 써야함
-						success : result => {
-							console.log('성공')
-							console.log(result);
-							alert(result);
-							location.href = result;
-						},
-						error : () => {
-							console.log('에러발생');
-						}
-					});
-				//}
-				//cart-item
-				//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
-				//cart-content-block
-				
+				$.ajax({
+					url : 'pay/kakao/ready',
+					type : 'POST',
+					data : JSON.stringify({
+						totalAmount : $totalAmount,
+						itemCodeList : itemCodeList,
+						itemName : $('#cartItemName_0').text()
+					}),
+					contentType:"application/json; charset=utf-8",
+					//dataType: 'json', // 받아올 때 타입 json parsing해서 객체로 써야함
+					success : result => {
+						console.log('성공')
+						console.log(result);
+						alert(result);
+						location.href = result;
+					},
+					error : () => {
+						console.log('에러발생');
+					}
+				});
 			});
+			//}
+			//cart-item
+			//$checkedItems = $('.cart-check-box-one:checked').closest('.cart-content-block');
+			//cart-content-block
+				
 			
 				
 			
