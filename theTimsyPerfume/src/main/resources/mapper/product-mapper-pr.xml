@@ -83,12 +83,14 @@
 			   USER_NO = #{userNo}
 		   AND
 		   	   PDT_NO = #{pdtNo}
+		   AND
+		       PDT_OPTION_NO = #{pdtOptionNo}
 	</select>
 	
 	<!-- 1개 상품(특정 옵션)의 재고 개수 조회 -->
 	<select id="selectStockWithOption" parameterType="_int" resultType="_int">
 		SELECT
-			   NVL(PDT_OPTION_STOCK, 0)
+			   NVL(PDT_OPTION_STOCK, 0) "STOCK"
 		  FROM
 		  	   TB_PRODUCT
 		  JOIN
